@@ -1,0 +1,99 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <!-- Left code panel -->
+  <rect x="40" y="60" width="520" height="490" rx="8" fill="#161b22"/>
+  <rect x="40" y="60" width="520" height="32" rx="8" fill="#1f1005"/>
+  <rect x="40" y="80" width="520" height="12" fill="#1f1005"/>
+  <circle cx="62" cy="76" r="6" fill="#ff5f56"/>
+  <circle cx="82" cy="76" r="6" fill="#ffbd2e"/>
+  <circle cx="102" cy="76" r="6" fill="#27c93f"/>
+  <text x="130" y="81" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">redirects.ts</text>
+  <!-- Code -->
+  <text x="60" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">import</text>
+  <text x="108" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#123; </text>
+  <text x="128" y="120" font-family="'Courier New', monospace" font-size="13" fill="#f97316">RedirectEngine</text>
+  <text x="268" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#125; </text>
+  <text x="300" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">from</text>
+  <text x="332" y="120" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'@power-seo/redirects'</text>
+  <text x="60" y="158" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">const</text>
+  <text x="98" y="158" font-family="'Courier New', monospace" font-size="13" fill="#f97316"> engine</text>
+  <text x="152" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> = new </text>
+  <text x="200" y="158" font-family="'Courier New', monospace" font-size="13" fill="#f97316">RedirectEngine</text>
+  <text x="340" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">()</text>
+  <!-- addRule calls -->
+  <text x="60" y="192" font-family="'Courier New', monospace" font-size="13" fill="#f97316">engine</text>
+  <text x="116" y="192" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">.</text>
+  <text x="122" y="192" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">addRule</text>
+  <text x="178" y="192" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(&#123;</text>
+  <text x="76" y="216" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  from</text>
+  <text x="116" y="216" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="128" y="216" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'/old-blog/:slug'</text>
+  <text x="76" y="240" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  to</text>
+  <text x="104" y="240" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="116" y="240" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'/blog/:slug'</text>
+  <text x="76" y="264" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  status</text>
+  <text x="136" y="264" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="148" y="264" font-family="'Courier New', monospace" font-size="13" fill="#f97316">301</text>
+  <text x="60" y="288" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">&#125;)</text>
+  <!-- resolve call -->
+  <text x="60" y="324" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">const</text>
+  <text x="98" y="324" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc"> match</text>
+  <text x="146" y="324" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="166" y="324" font-family="'Courier New', monospace" font-size="13" fill="#f97316">engine</text>
+  <text x="222" y="324" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">.</text>
+  <text x="228" y="324" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">resolve</text>
+  <text x="286" y="324" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(</text>
+  <text x="292" y="324" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'/old-blog/hello'</text>
+  <text x="448" y="324" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">)</text>
+  <!-- Result -->
+  <rect x="60" y="348" width="460" height="130" rx="6" fill="#0d1117"/>
+  <text x="78" y="372" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// match →</text>
+  <text x="78" y="394" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#123;</text>
+  <text x="94" y="416" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  destination</text>
+  <text x="202" y="416" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="214" y="416" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'/blog/hello'</text>
+  <text x="94" y="438" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  statusCode</text>
+  <text x="198" y="438" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="210" y="438" font-family="'Courier New', monospace" font-size="12" fill="#f97316">301</text>
+  <text x="78" y="460" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#125;</text>
+  <!-- Vertical divider -->
+  <line x1="600" y1="40" x2="600" y2="590" stroke="#f97316" stroke-width="1.5" opacity="0.4"/>
+  <!-- Right: Redirect network visualization -->
+  <rect x="630" y="60" width="530" height="490" rx="8" fill="#161b22"/>
+  <text x="895" y="98" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Redirect Graph</text>
+  <!-- Nodes and arrows -->
+  <!-- Old URL nodes -->
+  <rect x="648" y="120" width="160" height="34" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
+  <text x="728" y="141" font-family="'Courier New', monospace" font-size="11" fill="#f97316" text-anchor="middle">/old-blog/:slug</text>
+  <rect x="648" y="176" width="160" height="34" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
+  <text x="728" y="197" font-family="'Courier New', monospace" font-size="11" fill="#f97316" text-anchor="middle">/category/*</text>
+  <rect x="648" y="232" width="160" height="34" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
+  <text x="728" y="253" font-family="'Courier New', monospace" font-size="11" fill="#f97316" text-anchor="middle">/products?id=*</text>
+  <!-- Arrows -->
+  <line x1="808" y1="137" x2="890" y2="180" stroke="#f97316" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="808" y1="193" x2="890" y2="215" stroke="#f97316" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="808" y1="249" x2="890" y2="250" stroke="#f97316" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- Destination node -->
+  <rect x="890" y="165" width="160" height="34" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="970" y="186" font-family="'Courier New', monospace" font-size="11" fill="#22c55e" text-anchor="middle">/blog/:slug</text>
+  <rect x="890" y="200" width="160" height="34" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="970" y="221" font-family="'Courier New', monospace" font-size="11" fill="#22c55e" text-anchor="middle">/shop/:slug</text>
+  <rect x="890" y="235" width="160" height="34" rx="6" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="970" y="256" font-family="'Courier New', monospace" font-size="11" fill="#22c55e" text-anchor="middle">/products/:slug</text>
+  <!-- Status badges -->
+  <rect x="648" y="302" width="80" height="24" rx="12" fill="#1f1005"/>
+  <text x="688" y="318" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">301 perm.</text>
+  <rect x="740" y="302" width="80" height="24" rx="12" fill="#1a1005"/>
+  <text x="780" y="318" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fbbf24" text-anchor="middle">302 temp.</text>
+  <rect x="832" y="302" width="80" height="24" rx="12" fill="#1a0405"/>
+  <text x="872" y="318" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">410 gone</text>
+  <!-- Feature list -->
+  <text x="648" y="360" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e">✓ Pattern matching with named params</text>
+  <text x="648" y="382" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e">✓ Express · Next.js · Fastify middleware</text>
+  <text x="648" y="404" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e">✓ Wildcard · regex · query string rules</text>
+  <text x="648" y="426" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e">✓ Loop detection · chain resolution</text>
+  <!-- Tagline -->
+  <text x="600" y="560" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">One rule engine. 301s, 302s, wildcards, params.</text>
+  <text x="600" y="592" font-family="'Segoe UI', sans-serif" font-size="15" fill="#6b7280" text-anchor="middle">@power-seo/redirects — Express · Next.js · Fastify · pattern params · chain resolution</text>
+  <text x="80" y="46" font-family="'Segoe UI', sans-serif" font-size="14" fill="#f97316">@power-seo/redirects</text>
+</svg>

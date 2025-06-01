@@ -1,0 +1,132 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .font-ui { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- Table container -->
+  <rect x="30" y="30" width="840" height="430" rx="10" fill="#161b22"/>
+
+  <!-- ===================== Column Headers ===================== -->
+  <!-- Col widths: 220 | 155 | 155 | 155 | 155  (starts at x=30) -->
+  <!-- Feature col: x=30 w=220 -->
+  <!-- @power-seo: x=250 w=155 -->
+  <!-- Screaming Frog: x=405 w=155 -->
+  <!-- Sitebulb: x=560 w=155 -->
+  <!-- Ahrefs: x=715 w=155 -->
+
+  <!-- @power-seo/audit header — red accent -->
+  <rect x="250" y="30" width="155" height="58" rx="0" fill="#ef4444"/>
+  <rect x="250" y="75" width="155" height="13" fill="#ef4444"/>
+  <text x="327" y="57" class="font-ui" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">@power-seo</text>
+  <text x="327" y="73" class="font-ui" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">/audit</text>
+
+  <!-- Screaming Frog header -->
+  <rect x="405" y="30" width="155" height="58" rx="0" fill="#1f2937"/>
+  <rect x="405" y="75" width="155" height="13" fill="#1f2937"/>
+  <text x="482" y="57" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Screaming</text>
+  <text x="482" y="73" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Frog</text>
+
+  <!-- Sitebulb header -->
+  <rect x="560" y="30" width="155" height="58" rx="0" fill="#1f2937"/>
+  <rect x="560" y="75" width="155" height="13" fill="#1f2937"/>
+  <text x="637" y="65" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Sitebulb</text>
+
+  <!-- Ahrefs header -->
+  <rect x="715" y="30" width="155" height="58" rx="0" fill="#1f2937"/>
+  <rect x="715" y="75" width="155" height="13" fill="#1f2937"/>
+  <text x="792" y="57" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Ahrefs</text>
+  <text x="792" y="73" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Audit</text>
+
+  <!-- Header bottom line -->
+  <line x1="30" y1="88" x2="870" y2="88" stroke="#374151" stroke-width="1.5"/>
+
+  <!-- Vertical column separators -->
+  <line x1="250" y1="30" x2="250" y2="460" stroke="#374151" stroke-width="1" opacity="0.6"/>
+  <line x1="405" y1="30" x2="405" y2="460" stroke="#374151" stroke-width="1" opacity="0.6"/>
+  <line x1="560" y1="30" x2="560" y2="460" stroke="#374151" stroke-width="1" opacity="0.6"/>
+  <line x1="715" y1="30" x2="715" y2="460" stroke="#374151" stroke-width="1" opacity="0.6"/>
+
+  <!-- ===================== Rows ===================== -->
+  <!-- Row height = 42px, starting at y=88 -->
+
+  <!-- Helper macro: rows at y = 88 + (n*42), text baseline at y+27 -->
+
+  <!-- Row 1: TypeScript API -->
+  <rect x="30" y="88" width="840" height="42" fill="#0d1117" opacity="0.25"/>
+  <text x="50" y="115" class="font-ui" font-size="13" fill="#e5e7eb">TypeScript API</text>
+  <text x="327" y="115" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
+  <text x="482" y="115" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="637" y="115" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="792" y="115" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <line x1="30" y1="130" x2="870" y2="130" stroke="#374151" stroke-width="1" opacity="0.3"/>
+
+  <!-- Row 2: Free / open source -->
+  <text x="50" y="157" class="font-ui" font-size="13" fill="#e5e7eb">Free / open source</text>
+  <text x="327" y="157" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
+  <text x="482" y="157" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="637" y="157" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="792" y="157" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <line x1="30" y1="172" x2="870" y2="172" stroke="#374151" stroke-width="1" opacity="0.3"/>
+
+  <!-- Row 3: Programmatic access -->
+  <rect x="30" y="172" width="840" height="42" fill="#0d1117" opacity="0.25"/>
+  <text x="50" y="199" class="font-ui" font-size="13" fill="#e5e7eb">Programmatic access</text>
+  <text x="327" y="199" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
+  <text x="482" y="199" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="637" y="199" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="792" y="199" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <line x1="30" y1="214" x2="870" y2="214" stroke="#374151" stroke-width="1" opacity="0.3"/>
+
+  <!-- Row 4: Custom rules -->
+  <text x="50" y="241" class="font-ui" font-size="13" fill="#e5e7eb">Custom rules</text>
+  <text x="327" y="241" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
+  <text x="482" y="241" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="637" y="241" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="792" y="241" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <line x1="30" y1="256" x2="870" y2="256" stroke="#374151" stroke-width="1" opacity="0.3"/>
+
+  <!-- Row 5: CI/CD integration -->
+  <rect x="30" y="256" width="840" height="42" fill="#0d1117" opacity="0.25"/>
+  <text x="50" y="283" class="font-ui" font-size="13" fill="#e5e7eb">CI/CD integration</text>
+  <text x="327" y="283" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
+  <text x="482" y="283" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="637" y="283" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="792" y="283" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <line x1="30" y1="298" x2="870" y2="298" stroke="#374151" stroke-width="1" opacity="0.3"/>
+
+  <!-- Row 6: No desktop app needed -->
+  <text x="50" y="325" class="font-ui" font-size="13" fill="#e5e7eb">No desktop app needed</text>
+  <text x="327" y="325" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
+  <text x="482" y="325" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="637" y="325" class="font-ui" font-size="18" fill="#22c55e" text-anchor="middle">✓</text>
+  <text x="792" y="325" class="font-ui" font-size="18" fill="#22c55e" text-anchor="middle">✓</text>
+  <line x1="30" y1="340" x2="870" y2="340" stroke="#374151" stroke-width="1" opacity="0.3"/>
+
+  <!-- Row 7: No subscription -->
+  <rect x="30" y="340" width="840" height="42" fill="#0d1117" opacity="0.25"/>
+  <text x="50" y="367" class="font-ui" font-size="13" fill="#e5e7eb">No subscription</text>
+  <text x="327" y="367" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
+  <text x="482" y="367" class="font-ui" font-size="14" fill="#f59e0b" text-anchor="middle">~ paid</text>
+  <text x="637" y="367" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="792" y="367" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <line x1="30" y1="382" x2="870" y2="382" stroke="#374151" stroke-width="1" opacity="0.3"/>
+
+  <!-- Row 8: Embeddable in your app -->
+  <text x="50" y="409" class="font-ui" font-size="13" fill="#e5e7eb">Embeddable in your app</text>
+  <text x="327" y="409" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
+  <text x="482" y="409" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="637" y="409" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+  <text x="792" y="409" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
+
+  <!-- @power-seo column highlight overlay -->
+  <rect x="250" y="88" width="155" height="372" fill="#ef4444" opacity="0.04"/>
+
+  <!-- Caption -->
+  <text x="450" y="478" class="font-ui" font-size="15" fill="#ffffff" text-anchor="middle" letter-spacing="0.3">The only audit engine that lives in your codebase.</text>
+</svg>

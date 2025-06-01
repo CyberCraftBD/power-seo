@@ -1,0 +1,38 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <!-- Code snippet at top -->
+  <rect x="250" y="20" width="400" height="40" rx="6" fill="#161b22" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="450" y="36" font-family="'Courier New', monospace" font-size="12" fill="#7c3aed" text-anchor="middle">createMetadata(&#123; og: &#123; image, title &#125; &#125;)</text>
+  <text x="450" y="52" font-family="'Courier New', monospace" font-size="11" fill="#6b7280" text-anchor="middle">↓ generates tags for both platforms</text>
+  <!-- Violet arrows from code -->
+  <line x1="280" y1="62" x2="210" y2="98" stroke="#7c3aed" stroke-width="1.5"/>
+  <line x1="620" y1="62" x2="690" y2="98" stroke="#7c3aed" stroke-width="1.5"/>
+  <!-- Facebook card -->
+  <rect x="30" y="100" width="380" height="240" rx="8" fill="#ffffff"/>
+  <rect x="30" y="100" width="380" height="140" rx="8" fill="#6b7280"/>
+  <text x="220" y="175" font-family="'Segoe UI', sans-serif" font-size="13" fill="#d1d5db" text-anchor="middle">og:image (1200×630)</text>
+  <rect x="30" y="228" width="380" height="2" fill="#d1d5db"/>
+  <text x="44" y="252" font-family="'Segoe UI', sans-serif" font-size="10" fill="#65676b">EXAMPLE.COM</text>
+  <text x="44" y="274" font-family="'Segoe UI', sans-serif" font-size="15" fill="#0f172a" font-weight="700">My Article Title — Example Site</text>
+  <text x="44" y="293" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4b5563">Discover the best TypeScript SEO library. One config, any framework.</text>
+  <text x="44" y="315" font-family="'Segoe UI', sans-serif" font-size="10" fill="#9ca3af">example.com • 5 min read</text>
+  <!-- Facebook label -->
+  <text x="220" y="360" font-family="'Segoe UI', sans-serif" font-size="13" fill="#7c3aed" text-anchor="middle">Facebook OG Card</text>
+  <!-- Twitter card -->
+  <rect x="490" y="100" width="380" height="240" rx="8" fill="#15202b"/>
+  <rect x="490" y="100" width="380" height="130" rx="8" fill="#374151"/>
+  <text x="680" y="168" font-family="'Segoe UI', sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle">summary_large_image</text>
+  <text x="500" y="255" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" font-weight="700">My Article Title — Example Site</text>
+  <text x="500" y="275" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Discover the best TypeScript SEO library.</text>
+  <text x="500" y="295" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">example.com</text>
+  <!-- Twitter label -->
+  <text x="680" y="360" font-family="'Segoe UI', sans-serif" font-size="13" fill="#7c3aed" text-anchor="middle">Twitter/X Card</text>
+  <!-- Caption -->
+  <text x="450" y="400" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Exact social preview — generated from one config</text>
+  <text x="450" y="430" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Both platforms receive correctly formatted OG tags from a single createMetadata() call</text>
+  <!-- Badges -->
+  <rect x="280" y="450" width="160" height="28" rx="14" fill="#7c3aed" opacity="0.2" stroke="#7c3aed" stroke-width="1"/>
+  <text x="360" y="469" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a78bfa" text-anchor="middle">og:image validated</text>
+  <rect x="460" y="450" width="160" height="28" rx="14" fill="#7c3aed" opacity="0.2" stroke="#7c3aed" stroke-width="1"/>
+  <text x="540" y="469" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a78bfa" text-anchor="middle">char limits enforced</text>
+</svg>

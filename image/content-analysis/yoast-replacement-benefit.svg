@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- ── LEFT PANEL: Yoast / WordPress ── -->
+  <rect x="30" y="30" width="350" height="380" rx="8" fill="#161b22" stroke="#484f58" stroke-width="1.5"/>
+
+  <!-- WordPress admin top bar -->
+  <rect x="30" y="30" width="350" height="36" rx="8" fill="#23282d"/>
+  <rect x="30" y="50" width="350" height="16" fill="#23282d"/>
+  <!-- WP logo placeholder -->
+  <circle cx="55" cy="48" r="10" fill="#0073aa"/>
+  <text x="73" y="53" fill="#a0aec0" font-size="12" font-weight="500">WordPress Admin</text>
+
+  <!-- Yoast-style purple header -->
+  <rect x="30" y="66" width="350" height="40" fill="#a855f7" opacity="0.9"/>
+  <text x="205" y="91" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Yoast SEO</text>
+
+  <!-- WP admin sidebar -->
+  <rect x="30" y="106" width="80" height="304" fill="#1e232b"/>
+  <rect x="40" y="120" width="60" height="8" rx="2" fill="#484f58"/>
+  <rect x="40" y="138" width="60" height="8" rx="2" fill="#484f58"/>
+  <rect x="40" y="156" width="60" height="8" rx="2" fill="#a855f7" opacity="0.6"/>
+  <rect x="40" y="174" width="60" height="8" rx="2" fill="#484f58"/>
+  <rect x="40" y="192" width="60" height="8" rx="2" fill="#484f58"/>
+  <rect x="40" y="210" width="60" height="8" rx="2" fill="#484f58"/>
+  <rect x="40" y="228" width="50" height="8" rx="2" fill="#484f58"/>
+
+  <!-- WP content area -->
+  <rect x="118" y="114" width="252" height="288" rx="0" fill="#2c3038"/>
+
+  <!-- Fake WP editor blocks -->
+  <rect x="126" y="122" width="236" height="12" rx="2" fill="#3d4451"/>
+  <rect x="126" y="142" width="200" height="8" rx="2" fill="#3d4451"/>
+  <rect x="126" y="156" width="220" height="8" rx="2" fill="#3d4451"/>
+  <rect x="126" y="170" width="180" height="8" rx="2" fill="#3d4451"/>
+  <rect x="126" y="190" width="236" height="8" rx="2" fill="#3d4451"/>
+  <rect x="126" y="204" width="200" height="8" rx="2" fill="#3d4451"/>
+
+  <!-- Yoast mini traffic light in the fake WP panel -->
+  <rect x="126" y="224" width="236" height="70" rx="4" fill="#23282d"/>
+  <text x="136" y="242" fill="#a855f7" font-size="11" font-weight="700">Yoast SEO Analysis</text>
+  <circle cx="138" cy="260" r="5" fill="#22c55e"/>
+  <rect x="148" y="256" width="100" height="6" rx="2" fill="#484f58"/>
+  <circle cx="138" cy="278" r="5" fill="#f59e0b"/>
+  <rect x="148" y="274" width="80" height="6" rx="2" fill="#484f58"/>
+  <circle cx="138" cy="286" r="5" fill="#ef4444"/>
+
+  <!-- Red lock overlay -->
+  <!-- Lock body -->
+  <rect x="148" y="170" width="84" height="70" rx="8" fill="#ef4444" opacity="0.95"/>
+  <!-- Lock shackle -->
+  <path d="M165 170 L165 152 Q190 132 215 152 L215 170" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="round" opacity="0.95"/>
+  <!-- Keyhole -->
+  <circle cx="190" cy="195" r="10" fill="#0d1117" opacity="0.7"/>
+  <rect x="186" y="198" width="8" height="14" rx="2" fill="#0d1117" opacity="0.7"/>
+
+  <!-- "WordPress only" label -->
+  <rect x="112" y="312" width="176" height="26" rx="4" fill="#2d0808"/>
+  <text x="200" y="329" text-anchor="middle" fill="#ef4444" font-size="13" font-weight="700">WordPress only</text>
+
+  <!-- Panel label -->
+  <text x="205" y="425" text-anchor="middle" fill="#8b949e" font-size="12">Requires WordPress + plugin ecosystem</text>
+
+  <!-- ── YELLOW ARROW ── -->
+  <line x1="390" y1="220" x2="490" y2="220" stroke="#eab308" stroke-width="3"/>
+  <polygon points="490,210 510,220 490,230" fill="#eab308"/>
+  <text x="450" y="210" text-anchor="middle" fill="#eab308" font-size="11" font-weight="600">switch to</text>
+
+  <!-- ── RIGHT PANEL: Your Custom CMS ── -->
+  <rect x="520" y="30" width="350" height="380" rx="8" fill="#161b22" stroke="#eab308" stroke-width="1.5"/>
+
+  <!-- Panel top bar -->
+  <rect x="520" y="30" width="350" height="36" rx="8" fill="#1c2128"/>
+  <rect x="520" y="50" width="350" height="16" fill="#1c2128"/>
+  <!-- dots -->
+  <circle cx="543" cy="48" r="6" fill="#ff5f56"/>
+  <circle cx="561" cy="48" r="6" fill="#ffbd2e"/>
+  <circle cx="579" cy="48" r="6" fill="#27c93f"/>
+  <text x="598" y="53" fill="#8b949e" font-size="12">Your Custom CMS</text>
+
+  <!-- "Your Custom CMS" yellow header -->
+  <rect x="520" y="66" width="350" height="40" fill="#1a1508"/>
+  <rect x="520" y="66" width="3" height="40" fill="#eab308"/>
+  <text x="695" y="91" text-anchor="middle" fill="#eab308" font-size="15" font-weight="700">Content Analysis</text>
+
+  <!-- Editor area on right panel -->
+  <rect x="520" y="106" width="220" height="296" fill="#0f1319"/>
+
+  <!-- Fake content lines -->
+  <rect x="530" y="118" width="195" height="10" rx="2" fill="#21262d"/>
+  <rect x="530" y="136" width="180" height="8" rx="2" fill="#21262d"/>
+  <rect x="530" y="150" width="195" height="8" rx="2" fill="#21262d"/>
+  <!-- keyphrase highlight -->
+  <rect x="530" y="164" width="100" height="8" rx="2" fill="#eab308" opacity="0.25"/>
+  <rect x="530" y="164" width="100" height="8" rx="2" fill="none" stroke="#eab308" stroke-width="0.5" opacity="0.5"/>
+  <rect x="638" y="164" width="87" height="8" rx="2" fill="#21262d"/>
+  <rect x="530" y="178" width="170" height="8" rx="2" fill="#21262d"/>
+  <rect x="530" y="192" width="195" height="8" rx="2" fill="#21262d"/>
+  <rect x="530" y="206" width="140" height="8" rx="2" fill="#21262d"/>
+
+  <rect x="530" y="224" width="195" height="8" rx="2" fill="#21262d"/>
+  <rect x="530" y="238" width="160" height="8" rx="2" fill="#21262d"/>
+  <rect x="530" y="252" width="195" height="8" rx="2" fill="#21262d"/>
+  <rect x="530" y="266" width="120" height="8" rx="2" fill="#21262d"/>
+
+  <!-- Keyphrase input -->
+  <rect x="528" y="338" width="210" height="26" rx="4" fill="#0d1117" stroke="#eab308" stroke-width="1.2"/>
+  <text x="538" y="355" fill="#eab308" font-size="12">TypeScript SEO</text>
+
+  <!-- SEO sidebar on right panel -->
+  <rect x="740" y="106" width="130" height="296" fill="#1a1508"/>
+
+  <!-- Score -->
+  <text x="805" y="140" text-anchor="middle" fill="#eab308" font-size="26" font-weight="800">74/100</text>
+  <!-- Score bar -->
+  <rect x="748" y="148" width="114" height="7" rx="3" fill="#2d2200"/>
+  <rect x="748" y="148" width="84" height="7" rx="3" fill="#eab308"/>
+
+  <!-- Traffic light checks in right sidebar -->
+  <circle cx="752" cy="172" r="5" fill="#22c55e"/>
+  <rect x="762" y="168" width="76" height="6" rx="2" fill="#21262d"/>
+
+  <circle cx="752" cy="188" r="5" fill="#22c55e"/>
+  <rect x="762" y="184" width="76" height="6" rx="2" fill="#21262d"/>
+
+  <circle cx="752" cy="204" r="5" fill="#f59e0b"/>
+  <rect x="762" y="200" width="60" height="6" rx="2" fill="#21262d"/>
+
+  <circle cx="752" cy="220" r="5" fill="#22c55e"/>
+  <rect x="762" y="216" width="76" height="6" rx="2" fill="#21262d"/>
+
+  <circle cx="752" cy="236" r="5" fill="#ef4444"/>
+  <rect x="762" y="232" width="70" height="6" rx="2" fill="#21262d"/>
+
+  <circle cx="752" cy="252" r="5" fill="#22c55e"/>
+  <rect x="762" y="248" width="76" height="6" rx="2" fill="#21262d"/>
+
+  <circle cx="752" cy="268" r="5" fill="#22c55e"/>
+  <rect x="762" y="264" width="60" height="6" rx="2" fill="#21262d"/>
+
+  <!-- Platform badges -->
+  <rect x="520" y="376" width="350" height="34" rx="0" fill="#161b22"/>
+
+  <!-- Next.js badge -->
+  <rect x="528" y="381" width="90" height="22" rx="4" fill="#1a1f2e" stroke="#30363d" stroke-width="1"/>
+  <text x="528" y="377" fill="#eab308" font-size="10">✓</text>
+  <text x="573" y="396" text-anchor="middle" fill="#e6edf3" font-size="11" font-weight="500">Next.js</text>
+
+  <!-- Contentful badge -->
+  <rect x="628" y="381" width="90" height="22" rx="4" fill="#0e2a38" stroke="#1a4a6b" stroke-width="1"/>
+  <text x="628" y="377" fill="#eab308" font-size="10">✓</text>
+  <text x="673" y="396" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="500">Contentful</text>
+
+  <!-- React Native badge -->
+  <rect x="728" y="381" width="134" height="22" rx="4" fill="#0a2a2a" stroke="#1a4a4a" stroke-width="1"/>
+  <text x="728" y="377" fill="#eab308" font-size="10">✓</text>
+  <text x="795" y="396" text-anchor="middle" fill="#67e8f9" font-size="11" font-weight="500">React Native</text>
+
+  <!-- Caption -->
+  <text x="450" y="460" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700">Yoast power. Any framework.</text>
+  <text x="450" y="485" text-anchor="middle" fill="#8b949e" font-size="13">Drop-in content scoring for any JavaScript or TypeScript project.</text>
+</svg>

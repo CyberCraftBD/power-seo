@@ -1,0 +1,125 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .font-ui { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- Chart area background -->
+  <rect x="80" y="70" width="780" height="340" rx="6" fill="#1e2430"/>
+
+  <!-- Background grid lines (horizontal) -->
+  <!-- Y=0 at y=390, Y=15000 at y=90 → scale: 300px / 15000 = 0.02px per unit -->
+  <!-- y_pixel = 390 - (value * 300 / 15000) -->
+  <!-- 0      → 390 -->
+  <!-- 3000   → 330 -->
+  <!-- 6000   → 270 -->
+  <!-- 9000   → 210 -->
+  <!-- 12000  → 150 -->
+  <!-- 15000  → 90  -->
+
+  <line x1="80" y1="390" x2="860" y2="390" stroke="#2d3748" stroke-width="1"/>
+  <line x1="80" y1="330" x2="860" y2="330" stroke="#2d3748" stroke-width="1"/>
+  <line x1="80" y1="270" x2="860" y2="270" stroke="#2d3748" stroke-width="1"/>
+  <line x1="80" y1="210" x2="860" y2="210" stroke="#2d3748" stroke-width="1"/>
+  <line x1="80" y1="150" x2="860" y2="150" stroke="#2d3748" stroke-width="1"/>
+  <line x1="80" y1="90"  x2="860" y2="90"  stroke="#2d3748" stroke-width="1"/>
+
+  <!-- Y-axis labels -->
+  <text x="72" y="394" class="font-ui" font-size="11" fill="#6b7280" text-anchor="end">0</text>
+  <text x="72" y="334" class="font-ui" font-size="11" fill="#6b7280" text-anchor="end">3k</text>
+  <text x="72" y="274" class="font-ui" font-size="11" fill="#6b7280" text-anchor="end">6k</text>
+  <text x="72" y="214" class="font-ui" font-size="11" fill="#6b7280" text-anchor="end">9k</text>
+  <text x="72" y="154" class="font-ui" font-size="11" fill="#6b7280" text-anchor="end">12k</text>
+  <text x="72" y="94"  class="font-ui" font-size="11" fill="#6b7280" text-anchor="end">15k</text>
+
+  <!-- Y-axis label -->
+  <text x="20" y="240" class="font-ui" font-size="12" fill="#9ca3af" text-anchor="middle" transform="rotate(-90 20 240)">Sessions</text>
+
+  <!-- X-axis data points
+       7 points spread across x=130 to x=830
+       Spacing: (830-130)/6 = 116.67px each
+       x positions: 130, 246.7, 363.3, 480, 596.7, 713.3, 830
+  -->
+
+  <!-- Data values (sessions):
+       Baseline: 8000  → y = 390 - (8000*300/15000) = 390 - 160 = 230
+       Month 1:  8200  → y = 390 - (8200*300/15000) = 390 - 164 = 226
+       Month 2:  8100  → y = 390 - (8100*300/15000) = 390 - 162 = 228
+       Month 3:  9400  → y = 390 - (9400*300/15000) = 390 - 188 = 202
+       Month 4:  10600 → y = 390 - (10600*300/15000) = 390 - 212 = 178
+       Month 5:  11400 → y = 390 - (11400*300/15000) = 390 - 228 = 162
+       Month 6:  12160 → y = 390 - (12160*300/15000) = 390 - 243.2 = 146.8
+  -->
+
+  <!-- Define x coords: 130, 247, 363, 480, 597, 713, 830 -->
+
+  <!-- Red fill area (entire line, slight fade before inflection, brighter after) -->
+  <!-- Flat region fill (lighter) -->
+  <polygon points="130,230 247,226 363,228 363,390 130,390"
+           fill="#ef4444" opacity="0.06"/>
+
+  <!-- Rising region fill (more vibrant) -->
+  <polygon points="363,228 480,202 597,162 713,162 830,147 830,390 363,390"
+           fill="#ef4444" opacity="0.14"/>
+
+  <!-- Vertical dashed line: "Critical issues addressed" at Month 2 → x=363 -->
+  <line x1="363" y1="90" x2="363" y2="390" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+
+  <!-- Label for dashed line -->
+  <rect x="270" y="94" width="186" height="28" rx="4" fill="#161b22" stroke="#ef4444" stroke-width="1" opacity="0.9"/>
+  <text x="363" y="113" class="font-ui" font-size="11" fill="#ef4444" text-anchor="middle" font-weight="600">Critical issues addressed</text>
+
+  <!-- Main line path -->
+  <polyline points="130,230 247,226 363,228 480,202 597,162 713,148 830,147"
+            fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Data point circles -->
+  <circle cx="130" cy="230" r="5" fill="#0d1117" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="247" cy="226" r="5" fill="#0d1117" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="363" cy="228" r="5" fill="#ef4444" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="480" cy="202" r="5" fill="#0d1117" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="597" cy="162" r="5" fill="#0d1117" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="713" cy="148" r="5" fill="#0d1117" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="830" cy="147" r="5" fill="#ef4444" stroke="#ef4444" stroke-width="2"/>
+
+  <!-- Data value labels on hover-style bubbles -->
+  <text x="130" y="220" class="font-mono" font-size="10" fill="#9ca3af" text-anchor="middle">8,000</text>
+  <text x="247" y="216" class="font-mono" font-size="10" fill="#9ca3af" text-anchor="middle">8,200</text>
+  <text x="480" y="192" class="font-mono" font-size="10" fill="#d1d5db" text-anchor="middle">9,400</text>
+  <text x="597" y="152" class="font-mono" font-size="10" fill="#d1d5db" text-anchor="middle">11,400</text>
+  <text x="830" y="137" class="font-mono" font-size="10" fill="#ffffff" text-anchor="middle">12,160</text>
+
+  <!-- X-axis labels -->
+  <text x="130" y="412" class="font-ui" font-size="12" fill="#9ca3af" text-anchor="middle">Baseline</text>
+  <text x="247" y="412" class="font-ui" font-size="12" fill="#9ca3af" text-anchor="middle">Month 1</text>
+  <text x="363" y="412" class="font-ui" font-size="12" fill="#9ca3af" text-anchor="middle">Month 2</text>
+  <text x="480" y="412" class="font-ui" font-size="12" fill="#9ca3af" text-anchor="middle">Month 3</text>
+  <text x="597" y="412" class="font-ui" font-size="12" fill="#9ca3af" text-anchor="middle">Month 4</text>
+  <text x="713" y="412" class="font-ui" font-size="12" fill="#9ca3af" text-anchor="middle">Month 5</text>
+  <text x="830" y="412" class="font-ui" font-size="12" fill="#9ca3af" text-anchor="middle">Month 6</text>
+
+  <!-- Title -->
+  <text x="450" y="46" class="font-ui" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.3">Organic Traffic — Before vs After Audit-Driven Fixes</text>
+
+  <!-- Green callout badge -->
+  <rect x="560" y="158" width="285" height="44" rx="8" fill="#16a34a" opacity="0.2"/>
+  <rect x="560" y="158" width="285" height="44" rx="8" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="702" y="177" class="font-ui" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">+52% organic traffic after addressing</text>
+  <text x="702" y="194" class="font-ui" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">audit critical issues</text>
+
+  <!-- Arrow from badge to end datapoint -->
+  <line x1="842" y1="180" x2="844" y2="164" stroke="#22c55e" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Caption -->
+  <text x="450" y="460" class="font-ui" font-size="14" fill="#6b7280" text-anchor="middle" letter-spacing="0.2">Fix what matters most. Watch traffic follow.</text>
+
+  <!-- Y axis line -->
+  <line x1="80" y1="90" x2="80" y2="390" stroke="#374151" stroke-width="1.5"/>
+  <!-- X axis line -->
+  <line x1="80" y1="390" x2="860" y2="390" stroke="#374151" stroke-width="1.5"/>
+</svg>

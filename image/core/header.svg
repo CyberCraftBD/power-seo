@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#1e2430" stroke-width="1" opacity="0.6">
+    <line x1="0" y1="63" x2="1200" y2="63"/>
+    <line x1="0" y1="126" x2="1200" y2="126"/>
+    <line x1="0" y1="189" x2="1200" y2="189"/>
+    <line x1="0" y1="252" x2="1200" y2="252"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="378" x2="1200" y2="378"/>
+    <line x1="0" y1="441" x2="1200" y2="441"/>
+    <line x1="0" y1="504" x2="1200" y2="504"/>
+    <line x1="0" y1="567" x2="1200" y2="567"/>
+    <line x1="120" y1="0" x2="120" y2="630"/>
+    <line x1="240" y1="0" x2="240" y2="630"/>
+    <line x1="360" y1="0" x2="360" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/>
+    <line x1="840" y1="0" x2="840" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+    <line x1="1080" y1="0" x2="1080" y2="630"/>
+  </g>
+
+  <!-- Left half background glow -->
+  <rect x="0" y="0" width="590" height="630" fill="#6366f1" opacity="0.03"/>
+
+  <!-- Divider line -->
+  <line x1="600" y1="40" x2="600" y2="590" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- LEFT SIDE -->
+
+  <!-- npm scope text -->
+  <text x="80" y="180" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="16" fill="#6366f1" opacity="0.8">@power-seo /</text>
+
+  <!-- Package name -->
+  <text x="80" y="250" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="64" font-weight="700" fill="#f0f6fc" letter-spacing="-2">core</text>
+
+  <!-- Tagline -->
+  <text x="80" y="295" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#94a3b8">Foundation for all 17 packages</text>
+
+  <!-- Badge: TypeScript -->
+  <rect x="80" y="325" width="120" height="32" rx="16" fill="#6366f1"/>
+  <text x="140" y="345" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">TypeScript</text>
+
+  <!-- Badge: 0 dependencies -->
+  <rect x="212" y="325" width="155" height="32" rx="16" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="289" y="345" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#6366f1" text-anchor="middle">0 dependencies</text>
+
+  <!-- Badge: MIT -->
+  <rect x="380" y="325" width="68" height="32" rx="16" fill="none" stroke="#374151" stroke-width="1.5"/>
+  <text x="414" y="345" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#6b7280" text-anchor="middle">MIT</text>
+
+  <!-- Subtitle description -->
+  <text x="80" y="405" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#64748b">Shared types · Constants · Validators · Utilities</text>
+
+  <!-- Decorative accent line under package name -->
+  <rect x="80" y="260" width="220" height="3" rx="2" fill="#6366f1" opacity="0.6"/>
+
+  <!-- @power-seo bottom-left -->
+  <text x="80" y="590" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#374151">@power-seo ecosystem · power-seo.dev</text>
+
+  <!-- RIGHT SIDE — Node diagram -->
+
+  <!-- Center glow -->
+  <circle cx="900" cy="315" r="100" fill="#6366f1" opacity="0.08"/>
+  <circle cx="900" cy="315" r="70" fill="#6366f1" opacity="0.06"/>
+
+  <!-- Spoke lines from center to outer nodes -->
+  <!-- meta: top -->
+  <line x1="900" y1="315" x2="900" y2="145" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+  <!-- schema: top-right -->
+  <line x1="900" y1="315" x2="1040" y2="195" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+  <!-- sitemap: right -->
+  <line x1="900" y1="315" x2="1070" y2="315" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+  <!-- links: bottom-right -->
+  <line x1="900" y1="315" x2="1040" y2="435" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+  <!-- preview: bottom -->
+  <line x1="900" y1="315" x2="900" y2="485" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+  <!-- react: bottom-left -->
+  <line x1="900" y1="315" x2="760" y2="435" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+  <!-- audit: left -->
+  <line x1="900" y1="315" x2="730" y2="315" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+  <!-- analytics: top-left -->
+  <line x1="900" y1="315" x2="760" y2="195" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Center circle: core -->
+  <circle cx="900" cy="315" r="52" fill="#6366f1"/>
+  <circle cx="900" cy="315" r="52" fill="none" stroke="#818cf8" stroke-width="2"/>
+  <text x="900" y="321" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">core</text>
+
+  <!-- Outer node: meta (top) -->
+  <circle cx="900" cy="128" r="28" fill="#1e2430" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="900" y="133" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0" text-anchor="middle">meta</text>
+
+  <!-- Outer node: schema (top-right) -->
+  <circle cx="1052" cy="182" r="28" fill="#1e2430" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="1052" y="187" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0" text-anchor="middle">schema</text>
+
+  <!-- Outer node: sitemap (right) -->
+  <circle cx="1085" cy="315" r="28" fill="#1e2430" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="1085" y="320" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0" text-anchor="middle">sitemap</text>
+
+  <!-- Outer node: links (bottom-right) -->
+  <circle cx="1052" cy="448" r="28" fill="#1e2430" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="1052" y="453" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0" text-anchor="middle">links</text>
+
+  <!-- Outer node: preview (bottom) -->
+  <circle cx="900" cy="502" r="28" fill="#1e2430" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="900" y="507" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0" text-anchor="middle">preview</text>
+
+  <!-- Outer node: react (bottom-left) -->
+  <circle cx="748" cy="448" r="28" fill="#1e2430" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="748" y="453" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0" text-anchor="middle">react</text>
+
+  <!-- Outer node: audit (left) -->
+  <circle cx="715" cy="315" r="28" fill="#1e2430" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="715" y="320" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0" text-anchor="middle">audit</text>
+
+  <!-- Outer node: analytics (top-left) -->
+  <circle cx="748" cy="182" r="28" fill="#1e2430" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="748" y="187" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="#e2e8f0" text-anchor="middle">analytics</text>
+
+</svg>

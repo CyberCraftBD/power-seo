@@ -1,0 +1,66 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Keyword Research Dashboard — Powered by Any Provider</text>
+  <!-- Main dashboard -->
+  <rect x="20" y="54" width="860" height="390" rx="8" fill="#161b22"/>
+  <!-- Top bar -->
+  <rect x="20" y="54" width="860" height="40" rx="8" fill="#031a1a"/>
+  <text x="120" y="79" font-family="'Segoe UI', sans-serif" font-size="13" fill="#14b8a6" font-weight="700">SEO Research</text>
+  <!-- Provider selector -->
+  <rect x="600" y="62" width="130" height="24" rx="4" fill="#0d1117"/>
+  <text x="665" y="78" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6" text-anchor="middle">Provider: Ahrefs ▾</text>
+  <!-- Search bar -->
+  <rect x="36" y="106" width="600" height="36" rx="4" fill="#0d1117" stroke="#14b8a6" stroke-width="1"/>
+  <text x="52" y="129" font-family="'Segoe UI', sans-serif" font-size="14" fill="#e2e8f0">typescript seo library</text>
+  <rect x="648" y="106" width="100" height="36" rx="4" fill="#14b8a6"/>
+  <text x="698" y="129" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">Search</text>
+  <!-- KPI cards -->
+  <rect x="36" y="158" width="180" height="56" rx="6" fill="#0d1117"/>
+  <text x="126" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Search Volume</text>
+  <text x="126" y="204" font-family="'Segoe UI', sans-serif" font-size="22" fill="#14b8a6" text-anchor="middle" font-weight="700">2,400/mo</text>
+  <rect x="228" y="158" width="180" height="56" rx="6" fill="#0d1117"/>
+  <text x="318" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Difficulty</text>
+  <text x="318" y="204" font-family="'Segoe UI', sans-serif" font-size="22" fill="#22c55e" text-anchor="middle" font-weight="700">32 / 100</text>
+  <rect x="420" y="158" width="180" height="56" rx="6" fill="#0d1117"/>
+  <text x="510" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">CPC</text>
+  <text x="510" y="204" font-family="'Segoe UI', sans-serif" font-size="22" fill="#f59e0b" text-anchor="middle" font-weight="700">$3.40</text>
+  <rect x="612" y="158" width="180" height="56" rx="6" fill="#0d1117"/>
+  <text x="702" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Trend</text>
+  <text x="702" y="204" font-family="'Segoe UI', sans-serif" font-size="22" fill="#22c55e" text-anchor="middle" font-weight="700">↑ +28%</text>
+  <!-- Related keywords table -->
+  <rect x="36" y="228" width="756" height="28" rx="4" fill="#1e2430"/>
+  <text x="52" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Keyword</text>
+  <text x="380" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Volume</text>
+  <text x="460" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Difficulty</text>
+  <text x="560" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">CPC</text>
+  <text x="640" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Trend</text>
+  <!-- Rows -->
+  <text x="52" y="272" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">typescript seo library</text>
+  <text x="380" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">2,400</text>
+  <text x="460" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">32</text>
+  <text x="560" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$3.40</text>
+  <text x="640" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">↑ 28%</text>
+  <text x="52" y="294" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">next.js seo package</text>
+  <text x="380" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">1,900</text>
+  <text x="460" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">28</text>
+  <text x="560" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$2.80</text>
+  <text x="640" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">↑ 19%</text>
+  <text x="52" y="316" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">react seo meta tags</text>
+  <text x="380" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">1,600</text>
+  <text x="460" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fbbc04">45</text>
+  <text x="560" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$2.20</text>
+  <text x="640" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">→ 0%</text>
+  <text x="52" y="338" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">schema markup generator</text>
+  <text x="380" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">1,300</text>
+  <text x="460" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">24</text>
+  <text x="560" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$4.10</text>
+  <text x="640" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">↑ 12%</text>
+  <text x="52" y="360" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">seo audit typescript</text>
+  <text x="380" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">880</text>
+  <text x="460" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">19</text>
+  <text x="560" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$5.50</text>
+  <text x="640" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">↑ 41%</text>
+  <!-- Caption -->
+  <text x="450" y="466" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Build keyword research tools with any provider — same UI, different data source.</text>
+  <text x="450" y="490" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">@power-seo/integrations — KeywordResult · volume · difficulty · cpc · trend · typed generics</text>
+</svg>

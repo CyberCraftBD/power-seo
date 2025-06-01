@@ -1,0 +1,112 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <!-- Left code panel -->
+  <rect x="40" y="60" width="520" height="490" rx="8" fill="#161b22"/>
+  <rect x="40" y="60" width="520" height="32" rx="8" fill="#0a1628"/>
+  <rect x="40" y="80" width="520" height="12" fill="#0a1628"/>
+  <circle cx="62" cy="76" r="6" fill="#ff5f56"/>
+  <circle cx="82" cy="76" r="6" fill="#ffbd2e"/>
+  <circle cx="102" cy="76" r="6" fill="#27c93f"/>
+  <text x="130" y="81" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">gsc-client.ts</text>
+  <!-- Code -->
+  <text x="60" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">import</text>
+  <text x="108" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#123; </text>
+  <text x="128" y="120" font-family="'Courier New', monospace" font-size="13" fill="#4285f4">SearchConsoleClient</text>
+  <text x="316" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#125; </text>
+  <text x="348" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">from</text>
+  <text x="380" y="120" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'@power-seo/search-console'</text>
+  <text x="60" y="158" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">const</text>
+  <text x="98" y="158" font-family="'Courier New', monospace" font-size="13" fill="#4285f4"> gsc</text>
+  <text x="128" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> = new </text>
+  <text x="180" y="158" font-family="'Courier New', monospace" font-size="13" fill="#4285f4">SearchConsoleClient</text>
+  <text x="340" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(&#123;</text>
+  <text x="76" y="184" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  credentials</text>
+  <text x="196" y="184" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: serviceAccountJson,</text>
+  <text x="76" y="208" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  siteUrl</text>
+  <text x="148" y="208" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="160" y="208" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'https://example.com'</text>
+  <text x="60" y="232" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">&#125;)</text>
+  <!-- getSearchAnalytics call -->
+  <text x="60" y="268" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">const</text>
+  <text x="98" y="268" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc"> data</text>
+  <text x="134" y="268" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> = await </text>
+  <text x="204" y="268" font-family="'Courier New', monospace" font-size="13" fill="#4285f4">gsc</text>
+  <text x="228" y="268" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">.</text>
+  <text x="234" y="268" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">getSearchAnalytics</text>
+  <text x="392" y="268" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(&#123;</text>
+  <text x="76" y="294" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  startDate</text>
+  <text x="168" y="294" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="180" y="294" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'2025-01-01'</text>
+  <text x="76" y="318" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  endDate</text>
+  <text x="152" y="318" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="164" y="318" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'2025-01-31'</text>
+  <text x="76" y="342" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  dimensions</text>
+  <text x="192" y="342" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: [</text>
+  <text x="218" y="342" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'query'</text>
+  <text x="264" y="342" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="276" y="342" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'page'</text>
+  <text x="314" y="342" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">]</text>
+  <text x="76" y="366" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  rowLimit</text>
+  <text x="160" y="366" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="172" y="366" font-family="'Courier New', monospace" font-size="13" fill="#4285f4">25000</text>
+  <text x="60" y="390" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">&#125;)</text>
+  <!-- Result preview -->
+  <rect x="60" y="412" width="462" height="110" rx="6" fill="#0d1117"/>
+  <text x="78" y="434" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// data.rows[0] →</text>
+  <text x="78" y="454" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#123;</text>
+  <text x="94" y="474" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  keys</text>
+  <text x="134" y="474" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: [</text>
+  <text x="152" y="474" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'typescript seo'</text>
+  <text x="264" y="474" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">, url],</text>
+  <text x="94" y="494" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  clicks</text>
+  <text x="150" y="494" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="162" y="494" font-family="'Courier New', monospace" font-size="12" fill="#4285f4">847</text>
+  <text x="200" y="494" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">  impressions: 12400  position: 3.2</text>
+  <text x="78" y="514" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#125;</text>
+  <!-- Vertical divider -->
+  <line x1="600" y1="40" x2="600" y2="590" stroke="#4285f4" stroke-width="1.5" opacity="0.4"/>
+  <!-- Right: GSC-style dashboard -->
+  <rect x="630" y="60" width="530" height="490" rx="8" fill="#161b22"/>
+  <!-- GSC-like header bar -->
+  <rect x="630" y="60" width="530" height="40" rx="8" fill="#1a237e" opacity="0.7"/>
+  <text x="660" y="85" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" font-weight="600">Search performance</text>
+  <!-- Metric boxes -->
+  <rect x="648" y="116" width="110" height="56" rx="6" fill="#0d1117"/>
+  <text x="703" y="136" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4" text-anchor="middle">Total clicks</text>
+  <text x="703" y="158" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="700">24.7K</text>
+  <rect x="770" y="116" width="110" height="56" rx="6" fill="#0d1117"/>
+  <text x="825" y="136" font-family="'Segoe UI', sans-serif" font-size="11" fill="#34a853" text-anchor="middle">Impressions</text>
+  <text x="825" y="158" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="700">413K</text>
+  <rect x="892" y="116" width="110" height="56" rx="6" fill="#0d1117"/>
+  <text x="947" y="136" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbc04" text-anchor="middle">Avg CTR</text>
+  <text x="947" y="158" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="700">5.98%</text>
+  <rect x="1014" y="116" width="110" height="56" rx="6" fill="#0d1117"/>
+  <text x="1069" y="136" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ea4335" text-anchor="middle">Avg position</text>
+  <text x="1069" y="158" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="700">4.3</text>
+  <!-- Mini chart area -->
+  <rect x="648" y="186" width="476" height="140" rx="4" fill="#0d1117"/>
+  <polyline points="648,290 700,270 760,255 820,230 880,210 940,190 1000,195 1060,186 1124,192" stroke="#4285f4" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+  <polyline points="648,310 700,308 760,304 820,296 880,285 940,270 1000,272 1060,266 1124,270" stroke="#34a853" stroke-width="1.5" fill="none" stroke-dasharray="4,3" stroke-linejoin="round"/>
+  <!-- Top queries table -->
+  <rect x="648" y="342" width="476" height="28" rx="4" fill="#1e2430"/>
+  <text x="660" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Query</text>
+  <text x="900" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Clicks</text>
+  <text x="980" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Impr.</text>
+  <text x="1060" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Pos.</text>
+  <text x="660" y="384" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">typescript seo library</text>
+  <text x="900" y="384" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4285f4">847</text>
+  <text x="980" y="384" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">12.4K</text>
+  <text x="1060" y="384" font-family="'Segoe UI', sans-serif" font-size="12" fill="#34a853">3.2</text>
+  <text x="660" y="404" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">next.js seo</text>
+  <text x="900" y="404" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4285f4">612</text>
+  <text x="980" y="404" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">8.9K</text>
+  <text x="1060" y="404" font-family="'Segoe UI', sans-serif" font-size="12" fill="#34a853">4.1</text>
+  <text x="660" y="424" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">react seo component</text>
+  <text x="900" y="424" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4285f4">388</text>
+  <text x="980" y="424" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">6.2K</text>
+  <text x="1060" y="424" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fbbc04">5.7</text>
+  <!-- Tagline -->
+  <text x="600" y="560" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">GSC data. In your app. Typed and paginated.</text>
+  <text x="600" y="592" font-family="'Segoe UI', sans-serif" font-size="15" fill="#6b7280" text-anchor="middle">@power-seo/search-console — queries · pages · sitemaps · indexing · OAuth2 + service account</text>
+  <text x="80" y="46" font-family="'Segoe UI', sans-serif" font-size="14" fill="#4285f4">@power-seo/search-console</text>
+</svg>

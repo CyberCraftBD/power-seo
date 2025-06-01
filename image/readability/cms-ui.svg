@@ -1,0 +1,53 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Live Readability Scoring in Your CMS</text>
+  <!-- Main editor panel -->
+  <rect x="20" y="54" width="560" height="380" rx="8" fill="#161b22"/>
+  <rect x="20" y="54" width="560" height="40" rx="8" fill="#1a0d2e"/>
+  <rect x="20" y="82" width="560" height="12" fill="#1a0d2e"/>
+  <circle cx="40" cy="74" r="6" fill="#ff5f56"/>
+  <circle cx="60" cy="74" r="6" fill="#ffbd2e"/>
+  <circle cx="80" cy="74" r="6" fill="#27c93f"/>
+  <text x="110" y="79" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Content Editor</text>
+  <!-- Toolbar -->
+  <rect x="36" y="106" width="528" height="28" rx="4" fill="#0d1117"/>
+  <text x="52" y="124" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">B  I  U  |  H1  H2  H3  |  List  Link</text>
+  <!-- Content area -->
+  <rect x="36" y="142" width="528" height="180" rx="4" fill="#0d1117"/>
+  <text x="52" y="164" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">Utilizing a multifaceted algorithmic approach to</text>
+  <text x="52" y="182" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">facilitate the comprehension of complex subject matter</text>
+  <!-- Underline on hard words -->
+  <line x1="52" y1="184" x2="160" y2="184" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <line x1="52" y1="202" x2="184" y2="202" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="52" y="200" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">requires a multidimensional perspectival framework.</text>
+  <text x="52" y="220" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280">└ 3 complex words flagged</text>
+  <!-- Sentence length warning -->
+  <rect x="36" y="336" width="528" height="30" rx="4" fill="#2d1a00"/>
+  <text x="52" y="356" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316">⚠ Sentence length: 34 words — recommended max is 20</text>
+  <!-- Word count -->
+  <text x="36" y="408" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Words: 412 · Sentences: 28 · Complex words: 31 (7.5%)</text>
+  <!-- Right Score Panel -->
+  <rect x="596" y="54" width="284" height="380" rx="8" fill="#161b22"/>
+  <rect x="596" y="54" width="284" height="40" rx="8" fill="#1a0d2e"/>
+  <text x="738" y="79" font-family="'Segoe UI', sans-serif" font-size="13" fill="#8b5cf6" text-anchor="middle">Readability Score</text>
+  <!-- Score circle -->
+  <circle cx="738" cy="178" r="60" fill="none" stroke="#1e2430" stroke-width="12"/>
+  <circle cx="738" cy="178" r="60" fill="none" stroke="#f97316" stroke-width="12" stroke-dasharray="271" stroke-dashoffset="90" transform="rotate(-90 738 178)"/>
+  <text x="738" y="174" font-family="'Segoe UI', sans-serif" font-size="28" fill="white" text-anchor="middle" font-weight="700">42</text>
+  <text x="738" y="196" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Difficult</text>
+  <!-- Grade level -->
+  <rect x="612" y="262" width="252" height="44" rx="6" fill="#1a0d2e"/>
+  <text x="738" y="281" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Grade Level</text>
+  <text x="738" y="300" font-family="'Segoe UI', sans-serif" font-size="16" fill="#8b5cf6" text-anchor="middle" font-weight="700">College level (14th)</text>
+  <!-- Suggestions -->
+  <text x="612" y="330" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Suggestions</text>
+  <rect x="612" y="338" width="252" height="20" rx="4" fill="#1f1005"/>
+  <text x="620" y="352" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbf24">• Shorten sentences to under 20 words</text>
+  <rect x="612" y="362" width="252" height="20" rx="4" fill="#1f1005"/>
+  <text x="620" y="376" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbf24">• Replace complex words with simpler ones</text>
+  <rect x="612" y="386" width="252" height="20" rx="4" fill="#1f1005"/>
+  <text x="620" y="400" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbf24">• Target score: 60+ for general audience</text>
+  <!-- Caption -->
+  <text x="450" y="470" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Real-time readability feedback as you write. No guessing.</text>
+  <text x="450" y="492" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">@power-seo/readability — live score · grade level · sentence length warnings · complex word detection</text>
+</svg>

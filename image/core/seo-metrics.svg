@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="scoreArc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bg)"/>
+
+  <!-- Grid -->
+  <g stroke="#1a1f2e" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="50" x2="900" y2="50"/>
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="150" x2="900" y2="150"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="250" x2="900" y2="250"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="350" x2="900" y2="350"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="0" y1="450" x2="900" y2="450"/>
+    <line x1="90" y1="0" x2="90" y2="500"/>
+    <line x1="180" y1="0" x2="180" y2="500"/>
+    <line x1="270" y1="0" x2="270" y2="500"/>
+    <line x1="360" y1="0" x2="360" y2="500"/>
+    <line x1="450" y1="0" x2="450" y2="500"/>
+    <line x1="540" y1="0" x2="540" y2="500"/>
+    <line x1="630" y1="0" x2="630" y2="500"/>
+    <line x1="720" y1="0" x2="720" y2="500"/>
+    <line x1="810" y1="0" x2="810" y2="500"/>
+  </g>
+
+  <!-- Title -->
+  <text x="450" y="44" font-family="Inter, system-ui, sans-serif" font-size="19" font-weight="600" fill="#f0f6fc" text-anchor="middle">SEO Metrics — Powered by @power-seo/core</text>
+
+  <!-- ===== Score Gauge (center-left) ===== -->
+  <!-- Gauge background track -->
+  <path d="M 180,320 A 110,110 0 0 1 400,320" stroke="#1e2430" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <!-- Gauge fill: 82% -->
+  <path d="M 180,320 A 110,110 0 0 1 373,200" stroke="url(#scoreArc)" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <!-- Score value -->
+  <text x="290" y="295" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="52" font-weight="700" fill="#f0f6fc" text-anchor="middle">82</text>
+  <text x="290" y="320" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">SeoScore</text>
+  <!-- Gauge labels -->
+  <text x="172" y="345" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#4b5563" text-anchor="middle">0</text>
+  <text x="408" y="345" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#4b5563" text-anchor="middle">100</text>
+  <!-- Good badge -->
+  <rect x="248" y="332" width="84" height="24" rx="12" fill="#6366f1" opacity="0.2"/>
+  <rect x="248" y="332" width="84" height="24" rx="12" fill="none" stroke="#6366f1" stroke-width="1"/>
+  <text x="290" y="348" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#818cf8" text-anchor="middle">GOOD</text>
+
+  <!-- ===== Metric cards (right side) ===== -->
+
+  <!-- Card 1: Title length -->
+  <rect x="460" y="74" width="390" height="84" rx="8" fill="#161b22" stroke="#1e2430" stroke-width="1.5"/>
+  <rect x="460" y="74" width="5" height="84" rx="3" fill="#6366f1"/>
+  <text x="480" y="101" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" font-weight="500">TITLE LENGTH</text>
+  <text x="480" y="124" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="22" font-weight="700" fill="#f0f6fc">58</text>
+  <text x="510" y="124" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748b"> chars</text>
+  <!-- Mini bar -->
+  <rect x="480" y="136" width="350" height="6" rx="3" fill="#1e2430"/>
+  <rect x="480" y="136" width="202" height="6" rx="3" fill="#6366f1"/>
+  <!-- Range indicators -->
+  <text x="480" y="150" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#4b5563">min 50</text>
+  <text x="680" y="150" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#4b5563">max 580px</text>
+  <circle cx="810" cy="112" r="16" fill="#14532d"/>
+  <path d="M803,112 L808,118 L818,105" stroke="#22c55e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Card 2: Meta description -->
+  <rect x="460" y="170" width="390" height="84" rx="8" fill="#161b22" stroke="#1e2430" stroke-width="1.5"/>
+  <rect x="460" y="170" width="5" height="84" rx="3" fill="#6366f1"/>
+  <text x="480" y="197" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" font-weight="500">META DESCRIPTION</text>
+  <text x="480" y="220" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="22" font-weight="700" fill="#f0f6fc">142</text>
+  <text x="525" y="220" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748b"> chars</text>
+  <!-- Mini bar -->
+  <rect x="480" y="232" width="350" height="6" rx="3" fill="#1e2430"/>
+  <rect x="480" y="232" width="248" height="6" rx="3" fill="#6366f1"/>
+  <text x="480" y="246" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#4b5563">min 120</text>
+  <text x="680" y="246" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#4b5563">max 160</text>
+  <circle cx="810" cy="208" r="16" fill="#14532d"/>
+  <path d="M803,208 L808,214 L818,201" stroke="#22c55e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Card 3: Keyword density -->
+  <rect x="460" y="266" width="390" height="84" rx="8" fill="#161b22" stroke="#1e2430" stroke-width="1.5"/>
+  <rect x="460" y="266" width="5" height="84" rx="3" fill="#f59e0b"/>
+  <text x="480" y="293" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" font-weight="500">KEYWORD DENSITY</text>
+  <text x="480" y="316" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="22" font-weight="700" fill="#f0f6fc">2.8</text>
+  <text x="518" y="316" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748b"> %</text>
+  <!-- Mini bar -->
+  <rect x="480" y="328" width="350" height="6" rx="3" fill="#1e2430"/>
+  <rect x="480" y="328" width="164" height="6" rx="3" fill="#f59e0b"/>
+  <text x="480" y="342" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#4b5563">target 1–3%</text>
+  <text x="680" y="342" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#4b5563">max 5%</text>
+  <circle cx="810" cy="304" r="16" fill="#78350f" opacity="0.7"/>
+  <text x="810" y="309" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#f59e0b" text-anchor="middle">!</text>
+
+  <!-- Card 4: Word count -->
+  <rect x="460" y="362" width="390" height="84" rx="8" fill="#161b22" stroke="#1e2430" stroke-width="1.5"/>
+  <rect x="460" y="362" width="5" height="84" rx="3" fill="#6366f1"/>
+  <text x="480" y="389" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" font-weight="500">WORD COUNT</text>
+  <text x="480" y="412" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="22" font-weight="700" fill="#f0f6fc">1,842</text>
+  <text x="562" y="412" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748b"> words</text>
+  <!-- Mini bar -->
+  <rect x="480" y="424" width="350" height="6" rx="3" fill="#1e2430"/>
+  <rect x="480" y="424" width="290" height="6" rx="3" fill="#6366f1"/>
+  <text x="480" y="438" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#4b5563">min 300</text>
+  <text x="680" y="438" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#4b5563">ideal 1500+</text>
+  <circle cx="810" cy="400" r="16" fill="#14532d"/>
+  <path d="M803,400 L808,406 L818,393" stroke="#22c55e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Left side: gauge label and type name -->
+  <text x="290" y="88" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#94a3b8" text-anchor="middle">Page SEO Score</text>
+  <text x="290" y="108" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="12" fill="#4b5563" text-anchor="middle">type SeoScore = number</text>
+
+  <!-- Bottom type annotation -->
+  <rect x="50" y="378" width="380" height="60" rx="8" fill="#161b22" stroke="#1e2430" stroke-width="1"/>
+  <text x="240" y="400" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="12" fill="#4b5563" text-anchor="middle">// @power-seo/core exports</text>
+  <text x="240" y="420" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="12" fill="#82aaff" text-anchor="middle">SeoScore · MetaConfig · AuditRule</text>
+  <text x="240" y="438" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="12" fill="#82aaff" text-anchor="middle">ContentScore · RobotsDirective · +12 more</text>
+
+  <!-- Bottom caption -->
+  <text x="450" y="478" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#374151" text-anchor="middle">All metrics are typed and validated by @power-seo/core · Zero runtime dependencies</text>
+
+</svg>
