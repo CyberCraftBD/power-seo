@@ -1,0 +1,91 @@
+---
+title: "@ccbd-seo/schema"
+description: "JSON-LD structured data builders and React components for rich search results."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/schema
+```
+
+## Quick Start
+
+Build an Article JSON-LD object and serialize it:
+
+```typescript
+import { article, toJsonLdString } from '@ccbd-seo/schema';
+
+const data = article({
+  headline: 'How to Improve Your SEO',
+  author: { name: 'Jane Doe', url: 'https://example.com/jane' },
+  datePublished: '2025-06-01',
+  dateModified: '2025-06-10',
+  image: 'https://example.com/article-hero.jpg',
+  publisher: { name: 'Example Inc', logo: 'https://example.com/logo.png' },
+});
+
+const script = toJsonLdString(data);
+// <script type="application/ld+json">{ "@context": "https://schema.org", ... }</script>
+```
+
+### React Components
+
+Import from the `./react` entry point:
+
+```typescript
+import { JsonLd, ArticleJsonLd } from '@ccbd-seo/schema/react';
+
+function BlogPost() {
+  return (
+    <ArticleJsonLd
+      headline="How to Improve Your SEO"
+      author={{ name: 'Jane Doe' }}
+      datePublished="2025-06-01"
+      image="https://example.com/hero.jpg"
+    />
+  );
+}
+```
+
+## API Reference
+
+### Entry Points
+
+| Import | Description |
+|---|---|
+| `@ccbd-seo/schema` | Framework-agnostic builder functions and types |
+| `@ccbd-seo/schema/react` | React components that render JSON-LD script tags |
+
+### Builder Functions
+
+| Export | Description |
+|---|---|
+| `article(data)` | Article / BlogPosting schema |
+| `blogPosting(data)` | BlogPosting schema (alias) |
+| `newsArticle(data)` | NewsArticle schema |
+| `product(data)` | Product with offers, ratings, reviews |
+| `faqPage(data)` | FAQPage with question/answer pairs |
+| `breadcrumbList(items)` | BreadcrumbList schema |
+| `localBusiness(data)` | LocalBusiness with hours, geo |
+| `organization(data)` | Organization schema |
+| `person(data)` | Person schema |
+| `event(data)` | Event schema |
+| `recipe(data)` | Recipe with nutrition info |
+| `howTo(data)` | HowTo with steps, supplies, tools |
+| `videoObject(data)` | VideoObject schema |
+| `course(data)` | Course with instances |
+| `jobPosting(data)` | JobPosting schema |
+| `softwareApp(data)` | SoftwareApplication schema |
+| `webSite(data)` | WebSite with SearchAction (sitelinks search) |
+| `itemList(data)` | ItemList schema |
+| `review(data)` | Review schema |
+| `service(data)` | Service schema |
+
+### Utilities
+
+| Export | Description |
+|---|---|
+| `schemaGraph(schemas)` | Combines multiple schemas into a single `@graph` |
+| `toJsonLdString(schema)` | Serializes schema to a `<script>` tag string |
+| `validateSchema(schema)` | Validates a schema object and returns issues |

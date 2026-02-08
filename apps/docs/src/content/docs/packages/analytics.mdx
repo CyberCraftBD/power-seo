@@ -1,0 +1,81 @@
+---
+title: "@ccbd-seo/analytics"
+description: "Merge Google Search Console data with audit results, analyze trends, track rankings, and build dashboards."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/analytics @ccbd-seo/core
+```
+
+## Quick Start
+
+```typescript
+import { mergeGscWithAudit, analyzeTrend, analyzeQueryRankings } from '@ccbd-seo/analytics';
+
+// Merge GSC data with audit scores
+const insights = mergeGscWithAudit({
+  gscPages: [
+    { page: 'https://example.com/blog', clicks: 500, impressions: 10000, ctr: 0.05, position: 4.2 },
+  ],
+  auditResults: [
+    { url: 'https://example.com/blog', score: 82, categories: { meta: { score: 90 } } },
+  ],
+});
+
+// Analyze traffic trends
+const trend = analyzeTrend([
+  { date: '2025-01-01', value: 100 },
+  { date: '2025-02-01', value: 120 },
+  { date: '2025-03-01', value: 150 },
+]);
+console.log(trend.direction); // "up" | "down" | "flat"
+
+// Analyze keyword rankings
+const rankings = analyzeQueryRankings({
+  queries: [
+    { query: 'seo tools', clicks: 200, impressions: 5000, position: 3.1 },
+    { query: 'seo audit', clicks: 50, impressions: 2000, position: 8.4 },
+  ],
+});
+```
+
+### Dashboard Builder
+
+```typescript
+import { buildDashboardData } from '@ccbd-seo/analytics';
+
+const dashboard = buildDashboardData({
+  gscPages: [...],
+  gscQueries: [...],
+  auditResults: [...],
+  trendData: [...],
+});
+console.log(dashboard.overview); // { totalClicks, avgPosition, avgScore, ... }
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `mergeGscWithAudit(input)` | Joins GSC page data with audit results by URL |
+| `correlateScoreAndTraffic(insights)` | Finds correlation between audit score and traffic |
+| `analyzeTrend(points)` | Detects trend direction and rate of change |
+| `buildTrendLines(data)` | Builds time-series trend lines for charting |
+| `detectAnomalies(points)` | Flags unusual spikes or drops in data |
+| `analyzeQueryRankings(input)` | Groups queries by ranking buckets and opportunities |
+| `trackPositionChanges(before, after)` | Compares ranking snapshots over time |
+| `buildDashboardData(input)` | Aggregates all data into a dashboard-ready structure |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `GscPageData` | GSC page with clicks, impressions, ctr, position |
+| `GscQueryData` | GSC query with metrics |
+| `TrendAnalysis` | Trend result with `direction`, `slope`, `confidence` |
+| `RankingAnalysis` | Rankings grouped into buckets (top 3, 4-10, 11-20, etc.) |
+| `DashboardData` | Complete dashboard with `overview`, trends, rankings |

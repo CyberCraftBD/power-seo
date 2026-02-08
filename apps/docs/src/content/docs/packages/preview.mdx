@@ -1,0 +1,76 @@
+---
+title: "@ccbd-seo/preview"
+description: "SERP, Open Graph, and Twitter Card preview generators for visualizing how pages appear in search and social."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/preview @ccbd-seo/core
+```
+
+## Quick Start
+
+```typescript
+import { generateSerpPreview, generateOgPreview, generateTwitterPreview } from '@ccbd-seo/preview';
+
+const serp = generateSerpPreview({
+  title: 'Best Running Shoes 2025',
+  description: 'Expert-tested running shoes ranked by comfort, durability, and value.',
+  url: 'https://example.com/best-running-shoes',
+});
+console.log(serp.truncatedTitle); // Title as it appears in Google
+console.log(serp.truncatedDescription); // Description truncated to pixel width
+
+const og = generateOgPreview({
+  title: 'Best Running Shoes 2025',
+  description: 'Expert-tested running shoes.',
+  url: 'https://example.com/best-running-shoes',
+  imageUrl: 'https://example.com/og-image.png',
+  imageWidth: 1200,
+  imageHeight: 630,
+});
+console.log(og.imageValidation); // { valid: true, warnings: [] }
+
+const twitter = generateTwitterPreview({
+  cardType: 'summary_large_image',
+  title: 'Best Running Shoes 2025',
+  description: 'Expert-tested running shoes.',
+  imageUrl: 'https://example.com/twitter-card.png',
+});
+```
+
+### React Components
+
+Import from `./react` for live preview UI components:
+
+```typescript
+import { SerpPreview, OgPreview, TwitterPreview } from '@ccbd-seo/preview/react';
+```
+
+## API Reference
+
+### Entry Points
+
+| Import | Description |
+|---|---|
+| `@ccbd-seo/preview` | Generator functions and types |
+| `@ccbd-seo/preview/react` | React preview components |
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `generateSerpPreview(input)` | Returns `SerpPreviewData` with truncated title/description and URL display |
+| `generateOgPreview(input)` | Returns `OgPreviewData` with image validation and preview text |
+| `generateTwitterPreview(input)` | Returns `TwitterPreviewData` with card type rendering info |
+| `truncateAtPixelWidth(text, maxPx)` | Truncates text to fit within a pixel budget |
+
+### Key Types
+
+| Type | Description |
+|---|---|
+| `SerpPreviewInput` | Input for SERP preview (title, description, url) |
+| `SerpPreviewData` | Output with `truncatedTitle`, `truncatedDescription`, `displayUrl` |
+| `OgPreviewData` | Output with `imageValidation`, preview fields |
+| `TwitterPreviewData` | Output with card-specific rendering data |

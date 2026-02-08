@@ -1,0 +1,92 @@
+---
+title: "@ccbd-seo/meta"
+description: "SSR meta tag helpers for Next.js App Router, Remix v2, and generic server-side rendering."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/meta @ccbd-seo/core
+```
+
+## Quick Start
+
+### Next.js App Router
+
+```typescript
+import { createMetadata } from '@ccbd-seo/meta';
+
+export const metadata = createMetadata({
+  title: 'My Page',
+  description: 'Page description for search engines.',
+  canonical: 'https://example.com/my-page',
+  openGraph: {
+    type: 'website',
+    title: 'My Page',
+    images: [{ url: 'https://example.com/og.png', width: 1200, height: 630 }],
+  },
+});
+```
+
+### Remix v2
+
+```typescript
+import { createMetaDescriptors } from '@ccbd-seo/meta';
+import type { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = () => {
+  return createMetaDescriptors({
+    title: 'My Page',
+    description: 'Page description for search engines.',
+    canonical: 'https://example.com/my-page',
+    openGraph: {
+      type: 'website',
+      title: 'My Page',
+      images: [{ url: 'https://example.com/og.png' }],
+    },
+  });
+};
+```
+
+### Generic SSR (HTML string)
+
+```typescript
+import { createHeadTags } from '@ccbd-seo/meta';
+
+const headHtml = createHeadTags({
+  title: 'My Page',
+  description: 'Page description.',
+  canonical: 'https://example.com/my-page',
+});
+// Returns a string: <title>My Page</title><meta name="description" .../>...
+```
+
+### Programmatic (tag objects)
+
+```typescript
+import { createHeadTagObjects } from '@ccbd-seo/meta';
+
+const tags = createHeadTagObjects({
+  title: 'My Page',
+  description: 'Page description.',
+});
+// Returns: [{ tag: 'title', content: 'My Page' }, { tag: 'meta', attributes: {...} }, ...]
+```
+
+## API Reference
+
+| Export | Description |
+|---|---|
+| `createMetadata(config)` | Returns a Next.js `Metadata` object from `SEOConfig` |
+| `createMetaDescriptors(config)` | Returns Remix v2 `MetaDescriptor[]` from `SEOConfig` |
+| `createHeadTags(config)` | Returns an HTML string of `<title>`, `<meta>`, and `<link>` tags |
+| `createHeadTagObjects(config)` | Returns an array of `HeadTag` objects for programmatic use |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `NextMetadata` | Subset of Next.js Metadata used by `createMetadata` |
+| `NextOGImage` | Open Graph image shape for Next.js |
+| `RemixMetaDescriptor` | Remix v2 meta descriptor shape |
+| `HeadTag` | Generic head tag object with `tag`, `content`, `attributes` |

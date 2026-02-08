@@ -1,0 +1,71 @@
+---
+title: "@ccbd-seo/redirects"
+description: "Redirect engine with exact, glob, and regex matching plus framework adapters for Next.js, Remix, and Express."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/redirects @ccbd-seo/core
+```
+
+## Quick Start
+
+```typescript
+import { createRedirectEngine } from '@ccbd-seo/redirects';
+
+const engine = createRedirectEngine({
+  rules: [
+    { source: '/old-page', destination: '/new-page', statusCode: 301 },
+    { source: '/blog/:slug', destination: '/articles/:slug', statusCode: 301 },
+    { source: '/docs/*', destination: '/documentation/*', statusCode: 302 },
+  ],
+});
+
+const match = engine.match('/old-page');
+// { destination: '/new-page', statusCode: 301 }
+
+const paramMatch = engine.match('/blog/hello-world');
+// { destination: '/articles/hello-world', statusCode: 301 }
+```
+
+### Framework Adapters
+
+```typescript
+import { toNextRedirects } from '@ccbd-seo/redirects';
+import { createRemixRedirectHandler } from '@ccbd-seo/redirects';
+import { createExpressRedirectMiddleware } from '@ccbd-seo/redirects';
+
+// Next.js — use in next.config.js redirects()
+const nextRedirects = toNextRedirects(rules);
+
+// Remix — use as a loader/action handler
+const remixHandler = createRemixRedirectHandler(engine);
+
+// Express — use as middleware
+app.use(createExpressRedirectMiddleware(engine));
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `createRedirectEngine(config)` | Creates a `RedirectEngine` from an array of rules |
+| `matchExact(path, pattern)` | Tests an exact path match |
+| `matchGlob(path, pattern)` | Tests a glob pattern match (supports `*` and `:param`) |
+| `matchRegex(path, pattern)` | Tests a regex pattern match |
+| `substituteParams(dest, params)` | Replaces `:param` tokens in a destination string |
+| `toNextRedirects(rules)` | Converts rules to Next.js redirect config format |
+| `createRemixRedirectHandler(engine)` | Creates a Remix-compatible redirect handler |
+| `createExpressRedirectMiddleware(engine)` | Creates Express middleware for redirects |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `RedirectRule` | Rule with `source`, `destination`, `statusCode`, optional `type` |
+| `RedirectMatch` | Match result with `destination` and `statusCode` |
+| `RedirectEngine` | Engine with `match(path)` and `addRule(rule)` methods |
+| `RedirectStatusCode` | `301` \| `302` \| `307` \| `308` |

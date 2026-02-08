@@ -1,0 +1,78 @@
+---
+title: Getting Started
+description: A comprehensive, modular SEO toolkit for TypeScript and React
+---
+
+# @ccbd-seo
+
+A comprehensive, modular SEO toolkit for TypeScript and React applications. Built with tree-shaking, type safety, and framework flexibility in mind.
+
+## Features
+
+- **Modular** — Install only the packages you need
+- **Type-safe** — Full TypeScript support with strict types
+- **Framework-agnostic** — Core utilities work anywhere, with React bindings available
+- **SSR-optimized** — First-class support for Next.js, Remix, and generic SSR
+- **Comprehensive** — From meta tags to structured data, sitemaps to analytics
+
+## Quick Start
+
+```bash
+# Install core + meta for Next.js
+npm install @ccbd-seo/core @ccbd-seo/meta
+
+# Or install with React components
+npm install @ccbd-seo/core @ccbd-seo/react @ccbd-seo/schema
+```
+
+## Package Overview
+
+| Package | Description |
+| --- | --- |
+| `@ccbd-seo/core` | Core utilities, types, and constants |
+| `@ccbd-seo/react` | React SEO components (`<SEO>`, `<DefaultSEO>`) |
+| `@ccbd-seo/schema` | JSON-LD structured data builders + React components |
+| `@ccbd-seo/meta` | SSR meta tag helpers for Next.js, Remix, and generic SSR |
+| `@ccbd-seo/content-analysis` | Yoast-style content scoring engine |
+| `@ccbd-seo/preview` | SERP, Open Graph, and Twitter Card preview generators |
+| `@ccbd-seo/readability` | Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI algorithms |
+| `@ccbd-seo/sitemap` | XML sitemap generation, streaming, and validation |
+| `@ccbd-seo/redirects` | Redirect engine with URL pattern matching |
+| `@ccbd-seo/links` | Internal link graph analysis and suggestions |
+| `@ccbd-seo/audit` | SEO page and site auditing |
+| `@ccbd-seo/images` | Image SEO: alt text, lazy loading, image sitemaps |
+| `@ccbd-seo/ai` | LLM-agnostic prompt templates for AI-assisted SEO |
+| `@ccbd-seo/analytics` | Analytics data merging, trends, and dashboards |
+| `@ccbd-seo/search-console` | Google Search Console API client |
+| `@ccbd-seo/integrations` | Semrush and Ahrefs API clients |
+| `@ccbd-seo/tracking` | Analytics script builders with consent management |
+
+## Next.js Example
+
+```typescript
+import { createMetadata } from '@ccbd-seo/meta';
+
+export const metadata = createMetadata({
+  title: 'My Page',
+  titleTemplate: '%s | My Site',
+  description: 'A great page on my site',
+  canonical: 'https://example.com/my-page',
+  openGraph: {
+    type: 'website',
+    images: [{ url: 'https://example.com/og.jpg', width: 1200, height: 630 }],
+  },
+});
+```
+
+## Remix Example
+
+```typescript
+import { createMetaDescriptors } from '@ccbd-seo/meta';
+
+export const meta = () =>
+  createMetaDescriptors({
+    title: 'My Page',
+    description: 'A great page on my site',
+    canonical: 'https://example.com/my-page',
+  });
+```

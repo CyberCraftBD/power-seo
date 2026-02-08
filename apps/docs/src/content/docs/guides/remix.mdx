@@ -1,0 +1,97 @@
+---
+title: "Remix v2"
+description: "Guide for using @ccbd-seo packages with Remix v2 for route-level meta tags, JSON-LD, and sitemaps."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/meta @ccbd-seo/core @ccbd-seo/schema
+```
+
+## Root Meta in root.tsx
+
+```typescript
+import { createMetaDescriptors } from '@ccbd-seo/meta';
+import type { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = () => createMetaDescriptors({
+  title: 'My Site',
+  description: 'Default site description.',
+  openGraph: { type: 'website', siteName: 'My Site' },
+  twitter: { cardType: 'summary_large_image', site: '@mysite' },
+});
+```
+
+## Per-Route Meta
+
+```typescript
+// app/routes/about.tsx
+import { createMetaDescriptors } from '@ccbd-seo/meta';
+import type { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = () => createMetaDescriptors({
+  title: 'About Us | My Site',
+  description: 'Learn about our team and mission.',
+  canonical: 'https://example.com/about',
+});
+```
+
+## Dynamic Meta with Loader Data
+
+```typescript
+// app/routes/blog.$slug.tsx
+import { createMetaDescriptors } from '@ccbd-seo/meta';
+import type { MetaFunction, LoaderFunctionArgs } from '@remix-run/node';
+import { json } from '@remix-run/node';
+
+export async function loader({ params }: LoaderFunctionArgs) {
+  const post = await getPost(params.slug!);
+  return json({ post });
+}
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) return createMetaDescriptors({ title: 'Not Found' });
+  return createMetaDescriptors({
+    title: `${data.post.title} | My Site`,
+    description: data.post.excerpt,
+    canonical: `https://example.com/blog/${data.post.slug}`,
+    openGraph: { type: 'article', title: data.post.title, images: [{ url: data.post.ogImage }] },
+  });
+};
+```
+
+## JSON-LD Structured Data
+
+```typescript
+import { article } from '@ccbd-seo/schema';
+import { useLoaderData } from '@remix-run/react';
+
+export default function BlogPost() {
+  const { post } = useLoaderData<typeof loader>();
+  const jsonLd = article({
+    headline: post.title, author: { name: post.author },
+    datePublished: post.publishedAt, image: post.ogImage,
+  });
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <article>{/* page content */}</article>
+    </>
+  );
+}
+```
+
+## Sitemap as a Resource Route
+
+```typescript
+// app/routes/sitemap[.]xml.tsx
+import { generateSitemap } from '@ccbd-seo/sitemap';
+import type { LoaderFunction } from '@remix-run/node';
+
+export const loader: LoaderFunction = async () => {
+  const pages = await getAllPages();
+  const xml = generateSitemap({ urls: pages.map((p) => ({ loc: p.url, lastmod: p.updatedAt })) });
+  return new Response(xml, { headers: { 'Content-Type': 'application/xml' } });
+};
+```

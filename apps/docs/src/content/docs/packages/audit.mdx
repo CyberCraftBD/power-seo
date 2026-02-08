@@ -1,0 +1,66 @@
+---
+title: "@ccbd-seo/audit"
+description: "SEO page and site auditing with meta, content, structure, and performance rule sets."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/audit @ccbd-seo/core @ccbd-seo/content-analysis @ccbd-seo/readability @ccbd-seo/schema
+```
+
+## Quick Start
+
+```typescript
+import { auditPage } from '@ccbd-seo/audit';
+
+const result = auditPage({
+  url: 'https://example.com/blog/seo-guide',
+  html: '<html><head><title>SEO Guide</title>...</head><body>...</body></html>',
+});
+
+console.log(result.score); // 0-100 overall score
+console.log(result.categories);
+// { meta: { score: 85, issues: [...] }, content: { ... }, structure: { ... }, performance: { ... } }
+```
+
+### Site-Wide Audit
+
+```typescript
+import { auditSite } from '@ccbd-seo/audit';
+
+const siteResult = auditSite({
+  pages: [
+    { url: 'https://example.com/', html: '...' },
+    { url: 'https://example.com/about', html: '...' },
+  ],
+});
+
+console.log(siteResult.averageScore);
+console.log(siteResult.pageResults); // Per-page audit results
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `auditPage(input)` | Audits a single page across all rule categories |
+| `auditSite(input)` | Audits multiple pages and aggregates results |
+| `runMetaRules(input)` | Runs meta tag rules only (title, description, OG, canonical) |
+| `runContentRules(input)` | Runs content rules only (headings, word count, keyphrase) |
+| `runStructureRules(input)` | Runs structure rules only (HTML validity, schema, links) |
+| `runPerformanceRules(input)` | Runs performance rules only (image size, scripts, resources) |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `PageAuditInput` | Input with `url` and `html` |
+| `PageAuditResult` | Result with `score`, `categories`, `issues` |
+| `SiteAuditInput` | Input with `pages` array |
+| `SiteAuditResult` | Aggregated result with `averageScore`, `pageResults` |
+| `AuditCategory` | `"meta"` \| `"content"` \| `"structure"` \| `"performance"` |
+| `AuditSeverity` | `"error"` \| `"warning"` \| `"info"` |
+| `CategoryResult` | Per-category result with `score` and `issues` |

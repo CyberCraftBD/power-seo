@@ -1,0 +1,78 @@
+---
+title: "@ccbd-seo/react"
+description: "React components for managing SEO meta tags, Open Graph, Twitter Cards, and structured data."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/react @ccbd-seo/core
+```
+
+## Quick Start
+
+Use the `<SEO>` component to inject meta tags into the document head:
+
+```typescript
+import { SEO } from '@ccbd-seo/react';
+
+function ProductPage() {
+  return (
+    <SEO
+      title="Running Shoes"
+      titleTemplate="%s | ShoeStore"
+      description="Lightweight running shoes for every terrain."
+      canonical="https://shoestore.com/running-shoes"
+      openGraph={{
+        type: 'product',
+        url: 'https://shoestore.com/running-shoes',
+        title: 'Running Shoes',
+        images: [{ url: 'https://shoestore.com/og-shoes.jpg', width: 1200, height: 630 }],
+      }}
+      twitter={{ cardType: 'summary_large_image', site: '@shoestore' }}
+    />
+  );
+}
+```
+
+Set site-wide defaults with `<DefaultSEO>`:
+
+```typescript
+import { DefaultSEO } from '@ccbd-seo/react';
+
+function App({ children }) {
+  return (
+    <>
+      <DefaultSEO
+        titleTemplate="%s | ShoeStore"
+        openGraph={{ type: 'website', siteName: 'ShoeStore' }}
+        twitter={{ cardType: 'summary', site: '@shoestore' }}
+      />
+      {children}
+    </>
+  );
+}
+```
+
+## API Reference
+
+### Components
+
+| Component | Description |
+|---|---|
+| `<SEO>` | Renders meta, Open Graph, Twitter Card, canonical, robots, and hreflang tags |
+| `<DefaultSEO>` | Provides default SEO config via React context; page-level `<SEO>` merges/overrides |
+| `<OpenGraph>` | Renders Open Graph meta tags only |
+| `<TwitterCard>` | Renders Twitter Card meta tags only |
+| `<Canonical>` | Renders a canonical link tag |
+| `<Robots>` | Renders a robots meta tag |
+| `<Hreflang>` | Renders hreflang link tags |
+| `<Breadcrumb>` | Renders breadcrumb JSON-LD structured data |
+
+### Utilities
+
+| Export | Description |
+|---|---|
+| `renderMetaTags(tags)` | Converts `MetaTag[]` to React elements |
+| `renderLinkTags(tags)` | Converts `LinkTag[]` to React elements |
+| `useDefaultSEO()` | Hook to access the `DefaultSEO` context value |

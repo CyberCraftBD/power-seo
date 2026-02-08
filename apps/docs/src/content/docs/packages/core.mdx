@@ -1,0 +1,97 @@
+---
+title: "@ccbd-seo/core"
+description: "Core utilities, types, constants, and meta tag builders for the @ccbd-seo monorepo."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/core
+```
+
+## Quick Start
+
+Build meta and link tags from an `SEOConfig` object:
+
+```typescript
+import { buildMetaTags, buildLinkTags, resolveTitle } from '@ccbd-seo/core';
+import type { SEOConfig } from '@ccbd-seo/core';
+
+const config: SEOConfig = {
+  title: 'My Page',
+  titleTemplate: '%s | My Site',
+  description: 'A description of the page.',
+  canonical: 'https://example.com/my-page',
+  openGraph: {
+    type: 'website',
+    url: 'https://example.com/my-page',
+    title: 'My Page',
+    description: 'A description of the page.',
+    images: [{ url: 'https://example.com/og.png', width: 1200, height: 630 }],
+  },
+};
+
+const title = resolveTitle(config); // "My Page | My Site"
+const metaTags = buildMetaTags(config);
+const linkTags = buildLinkTags(config);
+```
+
+## API Reference
+
+### Meta Builders
+
+| Export | Description |
+|---|---|
+| `buildMetaTags(config)` | Builds an array of `MetaTag` objects from SEOConfig |
+| `buildLinkTags(config)` | Builds an array of `LinkTag` objects (canonical, hreflang) |
+| `buildOpenGraphTags(config)` | Builds Open Graph meta tags |
+| `buildTwitterTags(config)` | Builds Twitter Card meta tags |
+| `buildHreflangTags(config)` | Builds hreflang link tags |
+| `resolveTitle(config)` | Resolves title with template |
+
+### Title Template
+
+| Export | Description |
+|---|---|
+| `applyTitleTemplate(title, template)` | Applies a `%s`-based template to a title string |
+| `createTitleTemplate(vars)` | Creates a title template function from variables |
+
+### Meta Validators
+
+| Export | Description |
+|---|---|
+| `validateTitle(title)` | Returns `ValidationResult` for a title string |
+| `validateMetaDescription(desc)` | Returns `ValidationResult` for a meta description |
+| `calculatePixelWidth(text)` | Calculates approximate pixel width of text in SERPs |
+
+### URL Utilities
+
+| Export | Description |
+|---|---|
+| `resolveCanonical(url, base)` | Resolves a canonical URL against a base |
+| `normalizeUrl(url)` | Normalizes a URL (lowercase host, sorted params) |
+| `ensureTrailingSlash(url)` | Adds trailing slash if missing |
+| `removeTrailingSlash(url)` | Removes trailing slash |
+| `stripTrackingParams(url)` | Removes common UTM/tracking query params |
+| `extractSlug(url)` | Extracts the last path segment as a slug |
+| `toSlug(text)` | Converts arbitrary text to a URL-safe slug |
+
+### Text Statistics
+
+| Export | Description |
+|---|---|
+| `getTextStatistics(text)` | Returns word count, sentence count, syllable count, etc. |
+| `stripHtml(html)` | Removes HTML tags from a string |
+| `getWords(text)` | Splits text into an array of words |
+| `getSentences(text)` | Splits text into an array of sentences |
+| `countSyllables(word)` | Counts syllables in a single word |
+
+### Keyword Density & Robots
+
+| Export | Description |
+|---|---|
+| `calculateKeywordDensity(text, keyword)` | Returns keyword density as a percentage |
+| `countKeywordOccurrences(text, keyword)` | Counts exact keyword matches in text |
+| `analyzeKeyphraseOccurrences(text, keyphrase)` | Analyzes keyphrase distribution |
+| `buildRobotsContent(directive)` | Builds a robots meta content string from a `RobotsDirective` |
+| `parseRobotsContent(content)` | Parses a robots content string into a `RobotsDirective` |

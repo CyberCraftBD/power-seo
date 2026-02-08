@@ -1,0 +1,28 @@
+{
+  "name": "@ccbd-seo/example-remix",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "remix vite:dev",
+    "build": "remix vite:build",
+    "start": "remix-serve ./build/server/index.js"
+  },
+  "dependencies": {
+    "@ccbd-seo/core": "workspace:*",
+    "@ccbd-seo/meta": "workspace:*",
+    "@ccbd-seo/schema": "workspace:*",
+    "@remix-run/node": "^2.15.0",
+    "@remix-run/react": "^2.15.0",
+    "@remix-run/serve": "^2.15.0",
+    "isbot": "^4",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.15.0",
+    "@types/react": "^18.3.0",
+    "typescript": "^5.7.0",
+    "vite": "^5.4.0"
+  }
+}

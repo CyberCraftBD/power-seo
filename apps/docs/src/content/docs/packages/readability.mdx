@@ -1,0 +1,64 @@
+---
+title: "@ccbd-seo/readability"
+description: "Readability scoring algorithms including Flesch-Kincaid, Gunning Fog, Coleman-Liau, and Automated Readability Index."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/readability @ccbd-seo/core
+```
+
+## Quick Start
+
+```typescript
+import { analyzeReadability } from '@ccbd-seo/readability';
+
+const result = analyzeReadability({
+  text: 'Your article content goes here. Write naturally and keep sentences concise.',
+});
+
+console.log(result.overallStatus); // "good" | "needs-improvement" | "poor"
+console.log(result.statistics); // { wordCount, sentenceCount, syllableCount, ... }
+console.log(result.algorithms);
+// [{ name: "flesch-reading-ease", score: 72.5, grade: "7th grade", ... }, ...]
+```
+
+### Individual Algorithms
+
+```typescript
+import {
+  fleschReadingEase,
+  fleschKincaidGrade,
+  gunningFog,
+  colemanLiau,
+  automatedReadability,
+} from '@ccbd-seo/readability';
+
+const stats = { wordCount: 200, sentenceCount: 10, syllableCount: 280 };
+const fre = fleschReadingEase(stats); // 0-100 scale
+const fkg = fleschKincaidGrade(stats); // US grade level
+const fog = gunningFog({ ...stats, complexWordCount: 15 }); // Fog index
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `analyzeReadability(input)` | Runs all algorithms and returns `ReadabilityOutput` |
+| `fleschReadingEase(stats)` | Flesch Reading Ease score (0-100, higher = easier) |
+| `fleschKincaidGrade(stats)` | Flesch-Kincaid Grade Level (US grade) |
+| `gunningFog(stats)` | Gunning Fog Index (years of education needed) |
+| `colemanLiau(stats)` | Coleman-Liau Index (character-based grade level) |
+| `automatedReadability(stats)` | Automated Readability Index (ARI) |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `ReadabilityInput` | Input with `text` (raw text or HTML) |
+| `ReadabilityOutput` | Output with `overallStatus`, `statistics`, `algorithms` array |
+| `TextStatistics` | Word count, sentence count, syllable count, etc. |
+| `AlgorithmScore` | Individual algorithm result with `name`, `score`, `grade` |

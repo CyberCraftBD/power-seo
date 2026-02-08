@@ -1,0 +1,71 @@
+---
+title: "@ccbd-seo/sitemap"
+description: "XML sitemap generation, index splitting, validation, and streaming for large sites."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/sitemap @ccbd-seo/core
+```
+
+## Quick Start
+
+```typescript
+import { generateSitemap, generateSitemapIndex } from '@ccbd-seo/sitemap';
+
+const xml = generateSitemap({
+  urls: [
+    { loc: 'https://example.com/', changefreq: 'daily', priority: 1.0 },
+    { loc: 'https://example.com/about', changefreq: 'monthly', priority: 0.8 },
+    { loc: 'https://example.com/blog', lastmod: '2025-06-01', priority: 0.9 },
+  ],
+});
+// Returns a complete XML sitemap string
+
+const index = generateSitemapIndex({
+  sitemaps: [
+    { loc: 'https://example.com/sitemap-pages.xml', lastmod: '2025-06-01' },
+    { loc: 'https://example.com/sitemap-blog.xml', lastmod: '2025-06-10' },
+  ],
+});
+```
+
+### Streaming for Large Sites
+
+```typescript
+import { streamSitemap } from '@ccbd-seo/sitemap';
+
+const stream = streamSitemap({
+  urls: veryLargeUrlArray, // Handles 50,000+ URLs efficiently
+});
+// Returns a ReadableStream of XML chunks
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `generateSitemap(config)` | Generates a complete XML sitemap string |
+| `generateSitemapIndex(config)` | Generates a sitemap index XML string |
+| `splitSitemap(urls, maxPerSitemap)` | Splits URLs into chunks respecting the 50,000 URL limit |
+| `streamSitemap(config)` | Returns a `ReadableStream` for memory-efficient generation |
+| `validateSitemapUrl(url)` | Validates a single sitemap URL entry |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `SitemapURL` | URL entry with `loc`, `lastmod`, `changefreq`, `priority`, images, video, news |
+| `SitemapConfig` | Config with `urls` array and optional `xslUrl` |
+| `SitemapIndexEntry` | Index entry with `loc` and `lastmod` |
+| `SitemapIndexConfig` | Config with `sitemaps` array |
+
+### Constants
+
+| Export | Description |
+|---|---|
+| `MAX_URLS_PER_SITEMAP` | Maximum 50,000 URLs per sitemap file |
+| `MAX_SITEMAP_SIZE_BYTES` | Maximum 50MB uncompressed size |

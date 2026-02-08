@@ -1,0 +1,79 @@
+---
+title: "@ccbd-seo/integrations"
+description: "Semrush and Ahrefs API clients with shared HTTP client, rate limiting, and pagination."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/integrations
+```
+
+## Quick Start
+
+### Semrush
+
+```typescript
+import { createSemrushClient } from '@ccbd-seo/integrations';
+
+const semrush = createSemrushClient({
+  apiKey: process.env.SEMRUSH_API_KEY!,
+});
+
+const overview = await semrush.getDomainOverview('example.com');
+console.log(overview.organicTraffic, overview.organicKeywords);
+
+const keywords = await semrush.getKeywordData('seo tools');
+console.log(keywords.volume, keywords.difficulty);
+
+const backlinks = await semrush.getBacklinks('example.com', { limit: 50 });
+```
+
+### Ahrefs
+
+```typescript
+import { createAhrefsClient } from '@ccbd-seo/integrations';
+
+const ahrefs = createAhrefsClient({
+  apiToken: process.env.AHREFS_API_TOKEN!,
+});
+
+const siteOverview = await ahrefs.getSiteOverview('example.com');
+console.log(siteOverview.domainRating, siteOverview.organicTraffic);
+
+const organicKeywords = await ahrefs.getOrganicKeywords('example.com', { limit: 100 });
+const referringDomains = await ahrefs.getReferringDomains('example.com');
+```
+
+### Shared HTTP Client
+
+```typescript
+import { createHttpClient } from '@ccbd-seo/integrations';
+
+const http = createHttpClient({
+  baseUrl: 'https://api.custom-seo-tool.com',
+  auth: { type: 'bearer', token: 'your-token' },
+  rateLimit: { maxRequests: 10, windowMs: 60000 },
+});
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `createSemrushClient(config)` | Creates a Semrush API client |
+| `createAhrefsClient(config)` | Creates an Ahrefs API client |
+| `createHttpClient(config)` | Creates a shared HTTP client with rate limiting |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `SemrushClient` | Client with `getDomainOverview`, `getKeywordData`, `getBacklinks`, etc. |
+| `AhrefsClient` | Client with `getSiteOverview`, `getOrganicKeywords`, `getReferringDomains`, etc. |
+| `HttpClient` | Base HTTP client with `get`, `post`, rate limiting |
+| `SemrushDomainOverview` | Domain metrics (traffic, keywords, backlinks) |
+| `AhrefsSiteOverview` | Site metrics (DR, traffic, referring domains) |
+| `IntegrationApiError` | Error class with status code and API-specific details |

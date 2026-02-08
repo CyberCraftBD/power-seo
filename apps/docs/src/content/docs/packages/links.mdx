@@ -1,0 +1,65 @@
+---
+title: "@ccbd-seo/links"
+description: "Internal link graph analysis, orphan page detection, link suggestions, and link equity scoring."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/links @ccbd-seo/core
+```
+
+## Quick Start
+
+```typescript
+import { buildLinkGraph, findOrphanPages, suggestLinks } from '@ccbd-seo/links';
+
+const pages = [
+  { url: 'https://example.com/', links: ['https://example.com/about', 'https://example.com/blog'] },
+  { url: 'https://example.com/about', links: ['https://example.com/'] },
+  { url: 'https://example.com/blog', links: ['https://example.com/'] },
+  { url: 'https://example.com/orphan', links: [] },
+];
+
+const graph = buildLinkGraph(pages);
+console.log(graph.nodes.size); // 4
+
+const orphans = findOrphanPages(graph);
+console.log(orphans); // [{ url: 'https://example.com/orphan', inboundCount: 0 }]
+
+const suggestions = suggestLinks(graph, {
+  maxSuggestions: 5,
+});
+// [{ from: '...', to: '...', reason: '...' }, ...]
+```
+
+### Link Equity Analysis
+
+```typescript
+import { analyzeLinkEquity } from '@ccbd-seo/links';
+
+const equity = analyzeLinkEquity(graph);
+// Scores each page based on inbound link count and depth from root
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `buildLinkGraph(pages)` | Builds a directed graph from page/link data |
+| `findOrphanPages(graph)` | Finds pages with zero inbound links |
+| `suggestLinks(graph, options?)` | Suggests internal links to improve connectivity |
+| `analyzeLinkEquity(graph, options?)` | Scores pages by link equity distribution |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `PageData` | Input page with `url` and `links` array |
+| `LinkGraph` | Graph with `nodes` map and traversal methods |
+| `LinkNode` | Node with `url`, `inbound`, `outbound` link sets |
+| `OrphanPage` | Orphan with `url` and `inboundCount` of 0 |
+| `LinkSuggestion` | Suggestion with `from`, `to`, and `reason` |
+| `LinkEquityScore` | Page equity score with `url`, `score`, `depth` |

@@ -1,0 +1,83 @@
+---
+title: "@ccbd-seo/search-console"
+description: "Google Search Console API client with OAuth and service account auth, search analytics, URL inspection, and sitemap management."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/search-console
+```
+
+## Quick Start
+
+```typescript
+import { createGSCClient, createTokenManager } from '@ccbd-seo/search-console';
+
+// Set up authentication
+const tokenManager = createTokenManager({
+  type: 'oauth',
+  credentials: {
+    clientId: process.env.GSC_CLIENT_ID!,
+    clientSecret: process.env.GSC_CLIENT_SECRET!,
+    refreshToken: process.env.GSC_REFRESH_TOKEN!,
+  },
+});
+
+// Create the client
+const client = createGSCClient({
+  siteUrl: 'https://example.com',
+  tokenManager,
+});
+```
+
+### Search Analytics
+
+```typescript
+import { querySearchAnalytics } from '@ccbd-seo/search-console';
+
+const data = await querySearchAnalytics(client, {
+  startDate: '2025-01-01',
+  endDate: '2025-03-31',
+  dimensions: ['query', 'page'],
+  rowLimit: 100,
+});
+// data.rows: [{ keys: ['seo tools', '/blog/seo'], clicks, impressions, ctr, position }]
+```
+
+### URL Inspection
+
+```typescript
+import { inspectUrl } from '@ccbd-seo/search-console';
+
+const inspection = await inspectUrl(client, {
+  inspectionUrl: 'https://example.com/blog/post-1',
+});
+console.log(inspection.indexStatusResult.verdict); // "PASS" | "FAIL" | ...
+```
+
+### Sitemap Management
+
+```typescript
+import { listSitemaps, submitSitemap } from '@ccbd-seo/search-console';
+
+const sitemaps = await listSitemaps(client);
+await submitSitemap(client, 'https://example.com/sitemap.xml');
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `createGSCClient(config)` | Creates a configured GSC API client |
+| `createTokenManager(config)` | Creates an OAuth or service account token manager |
+| `exchangeRefreshToken(creds)` | Exchanges a refresh token for an access token |
+| `getServiceAccountToken(creds)` | Gets a token via service account JWT |
+| `querySearchAnalytics(client, req)` | Queries search analytics data |
+| `querySearchAnalyticsAll(client, req)` | Queries all pages of analytics data |
+| `inspectUrl(client, req)` | Inspects a URL for indexing status |
+| `listSitemaps(client)` | Lists all submitted sitemaps |
+| `submitSitemap(client, url)` | Submits a sitemap URL |
+| `deleteSitemap(client, url)` | Deletes a submitted sitemap |

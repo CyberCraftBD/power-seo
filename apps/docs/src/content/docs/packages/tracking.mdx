@@ -1,0 +1,98 @@
+---
+title: "@ccbd-seo/tracking"
+description: "Analytics script builders, consent management, and API clients for GA4, Clarity, PostHog, Plausible, and Fathom."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/tracking
+```
+
+## Quick Start
+
+### Script Builders
+
+```typescript
+import { buildGA4Script, buildPlausibleScript, buildFathomScript } from '@ccbd-seo/tracking';
+
+const ga4Scripts = buildGA4Script({ measurementId: 'G-XXXXXXXXXX' });
+// Returns ScriptConfig[] (multiple script tags for gtag.js)
+
+const plausible = buildPlausibleScript({ domain: 'example.com' });
+// Returns a single ScriptConfig
+
+const fathom = buildFathomScript({ siteId: 'ABCDEFGH' });
+```
+
+### Consent Management
+
+```typescript
+import { createConsentManager } from '@ccbd-seo/tracking';
+
+const consent = createConsentManager({
+  defaults: { necessary: true, analytics: false, marketing: false },
+});
+
+consent.onChange((state) => {
+  console.log('Consent updated:', state);
+});
+
+consent.grant('analytics');
+// Note: 'necessary' category cannot be revoked
+```
+
+### React Components
+
+Import from `./react` for drop-in script and consent UI:
+
+```typescript
+import { AnalyticsScript, ConsentBanner } from '@ccbd-seo/tracking/react';
+```
+
+### API Clients
+
+```typescript
+import { createGA4Client, createPlausibleClient } from '@ccbd-seo/tracking';
+
+const ga4 = createGA4Client({ propertyId: '123456789', credentials: { ... } });
+const report = await ga4.runReport({ dateRange: { startDate: '2025-01-01', endDate: '2025-03-31' } });
+
+const plausible = createPlausibleClient({ siteId: 'example.com', apiKey: '...' });
+const timeseries = await plausible.getTimeseries({ period: '30d' });
+```
+
+## API Reference
+
+### Entry Points
+
+| Import | Description |
+|---|---|
+| `@ccbd-seo/tracking` | Script builders, consent manager, API clients |
+| `@ccbd-seo/tracking/react` | `AnalyticsScript` and `ConsentBanner` components |
+
+### Script Builders
+
+| Export | Returns | Description |
+|---|---|---|
+| `buildGA4Script(config)` | `ScriptConfig[]` | Google Analytics 4 (multiple tags) |
+| `buildClarityScript(config)` | `ScriptConfig` | Microsoft Clarity |
+| `buildPostHogScript(config)` | `ScriptConfig` | PostHog |
+| `buildPlausibleScript(config)` | `ScriptConfig` | Plausible Analytics |
+| `buildFathomScript(config)` | `ScriptConfig` | Fathom Analytics |
+
+### Consent
+
+| Export | Description |
+|---|---|
+| `createConsentManager(config)` | Creates a `ConsentManager` with `grant`, `revoke`, `onChange` |
+
+### API Clients
+
+| Export | Description |
+|---|---|
+| `createGA4Client(config)` | GA4 Data API client (reports, metadata) |
+| `createClarityClient(config)` | Clarity API client (projects, insights, heatmaps) |
+| `createPostHogClient(config)` | PostHog API client (events, trends, funnels) |
+| `createPlausibleClient(config)` | Plausible API client (timeseries, breakdown, aggregate) |
+| `createFathomClient(config)` | Fathom API client (sites, pageviews, referrers) |

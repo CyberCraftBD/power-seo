@@ -1,0 +1,85 @@
+---
+title: "@ccbd-seo/ai"
+description: "LLM-agnostic prompt templates and response parsers for AI-assisted SEO tasks like title generation and content suggestions."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/ai
+```
+
+## Quick Start
+
+Build a prompt, send it to any LLM, then parse the response:
+
+```typescript
+import { buildMetaDescriptionPrompt, parseMetaDescriptionResponse } from '@ccbd-seo/ai';
+
+// 1. Build the prompt
+const prompt = buildMetaDescriptionPrompt({
+  title: 'Best Running Shoes 2025',
+  content: 'Our expert team tested 50 running shoes...',
+  keyphrase: 'best running shoes',
+  maxLength: 155,
+});
+
+// 2. Send to any LLM (OpenAI, Anthropic, local model, etc.)
+const llmResponse = await yourLlmClient.complete(prompt.text);
+
+// 3. Parse the structured response
+const result = parseMetaDescriptionResponse(llmResponse);
+console.log(result.descriptions); // Array of suggested meta descriptions
+```
+
+### Title Generation
+
+```typescript
+import { buildTitlePrompt, parseTitleResponse } from '@ccbd-seo/ai';
+
+const prompt = buildTitlePrompt({
+  content: 'An in-depth guide to marathon training...',
+  keyphrase: 'marathon training guide',
+});
+
+const llmResponse = await yourLlmClient.complete(prompt.text);
+const titles = parseTitleResponse(llmResponse);
+```
+
+### SERP Feature Prediction
+
+```typescript
+import { buildSerpPredictionPrompt, parseSerpPredictionResponse } from '@ccbd-seo/ai';
+
+const prompt = buildSerpPredictionPrompt({
+  query: 'how to tie running shoes',
+  content: '<h1>How to Tie Running Shoes</h1>...',
+});
+```
+
+## API Reference
+
+### Prompt/Parser Pairs
+
+| Prompt Builder | Response Parser | Use Case |
+|---|---|---|
+| `buildMetaDescriptionPrompt(input)` | `parseMetaDescriptionResponse(text)` | Generate meta descriptions |
+| `buildTitlePrompt(input)` | `parseTitleResponse(text)` | Generate SEO titles |
+| `buildContentSuggestionsPrompt(input)` | `parseContentSuggestionsResponse(text)` | Content improvement ideas |
+| `buildSerpPredictionPrompt(input)` | `parseSerpPredictionResponse(text)` | Predict SERP feature eligibility |
+
+### Utilities
+
+| Export | Description |
+|---|---|
+| `analyzeSerpEligibility(input)` | Non-LLM heuristic check for SERP feature eligibility |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `PromptTemplate` | Template with `text` and `systemPrompt` fields |
+| `MetaDescriptionInput` | Input for meta description generation |
+| `TitleInput` | Input for title generation |
+| `ContentSuggestionInput` | Input for content suggestions |
+| `SerpFeatureInput` | Input for SERP prediction |

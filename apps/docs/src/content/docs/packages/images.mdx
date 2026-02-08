@@ -1,0 +1,69 @@
+---
+title: "@ccbd-seo/images"
+description: "Deep image SEO analysis: alt text auditing, lazy loading, format recommendations, and image sitemaps."
+---
+
+## Install
+
+```bash
+npm install @ccbd-seo/images @ccbd-seo/core
+```
+
+## Quick Start
+
+```typescript
+import { analyzeAltText, auditLazyLoading, generateImageSitemap } from '@ccbd-seo/images';
+
+// Audit alt text quality
+const altResult = analyzeAltText({
+  images: [
+    { src: '/hero.jpg', alt: 'Runner crossing the finish line at a marathon' },
+    { src: '/banner.png', alt: '' },
+    { src: '/photo.jpg', alt: 'image1' },
+  ],
+});
+console.log(altResult.issues);
+// [{ src: '/banner.png', severity: 'error', message: 'Missing alt text' }, ...]
+
+// Audit lazy loading
+const lazyResult = auditLazyLoading({
+  images: [
+    { src: '/hero.jpg', loading: 'eager', aboveFold: true },
+    { src: '/footer.jpg', loading: undefined, aboveFold: false },
+  ],
+});
+
+// Generate image sitemap
+const xml = generateImageSitemap({
+  pages: [
+    {
+      loc: 'https://example.com/blog/post-1',
+      images: [{ loc: 'https://example.com/images/hero.jpg', title: 'Hero' }],
+    },
+  ],
+});
+```
+
+## API Reference
+
+### Functions
+
+| Export | Description |
+|---|---|
+| `analyzeAltText(input)` | Audits alt text quality across all images |
+| `auditLazyLoading(input)` | Checks lazy loading attributes and above-fold detection |
+| `detectFormat(src)` | Detects image format from URL or extension |
+| `getFormatRecommendation(format)` | Suggests modern format alternatives (WebP, AVIF) |
+| `analyzeImageFormats(images)` | Audits format usage across all images |
+| `extractImageEntries(html, pageUrl)` | Extracts image entries from HTML for sitemap use |
+| `generateImageSitemap(input)` | Generates an image sitemap XML string |
+
+### Types
+
+| Type | Description |
+|---|---|
+| `ImageInfo` | Image with `src`, `alt`, `width`, `height`, `loading` |
+| `ImageIssue` | Issue with `src`, `severity`, `message` |
+| `ImageAnalysisResult` | Alt text audit result with `issues` array |
+| `LazyLoadingAuditResult` | Lazy loading audit with issues and recommendations |
+| `FormatAnalysisResult` | Format audit with current vs. recommended formats |

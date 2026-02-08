@@ -1,0 +1,100 @@
+---
+title: "Migration Guide"
+description: "Migrate from next-seo or react-helmet to the @ccbd-seo modular SEO toolkit."
+---
+
+The `@ccbd-seo` monorepo offers modular, tree-shakeable packages you can adopt incrementally.
+
+## From next-seo
+
+| next-seo | @ccbd-seo | Notes |
+|---|---|---|
+| `<NextSeo>` | `<SEO>` from `@ccbd-seo/react` | Same prop shape |
+| `<DefaultSeo>` | `<DefaultSEO>` from `@ccbd-seo/react` | Context-based defaults |
+| `<ArticleJsonLd>` | From `@ccbd-seo/schema/react` | Separate package |
+
+### Before
+
+```typescript
+import { NextSeo, ArticleJsonLd } from 'next-seo';
+
+function Page() {
+  return (
+    <>
+      <NextSeo title="My Page" description="Description" canonical="https://example.com" />
+      <ArticleJsonLd headline="My Article" datePublished="2025-01-01" />
+    </>
+  );
+}
+```
+
+### After
+
+```typescript
+import { SEO } from '@ccbd-seo/react';
+import { ArticleJsonLd } from '@ccbd-seo/schema/react';
+
+function Page() {
+  return (
+    <>
+      <SEO title="My Page" description="Description" canonical="https://example.com" />
+      <ArticleJsonLd headline="My Article" datePublished="2025-01-01" />
+    </>
+  );
+}
+```
+
+For **Next.js App Router**, use `@ccbd-seo/meta` for server-side metadata:
+
+```typescript
+import { createMetadata } from '@ccbd-seo/meta';
+export const metadata = createMetadata({ title: 'My Page', description: 'Description' });
+```
+
+## From react-helmet
+
+| react-helmet | @ccbd-seo/react | Notes |
+|---|---|---|
+| `<Helmet><title>` | `<SEO title="...">` | Prop-based API |
+| `<Helmet><meta>` | `<SEO description="...">` | Structured props |
+| `<Helmet><link rel="canonical">` | `<SEO canonical="...">` | Dedicated prop |
+
+### Before
+
+```typescript
+import { Helmet } from 'react-helmet';
+function Page() {
+  return (
+    <Helmet>
+      <title>My Page | My Site</title>
+      <meta name="description" content="Description" />
+      <link rel="canonical" href="https://example.com" />
+    </Helmet>
+  );
+}
+```
+
+### After
+
+```typescript
+import { SEO } from '@ccbd-seo/react';
+function Page() {
+  return (
+    <SEO title="My Page" titleTemplate="%s | My Site"
+      description="Description" canonical="https://example.com" />
+  );
+}
+```
+
+## Modular Packages
+
+| Need | Package |
+|---|---|
+| Meta tags (React) | `@ccbd-seo/react` |
+| Meta tags (SSR) | `@ccbd-seo/meta` |
+| JSON-LD | `@ccbd-seo/schema` |
+| Content scoring | `@ccbd-seo/content-analysis` |
+| SERP previews | `@ccbd-seo/preview` |
+| Readability | `@ccbd-seo/readability` |
+| Sitemaps | `@ccbd-seo/sitemap` |
+| Auditing | `@ccbd-seo/audit` |
