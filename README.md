@@ -1,4 +1,4 @@
-# @ccbd-seo
+# @ccbd-power-seo
 
 > WordPress-level SEO capabilities for React and its frameworks.
 
@@ -8,36 +8,36 @@ A comprehensive, modular SEO toolkit for React applications. Each package can be
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| [`@ccbd-seo/core`](./packages/core) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/core)](https://www.npmjs.com/package/@ccbd-seo/core) | Framework-agnostic SEO utilities, types, constants, validators |
-| [`@ccbd-seo/react`](./packages/react) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/react)](https://www.npmjs.com/package/@ccbd-seo/react) | React SEO components — meta tags, Open Graph, Twitter Card, breadcrumbs |
-| [`@ccbd-seo/schema`](./packages/schema) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/schema)](https://www.npmjs.com/package/@ccbd-seo/schema) | JSON-LD structured data — 19 builder functions + 19 React components |
-| [`@ccbd-seo/content-analysis`](./packages/content-analysis) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/content-analysis)](https://www.npmjs.com/package/@ccbd-seo/content-analysis) | Yoast-style content scoring engine with React components |
-| [`@ccbd-seo/preview`](./packages/preview) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/preview)](https://www.npmjs.com/package/@ccbd-seo/preview) | SERP, Open Graph, and Twitter Card preview generators |
-| [`@ccbd-seo/readability`](./packages/readability) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/readability)](https://www.npmjs.com/package/@ccbd-seo/readability) | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@ccbd-seo/sitemap`](./packages/sitemap) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/sitemap)](https://www.npmjs.com/package/@ccbd-seo/sitemap) | XML sitemap generation, streaming, validation, index splitting |
-| [`@ccbd-seo/redirects`](./packages/redirects) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/redirects)](https://www.npmjs.com/package/@ccbd-seo/redirects) | Redirect engine with URL pattern matching and framework adapters |
-| [`@ccbd-seo/links`](./packages/links) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/links)](https://www.npmjs.com/package/@ccbd-seo/links) | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@ccbd-seo/audit`](./packages/audit) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/audit)](https://www.npmjs.com/package/@ccbd-seo/audit) | SEO page/site auditing with meta, content, structure, and performance rules |
-| [`@ccbd-seo/images`](./packages/images) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/images)](https://www.npmjs.com/package/@ccbd-seo/images) | Image SEO — alt text quality, lazy loading, format optimization, image sitemaps |
-| [`@ccbd-seo/ai`](./packages/ai) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/ai)](https://www.npmjs.com/package/@ccbd-seo/ai) | LLM-agnostic prompt templates and response parsers for AI-assisted SEO |
-| [`@ccbd-seo/analytics`](./packages/analytics) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/analytics)](https://www.npmjs.com/package/@ccbd-seo/analytics) | Analytics dashboard — merge GSC data with audit results for trend analysis |
-| [`@ccbd-seo/search-console`](./packages/search-console) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/search-console)](https://www.npmjs.com/package/@ccbd-seo/search-console) | Google Search Console API client with OAuth2 and service account auth |
-| [`@ccbd-seo/integrations`](./packages/integrations) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/integrations)](https://www.npmjs.com/package/@ccbd-seo/integrations) | Semrush and Ahrefs API clients with shared HTTP client |
-| [`@ccbd-seo/tracking`](./packages/tracking) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/tracking)](https://www.npmjs.com/package/@ccbd-seo/tracking) | Analytics script builders, consent management — GA4, Clarity, PostHog, Plausible, Fathom |
-| [`@ccbd-seo/meta`](./packages/meta) | [![npm](https://img.shields.io/npm/v/@ccbd-seo/meta)](https://www.npmjs.com/package/@ccbd-seo/meta) | SSR meta tag helpers for Next.js App Router, Remix, and generic SSR |
+| [`@ccbd-power-seo/core`](./packages/core) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/core)](https://www.npmjs.com/package/@ccbd-power-seo/core) | Framework-agnostic SEO utilities, types, constants, validators |
+| [`@ccbd-power-seo/react`](./packages/react) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/react)](https://www.npmjs.com/package/@ccbd-power-seo/react) | React SEO components — meta tags, Open Graph, Twitter Card, breadcrumbs |
+| [`@ccbd-power-seo/schema`](./packages/schema) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/schema)](https://www.npmjs.com/package/@ccbd-power-seo/schema) | JSON-LD structured data — 19 builder functions + 19 React components |
+| [`@ccbd-power-seo/content-analysis`](./packages/content-analysis) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/content-analysis)](https://www.npmjs.com/package/@ccbd-power-seo/content-analysis) | Yoast-style content scoring engine with React components |
+| [`@ccbd-power-seo/preview`](./packages/preview) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/preview)](https://www.npmjs.com/package/@ccbd-power-seo/preview) | SERP, Open Graph, and Twitter Card preview generators |
+| [`@ccbd-power-seo/readability`](./packages/readability) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/readability)](https://www.npmjs.com/package/@ccbd-power-seo/readability) | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
+| [`@ccbd-power-seo/sitemap`](./packages/sitemap) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/sitemap)](https://www.npmjs.com/package/@ccbd-power-seo/sitemap) | XML sitemap generation, streaming, validation, index splitting |
+| [`@ccbd-power-seo/redirects`](./packages/redirects) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/redirects)](https://www.npmjs.com/package/@ccbd-power-seo/redirects) | Redirect engine with URL pattern matching and framework adapters |
+| [`@ccbd-power-seo/links`](./packages/links) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/links)](https://www.npmjs.com/package/@ccbd-power-seo/links) | Link graph analysis — orphan detection, suggestions, equity scoring |
+| [`@ccbd-power-seo/audit`](./packages/audit) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/audit)](https://www.npmjs.com/package/@ccbd-power-seo/audit) | SEO page/site auditing with meta, content, structure, and performance rules |
+| [`@ccbd-power-seo/images`](./packages/images) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/images)](https://www.npmjs.com/package/@ccbd-power-seo/images) | Image SEO — alt text quality, lazy loading, format optimization, image sitemaps |
+| [`@ccbd-power-seo/ai`](./packages/ai) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/ai)](https://www.npmjs.com/package/@ccbd-power-seo/ai) | LLM-agnostic prompt templates and response parsers for AI-assisted SEO |
+| [`@ccbd-power-seo/analytics`](./packages/analytics) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/analytics)](https://www.npmjs.com/package/@ccbd-power-seo/analytics) | Analytics dashboard — merge GSC data with audit results for trend analysis |
+| [`@ccbd-power-seo/search-console`](./packages/search-console) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/search-console)](https://www.npmjs.com/package/@ccbd-power-seo/search-console) | Google Search Console API client with OAuth2 and service account auth |
+| [`@ccbd-power-seo/integrations`](./packages/integrations) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/integrations)](https://www.npmjs.com/package/@ccbd-power-seo/integrations) | Semrush and Ahrefs API clients with shared HTTP client |
+| [`@ccbd-power-seo/tracking`](./packages/tracking) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/tracking)](https://www.npmjs.com/package/@ccbd-power-seo/tracking) | Analytics script builders, consent management — GA4, Clarity, PostHog, Plausible, Fathom |
+| [`@ccbd-power-seo/meta`](./packages/meta) | [![npm](https://img.shields.io/npm/v/@ccbd-power-seo/meta)](https://www.npmjs.com/package/@ccbd-power-seo/meta) | SSR meta tag helpers for Next.js App Router, Remix, and generic SSR |
 
 ## Quick Start
 
 ### Next.js App Router
 
 ```bash
-npm install @ccbd-seo/meta @ccbd-seo/schema
+npm install @ccbd-power-seo/meta @ccbd-power-seo/schema
 ```
 
 ```ts
 // app/blog/[slug]/page.tsx
-import { createMetadata } from '@ccbd-seo/meta';
-import { article, toJsonLdString } from '@ccbd-seo/schema';
+import { createMetadata } from '@ccbd-power-seo/meta';
+import { article, toJsonLdString } from '@ccbd-power-seo/schema';
 
 export function generateMetadata({ params }) {
   return createMetadata({
@@ -73,12 +73,12 @@ export default function Page() {
 ### Remix v2
 
 ```bash
-npm install @ccbd-seo/meta
+npm install @ccbd-power-seo/meta
 ```
 
 ```ts
 // app/routes/blog.$slug.tsx
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@ccbd-power-seo/meta';
 
 export const meta = () => {
   return createMetaDescriptors({
@@ -96,11 +96,11 @@ export const meta = () => {
 ### Content Analysis
 
 ```bash
-npm install @ccbd-seo/content-analysis
+npm install @ccbd-power-seo/content-analysis
 ```
 
 ```ts
-import { analyzeContent } from '@ccbd-seo/content-analysis';
+import { analyzeContent } from '@ccbd-power-seo/content-analysis';
 
 const result = analyzeContent({
   title: 'Best Coffee Shops in NYC',
@@ -119,11 +119,11 @@ console.log(result.results);  // Individual check results with suggestions
 ### Structured Data (React)
 
 ```bash
-npm install @ccbd-seo/schema
+npm install @ccbd-power-seo/schema
 ```
 
 ```tsx
-import { ArticleJsonLd, FAQJsonLd } from '@ccbd-seo/schema/react';
+import { ArticleJsonLd, FAQJsonLd } from '@ccbd-power-seo/schema/react';
 
 function BlogPost() {
   return (
@@ -146,11 +146,11 @@ function BlogPost() {
 ### SERP Preview (React)
 
 ```bash
-npm install @ccbd-seo/preview
+npm install @ccbd-power-seo/preview
 ```
 
 ```tsx
-import { PreviewPanel } from '@ccbd-seo/preview/react';
+import { PreviewPanel } from '@ccbd-power-seo/preview/react';
 
 function SEOEditor() {
   return (
@@ -174,8 +174,8 @@ function SEOEditor() {
 ### Setup
 
 ```bash
-git clone https://github.com/ccbd-seo/ccbd-seo.git
-cd ccbd-seo
+git clone https://github.com/cybercraftbd/ccbd-power-seo.git
+cd ccbd-power-seo
 pnpm install
 pnpm build
 ```
@@ -195,7 +195,7 @@ pnpm build
 ### Project Structure
 
 ```
-@ccbd-seo/
+@ccbd-power-seo/
 ├── packages/          # 17 publishable packages
 ├── apps/
 │   └── docs/          # Documentation site (Starlight)
