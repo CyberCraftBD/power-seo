@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.11] - 2026-02-28
+
+### Added
+
+#### Documentation
+- Comprehensive GitHub Wiki with 38+ pages covering all packages and use cases
+- Interactive MDX documentation files for enhanced learning experience
+- Home page with organized navigation for Quick Start, Core Concepts, and Package APIs
+- Wiki homepage synchronized across repository and GitHub Pages
+- Complete guide to all 17 packages with API references
+
+#### Features
+- Wiki-based documentation system for better discoverability
+- Enhanced package documentation with real-world examples
+- MDX files for interactive documentation in docs/ directory
+- Improved navigation structure across all documentation
+
+### Changed
+
+#### Documentation
+- Updated README.md with comprehensive documentation links
+- Restructured docs/ directory with WIKI_HOME.mdx for easy navigation
+- Improved package selection guide with visual organization
+- Enhanced framework integration documentation
+
+### Fixed
+
+- Wiki homepage rendering and display issues
+- Documentation page synchronization across platforms
+- Fixed duplicate wiki page references
+- Improved markdown formatting for better GitHub rendering
+
+---
+
 ## [1.0.10] - 2026-02-28
 
 ### Added
