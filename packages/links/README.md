@@ -1,76 +1,340 @@
-# @ccbd-seo/links
+# @power-seo/links — Internal Link Graph Analysis, Orphan Detection, and Link Equity Scoring
 
-> Internal link graph analysis, orphan page detection, link suggestions, and equity scoring.
+Build a directed link graph from your site's pages, detect orphan pages with zero inbound links, generate keyword-overlap-based link suggestions, and score link equity with a PageRank-style algorithm.
+
+[![npm version](https://img.shields.io/npm/v/@power-seo/links?style=flat-square)](https://www.npmjs.com/package/@power-seo/links)
+[![npm downloads](https://img.shields.io/npm/dm/@power-seo/links?style=flat-square)](https://www.npmjs.com/package/@power-seo/links)
+[![MIT License](https://img.shields.io/npm/l/@power-seo/links?style=flat-square)](../../LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square)](https://www.typescriptlang.org/)
+[![Tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen?style=flat-square)](#)
+
+`@power-seo/links` gives you a complete internal linking intelligence layer for your SEO tooling. Internal link structure is one of the most actionable on-page SEO signals — it determines how search engines discover and understand your content, and how link equity flows through your site. Yet most SEO tools treat it as a secondary concern. This package makes it a first-class concern.
+
+Given a list of pages and their outbound links, `buildLinkGraph` constructs a full directed graph in memory. From that graph you can immediately find orphan pages (pages that no other page links to — invisible to crawlers that start from the homepage), compute PageRank-style equity scores to understand which pages accumulate the most link authority, and generate contextual internal link suggestions based on keyword and topic overlap between pages.
+
+The package is designed to integrate directly with `@power-seo/audit` for site-wide SEO audits, and with `@power-seo/analytics` for correlating link equity with traffic data. It is dependency-free, fully typed, and tree-shakeable.
+
+## Features
+
+- **Directed link graph construction** — `buildLinkGraph(pages)` builds an in-memory directed graph from page URL arrays, computing both outbound and inbound link sets for each node
+- **Orphan page detection** — `findOrphanPages(graph)` returns all pages that have zero inbound internal links, making them invisible to crawlers following links from the homepage
+- **Keyword-overlap link suggestions** — `suggestLinks(options)` compares page titles and content to find thematically related pages that should be linking to each other but are not
+- **PageRank-style link equity scoring** — `analyzeLinkEquity(graph, options?)` runs a damping-factor iterative algorithm to assign a relative equity score to every node in the graph
+- **Configurable suggestion options** — control minimum similarity threshold, maximum suggestions per page, and whether to include bidirectional suggestions
+- **Configurable equity options** — set the damping factor (default 0.85), number of iterations, and convergence threshold for the PageRank algorithm
+- **Inbound and outbound link counts** — every `LinkNode` in the graph exposes both `inboundLinks` and `outboundLinks` sets for direct inspection
+- **Normalized URL handling** — URLs are normalized before graph construction to prevent duplicate nodes from trailing slashes or case differences
+- **Zero dependencies** — no runtime dependencies; pure TypeScript computation
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+  - [Build a Link Graph](#build-a-link-graph)
+  - [Find Orphan Pages](#find-orphan-pages)
+  - [Generate Link Suggestions](#generate-link-suggestions)
+  - [Analyze Link Equity](#analyze-link-equity)
+  - [Integration with Audit](#integration-with-audit)
+- [API Reference](#api-reference)
+- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
+- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
 
 ## Installation
 
 ```bash
-npm install @ccbd-seo/links @ccbd-seo/core
+# npm
+npm install @power-seo/links
+
+# yarn
+yarn add @power-seo/links
+
+# pnpm
+pnpm add @power-seo/links
+```
+
+## Quick Start
+
+```ts
+import { buildLinkGraph, findOrphanPages, suggestLinks, analyzeLinkEquity } from '@power-seo/links';
+
+// 1. Build the graph from your site's pages
+const graph = buildLinkGraph([
+  { url: 'https://example.com/',        links: ['https://example.com/about', 'https://example.com/blog'] },
+  { url: 'https://example.com/about',   links: ['https://example.com/'] },
+  { url: 'https://example.com/blog',    links: ['https://example.com/'] },
+  { url: 'https://example.com/orphan',  links: [] },
+]);
+
+// 2. Find pages no other page links to
+const orphans = findOrphanPages(graph);
+// [{ url: 'https://example.com/orphan', inboundCount: 0 }]
+
+// 3. Get link equity scores
+const equity = analyzeLinkEquity(graph);
+// { 'https://example.com/': 0.48, 'https://example.com/about': 0.18, ... }
 ```
 
 ## Usage
 
-### Build Link Graph
+### Build a Link Graph
+
+`buildLinkGraph` accepts an array of `PageData` objects and returns a `LinkGraph` — a `Map<string, LinkNode>` keyed by normalized URL. Each `LinkNode` contains the page's URL, its set of outbound links, and the set of pages that link to it (inbound links).
 
 ```ts
-import { buildLinkGraph, findOrphanPages } from '@ccbd-seo/links';
+import { buildLinkGraph } from '@power-seo/links';
+import type { PageData, LinkGraph } from '@power-seo/links';
 
-const graph = buildLinkGraph([
-  { url: 'https://example.com/', links: ['https://example.com/about', 'https://example.com/blog'] },
-  { url: 'https://example.com/about', links: ['https://example.com/'] },
-  { url: 'https://example.com/blog', links: [] },
-  { url: 'https://example.com/orphan', links: [] },
-]);
+const pages: PageData[] = [
+  {
+    url: 'https://example.com/',
+    links: [
+      'https://example.com/blog',
+      'https://example.com/about',
+      'https://example.com/contact',
+    ],
+  },
+  {
+    url: 'https://example.com/blog',
+    links: [
+      'https://example.com/',
+      'https://example.com/blog/post-1',
+      'https://example.com/blog/post-2',
+    ],
+  },
+  {
+    url: 'https://example.com/blog/post-1',
+    links: ['https://example.com/blog'],
+  },
+  {
+    url: 'https://example.com/blog/post-2',
+    links: ['https://example.com/blog', 'https://example.com/blog/post-1'],
+  },
+  {
+    url: 'https://example.com/about',
+    links: ['https://example.com/'],
+  },
+  {
+    url: 'https://example.com/contact',
+    links: [],
+  },
+];
 
-const orphans = findOrphanPages(graph);
-// [{ url: 'https://example.com/orphan', inboundCount: 0 }]
+const graph: LinkGraph = buildLinkGraph(pages);
+
+// Inspect a node
+const blogNode = graph.get('https://example.com/blog');
+console.log(blogNode?.inboundLinks);  // Set { 'https://example.com/' }
+console.log(blogNode?.outboundLinks); // Set { 'https://example.com/', ... }
 ```
 
-### Link Suggestions
+### Find Orphan Pages
+
+`findOrphanPages` iterates the graph and returns all nodes whose `inboundLinks` set is empty. These pages cannot be reached by following links from any other page — making them effectively invisible to Googlebot unless they appear in your sitemap.
 
 ```ts
-import { suggestLinks } from '@ccbd-seo/links';
+import { buildLinkGraph, findOrphanPages } from '@power-seo/links';
+import type { OrphanPage } from '@power-seo/links';
 
-const suggestions = suggestLinks({
-  pages: [
-    { url: '/react-seo', title: 'React SEO Guide', content: 'Learn about meta tags...' },
-    { url: '/meta-tags', title: 'Meta Tags', content: 'How to use meta tags in React...' },
-  ],
+const graph = buildLinkGraph(pages);
+const orphans: OrphanPage[] = findOrphanPages(graph);
+
+orphans.forEach(({ url, inboundCount }) => {
+  console.log(`Orphan page: ${url} (${inboundCount} inbound links)`);
 });
-// Suggests linking between related pages based on keyword overlap
+
+// Example output:
+// Orphan page: https://example.com/contact (0 inbound links)
 ```
 
-### Link Equity Analysis
+**Tip:** Cross-reference orphan pages with your sitemap. Pages that appear in the sitemap but have no inbound links are priority candidates for internal linking improvements.
+
+### Generate Link Suggestions
+
+`suggestLinks` analyzes page titles and content to find pairs of pages that share significant topical overlap but do not currently link to each other. It uses a term-frequency-based similarity algorithm that does not require an external NLP library.
 
 ```ts
-import { analyzeLinkEquity } from '@ccbd-seo/links';
+import { suggestLinks } from '@power-seo/links';
+import type { LinkSuggestion, LinkSuggestionOptions } from '@power-seo/links';
 
+const options: LinkSuggestionOptions = {
+  pages: [
+    {
+      url: '/guide/react-seo',
+      title: 'React SEO Guide',
+      content: 'Learn how to optimize React applications for search engines using meta tags, structured data, and server-side rendering.',
+    },
+    {
+      url: '/guide/meta-tags',
+      title: 'HTML Meta Tags Explained',
+      content: 'Meta tags control how search engines index your pages. The title tag and meta description are the most important.',
+    },
+    {
+      url: '/guide/nextjs-setup',
+      title: 'Next.js Project Setup',
+      content: 'Set up a Next.js application with TypeScript, ESLint, and Prettier for a production-ready project.',
+    },
+  ],
+  minSimilarity: 0.15,      // optional — minimum overlap score (0-1)
+  maxSuggestionsPerPage: 3, // optional — cap suggestions per page
+  bidirectional: true,      // optional — suggest links in both directions
+};
+
+const suggestions: LinkSuggestion[] = suggestLinks(options);
+
+suggestions.forEach(({ sourcePage, targetPage, anchorText, score }) => {
+  console.log(`Link from ${sourcePage} to ${targetPage}`);
+  console.log(`  Suggested anchor: "${anchorText}" (score: ${score.toFixed(2)})`);
+});
+```
+
+### Analyze Link Equity
+
+`analyzeLinkEquity` runs a PageRank-style iterative algorithm over the graph and returns a `Map<string, LinkEquityScore>` assigning each page a normalized equity score. Pages with many high-quality inbound links receive higher scores.
+
+```ts
+import { buildLinkGraph, analyzeLinkEquity } from '@power-seo/links';
+import type { LinkEquityScore, LinkEquityOptions } from '@power-seo/links';
+
+const graph = buildLinkGraph(pages);
+
+const options: LinkEquityOptions = {
+  dampingFactor: 0.85,     // optional — PageRank damping factor (default: 0.85)
+  iterations: 100,         // optional — max iterations (default: 100)
+  convergenceThreshold: 1e-6, // optional — stop when delta < threshold
+};
+
+const equity = analyzeLinkEquity(graph, options);
+
+// Sort pages by equity score (highest first)
+const ranked = [...equity.entries()]
+  .sort(([, a], [, b]) => b.score - a.score);
+
+ranked.forEach(([url, { score, inboundCount, outboundCount }]) => {
+  console.log(`${url}: equity=${score.toFixed(4)}, in=${inboundCount}, out=${outboundCount}`);
+});
+```
+
+### Integration with Audit
+
+Combine `@power-seo/links` with `@power-seo/audit` to surface link issues as part of a full site audit.
+
+```ts
+import { buildLinkGraph, findOrphanPages, analyzeLinkEquity } from '@power-seo/links';
+import { auditSite } from '@power-seo/audit';
+
+const graph = buildLinkGraph(sitePages);
+const orphans = findOrphanPages(graph);
 const equity = analyzeLinkEquity(graph);
-// PageRank-style scores for each page in the graph
+
+const auditReport = auditSite({ pages: sitePages });
+
+// Enrich audit results with link equity data
+const enrichedPages = auditReport.pages.map((page) => ({
+  ...page,
+  linkEquity: equity.get(page.url)?.score ?? 0,
+  isOrphan: orphans.some((o) => o.url === page.url),
+}));
 ```
 
 ## API Reference
 
-- `buildLinkGraph(pages)` — Construct directed graph from page data
-- `findOrphanPages(graph)` — Find pages with zero inbound internal links
-- `suggestLinks(options)` — Keyword-based internal link suggestions
-- `analyzeLinkEquity(graph, options?)` — PageRank-style link value distribution
+### `buildLinkGraph(pages)`
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `pages` | `PageData[]` | required | Array of pages with their URL and outbound link arrays |
+
+Returns `LinkGraph` (`Map<string, LinkNode>`).
+
+---
+
+### `findOrphanPages(graph)`
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `graph` | `LinkGraph` | required | A directed link graph built by `buildLinkGraph` |
+
+Returns `OrphanPage[]` — array of `{ url: string; inboundCount: 0 }` objects.
+
+---
+
+### `suggestLinks(options)`
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `options.pages` | `PageData[]` | required | Pages with `url`, `title`, and `content` for similarity analysis |
+| `options.minSimilarity` | `number` | `0.1` | Minimum keyword overlap score (0–1) to include a suggestion |
+| `options.maxSuggestionsPerPage` | `number` | `5` | Maximum number of suggestions returned per source page |
+| `options.bidirectional` | `boolean` | `false` | Whether to suggest links in both directions between related pages |
+
+Returns `LinkSuggestion[]` — array of `{ sourcePage, targetPage, anchorText, score }` objects.
+
+---
+
+### `analyzeLinkEquity(graph, options?)`
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `graph` | `LinkGraph` | required | A directed link graph built by `buildLinkGraph` |
+| `options.dampingFactor` | `number` | `0.85` | PageRank damping factor — probability of following a link vs. jumping randomly |
+| `options.iterations` | `number` | `100` | Maximum number of power-iteration steps |
+| `options.convergenceThreshold` | `number` | `1e-6` | Stop iterating when the largest score delta is below this threshold |
+
+Returns `Map<string, LinkEquityScore>`.
+
+---
 
 ### Types
 
 ```ts
 import type {
-  PageData,
-  LinkNode,
-  LinkGraph,
-  OrphanPage,
-  LinkSuggestion,
-  LinkSuggestionOptions,
-  LinkEquityScore,
-  LinkEquityOptions,
-} from '@ccbd-seo/links';
+  PageData,               // { url: string; links: string[]; title?: string; content?: string }
+  LinkNode,               // { url: string; inboundLinks: Set<string>; outboundLinks: Set<string> }
+  LinkGraph,              // Map<string, LinkNode>
+  OrphanPage,             // { url: string; inboundCount: number }
+  LinkSuggestion,         // { sourcePage: string; targetPage: string; anchorText: string; score: number }
+  LinkSuggestionOptions,  // { pages, minSimilarity?, maxSuggestionsPerPage?, bidirectional? }
+  LinkEquityScore,        // { score: number; inboundCount: number; outboundCount: number }
+  LinkEquityOptions,      // { dampingFactor?, iterations?, convergenceThreshold? }
+} from '@power-seo/links';
 ```
 
-## License
+## The @power-seo Ecosystem
 
-[MIT](../../LICENSE)
+`@power-seo/links` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
+
+| Package | Install | Description |
+|---------|---------|-------------|
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+
+---
+
+## About CyberCraft Bangladesh
+
+**CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+
+| | |
+|---|---|
+| **Website** | [ccbd.dev](https://ccbd.dev) |
+| **GitHub** | [github.com/cybercraftbd](https://github.com/cybercraftbd) |
+| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
+| **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
+
+© 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)
