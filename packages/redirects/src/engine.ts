@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/redirects — Redirect Engine
+// @power-seo/redirects — Redirect Engine
 // ============================================================================
 
-import type { RedirectRule } from '@ccbd-seo/core';
+import type { RedirectRule } from '@power-seo/core';
 import type { RedirectMatch, RedirectEngine, RedirectEngineConfig } from './types.js';
 import { matchExact, matchGlob, matchRegex, substituteParams } from './matcher.js';
 

@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/sitemap — XML Sitemap Generator
+// @power-seo/sitemap — XML Sitemap Generator
 // ============================================================================
 
-import type { SitemapConfig, SitemapURL, SitemapImage, SitemapVideo, SitemapNews } from '@ccbd-seo/core';
-import { normalizeUrl } from '@ccbd-seo/core';
+import type { SitemapConfig, SitemapURL, SitemapImage, SitemapVideo, SitemapNews } from '@power-seo/core';
+import { normalizeUrl } from '@power-seo/core';
 
 /** Escape special XML characters. */
 function escapeXml(str: string): string {

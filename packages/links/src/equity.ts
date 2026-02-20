@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/links — Link Equity (PageRank) Analysis
+// @power-seo/links — Link Equity (PageRank) Analysis
 // ============================================================================
 
 import type { LinkGraph, LinkEquityScore, LinkEquityOptions } from './types.js';

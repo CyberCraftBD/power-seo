@@ -1,10 +1,10 @@
 // ============================================================================
-// @ccbd-seo/redirects — Types
+// @power-seo/redirects — Types
 // ============================================================================
 
-export type { RedirectStatusCode, RedirectRule } from '@ccbd-seo/core';
+export type { RedirectStatusCode, RedirectRule } from '@power-seo/core';
 
-import type { RedirectRule, RedirectStatusCode } from '@ccbd-seo/core';
+import type { RedirectRule, RedirectStatusCode } from '@power-seo/core';
 
 export interface RedirectMatch {
   rule: RedirectRule;

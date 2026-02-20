@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/links — Orphan Page Detection
+// @power-seo/links — Orphan Page Detection
 // ============================================================================
 
-import { normalizeUrl } from '@ccbd-seo/core';
+import { normalizeUrl } from '@power-seo/core';
 import type { LinkGraph, OrphanPage } from './types.js';
 
 /**

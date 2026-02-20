@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/links — Link Graph Builder
+// @power-seo/links — Link Graph Builder
 // ============================================================================
 
-import { normalizeUrl, isAbsoluteUrl } from '@ccbd-seo/core';
+import { normalizeUrl, isAbsoluteUrl } from '@power-seo/core';
 import type { PageData, LinkGraph, LinkNode } from './types.js';
 
 /**

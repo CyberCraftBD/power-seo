@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/sitemap — URL Validation
+// @power-seo/sitemap — URL Validation
 // ============================================================================
 
-import type { SitemapURL } from '@ccbd-seo/core';
-import { isAbsoluteUrl, MAX_URL_LENGTH } from '@ccbd-seo/core';
+import type { SitemapURL } from '@power-seo/core';
+import { isAbsoluteUrl, MAX_URL_LENGTH } from '@power-seo/core';
 import type { SitemapValidationResult } from './types.js';
 
 const VALID_CHANGEFREQ = ['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'];

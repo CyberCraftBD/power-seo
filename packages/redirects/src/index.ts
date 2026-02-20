@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/redirects — Public API
+// @power-seo/redirects — Public API
 // ============================================================================
 
 export { createRedirectEngine } from './engine.js';

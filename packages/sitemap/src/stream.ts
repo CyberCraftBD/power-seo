@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/sitemap — Streaming Sitemap Generator
+// @power-seo/sitemap — Streaming Sitemap Generator
 // ============================================================================
 
-import type { SitemapURL } from '@ccbd-seo/core';
-import { normalizeUrl } from '@ccbd-seo/core';
+import type { SitemapURL } from '@power-seo/core';
+import { normalizeUrl } from '@power-seo/core';
 
 /** Escape special XML characters. */
 function escapeXml(str: string): string {

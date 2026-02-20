@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/sitemap — Sitemap Index Generator
+// @power-seo/sitemap — Sitemap Index Generator
 // ============================================================================
 
-import type { SitemapConfig } from '@ccbd-seo/core';
+import type { SitemapConfig } from '@power-seo/core';
 import type { SitemapIndexConfig, SitemapIndexEntry } from './types.js';
 import { MAX_URLS_PER_SITEMAP } from './types.js';
 import { generateSitemap } from './generator.js';

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createRedirectEngine } from '../engine.js';
-import type { RedirectRule } from '@ccbd-seo/core';
+import type { RedirectRule } from '@power-seo/core';
 
 describe('createRedirectEngine', () => {
   it('matches exact redirect rule', () => {

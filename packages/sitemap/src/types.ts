@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/sitemap — Types
+// @power-seo/sitemap — Types
 // ============================================================================
 
 export type {
@@ -8,7 +8,7 @@ export type {
   SitemapVideo,
   SitemapNews,
   SitemapConfig,
-} from '@ccbd-seo/core';
+} from '@power-seo/core';
 
 /** A sitemap entry in a sitemap index. */
 export interface SitemapIndexEntry {

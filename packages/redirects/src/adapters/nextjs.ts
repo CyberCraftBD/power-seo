@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/redirects — Next.js Adapter
+// @power-seo/redirects — Next.js Adapter
 // ============================================================================
 
-import type { RedirectRule } from '@ccbd-seo/core';
+import type { RedirectRule } from '@power-seo/core';
 import type { NextRedirect } from '../types.js';
 
 /**

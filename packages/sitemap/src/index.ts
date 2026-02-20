@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/sitemap — Public API
+// @power-seo/sitemap — Public API
 // ============================================================================
 
 export { generateSitemap } from './generator.js';

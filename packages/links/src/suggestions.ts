@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/links — Link Suggestion Engine
+// @power-seo/links — Link Suggestion Engine
 // ============================================================================
 
-import { stripHtml, getWords, extractSlug } from '@ccbd-seo/core';
+import { stripHtml, getWords, extractSlug } from '@power-seo/core';
 import type { PageData, LinkSuggestion, LinkSuggestionOptions } from './types.js';
 
 /**

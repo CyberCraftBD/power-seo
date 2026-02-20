@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/redirects — Express Adapter
+// @power-seo/redirects — Express Adapter
 // ============================================================================
 
-import type { RedirectRule } from '@ccbd-seo/core';
+import type { RedirectRule } from '@power-seo/core';
 import { createRedirectEngine } from '../engine.js';
 import type { RedirectEngineConfig } from '../types.js';
 

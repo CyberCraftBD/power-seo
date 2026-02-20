@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/redirects — URL Pattern Matching
+// @power-seo/redirects — URL Pattern Matching
 // ============================================================================
 
 import type { RedirectEngineConfig } from './types.js';

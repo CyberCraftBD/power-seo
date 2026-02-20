@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { toNextRedirects } from '../adapters/nextjs.js';
 import { createRemixRedirectHandler } from '../adapters/remix.js';
 import { createExpressRedirectMiddleware } from '../adapters/express.js';
-import type { RedirectRule } from '@ccbd-seo/core';
+import type { RedirectRule } from '@power-seo/core';
 
 describe('toNextRedirects', () => {
   it('maps 301 to permanent: true', () => {
