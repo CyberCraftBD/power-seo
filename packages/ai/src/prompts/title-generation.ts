@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/ai — Title Generation Prompt Builder & Parser
+// @power-seo/ai — Title Generation Prompt Builder & Parser
 // ============================================================================
 
-import { calculatePixelWidth, TITLE_MAX_LENGTH } from '@ccbd-seo/core';
+import { calculatePixelWidth, TITLE_MAX_LENGTH } from '@power-seo/core';
 import type { PromptTemplate, TitleInput, TitleResult } from '../types.js';
 
 export function buildTitlePrompt(input: TitleInput): PromptTemplate {

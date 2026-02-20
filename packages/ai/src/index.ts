@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/ai — Public API
+// @power-seo/ai — Public API
 // ============================================================================
 
 export { buildMetaDescriptionPrompt, parseMetaDescriptionResponse } from './prompts/meta-description.js';

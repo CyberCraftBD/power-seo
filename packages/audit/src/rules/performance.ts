@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/audit — Performance Rules
+// @power-seo/audit — Performance Rules
 // ============================================================================
 
 import type { PageAuditInput, AuditRule } from '../types.js';

@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/ai — Meta Description Prompt Builder & Parser
+// @power-seo/ai — Meta Description Prompt Builder & Parser
 // ============================================================================
 
-import { calculatePixelWidth, validateMetaDescription, META_DESCRIPTION_MAX_LENGTH } from '@ccbd-seo/core';
+import { calculatePixelWidth, validateMetaDescription, META_DESCRIPTION_MAX_LENGTH } from '@power-seo/core';
 import type { PromptTemplate, MetaDescriptionInput, MetaDescriptionResult } from '../types.js';
 
 export function buildMetaDescriptionPrompt(input: MetaDescriptionInput): PromptTemplate {

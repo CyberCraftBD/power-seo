@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/audit — Meta Rules
+// @power-seo/audit — Meta Rules
 // ============================================================================
 
-import { validateTitle, validateMetaDescription } from '@ccbd-seo/core';
+import { validateTitle, validateMetaDescription } from '@power-seo/core';
 import type { PageAuditInput, AuditRule } from '../types.js';
 
 export function runMetaRules(input: PageAuditInput): AuditRule[] {

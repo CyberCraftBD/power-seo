@@ -1,10 +1,10 @@
 // ============================================================================
-// @ccbd-seo/audit — Structure Rules
+// @power-seo/audit — Structure Rules
 // ============================================================================
 
-import { isAbsoluteUrl } from '@ccbd-seo/core';
-import { validateSchema } from '@ccbd-seo/schema';
-import type { SchemaObject } from '@ccbd-seo/schema';
+import { isAbsoluteUrl } from '@power-seo/core';
+import { validateSchema } from '@power-seo/schema';
+import type { SchemaObject } from '@power-seo/schema';
 import type { PageAuditInput, AuditRule } from '../types.js';
 
 export function runStructureRules(input: PageAuditInput): AuditRule[] {

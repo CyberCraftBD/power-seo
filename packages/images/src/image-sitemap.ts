@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/images — Image Sitemap Generator
+// @power-seo/images — Image Sitemap Generator
 // ============================================================================
 
-import { normalizeUrl, isAbsoluteUrl } from '@ccbd-seo/core';
-import type { SitemapImage } from '@ccbd-seo/core';
+import { normalizeUrl, isAbsoluteUrl } from '@power-seo/core';
+import type { SitemapImage } from '@power-seo/core';
 import type { ImageInfo, ImageSitemapPage } from './types.js';
 
 function escapeXml(str: string): string {

@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/images — Lazy Loading Audit
+// @power-seo/images — Lazy Loading Audit
 // ============================================================================
 
 import type { ImageInfo, ImageIssue, LazyLoadingAuditResult } from './types.js';

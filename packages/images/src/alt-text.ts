@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/images — Alt Text Analysis
+// @power-seo/images — Alt Text Analysis
 // ============================================================================
 
 import type { ImageInfo, ImageIssue, ImageAuditResult, ImageAnalysisResult } from './types.js';

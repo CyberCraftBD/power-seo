@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/images — Types
+// @power-seo/images — Types
 // ============================================================================
 
-export type { SitemapImage } from '@ccbd-seo/core';
+export type { SitemapImage } from '@power-seo/core';
 
 export type ImageFormat =
   | 'jpeg'

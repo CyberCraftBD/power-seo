@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/audit — Page Audit
+// @power-seo/audit — Page Audit
 // ============================================================================
 
 import type { PageAuditInput, PageAuditResult, AuditRule, AuditCategory, CategoryResult } from './types.js';

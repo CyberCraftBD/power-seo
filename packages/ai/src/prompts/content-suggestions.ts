@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/ai — Content Suggestions Prompt Builder & Parser
+// @power-seo/ai — Content Suggestions Prompt Builder & Parser
 // ============================================================================
 
-import { stripHtml, getWords } from '@ccbd-seo/core';
+import { stripHtml, getWords } from '@power-seo/core';
 import type { PromptTemplate, ContentSuggestionInput, ContentSuggestion } from '../types.js';
 
 export function buildContentSuggestionsPrompt(input: ContentSuggestionInput): PromptTemplate {

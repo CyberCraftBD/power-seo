@@ -1,11 +1,11 @@
 // ============================================================================
-// @ccbd-seo/audit — Content Rules
+// @power-seo/audit — Content Rules
 // ============================================================================
 
-import { analyzeContent } from '@ccbd-seo/content-analysis';
-import { analyzeReadability } from '@ccbd-seo/readability';
+import { analyzeContent } from '@power-seo/content-analysis';
+import { analyzeReadability } from '@power-seo/readability';
 import type { PageAuditInput, AuditRule, AuditSeverity } from '../types.js';
-import type { AnalysisStatus } from '@ccbd-seo/core';
+import type { AnalysisStatus } from '@power-seo/core';
 
 function statusToSeverity(status: AnalysisStatus): AuditSeverity {
   switch (status) {

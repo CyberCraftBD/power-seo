@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/audit — Types
+// @power-seo/audit — Types
 // ============================================================================
 
-import type { SchemaBase } from '@ccbd-seo/core';
+import type { SchemaBase } from '@power-seo/core';
 
 export type AuditCategory = 'meta' | 'content' | 'structure' | 'performance';
 export type AuditSeverity = 'error' | 'warning' | 'info' | 'pass';

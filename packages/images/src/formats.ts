@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/images — Format Detection & Optimization
+// @power-seo/images — Format Detection & Optimization
 // ============================================================================
 
 import type { ImageInfo, ImageFormat, FormatAnalysisResult, FormatAuditResult } from './types.js';
