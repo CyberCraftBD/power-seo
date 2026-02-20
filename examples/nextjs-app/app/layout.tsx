@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 
 // Global default SEO metadata for the site
 export const metadata: Metadata = createMetadata({
   defaultTitle: 'My Site',
   titleTemplate: '%s | My Site',
-  description: 'A demo site showcasing @ccbd-seo with Next.js App Router',
+  description: 'A demo site showcasing @power-seo with Next.js App Router',
   canonical: 'https://example.com',
   openGraph: {
     type: 'website',

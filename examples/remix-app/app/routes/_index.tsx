@@ -1,5 +1,5 @@
 import type { MetaFunction } from '@remix-run/node';
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@power-seo/meta';
 
 export const meta: MetaFunction = () =>
   createMetaDescriptors({
@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <main>
       <h1>Welcome to My Remix Site</h1>
-      <p>This example demonstrates @ccbd-seo/meta with Remix v2.</p>
+      <p>This example demonstrates @power-seo/meta with Remix v2.</p>
     </main>
   );
 }

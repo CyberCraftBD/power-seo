@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { createMetadata } from '@ccbd-seo/meta';
-import { buildArticle } from '@ccbd-seo/schema';
+import { createMetadata } from '@power-seo/meta';
+import { buildArticle } from '@power-seo/schema';
 
 // Example: dynamic metadata generation
 export async function generateMetadata({

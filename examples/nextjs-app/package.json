@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/example-nextjs",
+  "name": "@power-seo/example-nextjs",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,9 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*",
-    "@ccbd-seo/meta": "workspace:*",
-    "@ccbd-seo/schema": "workspace:*",
+    "@power-seo/core": "workspace:*",
+    "@power-seo/meta": "workspace:*",
+    "@power-seo/schema": "workspace:*",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

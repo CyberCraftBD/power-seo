@@ -1,12 +1,12 @@
 import type { MetaFunction } from '@remix-run/node';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@power-seo/meta';
 
 // Default meta tags for the entire site
 export const meta: MetaFunction = () =>
   createMetaDescriptors({
     title: 'My Remix Site',
-    description: 'A demo site showcasing @ccbd-seo with Remix',
+    description: 'A demo site showcasing @power-seo with Remix',
     canonical: 'https://example.com',
     openGraph: {
       type: 'website',

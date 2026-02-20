@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/example-remix",
+  "name": "@power-seo/example-remix",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -9,9 +9,9 @@
     "start": "remix-serve ./build/server/index.js"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*",
-    "@ccbd-seo/meta": "workspace:*",
-    "@ccbd-seo/schema": "workspace:*",
+    "@power-seo/core": "workspace:*",
+    "@power-seo/meta": "workspace:*",
+    "@power-seo/schema": "workspace:*",
     "@remix-run/node": "^2.15.0",
     "@remix-run/react": "^2.15.0",
     "@remix-run/serve": "^2.15.0",

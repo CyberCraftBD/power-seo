@@ -1,8 +1,8 @@
 import type { MetaFunction, LoaderFunctionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import { createMetaDescriptors } from '@ccbd-seo/meta';
-import { buildArticle } from '@ccbd-seo/schema';
+import { createMetaDescriptors } from '@power-seo/meta';
+import { buildArticle } from '@power-seo/schema';
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const slug = params.slug ?? 'unknown';

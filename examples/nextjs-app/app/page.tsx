@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 
 export const metadata: Metadata = createMetadata({
   title: 'Home',
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <main>
       <h1>Welcome to My Site</h1>
-      <p>This example demonstrates @ccbd-seo/meta with Next.js App Router.</p>
+      <p>This example demonstrates @power-seo/meta with Next.js App Router.</p>
     </main>
   );
 }
