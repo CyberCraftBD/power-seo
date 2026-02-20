@@ -1,11 +1,11 @@
 // ============================================================================
-// @ccbd-seo/react — <DefaultSEO> Component
+// @power-seo/react — <DefaultSEO> Component
 // ============================================================================
 
 import { createElement } from 'react';
 import type { ReactNode } from 'react';
-import type { SEOConfig } from '@ccbd-seo/core';
-import { buildMetaTags, buildLinkTags, resolveTitle } from '@ccbd-seo/core';
+import type { SEOConfig } from '@power-seo/core';
+import { buildMetaTags, buildLinkTags, resolveTitle } from '@power-seo/core';
 import { SEOContext } from '../context.js';
 import { renderMetaTags, renderLinkTags } from '../head-tags.js';
 

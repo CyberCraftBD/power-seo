@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/react — <Canonical> Component
+// @power-seo/react — <Canonical> Component
 // ============================================================================
 
 import { createElement } from 'react';
-import { resolveCanonical } from '@ccbd-seo/core';
+import { resolveCanonical } from '@power-seo/core';
 
 export interface CanonicalProps {
   /** The canonical URL (absolute or relative to baseUrl) */

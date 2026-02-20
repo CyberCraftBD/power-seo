@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/react — Head Tag Rendering (React 19 native + fallback)
+// @power-seo/react — Head Tag Rendering (React 19 native + fallback)
 // ============================================================================
 
 import { createElement, Fragment } from 'react';
-import type { MetaTag, LinkTag } from '@ccbd-seo/core';
+import type { MetaTag, LinkTag } from '@power-seo/core';
 
 /**
  * Render meta tags as React elements.

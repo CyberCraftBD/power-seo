@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/schema — Google Rich Results Validation
+// @power-seo/schema — Google Rich Results Validation
 // ============================================================================
 
 import type { SchemaObject } from './types.js';

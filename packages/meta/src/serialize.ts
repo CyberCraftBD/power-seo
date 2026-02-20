@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/meta — Generic SSR HTML Serialization
+// @power-seo/meta — Generic SSR HTML Serialization
 // ============================================================================
 
-import type { SEOConfig } from '@ccbd-seo/core';
-import { resolveTitle, buildMetaTags, buildLinkTags } from '@ccbd-seo/core';
+import type { SEOConfig } from '@power-seo/core';
+import { resolveTitle, buildMetaTags, buildLinkTags } from '@power-seo/core';
 import type { HeadTag } from './types.js';
 
 /**

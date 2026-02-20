@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/schema — JSON-LD Builder Functions
+// @power-seo/schema — JSON-LD Builder Functions
 // ============================================================================
 
 import type {

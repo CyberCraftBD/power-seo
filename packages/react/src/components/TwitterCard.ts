@@ -1,10 +1,10 @@
 // ============================================================================
-// @ccbd-seo/react — <TwitterCard> Component
+// @power-seo/react — <TwitterCard> Component
 // ============================================================================
 
 import { createElement, Fragment } from 'react';
-import type { TwitterCardConfig } from '@ccbd-seo/core';
-import { buildTwitterTags } from '@ccbd-seo/core';
+import type { TwitterCardConfig } from '@power-seo/core';
+import { buildTwitterTags } from '@power-seo/core';
 import { renderMetaTags } from '../head-tags.js';
 
 export type TwitterCardProps = TwitterCardConfig;

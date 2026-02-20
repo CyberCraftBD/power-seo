@@ -1,10 +1,10 @@
 // ============================================================================
-// @ccbd-seo/react — <OpenGraph> Component
+// @power-seo/react — <OpenGraph> Component
 // ============================================================================
 
 import { createElement, Fragment } from 'react';
-import type { OpenGraphConfig } from '@ccbd-seo/core';
-import { buildOpenGraphTags } from '@ccbd-seo/core';
+import type { OpenGraphConfig } from '@power-seo/core';
+import { buildOpenGraphTags } from '@power-seo/core';
 import { renderMetaTags } from '../head-tags.js';
 
 export type OpenGraphProps = OpenGraphConfig;

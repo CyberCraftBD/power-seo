@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/schema — React Components for JSON-LD
+// @power-seo/schema — React Components for JSON-LD
 // ============================================================================
 
 import { createElement } from 'react';

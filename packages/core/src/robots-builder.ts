@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/core — Robots Directive Builder
+// @power-seo/core — Robots Directive Builder
 // ============================================================================
 
 import type { RobotsDirective } from './types.js';

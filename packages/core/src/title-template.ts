@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/core — Title Template Engine
+// @power-seo/core — Title Template Engine
 // ============================================================================
 
 export interface TitleTemplateVars {

@@ -1,10 +1,10 @@
 // ============================================================================
-// @ccbd-seo/react — <Robots> Component
+// @power-seo/react — <Robots> Component
 // ============================================================================
 
 import { createElement } from 'react';
-import type { RobotsDirective } from '@ccbd-seo/core';
-import { buildRobotsContent } from '@ccbd-seo/core';
+import type { RobotsDirective } from '@power-seo/core';
+import { buildRobotsContent } from '@power-seo/core';
 
 export type RobotsProps = RobotsDirective;
 

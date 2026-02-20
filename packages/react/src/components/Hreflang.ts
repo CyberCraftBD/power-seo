@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/react — <Hreflang> Component
+// @power-seo/react — <Hreflang> Component
 // ============================================================================
 
 import { createElement, Fragment } from 'react';
-import type { HreflangConfig } from '@ccbd-seo/core';
+import type { HreflangConfig } from '@power-seo/core';
 
 export interface HreflangProps {
   /** Language alternates */

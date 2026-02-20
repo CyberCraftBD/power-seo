@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/schema — JSON-LD Schema Types
+// @power-seo/schema — JSON-LD Schema Types
 // ============================================================================
 
 /** Base type for all JSON-LD objects */

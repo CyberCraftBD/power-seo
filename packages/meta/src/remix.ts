@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/meta — Remix v2 Meta Descriptors
+// @power-seo/meta — Remix v2 Meta Descriptors
 // ============================================================================
 
-import type { SEOConfig } from '@ccbd-seo/core';
-import { resolveTitle, buildMetaTags, buildLinkTags } from '@ccbd-seo/core';
+import type { SEOConfig } from '@power-seo/core';
+import { resolveTitle, buildMetaTags, buildLinkTags } from '@power-seo/core';
 import type { RemixMetaDescriptor } from './types.js';
 
 /**

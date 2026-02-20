@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/meta — Next.js App Router Metadata
+// @power-seo/meta — Next.js App Router Metadata
 // ============================================================================
 
-import type { SEOConfig } from '@ccbd-seo/core';
-import { resolveTitle } from '@ccbd-seo/core';
+import type { SEOConfig } from '@power-seo/core';
+import { resolveTitle } from '@power-seo/core';
 import type { NextMetadata, NextOGImage } from './types.js';
 
 /**

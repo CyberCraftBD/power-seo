@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/core — Keyword Density Calculator
+// @power-seo/core — Keyword Density Calculator
 // ============================================================================
 
 import { getWords, stripHtml } from './text-stats.js';

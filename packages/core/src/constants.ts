@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/core — SEO Constants
+// @power-seo/core — SEO Constants
 // ============================================================================
 
 /** Google SERP title max display width in pixels */

@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/core — Text Statistics Engine
+// @power-seo/core — Text Statistics Engine
 // ============================================================================
 
 import type { TextStatistics } from './types.js';

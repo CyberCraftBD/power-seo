@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/react — <Breadcrumb> Component
+// @power-seo/react — <Breadcrumb> Component
 // ============================================================================
 
 import { createElement, Fragment } from 'react';

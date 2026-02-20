@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/core — Rate Limiting (Token Bucket)
+// @power-seo/core — Rate Limiting (Token Bucket)
 // ============================================================================
 
 export interface TokenBucket {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { SEOConfig } from '@ccbd-seo/core';
+import type { SEOConfig } from '@power-seo/core';
 import { createMetaDescriptors } from '../remix.js';
 
 describe('createMetaDescriptors', () => {

@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/schema — Main Entry Point (framework-agnostic)
+// @power-seo/schema — Main Entry Point (framework-agnostic)
 // ============================================================================
 
 // Types
