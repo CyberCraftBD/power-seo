@@ -1,0 +1,140 @@
+name: Production
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  production:
+    name: Build, Type-check, Fix & Publish
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm turbo run build --filter='./packages/*'
+
+      - name: Type-check all packages
+        run: pnpm turbo run typecheck --filter='./packages/*'
+
+      - name: Auto-fix lint issues
+        run: pnpm turbo run lint:fix --filter='./packages/*' || true
+
+      - name: Auto-fix formatting
+        run: pnpm format || true
+
+      - name: Configure git
+        run: |
+          git config --global user.email "ci@ccbd.dev"
+          git config --global user.name "CyberCraft CI"
+
+      - name: Commit auto-fixes (if any)
+        run: |
+          if ! git diff --quiet; then
+            git add -A
+            git commit -m "style: auto-fix lint and formatting [skip ci]"
+          fi
+
+      - name: Bump patch version for all packages
+        run: |
+          for dir in packages/*/; do
+            pkg="$dir/package.json"
+            if [ -f "$pkg" ] && [ "$(node -p "require('./$pkg').private")" != "true" ]; then
+              cd "$dir"
+              npm version patch --no-git-tag-version
+              cd ../..
+            fi
+          done
+
+      - name: Get new version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./packages/core/package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Publishing version: $VERSION"
+
+      - name: Publish all packages to npm
+        run: |
+          for dir in packages/*/; do
+            pkg="$dir/package.json"
+            if [ -f "$pkg" ] && [ "$(node -p "require('./$pkg').private")" != "true" ]; then
+              NAME=$(node -p "require('./$pkg').name")
+              echo "Publishing $NAME..."
+              cd "$dir"
+              npm publish --access public
+              cd ../..
+            fi
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit version bumps
+        run: |
+          git add -A
+          git commit -m "chore: release v${{ steps.version.outputs.version }} [skip ci]"
+
+      - name: Tag and push
+        run: |
+          git tag "v${{ steps.version.outputs.version }}"
+          git push origin main --follow-tags
+
+      - name: Create GitHub Release
+        run: |
+          gh release create "v${{ steps.version.outputs.version }}" \
+            --title "Release v${{ steps.version.outputs.version }}" \
+            --notes "## @power-seo v${{ steps.version.outputs.version }}
+
+          All 17 packages published to npm under the \`@power-seo\` scope.
+
+          ### Install any package
+
+          \`\`\`bash
+          npm install @power-seo/core
+          npm install @power-seo/react
+          # ...any of the 17 packages
+          \`\`\`
+
+          See the [full package list](https://www.npmjs.com/org/power-seo) on npm."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "## Production Release" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Published all packages at **v${{ steps.version.outputs.version }}**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Package | npm |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|-----|" >> $GITHUB_STEP_SUMMARY
+          for dir in packages/*/; do
+            name=$(node -p "require('./$dir/package.json').name" 2>/dev/null || echo "")
+            if [ -n "$name" ] && [ "$name" != "undefined" ]; then
+              echo "| \`$name\` | [npm](https://www.npmjs.com/package/$name) |" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
