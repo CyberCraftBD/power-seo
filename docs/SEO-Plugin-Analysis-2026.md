@@ -1,6 +1,6 @@
 # SEO Plugin Analysis 2026
 
-Research reference for the `@ccbd-seo/*` monorepo. Covers the WordPress SEO plugin landscape, React ecosystem gaps, and how this project addresses them.
+Research reference for the `@power-seo/*` monorepo. Covers the WordPress SEO plugin landscape, React ecosystem gaps, and how this project addresses them.
 
 ---
 
@@ -88,23 +88,23 @@ These are the capabilities that WordPress SEO plugins provide out of the box but
 
 ---
 
-## How @ccbd-seo/* Fills These Gaps
+## How @power-seo/* Fills These Gaps
 
-The `@ccbd-seo/*` monorepo provides a WordPress-grade SEO toolkit for React/Next.js applications, organized as focused packages:
+The `@power-seo/*` monorepo provides a WordPress-grade SEO toolkit for React/Next.js applications, organized as focused packages:
 
 | Package | Gap Addressed | WordPress Equivalent |
 |---|---|---|
-| `@ccbd-seo/content-analysis` | Real-time content scoring, keyword density, focus keyphrase tracking | Yoast content analysis panel |
-| `@ccbd-seo/readability` | Flesch-Kincaid, Gunning Fog, SMOG, ARI -- with React hooks | Yoast readability tab |
-| `@ccbd-seo/preview` | Google SERP preview, Open Graph preview, Twitter Card preview components | Yoast/Rank Math social previews |
-| `@ccbd-seo/redirects` | Programmatic redirect manager with 301/302/307/410 support | Rank Math redirect manager |
-| `@ccbd-seo/schema` | Type-safe JSON-LD generation with validation for 20+ schema types | Rank Math schema builder |
-| `@ccbd-seo/sitemap` | Framework-agnostic XML/HTML sitemap generation with streaming | Yoast XML sitemaps |
-| `@ccbd-seo/breadcrumbs` | SEO-optimized breadcrumb components with JSON-LD | Yoast breadcrumbs |
-| `@ccbd-seo/audit` | Page-level and site-level SEO scoring dashboard | Yoast/AIOSEO site health |
-| `@ccbd-seo/search-console` | Google Search Console API integration with React hooks | Rank Math analytics |
-| `@ccbd-seo/meta` | Unified meta tag management with SSR support | Core meta tag handling |
-| `@ccbd-seo/links` | Internal link analysis and suggestions | Yoast internal linking |
+| `@power-seo/content-analysis` | Real-time content scoring, keyword density, focus keyphrase tracking | Yoast content analysis panel |
+| `@power-seo/readability` | Flesch-Kincaid, Gunning Fog, SMOG, ARI -- with React hooks | Yoast readability tab |
+| `@power-seo/preview` | Google SERP preview, Open Graph preview, Twitter Card preview components | Yoast/Rank Math social previews |
+| `@power-seo/redirects` | Programmatic redirect manager with 301/302/307/410 support | Rank Math redirect manager |
+| `@power-seo/schema` | Type-safe JSON-LD generation with validation for 20+ schema types | Rank Math schema builder |
+| `@power-seo/sitemap` | Framework-agnostic XML/HTML sitemap generation with streaming | Yoast XML sitemaps |
+| `@power-seo/breadcrumbs` | SEO-optimized breadcrumb components with JSON-LD | Yoast breadcrumbs |
+| `@power-seo/audit` | Page-level and site-level SEO scoring dashboard | Yoast/AIOSEO site health |
+| `@power-seo/search-console` | Google Search Console API integration with React hooks | Rank Math analytics |
+| `@power-seo/meta` | Unified meta tag management with SSR support | Core meta tag handling |
+| `@power-seo/links` | Internal link analysis and suggestions | Yoast internal linking |
 
 ### Design Principles
 - **Framework-agnostic core:** Analysis engines work in any JS runtime. React bindings are separate.

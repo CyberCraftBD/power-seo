@@ -1,4 +1,4 @@
-# @ccbd-seo — Final Development Plan
+# @power-seo — Final Development Plan
 
 > **Version:** 1.0.0 | **Status:** Production Release | **Date:** 2026-02-08
 
@@ -35,11 +35,11 @@
 
 ## 1. Executive Summary
 
-**@ccbd-seo** is a comprehensive, modular SEO toolkit that brings WordPress-level SEO capabilities to React and its frameworks. The project addresses a fundamental gap in the JavaScript ecosystem: while WordPress developers have five mature SEO suites (Yoast, Rank Math, AIOSEO, SEOPress, Squirrly), React/Next.js developers have nothing comparable — just scattered, single-purpose libraries.
+**@power-seo** is a comprehensive, modular SEO toolkit that brings WordPress-level SEO capabilities to React and its frameworks. The project addresses a fundamental gap in the JavaScript ecosystem: while WordPress developers have five mature SEO suites (Yoast, Rank Math, AIOSEO, SEOPress, Squirrly), React/Next.js developers have nothing comparable — just scattered, single-purpose libraries.
 
 ### Current State
 
-- **17 packages** published under the `@ccbd-seo` npm organization
+- **17 packages** published under the `@power-seo` npm organization
 - **All packages at v1.0.0** — stable API guarantee
 - **500+ tests** across all packages (vitest)
 - **Dual ESM/CJS** output with TypeScript declarations
@@ -58,7 +58,7 @@
 
 ### Market Position
 
-@ccbd-seo is the **first and only** comprehensive SEO toolkit for React that covers content analysis, readability scoring, SERP previews, structured data, sitemaps, redirects, internal linking, auditing, image SEO, AI-assisted SEO, analytics integration, and consent management — all in one coherent monorepo.
+@power-seo is the **first and only** comprehensive SEO toolkit for React that covers content analysis, readability scoring, SERP previews, structured data, sitemaps, redirects, internal linking, auditing, image SEO, AI-assisted SEO, analytics integration, and consent management — all in one coherent monorepo.
 
 ---
 
@@ -77,7 +77,7 @@
 | Search Console | Yes | Yes | Yes | Yes |
 | Internal Linking | Premium only | Free suggestions | Pro only | Pro |
 
-### React/JS Ecosystem Gaps (Pre-@ccbd-seo)
+### React/JS Ecosystem Gaps (Pre-@power-seo)
 
 | Capability | WordPress | React/Next.js |
 |------------|-----------|---------------|
@@ -102,7 +102,7 @@
 | Content analysis | yoastseo | ~15K/wk | WordPress-coupled |
 | Readability | text-readability | ~3K/wk | No UI, single algorithm |
 
-**Conclusion:** @ccbd-seo fills every gap in the table above with a unified, framework-agnostic architecture.
+**Conclusion:** @power-seo fills every gap in the table above with a unified, framework-agnostic architecture.
 
 ---
 
@@ -140,7 +140,7 @@
 ### Monorepo Structure
 
 ```
-@ccbd-seo/
+@power-seo/
 ├── packages/           # 17 publishable npm packages
 │   ├── core/           # Foundation: types, constants, utilities
 │   ├── react/          # React SEO components
@@ -223,29 +223,29 @@ Packages using this pattern: `schema`, `content-analysis`, `preview`, `tracking`
 
 | Package | Version | Tests | Export Pattern | Description |
 |---------|---------|-------|----------------|-------------|
-| `@ccbd-seo/core` | 1.0.0 | — | Single (`.`) | Types, constants, meta validators, URL utils, text stats, keyword density |
-| `@ccbd-seo/react` | 1.0.0 | — | Single (`.`) | React SEO components: SEO, DefaultSEO, OpenGraph, TwitterCard, Canonical, Robots, Hreflang, Breadcrumb |
-| `@ccbd-seo/schema` | 1.0.0 | — | Dual (`.` + `./react`) | 19 JSON-LD builder functions + 19 React components |
-| `@ccbd-seo/content-analysis` | 1.0.0 | 47 | Dual (`.` + `./react`) | Yoast-style content scoring with 7 check functions + 3 React components |
-| `@ccbd-seo/preview` | 1.0.0 | 36 | Dual (`.` + `./react`) | SERP, OG, Twitter preview generators + 4 React components |
-| `@ccbd-seo/readability` | 1.0.0 | 28 | Single (`.`) | 4 readability algorithms + combined analyzer |
-| `@ccbd-seo/sitemap` | 1.0.0 | 33 | Single (`.`) | XML sitemap generation, streaming, validation, index splitting |
-| `@ccbd-seo/redirects` | 1.0.0 | 47 | Single (`.`) | Redirect engine with glob/regex matching + framework adapters |
-| `@ccbd-seo/links` | 1.0.0 | 31 | Single (`.`) | Link graph, orphan detection, suggestions, equity scoring |
-| `@ccbd-seo/audit` | 1.0.0 | 44 | Single (`.`) | Page/site auditing across 4 rule categories |
-| `@ccbd-seo/images` | 1.0.0 | 40 | Single (`.`) | Alt text, lazy loading, format optimization, image sitemaps |
-| `@ccbd-seo/ai` | 1.0.0 | 40 | Single (`.`) | LLM-agnostic prompt templates + response parsers |
-| `@ccbd-seo/analytics` | 1.0.0 | 33 | Single (`.`) | GSC + audit data merging, trends, rankings, dashboard |
-| `@ccbd-seo/search-console` | 1.0.0 | 26 | Single (`.`) | Google Search Console API client |
-| `@ccbd-seo/integrations` | 1.0.0 | 19 | Single (`.`) | Semrush + Ahrefs API clients |
-| `@ccbd-seo/tracking` | 1.0.0 | 38 | Dual (`.` + `./react`) | Script builders, API clients, consent + 2 React components |
-| `@ccbd-seo/meta` | 1.0.0 | 28 | Single (`.`) | Next.js, Remix, generic SSR meta tag helpers |
+| `@power-seo/core` | 1.0.0 | — | Single (`.`) | Types, constants, meta validators, URL utils, text stats, keyword density |
+| `@power-seo/react` | 1.0.0 | — | Single (`.`) | React SEO components: SEO, DefaultSEO, OpenGraph, TwitterCard, Canonical, Robots, Hreflang, Breadcrumb |
+| `@power-seo/schema` | 1.0.0 | — | Dual (`.` + `./react`) | 19 JSON-LD builder functions + 19 React components |
+| `@power-seo/content-analysis` | 1.0.0 | 47 | Dual (`.` + `./react`) | Yoast-style content scoring with 7 check functions + 3 React components |
+| `@power-seo/preview` | 1.0.0 | 36 | Dual (`.` + `./react`) | SERP, OG, Twitter preview generators + 4 React components |
+| `@power-seo/readability` | 1.0.0 | 28 | Single (`.`) | 4 readability algorithms + combined analyzer |
+| `@power-seo/sitemap` | 1.0.0 | 33 | Single (`.`) | XML sitemap generation, streaming, validation, index splitting |
+| `@power-seo/redirects` | 1.0.0 | 47 | Single (`.`) | Redirect engine with glob/regex matching + framework adapters |
+| `@power-seo/links` | 1.0.0 | 31 | Single (`.`) | Link graph, orphan detection, suggestions, equity scoring |
+| `@power-seo/audit` | 1.0.0 | 44 | Single (`.`) | Page/site auditing across 4 rule categories |
+| `@power-seo/images` | 1.0.0 | 40 | Single (`.`) | Alt text, lazy loading, format optimization, image sitemaps |
+| `@power-seo/ai` | 1.0.0 | 40 | Single (`.`) | LLM-agnostic prompt templates + response parsers |
+| `@power-seo/analytics` | 1.0.0 | 33 | Single (`.`) | GSC + audit data merging, trends, rankings, dashboard |
+| `@power-seo/search-console` | 1.0.0 | 26 | Single (`.`) | Google Search Console API client |
+| `@power-seo/integrations` | 1.0.0 | 19 | Single (`.`) | Semrush + Ahrefs API clients |
+| `@power-seo/tracking` | 1.0.0 | 38 | Dual (`.` + `./react`) | Script builders, API clients, consent + 2 React components |
+| `@power-seo/meta` | 1.0.0 | 28 | Single (`.`) | Next.js, Remix, generic SSR meta tag helpers |
 
 ---
 
 ## 6. Package Implementation
 
-### 6.1 @ccbd-seo/core
+### 6.1 @power-seo/core
 
 Foundation package providing shared types, constants, and utility functions consumed by all other packages.
 
@@ -263,7 +263,7 @@ Foundation package providing shared types, constants, and utility functions cons
 | `robots-builder.ts` | `buildRobotsContent()`, `parseRobotsContent()` |
 | `meta-builder.ts` | `buildMetaTags()`, `buildLinkTags()`, `buildOpenGraphTags()`, `buildTwitterTags()`, `buildHreflangTags()`, `resolveTitle()` |
 
-### 6.2 @ccbd-seo/react
+### 6.2 @power-seo/react
 
 React components for SEO meta tag management.
 
@@ -282,7 +282,7 @@ React components for SEO meta tag management.
 
 **Utilities:** `SEOContext`, `useDefaultSEO()`, `renderMetaTags()`, `renderLinkTags()`
 
-### 6.3 @ccbd-seo/schema
+### 6.3 @power-seo/schema
 
 Type-safe JSON-LD structured data with 19 builder functions and 19 React components.
 
@@ -294,7 +294,7 @@ Type-safe JSON-LD structured data with 19 builder functions and 19 React compone
 **React Components (./react):**
 `JsonLd`, `ArticleJsonLd`, `BlogPostingJsonLd`, `NewsArticleJsonLd`, `ProductJsonLd`, `FAQJsonLd`, `BreadcrumbJsonLd`, `LocalBusinessJsonLd`, `OrganizationJsonLd`, `EventJsonLd`, `RecipeJsonLd`, `HowToJsonLd`, `VideoJsonLd`, `CourseJsonLd`, `JobPostingJsonLd`, `SoftwareAppJsonLd`, `WebSiteJsonLd`, `ReviewJsonLd`, `ServiceJsonLd`
 
-### 6.4 @ccbd-seo/content-analysis
+### 6.4 @power-seo/content-analysis
 
 Yoast-style content scoring engine with 7 individual checks.
 
@@ -309,7 +309,7 @@ Yoast-style content scoring engine with 7 individual checks.
 | `CheckList` | `{ results: AnalysisResult[] }` | List of check results with status icons |
 | `ContentAnalyzer` | `{ input: ContentAnalysisInput, config?: AnalysisConfig }` | All-in-one: runs analysis, renders ScorePanel + CheckList |
 
-### 6.5 @ccbd-seo/preview
+### 6.5 @power-seo/preview
 
 SERP, Open Graph, and Twitter Card preview generators.
 
@@ -325,14 +325,14 @@ SERP, Open Graph, and Twitter Card preview generators.
 | `TwitterPreview` | `{ cardType, title, description, image?, site? }` | Twitter/X card mockup |
 | `PreviewPanel` | `{ title, description, url, image?, siteName?, siteTitle?, twitterSite?, twitterCardType? }` | Tabbed container with all three previews |
 
-### 6.6 @ccbd-seo/readability
+### 6.6 @power-seo/readability
 
 Four readability algorithms with a combined analyzer.
 
 **Functions:**
 `analyzeReadability()`, `fleschReadingEase()`, `fleschKincaidGrade()`, `gunningFog()`, `colemanLiau()`, `automatedReadability()`
 
-### 6.7 @ccbd-seo/sitemap
+### 6.7 @power-seo/sitemap
 
 XML sitemap generation with streaming and validation.
 
@@ -341,21 +341,21 @@ XML sitemap generation with streaming and validation.
 
 **Constants:** `MAX_URLS_PER_SITEMAP`, `MAX_SITEMAP_SIZE_BYTES`
 
-### 6.8 @ccbd-seo/redirects
+### 6.8 @power-seo/redirects
 
 Redirect engine with URL pattern matching and framework adapters.
 
 **Functions:**
 `createRedirectEngine()`, `matchExact()`, `matchGlob()`, `matchRegex()`, `substituteParams()`, `toNextRedirects()`, `createRemixRedirectHandler()`, `createExpressRedirectMiddleware()`
 
-### 6.9 @ccbd-seo/links
+### 6.9 @power-seo/links
 
 Internal link analysis, orphan detection, and link equity scoring.
 
 **Functions:**
 `buildLinkGraph()`, `findOrphanPages()`, `suggestLinks()`, `analyzeLinkEquity()`
 
-### 6.10 @ccbd-seo/audit
+### 6.10 @power-seo/audit
 
 Page-level and site-level SEO health auditing across 4 categories.
 
@@ -364,42 +364,42 @@ Page-level and site-level SEO health auditing across 4 categories.
 
 **Categories:** meta, content, structure, performance
 
-### 6.11 @ccbd-seo/images
+### 6.11 @power-seo/images
 
 Deep image SEO analysis.
 
 **Functions:**
 `analyzeAltText()`, `auditLazyLoading()`, `detectFormat()`, `getFormatRecommendation()`, `analyzeImageFormats()`, `extractImageEntries()`, `generateImageSitemap()`
 
-### 6.12 @ccbd-seo/ai
+### 6.12 @power-seo/ai
 
 LLM-agnostic prompt templates and response parsers.
 
 **Functions:**
 `buildMetaDescriptionPrompt()`, `parseMetaDescriptionResponse()`, `buildContentSuggestionsPrompt()`, `parseContentSuggestionsResponse()`, `buildSerpPredictionPrompt()`, `parseSerpPredictionResponse()`, `analyzeSerpEligibility()`, `buildTitlePrompt()`, `parseTitleResponse()`
 
-### 6.13 @ccbd-seo/analytics
+### 6.13 @power-seo/analytics
 
 Analytics data processing and dashboard generation.
 
 **Functions:**
 `mergeGscWithAudit()`, `correlateScoreAndTraffic()`, `analyzeTrend()`, `buildTrendLines()`, `detectAnomalies()`, `analyzeQueryRankings()`, `trackPositionChanges()`, `buildDashboardData()`
 
-### 6.14 @ccbd-seo/search-console
+### 6.14 @power-seo/search-console
 
 Google Search Console API client.
 
 **Functions:**
 `createGSCClient()`, `exchangeRefreshToken()`, `getServiceAccountToken()`, `createTokenManager()`, `querySearchAnalytics()`, `querySearchAnalyticsAll()`, `inspectUrl()`, `inspectUrlDirect()`, `listSitemaps()`, `submitSitemap()`, `deleteSitemap()`
 
-### 6.15 @ccbd-seo/integrations
+### 6.15 @power-seo/integrations
 
 Semrush and Ahrefs API clients.
 
 **Functions:**
 `createHttpClient()`, `createSemrushClient()`, `createAhrefsClient()`
 
-### 6.16 @ccbd-seo/tracking
+### 6.16 @power-seo/tracking
 
 Analytics script builders, API clients, and consent management.
 
@@ -416,7 +416,7 @@ Analytics script builders, API clients, and consent management.
 | `AnalyticsScript` | `{ scripts: ScriptConfig[], consent: ConsentState }` | Consent-aware script tag renderer |
 | `ConsentBanner` | `{ manager: ConsentManager, privacyPolicyUrl?: string }` | GDPR cookie consent banner |
 
-### 6.17 @ccbd-seo/meta
+### 6.17 @power-seo/meta
 
 SSR meta tag helpers for Next.js, Remix, and generic SSR.
 
@@ -431,7 +431,7 @@ SSR meta tag helpers for Next.js, Remix, and generic SSR.
 
 ```ts
 // app/layout.tsx
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 
 export const metadata = createMetadata({
   title: 'My Site',
@@ -445,7 +445,7 @@ export const metadata = createMetadata({
 
 ```ts
 // app/routes/blog.$slug.tsx
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@power-seo/meta';
 
 export const meta = () => createMetaDescriptors({
   title: 'Blog Post',
@@ -457,7 +457,7 @@ export const meta = () => createMetaDescriptors({
 ### Generic SSR
 
 ```ts
-import { createHeadTags } from '@ccbd-seo/meta';
+import { createHeadTags } from '@power-seo/meta';
 
 const html = createHeadTags({
   title: 'My Page',
@@ -469,7 +469,7 @@ const html = createHeadTags({
 
 ### Astro / Any Framework
 
-Use the framework-agnostic builder functions from `@ccbd-seo/core` and `@ccbd-seo/schema` directly — no React dependency needed.
+Use the framework-agnostic builder functions from `@power-seo/core` and `@power-seo/schema` directly — no React dependency needed.
 
 ---
 
@@ -539,7 +539,7 @@ interface ContentAnalysisOutput {
 
 ### GDPR Compliance
 
-- `@ccbd-seo/tracking` includes a `createConsentManager()` with cookie categories: `necessary`, `analytics`, `marketing`, `preferences`
+- `@power-seo/tracking` includes a `createConsentManager()` with cookie categories: `necessary`, `analytics`, `marketing`, `preferences`
 - `necessary` category cannot be revoked
 - All script builders accept a `shouldLoad(consent)` callback — scripts only load when consent is granted
 - `ConsentBanner` React component provides accept/reject all functionality
@@ -573,8 +573,8 @@ interface ContentAnalysisOutput {
 
 The content analysis system spans two packages:
 
-1. **@ccbd-seo/core** — Provides text statistics, keyword density calculation, and meta validation
-2. **@ccbd-seo/content-analysis** — Orchestrates 7 checks into a scored analysis report
+1. **@power-seo/core** — Provides text statistics, keyword density calculation, and meta validation
+2. **@power-seo/content-analysis** — Orchestrates 7 checks into a scored analysis report
 
 ### Analysis Pipeline
 
@@ -655,7 +655,7 @@ Plus:
 
 ## 12. Technical SEO Tools
 
-### Sitemaps (@ccbd-seo/sitemap)
+### Sitemaps (@power-seo/sitemap)
 
 - **generateSitemap()** — Build XML sitemap from URL array with support for images, videos, news, and alternate hreflang
 - **splitSitemap()** — Split large URL sets at the 50,000 URL / 50MB limit
@@ -663,7 +663,7 @@ Plus:
 - **streamSitemap()** — Streaming XML output for server responses (memory-efficient for large sites)
 - **validateSitemapUrl()** — Validate individual URLs against sitemap spec
 
-### Redirects (@ccbd-seo/redirects)
+### Redirects (@power-seo/redirects)
 
 - **createRedirectEngine()** — Create engine from rules array, evaluate incoming URLs
 - **Pattern Matching:** exact, glob (`/blog/*`), regex (`/old-(.+)`)
@@ -673,21 +673,21 @@ Plus:
   - `createRemixRedirectHandler()` — Remix loader redirect handler
   - `createExpressRedirectMiddleware()` — Express middleware
 
-### Links (@ccbd-seo/links)
+### Links (@power-seo/links)
 
 - **buildLinkGraph()** — Directed graph of internal links from page data
 - **findOrphanPages()** — Pages with zero inbound internal links
 - **suggestLinks()** — Keyword-based internal link suggestions
 - **analyzeLinkEquity()** — PageRank-style link value distribution
 
-### Images (@ccbd-seo/images)
+### Images (@power-seo/images)
 
 - **analyzeAltText()** — Deep quality analysis (missing, too short/long, filename patterns, duplicates, keyphrase presence)
 - **auditLazyLoading()** — CWV-aware checks (above-fold lazy loading, missing dimensions, srcset/sizes)
 - **detectFormat() / analyzeImageFormats()** — Format detection and modern format recommendations (WebP, AVIF)
 - **generateImageSitemap()** — Dedicated image sitemap XML with `<image:image>` extensions
 
-### Auditing (@ccbd-seo/audit)
+### Auditing (@power-seo/audit)
 
 - **auditPage()** — Run all 4 rule categories on a single page
 - **auditSite()** — Aggregate page audits into site-level report
@@ -738,7 +738,7 @@ Plus:
 
 ## 14. External Integrations
 
-### Google Search Console (@ccbd-seo/search-console)
+### Google Search Console (@power-seo/search-console)
 
 | Function | API Endpoint | Purpose |
 |----------|-------------|---------|
@@ -754,7 +754,7 @@ Plus:
 **Auth:** OAuth 2.0 (user consent) or Service Account (server-to-server)
 **Rate limiting:** Built-in token bucket (1,200 req/min)
 
-### Semrush (@ccbd-seo/integrations)
+### Semrush (@power-seo/integrations)
 
 `createSemrushClient(apiKey)` provides:
 - `getDomainOverview()` — Traffic, keywords, backlinks summary
@@ -763,7 +763,7 @@ Plus:
 - `getKeywordDifficulty()` — Difficulty scores
 - `getRelatedKeywords()` — Related keyword suggestions
 
-### Ahrefs (@ccbd-seo/integrations)
+### Ahrefs (@power-seo/integrations)
 
 `createAhrefsClient(apiKey)` provides:
 - `getSiteOverview()` — Domain rating, organic traffic, backlinks
@@ -772,7 +772,7 @@ Plus:
 - `getKeywordDifficulty()` — Keyword difficulty scores
 - `getReferringDomains()` — Referring domains list
 
-### Analytics Platforms (@ccbd-seo/tracking)
+### Analytics Platforms (@power-seo/tracking)
 
 | Platform | Script Builder | API Client |
 |----------|---------------|------------|
@@ -790,9 +790,9 @@ Plus:
 
 ```
 Google Search Console API
-  → querySearchAnalytics()           @ccbd-seo/search-console
-  → mergeGscWithAudit(gscData, auditData)   @ccbd-seo/analytics
-  → buildDashboardData(mergedData)          @ccbd-seo/analytics
+  → querySearchAnalytics()           @power-seo/search-console
+  → mergeGscWithAudit(gscData, auditData)   @power-seo/analytics
+  → buildDashboardData(mergedData)          @power-seo/analytics
   → DashboardData { overview, topPages, topQueries, trends, issues }
 ```
 
@@ -850,7 +850,7 @@ const ga4Scripts = buildGA4Script('G-XXXXXXX');
 ### React Integration
 
 ```tsx
-import { AnalyticsScript, ConsentBanner } from '@ccbd-seo/tracking/react';
+import { AnalyticsScript, ConsentBanner } from '@power-seo/tracking/react';
 
 <AnalyticsScript scripts={allScripts} consent={manager.getState()} />
 <ConsentBanner manager={manager} privacyPolicyUrl="/privacy" />
@@ -873,27 +873,27 @@ import { AnalyticsScript, ConsentBanner } from '@ccbd-seo/tracking/react';
 
 | Package | Import | Description |
 |---------|--------|-------------|
-| `@ccbd-seo/core` | `@ccbd-seo/core` | Types, constants, utilities |
-| `@ccbd-seo/react` | `@ccbd-seo/react` | React components |
-| `@ccbd-seo/schema` | `@ccbd-seo/schema` | Builder functions, types, validation |
-| `@ccbd-seo/schema` | `@ccbd-seo/schema/react` | React JSON-LD components |
-| `@ccbd-seo/content-analysis` | `@ccbd-seo/content-analysis` | Analysis functions, types |
-| `@ccbd-seo/content-analysis` | `@ccbd-seo/content-analysis/react` | ScorePanel, CheckList, ContentAnalyzer |
-| `@ccbd-seo/preview` | `@ccbd-seo/preview` | Preview generators, types |
-| `@ccbd-seo/preview` | `@ccbd-seo/preview/react` | SerpPreview, OgPreview, TwitterPreview, PreviewPanel |
-| `@ccbd-seo/readability` | `@ccbd-seo/readability` | Readability algorithms |
-| `@ccbd-seo/sitemap` | `@ccbd-seo/sitemap` | Sitemap generation |
-| `@ccbd-seo/redirects` | `@ccbd-seo/redirects` | Redirect engine |
-| `@ccbd-seo/links` | `@ccbd-seo/links` | Link analysis |
-| `@ccbd-seo/audit` | `@ccbd-seo/audit` | SEO auditing |
-| `@ccbd-seo/images` | `@ccbd-seo/images` | Image SEO |
-| `@ccbd-seo/ai` | `@ccbd-seo/ai` | AI prompt templates |
-| `@ccbd-seo/analytics` | `@ccbd-seo/analytics` | Analytics dashboard |
-| `@ccbd-seo/search-console` | `@ccbd-seo/search-console` | GSC API client |
-| `@ccbd-seo/integrations` | `@ccbd-seo/integrations` | Semrush + Ahrefs clients |
-| `@ccbd-seo/tracking` | `@ccbd-seo/tracking` | Scripts, API clients, consent |
-| `@ccbd-seo/tracking` | `@ccbd-seo/tracking/react` | AnalyticsScript, ConsentBanner |
-| `@ccbd-seo/meta` | `@ccbd-seo/meta` | SSR meta helpers |
+| `@power-seo/core` | `@power-seo/core` | Types, constants, utilities |
+| `@power-seo/react` | `@power-seo/react` | React components |
+| `@power-seo/schema` | `@power-seo/schema` | Builder functions, types, validation |
+| `@power-seo/schema` | `@power-seo/schema/react` | React JSON-LD components |
+| `@power-seo/content-analysis` | `@power-seo/content-analysis` | Analysis functions, types |
+| `@power-seo/content-analysis` | `@power-seo/content-analysis/react` | ScorePanel, CheckList, ContentAnalyzer |
+| `@power-seo/preview` | `@power-seo/preview` | Preview generators, types |
+| `@power-seo/preview` | `@power-seo/preview/react` | SerpPreview, OgPreview, TwitterPreview, PreviewPanel |
+| `@power-seo/readability` | `@power-seo/readability` | Readability algorithms |
+| `@power-seo/sitemap` | `@power-seo/sitemap` | Sitemap generation |
+| `@power-seo/redirects` | `@power-seo/redirects` | Redirect engine |
+| `@power-seo/links` | `@power-seo/links` | Link analysis |
+| `@power-seo/audit` | `@power-seo/audit` | SEO auditing |
+| `@power-seo/images` | `@power-seo/images` | Image SEO |
+| `@power-seo/ai` | `@power-seo/ai` | AI prompt templates |
+| `@power-seo/analytics` | `@power-seo/analytics` | Analytics dashboard |
+| `@power-seo/search-console` | `@power-seo/search-console` | GSC API client |
+| `@power-seo/integrations` | `@power-seo/integrations` | Semrush + Ahrefs clients |
+| `@power-seo/tracking` | `@power-seo/tracking` | Scripts, API clients, consent |
+| `@power-seo/tracking` | `@power-seo/tracking/react` | AnalyticsScript, ConsentBanner |
+| `@power-seo/meta` | `@power-seo/meta` | SSR meta helpers |
 
 ### Module Format
 
@@ -937,7 +937,7 @@ Built with [Starlight](https://starlight.astro.build/) (Astro-based), deployed t
 
 ### npm Publishing
 
-- **Organization:** `@ccbd-seo` on npm
+- **Organization:** `@power-seo` on npm
 - **License:** MIT
 - **Access:** Public
 - **Versioning:** Managed via Changesets
@@ -1076,9 +1076,9 @@ Phase 6  ──▶  meta + docs site + examples + v1.0.0 release        ✅ Done
 
 | Package | Purpose | Priority |
 |---------|---------|----------|
-| `@ccbd-seo/local` | Local SEO — Google Business Profile schema, NAP consistency | Medium |
-| `@ccbd-seo/ecommerce` | E-commerce SEO — Product enrichment, faceted navigation | Medium |
-| `@ccbd-seo/i18n` | Multilingual SEO — Hreflang graph validation, locale-aware sitemaps | Low |
+| `@power-seo/local` | Local SEO — Google Business Profile schema, NAP consistency | Medium |
+| `@power-seo/ecommerce` | E-commerce SEO — Product enrichment, faceted navigation | Medium |
+| `@power-seo/i18n` | Multilingual SEO — Hreflang graph validation, locale-aware sitemaps | Low |
 
 ---
 
@@ -1145,7 +1145,7 @@ Phase 6  ──▶  meta + docs site + examples + v1.0.0 release        ✅ Done
 
 ## 24. Strategic Gap Analysis & Market Opportunities
 
-### Where @ccbd-seo Wins
+### Where @power-seo Wins
 
 | Advantage | Details |
 |-----------|---------|
@@ -1160,9 +1160,9 @@ Phase 6  ──▶  meta + docs site + examples + v1.0.0 release        ✅ Done
 
 | Threat | Mitigation |
 |--------|-----------|
-| Next.js builds SEO features into the framework | @ccbd-seo works alongside `next/metadata`, adds what Next.js doesn't (analysis, previews, auditing) |
+| Next.js builds SEO features into the framework | @power-seo works alongside `next/metadata`, adds what Next.js doesn't (analysis, previews, auditing) |
 | Vercel ships an SEO package | Focus on depth and breadth — 17 packages vs a single utility |
-| WordPress ecosystem extends to headless | @ccbd-seo is React-native, not a WordPress bridge |
+| WordPress ecosystem extends to headless | @power-seo is React-native, not a WordPress bridge |
 | Another OSS project copies the approach | First-mover advantage, community trust, established npm presence |
 
 ### Market Sizing
@@ -1177,7 +1177,7 @@ Phase 6  ──▶  meta + docs site + examples + v1.0.0 release        ✅ Done
 ```
                     WordPress SEO                    React/JS SEO
                     ─────────────                    ────────────
-                    Yoast, Rank Math,                @ccbd-seo
+                    Yoast, Rank Math,                @power-seo
                     AIOSEO, SEOPress                 (only comprehensive option)
 
 Complexity:         Monolithic plugins               Modular packages
@@ -1192,7 +1192,7 @@ Monetization:       Premium plugins                  Free core + paid intelligen
 1. **Become the "Tailwind of SEO"** — Utility-first, composable, developer-loved
 2. **Integration partnerships** — Official Vercel/Netlify marketplace listings
 3. **Content platform partnerships** — CMS integrations (Contentful, Sanity, Strapi)
-4. **Educational content** — SEO courses using @ccbd-seo as the teaching tool
+4. **Educational content** — SEO courses using @power-seo as the teaching tool
 5. **Enterprise consulting** — Custom SEO implementation for large React applications
 
 ---
@@ -1217,4 +1217,4 @@ Monetization:       Premium plugins                  Free core + paid intelligen
 
 ---
 
-*Document generated 2026-02-08. This is the authoritative development plan for the @ccbd-seo project.*
+*Document generated 2026-02-08. This is the authoritative development plan for the @power-seo project.*

@@ -1,6 +1,6 @@
 # API Research
 
-Integration reference for `@ccbd-seo/*` packages. Covers Google Search Console, Semrush, and Ahrefs APIs.
+Integration reference for `@power-seo/*` packages. Covers Google Search Console, Semrush, and Ahrefs APIs.
 
 ---
 
@@ -148,7 +148,7 @@ JSON output is **not** natively supported for most endpoints. Parse CSV/TSV resp
 |---|---|
 | `semrush-api` | Community wrapper. Handles request formatting and response parsing. Not officially maintained by Semrush. Verify before production use. |
 
-**Recommendation:** Build a thin wrapper in `@ccbd-seo/integrations` rather than depending on the community package. The API is simple enough (HTTP GET + CSV parsing) that a direct implementation is more reliable.
+**Recommendation:** Build a thin wrapper in `@power-seo/integrations` rather than depending on the community package. The API is simple enough (HTTP GET + CSV parsing) that a direct implementation is more reliable.
 
 ---
 
@@ -226,14 +226,14 @@ JSON by default. Paginated responses include an `items` array and pagination met
 
 **No official npm SDK.** Ahrefs does not publish a client library.
 
-**Recommendation:** Build a typed HTTP client in `@ccbd-seo/integrations` using `fetch` or `undici`. The API is RESTful JSON -- straightforward to wrap. Key concerns:
+**Recommendation:** Build a typed HTTP client in `@power-seo/integrations` using `fetch` or `undici`. The API is RESTful JSON -- straightforward to wrap. Key concerns:
 - Handle rate limiting with exponential backoff
 - Cache responses aggressively (Ahrefs data updates ~daily)
 - Track unit consumption to avoid surprise overages
 
 ---
 
-## Integration Priority for @ccbd-seo/*
+## Integration Priority for @power-seo/*
 
 | API | Priority | Rationale |
 |---|---|---|

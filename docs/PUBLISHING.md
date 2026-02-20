@@ -1,6 +1,6 @@
-# Publishing @ccbd-seo Packages to npm
+# Publishing @power-seo Packages to npm
 
-> Step-by-step guide to publishing all 17 `@ccbd-seo/*` packages to [npmjs.com](https://www.npmjs.com/).
+> Step-by-step guide to publishing all 17 `@power-seo/*` packages to [npmjs.com](https://www.npmjs.com/).
 
 ---
 
@@ -23,17 +23,17 @@ Before publishing, you need:
 2. Create an account (or sign in if you already have one)
 3. Verify your email address
 
-### Step 2 — Create the `@ccbd-seo` npm Organization
+### Step 2 — Create the `@power-seo` npm Organization
 
-Scoped packages (`@ccbd-seo/*`) require an npm organization.
+Scoped packages (`@power-seo/*`) require an npm organization.
 
 1. Sign in to [npmjs.com](https://www.npmjs.com/)
 2. Click your profile icon (top right) -> **Add an Organization**
-3. Organization name: `ccbd-seo`
+3. Organization name: `power-seo`
 4. Choose the **free** (Unlimited public packages) plan
 5. Click **Create**
 
-> **Note:** The org name must match the scope in your package names (`@ccbd-seo/core`, etc.)
+> **Note:** The org name must match the scope in your package names (`@power-seo/core`, etc.)
 
 ### Step 3 — Generate an npm Access Token
 
@@ -42,7 +42,7 @@ You need a token for both local publishing and GitHub Actions automation.
 1. Go to [npmjs.com](https://www.npmjs.com/) -> click your profile icon -> **Access Tokens**
 2. Click **Generate New Token** -> **Classic Token**
 3. Select type: **Automation** (this bypasses 2FA for CI/CD)
-4. Give it a name (e.g., `ccbd-seo-publish`)
+4. Give it a name (e.g., `power-seo-publish`)
 5. Click **Generate Token**
 6. **Copy the token immediately** — you won't see it again
 
@@ -64,7 +64,7 @@ npm whoami
 ### Step 5 — Create a GitHub Repository
 
 1. Go to [github.com/new](https://github.com/new)
-2. Repository name: `ccbd-seo` (or your preferred name)
+2. Repository name: `power-seo` (or your preferred name)
 3. Visibility: **Public** (required for free npm org)
 4. Do NOT initialize with README (you already have one)
 5. Click **Create repository**
@@ -72,7 +72,7 @@ npm whoami
 Then push your local code:
 
 ```bash
-git remote add origin https://github.com/YOUR-USERNAME/ccbd-seo.git
+git remote add origin https://github.com/YOUR-USERNAME/power-seo.git
 git branch -M main
 git push -u origin main
 ```
@@ -129,23 +129,23 @@ pnpm -r publish --access public --no-git-checks
 **Important:** Packages must be published in dependency order. pnpm handles this automatically with `-r`, but if you get errors about missing dependencies, publish in this order:
 
 ```
-1. @ccbd-seo/core           (no dependencies)
-2. @ccbd-seo/react           (depends on core)
-3. @ccbd-seo/schema          (depends on core)
-4. @ccbd-seo/content-analysis (depends on core)
-5. @ccbd-seo/preview         (depends on core)
-6. @ccbd-seo/readability     (depends on core)
-7. @ccbd-seo/sitemap         (depends on core)
-8. @ccbd-seo/redirects       (depends on core)
-9. @ccbd-seo/links           (depends on core)
-10. @ccbd-seo/images          (depends on core)
-11. @ccbd-seo/ai              (depends on core)
-12. @ccbd-seo/search-console  (depends on core)
-13. @ccbd-seo/integrations    (depends on core)
-14. @ccbd-seo/tracking        (depends on core)
-15. @ccbd-seo/audit           (depends on core + content-analysis + readability + schema)
-16. @ccbd-seo/analytics       (depends on core + audit)
-17. @ccbd-seo/meta            (depends on core)
+1. @power-seo/core           (no dependencies)
+2. @power-seo/react           (depends on core)
+3. @power-seo/schema          (depends on core)
+4. @power-seo/content-analysis (depends on core)
+5. @power-seo/preview         (depends on core)
+6. @power-seo/readability     (depends on core)
+7. @power-seo/sitemap         (depends on core)
+8. @power-seo/redirects       (depends on core)
+9. @power-seo/links           (depends on core)
+10. @power-seo/images          (depends on core)
+11. @power-seo/ai              (depends on core)
+12. @power-seo/search-console  (depends on core)
+13. @power-seo/integrations    (depends on core)
+14. @power-seo/tracking        (depends on core)
+15. @power-seo/audit           (depends on core + content-analysis + readability + schema)
+16. @power-seo/analytics       (depends on core + audit)
+17. @power-seo/meta            (depends on core)
 ```
 
 To publish a single package manually:
@@ -160,13 +160,13 @@ npm publish --access public
 After publishing, verify each package is live:
 
 ```bash
-npm view @ccbd-seo/core
-npm view @ccbd-seo/react
-npm view @ccbd-seo/schema
+npm view @power-seo/core
+npm view @power-seo/react
+npm view @power-seo/schema
 # ... etc.
 ```
 
-Or visit: `https://www.npmjs.com/package/@ccbd-seo/core`
+Or visit: `https://www.npmjs.com/package/@power-seo/core`
 
 ---
 
@@ -219,8 +219,8 @@ This creates a markdown file in `.changeset/` (e.g., `.changeset/happy-cats-danc
 
 ```md
 ---
-"@ccbd-seo/core": patch
-"@ccbd-seo/content-analysis": patch
+"@power-seo/core": patch
+"@power-seo/content-analysis": patch
 ---
 
 Fix keyword density calculation for multi-word keyphrases
@@ -293,7 +293,7 @@ npm whoami  # Verify you're logged in
 ### "You do not have permission to publish"
 
 Make sure:
-1. The `@ccbd-seo` org exists on npm
+1. The `@power-seo` org exists on npm
 2. Your account is a member of the org
 3. You're using `--access public`
 
@@ -340,7 +340,7 @@ Turborepo handles the correct build order automatically.
 ### Add Team Members
 
 ```bash
-npm org set ccbd-seo USERNAME developer
+npm org set power-seo USERNAME developer
 ```
 
 Roles:
@@ -351,13 +351,13 @@ Roles:
 ### Remove Team Members
 
 ```bash
-npm org rm ccbd-seo USERNAME
+npm org rm power-seo USERNAME
 ```
 
 ### Check Organization Members
 
 ```bash
-npm org ls ccbd-seo
+npm org ls power-seo
 ```
 
 ---
@@ -385,16 +385,16 @@ npm org ls ccbd-seo
 | Publish all packages | `pnpm release` |
 | Publish single package | `cd packages/core && npm publish --access public` |
 | Preview package contents | `npm pack --dry-run` |
-| Check package on npm | `npm view @ccbd-seo/core` |
-| Unpublish (within 72h) | `npm unpublish @ccbd-seo/core@1.0.0` |
-| Deprecate a version | `npm deprecate @ccbd-seo/core@1.0.0 "Use 1.0.1 instead"` |
+| Check package on npm | `npm view @power-seo/core` |
+| Unpublish (within 72h) | `npm unpublish @power-seo/core@1.0.0` |
+| Deprecate a version | `npm deprecate @power-seo/core@1.0.0 "Use 1.0.1 instead"` |
 
 ---
 
 ## Checklist: First Publish
 
 - [ ] npm account created and email verified
-- [ ] `@ccbd-seo` organization created on npm
+- [ ] `@power-seo` organization created on npm
 - [ ] npm access token generated (Automation type)
 - [ ] `npm login` successful locally
 - [ ] GitHub repository created and code pushed
@@ -404,4 +404,4 @@ npm org ls ccbd-seo
 - [ ] `npm pack --dry-run` reviewed (no secrets in output)
 - [ ] `pnpm -r publish --access public --no-git-checks` succeeded
 - [ ] Packages visible on npmjs.com
-- [ ] `npm install @ccbd-seo/core` works in a test project
+- [ ] `npm install @power-seo/core` works in a test project

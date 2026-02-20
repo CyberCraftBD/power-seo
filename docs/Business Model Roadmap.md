@@ -1,4 +1,4 @@
-# CCBD-SEO Roadmap — Reputation‑First Monetization
+# power-seo Roadmap — Reputation‑First Monetization
 
 > **Principle:** Reputation and user trust come first.  
 > **Rule:** All npm packages stay free forever. Paid value is added gradually through **AI, scale, and cloud services**, never by restricting existing features.
@@ -48,7 +48,7 @@ No free feature is ever removed or degraded.
 **Goal:** Become the default SEO toolkit for React.
 
 ### What ships
-- All current `@ccbd-seo/*` packages
+- All current `@power-seo/*` packages
 - Deterministic SEO analysis
 - Content analysis & readability
 - SERP / OG previews
@@ -219,7 +219,7 @@ Cloud services build scale.**
 
 ## Risk Analysis — Reputation & Revenue Protection
 
-This section identifies **key risks** in monetizing CCBD-SEO and defines **mitigations** to protect long-term trust, adoption, and sustainability.
+This section identifies **key risks** in monetizing power-seo and defines **mitigations** to protect long-term trust, adoption, and sustainability.
 
 ---
 
@@ -234,7 +234,7 @@ Community may fear future paywalls or feature removal once paid features are int
 - Public backlash (GitHub, X, Reddit)
 
 ### Mitigation
-- Public guarantee: **All `@ccbd-seo/*` packages remain free forever**
+- Public guarantee: **All `@power-seo/*` packages remain free forever**
 - Never downgrade or limit existing features
 - Clear changelog showing only *additions*, never removals
 
