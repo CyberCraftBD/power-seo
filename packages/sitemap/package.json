@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/sitemap",
+  "name": "@power-seo/sitemap",
   "version": "1.0.0",
   "description": "XML sitemap generation, streaming, and validation with image, video, and news support",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*"
+    "@power-seo/core": "workspace:*"
   },
   "devDependencies": {
     "rimraf": "^6.0.0",
@@ -43,5 +43,14 @@
     "sitemap-index",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/sitemap"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

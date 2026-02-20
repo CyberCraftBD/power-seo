@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/integrations",
+  "name": "@power-seo/integrations",
   "version": "1.0.0",
   "description": "Third-party SEO tool API clients for Semrush and Ahrefs with shared HTTP client",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*"
+    "@power-seo/core": "workspace:*"
   },
   "devDependencies": {
     "rimraf": "^6.0.0",
@@ -44,5 +44,14 @@
     "integrations",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/integrations"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

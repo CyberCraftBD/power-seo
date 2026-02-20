@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/audit",
+  "name": "@power-seo/audit",
   "version": "1.0.0",
   "description": "SEO site health auditing with meta, content, structure, and performance rules",
   "license": "MIT",
@@ -28,10 +28,10 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*",
-    "@ccbd-seo/content-analysis": "workspace:*",
-    "@ccbd-seo/readability": "workspace:*",
-    "@ccbd-seo/schema": "workspace:*"
+    "@power-seo/core": "workspace:*",
+    "@power-seo/content-analysis": "workspace:*",
+    "@power-seo/readability": "workspace:*",
+    "@power-seo/schema": "workspace:*"
   },
   "devDependencies": {
     "rimraf": "^6.0.0",
@@ -46,5 +46,14 @@
     "page-audit",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/audit"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/analytics",
+  "name": "@power-seo/analytics",
   "version": "1.0.0",
   "description": "Analytics data processing: merge GSC data with audit results, trend analysis, ranking insights",
   "license": "MIT",
@@ -28,8 +28,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*",
-    "@ccbd-seo/audit": "workspace:*"
+    "@power-seo/core": "workspace:*",
+    "@power-seo/audit": "workspace:*"
   },
   "devDependencies": {
     "rimraf": "^6.0.0",
@@ -46,5 +46,14 @@
     "dashboard",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/analytics"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/meta",
+  "name": "@power-seo/meta",
   "version": "1.0.0",
   "description": "SSR-optimized meta tag helpers for Next.js App Router, Remix, and generic SSR",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*"
+    "@power-seo/core": "workspace:*"
   },
   "devDependencies": {
     "rimraf": "^6.0.0",
@@ -45,5 +45,14 @@
     "head",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/meta"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

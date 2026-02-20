@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/search-console",
+  "name": "@power-seo/search-console",
   "version": "1.0.0",
   "description": "Google Search Console API client with OAuth2/service account auth, rate limiting, and retry",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*"
+    "@power-seo/core": "workspace:*"
   },
   "devDependencies": {
     "rimraf": "^6.0.0",
@@ -43,5 +43,14 @@
     "api",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/search-console"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/tracking",
+  "name": "@power-seo/tracking",
   "version": "1.0.0",
   "description": "Analytics platform integration with script builders, consent management, and React components",
   "license": "MIT",
@@ -64,5 +64,14 @@
     "react",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/tracking"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

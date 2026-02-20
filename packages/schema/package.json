@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/schema",
+  "name": "@power-seo/schema",
   "version": "1.0.0",
   "description": "Type-safe JSON-LD structured data builder with 25+ schema types and React components",
   "license": "MIT",
@@ -33,7 +33,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*"
+    "@power-seo/core": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
@@ -61,5 +61,14 @@
     "structured-data",
     "react"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/schema"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

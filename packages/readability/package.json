@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/readability",
+  "name": "@power-seo/readability",
   "version": "1.0.0",
   "description": "Readability scoring algorithms (Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI) with configurable thresholds",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*"
+    "@power-seo/core": "workspace:*"
   },
   "devDependencies": {
     "rimraf": "^6.0.0",
@@ -43,5 +43,14 @@
     "gunning-fog",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/readability"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

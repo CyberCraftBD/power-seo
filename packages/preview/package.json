@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/preview",
+  "name": "@power-seo/preview",
   "version": "1.0.0",
   "description": "SERP, Open Graph, and Twitter Card preview generators with React components",
   "license": "MIT",
@@ -33,7 +33,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*"
+    "@power-seo/core": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
@@ -62,5 +62,14 @@
     "twitter-card",
     "react"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/preview"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

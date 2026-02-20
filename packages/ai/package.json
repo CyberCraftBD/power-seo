@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-seo/ai",
+  "name": "@power-seo/ai",
   "version": "1.0.0",
   "description": "LLM-agnostic prompt templates and response parsers for AI-assisted SEO",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ccbd-seo/core": "workspace:*"
+    "@power-seo/core": "workspace:*"
   },
   "devDependencies": {
     "rimraf": "^6.0.0",
@@ -45,5 +45,14 @@
     "content-suggestions",
     "typescript"
   ],
-  "sideEffects": false
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "directory": "packages/ai"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
