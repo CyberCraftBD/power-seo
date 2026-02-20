@@ -1,12 +1,12 @@
 ---
-title: "@ccbd-seo/meta"
+title: "@power-seo/meta"
 description: "SSR meta tag helpers for Next.js App Router, Remix v2, and generic server-side rendering."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/meta @ccbd-seo/core
+npm install @power-seo/meta @power-seo/core
 ```
 
 ## Quick Start
@@ -14,7 +14,7 @@ npm install @ccbd-seo/meta @ccbd-seo/core
 ### Next.js App Router
 
 ```typescript
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 
 export const metadata = createMetadata({
   title: 'My Page',
@@ -31,7 +31,7 @@ export const metadata = createMetadata({
 ### Remix v2
 
 ```typescript
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@power-seo/meta';
 import type { MetaFunction } from '@remix-run/node';
 
 export const meta: MetaFunction = () => {
@@ -51,7 +51,7 @@ export const meta: MetaFunction = () => {
 ### Generic SSR (HTML string)
 
 ```typescript
-import { createHeadTags } from '@ccbd-seo/meta';
+import { createHeadTags } from '@power-seo/meta';
 
 const headHtml = createHeadTags({
   title: 'My Page',
@@ -64,7 +64,7 @@ const headHtml = createHeadTags({
 ### Programmatic (tag objects)
 
 ```typescript
-import { createHeadTagObjects } from '@ccbd-seo/meta';
+import { createHeadTagObjects } from '@power-seo/meta';
 
 const tags = createHeadTagObjects({
   title: 'My Page',

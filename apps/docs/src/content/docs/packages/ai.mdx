@@ -1,12 +1,12 @@
 ---
-title: "@ccbd-seo/ai"
+title: "@power-seo/ai"
 description: "LLM-agnostic prompt templates and response parsers for AI-assisted SEO tasks like title generation and content suggestions."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/ai
+npm install @power-seo/ai
 ```
 
 ## Quick Start
@@ -14,7 +14,7 @@ npm install @ccbd-seo/ai
 Build a prompt, send it to any LLM, then parse the response:
 
 ```typescript
-import { buildMetaDescriptionPrompt, parseMetaDescriptionResponse } from '@ccbd-seo/ai';
+import { buildMetaDescriptionPrompt, parseMetaDescriptionResponse } from '@power-seo/ai';
 
 // 1. Build the prompt
 const prompt = buildMetaDescriptionPrompt({
@@ -35,7 +35,7 @@ console.log(result.descriptions); // Array of suggested meta descriptions
 ### Title Generation
 
 ```typescript
-import { buildTitlePrompt, parseTitleResponse } from '@ccbd-seo/ai';
+import { buildTitlePrompt, parseTitleResponse } from '@power-seo/ai';
 
 const prompt = buildTitlePrompt({
   content: 'An in-depth guide to marathon training...',
@@ -49,7 +49,7 @@ const titles = parseTitleResponse(llmResponse);
 ### SERP Feature Prediction
 
 ```typescript
-import { buildSerpPredictionPrompt, parseSerpPredictionResponse } from '@ccbd-seo/ai';
+import { buildSerpPredictionPrompt, parseSerpPredictionResponse } from '@power-seo/ai';
 
 const prompt = buildSerpPredictionPrompt({
   query: 'how to tie running shoes',

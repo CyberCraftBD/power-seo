@@ -1,18 +1,18 @@
 ---
-title: "@ccbd-seo/audit"
+title: "@power-seo/audit"
 description: "SEO page and site auditing with meta, content, structure, and performance rule sets."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/audit @ccbd-seo/core @ccbd-seo/content-analysis @ccbd-seo/readability @ccbd-seo/schema
+npm install @power-seo/audit @power-seo/core @power-seo/content-analysis @power-seo/readability @power-seo/schema
 ```
 
 ## Quick Start
 
 ```typescript
-import { auditPage } from '@ccbd-seo/audit';
+import { auditPage } from '@power-seo/audit';
 
 const result = auditPage({
   url: 'https://example.com/blog/seo-guide',
@@ -27,7 +27,7 @@ console.log(result.categories);
 ### Site-Wide Audit
 
 ```typescript
-import { auditSite } from '@ccbd-seo/audit';
+import { auditSite } from '@power-seo/audit';
 
 const siteResult = auditSite({
   pages: [

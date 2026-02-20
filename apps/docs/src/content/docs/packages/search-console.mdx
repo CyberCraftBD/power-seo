@@ -1,18 +1,18 @@
 ---
-title: "@ccbd-seo/search-console"
+title: "@power-seo/search-console"
 description: "Google Search Console API client with OAuth and service account auth, search analytics, URL inspection, and sitemap management."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/search-console
+npm install @power-seo/search-console
 ```
 
 ## Quick Start
 
 ```typescript
-import { createGSCClient, createTokenManager } from '@ccbd-seo/search-console';
+import { createGSCClient, createTokenManager } from '@power-seo/search-console';
 
 // Set up authentication
 const tokenManager = createTokenManager({
@@ -34,7 +34,7 @@ const client = createGSCClient({
 ### Search Analytics
 
 ```typescript
-import { querySearchAnalytics } from '@ccbd-seo/search-console';
+import { querySearchAnalytics } from '@power-seo/search-console';
 
 const data = await querySearchAnalytics(client, {
   startDate: '2025-01-01',
@@ -48,7 +48,7 @@ const data = await querySearchAnalytics(client, {
 ### URL Inspection
 
 ```typescript
-import { inspectUrl } from '@ccbd-seo/search-console';
+import { inspectUrl } from '@power-seo/search-console';
 
 const inspection = await inspectUrl(client, {
   inspectionUrl: 'https://example.com/blog/post-1',
@@ -59,7 +59,7 @@ console.log(inspection.indexStatusResult.verdict); // "PASS" | "FAIL" | ...
 ### Sitemap Management
 
 ```typescript
-import { listSitemaps, submitSitemap } from '@ccbd-seo/search-console';
+import { listSitemaps, submitSitemap } from '@power-seo/search-console';
 
 const sitemaps = await listSitemaps(client);
 await submitSitemap(client, 'https://example.com/sitemap.xml');

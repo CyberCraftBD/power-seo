@@ -1,19 +1,19 @@
 ---
 title: "Next.js App Router"
-description: "Guide for using @ccbd-seo packages with Next.js App Router for static and dynamic metadata, JSON-LD, and sitemaps."
+description: "Guide for using @power-seo packages with Next.js App Router for static and dynamic metadata, JSON-LD, and sitemaps."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/meta @ccbd-seo/core @ccbd-seo/schema
+npm install @power-seo/meta @power-seo/core @power-seo/schema
 ```
 
 ## Static Metadata in layout.tsx
 
 ```typescript
 // app/layout.tsx
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 
 export const metadata = createMetadata({
   titleTemplate: '%s | My Site',
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ```typescript
 // app/about/page.tsx
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 
 export const metadata = createMetadata({
   title: 'About Us',
@@ -44,7 +44,7 @@ export const metadata = createMetadata({
 
 ```typescript
 // app/blog/[slug]/page.tsx
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 ```typescript
 // app/blog/[slug]/page.tsx
-import { article } from '@ccbd-seo/schema';
+import { article } from '@power-seo/schema';
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
@@ -85,7 +85,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
 ```typescript
 // app/sitemap.xml/route.ts
-import { generateSitemap } from '@ccbd-seo/sitemap';
+import { generateSitemap } from '@power-seo/sitemap';
 
 export async function GET() {
   const pages = await getAllPages();

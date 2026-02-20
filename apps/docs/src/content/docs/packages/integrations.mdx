@@ -1,12 +1,12 @@
 ---
-title: "@ccbd-seo/integrations"
+title: "@power-seo/integrations"
 description: "Semrush and Ahrefs API clients with shared HTTP client, rate limiting, and pagination."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/integrations
+npm install @power-seo/integrations
 ```
 
 ## Quick Start
@@ -14,7 +14,7 @@ npm install @ccbd-seo/integrations
 ### Semrush
 
 ```typescript
-import { createSemrushClient } from '@ccbd-seo/integrations';
+import { createSemrushClient } from '@power-seo/integrations';
 
 const semrush = createSemrushClient({
   apiKey: process.env.SEMRUSH_API_KEY!,
@@ -32,7 +32,7 @@ const backlinks = await semrush.getBacklinks('example.com', { limit: 50 });
 ### Ahrefs
 
 ```typescript
-import { createAhrefsClient } from '@ccbd-seo/integrations';
+import { createAhrefsClient } from '@power-seo/integrations';
 
 const ahrefs = createAhrefsClient({
   apiToken: process.env.AHREFS_API_TOKEN!,
@@ -48,7 +48,7 @@ const referringDomains = await ahrefs.getReferringDomains('example.com');
 ### Shared HTTP Client
 
 ```typescript
-import { createHttpClient } from '@ccbd-seo/integrations';
+import { createHttpClient } from '@power-seo/integrations';
 
 const http = createHttpClient({
   baseUrl: 'https://api.custom-seo-tool.com',

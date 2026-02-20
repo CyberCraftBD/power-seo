@@ -4,10 +4,10 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: '@ccbd-seo',
+      title: '@power-seo',
       description: 'A comprehensive, modular SEO toolkit for TypeScript and React',
       social: {
-        github: 'https://github.com/ccbd-seo/seo',
+        github: 'https://github.com/power-seo/seo',
       },
       sidebar: [
         {

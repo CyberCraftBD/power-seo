@@ -1,18 +1,18 @@
 ---
 title: "Remix v2"
-description: "Guide for using @ccbd-seo packages with Remix v2 for route-level meta tags, JSON-LD, and sitemaps."
+description: "Guide for using @power-seo packages with Remix v2 for route-level meta tags, JSON-LD, and sitemaps."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/meta @ccbd-seo/core @ccbd-seo/schema
+npm install @power-seo/meta @power-seo/core @power-seo/schema
 ```
 
 ## Root Meta in root.tsx
 
 ```typescript
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@power-seo/meta';
 import type { MetaFunction } from '@remix-run/node';
 
 export const meta: MetaFunction = () => createMetaDescriptors({
@@ -27,7 +27,7 @@ export const meta: MetaFunction = () => createMetaDescriptors({
 
 ```typescript
 // app/routes/about.tsx
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@power-seo/meta';
 import type { MetaFunction } from '@remix-run/node';
 
 export const meta: MetaFunction = () => createMetaDescriptors({
@@ -41,7 +41,7 @@ export const meta: MetaFunction = () => createMetaDescriptors({
 
 ```typescript
 // app/routes/blog.$slug.tsx
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@power-seo/meta';
 import type { MetaFunction, LoaderFunctionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 
@@ -64,7 +64,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 ## JSON-LD Structured Data
 
 ```typescript
-import { article } from '@ccbd-seo/schema';
+import { article } from '@power-seo/schema';
 import { useLoaderData } from '@remix-run/react';
 
 export default function BlogPost() {
@@ -86,7 +86,7 @@ export default function BlogPost() {
 
 ```typescript
 // app/routes/sitemap[.]xml.tsx
-import { generateSitemap } from '@ccbd-seo/sitemap';
+import { generateSitemap } from '@power-seo/sitemap';
 import type { LoaderFunction } from '@remix-run/node';
 
 export const loader: LoaderFunction = async () => {

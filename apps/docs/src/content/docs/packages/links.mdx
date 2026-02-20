@@ -1,18 +1,18 @@
 ---
-title: "@ccbd-seo/links"
+title: "@power-seo/links"
 description: "Internal link graph analysis, orphan page detection, link suggestions, and link equity scoring."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/links @ccbd-seo/core
+npm install @power-seo/links @power-seo/core
 ```
 
 ## Quick Start
 
 ```typescript
-import { buildLinkGraph, findOrphanPages, suggestLinks } from '@ccbd-seo/links';
+import { buildLinkGraph, findOrphanPages, suggestLinks } from '@power-seo/links';
 
 const pages = [
   { url: 'https://example.com/', links: ['https://example.com/about', 'https://example.com/blog'] },
@@ -36,7 +36,7 @@ const suggestions = suggestLinks(graph, {
 ### Link Equity Analysis
 
 ```typescript
-import { analyzeLinkEquity } from '@ccbd-seo/links';
+import { analyzeLinkEquity } from '@power-seo/links';
 
 const equity = analyzeLinkEquity(graph);
 // Scores each page based on inbound link count and depth from root

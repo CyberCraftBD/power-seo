@@ -1,18 +1,18 @@
 ---
-title: "@ccbd-seo/readability"
+title: "@power-seo/readability"
 description: "Readability scoring algorithms including Flesch-Kincaid, Gunning Fog, Coleman-Liau, and Automated Readability Index."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/readability @ccbd-seo/core
+npm install @power-seo/readability @power-seo/core
 ```
 
 ## Quick Start
 
 ```typescript
-import { analyzeReadability } from '@ccbd-seo/readability';
+import { analyzeReadability } from '@power-seo/readability';
 
 const result = analyzeReadability({
   text: 'Your article content goes here. Write naturally and keep sentences concise.',
@@ -33,7 +33,7 @@ import {
   gunningFog,
   colemanLiau,
   automatedReadability,
-} from '@ccbd-seo/readability';
+} from '@power-seo/readability';
 
 const stats = { wordCount: 200, sentenceCount: 10, syllableCount: 280 };
 const fre = fleschReadingEase(stats); // 0-100 scale

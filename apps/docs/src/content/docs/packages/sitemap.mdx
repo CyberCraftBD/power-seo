@@ -1,18 +1,18 @@
 ---
-title: "@ccbd-seo/sitemap"
+title: "@power-seo/sitemap"
 description: "XML sitemap generation, index splitting, validation, and streaming for large sites."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/sitemap @ccbd-seo/core
+npm install @power-seo/sitemap @power-seo/core
 ```
 
 ## Quick Start
 
 ```typescript
-import { generateSitemap, generateSitemapIndex } from '@ccbd-seo/sitemap';
+import { generateSitemap, generateSitemapIndex } from '@power-seo/sitemap';
 
 const xml = generateSitemap({
   urls: [
@@ -34,7 +34,7 @@ const index = generateSitemapIndex({
 ### Streaming for Large Sites
 
 ```typescript
-import { streamSitemap } from '@ccbd-seo/sitemap';
+import { streamSitemap } from '@power-seo/sitemap';
 
 const stream = streamSitemap({
   urls: veryLargeUrlArray, // Handles 50,000+ URLs efficiently

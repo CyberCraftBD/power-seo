@@ -1,18 +1,18 @@
 ---
-title: "@ccbd-seo/analytics"
+title: "@power-seo/analytics"
 description: "Merge Google Search Console data with audit results, analyze trends, track rankings, and build dashboards."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/analytics @ccbd-seo/core
+npm install @power-seo/analytics @power-seo/core
 ```
 
 ## Quick Start
 
 ```typescript
-import { mergeGscWithAudit, analyzeTrend, analyzeQueryRankings } from '@ccbd-seo/analytics';
+import { mergeGscWithAudit, analyzeTrend, analyzeQueryRankings } from '@power-seo/analytics';
 
 // Merge GSC data with audit scores
 const insights = mergeGscWithAudit({
@@ -44,7 +44,7 @@ const rankings = analyzeQueryRankings({
 ### Dashboard Builder
 
 ```typescript
-import { buildDashboardData } from '@ccbd-seo/analytics';
+import { buildDashboardData } from '@power-seo/analytics';
 
 const dashboard = buildDashboardData({
   gscPages: [...],

@@ -1,18 +1,18 @@
 ---
-title: "@ccbd-seo/redirects"
+title: "@power-seo/redirects"
 description: "Redirect engine with exact, glob, and regex matching plus framework adapters for Next.js, Remix, and Express."
 ---
 
 ## Install
 
 ```bash
-npm install @ccbd-seo/redirects @ccbd-seo/core
+npm install @power-seo/redirects @power-seo/core
 ```
 
 ## Quick Start
 
 ```typescript
-import { createRedirectEngine } from '@ccbd-seo/redirects';
+import { createRedirectEngine } from '@power-seo/redirects';
 
 const engine = createRedirectEngine({
   rules: [
@@ -32,9 +32,9 @@ const paramMatch = engine.match('/blog/hello-world');
 ### Framework Adapters
 
 ```typescript
-import { toNextRedirects } from '@ccbd-seo/redirects';
-import { createRemixRedirectHandler } from '@ccbd-seo/redirects';
-import { createExpressRedirectMiddleware } from '@ccbd-seo/redirects';
+import { toNextRedirects } from '@power-seo/redirects';
+import { createRemixRedirectHandler } from '@power-seo/redirects';
+import { createExpressRedirectMiddleware } from '@power-seo/redirects';
 
 // Next.js — use in next.config.js redirects()
 const nextRedirects = toNextRedirects(rules);

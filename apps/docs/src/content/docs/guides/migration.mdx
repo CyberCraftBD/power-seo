@@ -1,17 +1,17 @@
 ---
 title: "Migration Guide"
-description: "Migrate from next-seo or react-helmet to the @ccbd-seo modular SEO toolkit."
+description: "Migrate from next-seo or react-helmet to the @power-seo modular SEO toolkit."
 ---
 
-The `@ccbd-seo` monorepo offers modular, tree-shakeable packages you can adopt incrementally.
+The `@power-seo` monorepo offers modular, tree-shakeable packages you can adopt incrementally.
 
 ## From next-seo
 
-| next-seo | @ccbd-seo | Notes |
+| next-seo | @power-seo | Notes |
 |---|---|---|
-| `<NextSeo>` | `<SEO>` from `@ccbd-seo/react` | Same prop shape |
-| `<DefaultSeo>` | `<DefaultSEO>` from `@ccbd-seo/react` | Context-based defaults |
-| `<ArticleJsonLd>` | From `@ccbd-seo/schema/react` | Separate package |
+| `<NextSeo>` | `<SEO>` from `@power-seo/react` | Same prop shape |
+| `<DefaultSeo>` | `<DefaultSEO>` from `@power-seo/react` | Context-based defaults |
+| `<ArticleJsonLd>` | From `@power-seo/schema/react` | Separate package |
 
 ### Before
 
@@ -31,8 +31,8 @@ function Page() {
 ### After
 
 ```typescript
-import { SEO } from '@ccbd-seo/react';
-import { ArticleJsonLd } from '@ccbd-seo/schema/react';
+import { SEO } from '@power-seo/react';
+import { ArticleJsonLd } from '@power-seo/schema/react';
 
 function Page() {
   return (
@@ -44,16 +44,16 @@ function Page() {
 }
 ```
 
-For **Next.js App Router**, use `@ccbd-seo/meta` for server-side metadata:
+For **Next.js App Router**, use `@power-seo/meta` for server-side metadata:
 
 ```typescript
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 export const metadata = createMetadata({ title: 'My Page', description: 'Description' });
 ```
 
 ## From react-helmet
 
-| react-helmet | @ccbd-seo/react | Notes |
+| react-helmet | @power-seo/react | Notes |
 |---|---|---|
 | `<Helmet><title>` | `<SEO title="...">` | Prop-based API |
 | `<Helmet><meta>` | `<SEO description="...">` | Structured props |
@@ -77,7 +77,7 @@ function Page() {
 ### After
 
 ```typescript
-import { SEO } from '@ccbd-seo/react';
+import { SEO } from '@power-seo/react';
 function Page() {
   return (
     <SEO title="My Page" titleTemplate="%s | My Site"
@@ -90,11 +90,11 @@ function Page() {
 
 | Need | Package |
 |---|---|
-| Meta tags (React) | `@ccbd-seo/react` |
-| Meta tags (SSR) | `@ccbd-seo/meta` |
-| JSON-LD | `@ccbd-seo/schema` |
-| Content scoring | `@ccbd-seo/content-analysis` |
-| SERP previews | `@ccbd-seo/preview` |
-| Readability | `@ccbd-seo/readability` |
-| Sitemaps | `@ccbd-seo/sitemap` |
-| Auditing | `@ccbd-seo/audit` |
+| Meta tags (React) | `@power-seo/react` |
+| Meta tags (SSR) | `@power-seo/meta` |
+| JSON-LD | `@power-seo/schema` |
+| Content scoring | `@power-seo/content-analysis` |
+| SERP previews | `@power-seo/preview` |
+| Readability | `@power-seo/readability` |
+| Sitemaps | `@power-seo/sitemap` |
+| Auditing | `@power-seo/audit` |

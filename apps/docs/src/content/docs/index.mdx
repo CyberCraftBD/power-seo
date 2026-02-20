@@ -3,7 +3,7 @@ title: Getting Started
 description: A comprehensive, modular SEO toolkit for TypeScript and React
 ---
 
-# @ccbd-seo
+# @power-seo
 
 A comprehensive, modular SEO toolkit for TypeScript and React applications. Built with tree-shaking, type safety, and framework flexibility in mind.
 
@@ -19,38 +19,38 @@ A comprehensive, modular SEO toolkit for TypeScript and React applications. Buil
 
 ```bash
 # Install core + meta for Next.js
-npm install @ccbd-seo/core @ccbd-seo/meta
+npm install @power-seo/core @power-seo/meta
 
 # Or install with React components
-npm install @ccbd-seo/core @ccbd-seo/react @ccbd-seo/schema
+npm install @power-seo/core @power-seo/react @power-seo/schema
 ```
 
 ## Package Overview
 
 | Package | Description |
 | --- | --- |
-| `@ccbd-seo/core` | Core utilities, types, and constants |
-| `@ccbd-seo/react` | React SEO components (`<SEO>`, `<DefaultSEO>`) |
-| `@ccbd-seo/schema` | JSON-LD structured data builders + React components |
-| `@ccbd-seo/meta` | SSR meta tag helpers for Next.js, Remix, and generic SSR |
-| `@ccbd-seo/content-analysis` | Yoast-style content scoring engine |
-| `@ccbd-seo/preview` | SERP, Open Graph, and Twitter Card preview generators |
-| `@ccbd-seo/readability` | Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI algorithms |
-| `@ccbd-seo/sitemap` | XML sitemap generation, streaming, and validation |
-| `@ccbd-seo/redirects` | Redirect engine with URL pattern matching |
-| `@ccbd-seo/links` | Internal link graph analysis and suggestions |
-| `@ccbd-seo/audit` | SEO page and site auditing |
-| `@ccbd-seo/images` | Image SEO: alt text, lazy loading, image sitemaps |
-| `@ccbd-seo/ai` | LLM-agnostic prompt templates for AI-assisted SEO |
-| `@ccbd-seo/analytics` | Analytics data merging, trends, and dashboards |
-| `@ccbd-seo/search-console` | Google Search Console API client |
-| `@ccbd-seo/integrations` | Semrush and Ahrefs API clients |
-| `@ccbd-seo/tracking` | Analytics script builders with consent management |
+| `@power-seo/core` | Core utilities, types, and constants |
+| `@power-seo/react` | React SEO components (`<SEO>`, `<DefaultSEO>`) |
+| `@power-seo/schema` | JSON-LD structured data builders + React components |
+| `@power-seo/meta` | SSR meta tag helpers for Next.js, Remix, and generic SSR |
+| `@power-seo/content-analysis` | Yoast-style content scoring engine |
+| `@power-seo/preview` | SERP, Open Graph, and Twitter Card preview generators |
+| `@power-seo/readability` | Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI algorithms |
+| `@power-seo/sitemap` | XML sitemap generation, streaming, and validation |
+| `@power-seo/redirects` | Redirect engine with URL pattern matching |
+| `@power-seo/links` | Internal link graph analysis and suggestions |
+| `@power-seo/audit` | SEO page and site auditing |
+| `@power-seo/images` | Image SEO: alt text, lazy loading, image sitemaps |
+| `@power-seo/ai` | LLM-agnostic prompt templates for AI-assisted SEO |
+| `@power-seo/analytics` | Analytics data merging, trends, and dashboards |
+| `@power-seo/search-console` | Google Search Console API client |
+| `@power-seo/integrations` | Semrush and Ahrefs API clients |
+| `@power-seo/tracking` | Analytics script builders with consent management |
 
 ## Next.js Example
 
 ```typescript
-import { createMetadata } from '@ccbd-seo/meta';
+import { createMetadata } from '@power-seo/meta';
 
 export const metadata = createMetadata({
   title: 'My Page',
@@ -67,7 +67,7 @@ export const metadata = createMetadata({
 ## Remix Example
 
 ```typescript
-import { createMetaDescriptors } from '@ccbd-seo/meta';
+import { createMetaDescriptors } from '@power-seo/meta';
 
 export const meta = () =>
   createMetaDescriptors({
