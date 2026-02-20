@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/preview — Open Graph Preview Generator
+// @power-seo/preview — Open Graph Preview Generator
 // ============================================================================
 
-import { OG_IMAGE } from '@ccbd-seo/core';
+import { OG_IMAGE } from '@power-seo/core';
 import type { OgPreviewInput, OgPreviewData, OgImageValidation } from './types.js';
 
 function validateOgImage(image: {

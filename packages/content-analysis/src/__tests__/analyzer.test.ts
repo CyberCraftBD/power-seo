@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { analyzeContent } from '../analyzer.js';
-import type { ContentAnalysisInput } from '@ccbd-seo/core';
+import type { ContentAnalysisInput } from '@power-seo/core';
 
 describe('analyzeContent', () => {
   it('returns a complete analysis output', () => {

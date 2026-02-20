@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/preview — Public API
+// @power-seo/preview — Public API
 // ============================================================================
 
 export { truncateAtPixelWidth } from './truncate.js';

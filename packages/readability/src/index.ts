@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/readability — Public API
+// @power-seo/readability — Public API
 // ============================================================================
 
 export { analyzeReadability } from './analyzer.js';

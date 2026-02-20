@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Meta Description Check
+// @power-seo/content-analysis — Meta Description Check
 // ============================================================================
 
-import type { ContentAnalysisInput, AnalysisResult } from '@ccbd-seo/core';
-import { validateMetaDescription } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
+import { validateMetaDescription } from '@power-seo/core';
 
 export function checkMetaDescription(input: ContentAnalysisInput): AnalysisResult[] {
   const results: AnalysisResult[] = [];

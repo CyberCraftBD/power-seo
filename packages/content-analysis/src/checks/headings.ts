@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Headings Check
+// @power-seo/content-analysis — Headings Check
 // ============================================================================
 
-import type { ContentAnalysisInput, AnalysisResult } from '@ccbd-seo/core';
-import { stripHtml } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
+import { stripHtml } from '@power-seo/core';
 
 interface HeadingInfo {
   level: number;

@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/preview — Pixel-Width Truncation Utility
+// @power-seo/preview — Pixel-Width Truncation Utility
 // ============================================================================
 
-import { CHAR_PIXEL_WIDTHS, DEFAULT_CHAR_WIDTH } from '@ccbd-seo/core';
+import { CHAR_PIXEL_WIDTHS, DEFAULT_CHAR_WIDTH } from '@power-seo/core';
 
 export interface TruncateResult {
   text: string;

@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Keyphrase Usage Check
+// @power-seo/content-analysis — Keyphrase Usage Check
 // ============================================================================
 
-import type { ContentAnalysisInput, AnalysisResult } from '@ccbd-seo/core';
-import { analyzeKeyphraseOccurrences, calculateKeywordDensity, KEYWORD_DENSITY } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
+import { analyzeKeyphraseOccurrences, calculateKeywordDensity, KEYWORD_DENSITY } from '@power-seo/core';
 
 export function checkKeyphraseUsage(input: ContentAnalysisInput): AnalysisResult[] {
   const results: AnalysisResult[] = [];

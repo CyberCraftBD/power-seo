@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Title Check
+// @power-seo/content-analysis — Title Check
 // ============================================================================
 
-import type { ContentAnalysisInput, AnalysisResult } from '@ccbd-seo/core';
-import { validateTitle } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
+import { validateTitle } from '@power-seo/core';
 
 export function checkTitle(input: ContentAnalysisInput): AnalysisResult[] {
   const results: AnalysisResult[] = [];

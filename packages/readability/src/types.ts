@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/readability — Types
+// @power-seo/readability — Types
 // ============================================================================
 
 export type {
@@ -8,7 +8,7 @@ export type {
   TextStatistics,
   AnalysisResult,
   AnalysisStatus,
-} from '@ccbd-seo/core';
+} from '@power-seo/core';
 
 /** Individual algorithm result. */
 export interface AlgorithmScore {

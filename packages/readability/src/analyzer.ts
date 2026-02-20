@@ -1,15 +1,15 @@
 // ============================================================================
-// @ccbd-seo/readability — Combined Readability Analyzer
+// @power-seo/readability — Combined Readability Analyzer
 // ============================================================================
 
-import type { ReadabilityInput, ReadabilityOutput, AnalysisResult } from '@ccbd-seo/core';
+import type { ReadabilityInput, ReadabilityOutput, AnalysisResult } from '@power-seo/core';
 import {
   getTextStatistics,
   getSentences,
   getParagraphs,
   stripHtml,
   READABILITY,
-} from '@ccbd-seo/core';
+} from '@power-seo/core';
 import { fleschReadingEase, fleschKincaidGrade } from './algorithms/flesch-kincaid.js';
 
 // --- Passive Voice Detection ---

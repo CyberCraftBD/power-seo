@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Types
+// @power-seo/content-analysis — Types
 // ============================================================================
 
-export type { ContentAnalysisInput, ContentAnalysisOutput, AnalysisResult, AnalysisStatus } from '@ccbd-seo/core';
+export type { ContentAnalysisInput, ContentAnalysisOutput, AnalysisResult, AnalysisStatus } from '@power-seo/core';
 
 /** Union of all built-in check IDs. */
 export type CheckId =

@@ -1,10 +1,10 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — React Components
+// @power-seo/content-analysis — React Components
 // ============================================================================
 
 import { createElement, useMemo } from 'react';
 import type { ReactNode } from 'react';
-import type { ContentAnalysisInput, AnalysisResult } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 import type { AnalysisConfig } from './types.js';
 import { analyzeContent } from './analyzer.js';
 

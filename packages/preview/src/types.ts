@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/preview — Types
+// @power-seo/preview — Types
 // ============================================================================
 
-import type { ValidationResult, TwitterCardType } from '@ccbd-seo/core';
+import type { ValidationResult, TwitterCardType } from '@power-seo/core';
 
 // --- SERP Preview ---
 

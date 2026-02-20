@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/preview — React Components
+// @power-seo/preview — React Components
 // ============================================================================
 
 import { createElement, useState, useMemo } from 'react';
-import type { TwitterCardType } from '@ccbd-seo/core';
+import type { TwitterCardType } from '@power-seo/core';
 import { generateSerpPreview } from './serp.js';
 import { generateOgPreview } from './og.js';
 import { generateTwitterPreview } from './twitter.js';

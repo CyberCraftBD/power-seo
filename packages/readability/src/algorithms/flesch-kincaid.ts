@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/readability — Flesch-Kincaid Algorithms
+// @power-seo/readability — Flesch-Kincaid Algorithms
 // ============================================================================
 
-import type { TextStatistics } from '@ccbd-seo/core';
+import type { TextStatistics } from '@power-seo/core';
 
 /**
  * Calculate the Flesch Reading Ease score.

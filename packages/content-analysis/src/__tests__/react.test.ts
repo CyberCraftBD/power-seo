@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
 import { createElement } from 'react';
 import { ScorePanel, CheckList, ContentAnalyzer } from '../react.js';
-import type { AnalysisResult } from '@ccbd-seo/core';
+import type { AnalysisResult } from '@power-seo/core';
 
 describe('ScorePanel', () => {
   it('renders the score percentage', () => {

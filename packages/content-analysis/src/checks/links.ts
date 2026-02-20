@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Links Check
+// @power-seo/content-analysis — Links Check
 // ============================================================================
 
-import type { ContentAnalysisInput, AnalysisResult } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 
 export function checkLinks(input: ContentAnalysisInput): AnalysisResult[] {
   const results: AnalysisResult[] = [];

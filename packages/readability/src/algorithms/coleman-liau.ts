@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/readability — Coleman-Liau Index
+// @power-seo/readability — Coleman-Liau Index
 // ============================================================================
 
-import type { TextStatistics } from '@ccbd-seo/core';
+import type { TextStatistics } from '@power-seo/core';
 
 /**
  * Calculate the Coleman-Liau Index.

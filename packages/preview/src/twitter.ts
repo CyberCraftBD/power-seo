@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/preview — Twitter Card Preview Generator
+// @power-seo/preview — Twitter Card Preview Generator
 // ============================================================================
 
-import { TWITTER_IMAGE } from '@ccbd-seo/core';
-import type { TwitterCardType } from '@ccbd-seo/core';
+import { TWITTER_IMAGE } from '@power-seo/core';
+import type { TwitterCardType } from '@power-seo/core';
 import type { TwitterPreviewInput, TwitterPreviewData, TwitterImageValidation } from './types.js';
 
 function validateTwitterImage(

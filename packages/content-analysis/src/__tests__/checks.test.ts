@@ -6,7 +6,7 @@ import { checkHeadings } from '../checks/headings.js';
 import { checkWordCount } from '../checks/word-count.js';
 import { checkImages } from '../checks/images.js';
 import { checkLinks } from '../checks/links.js';
-import type { ContentAnalysisInput } from '@ccbd-seo/core';
+import type { ContentAnalysisInput } from '@power-seo/core';
 
 function makeInput(overrides: Partial<ContentAnalysisInput> = {}): ContentAnalysisInput {
   return {

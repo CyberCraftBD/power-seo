@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Public API
+// @power-seo/content-analysis — Public API
 // ============================================================================
 
 export { analyzeContent } from './analyzer.js';

@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Content Analyzer Orchestrator
+// @power-seo/content-analysis — Content Analyzer Orchestrator
 // ============================================================================
 
-import type { ContentAnalysisInput, ContentAnalysisOutput, AnalysisResult } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, ContentAnalysisOutput, AnalysisResult } from '@power-seo/core';
 import type { AnalysisConfig, CheckId } from './types.js';
 import { checkTitle } from './checks/title.js';
 import { checkMetaDescription } from './checks/meta-description.js';

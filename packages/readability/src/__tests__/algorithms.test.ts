@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getTextStatistics } from '@ccbd-seo/core';
+import { getTextStatistics } from '@power-seo/core';
 import { fleschReadingEase, fleschKincaidGrade } from '../algorithms/flesch-kincaid.js';
 import { gunningFog } from '../algorithms/gunning-fog.js';
 import { colemanLiau } from '../algorithms/coleman-liau.js';

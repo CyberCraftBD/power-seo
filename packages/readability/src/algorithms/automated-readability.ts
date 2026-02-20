@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/readability — Automated Readability Index (ARI)
+// @power-seo/readability — Automated Readability Index (ARI)
 // ============================================================================
 
-import type { TextStatistics } from '@ccbd-seo/core';
+import type { TextStatistics } from '@power-seo/core';
 
 /**
  * Calculate the Automated Readability Index (ARI).

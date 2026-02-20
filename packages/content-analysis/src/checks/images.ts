@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Images Check
+// @power-seo/content-analysis — Images Check
 // ============================================================================
 
-import type { ContentAnalysisInput, AnalysisResult } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 
 export function checkImages(input: ContentAnalysisInput): AnalysisResult[] {
   const results: AnalysisResult[] = [];

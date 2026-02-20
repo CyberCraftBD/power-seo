@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/preview — SERP Preview Generator
+// @power-seo/preview — SERP Preview Generator
 // ============================================================================
 
 import {
@@ -7,7 +7,7 @@ import {
   META_DESCRIPTION_MAX_PIXELS,
   validateTitle,
   validateMetaDescription,
-} from '@ccbd-seo/core';
+} from '@power-seo/core';
 import type { SerpPreviewInput, SerpPreviewData } from './types.js';
 import { truncateAtPixelWidth } from './truncate.js';
 

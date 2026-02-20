@@ -1,9 +1,9 @@
 // ============================================================================
-// @ccbd-seo/content-analysis — Word Count Check
+// @power-seo/content-analysis — Word Count Check
 // ============================================================================
 
-import type { ContentAnalysisInput, AnalysisResult } from '@ccbd-seo/core';
-import { getWords, MIN_WORD_COUNT, RECOMMENDED_WORD_COUNT } from '@ccbd-seo/core';
+import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
+import { getWords, MIN_WORD_COUNT, RECOMMENDED_WORD_COUNT } from '@power-seo/core';
 
 export function checkWordCount(input: ContentAnalysisInput): AnalysisResult {
   const words = getWords(input.content);

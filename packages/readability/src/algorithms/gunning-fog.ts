@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/readability — Gunning Fog Index
+// @power-seo/readability — Gunning Fog Index
 // ============================================================================
 
-import { getWords, getSentences, countSyllables, stripHtml } from '@ccbd-seo/core';
+import { getWords, getSentences, countSyllables, stripHtml } from '@power-seo/core';
 
 /**
  * Calculate the Gunning Fog Index.
