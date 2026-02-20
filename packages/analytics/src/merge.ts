@@ -1,8 +1,8 @@
 // ============================================================================
-// @ccbd-seo/analytics — Merge GSC + Audit Data
+// @power-seo/analytics — Merge GSC + Audit Data
 // ============================================================================
 
-import { normalizeUrl } from '@ccbd-seo/core';
+import { normalizeUrl } from '@power-seo/core';
 import type { GscPageData, PageInsight, AuditCategory, CategoryResult } from './types.js';
 
 interface AuditData {

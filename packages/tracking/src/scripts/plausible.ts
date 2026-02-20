@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/tracking — Plausible Script Builder
+// @power-seo/tracking — Plausible Script Builder
 // ============================================================================
 
 import type { ScriptConfig, PlausibleConfig, ConsentState } from '../types.js';

@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/tracking — GA4 Script Builder
+// @power-seo/tracking — GA4 Script Builder
 // ============================================================================
 
 import type { ScriptConfig, GA4Config, ConsentState } from '../types.js';

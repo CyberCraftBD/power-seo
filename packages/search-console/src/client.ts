@@ -1,10 +1,10 @@
 // ============================================================================
-// @ccbd-seo/search-console — Client
+// @power-seo/search-console — Client
 // ============================================================================
 
 import type { GSCClientConfig, GSCClient, RequestOptions } from './types.js';
 import { GSCApiError } from './types.js';
-import { createTokenBucket, consumeToken, getWaitTime, sleep } from '@ccbd-seo/core';
+import { createTokenBucket, consumeToken, getWaitTime, sleep } from '@power-seo/core';
 
 const DEFAULT_BASE_URL = 'https://searchconsole.googleapis.com/webmasters/v3';
 const DEFAULT_RATE_LIMIT = 1200;

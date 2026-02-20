@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/tracking — PostHog Script Builder
+// @power-seo/tracking — PostHog Script Builder
 // ============================================================================
 
 import type { ScriptConfig, PostHogConfig, ConsentState } from '../types.js';

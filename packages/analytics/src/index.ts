@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/analytics — Public API
+// @power-seo/analytics — Public API
 // ============================================================================
 
 export { mergeGscWithAudit, correlateScoreAndTraffic } from './merge.js';

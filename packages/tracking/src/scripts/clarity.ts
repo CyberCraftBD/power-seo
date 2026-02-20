@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/tracking — Clarity Script Builder
+// @power-seo/tracking — Clarity Script Builder
 // ============================================================================
 
 import type { ScriptConfig, ClarityConfig, ConsentState } from '../types.js';

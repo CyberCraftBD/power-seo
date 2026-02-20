@@ -1,11 +1,11 @@
 // ============================================================================
-// @ccbd-seo/analytics — Types
+// @power-seo/analytics — Types
 // ============================================================================
 
-import type { AuditCategory, CategoryResult } from '@ccbd-seo/audit';
+import type { AuditCategory, CategoryResult } from '@power-seo/audit';
 
 export type { AuditCategory, CategoryResult };
-export type { PageAuditResult } from '@ccbd-seo/audit';
+export type { PageAuditResult } from '@power-seo/audit';
 
 export interface GscPageData {
   url: string;

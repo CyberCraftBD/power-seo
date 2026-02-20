@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/integrations — Semrush Endpoints
+// @power-seo/integrations — Semrush Endpoints
 // ============================================================================
 
 export const SEMRUSH_BASE_URL = 'https://api.semrush.com';

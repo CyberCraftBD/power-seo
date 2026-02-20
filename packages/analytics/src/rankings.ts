@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/analytics — Query Ranking Analysis
+// @power-seo/analytics — Query Ranking Analysis
 // ============================================================================
 
 import type { GscQueryData, RankingAnalysis, RankingBucket, PositionChange } from './types.js';

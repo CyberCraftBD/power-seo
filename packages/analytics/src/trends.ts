@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/analytics — Trend Analysis
+// @power-seo/analytics — Trend Analysis
 // ============================================================================
 
 import type { TrendPoint, TrendDirection, TrendAnalysis, AuditSnapshot } from './types.js';

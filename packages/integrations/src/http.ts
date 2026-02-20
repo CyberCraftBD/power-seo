@@ -1,10 +1,10 @@
 // ============================================================================
-// @ccbd-seo/integrations — Shared HTTP Client
+// @power-seo/integrations — Shared HTTP Client
 // ============================================================================
 
 import type { HttpClientConfig, HttpClient, AuthStrategy } from './types.js';
 import { IntegrationApiError } from './types.js';
-import { createTokenBucket, consumeToken, getWaitTime, sleep } from '@ccbd-seo/core';
+import { createTokenBucket, consumeToken, getWaitTime, sleep } from '@power-seo/core';
 
 const DEFAULT_RATE_LIMIT = 600;
 const DEFAULT_MAX_RETRIES = 3;

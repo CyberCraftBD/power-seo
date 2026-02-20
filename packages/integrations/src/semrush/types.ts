@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/integrations — Semrush Internal Types
+// @power-seo/integrations — Semrush Internal Types
 // ============================================================================
 
 export interface SemrushRawDomainResponse {

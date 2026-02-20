@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/integrations — Ahrefs Internal Types
+// @power-seo/integrations — Ahrefs Internal Types
 // ============================================================================
 
 export interface AhrefsRawSiteOverview {

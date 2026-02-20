@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/tracking — Fathom Script Builder
+// @power-seo/tracking — Fathom Script Builder
 // ============================================================================
 
 import type { ScriptConfig, FathomConfig, ConsentState } from '../types.js';

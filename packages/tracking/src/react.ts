@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/tracking — React Components
+// @power-seo/tracking — React Components
 // ============================================================================
 
 import { createElement, useEffect, useState, useCallback } from 'react';

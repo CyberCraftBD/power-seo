@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/tracking — Consent Manager
+// @power-seo/tracking — Consent Manager
 // ============================================================================
 
 import type { ConsentState, ConsentCategory, ConsentManager, ConsentChangeCallback } from './types.js';

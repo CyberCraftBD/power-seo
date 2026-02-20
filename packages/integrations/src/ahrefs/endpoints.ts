@@ -1,5 +1,5 @@
 // ============================================================================
-// @ccbd-seo/integrations — Ahrefs Endpoints
+// @power-seo/integrations — Ahrefs Endpoints
 // ============================================================================
 
 export const AHREFS_BASE_URL = 'https://api.ahrefs.com/v3';
