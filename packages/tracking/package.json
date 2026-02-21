@@ -11,9 +11,9 @@
       "require": "./dist/index.cjs"
     },
     "./react": {
+      "types": "./dist/react.d.ts",
       "import": "./dist/react.js",
-      "require": "./dist/react.cjs",
-      "types": "./dist/react.d.ts"
+      "require": "./dist/react.cjs"
     }
   },
   "main": "./dist/index.cjs",
