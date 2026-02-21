@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Framework-agnostic React SEO components — meta tags, Open Graph, Twitter Card, breadcrumbs, and more",
   "license": "MIT",
   "type": "module",

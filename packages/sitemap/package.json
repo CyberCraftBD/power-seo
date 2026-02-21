@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/sitemap",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "XML sitemap generation, streaming, and validation with image, video, and news support",
   "license": "MIT",
   "type": "module",

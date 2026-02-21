@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/redirects",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Redirect rule engine with URL pattern matching and framework adapters (Next.js, Remix, Express)",
   "license": "MIT",
   "type": "module",
