@@ -45,7 +45,7 @@
   "author": "CyberCraft Bangladesh <info@ccbd.dev>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git",
+    "url": "https://github.com/cybercraftbd/power-seo.git",
     "directory": "packages/core"
   },
   "publishConfig": {

@@ -1,6 +1,4 @@
-# @power-seo/search-console — Google Search Console API Client with OAuth2 and Service Account Auth
-
-Full-featured Google Search Console API client covering search analytics queries, auto-paginated data fetching, URL inspection, and sitemap management — with OAuth2 and service account authentication.
+# @power-seo/search-console — Google Search Console API Client for TypeScript — OAuth2, Service Account, URL Inspection & Auto-Paginated Analytics
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/search-console?style=flat-square)](https://www.npmjs.com/package/@power-seo/search-console)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/search-console?style=flat-square)](https://www.npmjs.com/package/@power-seo/search-console)
@@ -8,58 +6,68 @@ Full-featured Google Search Console API client covering search analytics queries
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square)](https://www.typescriptlang.org/)
 [![Tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen?style=flat-square)](#)
 
-`@power-seo/search-console` is a typed, production-ready client for the Google Search Console API. It handles the authentication complexity that makes the GSC API painful to work with — OAuth2 token refresh cycles, service account JWT signing, and token expiry management — so you can focus on the data rather than the plumbing.
+---
 
-The client covers the three main GSC API surfaces: search analytics (click, impression, CTR, and position data sliced by query, page, country, device, or date), URL inspection (indexing verdict, last crawl time, canonical URL, mobile usability, rich result status), and sitemap management (list, submit, delete). The `querySearchAnalyticsAll` function handles the GSC API's 25,000-row-per-request limit by automatically paginating through all results and returning a single merged dataset, eliminating the boilerplate that every GSC integration otherwise has to write.
+## Overview
 
-The package integrates directly with `@power-seo/analytics` — pass the data from `querySearchAnalyticsAll` straight into `mergeGscWithAudit` to correlate your audit scores with real traffic data.
+**@power-seo/search-console** is a production-ready Google Search Console API client for TypeScript that helps you query search analytics, inspect URLs, and manage sitemaps — without writing OAuth2 token refresh boilerplate or pagination loops.
 
-## Features
+**What it does**
+- ✅ **OAuth2 and service account auth** — `createTokenManager()` handles token refresh cycles and JWT signing automatically
+- ✅ **Search analytics queries** — clicks, impressions, CTR, and position by query, page, country, device, date
+- ✅ **Auto-paginated full fetch** — `querySearchAnalyticsAll()` transparently pages through the 25,000-row GSC API limit
+- ✅ **URL inspection** — indexing verdict, last crawl time, canonical URL, mobile usability, rich result status
+- ✅ **Sitemap management** — list, submit, and delete sitemaps from verified GSC properties
 
-- **OAuth2 authentication** — `createTokenManager` with `type: 'oauth'` handles token refresh automatically; access tokens are cached and refreshed before expiry
-- **Service account JWT authentication** — `createTokenManager` with `type: 'service-account'` signs JWTs using your service account credentials and exchanges them for Google access tokens
-- **`exchangeRefreshToken`** — low-level function to exchange an OAuth2 refresh token for an access token manually
-- **`getServiceAccountToken`** — low-level function to generate and exchange a service account JWT
-- **Typed GSC client** — `createGSCClient(config)` returns a `GSCClient` instance scoped to a specific site URL
-- **Search analytics queries** — `querySearchAnalytics(client, request)` fetches clicks, impressions, CTR, and position data; supports all GSC dimensions: `query`, `page`, `country`, `device`, `date`, `searchAppearance`
-- **All search types** — `web`, `image`, `video`, and `news` search types supported
-- **Auto-paginated full fetch** — `querySearchAnalyticsAll(client, request)` automatically pages through all results, merging them into a single `SearchAnalyticsRow[]` array — handles the 25,000-row API limit transparently
-- **URL inspection** — `inspectUrl(client, url)` returns the full indexing status: verdict, indexing state, last crawl time, crawl allowed status, page fetch status, canonical URL (Google-selected and user-declared), mobile usability issues, and rich result status
-- **Direct URL inspection** — `inspectUrlDirect(client, url)` for the direct URL inspection endpoint
-- **Sitemap listing** — `listSitemaps(client)` returns all sitemaps submitted to the verified property with their status, last download time, and error counts
-- **Sitemap submission** — `submitSitemap(client, url)` submits a sitemap URL for indexing
-- **Sitemap deletion** — `deleteSitemap(client, url)` removes a previously submitted sitemap
-- **Typed error handling** — `GSCApiError` class with `status`, `code`, and `message` for structured error handling
-- **Type-safe throughout** — comprehensive TypeScript types for all request and response shapes
+**What it is not**
+- ❌ **Not a reporting dashboard** — returns raw data; use `@power-seo/analytics` to merge and visualize
+- ❌ **Not a site verification tool** — requires a property already verified in Google Search Console
 
-## Table of Contents
+**Recommended for**
+- **SEO automation pipelines**, **CI/CD keyword tracking**, **SaaS analytics dashboards**, and **reporting scripts** using GSC data
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [OAuth2 Authentication](#oauth2-authentication)
-  - [Service Account Authentication](#service-account-authentication)
-  - [Search Analytics](#search-analytics)
-  - [Auto-Paginated Fetch](#auto-paginated-fetch)
-  - [URL Inspection](#url-inspection)
-  - [Sitemap Management](#sitemap-management)
-  - [Error Handling](#error-handling)
-- [API Reference](#api-reference)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
+---
 
-## Installation
+## Why @power-seo/search-console Matters
 
-```bash
-# npm
-npm install @power-seo/search-console
+**The problem**
+- **OAuth2 token refresh is complex** — access tokens expire every hour; service account JWT signing requires crypto operations
+- **GSC returns only 25,000 rows per request** — sites with many queries need pagination loops that every team reimplements
+- **URL inspection data is inaccessible without auth** — no simple way to check indexing status programmatically
 
-# yarn
-yarn add @power-seo/search-console
+**Why developers care**
+- **SEO:** Programmatic access to real click/impression data enables data-driven content decisions
+- **Performance:** Auto-paginated `querySearchAnalyticsAll` eliminates boilerplate that slows down analytics pipelines
+- **UX:** URL inspection in CI enables instant indexing health checks after deployments
 
-# pnpm
-pnpm add @power-seo/search-console
-```
+---
+
+## Key Features
+
+- **OAuth2 authentication** — `createTokenManager({ type: 'oauth' })` handles token refresh automatically
+- **Service account JWT authentication** — `createTokenManager({ type: 'service-account' })` signs JWTs for server-to-server access
+- **Low-level auth primitives** — `exchangeRefreshToken()` and `getServiceAccountToken()` for custom auth flows
+- **Typed GSC client** — `createGSCClient(config)` returns a `GSCClient` scoped to a specific site URL
+- **Search analytics** — `querySearchAnalytics()` supports all 6 dimensions: `query`, `page`, `country`, `device`, `date`, `searchAppearance`
+- **All search types** — `web`, `image`, `video`, and `news` search types
+- **Auto-paginated full fetch** — `querySearchAnalyticsAll()` merges all pages into a single `SearchAnalyticsRow[]` array
+- **URL inspection** — `inspectUrl()` returns verdict, indexing state, last crawl time, mobile usability, and rich result status
+- **Direct URL inspection** — `inspectUrlDirect()` for the direct URL inspection endpoint
+- **Sitemap listing** — `listSitemaps()` with status, last download time, and error counts
+- **Sitemap submission and deletion** — `submitSitemap()` and `deleteSitemap()`
+- **Typed error handling** — `GSCApiError` class with `status`, `code`, and `message`
+- **Type-safe throughout** — full TypeScript types for all request and response shapes
+
+---
+
+## Benefits of Using @power-seo/search-console
+
+- **Faster analytics pipelines**: No token refresh boilerplate; token manager handles expiry transparently
+- **Complete datasets**: `querySearchAnalyticsAll` fetches all rows regardless of API page limit
+- **Safer integration**: `GSCApiError` structured error class enables reliable error handling in production
+- **Faster delivery**: Connect to GSC in minutes; no OAuth2 library research required
+
+---
 
 ## Quick Start
 
@@ -93,316 +101,111 @@ rows.forEach(({ keys, clicks, impressions, ctr, position }) => {
 });
 ```
 
-## Usage
-
-### OAuth2 Authentication
-
-For user-delegated access (e.g., for a web app where users connect their own GSC account).
-
-```ts
-import { createTokenManager, exchangeRefreshToken } from '@power-seo/search-console';
-import type { OAuthCredentials, TokenResult } from '@power-seo/search-console';
-
-// Using createTokenManager — tokens auto-refresh before expiry
-const tokenManager = createTokenManager({
-  type:         'oauth',
-  clientId:     process.env.GSC_CLIENT_ID!,
-  clientSecret: process.env.GSC_CLIENT_SECRET!,
-  refreshToken: process.env.GSC_REFRESH_TOKEN!,
-});
-
-// Low-level: exchange refresh token manually
-const credentials: OAuthCredentials = {
-  clientId:     process.env.GSC_CLIENT_ID!,
-  clientSecret: process.env.GSC_CLIENT_SECRET!,
-  refreshToken: process.env.GSC_REFRESH_TOKEN!,
-};
-
-const result: TokenResult = await exchangeRefreshToken(credentials);
-// { accessToken: string; expiresAt: Date }
-```
-
-### Service Account Authentication
-
-For server-to-server access (CI pipelines, background jobs, reporting automation).
-
-```ts
-import { createTokenManager, getServiceAccountToken, createGSCClient } from '@power-seo/search-console';
-import type { ServiceAccountCredentials } from '@power-seo/search-console';
-
-const credentials: ServiceAccountCredentials = {
-  clientEmail: process.env.GSC_SERVICE_ACCOUNT_EMAIL!,
-  privateKey:  process.env.GSC_PRIVATE_KEY!.replace(/\\n/g, '\n'),
-  scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
-};
-
-const tokenManager = createTokenManager({
-  type: 'service-account',
-  ...credentials,
-});
-
-// Use sc-domain: prefix for domain properties
-const client = createGSCClient({
-  siteUrl: 'sc-domain:example.com',
-  tokenManager,
-});
-
-// Note: add the service account email as a verified user in GSC
-// Settings → Users and permissions → Add user
-```
-
-### Search Analytics
-
-Fetch click, impression, CTR, and position data filtered and grouped by any combination of dimensions.
-
-```ts
-import { querySearchAnalytics } from '@power-seo/search-console';
-import type { SearchAnalyticsRequest, SearchAnalyticsResponse } from '@power-seo/search-console';
-
-// Top keywords (group by query)
-const byQuery: SearchAnalyticsResponse = await querySearchAnalytics(client, {
-  startDate:  '2026-01-01',
-  endDate:    '2026-01-31',
-  dimensions: ['query'],
-  rowLimit:   100,
-  searchType: 'web',
-});
-
-byQuery.rows?.forEach(({ keys, clicks, impressions, ctr, position }) => {
-  console.log(`"${keys[0]}": ${clicks} clicks @ pos ${position.toFixed(1)}`);
-});
-
-// Page performance (group by page and date)
-const byPageDate = await querySearchAnalytics(client, {
-  startDate:  '2026-01-01',
-  endDate:    '2026-01-31',
-  dimensions: ['page', 'date'],
-  rowLimit:   500,
-});
-
-// Filter to specific country
-const bangladeshData = await querySearchAnalytics(client, {
-  startDate:  '2026-01-01',
-  endDate:    '2026-01-31',
-  dimensions: ['query', 'country'],
-  dimensionFilterGroups: [{
-    filters: [{
-      dimension:  'country',
-      operator:   'equals',
-      expression: 'bgd',
-    }],
-  }],
-});
-```
-
-### Auto-Paginated Fetch
-
-The GSC API returns at most 25,000 rows per request. `querySearchAnalyticsAll` handles pagination transparently.
-
-```ts
-import { querySearchAnalyticsAll } from '@power-seo/search-console';
-import type { SearchAnalyticsRow } from '@power-seo/search-console';
-
-// Fetches ALL queries — regardless of how many pages it takes
-const allRows: SearchAnalyticsRow[] = await querySearchAnalyticsAll(client, {
-  startDate:  '2026-01-01',
-  endDate:    '2026-01-31',
-  dimensions: ['query'],
-});
-
-console.log(`Total queries fetched: ${allRows.length}`);
-
-// Feed directly into @power-seo/analytics
-import { mergeGscWithAudit } from '@power-seo/analytics';
-
-const gscPages = allRows.map(({ keys, clicks, impressions, ctr, position }) => ({
-  url: keys[0],
-  clicks,
-  impressions,
-  ctr,
-  position,
-}));
-```
-
-### URL Inspection
-
-Check whether a URL is indexed by Google and retrieve detailed crawl and rich result information.
-
-```ts
-import { inspectUrl, inspectUrlDirect } from '@power-seo/search-console';
-import type { InspectionResult } from '@power-seo/search-console';
-
-const result: InspectionResult = await inspectUrl(client, 'https://example.com/blog/react-seo');
-
-console.log(`Verdict: ${result.verdict}`);
-// 'PASS' | 'FAIL' | 'NEUTRAL'
-
-console.log(`Indexing state: ${result.indexingState}`);
-// 'INDEXING_ALLOWED' | 'BLOCKED_BY_ROBOTS_TXT' | 'BLOCKED_BY_META_TAG' | ...
-
-console.log(`Last crawl: ${result.lastCrawlTime}`);
-console.log(`Mobile usability: ${result.mobileUsabilityResult?.verdict}`);
-console.log(`Rich result status: ${result.richResultsResult?.verdict}`);
-
-if (result.richResultsResult?.detectedItems) {
-  result.richResultsResult.detectedItems.forEach(({ richResultType, items }) => {
-    console.log(`  ${richResultType}: ${items.length} items detected`);
-  });
-}
-
-// Direct URL inspection (different endpoint, same data shape)
-const directResult: InspectionResult = await inspectUrlDirect(client, 'https://example.com/about');
-```
-
-### Sitemap Management
-
-```ts
-import { listSitemaps, submitSitemap, deleteSitemap } from '@power-seo/search-console';
-import type { SitemapEntry, SitemapListResponse } from '@power-seo/search-console';
-
-// List all submitted sitemaps
-const response: SitemapListResponse = await listSitemaps(client);
-response.sitemap?.forEach((sitemap: SitemapEntry) => {
-  console.log(`${sitemap.path}`);
-  console.log(`  Last downloaded: ${sitemap.lastDownloaded}`);
-  console.log(`  Errors: ${sitemap.errors}, Warnings: ${sitemap.warnings}`);
-});
-
-// Submit new sitemaps
-await submitSitemap(client, 'https://example.com/sitemap.xml');
-await submitSitemap(client, 'https://example.com/sitemap-image.xml');
-
-// Remove an old sitemap
-await deleteSitemap(client, 'https://example.com/old-sitemap.xml');
-```
-
-### Error Handling
-
-```ts
-import { querySearchAnalytics, GSCApiError } from '@power-seo/search-console';
-
-try {
-  const data = await querySearchAnalytics(client, {
-    startDate:  '2026-01-01',
-    endDate:    '2026-01-31',
-    dimensions: ['query'],
-  });
-} catch (error) {
-  if (error instanceof GSCApiError) {
-    console.error(`GSC API error [${error.status}]: ${error.message}`);
-
-    if (error.status === 403) {
-      console.error('Check that your credentials have access to this Search Console property');
-    } else if (error.status === 429) {
-      console.error('Rate limit exceeded — implement exponential backoff');
-    }
-  } else {
-    throw error;
-  }
-}
-```
-
-## API Reference
-
-### `createTokenManager(config)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `config.type` | `'oauth' \| 'service-account'` | required | Authentication method |
-| `config.clientId` | `string` | OAuth2 only | Google OAuth2 client ID |
-| `config.clientSecret` | `string` | OAuth2 only | Google OAuth2 client secret |
-| `config.refreshToken` | `string` | OAuth2 only | OAuth2 refresh token |
-| `config.clientEmail` | `string` | Service account only | Service account email address |
-| `config.privateKey` | `string` | Service account only | Service account private key (PEM format) |
-| `config.scopes` | `string[]` | Service account only | OAuth2 scopes to request |
-
-Returns `TokenManager`: `{ getAccessToken(): Promise<TokenResult> }`.
+**What you should see**
+- A merged `SearchAnalyticsRow[]` array with all query-page combinations for the date range
+- `clicks`, `impressions`, `ctr`, and `position` for each row
 
 ---
 
-### `exchangeRefreshToken(credentials)` / `getServiceAccountToken(credentials)`
+## Installation
 
-Both return `Promise<TokenResult>`: `{ accessToken: string; expiresAt: Date }`.
-
----
-
-### `createGSCClient(config)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `config.siteUrl` | `string` | required | Verified GSC property URL (use `sc-domain:` prefix for domain properties) |
-| `config.tokenManager` | `TokenManager` | required | Token manager from `createTokenManager` |
-
-Returns `GSCClient`.
-
----
-
-### `querySearchAnalytics(client, request)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `request.startDate` | `string` | required | Start date in `YYYY-MM-DD` format |
-| `request.endDate` | `string` | required | End date in `YYYY-MM-DD` format |
-| `request.dimensions` | `Dimension[]` | `[]` | Grouping dimensions: `'query'`, `'page'`, `'country'`, `'device'`, `'date'`, `'searchAppearance'` |
-| `request.searchType` | `SearchType` | `'web'` | `'web'`, `'image'`, `'video'`, or `'news'` |
-| `request.rowLimit` | `number` | `1000` | Rows per request (max 25,000) |
-| `request.startRow` | `number` | `0` | Row offset for manual pagination |
-| `request.dimensionFilterGroups` | `object[]` | `[]` | Filter groups to narrow results |
-
-Returns `Promise<SearchAnalyticsResponse>`.
-
----
-
-### `querySearchAnalyticsAll(client, request)`
-
-Same parameters as `querySearchAnalytics` except `rowLimit` and `startRow` are managed automatically.
-
-Returns `Promise<SearchAnalyticsRow[]>` — the complete merged dataset across all pages.
-
----
-
-### `inspectUrl(client, url)` / `inspectUrlDirect(client, url)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `client` | `GSCClient` | required | Authenticated GSC client |
-| `url` | `string` | required | Fully qualified URL to inspect |
-
-Returns `Promise<InspectionResult>`.
-
----
-
-### `listSitemaps(client)` / `submitSitemap(client, url)` / `deleteSitemap(client, url)`
-
-`listSitemaps` returns `Promise<SitemapListResponse>`. `submitSitemap` and `deleteSitemap` return `Promise<void>`.
-
----
-
-### Types
-
-```ts
-import type {
-  OAuthCredentials,            // { clientId, clientSecret, refreshToken }
-  ServiceAccountCredentials,   // { clientEmail, privateKey, scopes }
-  JwtPayload,                  // JWT payload structure for service account auth
-  TokenResult,                 // { accessToken: string; expiresAt: Date }
-  TokenManager,                // { getAccessToken(): Promise<TokenResult> }
-  GSCClientConfig,             // { siteUrl, tokenManager }
-  GSCClient,                   // Authenticated client instance
-  SearchType,                  // 'web' | 'image' | 'video' | 'news'
-  Dimension,                   // 'query' | 'page' | 'country' | 'device' | 'date' | 'searchAppearance'
-  SearchAnalyticsRequest,      // Full query request shape
-  SearchAnalyticsRow,          // { keys: string[]; clicks, impressions, ctr, position }
-  SearchAnalyticsResponse,     // { rows: SearchAnalyticsRow[]; responseAggregationType }
-  InspectionResult,            // { verdict, indexingState, lastCrawlTime, ... }
-  SitemapEntry,                // { path, lastSubmitted, lastDownloaded, errors, warnings, contents }
-  SitemapListResponse,         // { sitemap: SitemapEntry[] }
-} from '@power-seo/search-console';
+```bash
+npm i @power-seo/search-console
+# or
+yarn add @power-seo/search-console
+# or
+pnpm add @power-seo/search-console
+# or
+bun add @power-seo/search-console
 ```
 
-## The @power-seo Ecosystem
+---
 
-`@power-seo/search-console` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
+## Framework Compatibility
+
+**Supported**
+- ✅ Next.js (App Router / Pages Router) — use in API routes or server actions
+- ✅ Remix — use in loader functions and server-side actions
+- ✅ Node.js 18+ — pure TypeScript client with `fetch` API
+- ✅ CI/CD pipelines — run as standalone Node scripts in GitHub Actions or similar
+
+**Environment notes**
+- **SSR/SSG:** Fully supported — all operations are server-side
+- **Edge runtime:** Not supported (requires crypto for JWT signing)
+- **Browser-only usage:** Not supported — exposes credentials; server-side only
+
+---
+
+## Use Cases
+
+- **Automated keyword ranking reports** — fetch all queries weekly and diff against previous week
+- **Indexing health monitoring** — `inspectUrl` after deployments to verify new pages are indexed
+- **Content gap analysis** — merge GSC data with `@power-seo/analytics` to find high-impression, low-click pages
+- **Sitemap automation** — submit new sitemaps programmatically after content migrations
+- **CI/CD SEO checks** — fail pipelines when key pages drop below position threshold
+- **Multi-site SaaS dashboards** — aggregate GSC data across multiple client properties
+- **Image and news search analytics** — query `image` and `news` search types separately
+- **Country and device breakdowns** — segment click data by country or device for regional SEO
+
+---
+
+## Example (Before / After)
+
+```text
+Before:
+- Manual OAuth2 token refresh: 50+ lines of token exchange code per project
+- Pagination loop: separate rowOffset counter, multiple fetch calls, manual array merging
+- URL inspection: no programmatic access → check Google Search Console UI manually
+
+After (@power-seo/search-console):
+- createTokenManager({ type: 'oauth', ... }) → tokens auto-refresh before every request
+- querySearchAnalyticsAll(client, { dimensions: ['query'] }) → one call, complete dataset
+- inspectUrl(client, url) → { verdict: 'PASS', lastCrawlTime: '...', mobileUsabilityResult: {...} }
+```
+
+---
+
+## Implementation Best Practices
+
+- **Use service accounts for CI/CD** — service accounts don't expire and don't require user interaction
+- **Cache `querySearchAnalyticsAll` results** — GSC data is delayed by ~2 days; daily fetches are sufficient
+- **Use `sc-domain:` prefix for domain properties** — e.g. `sc-domain:example.com` for domain-level verification
+- **Add service account email as GSC user** — Settings → Users and permissions → Add user
+- **Handle `GSCApiError` status 429** — implement exponential backoff for rate-limited requests
+
+---
+
+## Architecture Overview
+
+**Where it runs**
+- **Build-time**: Fetch GSC data for static site revalidation or build-time content ranking
+- **Runtime**: Query analytics in serverless functions for real-time dashboard data
+- **CI/CD**: Check indexing status and keyword positions in automated pipelines
+
+**Data flow**
+1. **Input**: OAuth2 credentials or service account key + site URL + query parameters
+2. **Analysis**: Token manager handles auth; client sends typed requests to GSC API
+3. **Output**: Typed `SearchAnalyticsRow[]`, `InspectionResult`, `SitemapListResponse`
+4. **Action**: Feed into `@power-seo/analytics` for dashboards, or export as CSV/JSON reports
+
+---
+
+## Features Comparison with Popular Packages
+
+| Capability | google-auth-library | googleapis | custom fetch | @power-seo/search-console |
+|---|---:|---:|---:|---:|
+| OAuth2 token auto-refresh | ✅ | ✅ | ❌ | ✅ |
+| Service account JWT signing | ✅ | ✅ | ❌ | ✅ |
+| Auto-paginated analytics fetch | ❌ | ❌ | ❌ | ✅ |
+| Typed GSC-specific response shapes | ❌ | ⚠️ | ❌ | ✅ |
+| URL inspection support | ❌ | ⚠️ | ❌ | ✅ |
+| Sitemap management | ❌ | ⚠️ | ❌ | ✅ |
+
+---
+
+## @power-seo Ecosystem
+
+All 17 packages are independently installable — use only what you need.
 
 | Package | Install | Description |
 |---------|---------|-------------|
@@ -424,6 +227,128 @@ import type {
 | [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
 | [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
+### Ecosystem vs alternatives
+
+| Need | Common approach | @power-seo approach |
+|---|---|---|
+| GSC search analytics | `googleapis` (verbose) | `@power-seo/search-console` — typed, auto-paginated |
+| Analytics dashboards | Google Looker Studio | `@power-seo/analytics` — merge GSC + audit data |
+| Sitemap submission | Manual GSC UI | `@power-seo/search-console` — `submitSitemap()` |
+| SEO auditing | Third-party tools | `@power-seo/audit` — in-code, CI-friendly |
+
+---
+
+## Enterprise Integration
+
+**Multi-tenant SaaS**
+- **Per-client GSC properties**: Instantiate one `GSCClient` per client site; use service accounts for automation
+- **Aggregated dashboards**: Loop over multiple `siteUrl` values and merge analytics into a multi-site report
+- **Scheduled data sync**: Run `querySearchAnalyticsAll` on a daily cron for all client properties
+
+**ERP / internal portals**
+- Use URL inspection to verify that portal public pages are correctly indexed
+- Track keyword positions for internal knowledge base articles
+- Automate sitemap submission after content management system publishes
+
+**Recommended integration pattern**
+- Use **service accounts** in CI/CD — no user interaction, no token expiry
+- Run `querySearchAnalyticsAll` in **weekly scheduled jobs**
+- Feed data into `@power-seo/analytics` for **trend analysis** and **ranking insights**
+- Export results as **JSON** to Jira/Notion/Slack for content team review
+
+---
+
+## Scope and Limitations
+
+**This package does**
+- ✅ Authenticate with GSC API via OAuth2 and service account
+- ✅ Fetch search analytics data with auto-pagination
+- ✅ Inspect URL indexing status, mobile usability, and rich result status
+- ✅ Submit, list, and delete sitemaps from verified GSC properties
+
+**This package does not**
+- ❌ Verify properties in GSC — property must already be verified
+- ❌ Provide reporting UI — use `@power-seo/analytics` for dashboards
+- ❌ Access Google Analytics data — use `@power-seo/tracking` for GA4 API access
+
+---
+
+## API Reference
+
+### `createTokenManager(config)`
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `config.type` | `'oauth' \| 'service-account'` | Authentication method |
+| `config.clientId` | `string` | Google OAuth2 client ID (OAuth2 only) |
+| `config.clientSecret` | `string` | Google OAuth2 client secret (OAuth2 only) |
+| `config.refreshToken` | `string` | OAuth2 refresh token (OAuth2 only) |
+| `config.clientEmail` | `string` | Service account email (service account only) |
+| `config.privateKey` | `string` | Service account private key PEM (service account only) |
+| `config.scopes` | `string[]` | OAuth2 scopes to request (service account only) |
+
+Returns `TokenManager`: `{ getAccessToken(): Promise<TokenResult> }`.
+
+### `createGSCClient(config)`
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `config.siteUrl` | `string` | Verified GSC property URL (`sc-domain:` prefix for domain properties) |
+| `config.tokenManager` | `TokenManager` | Token manager from `createTokenManager` |
+
+Returns `GSCClient`.
+
+### `querySearchAnalytics(client, request)`
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `request.startDate` | `string` | required | `YYYY-MM-DD` |
+| `request.endDate` | `string` | required | `YYYY-MM-DD` |
+| `request.dimensions` | `Dimension[]` | `[]` | `'query'`, `'page'`, `'country'`, `'device'`, `'date'`, `'searchAppearance'` |
+| `request.searchType` | `SearchType` | `'web'` | `'web'`, `'image'`, `'video'`, `'news'` |
+| `request.rowLimit` | `number` | `1000` | Rows per request (max 25,000) |
+| `request.dimensionFilterGroups` | `object[]` | `[]` | Filter groups to narrow results |
+
+### `querySearchAnalyticsAll(client, request)`
+
+Same as `querySearchAnalytics` but `rowLimit` and `startRow` are managed automatically. Returns `Promise<SearchAnalyticsRow[]>`.
+
+### `inspectUrl(client, url)` / `inspectUrlDirect(client, url)`
+
+Returns `Promise<InspectionResult>`: `{ verdict, indexingState, lastCrawlTime, mobileUsabilityResult, richResultsResult, ... }`.
+
+### `listSitemaps(client)` / `submitSitemap(client, url)` / `deleteSitemap(client, url)`
+
+`listSitemaps` returns `Promise<SitemapListResponse>`. `submitSitemap` and `deleteSitemap` return `Promise<void>`.
+
+### Types
+
+```ts
+import type {
+  OAuthCredentials, ServiceAccountCredentials, TokenResult, TokenManager,
+  GSCClientConfig, GSCClient,
+  SearchType, Dimension,
+  SearchAnalyticsRequest, SearchAnalyticsRow, SearchAnalyticsResponse,
+  InspectionResult,
+  SitemapEntry, SitemapListResponse,
+} from '@power-seo/search-console';
+```
+
+---
+
+## Contributing
+
+- Issues: [github.com/cybercraftbd/power-seo/issues](https://github.com/cybercraftbd/power-seo/issues)
+- PRs: [github.com/cybercraftbd/power-seo/pulls](https://github.com/cybercraftbd/power-seo/pulls)
+- Development setup:
+  1. `pnpm i`
+  2. `pnpm build`
+  3. `pnpm test`
+
+**Release workflow**
+- `npm version patch|minor|major`
+- `npm publish --access public`
+
 ---
 
 ## About CyberCraft Bangladesh
@@ -437,4 +362,16 @@ import type {
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
 | **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
 
-© 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)
+---
+
+## License
+
+**MIT**
+
+---
+
+## Keywords
+
+```text
+seo, google-search-console, gsc, search-analytics, url-inspection, sitemap, oauth2, service-account, typescript, nextjs, analytics, keyword-tracking, click-through-rate, impressions
+```

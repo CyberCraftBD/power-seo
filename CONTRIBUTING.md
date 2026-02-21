@@ -1,4 +1,4 @@
-# Contributing to @ccbd-power-seo
+# Contributing to @power-seo
 
 Thanks for your interest in contributing! This guide covers everything you need to get started.
 
@@ -11,8 +11,8 @@ Thanks for your interest in contributing! This guide covers everything you need 
 
 ```bash
 # Clone the repository
-git clone https://github.com/cybercraftbd/ccbd-power-seo.git
-cd ccbd-power-seo
+git clone https://github.com/cybercraftbd/power-seo.git
+cd power-seo
 
 # Install dependencies
 pnpm install
@@ -57,7 +57,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 **Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`, `ci`
 
-**Scope** is the package name without the `@ccbd-power-seo/` prefix:
+**Scope** is the package name without the `@power-seo/` prefix:
 
 ```
 feat(schema): add recipe schema builder
@@ -118,10 +118,10 @@ packages/<name>/
 
 ```bash
 # Run tests for a single package
-pnpm --filter @ccbd-power-seo/schema test
+pnpm --filter @power-seo/schema test
 
 # Run tests in watch mode
-pnpm --filter @ccbd-power-seo/schema test:watch
+pnpm --filter @power-seo/schema test:watch
 ```
 
 ## Code Style

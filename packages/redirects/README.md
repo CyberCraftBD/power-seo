@@ -1,6 +1,4 @@
-# @power-seo/redirects — URL Redirect Rule Engine for Next.js, Remix, and Express
-
-Production-ready redirect engine with exact, glob, and regex pattern matching — plus drop-in adapters for Next.js, Remix, and Express.
+# @power-seo/redirects — URL Redirect Rule Engine for Next.js, Remix & Express — Exact, Glob & Regex Matching
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/redirects?style=flat-square)](https://www.npmjs.com/package/@power-seo/redirects)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/redirects?style=flat-square)](https://www.npmjs.com/package/@power-seo/redirects)
@@ -8,55 +6,69 @@ Production-ready redirect engine with exact, glob, and regex pattern matching �
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square)](https://www.typescriptlang.org/)
 [![Tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen?style=flat-square)](#)
 
-`@power-seo/redirects` is a framework-agnostic URL redirect rule engine that handles every redirection pattern you'll encounter in modern web development. Whether you're migrating a legacy site, restructuring URLs for SEO, or enforcing canonical paths, this package gives you a single, type-safe API to define and match redirect rules.
+---
 
-Rules are defined once and converted to the native format of your target framework — no reimplementing the same logic for Next.js `next.config.js`, Remix loaders, and Express middleware separately. The engine supports exact string matches, glob wildcards, and full regular expressions, with `:param` named group substitution in destination URLs.
+## Overview
 
-The package is fully isomorphic (Node.js and edge runtimes), has zero runtime dependencies, and ships with complete TypeScript types. Every exported function is individually tree-shakeable, so bundlers only include what you actually use.
+**@power-seo/redirects** is a framework-agnostic URL redirect rule engine for TypeScript that helps you define redirect rules once and apply them across Next.js, Remix, and Express — with exact, glob, and regex pattern matching.
 
-## Features
+**What it does**
+- ✅ **Unified redirect engine** — `createRedirectEngine()` accepts typed rules and matches URLs with `.match()`
+- ✅ **Three pattern types** — exact string, glob wildcards with `:param` segments, and full regular expressions
+- ✅ **Next.js adapter** — `toNextRedirects()` converts rules to the `next.config.js` redirect array format
+- ✅ **Remix adapter** — `createRemixRedirectHandler()` returns a loader function for Remix catch-all routes
+- ✅ **Express adapter** — `createExpressRedirectMiddleware()` returns an Express `RequestHandler`
+- ✅ **Parameter substitution** — `substituteParams()` replaces `:param` placeholders in destination URLs
+
+**What it is not**
+- ❌ **Not a reverse proxy** — does not proxy requests to other servers; only issues redirect responses
+- ❌ **Not a URL rewriter** — does not silently rewrite URLs; all matches produce 301 or 302 redirects
+
+**Recommended for**
+- **Site migrations**, **URL restructuring for SEO**, **Next.js route consolidation**, **legacy URL handling**, and **canonical URL enforcement**
+
+---
+
+## Why @power-seo/redirects Matters
+
+**The problem**
+- **Redirect rules are duplicated** — the same rules must be reimplemented for Next.js `next.config.js`, Remix loaders, and Express middleware separately
+- **Pattern matching is ad-hoc** — teams write one-off regex or string comparisons scattered across route files
+- **SEO is at risk** — missing 301 redirects during site migrations cause traffic drops and broken backlinks
+
+**Why developers care**
+- **SEO:** 301 redirects preserve link equity from old URLs to new ones during migrations
+- **Performance:** Centralized rule engine evaluates all rules in one pass — no per-route middleware overhead
+- **UX:** Correct redirects prevent users and Googlebot from hitting 404s after URL changes
+
+---
+
+## Key Features
 
 - **Exact matching** — byte-for-byte URL comparison with optional case sensitivity control
 - **Glob pattern matching** — `*` wildcard and `:param` named segment support (e.g., `/blog/:slug`)
-- **Regex pattern matching** — full regular expression matching with named capture group extraction
+- **Regex pattern matching** — full regular expression matching with capture group extraction
 - **301 and 302 status codes** — permanent and temporary redirect support via `RedirectStatusCode` union type
-- **`:param` substitution** — named parameter placeholders in destination URLs (`substituteParams`)
-- **Trailing slash normalization** — configurable trailing-slash handling for canonical URL enforcement
-- **Case-sensitive option** — per-engine or per-rule case sensitivity control
-- **Next.js adapter** — `toNextRedirects(rules)` converts rules to the array format expected by `next.config.js`
-- **Remix loader adapter** — `createRemixRedirectHandler(rules)` returns a loader function that calls `redirect()` when a rule matches
+- **`:param` substitution** — `substituteParams()` for named parameter placeholders in destination URLs
+- **Trailing slash normalization** — configurable trailing-slash handling: `'strip'`, `'add'`, or `'ignore'`
+- **Case-sensitive option** — per-engine case sensitivity control
+- **Next.js adapter** — `toNextRedirects(rules)` maps `statusCode: 301` to `permanent: true` automatically
+- **Remix loader adapter** — `createRemixRedirectHandler(rules)` returns a Remix-compatible loader function
 - **Express middleware adapter** — `createExpressRedirectMiddleware(rules)` returns an Express `RequestHandler`
-- **Priority-ordered rule evaluation** — rules are evaluated top-to-bottom; first match wins
-- **Type-safe configuration** — full TypeScript generics for `RedirectRule`, `RedirectMatch`, and `RedirectEngineConfig`
+- **Priority-ordered evaluation** — rules are evaluated top-to-bottom; first match wins
 - **Zero dependencies** — no runtime dependencies; lightweight and edge-compatible
+- **Full TypeScript types** — typed `RedirectRule`, `RedirectMatch`, `RedirectEngine`, `RedirectEngineConfig`
 
-## Table of Contents
+---
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Redirect Engine](#redirect-engine)
-  - [Pattern Matchers](#pattern-matchers)
-  - [Next.js Adapter](#nextjs-adapter)
-  - [Remix Adapter](#remix-adapter)
-  - [Express Adapter](#express-adapter)
-  - [Trailing Slash Normalization](#trailing-slash-normalization)
-- [API Reference](#api-reference)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
+## Benefits of Using @power-seo/redirects
 
-## Installation
+- **Preserved link equity**: 301 redirects maintain PageRank from old URLs during migrations — critical for SEO
+- **Simpler maintenance**: Define rules once in a shared file; adapters generate framework-specific formats automatically
+- **Safer migrations**: First-match-wins priority ordering prevents accidental double redirects
+- **Faster delivery**: Zero-dependency engine works in any runtime without configuration
 
-```bash
-# npm
-npm install @power-seo/redirects
-
-# yarn
-yarn add @power-seo/redirects
-
-# pnpm
-pnpm add @power-seo/redirects
-```
+---
 
 ## Quick Start
 
@@ -65,10 +77,9 @@ import { createRedirectEngine } from '@power-seo/redirects';
 
 const engine = createRedirectEngine({
   rules: [
-    { source: '/old-about',       destination: '/about',           statusCode: 301 },
-    { source: '/blog/:slug',      destination: '/articles/:slug',  statusCode: 301 },
-    { source: '/docs/*',          destination: '/documentation/*', statusCode: 302 },
-    { source: '/legacy/(\\d+)',   destination: '/posts/$1',        statusCode: 301 },
+    { source: '/old-about',      destination: '/about',          statusCode: 301 },
+    { source: '/blog/:slug',     destination: '/articles/:slug', statusCode: 301 },
+    { source: '/docs/*',         destination: '/documentation/*', statusCode: 302 },
   ],
 });
 
@@ -79,296 +90,114 @@ const noMatch = engine.match('/no-redirect-here');
 // null
 ```
 
-## Usage
-
-### Redirect Engine
-
-`createRedirectEngine` accepts a configuration object and returns an engine with a `.match(url)` method. Rules are evaluated in the order they appear in the `rules` array; the first matching rule wins.
-
-```ts
-import { createRedirectEngine } from '@power-seo/redirects';
-
-const engine = createRedirectEngine({
-  caseSensitive: false,        // optional — default: true
-  trailingSlash: 'strip',      // optional — 'strip' | 'add' | 'ignore'
-  rules: [
-    // Exact match
-    { source: '/home', destination: '/', statusCode: 301 },
-
-    // Named parameter substitution
-    { source: '/product/:id/details', destination: '/products/:id', statusCode: 301 },
-
-    // Glob wildcard (preserves the * portion)
-    { source: '/old-blog/*', destination: '/blog/*', statusCode: 301 },
-
-    // Temporary redirect
-    { source: '/sale', destination: '/promotions', statusCode: 302 },
-  ],
-});
-
-const result = engine.match('/product/42/details');
-// { destination: '/products/42', statusCode: 301 }
-```
-
-### Pattern Matchers
-
-Use the lower-level matchers directly when you need custom matching logic outside the engine.
-
-```ts
-import { matchExact, matchGlob, matchRegex, substituteParams } from '@power-seo/redirects';
-
-// Exact matching
-matchExact('/about', '/about');          // true
-matchExact('/About', '/about');          // false (case-sensitive by default)
-matchExact('/About', '/about', false);   // true (case-insensitive)
-
-// Glob matching — supports * wildcard and :param segments
-matchGlob('/blog/*', '/blog/my-post');              // { matched: true, params: {} }
-matchGlob('/user/:id/posts', '/user/42/posts');     // { matched: true, params: { id: '42' } }
-matchGlob('/docs/*', '/blog/article');              // { matched: false }
-
-// Regex matching — returns match object with named groups
-const result = matchRegex('^/user/(\\d+)$', '/user/42');
-// { matched: true, groups: ['42'] }
-
-// Parameter substitution — replace :param in destination
-substituteParams('/articles/:slug', { slug: 'react-seo-tips' });
-// '/articles/react-seo-tips'
-
-substituteParams('/category/:cat/post/:id', { cat: 'seo', id: '7' });
-// '/category/seo/post/7'
-```
-
-### Next.js Adapter
-
-Use `toNextRedirects` to convert your rules into the array format that Next.js expects in `next.config.js`. This keeps your redirect definitions in a single shared file.
-
-```ts
-// redirects.config.ts
-import type { RedirectRule } from '@power-seo/redirects';
-
-export const rules: RedirectRule[] = [
-  { source: '/old-blog/:slug', destination: '/blog/:slug', statusCode: 301 },
-  { source: '/resources',      destination: '/docs',       statusCode: 301 },
-];
-```
-
-```js
-// next.config.js
-import { toNextRedirects } from '@power-seo/redirects';
-import { rules } from './redirects.config.js';
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  async redirects() {
-    return toNextRedirects(rules);
-  },
-};
-
-export default nextConfig;
-```
-
-The adapter maps `statusCode: 301` to `permanent: true` and `statusCode: 302` to `permanent: false` automatically.
-
-### Remix Adapter
-
-`createRemixRedirectHandler` returns a Remix-compatible loader function. When a matching rule is found, it returns a `redirect()` response; otherwise it returns `null` so the route can render normally.
-
-```ts
-// app/routes/$.tsx (catch-all route)
-import { createRemixRedirectHandler } from '@power-seo/redirects';
-import { rules } from '~/redirects.config';
-
-export const loader = createRemixRedirectHandler(rules);
-
-export default function CatchAll() {
-  return <div>Page Not Found</div>;
-}
-```
-
-```ts
-// Custom usage with additional loader logic
-import { createRemixRedirectHandler } from '@power-seo/redirects';
-import { type LoaderFunctionArgs, json } from '@remix-run/node';
-
-const redirectLoader = createRemixRedirectHandler(rules);
-
-export async function loader(args: LoaderFunctionArgs) {
-  const redirectResponse = await redirectLoader(args);
-  if (redirectResponse) return redirectResponse;
-
-  // Continue with normal loader logic
-  const data = await fetchPageData(args.params);
-  return json(data);
-}
-```
-
-### Express Adapter
-
-`createExpressRedirectMiddleware` returns a standard Express `RequestHandler`. Mount it early in your middleware stack so redirects are processed before routing.
-
-```ts
-import express from 'express';
-import { createExpressRedirectMiddleware } from '@power-seo/redirects';
-import { rules } from './redirects.config.js';
-
-const app = express();
-
-// Mount redirect middleware before routes
-app.use(createExpressRedirectMiddleware(rules));
-
-// Regular routes
-app.get('/', (req, res) => res.send('Home'));
-
-app.listen(3000);
-```
-
-```ts
-// Advanced: custom middleware with logging
-import { createRedirectEngine } from '@power-seo/redirects';
-import type { Request, Response, NextFunction } from 'express';
-
-const engine = createRedirectEngine({ rules });
-
-app.use((req: Request, res: Response, next: NextFunction) => {
-  const match = engine.match(req.path);
-  if (match) {
-    console.log(`Redirecting ${req.path} → ${match.destination} [${match.statusCode}]`);
-    return res.redirect(match.statusCode, match.destination);
-  }
-  next();
-});
-```
-
-### Trailing Slash Normalization
-
-Configure trailing slash behavior globally on the engine or override per-rule.
-
-```ts
-const engine = createRedirectEngine({
-  trailingSlash: 'strip', // Remove trailing slashes before matching
-  rules: [
-    { source: '/about', destination: '/about-us', statusCode: 301 },
-  ],
-});
-
-// Both '/about' and '/about/' will match the rule above
-engine.match('/about/');  // { destination: '/about-us', statusCode: 301 }
-engine.match('/about');   // { destination: '/about-us', statusCode: 301 }
-```
-
-## API Reference
-
-### `createRedirectEngine(config)`
-
-Creates a redirect rule engine instance.
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `config.rules` | `RedirectRule[]` | required | Ordered array of redirect rules |
-| `config.caseSensitive` | `boolean` | `true` | Whether URL matching is case-sensitive |
-| `config.trailingSlash` | `'strip' \| 'add' \| 'ignore'` | `'ignore'` | How to normalize trailing slashes before matching |
-
-Returns a `RedirectEngine` object with:
-
-| Method | Signature | Description |
-|--------|-----------|-------------|
-| `match` | `(url: string) => RedirectMatch \| null` | Match a URL against all rules; returns first match or `null` |
+**What you should see**
+- `match` returns `{ destination, statusCode }` for matching URLs
+- `null` for URLs with no matching rule
 
 ---
 
-### `matchExact(pattern, url, caseSensitive?)`
+## Installation
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `pattern` | `string` | required | The exact URL string to match against |
-| `url` | `string` | required | The incoming URL to test |
-| `caseSensitive` | `boolean` | `true` | Whether comparison is case-sensitive |
-
-Returns `boolean`.
-
----
-
-### `matchGlob(pattern, url, caseSensitive?)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `pattern` | `string` | required | Glob pattern with `*` wildcards and `:param` segments |
-| `url` | `string` | required | The incoming URL to test |
-| `caseSensitive` | `boolean` | `true` | Whether comparison is case-sensitive |
-
-Returns `{ matched: boolean; params: Record<string, string> }`.
-
----
-
-### `matchRegex(pattern, url)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `pattern` | `string` | required | Regular expression string (without delimiters) |
-| `url` | `string` | required | The incoming URL to test |
-
-Returns `{ matched: boolean; groups: string[] }`.
-
----
-
-### `substituteParams(template, params)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `template` | `string` | required | Destination URL template with `:param` placeholders |
-| `params` | `Record<string, string>` | required | Key-value map of parameter names to values |
-
-Returns `string`.
-
----
-
-### `toNextRedirects(rules)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `rules` | `RedirectRule[]` | required | Array of redirect rules to convert |
-
-Returns `NextRedirect[]` — the array format accepted by Next.js `redirects()` in `next.config.js`.
-
----
-
-### `createRemixRedirectHandler(rules)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `rules` | `RedirectRule[]` | required | Array of redirect rules |
-
-Returns a Remix `LoaderFunction` that issues a `redirect()` response when a rule matches, or returns `null` otherwise.
-
----
-
-### `createExpressRedirectMiddleware(rules)`
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `rules` | `RedirectRule[]` | required | Array of redirect rules |
-
-Returns an Express `RequestHandler` middleware function.
-
----
-
-### Types
-
-```ts
-import type {
-  RedirectStatusCode,       // 301 | 302
-  RedirectRule,             // { source, destination, statusCode, caseSensitive? }
-  RedirectMatch,            // { destination: string; statusCode: RedirectStatusCode }
-  RedirectEngineConfig,     // { rules, caseSensitive?, trailingSlash? }
-  RedirectEngine,           // { match(url): RedirectMatch | null }
-  NextRedirect,             // { source, destination, permanent }
-} from '@power-seo/redirects';
+```bash
+npm i @power-seo/redirects
+# or
+yarn add @power-seo/redirects
+# or
+pnpm add @power-seo/redirects
+# or
+bun add @power-seo/redirects
 ```
 
-## The @power-seo Ecosystem
+---
 
-`@power-seo/redirects` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
+## Framework Compatibility
+
+**Supported**
+- ✅ Next.js (App Router / Pages Router) — `toNextRedirects()` for `next.config.js`
+- ✅ Remix — `createRemixRedirectHandler()` for catch-all routes
+- ✅ Express — `createExpressRedirectMiddleware()` as request handler
+- ✅ Node.js 18+ — pure TypeScript, no native bindings
+- ✅ Edge runtimes — no Node.js-specific APIs
+
+**Environment notes**
+- **SSR/SSG:** Fully supported — rule matching is synchronous and pure
+- **Edge runtime:** Supported — no filesystem access, no native bindings
+- **Browser-only usage:** The engine itself works in browser JS; redirect execution is server-side
+
+---
+
+## Use Cases
+
+- **Site migrations** — redirect 100s of old URLs to new paths with typed rule arrays
+- **URL restructuring for SEO** — enforce new URL patterns with 301 redirects to preserve link equity
+- **Trailing slash normalization** — enforce consistent URL format across all routes
+- **Locale redirects** — redirect `/en/about` to `/about` or vice versa with glob patterns
+- **Legacy URL handling** — redirect old numeric IDs to slug-based URLs with regex patterns
+- **Canonical URL enforcement** — redirect `http:` to `https:`, `www.` to non-www
+- **Multi-framework monorepos** — define rules once, generate Next.js, Remix, and Express configs
+
+---
+
+## Example (Before / After)
+
+```text
+Before:
+- Redirect rules duplicated in next.config.js, Remix route loaders, and Express middleware
+- Ad-hoc regex matching with inconsistent handling of trailing slashes and case
+- No TypeScript types → wrong statusCode values go undetected until runtime
+
+After (@power-seo/redirects):
+- rules: RedirectRule[] defined once in redirects.config.ts
+- toNextRedirects(rules) → Next.js redirect array
+- createRemixRedirectHandler(rules) → Remix loader
+- createExpressRedirectMiddleware(rules) → Express middleware
+- All three from the same typed source of truth
+```
+
+---
+
+## Implementation Best Practices
+
+- **Use 301 for permanent redirects** — preserves link equity; Google follows and updates its index
+- **Use 302 for temporary redirects** — e.g., maintenance pages or A/B test variants
+- **Order rules from most-specific to least-specific** — first-match-wins prevents broad patterns from swallowing specific ones
+- **Test rules in development** with `engine.match()` before deploying — zero-cost synchronous check
+- **Keep redirect rules in a shared file** — import it into `next.config.js`, Remix routes, and Express server from one location
+
+---
+
+## Architecture Overview
+
+**Where it runs**
+- **Build-time**: `toNextRedirects()` generates the static Next.js redirect array at build time
+- **Runtime**: Remix loader and Express middleware evaluate rules on every request
+- **CI/CD**: Test `engine.match()` against expected URL patterns in unit tests
+
+**Data flow**
+1. **Input**: `RedirectRule[]` array with source patterns, destinations, and status codes
+2. **Analysis**: Engine evaluates rules top-to-bottom; first match returns `{ destination, statusCode }`
+3. **Output**: `RedirectMatch | null` — used by adapters to issue HTTP redirect responses
+4. **Action**: Browser/Googlebot follows redirect; old URL updates to new URL in Google's index
+
+---
+
+## Features Comparison with Popular Packages
+
+| Capability | next/redirects (config) | vercel.json | nginx rewrite | @power-seo/redirects |
+|---|---:|---:|---:|---:|
+| Works in Remix | ❌ | ❌ | ❌ | ✅ |
+| Works in Express | ❌ | ❌ | ✅ | ✅ |
+| Typed TypeScript API | ❌ | ❌ | ❌ | ✅ |
+| Named `:param` substitution | ✅ | ✅ | ✅ | ✅ |
+| Regex pattern support | ✅ | ✅ | ✅ | ✅ |
+| Programmatic rule testing | ❌ | ❌ | ❌ | ✅ |
+| Zero dependencies | ✅ | ✅ | ✅ | ✅ |
+
+---
+
+## @power-seo Ecosystem
+
+All 17 packages are independently installable — use only what you need.
 
 | Package | Install | Description |
 |---------|---------|-------------|
@@ -390,6 +219,123 @@ import type {
 | [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
 | [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
+### Ecosystem vs alternatives
+
+| Need | Common approach | @power-seo approach |
+|---|---|---|
+| URL redirects | Framework-specific config | `@power-seo/redirects` — one rule set, all frameworks |
+| Sitemap generation | `next-sitemap` | `@power-seo/sitemap` — streaming, image, video, news |
+| SEO auditing | Third-party tools | `@power-seo/audit` — in-code, CI-friendly |
+| Analytics data | Direct API integration | `@power-seo/search-console` + `@power-seo/analytics` |
+
+---
+
+## Enterprise Integration
+
+**Multi-tenant SaaS**
+- **Per-tenant redirect rules**: Load rules from DB per tenant; instantiate one engine per tenant domain
+- **URL migration pipelines**: Generate redirect rules from old → new URL mapping CSV; apply across all frameworks
+- **Compliance**: Log all redirect matches with source and destination for audit trails
+
+**ERP / internal portals**
+- Enforce canonical URL formats for internal tools (e.g., strip trailing slashes, normalize casing)
+- Redirect deprecated API endpoint paths to new versions with 301 rules
+- Use regex rules to redirect numeric legacy IDs to slug-based resource URLs
+
+**Recommended integration pattern**
+- Define **all redirect rules in a single shared file** (`redirects.config.ts`)
+- Use **`toNextRedirects()`**, **`createRemixRedirectHandler()`**, and **`createExpressRedirectMiddleware()`** to generate framework-specific implementations
+- Test rules with **`engine.match()`** in unit tests
+- Run tests in **CI** to prevent redirect regressions after rule updates
+
+---
+
+## Scope and Limitations
+
+**This package does**
+- ✅ Match URLs against exact, glob, and regex patterns
+- ✅ Substitute named parameters in destination URLs
+- ✅ Generate framework-specific redirect configs for Next.js, Remix, and Express
+- ✅ Support 301 and 302 HTTP status codes
+
+**This package does not**
+- ❌ Proxy requests to other servers
+- ❌ Rewrite URLs silently (all matches produce redirect responses)
+- ❌ Manage CDN-level redirects (Vercel, Cloudflare) — use platform configs for those
+
+---
+
+## API Reference
+
+### `createRedirectEngine(config)`
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `config.rules` | `RedirectRule[]` | required | Ordered array of redirect rules |
+| `config.caseSensitive` | `boolean` | `true` | Case-sensitive URL matching |
+| `config.trailingSlash` | `'strip' \| 'add' \| 'ignore'` | `'ignore'` | Trailing slash normalization |
+
+Returns `RedirectEngine`: `{ match(url: string): RedirectMatch | null }`.
+
+### `matchExact(pattern, url, caseSensitive?)`
+
+Returns `boolean`.
+
+### `matchGlob(pattern, url, caseSensitive?)`
+
+Returns `{ matched: boolean; params: Record<string, string> }`.
+
+### `matchRegex(pattern, url)`
+
+Returns `{ matched: boolean; groups: string[] }`.
+
+### `substituteParams(template, params)`
+
+```ts
+substituteParams('/articles/:slug', { slug: 'react-seo-tips' });
+// '/articles/react-seo-tips'
+```
+
+### `toNextRedirects(rules)`
+
+Converts `RedirectRule[]` to Next.js `redirects()` array format. Maps `statusCode: 301` → `permanent: true`.
+
+### `createRemixRedirectHandler(rules)`
+
+Returns a Remix `LoaderFunction` that issues `redirect()` when a rule matches, or returns `null` otherwise.
+
+### `createExpressRedirectMiddleware(rules)`
+
+Returns an Express `RequestHandler` middleware function.
+
+### Types
+
+```ts
+import type {
+  RedirectStatusCode,       // 301 | 302
+  RedirectRule,             // { source, destination, statusCode, caseSensitive? }
+  RedirectMatch,            // { destination: string; statusCode: RedirectStatusCode }
+  RedirectEngineConfig,     // { rules, caseSensitive?, trailingSlash? }
+  RedirectEngine,           // { match(url): RedirectMatch | null }
+  NextRedirect,             // { source, destination, permanent }
+} from '@power-seo/redirects';
+```
+
+---
+
+## Contributing
+
+- Issues: [github.com/cybercraftbd/power-seo/issues](https://github.com/cybercraftbd/power-seo/issues)
+- PRs: [github.com/cybercraftbd/power-seo/pulls](https://github.com/cybercraftbd/power-seo/pulls)
+- Development setup:
+  1. `pnpm i`
+  2. `pnpm build`
+  3. `pnpm test`
+
+**Release workflow**
+- `npm version patch|minor|major`
+- `npm publish --access public`
+
 ---
 
 ## About CyberCraft Bangladesh
@@ -403,4 +349,16 @@ import type {
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
 | **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
 
-© 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)
+---
+
+## License
+
+**MIT**
+
+---
+
+## Keywords
+
+```text
+seo, redirects, url-redirect, 301-redirect, redirect-engine, nextjs, remix, express, glob-matching, regex-matching, site-migration, typescript, canonical-url, link-equity
+```

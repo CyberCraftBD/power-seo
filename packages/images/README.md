@@ -12,6 +12,12 @@ Alt text auditing, CWV-aware lazy loading checks, WebP/AVIF format recommendatio
 
 The alt text auditor catches not just empty alt attributes but the subtler issues: filenames used as alt text, alt text that is too short to be meaningful, duplicate alt text across multiple images, and whether your focus keyphrase appears in at least one image's alt text. The lazy loading auditor is CWV-aware — it will flag above-the-fold images that have `loading="lazy"` applied (which delays LCP) and below-the-fold images that are missing it (which wastes bandwidth). The format analyzer detects each image's current format by URL extension and recommends modern alternatives (WebP, AVIF) for formats that lack compression efficiency. Finally, `generateImageSitemap` produces standards-compliant XML using Google's `image:` namespace extension so your images appear in image search results.
 
+## Documentation
+
+- **Package docs:** [`apps/docs/src/content/docs/packages/images.mdx`](../../apps/docs/src/content/docs/packages/images.mdx)
+- **Ecosystem overview:** [`README.md`](../../README.md)
+- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
 ## Features
 
 - **Alt text audit** — detects missing alt attributes, empty alt text on non-decorative images, alt text that is too short (under 5 characters), filename patterns used as alt text (e.g., `IMG_1234`), duplicate alt text across multiple images, and keyphrase presence in at least one image's alt text

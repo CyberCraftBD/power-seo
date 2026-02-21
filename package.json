@@ -1,5 +1,5 @@
 {
-  "name": "@ccbd-power-seo/monorepo",
+  "name": "@power-seo/monorepo",
   "private": true,
   "version": "0.0.0",
   "description": "React SEO Toolkit — WordPress-level SEO capabilities for React and its frameworks",
@@ -7,7 +7,7 @@
   "author": "CyberCraft Bangladesh <info@ccbd.dev>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cybercraftbd/ccbd-power-seo.git"
+    "url": "https://github.com/cybercraftbd/power-seo.git"
   },
   "engines": {
     "node": ">=18.0.0",

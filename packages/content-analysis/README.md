@@ -12,6 +12,12 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 
 > **Zero runtime dependencies** — only `@power-seo/core` as a peer.
 
+## Documentation
+
+- **Package docs:** [`apps/docs/src/content/docs/packages/content-analysis.mdx`](../../apps/docs/src/content/docs/packages/content-analysis.mdx)
+- **Ecosystem overview:** [`README.md`](../../README.md)
+- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
 ## Features
 
 - **Keyphrase density check** — scores optimal 0.5–3% keyword frequency in body copy

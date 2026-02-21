@@ -14,6 +14,12 @@ Given a list of pages and their outbound links, `buildLinkGraph` constructs a fu
 
 The package is designed to integrate directly with `@power-seo/audit` for site-wide SEO audits, and with `@power-seo/analytics` for correlating link equity with traffic data. It is dependency-free, fully typed, and tree-shakeable.
 
+## Documentation
+
+- **Package docs:** [`apps/docs/src/content/docs/packages/links.mdx`](../../apps/docs/src/content/docs/packages/links.mdx)
+- **Ecosystem overview:** [`README.md`](../../README.md)
+- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
 ## Features
 
 - **Directed link graph construction** — `buildLinkGraph(pages)` builds an in-memory directed graph from page URL arrays, computing both outbound and inbound link sets for each node

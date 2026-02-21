@@ -61,31 +61,26 @@ jobs:
             git commit -m "style: auto-fix lint and formatting [skip ci]"
           fi
 
-      - name: Bump patch version for all packages
-        run: |
-          for dir in packages/*/; do
-            pkg="$dir/package.json"
-            if [ -f "$pkg" ] && [ "$(node -p "require('./$pkg').private")" != "true" ]; then
-              cd "$dir"
-              npm version patch --no-git-tag-version
-              cd ../..
-            fi
-          done
-
-      - name: Get new version
+      - name: Get version
         id: version
         run: |
           VERSION=$(node -p "require('./packages/core/package.json').version")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Publishing version: $VERSION"
 
-      - name: Publish all packages to npm
+      - name: Publish new packages to npm
         run: |
           for dir in packages/*/; do
             pkg="$dir/package.json"
             if [ -f "$pkg" ] && [ "$(node -p "require('./$pkg').private")" != "true" ]; then
               NAME=$(node -p "require('./$pkg').name")
-              echo "Publishing $NAME..."
+              VERSION=$(node -p "require('./$pkg').version")
+              EXISTING=$(npm view "$NAME@$VERSION" version 2>/dev/null || echo "")
+              if [ -n "$EXISTING" ]; then
+                echo "Skipping $NAME@$VERSION (already published)"
+                continue
+              fi
+              echo "Publishing $NAME@$VERSION..."
               cd "$dir"
               npm publish --access public
               cd ../..
@@ -94,10 +89,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Commit version bumps
+      - name: Commit any auto-fixes
         run: |
-          git add -A
-          git commit -m "chore: release v${{ steps.version.outputs.version }} [skip ci]"
+          if ! git diff --quiet HEAD; then
+            git add -A -- ':!.npmrc'
+            git commit -m "chore: release v${{ steps.version.outputs.version }} [skip ci]"
+          fi
 
       - name: Tag and push
         run: |

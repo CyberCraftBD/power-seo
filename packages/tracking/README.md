@@ -1,6 +1,4 @@
-# @power-seo/tracking — Analytics Script Builders & Consent Management for GA4, Clarity, PostHog, Plausible & Fathom
-
-Build consent-aware analytics script configurations, manage GDPR cookie consent state, load tracking scripts conditionally, and query analytics APIs — all in TypeScript.
+# @power-seo/tracking — Analytics Script Builders & GDPR Consent Management for GA4, Clarity, PostHog, Plausible & Fathom
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/tracking)](https://www.npmjs.com/package/@power-seo/tracking)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/tracking)](https://www.npmjs.com/package/@power-seo/tracking)
@@ -8,67 +6,72 @@ Build consent-aware analytics script configurations, manage GDPR cookie consent 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/tracking)
 
-`@power-seo/tracking` solves the two hardest parts of adding analytics to a modern web app: generating correct script configurations for five different providers, and only loading those scripts when the user has actually consented. The script builders (`buildGA4Script`, `buildClarityScript`, `buildPostHogScript`, `buildPlausibleScript`, `buildFathomScript`) produce `ScriptConfig` objects that each carry a `shouldLoad(consentState)` method. Pair them with `createConsentManager()` to get a reactive consent state store with `grant()`, `revoke()`, `grantAll()`, `revokeAll()`, and `onChange()`. The included React components (`AnalyticsScript`, `ConsentBanner`) wire everything together in a single render. For data retrieval, API clients for GA4, Clarity, PostHog, Plausible, and Fathom let you query analytics data programmatically.
+---
 
-> **Zero runtime dependencies** — pure TypeScript with optional React peer dependency.
+## Overview
 
-## Features
+**@power-seo/tracking** is a consent-aware analytics toolkit for TypeScript that helps you manage GDPR-compliant script loading, define consent state, and query analytics APIs for GA4, Microsoft Clarity, PostHog, Plausible, and Fathom — all without runtime dependencies.
 
-- **Script builders for 5 platforms** — GA4 (multiple script tags), Microsoft Clarity, PostHog, Plausible Analytics, and Fathom Analytics
-- **Consent-aware loading** — every `ScriptConfig` exposes `shouldLoad(consentState)` so you never load a tracker without the right category of consent
-- **Consent manager** — `createConsentManager()` returns a typed store with `grant()`, `revoke()`, `grantAll()`, `revokeAll()`, `getState()`, and `onChange()` subscription for reactive consent UI
-- **GDPR-friendly defaults** — `necessary` consent is always `true` and cannot be revoked; all other categories (`analytics`, `marketing`, `preferences`) default to `false`
-- **React components** — `<AnalyticsScript>` renders only the scripts that pass consent; `<ConsentBanner>` is a ready-to-use GDPR banner with Accept All / Reject All buttons and a privacy policy link
-- **GA4 Data API client** — `createGA4Client()` queries reports, real-time data, and metadata from the GA4 Data API
+**What it does**
+- ✅ **Script builders for 5 platforms** — `buildGA4Script`, `buildClarityScript`, `buildPostHogScript`, `buildPlausibleScript`, `buildFathomScript`
+- ✅ **Consent-aware loading** — every `ScriptConfig` exposes `shouldLoad(consentState)` to prevent loading without consent
+- ✅ **Consent manager** — `createConsentManager()` with `grant()`, `revoke()`, `grantAll()`, `revokeAll()`, `onChange()`
+- ✅ **React components** — `<AnalyticsScript>` and `<ConsentBanner>` for drop-in GDPR banner integration
+- ✅ **Analytics API clients** — query GA4, Clarity, PostHog, Plausible, and Fathom data programmatically
+
+**What it is not**
+- ❌ **Not a Tag Manager** — does not replace Google Tag Manager; it is a code-first alternative
+- ❌ **Not a legal compliance tool** — provides the technical mechanism; legal GDPR compliance requires proper privacy policy and DPA
+
+**Recommended for**
+- **Next.js App Router and Pages Router apps**, **Remix applications**, **SaaS products needing GDPR compliance**, and **analytics reporting dashboards**
+
+---
+
+## Why @power-seo/tracking Matters
+
+**The problem**
+- **Analytics scripts load before consent** — most analytics integrations don't check consent state before injecting `<script>` tags, violating GDPR
+- **5 different provider APIs** — each analytics platform has different initialization code, configuration, and loading strategy
+- **Consent state is UI state** — analytics loading needs to react to user consent choices in real time
+
+**Why developers care**
+- **Compliance:** GDPR requires analytics scripts not to load until the user grants consent
+- **Performance:** Consent-gated loading prevents unnecessary scripts from affecting LCP and TTI before user interaction
+- **UX:** A unified consent manager drives the consent banner, script loading, and API data fetching from one source of truth
+
+---
+
+## Key Features
+
+- **Script builders for 5 platforms** — GA4 (2 script tags), Microsoft Clarity, PostHog, Plausible, and Fathom Analytics
+- **Consent-aware loading** — every `ScriptConfig` exposes `shouldLoad(consentState)` — never loads a tracker without the right consent category
+- **Consent manager** — `createConsentManager()` returns a typed store with `grant()`, `revoke()`, `grantAll()`, `revokeAll()`, `getState()`, and `onChange()` subscription
+- **GDPR-friendly defaults** — `necessary` consent is always `true` and cannot be revoked; `analytics`, `marketing`, `preferences` default to `false`
+- **React components** — `<AnalyticsScript>` renders only consented scripts; `<ConsentBanner>` is a ready-to-use GDPR banner
+- **GA4 Data API client** — `createGA4Client()` queries reports, real-time data, and metadata
 - **Clarity API client** — `createClarityClient()` fetches projects, session insights, and heatmap data
 - **PostHog API client** — `createPostHogClient()` queries events, trends, funnels, and persons
 - **Plausible Stats API client** — `createPlausibleClient()` fetches timeseries, breakdowns, and aggregate stats
 - **Fathom API client** — `createFathomClient()` fetches sites, pageviews, and referrer data
+- **Zero runtime dependencies** — pure TypeScript with optional React peer dependency
 - **Full TypeScript support** — typed config interfaces, consent state, and response shapes for every provider
 
-## Table of Contents
+---
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Script Builders](#script-builders)
-  - [Consent Management](#consent-management)
-  - [Consent-Aware Script Loading](#consent-aware-script-loading)
-  - [React Components](#react-components)
-  - [Analytics API Clients](#analytics-api-clients)
-- [API Reference](#api-reference)
-  - [Script Builders](#script-builders-api)
-  - [Consent](#consent-api)
-  - [API Clients](#api-clients)
-  - [React Components](#react-components-api)
-  - [Types](#types)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
+## Benefits of Using @power-seo/tracking
 
-## Installation
+- **GDPR compliance**: `shouldLoad(consent)` guarantees scripts only load when the correct consent category is granted
+- **Simpler integration**: One consent manager drives the consent banner UI, script loading, and API access — no fragmented state
+- **Better performance**: Analytics scripts with `lazyOnload` strategy don't block page render
+- **Faster delivery**: Typed script builders for 5 providers eliminate provider-specific documentation research
 
-```bash
-npm install @power-seo/tracking
-```
-
-```bash
-yarn add @power-seo/tracking
-```
-
-```bash
-pnpm add @power-seo/tracking
-```
-
-For React components, React 18+ is required as a peer dependency.
+---
 
 ## Quick Start
 
 ```ts
-import {
-  createConsentManager,
-  buildGA4Script,
-  buildPlausibleScript,
-} from '@power-seo/tracking';
+import { createConsentManager, buildGA4Script, buildPlausibleScript } from '@power-seo/tracking';
 
 // 1. Create consent manager — analytics off by default
 const consent = createConsentManager({
@@ -94,281 +97,112 @@ const nowToLoad = scripts.filter((s) => s.shouldLoad(consent.getState()));
 // nowToLoad → [GA4Script1, GA4Script2, PlausibleScript]
 ```
 
-## Usage
+**What you should see**
+- Zero scripts loaded until `consent.grantAll()` is called
+- Scripts filtered by `shouldLoad(consentState)` — no analytics without user approval
 
-### Script Builders
+---
 
-Each builder returns a `ScriptConfig` (or `ScriptConfig[]` for GA4) with the script attributes and a `shouldLoad()` method:
+## Installation
 
-```ts
-import {
-  buildGA4Script,
-  buildClarityScript,
-  buildPostHogScript,
-  buildPlausibleScript,
-  buildFathomScript,
-} from '@power-seo/tracking';
-
-// Google Analytics 4 — returns ScriptConfig[] (multiple tags required)
-const ga4Scripts = buildGA4Script({ measurementId: 'G-XXXXXXX' });
-// [{ src, strategy, shouldLoad(consent) }, { inlineScript, shouldLoad(consent) }]
-
-// Microsoft Clarity — returns ScriptConfig
-const clarity = buildClarityScript({ projectId: 'abc123xyz' });
-
-// PostHog — returns ScriptConfig
-const posthog = buildPostHogScript({
-  apiKey:  'phc_xxxxxxxxxxxx',
-  apiHost: 'https://app.posthog.com', // optional, defaults to cloud
-});
-
-// Plausible Analytics — returns ScriptConfig
-const plausible = buildPlausibleScript({
-  domain:    'example.com',
-  customDomain: 'https://analytics.example.com', // optional self-hosted
-});
-
-// Fathom Analytics — returns ScriptConfig
-const fathom = buildFathomScript({ siteId: 'ABCDEFGH' });
+```bash
+npm i @power-seo/tracking
+# or
+yarn add @power-seo/tracking
+# or
+pnpm add @power-seo/tracking
+# or
+bun add @power-seo/tracking
 ```
 
-### Consent Management
+For React components, React 18+ is required as a peer dependency.
 
-```ts
-import { createConsentManager } from '@power-seo/tracking';
-import type { ConsentState, ConsentManager } from '@power-seo/tracking';
+---
 
-const manager: ConsentManager = createConsentManager({
-  necessary:   true,   // always true, cannot be revoked
-  analytics:   false,  // opt-in by default
-  marketing:   false,
-  preferences: false,
-});
+## Framework Compatibility
 
-// Grant / revoke individual categories
-manager.grant('analytics');
-manager.revoke('marketing');
+**Supported**
+- ✅ Next.js App Router — use `<AnalyticsScript>` and `<ConsentBanner>` in root layout
+- ✅ Next.js Pages Router — use in `_app.tsx`
+- ✅ Remix — use in root route component
+- ✅ Node.js 18+ — API clients for server-side analytics data fetching
+- ✅ Vite + React — works in standard SPA setup
 
-// Bulk operations
-manager.grantAll();    // grant analytics + marketing + preferences
-manager.revokeAll();   // revoke analytics + marketing + preferences
+**Environment notes**
+- **SSR/SSG:** Script builders and consent manager are SSR-safe; React components require client-side rendering for DOM injection
+- **Edge runtime:** Script builders and consent manager are edge-compatible; API clients require Node.js fetch
+- **Browser-only usage:** `shouldLoad()` and consent manager work in browser environments
 
-// Read current state
-const state: ConsentState = manager.getState();
-// { necessary: true, analytics: true, marketing: false, preferences: false }
+---
 
-// Subscribe to changes (for reactive UI)
-const unsubscribe = manager.onChange((state: ConsentState) => {
-  console.log('Consent updated:', state);
-  reloadScripts(state);
-});
+## Use Cases
 
-// Later: unsubscribe when component unmounts
-unsubscribe();
+- **GDPR-compliant web apps** — load analytics scripts only after user consent
+- **SaaS marketing sites** — track user behavior with GA4 while respecting privacy regulations
+- **E-commerce stores** — Clarity session recordings for UX optimization with consent gate
+- **Multi-provider analytics** — run GA4 + Plausible + PostHog side-by-side for data validation
+- **Privacy-first apps** — Plausible or Fathom as cookieless, GDPR-compliant alternatives to GA4
+- **Analytics dashboards** — query GA4, Plausible, or Fathom APIs for custom reporting
+- **A/B testing pipelines** — PostHog feature flags + event tracking with consent management
+- **Enterprise compliance** — full audit trail of when consent was granted per category
+
+---
+
+## Example (Before / After)
+
+```text
+Before:
+- GA4 script injected in <head> unconditionally → violates GDPR before consent
+- 3 separate analytics integrations with different initialization patterns
+- Consent banner only hides scripts after first render → tracking still fires
+
+After (@power-seo/tracking):
+- buildGA4Script({ measurementId }) → ScriptConfig with shouldLoad(consent)
+- createConsentManager({ analytics: false }) → analytics = false until user clicks Accept
+- <AnalyticsScript scripts={scripts} consent={consent} /> → renders nothing until consented
 ```
 
-### Consent-Aware Script Loading
+---
 
-```ts
-import { createConsentManager, buildGA4Script, buildClarityScript } from '@power-seo/tracking';
+## Implementation Best Practices
 
-const manager = createConsentManager({ necessary: true, analytics: false });
-const scripts = [...buildGA4Script({ measurementId: 'G-XXX' }), buildClarityScript({ projectId: 'abc' })];
+- **Set `analytics: false` by default** in `createConsentManager()` — GDPR requires opt-in, not opt-out
+- **Persist consent state** to `localStorage` or a cookie — re-read on page load to avoid showing the banner twice
+- **Use `onChange()`** to reactively reload scripts after consent is granted
+- **Do not load GA4 or Clarity** without `analytics` consent — these are tracking, not `necessary` scripts
+- **Include a working privacy policy link** in `<ConsentBanner privacyPolicyUrl="/privacy-policy" />`
 
-// Inject into DOM only if consent is granted
-function loadApprovedScripts() {
-  const consent = manager.getState();
-  scripts
-    .filter((s) => s.shouldLoad(consent))
-    .forEach((s) => {
-      if (s.src) {
-        const el = document.createElement('script');
-        el.src = s.src;
-        el.async = true;
-        document.head.appendChild(el);
-      } else if (s.inlineScript) {
-        const el = document.createElement('script');
-        el.textContent = s.inlineScript;
-        document.head.appendChild(el);
-      }
-    });
-}
+---
 
-manager.onChange(() => loadApprovedScripts());
-```
+## Architecture Overview
 
-### React Components
+**Where it runs**
+- **Build-time**: Script builder configs are defined server-side; passed to client as serialized props
+- **Runtime**: Consent manager runs client-side; `shouldLoad()` is evaluated on consent change
+- **CI/CD**: API clients run server-side for scheduled analytics data fetching and reporting
 
-```tsx
-import { AnalyticsScript, ConsentBanner } from '@power-seo/tracking/react';
-import {
-  createConsentManager,
-  buildGA4Script,
-  buildPlausibleScript,
-  buildClarityScript,
-} from '@power-seo/tracking';
+**Data flow**
+1. **Input**: Provider credentials (measurementId, projectId), initial consent state
+2. **Analysis**: `shouldLoad(consentState)` evaluates per-script consent requirements
+3. **Output**: Filtered `ScriptConfig[]` injected into `<head>` as `<script>` tags
+4. **Action**: Analytics providers receive tracking data only when consent is granted
 
-// In _app.tsx or layout.tsx
-const manager = createConsentManager({
-  necessary:   true,
-  analytics:   false,
-  marketing:   false,
-  preferences: false,
-});
+---
 
-const scripts = [
-  ...buildGA4Script({ measurementId: 'G-XXXXXXX' }),
-  buildPlausibleScript({ domain: 'example.com' }),
-  buildClarityScript({ projectId: 'abc123' }),
-];
+## Features Comparison with Popular Packages
 
-export default function RootLayout({ children }) {
-  const [consent, setConsent] = useState(manager.getState());
+| Capability | @next/third-parties | partytown | cookiebot | @power-seo/tracking |
+|---|---:|---:|---:|---:|
+| Typed script builders | ❌ | ❌ | ❌ | ✅ |
+| Consent-aware `shouldLoad()` | ❌ | ❌ | ✅ | ✅ |
+| Built-in consent manager | ❌ | ❌ | ✅ (paid) | ✅ |
+| Analytics API clients | ❌ | ❌ | ❌ | ✅ |
+| 5-provider support | ⚠️ | ⚠️ | ✅ | ✅ |
+| Zero runtime dependencies | ✅ | ✅ | ❌ | ✅ |
 
-  useEffect(() => {
-    return manager.onChange((state) => setConsent(state));
-  }, []);
+---
 
-  return (
-    <html>
-      <head>
-        {/* Renders only scripts that pass consent */}
-        <AnalyticsScript scripts={scripts} consent={consent} />
-      </head>
-      <body>
-        {children}
-        {/* GDPR banner — shows until user accepts or rejects */}
-        <ConsentBanner
-          manager={manager}
-          privacyPolicyUrl="/privacy-policy"
-        />
-      </body>
-    </html>
-  );
-}
-```
-
-### Analytics API Clients
-
-```ts
-import {
-  createGA4Client,
-  createPlausibleClient,
-  createFathomClient,
-  createClarityClient,
-  createPostHogClient,
-} from '@power-seo/tracking';
-
-// Google Analytics 4 Data API
-const ga4 = createGA4Client({
-  credentials: {
-    clientEmail: process.env.GA4_CLIENT_EMAIL!,
-    privateKey:  process.env.GA4_PRIVATE_KEY!,
-    propertyId:  process.env.GA4_PROPERTY_ID!,
-  },
-});
-const report = await ga4.queryReport({
-  dateRanges:  [{ startDate: '2026-01-01', endDate: '2026-01-31' }],
-  dimensions:  [{ name: 'pagePath' }],
-  metrics:     [{ name: 'sessions' }, { name: 'bounceRate' }],
-});
-
-// Plausible Stats API
-const plausible = createPlausibleClient({ apiKey: process.env.PLAUSIBLE_API_KEY! });
-const stats = await plausible.getAggregate({
-  domain: 'example.com',
-  period: '30d',
-  metrics: 'visitors,pageviews,bounce_rate',
-});
-
-// Fathom API
-const fathom = createFathomClient({ apiKey: process.env.FATHOM_API_KEY! });
-const pageviews = await fathom.getPageviews({
-  siteId:    'ABCDEFGH',
-  dateFrom:  '2026-01-01',
-  dateTo:    '2026-01-31',
-  groupBy:   'pathname',
-});
-```
-
-## API Reference
-
-### Script Builders API
-
-| Function | Config Props | Returns | Description |
-|----------|-------------|---------|-------------|
-| `buildGA4Script` | `{ measurementId }` | `ScriptConfig[]` | Google Analytics 4 (2 script tags) |
-| `buildClarityScript` | `{ projectId }` | `ScriptConfig` | Microsoft Clarity |
-| `buildPostHogScript` | `{ apiKey, apiHost? }` | `ScriptConfig` | PostHog |
-| `buildPlausibleScript` | `{ domain, customDomain? }` | `ScriptConfig` | Plausible Analytics |
-| `buildFathomScript` | `{ siteId }` | `ScriptConfig` | Fathom Analytics |
-
-#### `ScriptConfig`
-
-| Prop | Type | Description |
-|------|------|-------------|
-| `src` | `string \| undefined` | External script URL |
-| `inlineScript` | `string \| undefined` | Inline JavaScript content |
-| `strategy` | `'beforeInteractive' \| 'afterInteractive' \| 'lazyOnload'` | Loading strategy hint |
-| `shouldLoad` | `(consent: ConsentState) => boolean` | Returns `true` if this script may load under the current consent state |
-
-### Consent API
-
-```ts
-function createConsentManager(initialState: Partial<ConsentState>): ConsentManager
-```
-
-#### `ConsentManager`
-
-| Method | Signature | Description |
-|--------|-----------|-------------|
-| `grant` | `(category: ConsentCategory) => void` | Grant a consent category |
-| `revoke` | `(category: ConsentCategory) => void` | Revoke a consent category |
-| `grantAll` | `() => void` | Grant all non-necessary categories |
-| `revokeAll` | `() => void` | Revoke all non-necessary categories |
-| `getState` | `() => ConsentState` | Get the current consent snapshot |
-| `onChange` | `(cb: ConsentChangeCallback) => () => void` | Subscribe to consent changes; returns unsubscribe function |
-
-### API Clients
-
-```ts
-function createGA4Client(config: GA4Config): GA4Client
-function createClarityClient(config: ClarityConfig): ClarityClient
-function createPostHogClient(config: PostHogConfig): PostHogClient
-function createPlausibleClient(config: PlausibleConfig): PlausibleClient
-function createFathomClient(config: FathomConfig): FathomClient
-```
-
-### React Components API
-
-| Component | Props | Description |
-|-----------|-------|-------------|
-| `AnalyticsScript` | `{ scripts: ScriptConfig[], consent: ConsentState }` | Renders `<script>` tags for each script that passes `shouldLoad(consent)` |
-| `ConsentBanner` | `{ manager: ConsentManager, privacyPolicyUrl?: string }` | GDPR cookie consent banner with Accept All / Reject All |
-
-### Types
-
-```ts
-import type {
-  ConsentCategory,        // 'necessary' | 'analytics' | 'marketing' | 'preferences'
-  ConsentState,           // { necessary, analytics, marketing, preferences }
-  ConsentManager,         // { grant, revoke, grantAll, revokeAll, getState, onChange }
-  ConsentChangeCallback,  // (state: ConsentState) => void
-  ScriptConfig,           // { src?, inlineScript?, strategy, shouldLoad }
-  GA4Config,
-  GA4Client,
-  ClarityConfig,
-  ClarityClient,
-  PostHogConfig,
-  PostHogClient,
-  PlausibleConfig,
-  PlausibleClient,
-  FathomConfig,
-  FathomClient,
-} from '@power-seo/tracking';
-```
-
-## The @power-seo Ecosystem
+## @power-seo Ecosystem
 
 All 17 packages are independently installable — use only what you need.
 
@@ -392,6 +226,136 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
 | [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
+### Ecosystem vs alternatives
+
+| Need | Common approach | @power-seo approach |
+|---|---|---|
+| Analytics scripts | Direct `<script>` in HTML | `@power-seo/tracking` — consent-gated `ScriptConfig` |
+| GDPR consent banner | Cookiebot (paid) | `@power-seo/tracking` — built-in `<ConsentBanner>` |
+| GSC data queries | `googleapis` | `@power-seo/search-console` — typed, auto-paginated |
+| SEO analytics dashboard | Looker Studio | `@power-seo/analytics` — merge GSC + audit data |
+
+---
+
+## Enterprise Integration
+
+**Multi-tenant SaaS**
+- **Per-tenant analytics**: Each tenant supplies their own `measurementId`; instantiate separate `ScriptConfig` per tenant
+- **Consent per tenant**: Persist consent state in tenant-scoped cookies or DB; initialize `createConsentManager()` from stored state
+- **Data isolation**: API clients are instantiated per tenant — no cross-tenant data leakage
+
+**ERP / internal portals**
+- Load Clarity session recordings only on public-facing pages, not authenticated internal routes
+- Use PostHog feature flags + event tracking for internal user behavior analytics with explicit consent
+- Build custom analytics reports with `createGA4Client()` or `createPlausibleClient()` for stakeholder dashboards
+
+**Recommended integration pattern**
+- Store consent state in **`localStorage`** or **HTTP-only cookie**
+- Initialize `createConsentManager()` from stored state on every page load
+- Trigger `onChange()` to reload scripts reactively when user updates consent preferences
+- Export consent events to **audit logs** for compliance documentation
+
+---
+
+## Scope and Limitations
+
+**This package does**
+- ✅ Build consent-aware script configs for 5 analytics platforms
+- ✅ Manage GDPR consent state with typed store and reactive subscriptions
+- ✅ Render consent-gated script tags and GDPR banner via React components
+- ✅ Query analytics data programmatically via 5 provider API clients
+
+**This package does not**
+- ❌ Replace a full consent management platform (CMP) for complex legal requirements
+- ❌ Implement consent record-keeping or proof-of-consent storage — handle this in your backend
+- ❌ Block server-side tracking (cookies set by CDN or server) — client-side only
+
+---
+
+## API Reference
+
+### Script Builders
+
+| Function | Config Props | Returns | Description |
+|----------|-------------|---------|-------------|
+| `buildGA4Script` | `{ measurementId }` | `ScriptConfig[]` | Google Analytics 4 (2 script tags) |
+| `buildClarityScript` | `{ projectId }` | `ScriptConfig` | Microsoft Clarity |
+| `buildPostHogScript` | `{ apiKey, apiHost? }` | `ScriptConfig` | PostHog |
+| `buildPlausibleScript` | `{ domain, customDomain? }` | `ScriptConfig` | Plausible Analytics |
+| `buildFathomScript` | `{ siteId }` | `ScriptConfig` | Fathom Analytics |
+
+#### `ScriptConfig`
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `src` | `string \| undefined` | External script URL |
+| `inlineScript` | `string \| undefined` | Inline JavaScript content |
+| `strategy` | `'beforeInteractive' \| 'afterInteractive' \| 'lazyOnload'` | Loading strategy hint |
+| `shouldLoad` | `(consent: ConsentState) => boolean` | Returns `true` if this script may load |
+
+### Consent Manager
+
+```ts
+function createConsentManager(initialState: Partial<ConsentState>): ConsentManager
+```
+
+| Method | Signature | Description |
+|--------|-----------|-------------|
+| `grant` | `(category: ConsentCategory) => void` | Grant a consent category |
+| `revoke` | `(category: ConsentCategory) => void` | Revoke a consent category |
+| `grantAll` | `() => void` | Grant all non-necessary categories |
+| `revokeAll` | `() => void` | Revoke all non-necessary categories |
+| `getState` | `() => ConsentState` | Get the current consent snapshot |
+| `onChange` | `(cb: ConsentChangeCallback) => () => void` | Subscribe to changes; returns unsubscribe |
+
+### API Clients
+
+```ts
+function createGA4Client(config: GA4Config): GA4Client
+function createClarityClient(config: ClarityConfig): ClarityClient
+function createPostHogClient(config: PostHogConfig): PostHogClient
+function createPlausibleClient(config: PlausibleConfig): PlausibleClient
+function createFathomClient(config: FathomConfig): FathomClient
+```
+
+### React Components
+
+| Component | Props | Description |
+|-----------|-------|-------------|
+| `<AnalyticsScript>` | `{ scripts: ScriptConfig[], consent: ConsentState }` | Renders `<script>` tags that pass `shouldLoad(consent)` |
+| `<ConsentBanner>` | `{ manager: ConsentManager, privacyPolicyUrl?: string }` | GDPR cookie consent banner with Accept All / Reject All |
+
+### Types
+
+```ts
+import type {
+  ConsentCategory,        // 'necessary' | 'analytics' | 'marketing' | 'preferences'
+  ConsentState,           // { necessary, analytics, marketing, preferences }
+  ConsentManager,
+  ScriptConfig,
+  GA4Config, GA4Client,
+  ClarityConfig, ClarityClient,
+  PostHogConfig, PostHogClient,
+  PlausibleConfig, PlausibleClient,
+  FathomConfig, FathomClient,
+} from '@power-seo/tracking';
+```
+
+---
+
+## Contributing
+
+- Issues: [github.com/cybercraftbd/power-seo/issues](https://github.com/cybercraftbd/power-seo/issues)
+- PRs: [github.com/cybercraftbd/power-seo/pulls](https://github.com/cybercraftbd/power-seo/pulls)
+- Development setup:
+  1. `pnpm i`
+  2. `pnpm build`
+  3. `pnpm test`
+
+**Release workflow**
+- `npm version patch|minor|major`
+- `npm publish --access public`
+
 ---
 
 ## About CyberCraft Bangladesh
@@ -405,4 +369,16 @@ All 17 packages are independently installable — use only what you need.
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
 | **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
 
-© 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)
+---
+
+## License
+
+**MIT**
+
+---
+
+## Keywords
+
+```text
+analytics, ga4, google-analytics, microsoft-clarity, posthog, plausible, fathom, gdpr, consent-management, cookie-consent, typescript, react, nextjs, privacy
+```

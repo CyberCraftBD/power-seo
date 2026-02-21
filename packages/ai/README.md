@@ -14,6 +14,12 @@ Prompt builders return a plain `{ system, user, maxTokens }` object that you pas
 
 The `analyzeSerpEligibility` function is the exception: it is a fully deterministic, rule-based analysis of SERP feature eligibility that requires no LLM at all. It inspects your page's schema markup and content structure to determine whether it qualifies for FAQ, HowTo, Product, and Article rich results.
 
+## Documentation
+
+- **Package docs:** [`apps/docs/src/content/docs/packages/ai.mdx`](../../apps/docs/src/content/docs/packages/ai.mdx)
+- **Ecosystem overview:** [`README.md`](../../README.md)
+- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
 ## Features
 
 - **LLM-agnostic design** — no bundled SDK; prompt builders return `{ system, user, maxTokens }`, parsers accept raw text strings

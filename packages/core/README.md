@@ -10,6 +10,12 @@
 
 The foundation package used by all other `@power-seo` packages. Useful on its own for headless SEO tooling, custom framework integrations, or any Node.js application that needs SEO utilities without a React dependency.
 
+## Documentation
+
+- **Package docs:** [`apps/docs/src/content/docs/packages/core.mdx`](../../apps/docs/src/content/docs/packages/core.mdx)
+- **Ecosystem overview:** [`README.md`](../../README.md)
+- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
 ## Features
 
 - **Meta tag builders** — generate typed `MetaTag[]` and `LinkTag[]` objects for title, description, Open Graph, Twitter Card, hreflang

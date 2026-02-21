@@ -14,6 +14,12 @@ For site-wide audits, `auditSite` accepts an array of page inputs and returns an
 
 The four rule sets can also be called independently — `runMetaRules`, `runContentRules`, `runStructureRules`, and `runPerformanceRules` — so you can selectively run only the rules relevant to your use case without paying for the full audit overhead.
 
+## Documentation
+
+- **Package docs:** [`apps/docs/src/content/docs/packages/audit.mdx`](../../apps/docs/src/content/docs/packages/audit.mdx)
+- **Ecosystem overview:** [`README.md`](../../README.md)
+- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
 ## Features
 
 - **Single-page audit** — `auditPage(input)` returns an overall 0–100 score and a `categories` object with individual scores for meta, content, structure, and performance

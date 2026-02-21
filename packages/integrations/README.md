@@ -12,6 +12,12 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 
 > **Zero runtime dependencies beyond `fetch`** — runs in Node.js 18+, Deno, Bun, and modern edge runtimes.
 
+## Documentation
+
+- **Package docs:** [`apps/docs/src/content/docs/packages/integrations.mdx`](../../apps/docs/src/content/docs/packages/integrations.mdx)
+- **Ecosystem overview:** [`README.md`](../../README.md)
+- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
 ## Features
 
 - **Semrush API client** — domain overview (traffic, organic/paid keywords, backlinks), keyword data (volume, CPC, competition), backlink profile, keyword difficulty, and related keyword suggestions

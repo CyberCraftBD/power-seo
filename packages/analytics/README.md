@@ -12,6 +12,12 @@ Merge Google Search Console data with audit results, compute Pearson correlation
 
 Beyond correlation, the package provides a full trend analysis pipeline: time-series data flows through `analyzeTrend` (direction, rate of change, confidence) → `buildTrendLines` (chart-ready data points) → `detectAnomalies` (statistically significant spikes and drops). The ranking module groups your queries into position buckets (1–3, 4–10, 11–20, 21–50, 50+) matching how SEO professionals think about ranking tiers, and `trackPositionChanges` produces a before/after diff across two snapshots. Everything culminates in `buildDashboardData`, which aggregates all of the above into a single structured object ready to be consumed by any charting library or reporting UI.
 
+## Documentation
+
+- **Package docs:** [`apps/docs/src/content/docs/packages/analytics.mdx`](../../apps/docs/src/content/docs/packages/analytics.mdx)
+- **Ecosystem overview:** [`README.md`](../../README.md)
+- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+
 ## Features
 
 - **GSC + audit data merge** — `mergeGscWithAudit` joins Google Search Console page performance data (clicks, impressions, CTR, position) with `@power-seo/audit` results by normalized URL, producing `PageInsight` objects with both dimensions
