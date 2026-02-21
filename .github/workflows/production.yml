@@ -88,7 +88,7 @@ jobs:
           npm config set "//registry.npmjs.org/:_authToken" "$NPM_TOKEN"
           npm whoami
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
 
       - name: Publish all packages to npm
         run: |
