@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Framework-agnostic SEO analysis engines, types, and utilities",
   "license": "MIT",
   "type": "module",

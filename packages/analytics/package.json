@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/analytics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Analytics data processing: merge GSC data with audit results, trend analysis, ranking insights",
   "license": "MIT",
   "type": "module",

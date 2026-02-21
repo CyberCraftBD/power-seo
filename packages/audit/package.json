@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/audit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SEO site health auditing with meta, content, structure, and performance rules",
   "license": "MIT",
   "type": "module",

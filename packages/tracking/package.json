@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/tracking",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Analytics platform integration with script builders, consent management, and React components",
   "license": "MIT",
   "type": "module",
