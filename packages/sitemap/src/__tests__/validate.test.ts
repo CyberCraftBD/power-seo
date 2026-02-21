@@ -89,10 +89,7 @@ describe('validateSitemapUrl', () => {
   it('validates image entries', () => {
     const result = validateSitemapUrl({
       loc: 'https://example.com/page',
-      images: [
-        { loc: 'https://example.com/img.jpg' },
-        { loc: '' },
-      ],
+      images: [{ loc: 'https://example.com/img.jpg' }, { loc: '' }],
     });
 
     expect(result.valid).toBe(false);

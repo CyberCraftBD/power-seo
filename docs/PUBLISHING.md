@@ -122,6 +122,7 @@ pnpm -r publish --access public --no-git-checks
 ```
 
 **Flags explained:**
+
 - `-r` — Run across all workspace packages
 - `--access public` — Required for scoped packages on free npm orgs
 - `--no-git-checks` — Skip git status checks (useful for first publish)
@@ -219,8 +220,8 @@ This creates a markdown file in `.changeset/` (e.g., `.changeset/happy-cats-danc
 
 ```md
 ---
-"@power-seo/core": patch
-"@power-seo/content-analysis": patch
+'@power-seo/core': patch
+'@power-seo/content-analysis': patch
 ---
 
 Fix keyword density calculation for multi-word keyphrases
@@ -293,6 +294,7 @@ npm whoami  # Verify you're logged in
 ### "You do not have permission to publish"
 
 Make sure:
+
 1. The `@power-seo` org exists on npm
 2. Your account is a member of the org
 3. You're using `--access public`
@@ -300,6 +302,7 @@ Make sure:
 ### "Package name already exists"
 
 Someone else owns the package name. You'll need to either:
+
 - Use a different scope (e.g., `@your-username/core`)
 - Contact npm support
 
@@ -319,7 +322,7 @@ Scoped packages require `--access public` flag on free npm accounts:
 npm publish --access public
 ```
 
-### Workspace Dependencies Show "workspace:*" on npm
+### Workspace Dependencies Show "workspace:\*" on npm
 
 This is expected. When pnpm publishes, it automatically replaces `workspace:*` with the actual version number (e.g., `^1.0.0`). If you see literal `workspace:*` on npm, you published without pnpm — always use `pnpm publish` or `pnpm -r publish`.
 
@@ -344,6 +347,7 @@ npm org set power-seo USERNAME developer
 ```
 
 Roles:
+
 - `owner` — Full admin access
 - `admin` — Can manage team members and packages
 - `developer` — Can publish packages
@@ -375,19 +379,19 @@ npm org ls power-seo
 
 ## Quick Reference
 
-| Task | Command |
-|------|---------|
-| Login to npm | `npm login` |
-| Check login | `npm whoami` |
-| Build all packages | `pnpm build` |
-| Create a changeset | `pnpm changeset` |
-| Version packages (manual) | `pnpm version-packages` |
-| Publish all packages | `pnpm release` |
-| Publish single package | `cd packages/core && npm publish --access public` |
-| Preview package contents | `npm pack --dry-run` |
-| Check package on npm | `npm view @power-seo/core` |
-| Unpublish (within 72h) | `npm unpublish @power-seo/core@1.0.0` |
-| Deprecate a version | `npm deprecate @power-seo/core@1.0.0 "Use 1.0.1 instead"` |
+| Task                      | Command                                                   |
+| ------------------------- | --------------------------------------------------------- |
+| Login to npm              | `npm login`                                               |
+| Check login               | `npm whoami`                                              |
+| Build all packages        | `pnpm build`                                              |
+| Create a changeset        | `pnpm changeset`                                          |
+| Version packages (manual) | `pnpm version-packages`                                   |
+| Publish all packages      | `pnpm release`                                            |
+| Publish single package    | `cd packages/core && npm publish --access public`         |
+| Preview package contents  | `npm pack --dry-run`                                      |
+| Check package on npm      | `npm view @power-seo/core`                                |
+| Unpublish (within 72h)    | `npm unpublish @power-seo/core@1.0.0`                     |
+| Deprecate a version       | `npm deprecate @power-seo/core@1.0.0 "Use 1.0.1 instead"` |
 
 ---
 

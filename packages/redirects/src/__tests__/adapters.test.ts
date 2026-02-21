@@ -6,35 +6,25 @@ import type { RedirectRule } from '@power-seo/core';
 
 describe('toNextRedirects', () => {
   it('maps 301 to permanent: true', () => {
-    const rules: RedirectRule[] = [
-      { source: '/old', destination: '/new', statusCode: 301 },
-    ];
+    const rules: RedirectRule[] = [{ source: '/old', destination: '/new', statusCode: 301 }];
     const result = toNextRedirects(rules);
-    expect(result).toEqual([
-      { source: '/old', destination: '/new', permanent: true },
-    ]);
+    expect(result).toEqual([{ source: '/old', destination: '/new', permanent: true }]);
   });
 
   it('maps 308 to permanent: true', () => {
-    const rules: RedirectRule[] = [
-      { source: '/old', destination: '/new', statusCode: 308 },
-    ];
+    const rules: RedirectRule[] = [{ source: '/old', destination: '/new', statusCode: 308 }];
     const result = toNextRedirects(rules);
     expect(result[0]!.permanent).toBe(true);
   });
 
   it('maps 302 to permanent: false', () => {
-    const rules: RedirectRule[] = [
-      { source: '/old', destination: '/new', statusCode: 302 },
-    ];
+    const rules: RedirectRule[] = [{ source: '/old', destination: '/new', statusCode: 302 }];
     const result = toNextRedirects(rules);
     expect(result[0]!.permanent).toBe(false);
   });
 
   it('maps 307 to permanent: false', () => {
-    const rules: RedirectRule[] = [
-      { source: '/old', destination: '/new', statusCode: 307 },
-    ];
+    const rules: RedirectRule[] = [{ source: '/old', destination: '/new', statusCode: 307 }];
     const result = toNextRedirects(rules);
     expect(result[0]!.permanent).toBe(false);
   });

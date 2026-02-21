@@ -17,9 +17,7 @@ describe('GA4 Client', () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
-        rows: [
-          { dimensionValues: [{ value: '/page' }], metricValues: [{ value: '100' }] },
-        ],
+        rows: [{ dimensionValues: [{ value: '/page' }], metricValues: [{ value: '100' }] }],
         rowCount: 1,
       }),
     });
@@ -57,7 +55,14 @@ describe('GA4 Client', () => {
       ok: true,
       json: async () => ({
         dimensions: [{ apiName: 'date', uiName: 'Date', description: 'The date' }],
-        metrics: [{ apiName: 'sessions', uiName: 'Sessions', description: 'Session count', type: 'INTEGER' }],
+        metrics: [
+          {
+            apiName: 'sessions',
+            uiName: 'Sessions',
+            description: 'Session count',
+            type: 'INTEGER',
+          },
+        ],
       }),
     });
 
@@ -118,7 +123,13 @@ describe('PostHog Client', () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
-        result: [{ label: 'pageview', data: [10, 20, 30], days: ['2024-01-01', '2024-01-02', '2024-01-03'] }],
+        result: [
+          {
+            label: 'pageview',
+            data: [10, 20, 30],
+            days: ['2024-01-01', '2024-01-02', '2024-01-03'],
+          },
+        ],
       }),
     });
 
@@ -134,7 +145,9 @@ describe('Plausible Client', () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
-        results: [{ date: '2024-01-15', visitors: 100, pageviews: 250, bounceRate: 45, visitDuration: 120 }],
+        results: [
+          { date: '2024-01-15', visitors: 100, pageviews: 250, bounceRate: 45, visitDuration: 120 },
+        ],
       }),
     });
 
@@ -178,7 +191,9 @@ describe('Fathom Client', () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
-        data: [{ pathname: '/home', pageviews: 500, visitors: 300, avgDuration: 45, bounceRate: 40 }],
+        data: [
+          { pathname: '/home', pageviews: 500, visitors: 300, avgDuration: 45, bounceRate: 40 },
+        ],
       }),
     });
 

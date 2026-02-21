@@ -30,7 +30,9 @@ import type {
 const CONTEXT = 'https://schema.org' as const;
 
 /** Add @context to a schema object */
-function withContext<T extends { '@type': string }>(schema: T): WithContext<T & { '@type': string }> {
+function withContext<T extends { '@type': string }>(
+  schema: T,
+): WithContext<T & { '@type': string }> {
   return { '@context': CONTEXT, ...schema };
 }
 
@@ -54,21 +56,15 @@ export function article(
   return withContext(clean({ '@type': type, ...rest }) as ArticleSchema);
 }
 
-export function blogPosting(
-  props: Omit<ArticleSchema, '@type'>,
-): WithContext<ArticleSchema> {
+export function blogPosting(props: Omit<ArticleSchema, '@type'>): WithContext<ArticleSchema> {
   return article({ ...props, type: 'BlogPosting' });
 }
 
-export function newsArticle(
-  props: Omit<ArticleSchema, '@type'>,
-): WithContext<ArticleSchema> {
+export function newsArticle(props: Omit<ArticleSchema, '@type'>): WithContext<ArticleSchema> {
   return article({ ...props, type: 'NewsArticle' });
 }
 
-export function product(
-  props: Omit<ProductSchema, '@type'>,
-): WithContext<ProductSchema> {
+export function product(props: Omit<ProductSchema, '@type'>): WithContext<ProductSchema> {
   return withContext(clean({ '@type': 'Product', ...props }) as ProductSchema);
 }
 
@@ -116,9 +112,7 @@ export function organization(
   return withContext(clean({ '@type': 'Organization', ...props }) as OrganizationSchema);
 }
 
-export function person(
-  props: Omit<PersonSchema, '@type'>,
-): WithContext<PersonSchema> {
+export function person(props: Omit<PersonSchema, '@type'>): WithContext<PersonSchema> {
   return withContext(clean({ '@type': 'Person', ...props }) as PersonSchema);
 }
 
@@ -129,15 +123,11 @@ export function event(
   return withContext(clean({ '@type': type, ...rest }) as EventSchema);
 }
 
-export function recipe(
-  props: Omit<RecipeSchema, '@type'>,
-): WithContext<RecipeSchema> {
+export function recipe(props: Omit<RecipeSchema, '@type'>): WithContext<RecipeSchema> {
   return withContext(clean({ '@type': 'Recipe', ...props }) as RecipeSchema);
 }
 
-export function howTo(
-  props: Omit<HowToSchema, '@type'>,
-): WithContext<HowToSchema> {
+export function howTo(props: Omit<HowToSchema, '@type'>): WithContext<HowToSchema> {
   return withContext(clean({ '@type': 'HowTo', ...props }) as HowToSchema);
 }
 
@@ -147,15 +137,11 @@ export function videoObject(
   return withContext(clean({ '@type': 'VideoObject', ...props }) as VideoObjectSchema);
 }
 
-export function course(
-  props: Omit<CourseSchema, '@type'>,
-): WithContext<CourseSchema> {
+export function course(props: Omit<CourseSchema, '@type'>): WithContext<CourseSchema> {
   return withContext(clean({ '@type': 'Course', ...props }) as CourseSchema);
 }
 
-export function jobPosting(
-  props: Omit<JobPostingSchema, '@type'>,
-): WithContext<JobPostingSchema> {
+export function jobPosting(props: Omit<JobPostingSchema, '@type'>): WithContext<JobPostingSchema> {
   return withContext(clean({ '@type': 'JobPosting', ...props }) as JobPostingSchema);
 }
 
@@ -166,27 +152,19 @@ export function softwareApp(
   return withContext(clean({ '@type': type, ...rest }) as SoftwareAppSchema);
 }
 
-export function webSite(
-  props: Omit<WebSiteSchema, '@type'>,
-): WithContext<WebSiteSchema> {
+export function webSite(props: Omit<WebSiteSchema, '@type'>): WithContext<WebSiteSchema> {
   return withContext(clean({ '@type': 'WebSite', ...props }) as WebSiteSchema);
 }
 
-export function itemList(
-  props: Omit<ItemListSchema, '@type'>,
-): WithContext<ItemListSchema> {
+export function itemList(props: Omit<ItemListSchema, '@type'>): WithContext<ItemListSchema> {
   return withContext(clean({ '@type': 'ItemList', ...props }) as ItemListSchema);
 }
 
-export function review(
-  props: Omit<ReviewSchema, '@type'>,
-): WithContext<ReviewSchema> {
+export function review(props: Omit<ReviewSchema, '@type'>): WithContext<ReviewSchema> {
   return withContext(clean({ '@type': 'Review', ...props }) as ReviewSchema);
 }
 
-export function service(
-  props: Omit<ServiceSchema, '@type'>,
-): WithContext<ServiceSchema> {
+export function service(props: Omit<ServiceSchema, '@type'>): WithContext<ServiceSchema> {
   return withContext(clean({ '@type': 'Service', ...props }) as ServiceSchema);
 }
 

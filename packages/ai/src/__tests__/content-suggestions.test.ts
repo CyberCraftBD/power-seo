@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { buildContentSuggestionsPrompt, parseContentSuggestionsResponse } from '../prompts/content-suggestions.js';
+import {
+  buildContentSuggestionsPrompt,
+  parseContentSuggestionsResponse,
+} from '../prompts/content-suggestions.js';
 
 describe('buildContentSuggestionsPrompt', () => {
   it('should return a valid PromptTemplate', () => {
@@ -33,7 +36,12 @@ describe('buildContentSuggestionsPrompt', () => {
 describe('parseContentSuggestionsResponse', () => {
   it('should parse valid JSON array', () => {
     const json = JSON.stringify([
-      { type: 'heading', suggestion: 'Add H2 for benefits section', priority: 3, reason: 'Improves structure' },
+      {
+        type: 'heading',
+        suggestion: 'Add H2 for benefits section',
+        priority: 3,
+        reason: 'Improves structure',
+      },
       { type: 'keyword', suggestion: 'Add more keyword variations', priority: 2 },
     ]);
     const result = parseContentSuggestionsResponse(json);

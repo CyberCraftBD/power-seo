@@ -2,12 +2,7 @@
 // @power-seo/tracking — GA4 API Client
 // ============================================================================
 
-import type {
-  GA4Client,
-  GA4ReportResponse,
-  GA4ReportRow,
-  GA4Metadata,
-} from '../types.js';
+import type { GA4Client, GA4ReportResponse, GA4ReportRow, GA4Metadata } from '../types.js';
 
 const GA4_BASE = 'https://analyticsdata.googleapis.com/v1beta';
 

@@ -3,7 +3,11 @@
 // ============================================================================
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { analyzeKeyphraseOccurrences, calculateKeywordDensity, KEYWORD_DENSITY } from '@power-seo/core';
+import {
+  analyzeKeyphraseOccurrences,
+  calculateKeywordDensity,
+  KEYWORD_DENSITY,
+} from '@power-seo/core';
 
 export function checkKeyphraseUsage(input: ContentAnalysisInput): AnalysisResult[] {
   const results: AnalysisResult[] = [];

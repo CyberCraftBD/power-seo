@@ -80,7 +80,13 @@ export type DataState = 'all' | 'final';
 
 export interface DimensionFilter {
   dimension: Dimension;
-  operator: 'equals' | 'notEquals' | 'contains' | 'notContains' | 'includingRegex' | 'excludingRegex';
+  operator:
+    | 'equals'
+    | 'notEquals'
+    | 'contains'
+    | 'notContains'
+    | 'includingRegex'
+    | 'excludingRegex';
   expression: string;
 }
 
@@ -122,8 +128,21 @@ export interface InspectionRequest {
 }
 
 export type VerdictState = 'PASS' | 'PARTIAL' | 'FAIL' | 'VERDICT_UNSPECIFIED' | 'NEUTRAL';
-export type CrawlState = 'SUCCESSFUL' | 'NOT_FOUND' | 'SERVER_ERROR' | 'ROBOTS_BLOCKED' | 'REDIRECT_ERROR' | 'ACCESS_DENIED' | 'ACCESS_FORBIDDEN';
-export type IndexState = 'INDEXED' | 'NOT_INDEXED' | 'SUBMITTED_AND_INDEXED' | 'CRAWLED_NOT_INDEXED' | 'DISCOVERED_NOT_INDEXED' | 'PAGE_WITH_REDIRECT';
+export type CrawlState =
+  | 'SUCCESSFUL'
+  | 'NOT_FOUND'
+  | 'SERVER_ERROR'
+  | 'ROBOTS_BLOCKED'
+  | 'REDIRECT_ERROR'
+  | 'ACCESS_DENIED'
+  | 'ACCESS_FORBIDDEN';
+export type IndexState =
+  | 'INDEXED'
+  | 'NOT_INDEXED'
+  | 'SUBMITTED_AND_INDEXED'
+  | 'CRAWLED_NOT_INDEXED'
+  | 'DISCOVERED_NOT_INDEXED'
+  | 'PAGE_WITH_REDIRECT';
 export type RobotsTxtState = 'ALLOWED' | 'DISALLOWED';
 
 export interface IndexStatusResult {
@@ -144,7 +163,10 @@ export interface MobileUsabilityResult {
 
 export interface RichResultsResult {
   verdict: VerdictState;
-  detectedItems?: Array<{ richResultType: string; items: Array<{ name: string; issues?: Array<{ issueMessage: string; severity: string }> }> }>;
+  detectedItems?: Array<{
+    richResultType: string;
+    items: Array<{ name: string; issues?: Array<{ issueMessage: string; severity: string }> }>;
+  }>;
 }
 
 export interface InspectionResult {

@@ -69,8 +69,10 @@ export function* streamSitemap(
         yield `      <video:thumbnail_loc>${escapeXml(vid.thumbnailLoc)}</video:thumbnail_loc>\n`;
         yield `      <video:title>${escapeXml(vid.title)}</video:title>\n`;
         yield `      <video:description>${escapeXml(vid.description)}</video:description>\n`;
-        if (vid.contentLoc) yield `      <video:content_loc>${escapeXml(vid.contentLoc)}</video:content_loc>\n`;
-        if (vid.playerLoc) yield `      <video:player_loc>${escapeXml(vid.playerLoc)}</video:player_loc>\n`;
+        if (vid.contentLoc)
+          yield `      <video:content_loc>${escapeXml(vid.contentLoc)}</video:content_loc>\n`;
+        if (vid.playerLoc)
+          yield `      <video:player_loc>${escapeXml(vid.playerLoc)}</video:player_loc>\n`;
         yield '    </video:video>\n';
       }
     }

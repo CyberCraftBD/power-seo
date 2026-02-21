@@ -2,15 +2,21 @@
 // @power-seo/audit — Page Audit
 // ============================================================================
 
-import type { PageAuditInput, PageAuditResult, AuditRule, AuditCategory, CategoryResult } from './types.js';
+import type {
+  PageAuditInput,
+  PageAuditResult,
+  AuditRule,
+  AuditCategory,
+  CategoryResult,
+} from './types.js';
 import { runMetaRules } from './rules/meta.js';
 import { runContentRules } from './rules/content.js';
 import { runStructureRules } from './rules/structure.js';
 import { runPerformanceRules } from './rules/performance.js';
 
 const CATEGORY_WEIGHTS: Record<AuditCategory, number> = {
-  meta: 0.30,
-  content: 0.30,
+  meta: 0.3,
+  content: 0.3,
   structure: 0.25,
   performance: 0.15,
 };
@@ -65,9 +71,9 @@ export function auditPage(input: PageAuditInput): PageAuditResult {
   // Weighted average score
   const score = Math.round(
     categories.meta.score * CATEGORY_WEIGHTS.meta +
-    categories.content.score * CATEGORY_WEIGHTS.content +
-    categories.structure.score * CATEGORY_WEIGHTS.structure +
-    categories.performance.score * CATEGORY_WEIGHTS.performance,
+      categories.content.score * CATEGORY_WEIGHTS.content +
+      categories.structure.score * CATEGORY_WEIGHTS.structure +
+      categories.performance.score * CATEGORY_WEIGHTS.performance,
   );
 
   // Generate recommendations from errors and warnings

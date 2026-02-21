@@ -54,9 +54,7 @@ export function buildBacklinksParams(
   };
 }
 
-export function buildKeywordDifficultyParams(
-  keywords: string[],
-): Record<string, string> {
+export function buildKeywordDifficultyParams(keywords: string[]): Record<string, string> {
   return {
     keywords: keywords.join(','),
   };

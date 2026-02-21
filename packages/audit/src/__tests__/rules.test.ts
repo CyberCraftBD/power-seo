@@ -36,7 +36,8 @@ describe('runMetaRules', () => {
   it('reports pass for valid meta description', () => {
     const input: PageAuditInput = {
       url: 'https://example.com',
-      metaDescription: 'This is a good meta description that provides useful information about the page content for search engines.',
+      metaDescription:
+        'This is a good meta description that provides useful information about the page content for search engines.',
     };
     const rules = runMetaRules(input);
     const descRule = rules.find((r) => r.id === 'meta-description-length');
@@ -47,7 +48,11 @@ describe('runMetaRules', () => {
   it('validates OG tags', () => {
     const input: PageAuditInput = {
       url: 'https://example.com',
-      openGraph: { title: 'OG Title', description: 'OG Desc', image: 'https://example.com/img.png' },
+      openGraph: {
+        title: 'OG Title',
+        description: 'OG Desc',
+        image: 'https://example.com/img.png',
+      },
     };
     const rules = runMetaRules(input);
     const ogTitle = rules.find((r) => r.id === 'meta-og-title');
@@ -96,7 +101,8 @@ describe('runContentRules', () => {
     const input: PageAuditInput = {
       url: 'https://example.com',
       title: 'Test Page',
-      content: '<h1>Test Page</h1><p>This is enough content to test the content analysis engine. We need more than a few sentences to make the analysis meaningful. The content should be fairly long to avoid triggering word count warnings. Let us add some more text here to make it substantial.</p>',
+      content:
+        '<h1>Test Page</h1><p>This is enough content to test the content analysis engine. We need more than a few sentences to make the analysis meaningful. The content should be fairly long to avoid triggering word count warnings. Let us add some more text here to make it substantial.</p>',
       focusKeyphrase: 'test page',
     };
     const rules = runContentRules(input);
@@ -107,7 +113,8 @@ describe('runContentRules', () => {
   it('includes readability results in audit rules', () => {
     const input: PageAuditInput = {
       url: 'https://example.com',
-      content: '<p>This is a simple sentence. Another simple sentence. Easy to read content here. More sentences follow naturally.</p>',
+      content:
+        '<p>This is a simple sentence. Another simple sentence. Easy to read content here. More sentences follow naturally.</p>',
     };
     const rules = runContentRules(input);
     const readabilityRule = rules.find((r) => r.id.startsWith('readability-'));
@@ -156,7 +163,9 @@ describe('runStructureRules', () => {
   it('validates schema objects', () => {
     const input: PageAuditInput = {
       url: 'https://example.com',
-      schema: [{ '@type': 'Article', 'headline': 'Test', 'author': 'Author', 'datePublished': '2024-01-01' }],
+      schema: [
+        { '@type': 'Article', headline: 'Test', author: 'Author', datePublished: '2024-01-01' },
+      ],
     };
     const rules = runStructureRules(input);
     const schemaPresent = rules.find((r) => r.id === 'structure-schema-present');
@@ -227,10 +236,7 @@ describe('runPerformanceRules', () => {
   it('warns for missing image alt text', () => {
     const input: PageAuditInput = {
       url: 'https://example.com',
-      images: [
-        { src: 'img1.png', alt: 'Description' },
-        { src: 'img2.png' },
-      ],
+      images: [{ src: 'img1.png', alt: 'Description' }, { src: 'img2.png' }],
     };
     const rules = runPerformanceRules(input);
     const alt = rules.find((r) => r.id === 'perf-image-alt');

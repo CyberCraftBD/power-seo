@@ -2,12 +2,17 @@
 // @power-seo/ai — Meta Description Prompt Builder & Parser
 // ============================================================================
 
-import { calculatePixelWidth, validateMetaDescription, META_DESCRIPTION_MAX_LENGTH } from '@power-seo/core';
+import {
+  calculatePixelWidth,
+  validateMetaDescription,
+  META_DESCRIPTION_MAX_LENGTH,
+} from '@power-seo/core';
 import type { PromptTemplate, MetaDescriptionInput, MetaDescriptionResult } from '../types.js';
 
 export function buildMetaDescriptionPrompt(input: MetaDescriptionInput): PromptTemplate {
   const maxLen = input.maxLength ?? META_DESCRIPTION_MAX_LENGTH;
-  const contentExcerpt = input.content.length > 500 ? input.content.slice(0, 500) + '...' : input.content;
+  const contentExcerpt =
+    input.content.length > 500 ? input.content.slice(0, 500) + '...' : input.content;
 
   let userPrompt = `Write a compelling meta description for the following page.\n\n`;
   userPrompt += `Title: ${input.title}\n`;

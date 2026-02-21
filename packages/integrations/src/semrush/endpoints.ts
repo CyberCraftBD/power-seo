@@ -24,7 +24,10 @@ export function relatedKeywordsPath(): string {
   return '/analytics/v1/';
 }
 
-export function buildDomainOverviewParams(domain: string, database: string): Record<string, string> {
+export function buildDomainOverviewParams(
+  domain: string,
+  database: string,
+): Record<string, string> {
   return {
     type: 'domain_ranks',
     domain,

@@ -55,8 +55,18 @@ describe('buildDashboardData', () => {
   it('should build trend lines from audit history', () => {
     const input: DashboardInput = {
       auditHistory: [
-        { date: '2025-01-01', url: 'https://a.com', score: 70, categories: { meta: 80, content: 70, structure: 90, performance: 60 } },
-        { date: '2025-02-01', url: 'https://a.com', score: 80, categories: { meta: 85, content: 75, structure: 92, performance: 65 } },
+        {
+          date: '2025-01-01',
+          url: 'https://a.com',
+          score: 70,
+          categories: { meta: 80, content: 70, structure: 90, performance: 60 },
+        },
+        {
+          date: '2025-02-01',
+          url: 'https://a.com',
+          score: 80,
+          categories: { meta: 85, content: 75, structure: 92, performance: 65 },
+        },
       ],
     };
     const data = buildDashboardData(input);
@@ -66,7 +76,12 @@ describe('buildDashboardData', () => {
   it('should handle missing GSC data', () => {
     const input: DashboardInput = {
       auditResults: [
-        { url: 'https://a.com', score: 75, categories: mockCategories, recommendations: ['Fix title'] },
+        {
+          url: 'https://a.com',
+          score: 75,
+          categories: mockCategories,
+          recommendations: ['Fix title'],
+        },
       ],
     };
     const data = buildDashboardData(input);
@@ -77,9 +92,7 @@ describe('buildDashboardData', () => {
 
   it('should handle missing audit data', () => {
     const input: DashboardInput = {
-      gscPages: [
-        { url: 'https://a.com', clicks: 100, impressions: 1000, ctr: 0.1, position: 5 },
-      ],
+      gscPages: [{ url: 'https://a.com', clicks: 100, impressions: 1000, ctr: 0.1, position: 5 }],
     };
     const data = buildDashboardData(input);
     expect(data.overview.totalClicks).toBe(100);

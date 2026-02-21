@@ -39,9 +39,7 @@ export function createClarityClient(apiKey: string): ClarityClient {
 
     async getHeatmapData(projectId, url) {
       const encodedUrl = encodeURIComponent(url);
-      return request<ClarityHeatmapData>(
-        `/projects/${projectId}/heatmaps?url=${encodedUrl}`,
-      );
+      return request<ClarityHeatmapData>(`/projects/${projectId}/heatmaps?url=${encodedUrl}`);
     },
   };
 }

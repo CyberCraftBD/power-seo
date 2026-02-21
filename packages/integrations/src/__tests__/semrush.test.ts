@@ -31,7 +31,10 @@ describe('createSemrushClient', () => {
     it('should use custom database', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ data: [{ Or: 0, Ot: 0, Oc: 0, Ad: 0, At: 0, Ac: 0, Bk: 0, As: 0 }], total: 1 }),
+        json: async () => ({
+          data: [{ Or: 0, Ot: 0, Oc: 0, Ad: 0, At: 0, Ac: 0, Bk: 0, As: 0 }],
+          total: 1,
+        }),
       });
 
       const client = createSemrushClient('key', { maxRetries: 0 });
@@ -48,7 +51,18 @@ describe('createSemrushClient', () => {
         ok: true,
         json: async () => ({
           data: [
-            { Ph: 'seo tools', Po: 3, Pp: 5, Nq: 12000, Cp: 2.5, Ur: 'https://example.com/tools', Tr: 500, Td: 5.2, Tc: 1250, Co: 0.8 },
+            {
+              Ph: 'seo tools',
+              Po: 3,
+              Pp: 5,
+              Nq: 12000,
+              Cp: 2.5,
+              Ur: 'https://example.com/tools',
+              Tr: 500,
+              Td: 5.2,
+              Tc: 1250,
+              Co: 0.8,
+            },
           ],
           total: 50,
         }),
@@ -70,7 +84,15 @@ describe('createSemrushClient', () => {
         ok: true,
         json: async () => ({
           data: [
-            { source_url: 'https://blog.com/post', target_url: 'https://example.com', anchor: 'example', nofollow: false, first_seen: '2024-01-01', last_seen: '2024-06-01', source_ascore: 55 },
+            {
+              source_url: 'https://blog.com/post',
+              target_url: 'https://example.com',
+              anchor: 'example',
+              nofollow: false,
+              first_seen: '2024-01-01',
+              last_seen: '2024-06-01',
+              source_ascore: 55,
+            },
           ],
           total: 100,
         }),
@@ -112,9 +134,7 @@ describe('createSemrushClient', () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({
-          data: [
-            { Ph: 'seo optimization', Nq: 5000, Cp: 2.0, Co: 0.7, Nr: 100000, Rr: 'seo' },
-          ],
+          data: [{ Ph: 'seo optimization', Nq: 5000, Cp: 2.0, Co: 0.7, Nr: 100000, Rr: 'seo' }],
           total: 1,
         }),
       });

@@ -111,8 +111,7 @@ export function buildOpenGraphTags(og: OpenGraphConfig): MetaTag[] {
   if (og.videos) {
     for (const video of og.videos) {
       tags.push({ property: 'og:video', content: video.url });
-      if (video.secureUrl)
-        tags.push({ property: 'og:video:secure_url', content: video.secureUrl });
+      if (video.secureUrl) tags.push({ property: 'og:video:secure_url', content: video.secureUrl });
       if (video.type) tags.push({ property: 'og:video:type', content: video.type });
       if (video.width) tags.push({ property: 'og:video:width', content: String(video.width) });
       if (video.height) tags.push({ property: 'og:video:height', content: String(video.height) });
@@ -127,8 +126,7 @@ export function buildOpenGraphTags(og: OpenGraphConfig): MetaTag[] {
       tags.push({ property: 'article:modified_time', content: og.article.modifiedTime });
     if (og.article.expirationTime)
       tags.push({ property: 'article:expiration_time', content: og.article.expirationTime });
-    if (og.article.section)
-      tags.push({ property: 'article:section', content: og.article.section });
+    if (og.article.section) tags.push({ property: 'article:section', content: og.article.section });
     if (og.article.authors) {
       for (const author of og.article.authors) {
         tags.push({ property: 'article:author', content: author });
@@ -165,8 +163,7 @@ export function buildTwitterTags(twitter: TwitterCardConfig): MetaTag[] {
   if (twitter.site) tags.push({ name: 'twitter:site', content: twitter.site });
   if (twitter.creator) tags.push({ name: 'twitter:creator', content: twitter.creator });
   if (twitter.title) tags.push({ name: 'twitter:title', content: twitter.title });
-  if (twitter.description)
-    tags.push({ name: 'twitter:description', content: twitter.description });
+  if (twitter.description) tags.push({ name: 'twitter:description', content: twitter.description });
   if (twitter.image) tags.push({ name: 'twitter:image', content: twitter.image });
   if (twitter.imageAlt) tags.push({ name: 'twitter:image:alt', content: twitter.imageAlt });
 
@@ -184,14 +181,12 @@ export function buildTwitterTags(twitter: TwitterCardConfig): MetaTag[] {
   // App card
   if (twitter.appIdIphone)
     tags.push({ name: 'twitter:app:id:iphone', content: twitter.appIdIphone });
-  if (twitter.appIdIpad)
-    tags.push({ name: 'twitter:app:id:ipad', content: twitter.appIdIpad });
+  if (twitter.appIdIpad) tags.push({ name: 'twitter:app:id:ipad', content: twitter.appIdIpad });
   if (twitter.appIdGooglePlay)
     tags.push({ name: 'twitter:app:id:googleplay', content: twitter.appIdGooglePlay });
   if (twitter.appUrlIphone)
     tags.push({ name: 'twitter:app:url:iphone', content: twitter.appUrlIphone });
-  if (twitter.appUrlIpad)
-    tags.push({ name: 'twitter:app:url:ipad', content: twitter.appUrlIpad });
+  if (twitter.appUrlIpad) tags.push({ name: 'twitter:app:url:ipad', content: twitter.appUrlIpad });
   if (twitter.appUrlGooglePlay)
     tags.push({ name: 'twitter:app:url:googleplay', content: twitter.appUrlGooglePlay });
   if (twitter.appNameIphone)

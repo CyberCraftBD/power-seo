@@ -51,9 +51,7 @@ export function analyzeTrend(points: TrendPoint[], metric = 'value'): TrendAnaly
   return { metric, trend, change, points };
 }
 
-export function buildTrendLines(
-  snapshots: AuditSnapshot[],
-): Record<string, TrendAnalysis> {
+export function buildTrendLines(snapshots: AuditSnapshot[]): Record<string, TrendAnalysis> {
   if (snapshots.length === 0) {
     return {};
   }
@@ -68,7 +66,9 @@ export function buildTrendLines(
   };
 
   // Per-category trends
-  const categories = Object.keys(sorted[0]!.categories) as Array<keyof typeof sorted[0]['categories']>;
+  const categories = Object.keys(sorted[0]!.categories) as Array<
+    keyof (typeof sorted)[0]['categories']
+  >;
   for (const category of categories) {
     const categoryPoints: TrendPoint[] = sorted.map((s) => ({
       date: s.date,

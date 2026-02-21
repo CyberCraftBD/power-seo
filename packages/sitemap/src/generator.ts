@@ -2,7 +2,13 @@
 // @power-seo/sitemap — XML Sitemap Generator
 // ============================================================================
 
-import type { SitemapConfig, SitemapURL, SitemapImage, SitemapVideo, SitemapNews } from '@power-seo/core';
+import type {
+  SitemapConfig,
+  SitemapURL,
+  SitemapImage,
+  SitemapVideo,
+  SitemapNews,
+} from '@power-seo/core';
 import { normalizeUrl } from '@power-seo/core';
 
 /** Escape special XML characters. */
@@ -35,7 +41,8 @@ function buildImageXml(images: SitemapImage[]): string {
       let xml = '    <image:image>\n';
       xml += `      <image:loc>${escapeXml(img.loc)}</image:loc>\n`;
       if (img.caption) xml += `      <image:caption>${escapeXml(img.caption)}</image:caption>\n`;
-      if (img.geoLocation) xml += `      <image:geo_location>${escapeXml(img.geoLocation)}</image:geo_location>\n`;
+      if (img.geoLocation)
+        xml += `      <image:geo_location>${escapeXml(img.geoLocation)}</image:geo_location>\n`;
       if (img.title) xml += `      <image:title>${escapeXml(img.title)}</image:title>\n`;
       if (img.license) xml += `      <image:license>${escapeXml(img.license)}</image:license>\n`;
       xml += '    </image:image>\n';
@@ -51,15 +58,23 @@ function buildVideoXml(videos: SitemapVideo[]): string {
       xml += `      <video:thumbnail_loc>${escapeXml(vid.thumbnailLoc)}</video:thumbnail_loc>\n`;
       xml += `      <video:title>${escapeXml(vid.title)}</video:title>\n`;
       xml += `      <video:description>${escapeXml(vid.description)}</video:description>\n`;
-      if (vid.contentLoc) xml += `      <video:content_loc>${escapeXml(vid.contentLoc)}</video:content_loc>\n`;
-      if (vid.playerLoc) xml += `      <video:player_loc>${escapeXml(vid.playerLoc)}</video:player_loc>\n`;
-      if (vid.duration !== undefined) xml += `      <video:duration>${vid.duration}</video:duration>\n`;
-      if (vid.expirationDate) xml += `      <video:expiration_date>${escapeXml(vid.expirationDate)}</video:expiration_date>\n`;
+      if (vid.contentLoc)
+        xml += `      <video:content_loc>${escapeXml(vid.contentLoc)}</video:content_loc>\n`;
+      if (vid.playerLoc)
+        xml += `      <video:player_loc>${escapeXml(vid.playerLoc)}</video:player_loc>\n`;
+      if (vid.duration !== undefined)
+        xml += `      <video:duration>${vid.duration}</video:duration>\n`;
+      if (vid.expirationDate)
+        xml += `      <video:expiration_date>${escapeXml(vid.expirationDate)}</video:expiration_date>\n`;
       if (vid.rating !== undefined) xml += `      <video:rating>${vid.rating}</video:rating>\n`;
-      if (vid.viewCount !== undefined) xml += `      <video:view_count>${vid.viewCount}</video:view_count>\n`;
-      if (vid.publicationDate) xml += `      <video:publication_date>${escapeXml(vid.publicationDate)}</video:publication_date>\n`;
-      if (vid.familyFriendly !== undefined) xml += `      <video:family_friendly>${vid.familyFriendly ? 'yes' : 'no'}</video:family_friendly>\n`;
-      if (vid.live !== undefined) xml += `      <video:live>${vid.live ? 'yes' : 'no'}</video:live>\n`;
+      if (vid.viewCount !== undefined)
+        xml += `      <video:view_count>${vid.viewCount}</video:view_count>\n`;
+      if (vid.publicationDate)
+        xml += `      <video:publication_date>${escapeXml(vid.publicationDate)}</video:publication_date>\n`;
+      if (vid.familyFriendly !== undefined)
+        xml += `      <video:family_friendly>${vid.familyFriendly ? 'yes' : 'no'}</video:family_friendly>\n`;
+      if (vid.live !== undefined)
+        xml += `      <video:live>${vid.live ? 'yes' : 'no'}</video:live>\n`;
       xml += '    </video:video>\n';
       return xml;
     })
@@ -79,7 +94,9 @@ function buildNewsXml(news: SitemapNews): string {
 }
 
 function buildUrlXml(url: SitemapURL, hostname: string): string {
-  const loc = url.loc.startsWith('http') ? url.loc : normalizeUrl(`${hostname}${url.loc.startsWith('/') ? '' : '/'}${url.loc}`);
+  const loc = url.loc.startsWith('http')
+    ? url.loc
+    : normalizeUrl(`${hostname}${url.loc.startsWith('/') ? '' : '/'}${url.loc}`);
 
   let xml = '  <url>\n';
   xml += `    <loc>${escapeXml(loc)}</loc>\n`;

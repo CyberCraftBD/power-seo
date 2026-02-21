@@ -9,13 +9,20 @@ const path = require('path');
 const fs = require('fs');
 
 // Parse --otp=XXXXXX from args
-const otpArg = process.argv.find(a => a.startsWith('--otp='));
+const otpArg = process.argv.find((a) => a.startsWith('--otp='));
 const OTP = otpArg ? otpArg.split('=')[1] : '';
 
 const ROOT = path.resolve(__dirname, '..');
 const PACKAGES = [
-  'meta', 'preview', 'react', 'readability', 'redirects',
-  'schema', 'search-console', 'sitemap', 'tracking'
+  'meta',
+  'preview',
+  'react',
+  'readability',
+  'redirects',
+  'schema',
+  'search-console',
+  'sitemap',
+  'tracking',
 ];
 
 function run(cmd, opts = {}) {
@@ -48,7 +55,9 @@ for (const pkg of PACKAGES) {
   let existing = '';
   try {
     existing = run(`npm view ${name}@${version} version --registry https://registry.npmjs.org`);
-  } catch { /* not found = not published yet */ }
+  } catch {
+    /* not found = not published yet */
+  }
 
   if (existing) {
     console.log(`SKIP  ${name}@${version} (already on npm)`);
@@ -70,10 +79,10 @@ for (const pkg of PACKAGES) {
 
 console.log('\n==============================');
 console.log(`Published : ${published.length} packages`);
-published.forEach(p => console.log(`  ✓ ${p}`));
+published.forEach((p) => console.log(`  ✓ ${p}`));
 console.log(`Skipped   : ${skipped.length} packages (already on npm)`);
 console.log(`Failed    : ${failed.length} packages`);
-failed.forEach(p => console.log(`  ✗ ${p}`));
+failed.forEach((p) => console.log(`  ✗ ${p}`));
 console.log('==============================\n');
 
 process.exit(failed.length > 0 ? 1 : 0);

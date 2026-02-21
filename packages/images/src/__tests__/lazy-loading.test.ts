@@ -14,9 +14,7 @@ describe('auditLazyLoading', () => {
   });
 
   it('should warn when below-fold image lacks lazy loading', () => {
-    const images: ImageInfo[] = [
-      { src: '/card.jpg', isAboveFold: false, width: 400, height: 300 },
-    ];
+    const images: ImageInfo[] = [{ src: '/card.jpg', isAboveFold: false, width: 400, height: 300 }];
     const result = auditLazyLoading(images);
     const issue = result.issues.find((i) => i.id === 'lazy-missing-below-fold');
     expect(issue).toBeDefined();
@@ -24,9 +22,7 @@ describe('auditLazyLoading', () => {
   });
 
   it('should recommend decoding="async" when missing', () => {
-    const images: ImageInfo[] = [
-      { src: '/photo.jpg', width: 800, height: 600 },
-    ];
+    const images: ImageInfo[] = [{ src: '/photo.jpg', width: 800, height: 600 }];
     const result = auditLazyLoading(images);
     const issue = result.issues.find((i) => i.id === 'decoding-missing');
     expect(issue).toBeDefined();
@@ -42,9 +38,7 @@ describe('auditLazyLoading', () => {
   });
 
   it('should flag wide images without srcset', () => {
-    const images: ImageInfo[] = [
-      { src: '/banner.jpg', width: 1200, height: 400 },
-    ];
+    const images: ImageInfo[] = [{ src: '/banner.jpg', width: 1200, height: 400 }];
     const result = auditLazyLoading(images);
     const issue = result.issues.find((i) => i.id === 'srcset-missing');
     expect(issue).toBeDefined();
@@ -53,7 +47,12 @@ describe('auditLazyLoading', () => {
 
   it('should warn when srcset exists but sizes is missing', () => {
     const images: ImageInfo[] = [
-      { src: '/responsive.jpg', srcset: '/responsive-300.jpg 300w, /responsive-600.jpg 600w', width: 600, height: 400 },
+      {
+        src: '/responsive.jpg',
+        srcset: '/responsive-300.jpg 300w, /responsive-600.jpg 600w',
+        width: 600,
+        height: 400,
+      },
     ];
     const result = auditLazyLoading(images);
     const issue = result.issues.find((i) => i.id === 'sizes-missing');

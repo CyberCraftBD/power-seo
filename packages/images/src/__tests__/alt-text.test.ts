@@ -83,9 +83,7 @@ describe('analyzeAltText', () => {
   });
 
   it('should return info when keyphrase is not in any alt', () => {
-    const images: ImageInfo[] = [
-      { src: '/img.jpg', alt: 'A beautiful sunset landscape photo' },
-    ];
+    const images: ImageInfo[] = [{ src: '/img.jpg', alt: 'A beautiful sunset landscape photo' }];
     const result = analyzeAltText(images, 'SEO tools');
     const noKeyphrase = result.issues.find((i) => i.id === 'alt-no-keyphrase');
     expect(noKeyphrase).toBeDefined();

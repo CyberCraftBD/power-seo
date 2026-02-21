@@ -118,10 +118,7 @@ function analyzeImageAlt(image: ImageInfo, allAlts: string[]): ImageIssue[] {
   return issues;
 }
 
-export function analyzeAltText(
-  images: ImageInfo[],
-  focusKeyphrase?: string,
-): ImageAuditResult {
+export function analyzeAltText(images: ImageInfo[], focusKeyphrase?: string): ImageAuditResult {
   if (images.length === 0) {
     return {
       totalImages: 0,
@@ -133,7 +130,9 @@ export function analyzeAltText(
     };
   }
 
-  const allAlts = images.map((img) => img.alt).filter((a): a is string => a !== undefined && a !== null);
+  const allAlts = images
+    .map((img) => img.alt)
+    .filter((a): a is string => a !== undefined && a !== null);
   const perImage: ImageAnalysisResult[] = [];
   const allIssues: ImageIssue[] = [];
 
@@ -170,11 +169,22 @@ export function analyzeAltText(
   const errorIssues = allIssues.filter((i) => i.severity === 'error');
   const warningIssues = allIssues.filter((i) => i.severity === 'warning');
   if (errorIssues.length > 0) {
-    recommendations.push(`Fix ${errorIssues.length} critical alt text issue(s): missing alt attributes.`);
+    recommendations.push(
+      `Fix ${errorIssues.length} critical alt text issue(s): missing alt attributes.`,
+    );
   }
   if (warningIssues.length > 0) {
-    recommendations.push(`Address ${warningIssues.length} alt text warning(s) to improve accessibility and SEO.`);
+    recommendations.push(
+      `Address ${warningIssues.length} alt text warning(s) to improve accessibility and SEO.`,
+    );
   }
 
-  return { totalImages: images.length, score, maxScore, issues: allIssues, perImage, recommendations };
+  return {
+    totalImages: images.length,
+    score,
+    maxScore,
+    issues: allIssues,
+    perImage,
+    recommendations,
+  };
 }

@@ -27,9 +27,7 @@ export function AnalyticsScript({ scripts, consent }: AnalyticsScriptProps) {
             src: script.src,
             async: script.async ?? false,
             defer: script.defer ?? false,
-            ...Object.fromEntries(
-              Object.entries(script.attributes ?? {}).map(([k, v]) => [k, v]),
-            ),
+            ...Object.fromEntries(Object.entries(script.attributes ?? {}).map(([k, v]) => [k, v])),
           })
         : createElement('script', {
             key: script.id,

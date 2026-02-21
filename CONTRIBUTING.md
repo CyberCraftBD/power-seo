@@ -34,14 +34,14 @@ pnpm typecheck
 
 Use the following prefixes for branches:
 
-| Prefix | Use |
-|--------|-----|
-| `feat/` | New features |
-| `fix/` | Bug fixes |
-| `docs/` | Documentation changes |
-| `refactor/` | Code refactoring |
-| `test/` | Adding or updating tests |
-| `chore/` | Maintenance tasks |
+| Prefix      | Use                      |
+| ----------- | ------------------------ |
+| `feat/`     | New features             |
+| `fix/`      | Bug fixes                |
+| `docs/`     | Documentation changes    |
+| `refactor/` | Code refactoring         |
+| `test/`     | Adding or updating tests |
+| `chore/`    | Maintenance tasks        |
 
 Example: `feat/add-recipe-schema`, `fix/sitemap-streaming-error`
 

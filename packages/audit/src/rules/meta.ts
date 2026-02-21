@@ -34,7 +34,8 @@ export function runMetaRules(input: PageAuditInput): AuditRule[] {
       id: 'meta-description-present',
       category: 'meta',
       title: 'Meta description',
-      description: 'Page is missing a meta description. Add one to improve SERP click-through rates.',
+      description:
+        'Page is missing a meta description. Add one to improve SERP click-through rates.',
       severity: 'error',
     });
   } else {
@@ -73,7 +74,8 @@ export function runMetaRules(input: PageAuditInput): AuditRule[] {
         id: 'meta-og-description',
         category: 'meta',
         title: 'OG description',
-        description: 'Open Graph description is missing. Social shares may lack a proper description.',
+        description:
+          'Open Graph description is missing. Social shares may lack a proper description.',
         severity: 'warning',
       });
     } else {

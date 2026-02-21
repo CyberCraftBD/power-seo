@@ -42,9 +42,7 @@ describe('splitSitemap', () => {
 
   it('splits into multiple sitemaps when over limit', () => {
     const urls = Array.from({ length: 15 }, (_, i) => ({ loc: `/page-${i}` }));
-    const result = splitSitemap(
-      { hostname: 'https://example.com', urls, maxUrlsPerSitemap: 5 },
-    );
+    const result = splitSitemap({ hostname: 'https://example.com', urls, maxUrlsPerSitemap: 5 });
 
     expect(result.sitemaps).toHaveLength(3);
     expect(result.index).toContain('sitemap-0.xml');

@@ -50,7 +50,12 @@ describe('parseRobotsContent', () => {
   });
 
   it('should roundtrip', () => {
-    const original = { index: false, follow: true, maxSnippet: 100, maxImagePreview: 'large' as const };
+    const original = {
+      index: false,
+      follow: true,
+      maxSnippet: 100,
+      maxImagePreview: 'large' as const,
+    };
     const content = buildRobotsContent(original);
     const parsed = parseRobotsContent(content);
     expect(parsed.index).toBe(false);

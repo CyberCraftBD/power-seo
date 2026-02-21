@@ -33,7 +33,8 @@ describe('analyzeReadability', () => {
 
   it('scores simple text higher than complex text', () => {
     const simple = analyzeReadability({
-      content: '<p>The cat sat on the mat. It was a good day. The sun was out. Birds sang in the trees.</p>',
+      content:
+        '<p>The cat sat on the mat. It was a good day. The sun was out. Birds sang in the trees.</p>',
     });
 
     const complex = analyzeReadability({

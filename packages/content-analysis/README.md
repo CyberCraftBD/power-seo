@@ -72,7 +72,8 @@ import { analyzeContent } from '@power-seo/content-analysis';
 const result = await analyzeContent({
   keyphrase: 'react seo',
   title: 'How to Add SEO to React Apps',
-  metaDescription: 'A complete guide to adding SEO meta tags, Open Graph, and structured data in React.',
+  metaDescription:
+    'A complete guide to adding SEO meta tags, Open Graph, and structured data in React.',
   bodyHtml: '<h1>React SEO Guide</h1><p>Search engine optimization for React...</p>',
   images: [{ src: '/hero.jpg', alt: 'React SEO diagram' }],
   links: {
@@ -81,7 +82,7 @@ const result = await analyzeContent({
   },
 });
 
-console.log(result.score);   // e.g. 82
+console.log(result.score); // e.g. 82
 console.log(result.results); // array of { id, status, message }
 ```
 
@@ -97,7 +98,8 @@ import { analyzeContent } from '@power-seo/content-analysis';
 const output = await analyzeContent({
   keyphrase: 'next.js seo',
   title: 'Next.js SEO Best Practices',
-  metaDescription: 'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
+  metaDescription:
+    'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
   bodyHtml: htmlString,
   wordCount: 1250,
   images: imageList,
@@ -186,83 +188,83 @@ function SeoScorePanel({ content }: { content: EditorContent }) {
 ```ts
 function analyzeContent(
   input: ContentAnalysisInput,
-  config?: AnalysisConfig
-): Promise<ContentAnalysisOutput>
+  config?: AnalysisConfig,
+): Promise<ContentAnalysisOutput>;
 ```
 
 #### `ContentAnalysisInput`
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `keyphrase` | `string` | Focus keyphrase to analyze against |
-| `title` | `string` | Page `<title>` content |
-| `metaDescription` | `string` | Meta description content |
-| `bodyHtml` | `string` | Full body HTML string |
-| `wordCount` | `number` | Pre-computed word count (optional; auto-detected from `bodyHtml` if omitted) |
-| `images` | `Array<{src: string; alt?: string}>` | Images found on the page |
-| `links` | `{internal: string[]; external: string[]}` | Internal and external link URLs |
+| Prop              | Type                                       | Description                                                                  |
+| ----------------- | ------------------------------------------ | ---------------------------------------------------------------------------- |
+| `keyphrase`       | `string`                                   | Focus keyphrase to analyze against                                           |
+| `title`           | `string`                                   | Page `<title>` content                                                       |
+| `metaDescription` | `string`                                   | Meta description content                                                     |
+| `bodyHtml`        | `string`                                   | Full body HTML string                                                        |
+| `wordCount`       | `number`                                   | Pre-computed word count (optional; auto-detected from `bodyHtml` if omitted) |
+| `images`          | `Array<{src: string; alt?: string}>`       | Images found on the page                                                     |
+| `links`           | `{internal: string[]; external: string[]}` | Internal and external link URLs                                              |
 
 #### `ContentAnalysisOutput`
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `score` | `number` | Aggregate score 0–100 |
-| `status` | `AnalysisStatus` | `'good'` (≥70) \| `'improvement'` (≥40) \| `'error'` (<40) |
-| `results` | `AnalysisResult[]` | Per-check results |
+| Field     | Type               | Description                                                |
+| --------- | ------------------ | ---------------------------------------------------------- |
+| `score`   | `number`           | Aggregate score 0–100                                      |
+| `status`  | `AnalysisStatus`   | `'good'` (≥70) \| `'improvement'` (≥40) \| `'error'` (<40) |
+| `results` | `AnalysisResult[]` | Per-check results                                          |
 
 #### `AnalysisResult`
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `CheckId` | Unique check identifier |
-| `status` | `AnalysisStatus` | `'good'` \| `'improvement'` \| `'error'` |
-| `message` | `string` | Human-readable feedback |
+| Field     | Type             | Description                              |
+| --------- | ---------------- | ---------------------------------------- |
+| `id`      | `CheckId`        | Unique check identifier                  |
+| `status`  | `AnalysisStatus` | `'good'` \| `'improvement'` \| `'error'` |
+| `message` | `string`         | Human-readable feedback                  |
 
 ### Individual Check Functions
 
-| Function | Checks For |
-|----------|-----------|
-| `checkTitle(input)` | Title presence and keyphrase inclusion |
+| Function                      | Checks For                              |
+| ----------------------------- | --------------------------------------- |
+| `checkTitle(input)`           | Title presence and keyphrase inclusion  |
 | `checkMetaDescription(input)` | Description presence, length, keyphrase |
-| `checkKeyphraseUsage(input)` | Density (0.5–3%) and distribution |
-| `checkHeadings(input)` | H1 existence and keyphrase in headings |
-| `checkWordCount(input)` | Minimum 300-word threshold |
-| `checkImages(input)` | Alt text presence and keyphrase in alt |
-| `checkLinks(input)` | Internal and external link presence |
+| `checkKeyphraseUsage(input)`  | Density (0.5–3%) and distribution       |
+| `checkHeadings(input)`        | H1 existence and keyphrase in headings  |
+| `checkWordCount(input)`       | Minimum 300-word threshold              |
+| `checkImages(input)`          | Alt text presence and keyphrase in alt  |
+| `checkLinks(input)`           | Internal and external link presence     |
 
 ### Types
 
-| Type | Description |
-|------|-------------|
-| `CheckId` | Union of all 13 built-in check IDs |
-| `AnalysisConfig` | `{ disabledChecks?: CheckId[] }` |
-| `AnalysisStatus` | `'good' \| 'improvement' \| 'error'` |
-| `ContentAnalysisInput` | Input shape for `analyzeContent()` |
+| Type                    | Description                          |
+| ----------------------- | ------------------------------------ |
+| `CheckId`               | Union of all 13 built-in check IDs   |
+| `AnalysisConfig`        | `{ disabledChecks?: CheckId[] }`     |
+| `AnalysisStatus`        | `'good' \| 'improvement' \| 'error'` |
+| `ContentAnalysisInput`  | Input shape for `analyzeContent()`   |
 | `ContentAnalysisOutput` | Output shape from `analyzeContent()` |
 
 ## The @power-seo Ecosystem
 
 All 17 packages are independently installable — use only what you need.
 
-| Package | Install | Description |
-|---------|---------|-------------|
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 
@@ -270,11 +272,11 @@ All 17 packages are independently installable — use only what you need.
 
 **CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-| | |
-|---|---|
-| **Website** | [ccbd.dev](https://ccbd.dev) |
-| **GitHub** | [github.com/cybercraftbd](https://github.com/cybercraftbd) |
+|                      |                                                                |
+| -------------------- | -------------------------------------------------------------- |
+| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
+| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
+| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
 
 © 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)

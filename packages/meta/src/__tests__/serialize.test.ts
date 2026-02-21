@@ -50,9 +50,7 @@ describe('createHeadTags', () => {
     };
     const result = createHeadTags(config);
     expect(result).toContain('<title>Page &quot;with&quot; &lt;special&gt; &amp; chars</title>');
-    expect(result).toContain(
-      'content="Desc with &quot;quotes&quot; &amp; &lt;angle&gt; brackets"',
-    );
+    expect(result).toContain('content="Desc with &quot;quotes&quot; &amp; &lt;angle&gt; brackets"');
   });
 
   it('should apply title template before serializing', () => {

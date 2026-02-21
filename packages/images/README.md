@@ -65,9 +65,23 @@ pnpm add @power-seo/images
 import { analyzeAltText, auditLazyLoading, analyzeImageFormats } from '@power-seo/images';
 
 const images = [
-  { src: '/hero.jpg',         alt: '',            loading: 'lazy',  isAboveFold: true,  width: 1200, height: 630 },
-  { src: '/IMG_1234.png',     alt: 'IMG_1234',    loading: undefined, isAboveFold: false, width: 800, height: 600 },
-  { src: '/product.webp',     alt: 'Blue widget', loading: 'lazy',  isAboveFold: false, width: 400, height: 400 },
+  { src: '/hero.jpg', alt: '', loading: 'lazy', isAboveFold: true, width: 1200, height: 630 },
+  {
+    src: '/IMG_1234.png',
+    alt: 'IMG_1234',
+    loading: undefined,
+    isAboveFold: false,
+    width: 800,
+    height: 600,
+  },
+  {
+    src: '/product.webp',
+    alt: 'Blue widget',
+    loading: 'lazy',
+    isAboveFold: false,
+    width: 400,
+    height: 400,
+  },
 ];
 
 // Alt text issues
@@ -100,12 +114,12 @@ import type { ImageAnalysisResult, ImageIssue } from '@power-seo/images';
 
 const result: ImageAnalysisResult = analyzeAltText({
   images: [
-    { src: '/hero.jpg',       alt: '' },                          // missing alt
-    { src: '/icon.png',       alt: 'i' },                         // too short
-    { src: '/IMG_9821.jpg',   alt: 'IMG_9821' },                  // filename as alt
-    { src: '/team-photo.jpg', alt: 'Team photo' },                // ok
-    { src: '/product.webp',   alt: 'Blue widget on white background' }, // good, has keyphrase
-    { src: '/bg.jpg',         alt: '' },                          // decorative — ok if marked
+    { src: '/hero.jpg', alt: '' }, // missing alt
+    { src: '/icon.png', alt: 'i' }, // too short
+    { src: '/IMG_9821.jpg', alt: 'IMG_9821' }, // filename as alt
+    { src: '/team-photo.jpg', alt: 'Team photo' }, // ok
+    { src: '/product.webp', alt: 'Blue widget on white background' }, // good, has keyphrase
+    { src: '/bg.jpg', alt: '' }, // decorative — ok if marked
   ],
   keyphrase: 'blue widget',
 });
@@ -120,14 +134,14 @@ console.log(`Images with issues: ${result.issueCount}/${result.totalImages}`);
 
 The following issue types are detected:
 
-| Type | Severity | Description |
-|------|----------|-------------|
-| `missing-alt` | `error` | The `alt` attribute is absent entirely |
-| `empty-alt` | `warning` | The `alt` attribute exists but is an empty string (appropriate only for decorative images) |
-| `alt-too-short` | `warning` | The alt text is present but fewer than 5 characters |
-| `filename-as-alt` | `warning` | The alt text appears to be a filename (e.g., `IMG_1234`, `photo.jpg`) |
-| `duplicate-alt` | `info` | The same alt text is used on multiple images |
-| `keyphrase-missing` | `info` | No image on the page has the focus keyphrase in its alt text |
+| Type                | Severity  | Description                                                                                |
+| ------------------- | --------- | ------------------------------------------------------------------------------------------ |
+| `missing-alt`       | `error`   | The `alt` attribute is absent entirely                                                     |
+| `empty-alt`         | `warning` | The `alt` attribute exists but is an empty string (appropriate only for decorative images) |
+| `alt-too-short`     | `warning` | The alt text is present but fewer than 5 characters                                        |
+| `filename-as-alt`   | `warning` | The alt text appears to be a filename (e.g., `IMG_1234`, `photo.jpg`)                      |
+| `duplicate-alt`     | `info`    | The same alt text is used on multiple images                                               |
+| `keyphrase-missing` | `info`    | No image on the page has the focus keyphrase in its alt text                               |
 
 ### Lazy Loading Audit
 
@@ -140,15 +154,15 @@ import type { LazyLoadingAuditResult } from '@power-seo/images';
 const result: LazyLoadingAuditResult = auditLazyLoading({
   images: [
     // Above fold — should NOT be lazy-loaded (LCP risk)
-    { src: '/hero.jpg',      loading: 'lazy',    isAboveFold: true,  width: 1200, height: 630 },
+    { src: '/hero.jpg', loading: 'lazy', isAboveFold: true, width: 1200, height: 630 },
     // Below fold — SHOULD be lazy-loaded (bandwidth saving)
-    { src: '/section2.jpg',  loading: undefined,  isAboveFold: false, width: 800, height: 500 },
+    { src: '/section2.jpg', loading: undefined, isAboveFold: false, width: 800, height: 500 },
     // Good: above fold, eagerly loaded
-    { src: '/logo.png',      loading: 'eager',   isAboveFold: true,  width: 200, height: 60 },
+    { src: '/logo.png', loading: 'eager', isAboveFold: true, width: 200, height: 60 },
     // Good: below fold, lazy-loaded
-    { src: '/footer.jpg',    loading: 'lazy',    isAboveFold: false, width: 600, height: 400 },
+    { src: '/footer.jpg', loading: 'lazy', isAboveFold: false, width: 600, height: 400 },
     // Missing dimensions — causes CLS
-    { src: '/promo.jpg',     loading: 'lazy',    isAboveFold: false },
+    { src: '/promo.jpg', loading: 'lazy', isAboveFold: false },
   ],
 });
 
@@ -158,10 +172,10 @@ result.issues.forEach((issue) => {
 });
 ```
 
-| Issue type | Severity | Description |
-|------------|----------|-------------|
-| `lazy-above-fold` | `error` | Above-fold image with `loading="lazy"` — delays LCP |
-| `missing-lazy` | `warning` | Below-fold image without `loading="lazy"` — wastes bandwidth |
+| Issue type           | Severity  | Description                                                             |
+| -------------------- | --------- | ----------------------------------------------------------------------- |
+| `lazy-above-fold`    | `error`   | Above-fold image with `loading="lazy"` — delays LCP                     |
+| `missing-lazy`       | `warning` | Below-fold image without `loading="lazy"` — wastes bandwidth            |
 | `missing-dimensions` | `warning` | Image without explicit `width` and `height` — causes layout shift (CLS) |
 
 ### Format Detection and Recommendations
@@ -174,11 +188,11 @@ import type { ImageFormat } from '@power-seo/images';
 const format: ImageFormat = detectFormat('/images/hero.jpg');
 // 'jpeg'
 
-detectFormat('https://example.com/icon.png');   // 'png'
-detectFormat('/animation.gif');                  // 'gif'
-detectFormat('/photo.webp');                     // 'webp'
-detectFormat('/image.avif');                     // 'avif'
-detectFormat('/logo.svg');                       // 'svg'
+detectFormat('https://example.com/icon.png'); // 'png'
+detectFormat('/animation.gif'); // 'gif'
+detectFormat('/photo.webp'); // 'webp'
+detectFormat('/image.avif'); // 'avif'
+detectFormat('/logo.svg'); // 'svg'
 
 // Get a recommendation for the detected format
 const recommendation = getFormatRecommendation('jpeg');
@@ -251,14 +265,26 @@ const sitemapXml = generateImageSitemap([
   {
     pageUrl: 'https://example.com/products/widget',
     images: [
-      { loc: 'https://example.com/products/widget.jpg',        title: 'Premium Blue Widget',  caption: 'Front view of our blue widget' },
-      { loc: 'https://example.com/products/widget-detail.webp', title: 'Widget Detail',        caption: 'Close-up detail view' },
+      {
+        loc: 'https://example.com/products/widget.jpg',
+        title: 'Premium Blue Widget',
+        caption: 'Front view of our blue widget',
+      },
+      {
+        loc: 'https://example.com/products/widget-detail.webp',
+        title: 'Widget Detail',
+        caption: 'Close-up detail view',
+      },
     ],
   },
   {
     pageUrl: 'https://example.com/about',
     images: [
-      { loc: 'https://example.com/team/team-photo.jpg', title: 'Our Team', caption: 'The CyberCraft Bangladesh team' },
+      {
+        loc: 'https://example.com/team/team-photo.jpg',
+        title: 'Our Team',
+        caption: 'The CyberCraft Bangladesh team',
+      },
     ],
   },
 ]);
@@ -295,9 +321,7 @@ const [altResult, lazyResult, formatResult] = await Promise.all([
   analyzeImageFormats({ images }),
 ]);
 
-const overallImageScore = Math.round(
-  (altResult.score + lazyResult.score + formatResult.score) / 3
-);
+const overallImageScore = Math.round((altResult.score + lazyResult.score + formatResult.score) / 3);
 
 console.log(`Image SEO score: ${overallImageScore}/100`);
 console.log(`Alt text issues: ${altResult.issueCount}`);
@@ -309,44 +333,44 @@ console.log(`Format optimizations needed: ${formatResult.recommendations.length}
 
 ### `analyzeAltText(input)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `input.images` | `ImageInfo[]` | required | Array of image objects with `src`, `alt`, and optional `loading`, `width`, `height` |
-| `input.keyphrase` | `string` | `''` | Focus keyphrase to check for in alt text |
-| `input.minAltLength` | `number` | `5` | Minimum character length for meaningful alt text |
+| Parameter            | Type          | Default  | Description                                                                         |
+| -------------------- | ------------- | -------- | ----------------------------------------------------------------------------------- |
+| `input.images`       | `ImageInfo[]` | required | Array of image objects with `src`, `alt`, and optional `loading`, `width`, `height` |
+| `input.keyphrase`    | `string`      | `''`     | Focus keyphrase to check for in alt text                                            |
+| `input.minAltLength` | `number`      | `5`      | Minimum character length for meaningful alt text                                    |
 
 Returns `ImageAnalysisResult`:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `score` | `number` | Alt text quality score 0–100 |
-| `issues` | `ImageIssue[]` | Array of detected alt text issues |
-| `totalImages` | `number` | Total number of images analyzed |
-| `issueCount` | `number` | Number of images with at least one issue |
-| `keyphraseInAlt` | `boolean` | Whether the keyphrase was found in any image's alt text |
+| Property         | Type           | Description                                             |
+| ---------------- | -------------- | ------------------------------------------------------- |
+| `score`          | `number`       | Alt text quality score 0–100                            |
+| `issues`         | `ImageIssue[]` | Array of detected alt text issues                       |
+| `totalImages`    | `number`       | Total number of images analyzed                         |
+| `issueCount`     | `number`       | Number of images with at least one issue                |
+| `keyphraseInAlt` | `boolean`      | Whether the keyphrase was found in any image's alt text |
 
 ---
 
 ### `auditLazyLoading(input)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
+| Parameter      | Type          | Default  | Description                                                                    |
+| -------------- | ------------- | -------- | ------------------------------------------------------------------------------ |
 | `input.images` | `ImageInfo[]` | required | Array of image objects with `src`, `loading`, `isAboveFold`, `width`, `height` |
 
 Returns `LazyLoadingAuditResult`:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `score` | `number` | Lazy loading implementation score 0–100 |
-| `issues` | `ImageIssue[]` | Array of detected lazy loading issues |
+| Property | Type           | Description                             |
+| -------- | -------------- | --------------------------------------- |
+| `score`  | `number`       | Lazy loading implementation score 0–100 |
+| `issues` | `ImageIssue[]` | Array of detected lazy loading issues   |
 
 ---
 
 ### `detectFormat(src)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `src` | `string` | required | Image URL or filename path |
+| Parameter | Type     | Default  | Description                |
+| --------- | -------- | -------- | -------------------------- |
+| `src`     | `string` | required | Image URL or filename path |
 
 Returns `ImageFormat` (`'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg' | 'unknown'`).
 
@@ -354,9 +378,9 @@ Returns `ImageFormat` (`'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg' | 'unkn
 
 ### `getFormatRecommendation(format)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `format` | `ImageFormat` | required | The current format of the image |
+| Parameter | Type          | Default  | Description                     |
+| --------- | ------------- | -------- | ------------------------------- |
+| `format`  | `ImageFormat` | required | The current format of the image |
 
 Returns `FormatAnalysisResult`: `{ format, recommended: ImageFormat[], reason: string, priority: 'high' | 'medium' | 'low' | 'none' }`.
 
@@ -364,24 +388,24 @@ Returns `FormatAnalysisResult`: `{ format, recommended: ImageFormat[], reason: s
 
 ### `analyzeImageFormats(input)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
+| Parameter      | Type          | Default  | Description                                      |
+| -------------- | ------------- | -------- | ------------------------------------------------ |
 | `input.images` | `ImageInfo[]` | required | Array of images with at minimum a `src` property |
 
 Returns `FormatAuditResult`:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `score` | `number` | Format optimization score 0–100 |
+| Property          | Type                                           | Description                              |
+| ----------------- | ---------------------------------------------- | ---------------------------------------- |
+| `score`           | `number`                                       | Format optimization score 0–100          |
 | `recommendations` | `Array<{ src, current, recommended, reason }>` | Per-image format upgrade recommendations |
 
 ---
 
 ### `extractImageEntries(html, baseUrl)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `html` | `string` | required | HTML string to parse for `<img>` elements |
+| Parameter | Type     | Default  | Description                                 |
+| --------- | -------- | -------- | ------------------------------------------- |
+| `html`    | `string` | required | HTML string to parse for `<img>` elements   |
 | `baseUrl` | `string` | required | Base URL for resolving relative `src` paths |
 
 Returns `SitemapImage[]`.
@@ -390,9 +414,9 @@ Returns `SitemapImage[]`.
 
 ### `generateImageSitemap(pages)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `pages` | `ImageSitemapPage[]` | required | Array of `{ pageUrl: string; images: SitemapImage[] }` objects |
+| Parameter | Type                 | Default  | Description                                                    |
+| --------- | -------------------- | -------- | -------------------------------------------------------------- |
+| `pages`   | `ImageSitemapPage[]` | required | Array of `{ pageUrl: string; images: SitemapImage[] }` objects |
 
 Returns `string` — well-formed XML image sitemap with Google's `image:` namespace.
 
@@ -402,17 +426,17 @@ Returns `string` — well-formed XML image sitemap with Google's `image:` namesp
 
 ```ts
 import type {
-  ImageFormat,             // 'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg' | 'unknown'
-  ImageInfo,               // { src, alt?, loading?, isAboveFold?, width?, height? }
-  ImageIssueSeverity,      // 'error' | 'warning' | 'info'
-  ImageIssue,              // { src, type, severity, message }
-  ImageAnalysisResult,     // { score, issues, totalImages, issueCount, keyphraseInAlt }
-  ImageAuditResult,        // Combined result from multiple analyzers
-  ImageSitemapPage,        // { pageUrl: string; images: SitemapImage[] }
-  FormatAnalysisResult,    // { format, recommended, reason, priority }
-  FormatAuditResult,       // { score, recommendations }
-  LazyLoadingAuditResult,  // { score, issues }
-  SitemapImage,            // { loc, title?, caption? }
+  ImageFormat, // 'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg' | 'unknown'
+  ImageInfo, // { src, alt?, loading?, isAboveFold?, width?, height? }
+  ImageIssueSeverity, // 'error' | 'warning' | 'info'
+  ImageIssue, // { src, type, severity, message }
+  ImageAnalysisResult, // { score, issues, totalImages, issueCount, keyphraseInAlt }
+  ImageAuditResult, // Combined result from multiple analyzers
+  ImageSitemapPage, // { pageUrl: string; images: SitemapImage[] }
+  FormatAnalysisResult, // { format, recommended, reason, priority }
+  FormatAuditResult, // { score, recommendations }
+  LazyLoadingAuditResult, // { score, issues }
+  SitemapImage, // { loc, title?, caption? }
 } from '@power-seo/images';
 ```
 
@@ -420,25 +444,25 @@ import type {
 
 `@power-seo/images` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
 
-| Package | Install | Description |
-|---------|---------|-------------|
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 
@@ -446,11 +470,11 @@ import type {
 
 **CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-| | |
-|---|---|
-| **Website** | [ccbd.dev](https://ccbd.dev) |
-| **GitHub** | [github.com/cybercraftbd](https://github.com/cybercraftbd) |
+|                      |                                                                |
+| -------------------- | -------------------------------------------------------------- |
+| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
+| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
+| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
 
 © 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)

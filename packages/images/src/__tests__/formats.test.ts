@@ -65,10 +65,7 @@ describe('analyzeImageFormats', () => {
   });
 
   it('should provide per-image results', () => {
-    const images: ImageInfo[] = [
-      { src: '/photo.jpg' },
-      { src: '/hero.webp' },
-    ];
+    const images: ImageInfo[] = [{ src: '/photo.jpg' }, { src: '/hero.webp' }];
     const result = analyzeImageFormats(images);
     expect(result.results).toHaveLength(2);
     expect(result.results[0].isModern).toBe(false);

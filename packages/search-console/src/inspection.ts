@@ -2,11 +2,7 @@
 // @power-seo/search-console — URL Inspection
 // ============================================================================
 
-import type {
-  GSCClient,
-  InspectionRequest,
-  InspectionResult,
-} from './types.js';
+import type { GSCClient, InspectionRequest, InspectionResult } from './types.js';
 
 const INSPECTION_BASE = 'https://searchconsole.googleapis.com/v1/urlInspection/index:inspect';
 
@@ -20,13 +16,10 @@ export async function inspectUrl(
     languageCode: request.languageCode ?? 'en',
   };
 
-  const token = await client.request<{ inspectionResult: InspectionResult }>(
-    '',
-    {
-      method: 'POST',
-      body,
-    },
-  );
+  const token = await client.request<{ inspectionResult: InspectionResult }>('', {
+    method: 'POST',
+    body,
+  });
 
   // The URL Inspection API has a different base URL, so we use a direct fetch.
   // However, since the client handles auth and retries, we override for the standard path approach.

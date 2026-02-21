@@ -175,9 +175,7 @@ describe('checkHeadings', () => {
   });
 
   it('returns ok when multiple H1s found', () => {
-    const results = checkHeadings(
-      makeInput({ content: '<h1>First</h1><h1>Second</h1>' }),
-    );
+    const results = checkHeadings(makeInput({ content: '<h1>First</h1><h1>Second</h1>' }));
     const structure = results.find((r) => r.id === 'heading-structure');
     expect(structure!.status).toBe('ok');
   });
@@ -278,10 +276,7 @@ describe('checkImages', () => {
   it('returns poor when no images have alt text', () => {
     const results = checkImages(
       makeInput({
-        images: [
-          { src: 'a.jpg' },
-          { src: 'b.jpg', alt: '' },
-        ],
+        images: [{ src: 'a.jpg' }, { src: 'b.jpg', alt: '' }],
       }),
     );
     const altCheck = results.find((r) => r.id === 'image-alt');
@@ -291,10 +286,7 @@ describe('checkImages', () => {
   it('returns ok when some images missing alt text', () => {
     const results = checkImages(
       makeInput({
-        images: [
-          { src: 'a.jpg', alt: 'Good alt' },
-          { src: 'b.jpg' },
-        ],
+        images: [{ src: 'a.jpg', alt: 'Good alt' }, { src: 'b.jpg' }],
       }),
     );
     const altCheck = results.find((r) => r.id === 'image-alt');

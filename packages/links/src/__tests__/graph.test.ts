@@ -41,9 +41,7 @@ describe('buildLinkGraph', () => {
   });
 
   it('ignores self-links', () => {
-    const pages: PageData[] = [
-      { url: 'https://example.com/a', links: ['https://example.com/a'] },
-    ];
+    const pages: PageData[] = [{ url: 'https://example.com/a', links: ['https://example.com/a'] }];
     const graph = buildLinkGraph(pages);
     const nodeA = graph.nodes.get('https://example.com/a');
     expect(nodeA!.outboundCount).toBe(0);
@@ -100,9 +98,7 @@ describe('buildLinkGraph', () => {
   });
 
   it('skips invalid relative URLs', () => {
-    const pages: PageData[] = [
-      { url: 'not-a-url', links: [':::invalid'] },
-    ];
+    const pages: PageData[] = [{ url: 'not-a-url', links: [':::invalid'] }];
     const graph = buildLinkGraph(pages);
     // Should not crash; the invalid link is skipped
     expect(graph.totalLinks).toBe(0);

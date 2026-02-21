@@ -49,10 +49,7 @@ export function createHttpClient(config: HttpClientConfig): HttpClient {
   const bucket = createTokenBucket(config.rateLimitPerMinute ?? DEFAULT_RATE_LIMIT);
   const provider = getProviderFromUrl(config.baseUrl);
 
-  async function makeRequest<T>(
-    url: string,
-    init: globalThis.RequestInit,
-  ): Promise<T> {
+  async function makeRequest<T>(url: string, init: globalThis.RequestInit): Promise<T> {
     const waitTime = getWaitTime(bucket);
     if (waitTime > 0) {
       await sleep(waitTime);

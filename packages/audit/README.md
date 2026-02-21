@@ -69,7 +69,8 @@ import { auditPage } from '@power-seo/audit';
 const result = auditPage({
   url: 'https://example.com/blog/react-seo-guide',
   title: 'React SEO Guide — Best Practices for 2026',
-  metaDescription: 'Learn how to optimize React applications for search engines with meta tags, structured data, and Core Web Vitals improvements.',
+  metaDescription:
+    'Learn how to optimize React applications for search engines with meta tags, structured data, and Core Web Vitals improvements.',
   canonical: 'https://example.com/blog/react-seo-guide',
   robots: 'index, follow',
   content: '<h1>React SEO Guide</h1><p>Search engine optimization for React apps...</p>',
@@ -78,9 +79,7 @@ const result = auditPage({
     { level: 2, text: 'Why SEO Matters for React' },
     { level: 2, text: 'Meta Tags in React' },
   ],
-  images: [
-    { src: '/hero.webp', alt: 'React SEO guide illustration', width: 1200, height: 630 },
-  ],
+  images: [{ src: '/hero.webp', alt: 'React SEO guide illustration', width: 1200, height: 630 }],
   links: {
     internal: ['/blog', '/docs/meta-tags'],
     external: ['https://developers.google.com/search'],
@@ -89,8 +88,8 @@ const result = auditPage({
   wordCount: 1850,
 });
 
-console.log(result.score);       // e.g. 84
-console.log(result.categories);  // { meta: 90, content: 82, structure: 88, performance: 75 }
+console.log(result.score); // e.g. 84
+console.log(result.categories); // { meta: 90, content: 82, structure: 88, performance: 75 }
 console.log(result.issues);
 // [
 //   { rule: 'meta-description-length', severity: 'info', message: 'Meta description is 162 chars — aim for 120–158' },
@@ -111,7 +110,8 @@ import type { PageAuditInput, PageAuditResult } from '@power-seo/audit';
 const input: PageAuditInput = {
   url: 'https://example.com/products/widget',
   title: 'Premium Widget — Buy Online | Example',
-  metaDescription: 'Buy our premium widget online. Free shipping on orders over $50. Trusted by 10,000+ customers.',
+  metaDescription:
+    'Buy our premium widget online. Free shipping on orders over $50. Trusted by 10,000+ customers.',
   canonical: 'https://example.com/products/widget',
   robots: 'index, follow',
   og: {
@@ -181,10 +181,17 @@ report.pages.forEach(({ url, score, issues }) => {
 Run only the rules you need without executing the full audit pipeline.
 
 ```ts
-import { runMetaRules, runContentRules, runStructureRules, runPerformanceRules } from '@power-seo/audit';
+import {
+  runMetaRules,
+  runContentRules,
+  runStructureRules,
+  runPerformanceRules,
+} from '@power-seo/audit';
 import type { PageAuditInput, CategoryResult } from '@power-seo/audit';
 
-const input: PageAuditInput = { /* ... */ };
+const input: PageAuditInput = {
+  /* ... */
+};
 
 // Run only meta checks — title, description, canonical, robots, OG
 const metaResult: CategoryResult = runMetaRules(input);
@@ -212,12 +219,15 @@ import type { AuditSeverity } from '@power-seo/audit';
 const result = auditPage(input);
 
 // Group issues by category
-const byCategory = result.issues.reduce((acc, issue) => {
-  const cat = issue.category ?? 'general';
-  acc[cat] = acc[cat] ?? [];
-  acc[cat].push(issue);
-  return acc;
-}, {} as Record<string, typeof result.issues>);
+const byCategory = result.issues.reduce(
+  (acc, issue) => {
+    const cat = issue.category ?? 'general';
+    acc[cat] = acc[cat] ?? [];
+    acc[cat].push(issue);
+    return acc;
+  },
+  {} as Record<string, typeof result.issues>,
+);
 
 // Priority order: errors first, then warnings, then info
 const prioritized = [...result.issues].sort((a, b) => {
@@ -247,7 +257,7 @@ const SCORE_THRESHOLD = 75;
 const ALLOWED_ERRORS = 0;
 
 const totalErrors = report.pages.flatMap((p) =>
-  p.issues.filter((i) => i.severity === 'error')
+  p.issues.filter((i) => i.severity === 'error'),
 ).length;
 
 if (report.averageScore < SCORE_THRESHOLD || totalErrors > ALLOWED_ERRORS) {
@@ -264,47 +274,47 @@ console.log(`SEO audit PASSED — average score: ${report.averageScore}/100`);
 
 ### `auditPage(input)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `input.url` | `string` | required | Canonical URL of the page being audited |
-| `input.title` | `string` | required | Page `<title>` tag content |
-| `input.metaDescription` | `string` | `''` | Content of the `meta[name="description"]` tag |
-| `input.canonical` | `string` | `''` | Canonical URL from `link[rel="canonical"]` |
-| `input.robots` | `string` | `''` | Content of `meta[name="robots"]` tag |
-| `input.og` | `object` | `{}` | Open Graph tags: `title`, `description`, `image`, `url` |
-| `input.content` | `string` | required | Full HTML content of the page body |
-| `input.headings` | `Array<{ level: number; text: string }>` | `[]` | All headings extracted from the page |
-| `input.images` | `Array<ImageInfo>` | `[]` | Image metadata: `src`, `alt`, `width`, `height`, `loading` |
-| `input.links` | `{ internal: string[]; external: string[] }` | required | Categorized page links |
-| `input.schema` | `object` | `undefined` | JSON-LD schema object present on the page |
-| `input.keyphrase` | `string` | `''` | Focus keyphrase for content analysis |
-| `input.wordCount` | `number` | `0` | Total word count of the page body text |
+| Parameter               | Type                                         | Default     | Description                                                |
+| ----------------------- | -------------------------------------------- | ----------- | ---------------------------------------------------------- |
+| `input.url`             | `string`                                     | required    | Canonical URL of the page being audited                    |
+| `input.title`           | `string`                                     | required    | Page `<title>` tag content                                 |
+| `input.metaDescription` | `string`                                     | `''`        | Content of the `meta[name="description"]` tag              |
+| `input.canonical`       | `string`                                     | `''`        | Canonical URL from `link[rel="canonical"]`                 |
+| `input.robots`          | `string`                                     | `''`        | Content of `meta[name="robots"]` tag                       |
+| `input.og`              | `object`                                     | `{}`        | Open Graph tags: `title`, `description`, `image`, `url`    |
+| `input.content`         | `string`                                     | required    | Full HTML content of the page body                         |
+| `input.headings`        | `Array<{ level: number; text: string }>`     | `[]`        | All headings extracted from the page                       |
+| `input.images`          | `Array<ImageInfo>`                           | `[]`        | Image metadata: `src`, `alt`, `width`, `height`, `loading` |
+| `input.links`           | `{ internal: string[]; external: string[] }` | required    | Categorized page links                                     |
+| `input.schema`          | `object`                                     | `undefined` | JSON-LD schema object present on the page                  |
+| `input.keyphrase`       | `string`                                     | `''`        | Focus keyphrase for content analysis                       |
+| `input.wordCount`       | `number`                                     | `0`         | Total word count of the page body text                     |
 
 Returns `PageAuditResult`:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `url` | `string` | The audited page URL |
-| `score` | `number` | Overall weighted score 0–100 |
-| `categories` | `Record<AuditCategory, CategoryResult>` | Per-category scores and issues |
-| `issues` | `AuditIssue[]` | Flat array of all issues across all categories |
+| Property     | Type                                    | Description                                    |
+| ------------ | --------------------------------------- | ---------------------------------------------- |
+| `url`        | `string`                                | The audited page URL                           |
+| `score`      | `number`                                | Overall weighted score 0–100                   |
+| `categories` | `Record<AuditCategory, CategoryResult>` | Per-category scores and issues                 |
+| `issues`     | `AuditIssue[]`                          | Flat array of all issues across all categories |
 
 ---
 
 ### `auditSite(input)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
+| Parameter     | Type               | Default  | Description                            |
+| ------------- | ------------------ | -------- | -------------------------------------- |
 | `input.pages` | `PageAuditInput[]` | required | Array of page audit inputs to evaluate |
 
 Returns `SiteAuditResult`:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `averageScore` | `number` | Mean score across all pages (0–100) |
-| `pageCount` | `number` | Total number of pages audited |
-| `pages` | `PageAuditResult[]` | Individual page audit results |
-| `topIssues` | `Array<{ rule, occurrences, severity }>` | Most common issues across all pages |
+| Property       | Type                                     | Description                         |
+| -------------- | ---------------------------------------- | ----------------------------------- |
+| `averageScore` | `number`                                 | Mean score across all pages (0–100) |
+| `pageCount`    | `number`                                 | Total number of pages audited       |
+| `pages`        | `PageAuditResult[]`                      | Individual page audit results       |
+| `topIssues`    | `Array<{ rule, occurrences, severity }>` | Most common issues across all pages |
 
 ---
 
@@ -312,9 +322,9 @@ Returns `SiteAuditResult`:
 
 Each rule runner accepts a `PageAuditInput` and returns a `CategoryResult`:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `score` | `number` | Category score 0–100 |
+| Property | Type           | Description                   |
+| -------- | -------------- | ----------------------------- |
+| `score`  | `number`       | Category score 0–100          |
 | `issues` | `AuditIssue[]` | Issues found in this category |
 
 ---
@@ -323,14 +333,14 @@ Each rule runner accepts a `PageAuditInput` and returns a `CategoryResult`:
 
 ```ts
 import type {
-  AuditCategory,      // 'meta' | 'content' | 'structure' | 'performance'
-  AuditSeverity,      // 'error' | 'warning' | 'info'
-  AuditRule,          // { id: string; category: AuditCategory; severity: AuditSeverity; check(input): AuditIssue[] }
-  PageAuditInput,     // Full page input object (see auditPage parameters above)
-  PageAuditResult,    // { url, score, categories, issues }
-  CategoryResult,     // { score: number; issues: AuditIssue[] }
-  SiteAuditInput,     // { pages: PageAuditInput[] }
-  SiteAuditResult,    // { averageScore, pageCount, pages, topIssues }
+  AuditCategory, // 'meta' | 'content' | 'structure' | 'performance'
+  AuditSeverity, // 'error' | 'warning' | 'info'
+  AuditRule, // { id: string; category: AuditCategory; severity: AuditSeverity; check(input): AuditIssue[] }
+  PageAuditInput, // Full page input object (see auditPage parameters above)
+  PageAuditResult, // { url, score, categories, issues }
+  CategoryResult, // { score: number; issues: AuditIssue[] }
+  SiteAuditInput, // { pages: PageAuditInput[] }
+  SiteAuditResult, // { averageScore, pageCount, pages, topIssues }
 } from '@power-seo/audit';
 ```
 
@@ -338,25 +348,25 @@ import type {
 
 `@power-seo/audit` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
 
-| Package | Install | Description |
-|---------|---------|-------------|
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 
@@ -364,11 +374,11 @@ import type {
 
 **CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-| | |
-|---|---|
-| **Website** | [ccbd.dev](https://ccbd.dev) |
-| **GitHub** | [github.com/cybercraftbd](https://github.com/cybercraftbd) |
+|                      |                                                                |
+| -------------------- | -------------------------------------------------------------- |
+| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
+| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
+| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
 
 © 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)

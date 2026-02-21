@@ -14,9 +14,7 @@ const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GSC_SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 const TOKEN_BUFFER_MS = 60_000;
 
-export async function exchangeRefreshToken(
-  credentials: OAuthCredentials,
-): Promise<TokenResult> {
+export async function exchangeRefreshToken(credentials: OAuthCredentials): Promise<TokenResult> {
   const body = new globalThis.URLSearchParams({
     client_id: credentials.clientId,
     client_secret: credentials.clientSecret,
@@ -87,9 +85,7 @@ export async function getServiceAccountToken(
   };
 }
 
-export function createTokenManager(
-  fetchToken: () => Promise<TokenResult>,
-): TokenManager {
+export function createTokenManager(fetchToken: () => Promise<TokenResult>): TokenManager {
   let cached: TokenResult | null = null;
   let pending: Promise<string> | null = null;
 

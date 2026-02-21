@@ -42,10 +42,7 @@ describe('parseTitleResponse', () => {
   });
 
   it('should parse JSON array format', () => {
-    const response = JSON.stringify([
-      'Title One: Great Guide',
-      'Title Two: Amazing Tips',
-    ]);
+    const response = JSON.stringify(['Title One: Great Guide', 'Title Two: Amazing Tips']);
     const result = parseTitleResponse(response);
     expect(result).toHaveLength(2);
     expect(result[0].title).toBe('Title One: Great Guide');

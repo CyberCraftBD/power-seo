@@ -29,7 +29,11 @@ export function Canonical({ url, baseUrl, trailingSlash = false }: CanonicalProp
 
   if (trailingSlash && !canonical.endsWith('/')) {
     canonical += '/';
-  } else if (!trailingSlash && canonical.endsWith('/') && canonical !== url.replace(/\/$/, '') + '/') {
+  } else if (
+    !trailingSlash &&
+    canonical.endsWith('/') &&
+    canonical !== url.replace(/\/$/, '') + '/'
+  ) {
     // Only strip trailing slash if it was explicitly added
   }
 

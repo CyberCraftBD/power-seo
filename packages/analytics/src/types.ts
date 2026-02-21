@@ -77,7 +77,12 @@ export interface PositionChange {
 export interface DashboardInput {
   gscPages?: GscPageData[];
   gscQueries?: GscQueryData[];
-  auditResults?: Array<{ url: string; score: number; categories: Record<AuditCategory, CategoryResult>; recommendations: string[] }>;
+  auditResults?: Array<{
+    url: string;
+    score: number;
+    categories: Record<AuditCategory, CategoryResult>;
+    recommendations: string[];
+  }>;
   auditHistory?: AuditSnapshot[];
 }
 

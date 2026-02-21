@@ -133,7 +133,8 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
         id: 'structure-heading-hierarchy',
         category: 'structure',
         title: 'Heading hierarchy',
-        description: 'Heading levels skip one or more levels (e.g. H1 to H3). Use sequential heading levels.',
+        description:
+          'Heading levels skip one or more levels (e.g. H1 to H3). Use sequential heading levels.',
         severity: 'warning',
       });
     }
@@ -153,7 +154,8 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
       id: 'structure-https',
       category: 'structure',
       title: 'HTTPS',
-      description: 'Page is served over HTTP instead of HTTPS. Migrate to HTTPS for security and SEO.',
+      description:
+        'Page is served over HTTP instead of HTTPS. Migrate to HTTPS for security and SEO.',
       severity: 'error',
     });
   } else if (input.url.startsWith('https://')) {

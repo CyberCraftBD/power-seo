@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { buildMetaDescriptionPrompt, parseMetaDescriptionResponse } from '../prompts/meta-description.js';
+import {
+  buildMetaDescriptionPrompt,
+  parseMetaDescriptionResponse,
+} from '../prompts/meta-description.js';
 
 describe('buildMetaDescriptionPrompt', () => {
   it('should return a valid PromptTemplate', () => {
@@ -67,7 +70,8 @@ describe('parseMetaDescriptionResponse', () => {
   });
 
   it('should validate the description and mark valid ones', () => {
-    const goodDesc = 'This is a perfectly good meta description that provides useful information about the page content and encourages users to click through.';
+    const goodDesc =
+      'This is a perfectly good meta description that provides useful information about the page content and encourages users to click through.';
     const result = parseMetaDescriptionResponse(goodDesc);
     expect(result.isValid).toBe(true);
     expect(result.validationMessage).toBeUndefined();

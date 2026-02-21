@@ -68,13 +68,13 @@ import { mergeGscWithAudit, buildDashboardData } from '@power-seo/analytics';
 
 const dashboard = buildDashboardData({
   gscPages: [
-    { url: '/blog/react-seo',  clicks: 1240, impressions: 18500, ctr: 0.067, position: 4.2 },
-    { url: '/blog/meta-tags',  clicks:  380, impressions:  9200, ctr: 0.041, position: 8.7 },
-    { url: '/blog/seo-audit',  clicks:   55, impressions:  3100, ctr: 0.018, position: 19.1 },
+    { url: '/blog/react-seo', clicks: 1240, impressions: 18500, ctr: 0.067, position: 4.2 },
+    { url: '/blog/meta-tags', clicks: 380, impressions: 9200, ctr: 0.041, position: 8.7 },
+    { url: '/blog/seo-audit', clicks: 55, impressions: 3100, ctr: 0.018, position: 19.1 },
   ],
   gscQueries: [
     { query: 'react seo guide', clicks: 820, impressions: 9400, ctr: 0.087, position: 3.1 },
-    { query: 'meta tags react', clicks: 290, impressions: 5800, ctr: 0.050, position: 7.4 },
+    { query: 'meta tags react', clicks: 290, impressions: 5800, ctr: 0.05, position: 7.4 },
   ],
   auditResults: [
     { url: '/blog/react-seo', score: 88, issues: [] },
@@ -83,10 +83,10 @@ const dashboard = buildDashboardData({
   ],
 });
 
-console.log(dashboard.overview.totalClicks);       // 1675
-console.log(dashboard.overview.averagePosition);   // 10.67
+console.log(dashboard.overview.totalClicks); // 1675
+console.log(dashboard.overview.averagePosition); // 10.67
 console.log(dashboard.overview.averageAuditScore); // 67.7
-console.log(dashboard.topPages[0].url);            // '/blog/react-seo'
+console.log(dashboard.topPages[0].url); // '/blog/react-seo'
 ```
 
 ## Usage
@@ -100,13 +100,29 @@ import { mergeGscWithAudit } from '@power-seo/analytics';
 import type { GscPageData, AuditSnapshot, PageInsight } from '@power-seo/analytics';
 
 const gscPages: GscPageData[] = [
-  { url: 'https://example.com/blog/post-1', clicks: 850, impressions: 12000, ctr: 0.071, position: 5.3 },
-  { url: 'https://example.com/blog/post-2', clicks: 220, impressions:  6500, ctr: 0.034, position: 12.1 },
+  {
+    url: 'https://example.com/blog/post-1',
+    clicks: 850,
+    impressions: 12000,
+    ctr: 0.071,
+    position: 5.3,
+  },
+  {
+    url: 'https://example.com/blog/post-2',
+    clicks: 220,
+    impressions: 6500,
+    ctr: 0.034,
+    position: 12.1,
+  },
 ];
 
 const auditResults: AuditSnapshot[] = [
   { url: '/blog/post-1', score: 91, issues: [] },
-  { url: '/blog/post-2', score: 63, issues: [{ rule: 'meta-description', severity: 'error', message: '...' }] },
+  {
+    url: '/blog/post-2',
+    score: 63,
+    issues: [{ rule: 'meta-description', severity: 'error', message: '...' }],
+  },
 ];
 
 const insights: PageInsight[] = mergeGscWithAudit({ gscPages, auditResults });
@@ -152,9 +168,9 @@ const weeklyClicks: TrendPoint[] = [
 ];
 
 const trend: TrendAnalysis = analyzeTrend(weeklyClicks);
-console.log(trend.direction);   // 'up' | 'down' | 'stable'
-console.log(trend.rate);        // % change per period, e.g. 5.8
-console.log(trend.confidence);  // 0-1, linearity confidence, e.g. 0.87
+console.log(trend.direction); // 'up' | 'down' | 'stable'
+console.log(trend.rate); // % change per period, e.g. 5.8
+console.log(trend.confidence); // 0-1, linearity confidence, e.g. 0.87
 
 // Build chart-ready trend line data
 const trendLines = buildTrendLines(weeklyClicks);
@@ -173,7 +189,7 @@ const dailyImpressions: TrendPoint[] = [
   { date: '2026-02-04', value: 8600 },
   { date: '2026-02-05', value: 24800 }, // spike — content went viral?
   { date: '2026-02-06', value: 9100 },
-  { date: '2026-02-07', value: 2100 },  // drop — server issue?
+  { date: '2026-02-07', value: 2100 }, // drop — server issue?
   { date: '2026-02-08', value: 8800 },
 ];
 
@@ -192,24 +208,27 @@ import { analyzeQueryRankings } from '@power-seo/analytics';
 import type { GscQueryData, RankingAnalysis } from '@power-seo/analytics';
 
 const queries: GscQueryData[] = [
-  { query: 'react seo',         clicks: 820, impressions: 9400, ctr: 0.087, position:  2.1 },
-  { query: 'seo audit tool',    clicks: 340, impressions: 6200, ctr: 0.055, position:  6.8 },
-  { query: 'meta tags guide',   clicks: 180, impressions: 4800, ctr: 0.038, position: 14.3 },
-  { query: 'sitemap generator', clicks:  30, impressions: 2100, ctr: 0.014, position: 28.7 },
-  { query: 'seo typescript',    clicks:   5, impressions: 1200, ctr: 0.004, position: 67.2 },
+  { query: 'react seo', clicks: 820, impressions: 9400, ctr: 0.087, position: 2.1 },
+  { query: 'seo audit tool', clicks: 340, impressions: 6200, ctr: 0.055, position: 6.8 },
+  { query: 'meta tags guide', clicks: 180, impressions: 4800, ctr: 0.038, position: 14.3 },
+  { query: 'sitemap generator', clicks: 30, impressions: 2100, ctr: 0.014, position: 28.7 },
+  { query: 'seo typescript', clicks: 5, impressions: 1200, ctr: 0.004, position: 67.2 },
 ];
 
 const analysis: RankingAnalysis = analyzeQueryRankings(queries);
 
-console.log('Position 1-3:',   analysis.buckets['1-3'].length,   'queries');
-console.log('Position 4-10:',  analysis.buckets['4-10'].length,  'queries');
+console.log('Position 1-3:', analysis.buckets['1-3'].length, 'queries');
+console.log('Position 4-10:', analysis.buckets['4-10'].length, 'queries');
 console.log('Position 11-20:', analysis.buckets['11-20'].length, 'queries');
 console.log('Position 21-50:', analysis.buckets['21-50'].length, 'queries');
-console.log('Position 50+:',   analysis.buckets['50+'].length,   'queries');
+console.log('Position 50+:', analysis.buckets['50+'].length, 'queries');
 
 // Quick-win opportunities: ranked 11-20 with good impressions
 const quickWins = analysis.buckets['11-20'].filter((q) => q.impressions > 2000);
-console.log('Quick-win queries:', quickWins.map((q) => q.query));
+console.log(
+  'Quick-win queries:',
+  quickWins.map((q) => q.query),
+);
 ```
 
 ### Position Change Tracking
@@ -220,13 +239,13 @@ import type { PositionChange } from '@power-seo/analytics';
 
 const snapshot1: GscQueryData[] = [
   { query: 'react seo guide', clicks: 320, impressions: 8200, ctr: 0.039, position: 8.4 },
-  { query: 'seo audit',       clicks:  45, impressions: 1900, ctr: 0.024, position: 22.0 },
+  { query: 'seo audit', clicks: 45, impressions: 1900, ctr: 0.024, position: 22.0 },
 ];
 
 const snapshot2: GscQueryData[] = [
   { query: 'react seo guide', clicks: 580, impressions: 9800, ctr: 0.059, position: 5.1 },
-  { query: 'seo audit',       clicks:  88, impressions: 2200, ctr: 0.040, position: 14.3 },
-  { query: 'seo typescript',  clicks:  12, impressions:  800, ctr: 0.015, position: 31.0 },
+  { query: 'seo audit', clicks: 88, impressions: 2200, ctr: 0.04, position: 14.3 },
+  { query: 'seo typescript', clicks: 12, impressions: 800, ctr: 0.015, position: 31.0 },
 ];
 
 const changes: PositionChange[] = trackPositionChanges(snapshot1, snapshot2);
@@ -246,8 +265,8 @@ import { buildDashboardData } from '@power-seo/analytics';
 import type { DashboardInput, DashboardData } from '@power-seo/analytics';
 
 const dashboard: DashboardData = buildDashboardData({
-  gscPages:     allGscPages,
-  gscQueries:   allGscQueries,
+  gscPages: allGscPages,
+  gscQueries: allGscQueries,
   auditResults: allAuditResults,
   topN: 10,
 });
@@ -261,12 +280,12 @@ console.log(dashboard.overview.averageAuditScore);
 
 // Top pages by clicks
 dashboard.topPages.forEach(({ url, clicks, auditScore }) =>
-  console.log(`${url}: ${clicks} clicks, score=${auditScore ?? 'N/A'}`)
+  console.log(`${url}: ${clicks} clicks, score=${auditScore ?? 'N/A'}`),
 );
 
 // Top queries
 dashboard.topQueries.forEach(({ query, clicks, position }) =>
-  console.log(`"${query}": ${clicks} clicks @ position ${position.toFixed(1)}`)
+  console.log(`"${query}": ${clicks} clicks @ position ${position.toFixed(1)}`),
 );
 
 // Trend lines ready for Recharts / Chart.js
@@ -274,7 +293,7 @@ dashboard.trendLines; // TrendPoint[]
 
 // Prioritized issues — high-traffic pages with low audit scores
 dashboard.issues.forEach(({ rule, severity, affectedPages }) =>
-  console.log(`[${severity}] ${rule}: affects ${affectedPages} pages`)
+  console.log(`[${severity}] ${rule}: affects ${affectedPages} pages`),
 );
 ```
 
@@ -282,10 +301,10 @@ dashboard.issues.forEach(({ rule, severity, affectedPages }) =>
 
 ### `mergeGscWithAudit(input)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `input.gscPages` | `GscPageData[]` | required | Google Search Console page performance data |
-| `input.auditResults` | `AuditSnapshot[]` | required | Audit results with URL, score, and issues |
+| Parameter            | Type              | Default  | Description                                 |
+| -------------------- | ----------------- | -------- | ------------------------------------------- |
+| `input.gscPages`     | `GscPageData[]`   | required | Google Search Console page performance data |
+| `input.auditResults` | `AuditSnapshot[]` | required | Audit results with URL, score, and issues   |
 
 Returns `PageInsight[]` — merged records keyed by normalized URL.
 
@@ -293,8 +312,8 @@ Returns `PageInsight[]` — merged records keyed by normalized URL.
 
 ### `correlateScoreAndTraffic(insights)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
+| Parameter  | Type            | Default  | Description                                               |
+| ---------- | --------------- | -------- | --------------------------------------------------------- |
 | `insights` | `PageInsight[]` | required | Merged page insights with both audit score and click data |
 
 Returns `{ coefficient: number; significant: boolean; sampleSize: number }`.
@@ -303,9 +322,9 @@ Returns `{ coefficient: number; significant: boolean; sampleSize: number }`.
 
 ### `analyzeTrend(points)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `points` | `TrendPoint[]` | required | Time-ordered `{ date: string; value: number }` array |
+| Parameter | Type           | Default  | Description                                          |
+| --------- | -------------- | -------- | ---------------------------------------------------- |
+| `points`  | `TrendPoint[]` | required | Time-ordered `{ date: string; value: number }` array |
 
 Returns `TrendAnalysis`: `{ direction: TrendDirection; rate: number; confidence: number }`.
 
@@ -313,9 +332,9 @@ Returns `TrendAnalysis`: `{ direction: TrendDirection; rate: number; confidence:
 
 ### `buildTrendLines(points)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `points` | `TrendPoint[]` | required | Time-ordered data points |
+| Parameter | Type           | Default  | Description              |
+| --------- | -------------- | -------- | ------------------------ |
+| `points`  | `TrendPoint[]` | required | Time-ordered data points |
 
 Returns `Array<{ date: string; actual: number; trend: number }>`.
 
@@ -323,10 +342,10 @@ Returns `Array<{ date: string; actual: number; trend: number }>`.
 
 ### `detectAnomalies(points, options?)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `points` | `TrendPoint[]` | required | Time-ordered data points |
-| `options.threshold` | `number` | `2.0` | Standard deviation multiplier for anomaly detection |
+| Parameter           | Type           | Default  | Description                                         |
+| ------------------- | -------------- | -------- | --------------------------------------------------- |
+| `points`            | `TrendPoint[]` | required | Time-ordered data points                            |
+| `options.threshold` | `number`       | `2.0`    | Standard deviation multiplier for anomaly detection |
 
 Returns `Array<{ date: string; value: number; type: 'spike' | 'drop'; delta: number }>`.
 
@@ -334,8 +353,8 @@ Returns `Array<{ date: string; value: number; type: 'spike' | 'drop'; delta: num
 
 ### `analyzeQueryRankings(queries)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
+| Parameter | Type             | Default  | Description                         |
+| --------- | ---------------- | -------- | ----------------------------------- |
 | `queries` | `GscQueryData[]` | required | GSC query data with position values |
 
 Returns `RankingAnalysis`: `{ buckets: Record<RankingBucket, GscQueryData[]>; totalQueries: number }`.
@@ -344,10 +363,10 @@ Returns `RankingAnalysis`: `{ buckets: Record<RankingBucket, GscQueryData[]>; to
 
 ### `trackPositionChanges(before, after)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `before` | `GscQueryData[]` | required | Ranking snapshot from the earlier period |
-| `after` | `GscQueryData[]` | required | Ranking snapshot from the later period |
+| Parameter | Type             | Default  | Description                              |
+| --------- | ---------------- | -------- | ---------------------------------------- |
+| `before`  | `GscQueryData[]` | required | Ranking snapshot from the earlier period |
+| `after`   | `GscQueryData[]` | required | Ranking snapshot from the later period   |
 
 Returns `PositionChange[]`.
 
@@ -355,13 +374,13 @@ Returns `PositionChange[]`.
 
 ### `buildDashboardData(input)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `input.gscPages` | `GscPageData[]` | required | GSC page performance data |
-| `input.gscQueries` | `GscQueryData[]` | required | GSC query performance data |
+| Parameter            | Type              | Default  | Description                                         |
+| -------------------- | ----------------- | -------- | --------------------------------------------------- |
+| `input.gscPages`     | `GscPageData[]`   | required | GSC page performance data                           |
+| `input.gscQueries`   | `GscQueryData[]`  | required | GSC query performance data                          |
 | `input.auditResults` | `AuditSnapshot[]` | required | Audit results for correlation and issue aggregation |
-| `input.trendData` | `TrendPoint[]` | `[]` | Optional time-series data for trend charts |
-| `input.topN` | `number` | `10` | Number of top pages/queries to include |
+| `input.trendData`    | `TrendPoint[]`    | `[]`     | Optional time-series data for trend charts          |
+| `input.topN`         | `number`          | `10`     | Number of top pages/queries to include              |
 
 Returns `DashboardData`.
 
@@ -371,19 +390,19 @@ Returns `DashboardData`.
 
 ```ts
 import type {
-  GscPageData,        // { url, clicks, impressions, ctr, position }
-  GscQueryData,       // { query, clicks, impressions, ctr, position }
-  AuditSnapshot,      // { url, score, issues }
-  TrendPoint,         // { date: string; value: number }
-  TrendDirection,     // 'up' | 'down' | 'stable'
-  TrendAnalysis,      // { direction, rate, confidence }
-  PageInsight,        // Merged GscPageData + AuditSnapshot
-  RankingBucket,      // '1-3' | '4-10' | '11-20' | '21-50' | '50+'
-  RankingAnalysis,    // { buckets: Record<RankingBucket, GscQueryData[]>; totalQueries }
-  PositionChange,     // { query, before?, after?, delta?, direction }
-  DashboardInput,     // { gscPages, gscQueries, auditResults, trendData?, topN? }
-  DashboardOverview,  // { totalClicks, totalImpressions, averageCtr, averagePosition, averageAuditScore, pagesWithErrors }
-  DashboardData,      // { overview, topPages, topQueries, trendLines, issues }
+  GscPageData, // { url, clicks, impressions, ctr, position }
+  GscQueryData, // { query, clicks, impressions, ctr, position }
+  AuditSnapshot, // { url, score, issues }
+  TrendPoint, // { date: string; value: number }
+  TrendDirection, // 'up' | 'down' | 'stable'
+  TrendAnalysis, // { direction, rate, confidence }
+  PageInsight, // Merged GscPageData + AuditSnapshot
+  RankingBucket, // '1-3' | '4-10' | '11-20' | '21-50' | '50+'
+  RankingAnalysis, // { buckets: Record<RankingBucket, GscQueryData[]>; totalQueries }
+  PositionChange, // { query, before?, after?, delta?, direction }
+  DashboardInput, // { gscPages, gscQueries, auditResults, trendData?, topN? }
+  DashboardOverview, // { totalClicks, totalImpressions, averageCtr, averagePosition, averageAuditScore, pagesWithErrors }
+  DashboardData, // { overview, topPages, topQueries, trendLines, issues }
 } from '@power-seo/analytics';
 ```
 
@@ -391,25 +410,25 @@ import type {
 
 `@power-seo/analytics` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
 
-| Package | Install | Description |
-|---------|---------|-------------|
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 
@@ -417,11 +436,11 @@ import type {
 
 **CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-| | |
-|---|---|
-| **Website** | [ccbd.dev](https://ccbd.dev) |
-| **GitHub** | [github.com/cybercraftbd](https://github.com/cybercraftbd) |
+|                      |                                                                |
+| -------------------- | -------------------------------------------------------------- |
+| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
+| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
+| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
 
 © 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)

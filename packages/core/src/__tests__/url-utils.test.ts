@@ -25,9 +25,7 @@ describe('resolveCanonical', () => {
   });
 
   it('should handle base URL without trailing slash', () => {
-    expect(resolveCanonical('https://example.com/', '/about')).toBe(
-      'https://example.com/about',
-    );
+    expect(resolveCanonical('https://example.com/', '/about')).toBe('https://example.com/about');
   });
 });
 
@@ -47,9 +45,7 @@ describe('normalizeUrl', () => {
 
 describe('stripQueryParams', () => {
   it('should strip all query params', () => {
-    expect(stripQueryParams('https://example.com/page?a=1&b=2')).toBe(
-      'https://example.com/page',
-    );
+    expect(stripQueryParams('https://example.com/page?a=1&b=2')).toBe('https://example.com/page');
   });
 
   it('should keep specified params', () => {
@@ -113,23 +109,17 @@ describe('isAbsoluteUrl', () => {
 
 describe('ensureTrailingSlash', () => {
   it('should add trailing slash', () => {
-    expect(ensureTrailingSlash('https://example.com/page')).toBe(
-      'https://example.com/page/',
-    );
+    expect(ensureTrailingSlash('https://example.com/page')).toBe('https://example.com/page/');
   });
 
   it('should not double-add slash', () => {
-    expect(ensureTrailingSlash('https://example.com/page/')).toBe(
-      'https://example.com/page/',
-    );
+    expect(ensureTrailingSlash('https://example.com/page/')).toBe('https://example.com/page/');
   });
 });
 
 describe('removeTrailingSlash', () => {
   it('should remove trailing slash', () => {
-    expect(removeTrailingSlash('https://example.com/page/')).toBe(
-      'https://example.com/page',
-    );
+    expect(removeTrailingSlash('https://example.com/page/')).toBe('https://example.com/page');
   });
 
   it('should keep root slash', () => {

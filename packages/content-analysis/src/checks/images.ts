@@ -36,7 +36,8 @@ export function checkImages(input: ContentAnalysisInput): AnalysisResult[] {
     results.push({
       id: 'image-alt',
       title: 'Image alt attributes',
-      description: 'None of the images have alt text. Add descriptive alt attributes for accessibility and SEO.',
+      description:
+        'None of the images have alt text. Add descriptive alt attributes for accessibility and SEO.',
       status: 'poor',
       score: 0,
       maxScore: 5,
@@ -55,9 +56,7 @@ export function checkImages(input: ContentAnalysisInput): AnalysisResult[] {
   // --- Keyphrase in alt text check ---
   if (focusKeyphrase && focusKeyphrase.trim().length > 0) {
     const kp = focusKeyphrase.toLowerCase().trim();
-    const hasKeyphraseInAlt = images.some(
-      (img) => img.alt && img.alt.toLowerCase().includes(kp),
-    );
+    const hasKeyphraseInAlt = images.some((img) => img.alt && img.alt.toLowerCase().includes(kp));
 
     if (hasKeyphraseInAlt) {
       results.push({

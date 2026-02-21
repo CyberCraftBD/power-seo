@@ -30,7 +30,12 @@ describe('buildSerpPredictionPrompt', () => {
 describe('parseSerpPredictionResponse', () => {
   it('should parse valid JSON predictions', () => {
     const json = JSON.stringify([
-      { feature: 'faq-rich-result', likelihood: 0.8, requirements: ['FAQ schema'], met: ['FAQ schema'] },
+      {
+        feature: 'faq-rich-result',
+        likelihood: 0.8,
+        requirements: ['FAQ schema'],
+        met: ['FAQ schema'],
+      },
     ]);
     const result = parseSerpPredictionResponse(json);
     expect(result).toHaveLength(1);
@@ -44,7 +49,8 @@ describe('parseSerpPredictionResponse', () => {
   });
 
   it('should handle code-fenced responses', () => {
-    const fenced = '```json\n[{"feature":"how-to","likelihood":0.6,"requirements":["Steps"],"met":[]}]\n```';
+    const fenced =
+      '```json\n[{"feature":"how-to","likelihood":0.6,"requirements":["Steps"],"met":[]}]\n```';
     const result = parseSerpPredictionResponse(fenced);
     expect(result).toHaveLength(1);
   });

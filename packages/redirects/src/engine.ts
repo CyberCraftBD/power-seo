@@ -75,9 +75,7 @@ export function createRedirectEngine(
       const nextDest = current.resolvedDestination;
 
       if (visited.has(nextDest)) {
-        throw new Error(
-          `Redirect loop detected: ${[...visited, nextDest].join(' → ')}`,
-        );
+        throw new Error(`Redirect loop detected: ${[...visited, nextDest].join(' → ')}`);
       }
 
       const nextMatch = matchSingle(nextDest);
@@ -94,9 +92,7 @@ export function createRedirectEngine(
       };
     }
 
-    throw new Error(
-      `Redirect chain exceeds maximum of ${MAX_CHAIN_HOPS} hops`,
-    );
+    throw new Error(`Redirect chain exceeds maximum of ${MAX_CHAIN_HOPS} hops`);
   }
 
   function addRule(rule: RedirectRule): void {

@@ -3,12 +3,7 @@
 // ============================================================================
 
 // Types
-export type {
-  NextMetadata,
-  NextOGImage,
-  RemixMetaDescriptor,
-  HeadTag,
-} from './types.js';
+export type { NextMetadata, NextOGImage, RemixMetaDescriptor, HeadTag } from './types.js';
 
 // Next.js App Router
 export { createMetadata } from './nextjs.js';

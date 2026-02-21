@@ -11,15 +11,18 @@ export function buildDashboardData(input: DashboardInput): DashboardData {
   // Overview metrics
   const totalClicks = gscPages.reduce((sum, p) => sum + p.clicks, 0);
   const totalImpressions = gscPages.reduce((sum, p) => sum + p.impressions, 0);
-  const averageCtr = gscPages.length > 0
-    ? Math.round((gscPages.reduce((sum, p) => sum + p.ctr, 0) / gscPages.length) * 10000) / 10000
-    : 0;
-  const averagePosition = gscPages.length > 0
-    ? Math.round((gscPages.reduce((sum, p) => sum + p.position, 0) / gscPages.length) * 10) / 10
-    : 0;
-  const averageAuditScore = auditResults.length > 0
-    ? Math.round(auditResults.reduce((sum, r) => sum + r.score, 0) / auditResults.length)
-    : 0;
+  const averageCtr =
+    gscPages.length > 0
+      ? Math.round((gscPages.reduce((sum, p) => sum + p.ctr, 0) / gscPages.length) * 10000) / 10000
+      : 0;
+  const averagePosition =
+    gscPages.length > 0
+      ? Math.round((gscPages.reduce((sum, p) => sum + p.position, 0) / gscPages.length) * 10) / 10
+      : 0;
+  const averageAuditScore =
+    auditResults.length > 0
+      ? Math.round(auditResults.reduce((sum, r) => sum + r.score, 0) / auditResults.length)
+      : 0;
   const totalPages = Math.max(gscPages.length, auditResults.length);
 
   const overview: DashboardOverview = {

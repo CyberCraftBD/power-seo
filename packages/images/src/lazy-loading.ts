@@ -85,13 +85,19 @@ export function auditLazyLoading(images: ImageInfo[]): LazyLoadingAuditResult {
   const missingDims = issues.filter((i) => i.id === 'dimensions-missing');
 
   if (aboveFoldLazy.length > 0) {
-    recommendations.push(`Remove loading="lazy" from ${aboveFoldLazy.length} above-fold image(s) to improve LCP.`);
+    recommendations.push(
+      `Remove loading="lazy" from ${aboveFoldLazy.length} above-fold image(s) to improve LCP.`,
+    );
   }
   if (missingLazy.length > 0) {
-    recommendations.push(`Add loading="lazy" to ${missingLazy.length} below-fold image(s) for faster initial load.`);
+    recommendations.push(
+      `Add loading="lazy" to ${missingLazy.length} below-fold image(s) for faster initial load.`,
+    );
   }
   if (missingDims.length > 0) {
-    recommendations.push(`Add width/height attributes to ${missingDims.length} image(s) to prevent CLS.`);
+    recommendations.push(
+      `Add width/height attributes to ${missingDims.length} image(s) to prevent CLS.`,
+    );
   }
 
   return { totalImages: images.length, issues, recommendations };

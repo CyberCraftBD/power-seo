@@ -4,9 +4,7 @@ import type { RedirectRule } from '@power-seo/core';
 
 describe('createRedirectEngine', () => {
   it('matches exact redirect rule', () => {
-    const engine = createRedirectEngine([
-      { source: '/old', destination: '/new', statusCode: 301 },
-    ]);
+    const engine = createRedirectEngine([{ source: '/old', destination: '/new', statusCode: 301 }]);
     const result = engine.match('/old');
     expect(result).not.toBeNull();
     expect(result!.resolvedDestination).toBe('/new');
@@ -33,9 +31,7 @@ describe('createRedirectEngine', () => {
   });
 
   it('returns null when no rule matches', () => {
-    const engine = createRedirectEngine([
-      { source: '/old', destination: '/new', statusCode: 301 },
-    ]);
+    const engine = createRedirectEngine([{ source: '/old', destination: '/new', statusCode: 301 }]);
     expect(engine.match('/other')).toBeNull();
   });
 
@@ -78,9 +74,7 @@ describe('createRedirectEngine', () => {
   });
 
   it('removeRule removes a rule by source', () => {
-    const engine = createRedirectEngine([
-      { source: '/old', destination: '/new', statusCode: 301 },
-    ]);
+    const engine = createRedirectEngine([{ source: '/old', destination: '/new', statusCode: 301 }]);
     expect(engine.match('/old')).not.toBeNull();
 
     const removed = engine.removeRule('/old');
@@ -94,9 +88,7 @@ describe('createRedirectEngine', () => {
   });
 
   it('getRules returns a copy of the rules array', () => {
-    const rules: RedirectRule[] = [
-      { source: '/a', destination: '/b', statusCode: 301 },
-    ];
+    const rules: RedirectRule[] = [{ source: '/a', destination: '/b', statusCode: 301 }];
     const engine = createRedirectEngine(rules);
     const returned = engine.getRules();
     expect(returned).toEqual(rules);

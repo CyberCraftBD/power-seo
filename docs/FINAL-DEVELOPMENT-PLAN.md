@@ -49,12 +49,12 @@
 
 ### Value Proposition
 
-| For | Value |
-|-----|-------|
-| **Solo developers** | Drop-in SEO components that work out of the box |
-| **Agencies** | Modular toolkit — install only what you need |
-| **Enterprises** | Type-safe, tree-shakeable, auditable SEO infrastructure |
-| **The ecosystem** | Free, open-source, MIT-licensed — no vendor lock-in |
+| For                 | Value                                                   |
+| ------------------- | ------------------------------------------------------- |
+| **Solo developers** | Drop-in SEO components that work out of the box         |
+| **Agencies**        | Modular toolkit — install only what you need            |
+| **Enterprises**     | Type-safe, tree-shakeable, auditable SEO infrastructure |
+| **The ecosystem**   | Free, open-source, MIT-licensed — no vendor lock-in     |
 
 ### Market Position
 
@@ -66,41 +66,41 @@
 
 ### WordPress SEO Plugin Landscape
 
-| Feature | Yoast SEO ($99/yr) | Rank Math ($59/yr) | AIOSEO ($49.60/yr) | SEOPress ($49/yr) |
-|---------|--------------------|--------------------|---------------------|--------------------|
-| Content Analysis | Real-time scoring | Real-time scoring | TruSEO scoring | Basic |
-| Readability | Flesch-Kincaid + custom | Basic | Readability score | None |
-| Schema/JSON-LD | 14+ types (Pro) | 20+ types (free) | 17+ types | 18+ types |
-| XML Sitemaps | Yes | Yes | Yes | Yes |
-| Redirects | Premium only | Free (basic) | Pro only | Free |
-| Social Previews | Yes | Yes | Yes | Yes |
-| Search Console | Yes | Yes | Yes | Yes |
-| Internal Linking | Premium only | Free suggestions | Pro only | Pro |
+| Feature          | Yoast SEO ($99/yr)      | Rank Math ($59/yr) | AIOSEO ($49.60/yr) | SEOPress ($49/yr) |
+| ---------------- | ----------------------- | ------------------ | ------------------ | ----------------- |
+| Content Analysis | Real-time scoring       | Real-time scoring  | TruSEO scoring     | Basic             |
+| Readability      | Flesch-Kincaid + custom | Basic              | Readability score  | None              |
+| Schema/JSON-LD   | 14+ types (Pro)         | 20+ types (free)   | 17+ types          | 18+ types         |
+| XML Sitemaps     | Yes                     | Yes                | Yes                | Yes               |
+| Redirects        | Premium only            | Free (basic)       | Pro only           | Free              |
+| Social Previews  | Yes                     | Yes                | Yes                | Yes               |
+| Search Console   | Yes                     | Yes                | Yes                | Yes               |
+| Internal Linking | Premium only            | Free suggestions   | Pro only           | Pro               |
 
 ### React/JS Ecosystem Gaps (Pre-@power-seo)
 
-| Capability | WordPress | React/Next.js |
-|------------|-----------|---------------|
-| Real-time content analysis | Built-in editor panel | **Nothing** |
-| Readability scoring in UI | Live Flesch-Kincaid | **Zero** |
-| SERP preview components | Google/social preview panels | **Zero** |
-| Redirect manager | GUI-based 301/302/410 | **Zero** |
-| SEO audit/scoring dashboard | Built-in site health | **Zero** |
-| Internal link suggestions | Automated suggestions | **Zero** |
-| Keyword density tracking | Real-time tracking | **Zero** |
-| Breadcrumb components | PHP template tags | **Zero** |
-| Search Console integration | Embedded dashboard | **Zero** |
-| Schema/JSON-LD validation | Auto-generated + tested | Partial (next-seo basics) |
+| Capability                  | WordPress                    | React/Next.js             |
+| --------------------------- | ---------------------------- | ------------------------- |
+| Real-time content analysis  | Built-in editor panel        | **Nothing**               |
+| Readability scoring in UI   | Live Flesch-Kincaid          | **Zero**                  |
+| SERP preview components     | Google/social preview panels | **Zero**                  |
+| Redirect manager            | GUI-based 301/302/410        | **Zero**                  |
+| SEO audit/scoring dashboard | Built-in site health         | **Zero**                  |
+| Internal link suggestions   | Automated suggestions        | **Zero**                  |
+| Keyword density tracking    | Real-time tracking           | **Zero**                  |
+| Breadcrumb components       | PHP template tags            | **Zero**                  |
+| Search Console integration  | Embedded dashboard           | **Zero**                  |
+| Schema/JSON-LD validation   | Auto-generated + tested      | Partial (next-seo basics) |
 
 ### Existing React/JS Libraries
 
-| Category | Package | Downloads | Limitation |
-|----------|---------|-----------|------------|
-| Meta tags | react-helmet-async | ~2.5M/wk | Meta only, no analysis |
-| Sitemaps | next-sitemap | ~350K/wk | Next.js specific |
-| JSON-LD | next-seo | ~200K/wk | Next.js only, limited types |
-| Content analysis | yoastseo | ~15K/wk | WordPress-coupled |
-| Readability | text-readability | ~3K/wk | No UI, single algorithm |
+| Category         | Package            | Downloads | Limitation                  |
+| ---------------- | ------------------ | --------- | --------------------------- |
+| Meta tags        | react-helmet-async | ~2.5M/wk  | Meta only, no analysis      |
+| Sitemaps         | next-sitemap       | ~350K/wk  | Next.js specific            |
+| JSON-LD          | next-seo           | ~200K/wk  | Next.js only, limited types |
+| Content analysis | yoastseo           | ~15K/wk   | WordPress-coupled           |
+| Readability      | text-readability   | ~3K/wk    | No UI, single algorithm     |
 
 **Conclusion:** @power-seo fills every gap in the table above with a unified, framework-agnostic architecture.
 
@@ -124,14 +124,14 @@
 
 ### Non-Functional Requirements
 
-| Requirement | Standard | Target |
-|-------------|----------|--------|
-| Type safety | TypeScript strict mode | Zero `any` types in public API |
-| Bundle size | Tree-shakeable, sideEffects: false | Each package < 50KB minified |
-| Node.js support | LTS versions | Node 18, 20, 22 |
-| Module format | Dual ESM + CJS | All packages |
-| Test coverage | Line coverage | > 90% per package |
-| Build time | Turborepo parallel | < 30s full build |
+| Requirement     | Standard                           | Target                         |
+| --------------- | ---------------------------------- | ------------------------------ |
+| Type safety     | TypeScript strict mode             | Zero `any` types in public API |
+| Bundle size     | Tree-shakeable, sideEffects: false | Each package < 50KB minified   |
+| Node.js support | LTS versions                       | Node 18, 20, 22                |
+| Module format   | Dual ESM + CJS                     | All packages                   |
+| Test coverage   | Line coverage                      | > 90% per package              |
+| Build time      | Turborepo parallel                 | < 30s full build               |
 
 ---
 
@@ -172,16 +172,16 @@
 
 ### Build Pipeline
 
-| Tool | Purpose | Version |
-|------|---------|---------|
-| pnpm | Package manager with workspaces | 9.15+ |
-| Turborepo | Build orchestration, caching, parallel builds | 2.3+ |
-| tsup | Bundling (ESM + CJS + .d.ts) | 8.3+ |
-| TypeScript | Type checking (strict mode) | 5.9+ |
-| Vitest | Testing framework | 2.1+ |
-| ESLint | Linting (flat config v9) | 9.x |
-| Prettier | Code formatting | 3.4+ |
-| Changesets | Version management and npm publish | 2.27+ |
+| Tool       | Purpose                                       | Version |
+| ---------- | --------------------------------------------- | ------- |
+| pnpm       | Package manager with workspaces               | 9.15+   |
+| Turborepo  | Build orchestration, caching, parallel builds | 2.3+    |
+| tsup       | Bundling (ESM + CJS + .d.ts)                  | 8.3+    |
+| TypeScript | Type checking (strict mode)                   | 5.9+    |
+| Vitest     | Testing framework                             | 2.1+    |
+| ESLint     | Linting (flat config v9)                      | 9.x     |
+| Prettier   | Code formatting                               | 3.4+    |
+| Changesets | Version management and npm publish            | 2.27+   |
 
 ### Package Dependency Graph
 
@@ -221,25 +221,25 @@ Packages using this pattern: `schema`, `content-analysis`, `preview`, `tracking`
 
 ### Package Overview
 
-| Package | Version | Tests | Export Pattern | Description |
-|---------|---------|-------|----------------|-------------|
-| `@power-seo/core` | 1.0.0 | — | Single (`.`) | Types, constants, meta validators, URL utils, text stats, keyword density |
-| `@power-seo/react` | 1.0.0 | — | Single (`.`) | React SEO components: SEO, DefaultSEO, OpenGraph, TwitterCard, Canonical, Robots, Hreflang, Breadcrumb |
-| `@power-seo/schema` | 1.0.0 | — | Dual (`.` + `./react`) | 19 JSON-LD builder functions + 19 React components |
-| `@power-seo/content-analysis` | 1.0.0 | 47 | Dual (`.` + `./react`) | Yoast-style content scoring with 7 check functions + 3 React components |
-| `@power-seo/preview` | 1.0.0 | 36 | Dual (`.` + `./react`) | SERP, OG, Twitter preview generators + 4 React components |
-| `@power-seo/readability` | 1.0.0 | 28 | Single (`.`) | 4 readability algorithms + combined analyzer |
-| `@power-seo/sitemap` | 1.0.0 | 33 | Single (`.`) | XML sitemap generation, streaming, validation, index splitting |
-| `@power-seo/redirects` | 1.0.0 | 47 | Single (`.`) | Redirect engine with glob/regex matching + framework adapters |
-| `@power-seo/links` | 1.0.0 | 31 | Single (`.`) | Link graph, orphan detection, suggestions, equity scoring |
-| `@power-seo/audit` | 1.0.0 | 44 | Single (`.`) | Page/site auditing across 4 rule categories |
-| `@power-seo/images` | 1.0.0 | 40 | Single (`.`) | Alt text, lazy loading, format optimization, image sitemaps |
-| `@power-seo/ai` | 1.0.0 | 40 | Single (`.`) | LLM-agnostic prompt templates + response parsers |
-| `@power-seo/analytics` | 1.0.0 | 33 | Single (`.`) | GSC + audit data merging, trends, rankings, dashboard |
-| `@power-seo/search-console` | 1.0.0 | 26 | Single (`.`) | Google Search Console API client |
-| `@power-seo/integrations` | 1.0.0 | 19 | Single (`.`) | Semrush + Ahrefs API clients |
-| `@power-seo/tracking` | 1.0.0 | 38 | Dual (`.` + `./react`) | Script builders, API clients, consent + 2 React components |
-| `@power-seo/meta` | 1.0.0 | 28 | Single (`.`) | Next.js, Remix, generic SSR meta tag helpers |
+| Package                       | Version | Tests | Export Pattern         | Description                                                                                            |
+| ----------------------------- | ------- | ----- | ---------------------- | ------------------------------------------------------------------------------------------------------ |
+| `@power-seo/core`             | 1.0.0   | —     | Single (`.`)           | Types, constants, meta validators, URL utils, text stats, keyword density                              |
+| `@power-seo/react`            | 1.0.0   | —     | Single (`.`)           | React SEO components: SEO, DefaultSEO, OpenGraph, TwitterCard, Canonical, Robots, Hreflang, Breadcrumb |
+| `@power-seo/schema`           | 1.0.0   | —     | Dual (`.` + `./react`) | 19 JSON-LD builder functions + 19 React components                                                     |
+| `@power-seo/content-analysis` | 1.0.0   | 47    | Dual (`.` + `./react`) | Yoast-style content scoring with 7 check functions + 3 React components                                |
+| `@power-seo/preview`          | 1.0.0   | 36    | Dual (`.` + `./react`) | SERP, OG, Twitter preview generators + 4 React components                                              |
+| `@power-seo/readability`      | 1.0.0   | 28    | Single (`.`)           | 4 readability algorithms + combined analyzer                                                           |
+| `@power-seo/sitemap`          | 1.0.0   | 33    | Single (`.`)           | XML sitemap generation, streaming, validation, index splitting                                         |
+| `@power-seo/redirects`        | 1.0.0   | 47    | Single (`.`)           | Redirect engine with glob/regex matching + framework adapters                                          |
+| `@power-seo/links`            | 1.0.0   | 31    | Single (`.`)           | Link graph, orphan detection, suggestions, equity scoring                                              |
+| `@power-seo/audit`            | 1.0.0   | 44    | Single (`.`)           | Page/site auditing across 4 rule categories                                                            |
+| `@power-seo/images`           | 1.0.0   | 40    | Single (`.`)           | Alt text, lazy loading, format optimization, image sitemaps                                            |
+| `@power-seo/ai`               | 1.0.0   | 40    | Single (`.`)           | LLM-agnostic prompt templates + response parsers                                                       |
+| `@power-seo/analytics`        | 1.0.0   | 33    | Single (`.`)           | GSC + audit data merging, trends, rankings, dashboard                                                  |
+| `@power-seo/search-console`   | 1.0.0   | 26    | Single (`.`)           | Google Search Console API client                                                                       |
+| `@power-seo/integrations`     | 1.0.0   | 19    | Single (`.`)           | Semrush + Ahrefs API clients                                                                           |
+| `@power-seo/tracking`         | 1.0.0   | 38    | Dual (`.` + `./react`) | Script builders, API clients, consent + 2 React components                                             |
+| `@power-seo/meta`             | 1.0.0   | 28    | Single (`.`)           | Next.js, Remix, generic SSR meta tag helpers                                                           |
 
 ---
 
@@ -251,17 +251,17 @@ Foundation package providing shared types, constants, and utility functions cons
 
 **Modules:**
 
-| Module | Exports |
-|--------|---------|
-| `types.ts` | `MetaTag`, `LinkTag`, `OpenGraphConfig`, `TwitterCardConfig`, `SEOConfig`, `ContentAnalysisInput`, `ReadabilityInput`, `SitemapURL`, `RedirectRule`, `SchemaBase`, + 20 more types |
-| `constants.ts` | `TITLE_MAX_PIXELS`, `TITLE_MAX_LENGTH`, `META_DESCRIPTION_MAX_PIXELS`, `OG_IMAGE`, `TWITTER_IMAGE`, `KEYWORD_DENSITY`, `READABILITY`, `AI_CRAWLERS`, `CHAR_PIXEL_WIDTHS`, `SCHEMA_TYPES` |
-| `title-template.ts` | `applyTitleTemplate()`, `createTitleTemplate()` |
-| `meta-validators.ts` | `calculatePixelWidth()`, `validateTitle()`, `validateMetaDescription()` |
-| `url-utils.ts` | `resolveCanonical()`, `normalizeUrl()`, `ensureTrailingSlash()`, `removeTrailingSlash()`, `stripQueryParams()`, `stripTrackingParams()`, `extractSlug()`, `isAbsoluteUrl()`, `toSlug()` |
-| `text-stats.ts` | `stripHtml()`, `getWords()`, `getSentences()`, `getParagraphs()`, `countSyllables()`, `countTotalSyllables()`, `getTextStatistics()` |
-| `keyword-density.ts` | `calculateKeywordDensity()`, `countKeywordOccurrences()`, `analyzeKeyphraseOccurrences()` |
-| `robots-builder.ts` | `buildRobotsContent()`, `parseRobotsContent()` |
-| `meta-builder.ts` | `buildMetaTags()`, `buildLinkTags()`, `buildOpenGraphTags()`, `buildTwitterTags()`, `buildHreflangTags()`, `resolveTitle()` |
+| Module               | Exports                                                                                                                                                                                  |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `types.ts`           | `MetaTag`, `LinkTag`, `OpenGraphConfig`, `TwitterCardConfig`, `SEOConfig`, `ContentAnalysisInput`, `ReadabilityInput`, `SitemapURL`, `RedirectRule`, `SchemaBase`, + 20 more types       |
+| `constants.ts`       | `TITLE_MAX_PIXELS`, `TITLE_MAX_LENGTH`, `META_DESCRIPTION_MAX_PIXELS`, `OG_IMAGE`, `TWITTER_IMAGE`, `KEYWORD_DENSITY`, `READABILITY`, `AI_CRAWLERS`, `CHAR_PIXEL_WIDTHS`, `SCHEMA_TYPES` |
+| `title-template.ts`  | `applyTitleTemplate()`, `createTitleTemplate()`                                                                                                                                          |
+| `meta-validators.ts` | `calculatePixelWidth()`, `validateTitle()`, `validateMetaDescription()`                                                                                                                  |
+| `url-utils.ts`       | `resolveCanonical()`, `normalizeUrl()`, `ensureTrailingSlash()`, `removeTrailingSlash()`, `stripQueryParams()`, `stripTrackingParams()`, `extractSlug()`, `isAbsoluteUrl()`, `toSlug()`  |
+| `text-stats.ts`      | `stripHtml()`, `getWords()`, `getSentences()`, `getParagraphs()`, `countSyllables()`, `countTotalSyllables()`, `getTextStatistics()`                                                     |
+| `keyword-density.ts` | `calculateKeywordDensity()`, `countKeywordOccurrences()`, `analyzeKeyphraseOccurrences()`                                                                                                |
+| `robots-builder.ts`  | `buildRobotsContent()`, `parseRobotsContent()`                                                                                                                                           |
+| `meta-builder.ts`    | `buildMetaTags()`, `buildLinkTags()`, `buildOpenGraphTags()`, `buildTwitterTags()`, `buildHreflangTags()`, `resolveTitle()`                                                              |
 
 ### 6.2 @power-seo/react
 
@@ -269,16 +269,16 @@ React components for SEO meta tag management.
 
 **Components:**
 
-| Component | Props | Purpose |
-|-----------|-------|---------|
-| `SEO` | `SEOProps` | All-in-one SEO head tag renderer |
-| `DefaultSEO` | `DefaultSEOProps` | Context-based default SEO config |
-| `OpenGraph` | `OpenGraphProps` | Open Graph meta tags |
-| `TwitterCard` | `TwitterCardProps` | Twitter Card meta tags |
-| `Canonical` | `CanonicalProps` | Canonical URL link tag |
-| `Robots` | `RobotsProps` | Robots meta tag |
-| `Hreflang` | `HreflangProps` | Hreflang alternate link tags |
-| `Breadcrumb` | `BreadcrumbProps` | SEO-aware breadcrumb with JSON-LD |
+| Component     | Props              | Purpose                           |
+| ------------- | ------------------ | --------------------------------- |
+| `SEO`         | `SEOProps`         | All-in-one SEO head tag renderer  |
+| `DefaultSEO`  | `DefaultSEOProps`  | Context-based default SEO config  |
+| `OpenGraph`   | `OpenGraphProps`   | Open Graph meta tags              |
+| `TwitterCard` | `TwitterCardProps` | Twitter Card meta tags            |
+| `Canonical`   | `CanonicalProps`   | Canonical URL link tag            |
+| `Robots`      | `RobotsProps`      | Robots meta tag                   |
+| `Hreflang`    | `HreflangProps`    | Hreflang alternate link tags      |
+| `Breadcrumb`  | `BreadcrumbProps`  | SEO-aware breadcrumb with JSON-LD |
 
 **Utilities:** `SEOContext`, `useDefaultSEO()`, `renderMetaTags()`, `renderLinkTags()`
 
@@ -303,10 +303,10 @@ Yoast-style content scoring engine with 7 individual checks.
 
 **React Components (./react):**
 
-| Component | Props | Purpose |
-|-----------|-------|---------|
-| `ScorePanel` | `{ score: number, maxScore: number }` | Colored progress bar with percentage |
-| `CheckList` | `{ results: AnalysisResult[] }` | List of check results with status icons |
+| Component         | Props                                                      | Purpose                                                   |
+| ----------------- | ---------------------------------------------------------- | --------------------------------------------------------- |
+| `ScorePanel`      | `{ score: number, maxScore: number }`                      | Colored progress bar with percentage                      |
+| `CheckList`       | `{ results: AnalysisResult[] }`                            | List of check results with status icons                   |
 | `ContentAnalyzer` | `{ input: ContentAnalysisInput, config?: AnalysisConfig }` | All-in-one: runs analysis, renders ScorePanel + CheckList |
 
 ### 6.5 @power-seo/preview
@@ -318,12 +318,12 @@ SERP, Open Graph, and Twitter Card preview generators.
 
 **React Components (./react):**
 
-| Component | Props | Purpose |
-|-----------|-------|---------|
-| `SerpPreview` | `{ title, description, url, siteTitle? }` | Google SERP result mockup |
-| `OgPreview` | `{ title, description, url, image?, siteName? }` | Facebook/OG card mockup |
-| `TwitterPreview` | `{ cardType, title, description, image?, site? }` | Twitter/X card mockup |
-| `PreviewPanel` | `{ title, description, url, image?, siteName?, siteTitle?, twitterSite?, twitterCardType? }` | Tabbed container with all three previews |
+| Component        | Props                                                                                        | Purpose                                  |
+| ---------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| `SerpPreview`    | `{ title, description, url, siteTitle? }`                                                    | Google SERP result mockup                |
+| `OgPreview`      | `{ title, description, url, image?, siteName? }`                                             | Facebook/OG card mockup                  |
+| `TwitterPreview` | `{ cardType, title, description, image?, site? }`                                            | Twitter/X card mockup                    |
+| `PreviewPanel`   | `{ title, description, url, image?, siteName?, siteTitle?, twitterSite?, twitterCardType? }` | Tabbed container with all three previews |
 
 ### 6.6 @power-seo/readability
 
@@ -411,10 +411,10 @@ Analytics script builders, API clients, and consent management.
 
 **React Components (./react):**
 
-| Component | Props | Purpose |
-|-----------|-------|---------|
-| `AnalyticsScript` | `{ scripts: ScriptConfig[], consent: ConsentState }` | Consent-aware script tag renderer |
-| `ConsentBanner` | `{ manager: ConsentManager, privacyPolicyUrl?: string }` | GDPR cookie consent banner |
+| Component         | Props                                                    | Purpose                           |
+| ----------------- | -------------------------------------------------------- | --------------------------------- |
+| `AnalyticsScript` | `{ scripts: ScriptConfig[], consent: ConsentState }`     | Consent-aware script tag renderer |
+| `ConsentBanner`   | `{ manager: ConsentManager, privacyPolicyUrl?: string }` | GDPR cookie consent banner        |
 
 ### 6.17 @power-seo/meta
 
@@ -447,11 +447,12 @@ export const metadata = createMetadata({
 // app/routes/blog.$slug.tsx
 import { createMetaDescriptors } from '@power-seo/meta';
 
-export const meta = () => createMetaDescriptors({
-  title: 'Blog Post',
-  description: 'Post description',
-  canonical: 'https://example.com/blog/post',
-});
+export const meta = () =>
+  createMetaDescriptors({
+    title: 'Blog Post',
+    description: 'Post description',
+    canonical: 'https://example.com/blog/post',
+  });
 ```
 
 ### Generic SSR
@@ -485,6 +486,7 @@ Use the framework-agnostic builder functions from `@power-seo/core` and `@power-
 ### Key Type Patterns
 
 **SEOConfig** — Central configuration type used across packages:
+
 ```ts
 interface SEOConfig {
   title?: string;
@@ -500,11 +502,12 @@ interface SEOConfig {
 ```
 
 **Analysis Pipeline Types:**
+
 ```ts
 interface ContentAnalysisInput {
   title: string;
   metaDescription: string;
-  content: string;  // HTML content
+  content: string; // HTML content
   keyphrase: string;
   url: string;
 }
@@ -530,12 +533,12 @@ interface ContentAnalysisOutput {
 
 ### OWASP Top 10 Considerations
 
-| Risk | Mitigation |
-|------|-----------|
-| XSS | JSON-LD output uses `JSON.stringify()` (auto-escaped), `dangerouslySetInnerHTML` only with sanitized builder output |
-| Injection | URL utilities use `globalThis.URL` parser, no string concatenation for URLs |
-| SSRF | API clients (search-console, integrations) accept user-provided credentials, no proxy by default |
-| Sensitive data exposure | No credentials stored; all API clients accept tokens at runtime |
+| Risk                    | Mitigation                                                                                                          |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| XSS                     | JSON-LD output uses `JSON.stringify()` (auto-escaped), `dangerouslySetInnerHTML` only with sanitized builder output |
+| Injection               | URL utilities use `globalThis.URL` parser, no string concatenation for URLs                                         |
+| SSRF                    | API clients (search-console, integrations) accept user-provided credentials, no proxy by default                    |
+| Sensitive data exposure | No credentials stored; all API clients accept tokens at runtime                                                     |
 
 ### GDPR Compliance
 
@@ -547,16 +550,16 @@ interface ContentAnalysisOutput {
 
 ### ISO 25010 Quality Attributes
 
-| Attribute | Implementation |
-|-----------|---------------|
-| **Functional Suitability** | 17 packages covering all SEO capabilities |
-| **Performance Efficiency** | Tree-shakeable, zero runtime dependencies in core |
-| **Compatibility** | Dual ESM/CJS, Node 18/20/22, React 18+ |
-| **Usability** | Comprehensive docs, TypeScript IntelliSense, examples |
-| **Reliability** | 500+ tests, CI matrix on 3 Node versions |
-| **Security** | OWASP-aware, GDPR consent management |
-| **Maintainability** | Modular monorepo, consistent patterns |
-| **Portability** | Framework-agnostic core, framework adapters separate |
+| Attribute                  | Implementation                                        |
+| -------------------------- | ----------------------------------------------------- |
+| **Functional Suitability** | 17 packages covering all SEO capabilities             |
+| **Performance Efficiency** | Tree-shakeable, zero runtime dependencies in core     |
+| **Compatibility**          | Dual ESM/CJS, Node 18/20/22, React 18+                |
+| **Usability**              | Comprehensive docs, TypeScript IntelliSense, examples |
+| **Reliability**            | 500+ tests, CI matrix on 3 Node versions              |
+| **Security**               | OWASP-aware, GDPR consent management                  |
+| **Maintainability**        | Modular monorepo, consistent patterns                 |
+| **Portability**            | Framework-agnostic core, framework adapters separate  |
 
 ### Dependency Security
 
@@ -594,6 +597,7 @@ ContentAnalysisInput
 ### Scoring System
 
 Each check returns a score (0-3):
+
 - **good** (3 points) — Meets all criteria
 - **ok** (2 points) — Meets minimum but could improve
 - **poor** (0 points) — Fails criteria
@@ -603,6 +607,7 @@ Status thresholds: `good` >= 70%, `ok` >= 40%, `poor` < 40%
 ### React Integration
 
 The `./react` export provides three components:
+
 - `ScorePanel` — Visual score bar (green/yellow/red)
 - `CheckList` — Detailed check results with status icons
 - `ContentAnalyzer` — All-in-one component that runs analysis and renders both
@@ -615,29 +620,30 @@ The `./react` export provides three components:
 
 19 schema types with typed builders and React components:
 
-| Schema Type | Builder Function | React Component |
-|------------|-----------------|-----------------|
-| Article | `article()` | `<ArticleJsonLd>` |
-| BlogPosting | `blogPosting()` | `<BlogPostingJsonLd>` |
-| NewsArticle | `newsArticle()` | `<NewsArticleJsonLd>` |
-| Product | `product()` | `<ProductJsonLd>` |
-| FAQPage | `faqPage()` | `<FAQJsonLd>` |
-| BreadcrumbList | `breadcrumbList()` | `<BreadcrumbJsonLd>` |
-| LocalBusiness | `localBusiness()` | `<LocalBusinessJsonLd>` |
-| Organization | `organization()` | `<OrganizationJsonLd>` |
-| Event | `event()` | `<EventJsonLd>` |
-| Recipe | `recipe()` | `<RecipeJsonLd>` |
-| HowTo | `howTo()` | `<HowToJsonLd>` |
-| VideoObject | `videoObject()` | `<VideoJsonLd>` |
-| Course | `course()` | `<CourseJsonLd>` |
-| JobPosting | `jobPosting()` | `<JobPostingJsonLd>` |
-| SoftwareApplication | `softwareApp()` | `<SoftwareAppJsonLd>` |
-| WebSite | `webSite()` | `<WebSiteJsonLd>` |
-| ItemList | `itemList()` | — |
-| Review | `review()` | `<ReviewJsonLd>` |
-| Service | `service()` | `<ServiceJsonLd>` |
+| Schema Type         | Builder Function   | React Component         |
+| ------------------- | ------------------ | ----------------------- |
+| Article             | `article()`        | `<ArticleJsonLd>`       |
+| BlogPosting         | `blogPosting()`    | `<BlogPostingJsonLd>`   |
+| NewsArticle         | `newsArticle()`    | `<NewsArticleJsonLd>`   |
+| Product             | `product()`        | `<ProductJsonLd>`       |
+| FAQPage             | `faqPage()`        | `<FAQJsonLd>`           |
+| BreadcrumbList      | `breadcrumbList()` | `<BreadcrumbJsonLd>`    |
+| LocalBusiness       | `localBusiness()`  | `<LocalBusinessJsonLd>` |
+| Organization        | `organization()`   | `<OrganizationJsonLd>`  |
+| Event               | `event()`          | `<EventJsonLd>`         |
+| Recipe              | `recipe()`         | `<RecipeJsonLd>`        |
+| HowTo               | `howTo()`          | `<HowToJsonLd>`         |
+| VideoObject         | `videoObject()`    | `<VideoJsonLd>`         |
+| Course              | `course()`         | `<CourseJsonLd>`        |
+| JobPosting          | `jobPosting()`     | `<JobPostingJsonLd>`    |
+| SoftwareApplication | `softwareApp()`    | `<SoftwareAppJsonLd>`   |
+| WebSite             | `webSite()`        | `<WebSiteJsonLd>`       |
+| ItemList            | `itemList()`       | —                       |
+| Review              | `review()`         | `<ReviewJsonLd>`        |
+| Service             | `service()`        | `<ServiceJsonLd>`       |
 
 Plus:
+
 - `schemaGraph()` — Combine multiple schemas into a `@graph` array
 - `toJsonLdString()` — Serialize to JSON-LD string for SSR
 - `validateSchema()` — Validate schema objects against required fields
@@ -646,6 +652,7 @@ Plus:
 ### Validation
 
 `validateSchema()` checks:
+
 - Required fields present (e.g., `headline` for Article)
 - `@type` matches expected schema
 - Nested objects validated recursively
@@ -710,25 +717,26 @@ Plus:
 
 ### Prompt Templates
 
-| Function | Input | Output |
-|----------|-------|--------|
-| `buildMetaDescriptionPrompt()` | URL, title, content snippet, keyphrase | Prompt for 155-char meta description |
-| `buildTitlePrompt()` | URL, content, keyphrase, current title | Prompt for optimized title tag |
-| `buildContentSuggestionsPrompt()` | Content, keyphrase, analysis results | Prompt for improvement suggestions |
-| `buildSerpPredictionPrompt()` | Content, schema type, keyphrase | Prompt for SERP feature eligibility |
+| Function                          | Input                                  | Output                               |
+| --------------------------------- | -------------------------------------- | ------------------------------------ |
+| `buildMetaDescriptionPrompt()`    | URL, title, content snippet, keyphrase | Prompt for 155-char meta description |
+| `buildTitlePrompt()`              | URL, content, keyphrase, current title | Prompt for optimized title tag       |
+| `buildContentSuggestionsPrompt()` | Content, keyphrase, analysis results   | Prompt for improvement suggestions   |
+| `buildSerpPredictionPrompt()`     | Content, schema type, keyphrase        | Prompt for SERP feature eligibility  |
 
 ### Response Parsers
 
-| Function | Parses | Returns |
-|----------|--------|---------|
-| `parseMetaDescriptionResponse()` | LLM text | `MetaDescriptionResult[]` with pixel width validation |
-| `parseTitleResponse()` | LLM text | `TitleResult[]` with pixel width validation |
-| `parseContentSuggestionsResponse()` | LLM text | `ContentSuggestion[]` typed by category |
-| `parseSerpPredictionResponse()` | LLM text | `SerpFeaturePrediction[]` with confidence |
+| Function                            | Parses   | Returns                                               |
+| ----------------------------------- | -------- | ----------------------------------------------------- |
+| `parseMetaDescriptionResponse()`    | LLM text | `MetaDescriptionResult[]` with pixel width validation |
+| `parseTitleResponse()`              | LLM text | `TitleResult[]` with pixel width validation           |
+| `parseContentSuggestionsResponse()` | LLM text | `ContentSuggestion[]` typed by category               |
+| `parseSerpPredictionResponse()`     | LLM text | `SerpFeaturePrediction[]` with confidence             |
 
 ### Rule-Based Analysis (Free)
 
 `analyzeSerpEligibility()` — Deterministic SERP feature prediction based on content structure:
+
 - FAQ schema present → FAQ rich result eligible
 - HowTo schema → HowTo carousel eligible
 - Product + Review schema → Product snippet eligible
@@ -740,16 +748,16 @@ Plus:
 
 ### Google Search Console (@power-seo/search-console)
 
-| Function | API Endpoint | Purpose |
-|----------|-------------|---------|
-| `createGSCClient()` | — | Authenticated client factory |
-| `exchangeRefreshToken()` | OAuth2 | Token exchange |
-| `getServiceAccountToken()` | JWT | Service account auth |
-| `createTokenManager()` | — | Auto-refreshing token management |
-| `querySearchAnalytics()` | Search Analytics | Clicks, impressions, CTR, position |
-| `querySearchAnalyticsAll()` | Search Analytics | Auto-paginated full results |
-| `inspectUrl()` / `inspectUrlDirect()` | URL Inspection | Index status, crawl info |
-| `listSitemaps()` / `submitSitemap()` / `deleteSitemap()` | Sitemaps | Sitemap management |
+| Function                                                 | API Endpoint     | Purpose                            |
+| -------------------------------------------------------- | ---------------- | ---------------------------------- |
+| `createGSCClient()`                                      | —                | Authenticated client factory       |
+| `exchangeRefreshToken()`                                 | OAuth2           | Token exchange                     |
+| `getServiceAccountToken()`                               | JWT              | Service account auth               |
+| `createTokenManager()`                                   | —                | Auto-refreshing token management   |
+| `querySearchAnalytics()`                                 | Search Analytics | Clicks, impressions, CTR, position |
+| `querySearchAnalyticsAll()`                              | Search Analytics | Auto-paginated full results        |
+| `inspectUrl()` / `inspectUrlDirect()`                    | URL Inspection   | Index status, crawl info           |
+| `listSitemaps()` / `submitSitemap()` / `deleteSitemap()` | Sitemaps         | Sitemap management                 |
 
 **Auth:** OAuth 2.0 (user consent) or Service Account (server-to-server)
 **Rate limiting:** Built-in token bucket (1,200 req/min)
@@ -757,6 +765,7 @@ Plus:
 ### Semrush (@power-seo/integrations)
 
 `createSemrushClient(apiKey)` provides:
+
 - `getDomainOverview()` — Traffic, keywords, backlinks summary
 - `getKeywordData()` — Volume, CPC, competition, SERP features
 - `getBacklinks()` — Backlink data with follow/nofollow
@@ -766,6 +775,7 @@ Plus:
 ### Ahrefs (@power-seo/integrations)
 
 `createAhrefsClient(apiKey)` provides:
+
 - `getSiteOverview()` — Domain rating, organic traffic, backlinks
 - `getOrganicKeywords()` — Ranking keywords with positions
 - `getBacklinks()` — Backlink data with anchor text
@@ -774,13 +784,13 @@ Plus:
 
 ### Analytics Platforms (@power-seo/tracking)
 
-| Platform | Script Builder | API Client |
-|----------|---------------|------------|
-| Google Analytics 4 | `buildGA4Script()` | `createGA4Client()` |
-| Microsoft Clarity | `buildClarityScript()` | `createClarityClient()` |
-| PostHog | `buildPostHogScript()` | `createPostHogClient()` |
-| Plausible | `buildPlausibleScript()` | `createPlausibleClient()` |
-| Fathom | `buildFathomScript()` | `createFathomClient()` |
+| Platform           | Script Builder           | API Client                |
+| ------------------ | ------------------------ | ------------------------- |
+| Google Analytics 4 | `buildGA4Script()`       | `createGA4Client()`       |
+| Microsoft Clarity  | `buildClarityScript()`   | `createClarityClient()`   |
+| PostHog            | `buildPostHogScript()`   | `createPostHogClient()`   |
+| Plausible          | `buildPlausibleScript()` | `createPlausibleClient()` |
+| Fathom             | `buildFathomScript()`    | `createFathomClient()`    |
 
 ---
 
@@ -810,6 +820,7 @@ Google Search Console API
 ### Dashboard Data
 
 `buildDashboardData()` returns:
+
 - **Overview:** Total clicks, impressions, average CTR, average position
 - **Top pages:** Sorted by clicks with audit scores
 - **Top queries:** Sorted by impressions with position data
@@ -824,7 +835,7 @@ Google Search Console API
 
 ```ts
 const manager = createConsentManager({
-  necessary: true,   // Cannot be revoked
+  necessary: true, // Cannot be revoked
   analytics: false,
   marketing: false,
   preferences: false,
@@ -832,6 +843,7 @@ const manager = createConsentManager({
 ```
 
 **API:**
+
 - `manager.getState()` — Current consent state
 - `manager.grant(category)` / `manager.revoke(category)` — Individual category control
 - `manager.grantAll()` / `manager.revokeAll()` — Bulk operations
@@ -858,12 +870,12 @@ import { AnalyticsScript, ConsentBanner } from '@power-seo/tracking/react';
 
 ### Cookie Categories
 
-| Category | Description | Revocable |
-|----------|-------------|-----------|
-| `necessary` | Essential site functionality | No |
-| `analytics` | Analytics and performance tracking | Yes |
-| `marketing` | Advertising and retargeting | Yes |
-| `preferences` | User preferences and personalization | Yes |
+| Category      | Description                          | Revocable |
+| ------------- | ------------------------------------ | --------- |
+| `necessary`   | Essential site functionality         | No        |
+| `analytics`   | Analytics and performance tracking   | Yes       |
+| `marketing`   | Advertising and retargeting          | Yes       |
+| `preferences` | User preferences and personalization | Yes       |
 
 ---
 
@@ -871,33 +883,34 @@ import { AnalyticsScript, ConsentBanner } from '@power-seo/tracking/react';
 
 ### Import Paths
 
-| Package | Import | Description |
-|---------|--------|-------------|
-| `@power-seo/core` | `@power-seo/core` | Types, constants, utilities |
-| `@power-seo/react` | `@power-seo/react` | React components |
-| `@power-seo/schema` | `@power-seo/schema` | Builder functions, types, validation |
-| `@power-seo/schema` | `@power-seo/schema/react` | React JSON-LD components |
-| `@power-seo/content-analysis` | `@power-seo/content-analysis` | Analysis functions, types |
-| `@power-seo/content-analysis` | `@power-seo/content-analysis/react` | ScorePanel, CheckList, ContentAnalyzer |
-| `@power-seo/preview` | `@power-seo/preview` | Preview generators, types |
-| `@power-seo/preview` | `@power-seo/preview/react` | SerpPreview, OgPreview, TwitterPreview, PreviewPanel |
-| `@power-seo/readability` | `@power-seo/readability` | Readability algorithms |
-| `@power-seo/sitemap` | `@power-seo/sitemap` | Sitemap generation |
-| `@power-seo/redirects` | `@power-seo/redirects` | Redirect engine |
-| `@power-seo/links` | `@power-seo/links` | Link analysis |
-| `@power-seo/audit` | `@power-seo/audit` | SEO auditing |
-| `@power-seo/images` | `@power-seo/images` | Image SEO |
-| `@power-seo/ai` | `@power-seo/ai` | AI prompt templates |
-| `@power-seo/analytics` | `@power-seo/analytics` | Analytics dashboard |
-| `@power-seo/search-console` | `@power-seo/search-console` | GSC API client |
-| `@power-seo/integrations` | `@power-seo/integrations` | Semrush + Ahrefs clients |
-| `@power-seo/tracking` | `@power-seo/tracking` | Scripts, API clients, consent |
-| `@power-seo/tracking` | `@power-seo/tracking/react` | AnalyticsScript, ConsentBanner |
-| `@power-seo/meta` | `@power-seo/meta` | SSR meta helpers |
+| Package                       | Import                              | Description                                          |
+| ----------------------------- | ----------------------------------- | ---------------------------------------------------- |
+| `@power-seo/core`             | `@power-seo/core`                   | Types, constants, utilities                          |
+| `@power-seo/react`            | `@power-seo/react`                  | React components                                     |
+| `@power-seo/schema`           | `@power-seo/schema`                 | Builder functions, types, validation                 |
+| `@power-seo/schema`           | `@power-seo/schema/react`           | React JSON-LD components                             |
+| `@power-seo/content-analysis` | `@power-seo/content-analysis`       | Analysis functions, types                            |
+| `@power-seo/content-analysis` | `@power-seo/content-analysis/react` | ScorePanel, CheckList, ContentAnalyzer               |
+| `@power-seo/preview`          | `@power-seo/preview`                | Preview generators, types                            |
+| `@power-seo/preview`          | `@power-seo/preview/react`          | SerpPreview, OgPreview, TwitterPreview, PreviewPanel |
+| `@power-seo/readability`      | `@power-seo/readability`            | Readability algorithms                               |
+| `@power-seo/sitemap`          | `@power-seo/sitemap`                | Sitemap generation                                   |
+| `@power-seo/redirects`        | `@power-seo/redirects`              | Redirect engine                                      |
+| `@power-seo/links`            | `@power-seo/links`                  | Link analysis                                        |
+| `@power-seo/audit`            | `@power-seo/audit`                  | SEO auditing                                         |
+| `@power-seo/images`           | `@power-seo/images`                 | Image SEO                                            |
+| `@power-seo/ai`               | `@power-seo/ai`                     | AI prompt templates                                  |
+| `@power-seo/analytics`        | `@power-seo/analytics`              | Analytics dashboard                                  |
+| `@power-seo/search-console`   | `@power-seo/search-console`         | GSC API client                                       |
+| `@power-seo/integrations`     | `@power-seo/integrations`           | Semrush + Ahrefs clients                             |
+| `@power-seo/tracking`         | `@power-seo/tracking`               | Scripts, API clients, consent                        |
+| `@power-seo/tracking`         | `@power-seo/tracking/react`         | AnalyticsScript, ConsentBanner                       |
+| `@power-seo/meta`             | `@power-seo/meta`                   | SSR meta helpers                                     |
 
 ### Module Format
 
 All packages export:
+
 - **ESM:** `dist/index.js` (and `dist/react.js` for dual-export packages)
 - **CJS:** `dist/index.cjs` (and `dist/react.cjs`)
 - **Types:** `dist/index.d.ts` (and `dist/react.d.ts`)
@@ -911,6 +924,7 @@ All packages export:
 Built with [Starlight](https://starlight.astro.build/) (Astro-based), deployed to GitHub Pages.
 
 **Content:**
+
 - 17 package reference pages with API docs, examples, and type signatures
 - 3 guides: Getting Started, Framework Integration, Content Analysis
 - Package comparison table
@@ -918,10 +932,10 @@ Built with [Starlight](https://starlight.astro.build/) (Astro-based), deployed t
 
 ### Example Applications
 
-| Example | Framework | Demonstrates |
-|---------|-----------|-------------|
+| Example               | Framework          | Demonstrates                                  |
+| --------------------- | ------------------ | --------------------------------------------- |
 | `examples/nextjs-app` | Next.js App Router | `createMetadata()`, JSON-LD, content analysis |
-| `examples/remix-app` | Remix v2 | `createMetaDescriptors()`, SEO components |
+| `examples/remix-app`  | Remix v2           | `createMetaDescriptors()`, SEO components     |
 
 ### Developer Experience
 
@@ -998,13 +1012,13 @@ steps:
 
 ### Quality Gates
 
-| Gate | Command | Requirement |
-|------|---------|-------------|
-| Build | `turbo run build` | Zero errors |
-| Lint | `turbo run lint` | Zero errors |
-| Types | `turbo run typecheck` | Zero errors |
-| Tests | `turbo run test` | All passing |
-| Format | `prettier --check` | No formatting issues |
+| Gate   | Command               | Requirement          |
+| ------ | --------------------- | -------------------- |
+| Build  | `turbo run build`     | Zero errors          |
+| Lint   | `turbo run lint`      | Zero errors          |
+| Types  | `turbo run typecheck` | Zero errors          |
+| Tests  | `turbo run test`      | All passing          |
+| Format | `prettier --check`    | No formatting issues |
 
 ---
 
@@ -1018,23 +1032,23 @@ steps:
 
 ### Test Distribution
 
-| Package | Tests | Environment |
-|---------|-------|-------------|
-| content-analysis | 47 | node + jsdom |
-| preview | 36 | node + jsdom |
-| readability | 28 | node |
-| sitemap | 33 | node |
-| redirects | 47 | node |
-| links | 31 | node |
-| audit | 44 | node |
-| images | 40 | node |
-| ai | 40 | node |
-| analytics | 33 | node |
-| search-console | 26 | node |
-| integrations | 19 | node |
-| tracking | 38 | node + jsdom |
-| meta | 28 | node |
-| **Total** | **500+** | |
+| Package          | Tests    | Environment  |
+| ---------------- | -------- | ------------ |
+| content-analysis | 47       | node + jsdom |
+| preview          | 36       | node + jsdom |
+| readability      | 28       | node         |
+| sitemap          | 33       | node         |
+| redirects        | 47       | node         |
+| links            | 31       | node         |
+| audit            | 44       | node         |
+| images           | 40       | node         |
+| ai               | 40       | node         |
+| analytics        | 33       | node         |
+| search-console   | 26       | node         |
+| integrations     | 19       | node         |
+| tracking         | 38       | node + jsdom |
+| meta             | 28       | node         |
+| **Total**        | **500+** |              |
 
 ### Testing Patterns
 
@@ -1062,23 +1076,23 @@ Phase 6  ──▶  meta + docs site + examples + v1.0.0 release        ✅ Done
 
 ### Post-v1.0 Roadmap
 
-| Version | Phase | Focus |
-|---------|-------|-------|
-| v1.1.x – v1.2.x | **Growth** | Community building, bug fixes, documentation improvements, API refinements based on feedback |
-| v1.3.x – v1.4.x | **Soft AI** | Free AI suggestions (single keyword), read-only AI hints, clearly marked as assistive |
-| v1.5.x | **First Paid Layer** | Pro subscription: multiple focus keywords, AI content quality assessment, AI readability suggestions |
-| v1.6.x | **Data Intelligence** | Semrush/Ahrefs keyword suggestions (paid API cost), AI opportunity detection, directional ROI prediction |
-| v1.7.x | **Scale & Automation** | Bulk AI content generation (token-based), scheduled AI audits (cloud-only), agency plan |
-| v1.8.x – v1.9.x | **Cloud & SaaS** | AI dashboard, historical SEO data, trend tracking, alerts, team collaboration |
-| v2.x | **Enterprise** | Advanced ROI modeling, white-label dashboards, enterprise SLA, custom AI routing |
+| Version         | Phase                  | Focus                                                                                                    |
+| --------------- | ---------------------- | -------------------------------------------------------------------------------------------------------- |
+| v1.1.x – v1.2.x | **Growth**             | Community building, bug fixes, documentation improvements, API refinements based on feedback             |
+| v1.3.x – v1.4.x | **Soft AI**            | Free AI suggestions (single keyword), read-only AI hints, clearly marked as assistive                    |
+| v1.5.x          | **First Paid Layer**   | Pro subscription: multiple focus keywords, AI content quality assessment, AI readability suggestions     |
+| v1.6.x          | **Data Intelligence**  | Semrush/Ahrefs keyword suggestions (paid API cost), AI opportunity detection, directional ROI prediction |
+| v1.7.x          | **Scale & Automation** | Bulk AI content generation (token-based), scheduled AI audits (cloud-only), agency plan                  |
+| v1.8.x – v1.9.x | **Cloud & SaaS**       | AI dashboard, historical SEO data, trend tracking, alerts, team collaboration                            |
+| v2.x            | **Enterprise**         | Advanced ROI modeling, white-label dashboards, enterprise SLA, custom AI routing                         |
 
 ### Future Package Candidates
 
-| Package | Purpose | Priority |
-|---------|---------|----------|
-| `@power-seo/local` | Local SEO — Google Business Profile schema, NAP consistency | Medium |
-| `@power-seo/ecommerce` | E-commerce SEO — Product enrichment, faceted navigation | Medium |
-| `@power-seo/i18n` | Multilingual SEO — Hreflang graph validation, locale-aware sitemaps | Low |
+| Package                | Purpose                                                             | Priority |
+| ---------------------- | ------------------------------------------------------------------- | -------- |
+| `@power-seo/local`     | Local SEO — Google Business Profile schema, NAP consistency         | Medium   |
+| `@power-seo/ecommerce` | E-commerce SEO — Product enrichment, faceted navigation             | Medium   |
+| `@power-seo/i18n`      | Multilingual SEO — Hreflang graph validation, locale-aware sitemaps | Low      |
 
 ---
 
@@ -1090,26 +1104,26 @@ Phase 6  ──▶  meta + docs site + examples + v1.0.0 release        ✅ Done
 
 ### Versioning Policy
 
-| Version Range | Policy |
-|---------------|--------|
-| v1.0.0 – v1.4.x | 100% free, no paid features |
-| v1.5.x+ | Paid features added gradually |
-| v2.x | Mature monetization, still OSS-safe |
+| Version Range   | Policy                              |
+| --------------- | ----------------------------------- |
+| v1.0.0 – v1.4.x | 100% free, no paid features         |
+| v1.5.x+         | Paid features added gradually       |
+| v2.x            | Mature monetization, still OSS-safe |
 
 **Rule:** No free feature is ever removed or degraded.
 
 ### Monetization Model
 
-| Category | Free Forever | Paid |
-|----------|-------------|------|
-| SEO analysis | All 17 packages | — |
-| Readability scoring | All algorithms | — |
-| 1 focus keyword | Included | — |
-| Multiple focus keywords | — | Pro subscription |
-| AI suggestions | — | Pro subscription |
-| AI content generation | — | Token-based |
-| Bulk operations | — | Agency plan |
-| Cloud dashboard | — | SaaS subscription |
+| Category                | Free Forever    | Paid              |
+| ----------------------- | --------------- | ----------------- |
+| SEO analysis            | All 17 packages | —                 |
+| Readability scoring     | All algorithms  | —                 |
+| 1 focus keyword         | Included        | —                 |
+| Multiple focus keywords | —               | Pro subscription  |
+| AI suggestions          | —               | Pro subscription  |
+| AI content generation   | —               | Token-based       |
+| Bulk operations         | —               | Agency plan       |
+| Cloud dashboard         | —               | SaaS subscription |
 
 ### What We Charge For
 
@@ -1147,23 +1161,23 @@ Phase 6  ──▶  meta + docs site + examples + v1.0.0 release        ✅ Done
 
 ### Where @power-seo Wins
 
-| Advantage | Details |
-|-----------|---------|
-| **Only comprehensive React SEO toolkit** | No competitor covers content analysis + previews + auditing + structured data + analytics in one ecosystem |
-| **Framework-agnostic core** | Works with any React framework; adapters for Next.js, Remix, Astro, generic SSR |
-| **Type-safe throughout** | TypeScript strict mode, exported types, IntelliSense support |
-| **Modular architecture** | Install one package or all 17 — no bloat |
-| **Open source with clear monetization boundary** | Free forever core, paid intelligence layer — transparent and predictable |
-| **LLM-agnostic AI** | Not locked to OpenAI, Anthropic, or Google — works with any LLM |
+| Advantage                                        | Details                                                                                                    |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| **Only comprehensive React SEO toolkit**         | No competitor covers content analysis + previews + auditing + structured data + analytics in one ecosystem |
+| **Framework-agnostic core**                      | Works with any React framework; adapters for Next.js, Remix, Astro, generic SSR                            |
+| **Type-safe throughout**                         | TypeScript strict mode, exported types, IntelliSense support                                               |
+| **Modular architecture**                         | Install one package or all 17 — no bloat                                                                   |
+| **Open source with clear monetization boundary** | Free forever core, paid intelligence layer — transparent and predictable                                   |
+| **LLM-agnostic AI**                              | Not locked to OpenAI, Anthropic, or Google — works with any LLM                                            |
 
 ### Competitive Threats
 
-| Threat | Mitigation |
-|--------|-----------|
+| Threat                                         | Mitigation                                                                                           |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | Next.js builds SEO features into the framework | @power-seo works alongside `next/metadata`, adds what Next.js doesn't (analysis, previews, auditing) |
-| Vercel ships an SEO package | Focus on depth and breadth — 17 packages vs a single utility |
-| WordPress ecosystem extends to headless | @power-seo is React-native, not a WordPress bridge |
-| Another OSS project copies the approach | First-mover advantage, community trust, established npm presence |
+| Vercel ships an SEO package                    | Focus on depth and breadth — 17 packages vs a single utility                                         |
+| WordPress ecosystem extends to headless        | @power-seo is React-native, not a WordPress bridge                                                   |
+| Another OSS project copies the approach        | First-mover advantage, community trust, established npm presence                                     |
 
 ### Market Sizing
 
@@ -1199,22 +1213,22 @@ Monetization:       Premium plugins                  Free core + paid intelligen
 
 ## Appendix A: Compliance Standards
 
-| Standard | Relevance | Implementation |
-|----------|-----------|----------------|
-| GDPR | Cookie consent, data privacy | Consent manager with revocable categories |
-| OWASP Top 10 | Web application security | XSS prevention, URL sanitization, no credential storage |
-| ISO 25010 | Software quality | 8 quality attributes addressed |
-| Schema.org | Structured data standards | 19 schema types with validation |
-| Web Vitals (CWV) | Performance standards | Image lazy loading audit, resource hint rules |
-| Sitemap Protocol | XML sitemap specification | Full protocol implementation with validation |
-| Robots Exclusion Standard | robots.txt / meta robots | Parser and builder for both formats |
+| Standard                  | Relevance                    | Implementation                                          |
+| ------------------------- | ---------------------------- | ------------------------------------------------------- |
+| GDPR                      | Cookie consent, data privacy | Consent manager with revocable categories               |
+| OWASP Top 10              | Web application security     | XSS prevention, URL sanitization, no credential storage |
+| ISO 25010                 | Software quality             | 8 quality attributes addressed                          |
+| Schema.org                | Structured data standards    | 19 schema types with validation                         |
+| Web Vitals (CWV)          | Performance standards        | Image lazy loading audit, resource hint rules           |
+| Sitemap Protocol          | XML sitemap specification    | Full protocol implementation with validation            |
+| Robots Exclusion Standard | robots.txt / meta robots     | Parser and builder for both formats                     |
 
 ## Appendix B: Version History
 
-| Version | Date | Milestone |
-|---------|------|-----------|
-| 1.0.0 | 2026-02-08 | Production release — all 17 packages, docs, examples |
+| Version | Date       | Milestone                                            |
+| ------- | ---------- | ---------------------------------------------------- |
+| 1.0.0   | 2026-02-08 | Production release — all 17 packages, docs, examples |
 
 ---
 
-*Document generated 2026-02-08. This is the authoritative development plan for the @power-seo project.*
+_Document generated 2026-02-08. This is the authoritative development plan for the @power-seo project._

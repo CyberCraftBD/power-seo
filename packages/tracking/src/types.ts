@@ -171,7 +171,11 @@ export interface PlausibleAggregateResult {
 
 export interface PlausibleClient {
   getTimeseries: (siteId: string, period?: string) => Promise<PlausibleTimeseriesPoint[]>;
-  getBreakdown: (siteId: string, property: string, period?: string) => Promise<PlausibleBreakdownEntry[]>;
+  getBreakdown: (
+    siteId: string,
+    property: string,
+    period?: string,
+  ) => Promise<PlausibleBreakdownEntry[]>;
   getAggregate: (siteId: string, period?: string) => Promise<PlausibleAggregateResult>;
 }
 

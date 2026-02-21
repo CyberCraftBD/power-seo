@@ -28,18 +28,63 @@ function countPassiveVoice(text: string): number {
 // --- Transition Word Detection ---
 
 const TRANSITION_WORDS = [
-  'accordingly', 'additionally', 'also', 'although', 'as a result',
-  'because', 'besides', 'but', 'certainly', 'consequently',
-  'conversely', 'equally', 'eventually', 'finally', 'first',
-  'for example', 'for instance', 'furthermore', 'hence', 'however',
-  'in addition', 'in conclusion', 'in contrast', 'in fact', 'in other words',
-  'in particular', 'in summary', 'indeed', 'instead', 'likewise',
-  'meanwhile', 'moreover', 'namely', 'nevertheless', 'next',
-  'nonetheless', 'notably', 'on the other hand', 'otherwise', 'overall',
-  'particularly', 'rather', 'second', 'similarly', 'since',
-  'specifically', 'still', 'subsequently', 'such as', 'then',
-  'therefore', 'third', 'thus', 'to illustrate', 'ultimately',
-  'whereas', 'yet',
+  'accordingly',
+  'additionally',
+  'also',
+  'although',
+  'as a result',
+  'because',
+  'besides',
+  'but',
+  'certainly',
+  'consequently',
+  'conversely',
+  'equally',
+  'eventually',
+  'finally',
+  'first',
+  'for example',
+  'for instance',
+  'furthermore',
+  'hence',
+  'however',
+  'in addition',
+  'in conclusion',
+  'in contrast',
+  'in fact',
+  'in other words',
+  'in particular',
+  'in summary',
+  'indeed',
+  'instead',
+  'likewise',
+  'meanwhile',
+  'moreover',
+  'namely',
+  'nevertheless',
+  'next',
+  'nonetheless',
+  'notably',
+  'on the other hand',
+  'otherwise',
+  'overall',
+  'particularly',
+  'rather',
+  'second',
+  'similarly',
+  'since',
+  'specifically',
+  'still',
+  'subsequently',
+  'such as',
+  'then',
+  'therefore',
+  'third',
+  'thus',
+  'to illustrate',
+  'ultimately',
+  'whereas',
+  'yet',
 ];
 
 function countTransitionSentences(sentences: string[]): number {
@@ -88,9 +133,7 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
     return wordCount > READABILITY.MAX_SENTENCE_LENGTH;
   });
   const longSentencePercentage =
-    sentences.length > 0
-      ? Math.round((longSentences.length / sentences.length) * 1000) / 10
-      : 0;
+    sentences.length > 0 ? Math.round((longSentences.length / sentences.length) * 1000) / 10 : 0;
 
   // Long paragraph analysis
   const longParagraphCount = paragraphs.filter((p) => {
@@ -129,7 +172,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: 3,
       maxScore: 5,
     });
-    recommendations.push('Simplify your writing — use shorter sentences and common words to improve readability.');
+    recommendations.push(
+      'Simplify your writing — use shorter sentences and common words to improve readability.',
+    );
   } else {
     results.push({
       id: 'flesch-reading-ease',
@@ -139,7 +184,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: 1,
       maxScore: 5,
     });
-    recommendations.push('Your content is very hard to read. Break up long sentences and replace complex words with simpler alternatives.');
+    recommendations.push(
+      'Your content is very hard to read. Break up long sentences and replace complex words with simpler alternatives.',
+    );
   }
 
   // Sentence length result
@@ -161,7 +208,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: 3,
       maxScore: 5,
     });
-    recommendations.push(`${longSentencePercentage}% of your sentences are long. Try to keep most sentences under ${READABILITY.MAX_SENTENCE_LENGTH} words.`);
+    recommendations.push(
+      `${longSentencePercentage}% of your sentences are long. Try to keep most sentences under ${READABILITY.MAX_SENTENCE_LENGTH} words.`,
+    );
   } else {
     results.push({
       id: 'sentence-length',
@@ -171,7 +220,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: 1,
       maxScore: 5,
     });
-    recommendations.push(`${longSentencePercentage}% of your sentences exceed ${READABILITY.MAX_SENTENCE_LENGTH} words. Break them into shorter, more digestible sentences.`);
+    recommendations.push(
+      `${longSentencePercentage}% of your sentences exceed ${READABILITY.MAX_SENTENCE_LENGTH} words. Break them into shorter, more digestible sentences.`,
+    );
   }
 
   // Passive voice result
@@ -193,7 +244,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: 3,
       maxScore: 5,
     });
-    recommendations.push(`Reduce passive voice usage (${passiveVoicePercentage}%). Active voice makes your writing more direct and engaging.`);
+    recommendations.push(
+      `Reduce passive voice usage (${passiveVoicePercentage}%). Active voice makes your writing more direct and engaging.`,
+    );
   } else {
     results.push({
       id: 'passive-voice',
@@ -203,7 +256,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: 1,
       maxScore: 5,
     });
-    recommendations.push(`${passiveVoicePercentage}% of your sentences use passive voice. Rewrite them in active voice for clearer, more engaging content.`);
+    recommendations.push(
+      `${passiveVoicePercentage}% of your sentences use passive voice. Rewrite them in active voice for clearer, more engaging content.`,
+    );
   }
 
   // Transition words result
@@ -225,7 +280,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: 3,
       maxScore: 5,
     });
-    recommendations.push(`Use more transition words (currently ${transitionWordPercentage}%). Words like "however", "therefore", and "for example" improve readability.`);
+    recommendations.push(
+      `Use more transition words (currently ${transitionWordPercentage}%). Words like "however", "therefore", and "for example" improve readability.`,
+    );
   } else {
     results.push({
       id: 'transition-words',
@@ -235,7 +292,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: 1,
       maxScore: 5,
     });
-    recommendations.push(`Only ${transitionWordPercentage}% of sentences use transition words. Add connectors like "however", "in addition", and "therefore" to guide readers.`);
+    recommendations.push(
+      `Only ${transitionWordPercentage}% of sentences use transition words. Add connectors like "however", "in addition", and "therefore" to guide readers.`,
+    );
   }
 
   // Paragraph length result
@@ -257,7 +316,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       score: longParagraphCount <= 2 ? 3 : 1,
       maxScore: 5,
     });
-    recommendations.push(`${longParagraphCount} paragraph${longParagraphCount === 1 ? ' is' : 's are'} too long. Keep paragraphs under ${READABILITY.MAX_PARAGRAPH_WORDS} words.`);
+    recommendations.push(
+      `${longParagraphCount} paragraph${longParagraphCount === 1 ? ' is' : 's are'} too long. Keep paragraphs under ${READABILITY.MAX_PARAGRAPH_WORDS} words.`,
+    );
   }
 
   return {

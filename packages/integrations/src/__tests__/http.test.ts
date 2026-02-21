@@ -43,7 +43,9 @@ describe('createHttpClient', () => {
     await client.get('/test');
 
     const [, options] = mockFetch.mock.calls[0] as [string, globalThis.RequestInit];
-    expect((options.headers as Record<string, string>)['Authorization']).toBe('Bearer bearer-token');
+    expect((options.headers as Record<string, string>)['Authorization']).toBe(
+      'Bearer bearer-token',
+    );
   });
 
   it('should make POST requests with body', async () => {

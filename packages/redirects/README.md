@@ -13,6 +13,7 @@
 **@power-seo/redirects** is a framework-agnostic URL redirect rule engine for TypeScript that helps you define redirect rules once and apply them across Next.js, Remix, and Express — with exact, glob, and regex pattern matching.
 
 **What it does**
+
 - ✅ **Unified redirect engine** — `createRedirectEngine()` accepts typed rules and matches URLs with `.match()`
 - ✅ **Three pattern types** — exact string, glob wildcards with `:param` segments, and full regular expressions
 - ✅ **Next.js adapter** — `toNextRedirects()` converts rules to the `next.config.js` redirect array format
@@ -21,10 +22,12 @@
 - ✅ **Parameter substitution** — `substituteParams()` replaces `:param` placeholders in destination URLs
 
 **What it is not**
+
 - ❌ **Not a reverse proxy** — does not proxy requests to other servers; only issues redirect responses
 - ❌ **Not a URL rewriter** — does not silently rewrite URLs; all matches produce 301 or 302 redirects
 
 **Recommended for**
+
 - **Site migrations**, **URL restructuring for SEO**, **Next.js route consolidation**, **legacy URL handling**, and **canonical URL enforcement**
 
 ---
@@ -32,11 +35,13 @@
 ## Why @power-seo/redirects Matters
 
 **The problem**
+
 - **Redirect rules are duplicated** — the same rules must be reimplemented for Next.js `next.config.js`, Remix loaders, and Express middleware separately
 - **Pattern matching is ad-hoc** — teams write one-off regex or string comparisons scattered across route files
 - **SEO is at risk** — missing 301 redirects during site migrations cause traffic drops and broken backlinks
 
 **Why developers care**
+
 - **SEO:** 301 redirects preserve link equity from old URLs to new ones during migrations
 - **Performance:** Centralized rule engine evaluates all rules in one pass — no per-route middleware overhead
 - **UX:** Correct redirects prevent users and Googlebot from hitting 404s after URL changes
@@ -77,9 +82,9 @@ import { createRedirectEngine } from '@power-seo/redirects';
 
 const engine = createRedirectEngine({
   rules: [
-    { source: '/old-about',      destination: '/about',          statusCode: 301 },
-    { source: '/blog/:slug',     destination: '/articles/:slug', statusCode: 301 },
-    { source: '/docs/*',         destination: '/documentation/*', statusCode: 302 },
+    { source: '/old-about', destination: '/about', statusCode: 301 },
+    { source: '/blog/:slug', destination: '/articles/:slug', statusCode: 301 },
+    { source: '/docs/*', destination: '/documentation/*', statusCode: 302 },
   ],
 });
 
@@ -91,6 +96,7 @@ const noMatch = engine.match('/no-redirect-here');
 ```
 
 **What you should see**
+
 - `match` returns `{ destination, statusCode }` for matching URLs
 - `null` for URLs with no matching rule
 
@@ -113,6 +119,7 @@ bun add @power-seo/redirects
 ## Framework Compatibility
 
 **Supported**
+
 - ✅ Next.js (App Router / Pages Router) — `toNextRedirects()` for `next.config.js`
 - ✅ Remix — `createRemixRedirectHandler()` for catch-all routes
 - ✅ Express — `createExpressRedirectMiddleware()` as request handler
@@ -120,6 +127,7 @@ bun add @power-seo/redirects
 - ✅ Edge runtimes — no Node.js-specific APIs
 
 **Environment notes**
+
 - **SSR/SSG:** Fully supported — rule matching is synchronous and pure
 - **Edge runtime:** Supported — no filesystem access, no native bindings
 - **Browser-only usage:** The engine itself works in browser JS; redirect execution is server-side
@@ -169,11 +177,13 @@ After (@power-seo/redirects):
 ## Architecture Overview
 
 **Where it runs**
+
 - **Build-time**: `toNextRedirects()` generates the static Next.js redirect array at build time
 - **Runtime**: Remix loader and Express middleware evaluate rules on every request
 - **CI/CD**: Test `engine.match()` against expected URL patterns in unit tests
 
 **Data flow**
+
 1. **Input**: `RedirectRule[]` array with source patterns, destinations, and status codes
 2. **Analysis**: Engine evaluates rules top-to-bottom; first match returns `{ destination, statusCode }`
 3. **Output**: `RedirectMatch | null` — used by adapters to issue HTTP redirect responses
@@ -183,15 +193,15 @@ After (@power-seo/redirects):
 
 ## Features Comparison with Popular Packages
 
-| Capability | next/redirects (config) | vercel.json | nginx rewrite | @power-seo/redirects |
-|---|---:|---:|---:|---:|
-| Works in Remix | ❌ | ❌ | ❌ | ✅ |
-| Works in Express | ❌ | ❌ | ✅ | ✅ |
-| Typed TypeScript API | ❌ | ❌ | ❌ | ✅ |
-| Named `:param` substitution | ✅ | ✅ | ✅ | ✅ |
-| Regex pattern support | ✅ | ✅ | ✅ | ✅ |
-| Programmatic rule testing | ❌ | ❌ | ❌ | ✅ |
-| Zero dependencies | ✅ | ✅ | ✅ | ✅ |
+| Capability                  | next/redirects (config) | vercel.json | nginx rewrite | @power-seo/redirects |
+| --------------------------- | ----------------------: | ----------: | ------------: | -------------------: |
+| Works in Remix              |                      ❌ |          ❌ |            ❌ |                   ✅ |
+| Works in Express            |                      ❌ |          ❌ |            ✅ |                   ✅ |
+| Typed TypeScript API        |                      ❌ |          ❌ |            ❌ |                   ✅ |
+| Named `:param` substitution |                      ✅ |          ✅ |            ✅ |                   ✅ |
+| Regex pattern support       |                      ✅ |          ✅ |            ✅ |                   ✅ |
+| Programmatic rule testing   |                      ❌ |          ❌ |            ❌ |                   ✅ |
+| Zero dependencies           |                      ✅ |          ✅ |            ✅ |                   ✅ |
 
 ---
 
@@ -199,50 +209,53 @@ After (@power-seo/redirects):
 
 All 17 packages are independently installable — use only what you need.
 
-| Package | Install | Description |
-|---------|---------|-------------|
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ### Ecosystem vs alternatives
 
-| Need | Common approach | @power-seo approach |
-|---|---|---|
-| URL redirects | Framework-specific config | `@power-seo/redirects` — one rule set, all frameworks |
-| Sitemap generation | `next-sitemap` | `@power-seo/sitemap` — streaming, image, video, news |
-| SEO auditing | Third-party tools | `@power-seo/audit` — in-code, CI-friendly |
-| Analytics data | Direct API integration | `@power-seo/search-console` + `@power-seo/analytics` |
+| Need               | Common approach           | @power-seo approach                                   |
+| ------------------ | ------------------------- | ----------------------------------------------------- |
+| URL redirects      | Framework-specific config | `@power-seo/redirects` — one rule set, all frameworks |
+| Sitemap generation | `next-sitemap`            | `@power-seo/sitemap` — streaming, image, video, news  |
+| SEO auditing       | Third-party tools         | `@power-seo/audit` — in-code, CI-friendly             |
+| Analytics data     | Direct API integration    | `@power-seo/search-console` + `@power-seo/analytics`  |
 
 ---
 
 ## Enterprise Integration
 
 **Multi-tenant SaaS**
+
 - **Per-tenant redirect rules**: Load rules from DB per tenant; instantiate one engine per tenant domain
 - **URL migration pipelines**: Generate redirect rules from old → new URL mapping CSV; apply across all frameworks
 - **Compliance**: Log all redirect matches with source and destination for audit trails
 
 **ERP / internal portals**
+
 - Enforce canonical URL formats for internal tools (e.g., strip trailing slashes, normalize casing)
 - Redirect deprecated API endpoint paths to new versions with 301 rules
 - Use regex rules to redirect numeric legacy IDs to slug-based resource URLs
 
 **Recommended integration pattern**
+
 - Define **all redirect rules in a single shared file** (`redirects.config.ts`)
 - Use **`toNextRedirects()`**, **`createRemixRedirectHandler()`**, and **`createExpressRedirectMiddleware()`** to generate framework-specific implementations
 - Test rules with **`engine.match()`** in unit tests
@@ -253,12 +266,14 @@ All 17 packages are independently installable — use only what you need.
 ## Scope and Limitations
 
 **This package does**
+
 - ✅ Match URLs against exact, glob, and regex patterns
 - ✅ Substitute named parameters in destination URLs
 - ✅ Generate framework-specific redirect configs for Next.js, Remix, and Express
 - ✅ Support 301 and 302 HTTP status codes
 
 **This package does not**
+
 - ❌ Proxy requests to other servers
 - ❌ Rewrite URLs silently (all matches produce redirect responses)
 - ❌ Manage CDN-level redirects (Vercel, Cloudflare) — use platform configs for those
@@ -269,11 +284,11 @@ All 17 packages are independently installable — use only what you need.
 
 ### `createRedirectEngine(config)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `config.rules` | `RedirectRule[]` | required | Ordered array of redirect rules |
-| `config.caseSensitive` | `boolean` | `true` | Case-sensitive URL matching |
-| `config.trailingSlash` | `'strip' \| 'add' \| 'ignore'` | `'ignore'` | Trailing slash normalization |
+| Parameter              | Type                           | Default    | Description                     |
+| ---------------------- | ------------------------------ | ---------- | ------------------------------- |
+| `config.rules`         | `RedirectRule[]`               | required   | Ordered array of redirect rules |
+| `config.caseSensitive` | `boolean`                      | `true`     | Case-sensitive URL matching     |
+| `config.trailingSlash` | `'strip' \| 'add' \| 'ignore'` | `'ignore'` | Trailing slash normalization    |
 
 Returns `RedirectEngine`: `{ match(url: string): RedirectMatch | null }`.
 
@@ -312,12 +327,12 @@ Returns an Express `RequestHandler` middleware function.
 
 ```ts
 import type {
-  RedirectStatusCode,       // 301 | 302
-  RedirectRule,             // { source, destination, statusCode, caseSensitive? }
-  RedirectMatch,            // { destination: string; statusCode: RedirectStatusCode }
-  RedirectEngineConfig,     // { rules, caseSensitive?, trailingSlash? }
-  RedirectEngine,           // { match(url): RedirectMatch | null }
-  NextRedirect,             // { source, destination, permanent }
+  RedirectStatusCode, // 301 | 302
+  RedirectRule, // { source, destination, statusCode, caseSensitive? }
+  RedirectMatch, // { destination: string; statusCode: RedirectStatusCode }
+  RedirectEngineConfig, // { rules, caseSensitive?, trailingSlash? }
+  RedirectEngine, // { match(url): RedirectMatch | null }
+  NextRedirect, // { source, destination, permanent }
 } from '@power-seo/redirects';
 ```
 
@@ -333,6 +348,7 @@ import type {
   3. `pnpm test`
 
 **Release workflow**
+
 - `npm version patch|minor|major`
 - `npm publish --access public`
 
@@ -342,12 +358,12 @@ import type {
 
 **CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-| | |
-|---|---|
-| **Website** | [ccbd.dev](https://ccbd.dev) |
-| **GitHub** | [github.com/cybercraftbd](https://github.com/cybercraftbd) |
+|                      |                                                                |
+| -------------------- | -------------------------------------------------------------- |
+| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
+| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
+| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
 
 ---
 

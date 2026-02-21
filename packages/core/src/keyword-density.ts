@@ -33,10 +33,7 @@ export interface KeyphraseOccurrences {
  * // => { keyword: 'react seo', count: 2, density: 20.0, totalWords: 10 }
  * ```
  */
-export function calculateKeywordDensity(
-  keyword: string,
-  content: string,
-): KeywordDensityResult {
+export function calculateKeywordDensity(keyword: string, content: string): KeywordDensityResult {
   const plainText = stripHtml(content).toLowerCase();
   const words = getWords(content);
   const normalizedKeyword = keyword.toLowerCase().trim();
@@ -52,9 +49,7 @@ export function calculateKeywordDensity(
   // For multi-word keyphrases, we count phrase occurrences
   const keywordWordCount = normalizedKeyword.split(/\s+/).length;
   const density =
-    words.length > 0
-      ? Math.round(((count * keywordWordCount) / words.length) * 1000) / 10
-      : 0;
+    words.length > 0 ? Math.round(((count * keywordWordCount) / words.length) * 1000) / 10 : 0;
 
   return {
     keyword,
@@ -102,27 +97,33 @@ export function analyzeKeyphraseOccurrences(config: {
   const inTitle = title ? title.toLowerCase().includes(kp) : false;
 
   // Check meta description
-  const inMetaDescription = metaDescription
-    ? metaDescription.toLowerCase().includes(kp)
-    : false;
+  const inMetaDescription = metaDescription ? metaDescription.toLowerCase().includes(kp) : false;
 
   // Check first paragraph
   const firstParagraphMatch = content.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
   const firstParagraph = firstParagraphMatch
     ? stripHtml(firstParagraphMatch[1] ?? '').toLowerCase()
-    : plainContent.split(/\n\n/)[0]?.toLowerCase() ?? '';
+    : (plainContent.split(/\n\n/)[0]?.toLowerCase() ?? '');
   const inFirstParagraph = firstParagraph.includes(kp);
 
   // Check H1
   const h1Match = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-  const inH1 = h1Match ? stripHtml(h1Match[1] ?? '').toLowerCase().includes(kp) : false;
+  const inH1 = h1Match
+    ? stripHtml(h1Match[1] ?? '')
+        .toLowerCase()
+        .includes(kp)
+    : false;
 
   // Count in headings (h2-h6)
   const headingRegex = /<h[2-6][^>]*>([\s\S]*?)<\/h[2-6]>/gi;
   let headingMatch;
   let inHeadings = 0;
   while ((headingMatch = headingRegex.exec(content)) !== null) {
-    if (stripHtml(headingMatch[1] ?? '').toLowerCase().includes(kp)) {
+    if (
+      stripHtml(headingMatch[1] ?? '')
+        .toLowerCase()
+        .includes(kp)
+    ) {
       inHeadings++;
     }
   }
@@ -134,16 +135,12 @@ export function analyzeKeyphraseOccurrences(config: {
   const inSlug = slug ? slug.toLowerCase().includes(kp.replace(/\s+/g, '-')) : false;
 
   // Count in alt text
-  const inAltText = images
-    ? images.filter((img) => img.alt?.toLowerCase().includes(kp)).length
-    : 0;
+  const inAltText = images ? images.filter((img) => img.alt?.toLowerCase().includes(kp)).length : 0;
 
   // Calculate density
   const keywordWordCount = kp.split(/\s+/).length;
   const density =
-    words.length > 0
-      ? Math.round(((inContent * keywordWordCount) / words.length) * 1000) / 10
-      : 0;
+    words.length > 0 ? Math.round(((inContent * keywordWordCount) / words.length) * 1000) / 10 : 0;
 
   return {
     inTitle,

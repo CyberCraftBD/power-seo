@@ -12,10 +12,7 @@ import type { PageData, LinkSuggestion, LinkSuggestionOptions } from './types.js
  * then finds other pages that mention those keywords but don't
  * already link to the target page.
  */
-export function suggestLinks(
-  pages: PageData[],
-  options?: LinkSuggestionOptions,
-): LinkSuggestion[] {
+export function suggestLinks(pages: PageData[], options?: LinkSuggestionOptions): LinkSuggestion[] {
   const maxSuggestions = options?.maxSuggestions ?? 20;
   const minRelevance = options?.minRelevance ?? 0.1;
 

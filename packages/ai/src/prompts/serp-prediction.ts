@@ -3,11 +3,7 @@
 // ============================================================================
 
 import { stripHtml, getWords } from '@power-seo/core';
-import type {
-  PromptTemplate,
-  SerpFeatureInput,
-  SerpFeaturePrediction,
-} from '../types.js';
+import type { PromptTemplate, SerpFeatureInput, SerpFeaturePrediction } from '../types.js';
 
 export function buildSerpPredictionPrompt(input: SerpFeatureInput): PromptTemplate {
   const plainText = stripHtml(input.content);
@@ -67,8 +63,19 @@ export function parseSerpPredictionResponse(response: string): SerpFeaturePredic
   }
 }
 
-const FAQ_PATTERNS = [/\bwhat\s+is\b/i, /\bhow\s+to\b/i, /\bwhy\s+(do|does|is|are)\b/i, /\bcan\s+(i|you|we)\b/i];
-const HOWTO_PATTERNS = [/\bstep\s+\d+/i, /\bstep\s+one\b/i, /\bfirst[,:]?\s/i, /\bnext[,:]?\s/i, /\bfinally[,:]?\s/i];
+const FAQ_PATTERNS = [
+  /\bwhat\s+is\b/i,
+  /\bhow\s+to\b/i,
+  /\bwhy\s+(do|does|is|are)\b/i,
+  /\bcan\s+(i|you|we)\b/i,
+];
+const HOWTO_PATTERNS = [
+  /\bstep\s+\d+/i,
+  /\bstep\s+one\b/i,
+  /\bfirst[,:]?\s/i,
+  /\bnext[,:]?\s/i,
+  /\bfinally[,:]?\s/i,
+];
 
 export function analyzeSerpEligibility(input: SerpFeatureInput): SerpFeaturePrediction[] {
   const predictions: SerpFeaturePrediction[] = [];
@@ -93,7 +100,12 @@ export function analyzeSerpEligibility(input: SerpFeatureInput): SerpFeaturePred
       likelihood += 0.3;
     }
 
-    predictions.push({ feature: 'faq-rich-result', likelihood: Math.min(likelihood, 1), requirements, met });
+    predictions.push({
+      feature: 'faq-rich-result',
+      likelihood: Math.min(likelihood, 1),
+      requirements,
+      met,
+    });
   }
 
   // HowTo detection
@@ -127,7 +139,12 @@ export function analyzeSerpEligibility(input: SerpFeatureInput): SerpFeaturePred
       likelihood += 0.5;
     }
 
-    predictions.push({ feature: 'product', likelihood: Math.min(likelihood, 1), requirements, met });
+    predictions.push({
+      feature: 'product',
+      likelihood: Math.min(likelihood, 1),
+      requirements,
+      met,
+    });
   }
 
   // Review detection
@@ -136,7 +153,11 @@ export function analyzeSerpEligibility(input: SerpFeatureInput): SerpFeaturePred
     const met: string[] = [];
     let likelihood = 0.1;
 
-    if (schemaTypes.some((s) => s.toLowerCase().includes('review') || s.toLowerCase().includes('aggregaterating'))) {
+    if (
+      schemaTypes.some(
+        (s) => s.toLowerCase().includes('review') || s.toLowerCase().includes('aggregaterating'),
+      )
+    ) {
       met.push('Review or AggregateRating schema');
       likelihood += 0.5;
     }
@@ -160,7 +181,11 @@ export function analyzeSerpEligibility(input: SerpFeatureInput): SerpFeaturePred
 
   // Featured snippet (content-based)
   {
-    const requirements = ['Concise answer to query', 'Well-structured content (headings, lists)', 'Sufficient word count'];
+    const requirements = [
+      'Concise answer to query',
+      'Well-structured content (headings, lists)',
+      'Sufficient word count',
+    ];
     const met: string[] = [];
     let likelihood = 0.1;
 
@@ -175,7 +200,12 @@ export function analyzeSerpEligibility(input: SerpFeatureInput): SerpFeaturePred
       likelihood += 0.1;
     }
 
-    predictions.push({ feature: 'featured-snippet', likelihood: Math.min(likelihood, 1), requirements, met });
+    predictions.push({
+      feature: 'featured-snippet',
+      likelihood: Math.min(likelihood, 1),
+      requirements,
+      met,
+    });
   }
 
   return predictions;

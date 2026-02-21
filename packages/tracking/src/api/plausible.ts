@@ -12,9 +12,7 @@ import type {
 const PLAUSIBLE_BASE = 'https://plausible.io/api/v1';
 
 export function createPlausibleClient(apiKey: string, selfHostedUrl?: string): PlausibleClient {
-  const baseUrl = selfHostedUrl
-    ? `${selfHostedUrl.replace(/\/$/, '')}/api/v1`
-    : PLAUSIBLE_BASE;
+  const baseUrl = selfHostedUrl ? `${selfHostedUrl.replace(/\/$/, '')}/api/v1` : PLAUSIBLE_BASE;
 
   async function request<T>(path: string): Promise<T> {
     const response = await globalThis.fetch(`${baseUrl}${path}`, {

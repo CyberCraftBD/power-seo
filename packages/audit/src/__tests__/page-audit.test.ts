@@ -7,11 +7,17 @@ describe('auditPage', () => {
     const input: PageAuditInput = {
       url: 'https://example.com/test',
       title: 'Complete Page Title for Testing',
-      metaDescription: 'A detailed meta description that provides useful context about this test page content.',
-      content: '<h1>Complete Page</h1><p>This is comprehensive content for testing the page audit functionality. We need enough text to avoid word count warnings and ensure the content analysis runs properly. The content discusses various topics including SEO optimization and best practices for web development.</p>',
+      metaDescription:
+        'A detailed meta description that provides useful context about this test page content.',
+      content:
+        '<h1>Complete Page</h1><p>This is comprehensive content for testing the page audit functionality. We need enough text to avoid word count warnings and ensure the content analysis runs properly. The content discusses various topics including SEO optimization and best practices for web development.</p>',
       focusKeyphrase: 'page audit',
       canonical: 'https://example.com/test',
-      openGraph: { title: 'OG Title', description: 'OG Description', image: 'https://example.com/img.png' },
+      openGraph: {
+        title: 'OG Title',
+        description: 'OG Description',
+        image: 'https://example.com/img.png',
+      },
       headings: ['h1: Complete Page', 'h2: Section One'],
       images: [{ src: 'img.png', alt: 'Test image' }],
       statusCode: 200,
@@ -73,7 +79,8 @@ describe('auditPage', () => {
     const optimized: PageAuditInput = {
       url: 'https://example.com',
       title: 'Well Optimized Page Title for SEO',
-      metaDescription: 'A well-crafted meta description that provides useful information about this page and its content.',
+      metaDescription:
+        'A well-crafted meta description that provides useful information about this page and its content.',
       canonical: 'https://example.com',
       headings: ['h1: Main Heading', 'h2: Sub Heading'],
       statusCode: 200,

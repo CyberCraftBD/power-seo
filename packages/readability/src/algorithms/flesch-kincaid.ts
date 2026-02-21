@@ -21,8 +21,7 @@ import type { TextStatistics } from '@power-seo/core';
 export function fleschReadingEase(stats: TextStatistics): number {
   if (stats.wordCount === 0 || stats.sentenceCount === 0) return 0;
 
-  const score =
-    206.835 - 1.015 * stats.avgWordsPerSentence - 84.6 * stats.avgSyllablesPerWord;
+  const score = 206.835 - 1.015 * stats.avgWordsPerSentence - 84.6 * stats.avgSyllablesPerWord;
 
   return Math.round(Math.max(0, Math.min(100, score)) * 100) / 100;
 }
@@ -37,8 +36,7 @@ export function fleschReadingEase(stats: TextStatistics): number {
 export function fleschKincaidGrade(stats: TextStatistics): number {
   if (stats.wordCount === 0 || stats.sentenceCount === 0) return 0;
 
-  const grade =
-    0.39 * stats.avgWordsPerSentence + 11.8 * stats.avgSyllablesPerWord - 15.59;
+  const grade = 0.39 * stats.avgWordsPerSentence + 11.8 * stats.avgSyllablesPerWord - 15.59;
 
   return Math.round(Math.max(0, grade) * 100) / 100;
 }

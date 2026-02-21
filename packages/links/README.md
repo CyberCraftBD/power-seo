@@ -66,10 +66,10 @@ import { buildLinkGraph, findOrphanPages, suggestLinks, analyzeLinkEquity } from
 
 // 1. Build the graph from your site's pages
 const graph = buildLinkGraph([
-  { url: 'https://example.com/',        links: ['https://example.com/about', 'https://example.com/blog'] },
-  { url: 'https://example.com/about',   links: ['https://example.com/'] },
-  { url: 'https://example.com/blog',    links: ['https://example.com/'] },
-  { url: 'https://example.com/orphan',  links: [] },
+  { url: 'https://example.com/', links: ['https://example.com/about', 'https://example.com/blog'] },
+  { url: 'https://example.com/about', links: ['https://example.com/'] },
+  { url: 'https://example.com/blog', links: ['https://example.com/'] },
+  { url: 'https://example.com/orphan', links: [] },
 ]);
 
 // 2. Find pages no other page links to
@@ -94,11 +94,7 @@ import type { PageData, LinkGraph } from '@power-seo/links';
 const pages: PageData[] = [
   {
     url: 'https://example.com/',
-    links: [
-      'https://example.com/blog',
-      'https://example.com/about',
-      'https://example.com/contact',
-    ],
+    links: ['https://example.com/blog', 'https://example.com/about', 'https://example.com/contact'],
   },
   {
     url: 'https://example.com/blog',
@@ -130,7 +126,7 @@ const graph: LinkGraph = buildLinkGraph(pages);
 
 // Inspect a node
 const blogNode = graph.get('https://example.com/blog');
-console.log(blogNode?.inboundLinks);  // Set { 'https://example.com/' }
+console.log(blogNode?.inboundLinks); // Set { 'https://example.com/' }
 console.log(blogNode?.outboundLinks); // Set { 'https://example.com/', ... }
 ```
 
@@ -168,22 +164,25 @@ const options: LinkSuggestionOptions = {
     {
       url: '/guide/react-seo',
       title: 'React SEO Guide',
-      content: 'Learn how to optimize React applications for search engines using meta tags, structured data, and server-side rendering.',
+      content:
+        'Learn how to optimize React applications for search engines using meta tags, structured data, and server-side rendering.',
     },
     {
       url: '/guide/meta-tags',
       title: 'HTML Meta Tags Explained',
-      content: 'Meta tags control how search engines index your pages. The title tag and meta description are the most important.',
+      content:
+        'Meta tags control how search engines index your pages. The title tag and meta description are the most important.',
     },
     {
       url: '/guide/nextjs-setup',
       title: 'Next.js Project Setup',
-      content: 'Set up a Next.js application with TypeScript, ESLint, and Prettier for a production-ready project.',
+      content:
+        'Set up a Next.js application with TypeScript, ESLint, and Prettier for a production-ready project.',
     },
   ],
-  minSimilarity: 0.15,      // optional — minimum overlap score (0-1)
+  minSimilarity: 0.15, // optional — minimum overlap score (0-1)
   maxSuggestionsPerPage: 3, // optional — cap suggestions per page
-  bidirectional: true,      // optional — suggest links in both directions
+  bidirectional: true, // optional — suggest links in both directions
 };
 
 const suggestions: LinkSuggestion[] = suggestLinks(options);
@@ -205,16 +204,15 @@ import type { LinkEquityScore, LinkEquityOptions } from '@power-seo/links';
 const graph = buildLinkGraph(pages);
 
 const options: LinkEquityOptions = {
-  dampingFactor: 0.85,     // optional — PageRank damping factor (default: 0.85)
-  iterations: 100,         // optional — max iterations (default: 100)
+  dampingFactor: 0.85, // optional — PageRank damping factor (default: 0.85)
+  iterations: 100, // optional — max iterations (default: 100)
   convergenceThreshold: 1e-6, // optional — stop when delta < threshold
 };
 
 const equity = analyzeLinkEquity(graph, options);
 
 // Sort pages by equity score (highest first)
-const ranked = [...equity.entries()]
-  .sort(([, a], [, b]) => b.score - a.score);
+const ranked = [...equity.entries()].sort(([, a], [, b]) => b.score - a.score);
 
 ranked.forEach(([url, { score, inboundCount, outboundCount }]) => {
   console.log(`${url}: equity=${score.toFixed(4)}, in=${inboundCount}, out=${outboundCount}`);
@@ -247,9 +245,9 @@ const enrichedPages = auditReport.pages.map((page) => ({
 
 ### `buildLinkGraph(pages)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `pages` | `PageData[]` | required | Array of pages with their URL and outbound link arrays |
+| Parameter | Type         | Default  | Description                                            |
+| --------- | ------------ | -------- | ------------------------------------------------------ |
+| `pages`   | `PageData[]` | required | Array of pages with their URL and outbound link arrays |
 
 Returns `LinkGraph` (`Map<string, LinkNode>`).
 
@@ -257,9 +255,9 @@ Returns `LinkGraph` (`Map<string, LinkNode>`).
 
 ### `findOrphanPages(graph)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `graph` | `LinkGraph` | required | A directed link graph built by `buildLinkGraph` |
+| Parameter | Type        | Default  | Description                                     |
+| --------- | ----------- | -------- | ----------------------------------------------- |
+| `graph`   | `LinkGraph` | required | A directed link graph built by `buildLinkGraph` |
 
 Returns `OrphanPage[]` — array of `{ url: string; inboundCount: 0 }` objects.
 
@@ -267,12 +265,12 @@ Returns `OrphanPage[]` — array of `{ url: string; inboundCount: 0 }` objects.
 
 ### `suggestLinks(options)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `options.pages` | `PageData[]` | required | Pages with `url`, `title`, and `content` for similarity analysis |
-| `options.minSimilarity` | `number` | `0.1` | Minimum keyword overlap score (0–1) to include a suggestion |
-| `options.maxSuggestionsPerPage` | `number` | `5` | Maximum number of suggestions returned per source page |
-| `options.bidirectional` | `boolean` | `false` | Whether to suggest links in both directions between related pages |
+| Parameter                       | Type         | Default  | Description                                                       |
+| ------------------------------- | ------------ | -------- | ----------------------------------------------------------------- |
+| `options.pages`                 | `PageData[]` | required | Pages with `url`, `title`, and `content` for similarity analysis  |
+| `options.minSimilarity`         | `number`     | `0.1`    | Minimum keyword overlap score (0–1) to include a suggestion       |
+| `options.maxSuggestionsPerPage` | `number`     | `5`      | Maximum number of suggestions returned per source page            |
+| `options.bidirectional`         | `boolean`    | `false`  | Whether to suggest links in both directions between related pages |
 
 Returns `LinkSuggestion[]` — array of `{ sourcePage, targetPage, anchorText, score }` objects.
 
@@ -280,12 +278,12 @@ Returns `LinkSuggestion[]` — array of `{ sourcePage, targetPage, anchorText, s
 
 ### `analyzeLinkEquity(graph, options?)`
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `graph` | `LinkGraph` | required | A directed link graph built by `buildLinkGraph` |
-| `options.dampingFactor` | `number` | `0.85` | PageRank damping factor — probability of following a link vs. jumping randomly |
-| `options.iterations` | `number` | `100` | Maximum number of power-iteration steps |
-| `options.convergenceThreshold` | `number` | `1e-6` | Stop iterating when the largest score delta is below this threshold |
+| Parameter                      | Type        | Default  | Description                                                                    |
+| ------------------------------ | ----------- | -------- | ------------------------------------------------------------------------------ |
+| `graph`                        | `LinkGraph` | required | A directed link graph built by `buildLinkGraph`                                |
+| `options.dampingFactor`        | `number`    | `0.85`   | PageRank damping factor — probability of following a link vs. jumping randomly |
+| `options.iterations`           | `number`    | `100`    | Maximum number of power-iteration steps                                        |
+| `options.convergenceThreshold` | `number`    | `1e-6`   | Stop iterating when the largest score delta is below this threshold            |
 
 Returns `Map<string, LinkEquityScore>`.
 
@@ -295,14 +293,14 @@ Returns `Map<string, LinkEquityScore>`.
 
 ```ts
 import type {
-  PageData,               // { url: string; links: string[]; title?: string; content?: string }
-  LinkNode,               // { url: string; inboundLinks: Set<string>; outboundLinks: Set<string> }
-  LinkGraph,              // Map<string, LinkNode>
-  OrphanPage,             // { url: string; inboundCount: number }
-  LinkSuggestion,         // { sourcePage: string; targetPage: string; anchorText: string; score: number }
-  LinkSuggestionOptions,  // { pages, minSimilarity?, maxSuggestionsPerPage?, bidirectional? }
-  LinkEquityScore,        // { score: number; inboundCount: number; outboundCount: number }
-  LinkEquityOptions,      // { dampingFactor?, iterations?, convergenceThreshold? }
+  PageData, // { url: string; links: string[]; title?: string; content?: string }
+  LinkNode, // { url: string; inboundLinks: Set<string>; outboundLinks: Set<string> }
+  LinkGraph, // Map<string, LinkNode>
+  OrphanPage, // { url: string; inboundCount: number }
+  LinkSuggestion, // { sourcePage: string; targetPage: string; anchorText: string; score: number }
+  LinkSuggestionOptions, // { pages, minSimilarity?, maxSuggestionsPerPage?, bidirectional? }
+  LinkEquityScore, // { score: number; inboundCount: number; outboundCount: number }
+  LinkEquityOptions, // { dampingFactor?, iterations?, convergenceThreshold? }
 } from '@power-seo/links';
 ```
 
@@ -310,25 +308,25 @@ import type {
 
 `@power-seo/links` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
 
-| Package | Install | Description |
-|---------|---------|-------------|
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 
@@ -336,11 +334,11 @@ import type {
 
 **CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-| | |
-|---|---|
-| **Website** | [ccbd.dev](https://ccbd.dev) |
-| **GitHub** | [github.com/cybercraftbd](https://github.com/cybercraftbd) |
+|                      |                                                                |
+| -------------------- | -------------------------------------------------------------- |
+| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
+| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email** | [info@ccbd.dev](mailto:info@ccbd.dev) |
+| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
 
 © 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)

@@ -12,10 +12,7 @@ import type { LinkGraph, OrphanPage } from './types.js';
  * @param entryPoints - URLs to exclude (e.g. homepage, known entry pages)
  * @returns Orphan pages sorted by outbound count descending
  */
-export function findOrphanPages(
-  graph: LinkGraph,
-  entryPoints: string[] = [],
-): OrphanPage[] {
+export function findOrphanPages(graph: LinkGraph, entryPoints: string[] = []): OrphanPage[] {
   const excludeSet = new Set(entryPoints.map((url) => normalizeUrl(url)));
   const orphans: OrphanPage[] = [];
 

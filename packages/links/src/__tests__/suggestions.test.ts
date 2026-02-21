@@ -40,7 +40,9 @@ describe('suggestLinks', () => {
     ];
     const suggestions = suggestLinks(pages);
     // Should not suggest A → B since that link already exists
-    const aToB = suggestions.find((s) => s.from === 'https://example.com/a' && s.to === 'https://example.com/b');
+    const aToB = suggestions.find(
+      (s) => s.from === 'https://example.com/a' && s.to === 'https://example.com/b',
+    );
     expect(aToB).toBeUndefined();
   });
 
@@ -116,7 +118,9 @@ describe('suggestLinks', () => {
     ];
     const suggestions = suggestLinks(pages);
     for (let i = 1; i < suggestions.length; i++) {
-      expect(suggestions[i]!.relevanceScore).toBeLessThanOrEqual(suggestions[i - 1]!.relevanceScore);
+      expect(suggestions[i]!.relevanceScore).toBeLessThanOrEqual(
+        suggestions[i - 1]!.relevanceScore,
+      );
     }
   });
 

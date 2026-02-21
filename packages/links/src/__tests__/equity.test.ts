@@ -77,9 +77,7 @@ describe('analyzeLinkEquity', () => {
   });
 
   it('handles single page graph', () => {
-    const pages: PageData[] = [
-      { url: 'https://example.com/a', links: [] },
-    ];
+    const pages: PageData[] = [{ url: 'https://example.com/a', links: [] }];
     const graph = buildLinkGraph(pages);
     const equity = analyzeLinkEquity(graph);
     expect(equity).toHaveLength(1);

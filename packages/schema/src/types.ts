@@ -302,10 +302,24 @@ export interface JobPostingSchema extends ThingBase {
   validThrough?: string;
   hiringOrganization: OrganizationSchema;
   jobLocation?: PostalAddress | PostalAddress[];
-  baseSalary?: MonetaryAmount | { '@type': 'MonetaryAmount'; currency: string; value: { '@type': 'QuantitativeValue'; value?: number; minValue?: number; maxValue?: number; unitText?: string } };
+  baseSalary?:
+    | MonetaryAmount
+    | {
+        '@type': 'MonetaryAmount';
+        currency: string;
+        value: {
+          '@type': 'QuantitativeValue';
+          value?: number;
+          minValue?: number;
+          maxValue?: number;
+          unitText?: string;
+        };
+      };
   employmentType?: string | string[];
   jobLocationType?: string;
-  applicantLocationRequirements?: { '@type': 'Country'; name: string } | Array<{ '@type': 'Country'; name: string }>;
+  applicantLocationRequirements?:
+    | { '@type': 'Country'; name: string }
+    | Array<{ '@type': 'Country'; name: string }>;
 }
 
 export interface SoftwareAppSchema extends ThingBase {
@@ -333,7 +347,11 @@ export interface ItemListSchema extends JsonLdBase {
   '@type': 'ItemList';
   itemListElement: ListItem[];
   numberOfItems?: number;
-  itemListOrder?: 'https://schema.org/ItemListOrderAscending' | 'https://schema.org/ItemListOrderDescending' | 'https://schema.org/ItemListUnordered' | string;
+  itemListOrder?:
+    | 'https://schema.org/ItemListOrderAscending'
+    | 'https://schema.org/ItemListOrderDescending'
+    | 'https://schema.org/ItemListUnordered'
+    | string;
 }
 
 export interface ListItem extends JsonLdBase {

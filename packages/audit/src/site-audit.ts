@@ -2,7 +2,13 @@
 // @power-seo/audit — Site Audit
 // ============================================================================
 
-import type { SiteAuditInput, SiteAuditResult, AuditRule, AuditCategory, CategoryResult } from './types.js';
+import type {
+  SiteAuditInput,
+  SiteAuditResult,
+  AuditRule,
+  AuditCategory,
+  CategoryResult,
+} from './types.js';
 import { auditPage } from './page-audit.js';
 
 const CATEGORIES: AuditCategory[] = ['meta', 'content', 'structure', 'performance'];
@@ -17,9 +23,8 @@ export function auditSite(input: SiteAuditInput): SiteAuditResult {
   const totalPages = pageResults.length;
 
   // Average score
-  const score = totalPages > 0
-    ? Math.round(pageResults.reduce((sum, r) => sum + r.score, 0) / totalPages)
-    : 0;
+  const score =
+    totalPages > 0 ? Math.round(pageResults.reduce((sum, r) => sum + r.score, 0) / totalPages) : 0;
 
   // Aggregate category results
   const summary = {} as Record<AuditCategory, CategoryResult>;

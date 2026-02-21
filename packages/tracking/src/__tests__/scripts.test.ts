@@ -6,8 +6,18 @@ import { buildPlausibleScript } from '../scripts/plausible.js';
 import { buildFathomScript } from '../scripts/fathom.js';
 import type { ConsentState } from '../types.js';
 
-const grantedConsent: ConsentState = { necessary: true, analytics: true, marketing: true, preferences: true };
-const deniedConsent: ConsentState = { necessary: true, analytics: false, marketing: false, preferences: false };
+const grantedConsent: ConsentState = {
+  necessary: true,
+  analytics: true,
+  marketing: true,
+  preferences: true,
+};
+const deniedConsent: ConsentState = {
+  necessary: true,
+  analytics: false,
+  marketing: false,
+  preferences: false,
+};
 
 describe('buildGA4Script', () => {
   it('should return multiple ScriptConfig items with consent mode v2', () => {
@@ -73,7 +83,10 @@ describe('buildPlausibleScript', () => {
   });
 
   it('should support self-hosted URL', () => {
-    const script = buildPlausibleScript({ domain: 'example.com', selfHostedUrl: 'https://stats.example.com/' });
+    const script = buildPlausibleScript({
+      domain: 'example.com',
+      selfHostedUrl: 'https://stats.example.com/',
+    });
     expect(script.src).toBe('https://stats.example.com/js/script.js');
   });
 });

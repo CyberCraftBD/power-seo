@@ -2,12 +2,7 @@
 // @power-seo/tracking — Fathom API Client
 // ============================================================================
 
-import type {
-  FathomClient,
-  FathomSite,
-  FathomPageview,
-  FathomReferrer,
-} from '../types.js';
+import type { FathomClient, FathomSite, FathomPageview, FathomReferrer } from '../types.js';
 
 const FATHOM_BASE = 'https://api.usefathom.com/v1';
 

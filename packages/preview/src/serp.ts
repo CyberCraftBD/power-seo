@@ -19,9 +19,7 @@ function formatBreadcrumbUrl(url: string): string {
   try {
     const parsed = new globalThis.URL(url);
     const host = parsed.hostname.replace(/^www\./, '');
-    const pathSegments = parsed.pathname
-      .split('/')
-      .filter((seg) => seg.length > 0);
+    const pathSegments = parsed.pathname.split('/').filter((seg) => seg.length > 0);
 
     if (pathSegments.length === 0) {
       return host;

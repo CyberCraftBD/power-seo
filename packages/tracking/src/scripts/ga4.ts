@@ -32,9 +32,7 @@ export function buildGA4Script(config: GA4Config): ScriptConfig[] {
   ];
 
   if (consentModeV2) {
-    configParts.push(
-      `gtag('consent','update',{'analytics_storage':'granted'});`,
-    );
+    configParts.push(`gtag('consent','update',{'analytics_storage':'granted'});`);
   }
 
   scripts.push({

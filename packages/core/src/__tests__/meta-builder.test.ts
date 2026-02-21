@@ -89,9 +89,7 @@ describe('buildLinkTags', () => {
 
 describe('resolveTitle', () => {
   it('should apply template to title', () => {
-    expect(resolveTitle({ title: 'About', titleTemplate: '%s | My Site' })).toBe(
-      'About | My Site',
-    );
+    expect(resolveTitle({ title: 'About', titleTemplate: '%s | My Site' })).toBe('About | My Site');
   });
 
   it('should return title when no template', () => {

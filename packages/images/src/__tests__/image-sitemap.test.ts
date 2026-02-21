@@ -4,9 +4,7 @@ import type { ImageInfo, ImageSitemapPage } from '../types.js';
 
 describe('extractImageEntries', () => {
   it('should convert ImageInfo to SitemapImage entries', () => {
-    const images: ImageInfo[] = [
-      { src: 'https://example.com/photo.jpg', alt: 'A nice photo' },
-    ];
+    const images: ImageInfo[] = [{ src: 'https://example.com/photo.jpg', alt: 'A nice photo' }];
     const entries = extractImageEntries('https://example.com/page', images);
     expect(entries).toHaveLength(1);
     expect(entries[0].loc).toBe('https://example.com/photo.jpg');
@@ -48,9 +46,7 @@ describe('generateImageSitemap', () => {
   });
 
   it('should skip pages with no images', () => {
-    const pages: ImageSitemapPage[] = [
-      { pageUrl: 'https://example.com/page', images: [] },
-    ];
+    const pages: ImageSitemapPage[] = [{ pageUrl: 'https://example.com/page', images: [] }];
     const xml = generateImageSitemap(pages);
     expect(xml).not.toContain('<url>');
     expect(xml).toContain('<urlset');

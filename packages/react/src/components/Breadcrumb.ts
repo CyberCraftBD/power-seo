@@ -98,7 +98,19 @@ export function Breadcrumb({
     createElement(
       'nav',
       { 'aria-label': 'Breadcrumb', className },
-      createElement('ol', { style: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap' as const } }, ...breadcrumbItems),
+      createElement(
+        'ol',
+        {
+          style: {
+            listStyle: 'none',
+            padding: 0,
+            margin: 0,
+            display: 'flex',
+            flexWrap: 'wrap' as const,
+          },
+        },
+        ...breadcrumbItems,
+      ),
     ),
   );
 

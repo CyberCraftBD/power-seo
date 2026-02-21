@@ -23,9 +23,7 @@ describe('Canonical component', () => {
   });
 
   it('should resolve relative URL with baseUrl', () => {
-    render(
-      <Canonical url="/blog/post" baseUrl="https://example.com" />,
-    );
+    render(<Canonical url="/blog/post" baseUrl="https://example.com" />);
     const link = document.head.querySelector('link[rel="canonical"]');
     expect(link?.getAttribute('href')).toBe('https://example.com/blog/post');
   });
@@ -78,11 +76,7 @@ describe('Breadcrumb component', () => {
   it('should render visual breadcrumb', () => {
     const { container } = render(
       <Breadcrumb
-        items={[
-          { name: 'Home', url: '/' },
-          { name: 'Blog', url: '/blog' },
-          { name: 'Post' },
-        ]}
+        items={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'Post' }]}
       />,
     );
     const nav = container.querySelector('nav[aria-label="Breadcrumb"]');
@@ -93,12 +87,7 @@ describe('Breadcrumb component', () => {
 
   it('should render JSON-LD', () => {
     const { container } = render(
-      <Breadcrumb
-        items={[
-          { name: 'Home', url: '/' },
-          { name: 'Blog' },
-        ]}
-      />,
+      <Breadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Blog' }]} />,
     );
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).not.toBeNull();
@@ -109,10 +98,7 @@ describe('Breadcrumb component', () => {
 
   it('should optionally exclude JSON-LD', () => {
     const { container } = render(
-      <Breadcrumb
-        items={[{ name: 'Home', url: '/' }]}
-        includeJsonLd={false}
-      />,
+      <Breadcrumb items={[{ name: 'Home', url: '/' }]} includeJsonLd={false} />,
     );
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).toBeNull();
@@ -129,21 +115,23 @@ describe('OpenGraph component', () => {
         url="https://example.com/article"
       />,
     );
-    expect(document.head.querySelector('meta[property="og:type"]')?.getAttribute('content')).toBe('article');
-    expect(document.head.querySelector('meta[property="og:title"]')?.getAttribute('content')).toBe('My Article');
+    expect(document.head.querySelector('meta[property="og:type"]')?.getAttribute('content')).toBe(
+      'article',
+    );
+    expect(document.head.querySelector('meta[property="og:title"]')?.getAttribute('content')).toBe(
+      'My Article',
+    );
   });
 });
 
 describe('TwitterCard component', () => {
   it('should render Twitter Card meta tags', () => {
-    render(
-      <TwitterCard
-        cardType="summary_large_image"
-        site="@example"
-        title="Card Title"
-      />,
+    render(<TwitterCard cardType="summary_large_image" site="@example" title="Card Title" />);
+    expect(document.head.querySelector('meta[name="twitter:card"]')?.getAttribute('content')).toBe(
+      'summary_large_image',
     );
-    expect(document.head.querySelector('meta[name="twitter:card"]')?.getAttribute('content')).toBe('summary_large_image');
-    expect(document.head.querySelector('meta[name="twitter:site"]')?.getAttribute('content')).toBe('@example');
+    expect(document.head.querySelector('meta[name="twitter:site"]')?.getAttribute('content')).toBe(
+      '@example',
+    );
   });
 });

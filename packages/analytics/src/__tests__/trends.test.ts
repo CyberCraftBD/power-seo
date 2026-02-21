@@ -72,7 +72,12 @@ describe('buildTrendLines', () => {
     };
     const snapshots: AuditSnapshot[] = [
       { date: '2025-01-01', url: 'https://example.com', score: 70, categories },
-      { date: '2025-02-01', url: 'https://example.com', score: 75, categories: { ...categories, meta: 85 } },
+      {
+        date: '2025-02-01',
+        url: 'https://example.com',
+        score: 75,
+        categories: { ...categories, meta: 85 },
+      },
     ];
     const result = buildTrendLines(snapshots);
     expect(result.overall).toBeDefined();
@@ -117,9 +122,7 @@ describe('detectAnomalies', () => {
   });
 
   it('should return empty for less than 3 points', () => {
-    const points: TrendPoint[] = [
-      { date: '2025-01-01', value: 50 },
-    ];
+    const points: TrendPoint[] = [{ date: '2025-01-01', value: 50 }];
     const anomalies = detectAnomalies(points);
     expect(anomalies).toHaveLength(0);
   });

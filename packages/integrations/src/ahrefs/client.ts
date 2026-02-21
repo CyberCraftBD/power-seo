@@ -99,10 +99,7 @@ export function createAhrefsClient(
       const limit = options?.limit ?? DEFAULT_LIMIT;
       const offset = options?.offset ?? 0;
       const params = buildBacklinksParams(domain, limit, offset);
-      const raw = await http.get<AhrefsApiResponse<AhrefsRawBacklink>>(
-        backlinksPath(),
-        params,
-      );
+      const raw = await http.get<AhrefsApiResponse<AhrefsRawBacklink>>(backlinksPath(), params);
       const data: AhrefsBacklink[] = (raw.data ?? []).map((r) => ({
         sourceUrl: r.url_from,
         targetUrl: r.url_to,
@@ -128,14 +125,16 @@ export function createAhrefsClient(
         keywordDifficultyPath(),
         params,
       );
-      return (raw.data ?? []).map((r): AhrefsKeywordDifficulty => ({
-        keyword: r.keyword,
-        difficulty: r.difficulty,
-        searchVolume: r.volume,
-        cpc: r.cpc,
-        clicks: r.clicks,
-        globalVolume: r.global_volume,
-      }));
+      return (raw.data ?? []).map(
+        (r): AhrefsKeywordDifficulty => ({
+          keyword: r.keyword,
+          difficulty: r.difficulty,
+          searchVolume: r.volume,
+          cpc: r.cpc,
+          clicks: r.clicks,
+          globalVolume: r.global_volume,
+        }),
+      );
     },
 
     async getReferringDomains(domain, options?: AhrefsPaginationOptions) {

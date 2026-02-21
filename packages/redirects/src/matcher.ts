@@ -38,11 +38,7 @@ function normalizePath(url: string, config?: RedirectEngineConfig): string {
 /**
  * Exact string match after normalization.
  */
-export function matchExact(
-  url: string,
-  source: string,
-  config?: RedirectEngineConfig,
-): boolean {
+export function matchExact(url: string, source: string, config?: RedirectEngineConfig): boolean {
   return normalizePath(url, config) === normalizePath(source, config);
 }
 
@@ -153,10 +149,7 @@ export function matchRegex(
  * Substitute params into a destination string.
  * Replaces `:param` tokens and `*` with matched values.
  */
-export function substituteParams(
-  destination: string,
-  params: Record<string, string>,
-): string {
+export function substituteParams(destination: string, params: Record<string, string>): string {
   let result = destination;
   for (const [key, value] of Object.entries(params)) {
     if (key === '*') {

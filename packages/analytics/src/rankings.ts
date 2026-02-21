@@ -13,13 +13,15 @@ const BUCKET_RANGES = [
 
 export function analyzeQueryRankings(queries: GscQueryData[]): RankingAnalysis {
   if (queries.length === 0) {
-    return { totalQueries: 0, buckets: BUCKET_RANGES.map((r) => ({ range: r.range, count: 0, queries: [] })), strikingDistance: [] };
+    return {
+      totalQueries: 0,
+      buckets: BUCKET_RANGES.map((r) => ({ range: r.range, count: 0, queries: [] })),
+      strikingDistance: [],
+    };
   }
 
   const buckets: RankingBucket[] = BUCKET_RANGES.map((range) => {
-    const matching = queries.filter(
-      (q) => q.position >= range.min && q.position <= range.max,
-    );
+    const matching = queries.filter((q) => q.position >= range.min && q.position <= range.max);
     return {
       range: range.range,
       count: matching.length,

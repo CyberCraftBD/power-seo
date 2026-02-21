@@ -58,9 +58,11 @@ export function generateImageSitemap(pages: ImageSitemapPage[]): string {
     for (const entry of entries) {
       xml += '    <image:image>\n';
       xml += `      <image:loc>${escapeXml(entry.loc)}</image:loc>\n`;
-      if (entry.caption) xml += `      <image:caption>${escapeXml(entry.caption)}</image:caption>\n`;
+      if (entry.caption)
+        xml += `      <image:caption>${escapeXml(entry.caption)}</image:caption>\n`;
       if (entry.title) xml += `      <image:title>${escapeXml(entry.title)}</image:title>\n`;
-      if (entry.license) xml += `      <image:license>${escapeXml(entry.license)}</image:license>\n`;
+      if (entry.license)
+        xml += `      <image:license>${escapeXml(entry.license)}</image:license>\n`;
       xml += '    </image:image>\n';
     }
 

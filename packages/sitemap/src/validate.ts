@@ -69,7 +69,9 @@ export function validateSitemapUrl(url: SitemapURL): SitemapValidationResult {
       }
     }
     if (url.images.length > 1000) {
-      warnings.push(`URL has ${url.images.length} images. Google supports up to 1,000 images per page.`);
+      warnings.push(
+        `URL has ${url.images.length} images. Google supports up to 1,000 images per page.`,
+      );
     }
   }
 

@@ -104,9 +104,18 @@ export interface SemrushRelatedKeyword {
 
 export interface SemrushClient {
   getDomainOverview: (domain: string, database?: string) => Promise<SemrushDomainOverview>;
-  getOrganicKeywords: (domain: string, options?: SemrushPaginationOptions) => Promise<PaginatedResponse<SemrushKeywordData>>;
-  getBacklinks: (domain: string, options?: SemrushPaginationOptions) => Promise<PaginatedResponse<SemrushBacklinkData>>;
-  getKeywordDifficulty: (keywords: string[], database?: string) => Promise<SemrushKeywordDifficulty[]>;
+  getOrganicKeywords: (
+    domain: string,
+    options?: SemrushPaginationOptions,
+  ) => Promise<PaginatedResponse<SemrushKeywordData>>;
+  getBacklinks: (
+    domain: string,
+    options?: SemrushPaginationOptions,
+  ) => Promise<PaginatedResponse<SemrushBacklinkData>>;
+  getKeywordDifficulty: (
+    keywords: string[],
+    database?: string,
+  ) => Promise<SemrushKeywordDifficulty[]>;
   getRelatedKeywords: (keyword: string, database?: string) => Promise<SemrushRelatedKeyword[]>;
 }
 
@@ -171,10 +180,19 @@ export interface AhrefsReferringDomain {
 
 export interface AhrefsClient {
   getSiteOverview: (domain: string) => Promise<AhrefsSiteOverview>;
-  getOrganicKeywords: (domain: string, options?: AhrefsPaginationOptions) => Promise<PaginatedResponse<AhrefsOrganicKeyword>>;
-  getBacklinks: (domain: string, options?: AhrefsPaginationOptions) => Promise<PaginatedResponse<AhrefsBacklink>>;
+  getOrganicKeywords: (
+    domain: string,
+    options?: AhrefsPaginationOptions,
+  ) => Promise<PaginatedResponse<AhrefsOrganicKeyword>>;
+  getBacklinks: (
+    domain: string,
+    options?: AhrefsPaginationOptions,
+  ) => Promise<PaginatedResponse<AhrefsBacklink>>;
   getKeywordDifficulty: (keywords: string[]) => Promise<AhrefsKeywordDifficulty[]>;
-  getReferringDomains: (domain: string, options?: AhrefsPaginationOptions) => Promise<PaginatedResponse<AhrefsReferringDomain>>;
+  getReferringDomains: (
+    domain: string,
+    options?: AhrefsPaginationOptions,
+  ) => Promise<PaginatedResponse<AhrefsReferringDomain>>;
 }
 
 export interface AhrefsPaginationOptions {

@@ -5,8 +5,18 @@ import { AnalyticsScript, ConsentBanner } from '../react.js';
 import { createConsentManager } from '../consent.js';
 import type { ScriptConfig, ConsentState } from '../types.js';
 
-const grantedConsent: ConsentState = { necessary: true, analytics: true, marketing: true, preferences: true };
-const deniedConsent: ConsentState = { necessary: true, analytics: false, marketing: false, preferences: false };
+const grantedConsent: ConsentState = {
+  necessary: true,
+  analytics: true,
+  marketing: true,
+  preferences: true,
+};
+const deniedConsent: ConsentState = {
+  necessary: true,
+  analytics: false,
+  marketing: false,
+  preferences: false,
+};
 
 describe('AnalyticsScript', () => {
   it('should render container when consent is granted', () => {
@@ -36,7 +46,9 @@ describe('AnalyticsScript', () => {
       },
     ];
 
-    const { container } = render(createElement(AnalyticsScript, { scripts, consent: deniedConsent }));
+    const { container } = render(
+      createElement(AnalyticsScript, { scripts, consent: deniedConsent }),
+    );
     expect(container.querySelector('[data-testid="analytics-scripts"]')).toBeNull();
   });
 
@@ -88,7 +100,9 @@ describe('ConsentBanner', () => {
 
   it('should render privacy policy link when provided', () => {
     const manager = createConsentManager();
-    render(createElement(ConsentBanner, { manager, privacyPolicyUrl: 'https://example.com/privacy' }));
+    render(
+      createElement(ConsentBanner, { manager, privacyPolicyUrl: 'https://example.com/privacy' }),
+    );
 
     const link = screen.getByText('Privacy Policy');
     expect(link).toBeDefined();

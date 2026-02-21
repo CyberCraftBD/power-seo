@@ -6,7 +6,8 @@ import { calculatePixelWidth, TITLE_MAX_LENGTH } from '@power-seo/core';
 import type { PromptTemplate, TitleInput, TitleResult } from '../types.js';
 
 export function buildTitlePrompt(input: TitleInput): PromptTemplate {
-  const contentExcerpt = input.content.length > 500 ? input.content.slice(0, 500) + '...' : input.content;
+  const contentExcerpt =
+    input.content.length > 500 ? input.content.slice(0, 500) + '...' : input.content;
 
   let userPrompt = `Generate 5 SEO-optimized title tag variants for the following content.\n\n`;
   userPrompt += `Content excerpt: ${contentExcerpt}\n`;

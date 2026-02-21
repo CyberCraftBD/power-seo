@@ -63,11 +63,7 @@ export { applyTitleTemplate, createTitleTemplate } from './title-template.js';
 export type { TitleTemplateVars } from './title-template.js';
 
 // Meta Validators
-export {
-  calculatePixelWidth,
-  validateTitle,
-  validateMetaDescription,
-} from './meta-validators.js';
+export { calculatePixelWidth, validateTitle, validateMetaDescription } from './meta-validators.js';
 export type { ValidationSeverity, ValidationResult } from './meta-validators.js';
 
 // URL Utilities
@@ -116,10 +112,5 @@ export {
 } from './meta-builder.js';
 
 // Rate Limiting
-export {
-  createTokenBucket,
-  consumeToken,
-  getWaitTime,
-  sleep,
-} from './rate-limit.js';
+export { createTokenBucket, consumeToken, getWaitTime, sleep } from './rate-limit.js';
 export type { TokenBucket } from './rate-limit.js';

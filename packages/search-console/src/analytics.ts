@@ -22,10 +22,10 @@ export async function querySearchAnalytics(
     rowLimit: Math.min(request.rowLimit ?? DEFAULT_ROW_LIMIT, MAX_ROW_LIMIT),
   };
 
-  return client.request<SearchAnalyticsResponse>(
-    `/sites/${siteUrl}/searchAnalytics/query`,
-    { method: 'POST', body },
-  );
+  return client.request<SearchAnalyticsResponse>(`/sites/${siteUrl}/searchAnalytics/query`, {
+    method: 'POST',
+    body,
+  });
 }
 
 export async function querySearchAnalyticsAll(

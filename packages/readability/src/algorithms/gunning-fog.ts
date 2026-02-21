@@ -45,10 +45,7 @@ function countComplexWords(text: string): number {
     if (syllables < 3) continue;
 
     // Exclude words that are 3+ syllables only due to common suffixes
-    const withoutSuffix = cleaned
-      .replace(/ing$/, '')
-      .replace(/ed$/, '')
-      .replace(/es$/, '');
+    const withoutSuffix = cleaned.replace(/ing$/, '').replace(/ed$/, '').replace(/es$/, '');
 
     if (withoutSuffix !== cleaned && countSyllables(withoutSuffix) < 3) {
       continue;

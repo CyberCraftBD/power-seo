@@ -71,23 +71,15 @@ describe('SEO component', () => {
 
 describe('DefaultSEO component', () => {
   it('should render default title', () => {
-    render(
-      <DefaultSEO defaultTitle="My Site" description="Default description" />,
-    );
+    render(<DefaultSEO defaultTitle="My Site" description="Default description" />);
     const title = document.head.querySelector('title');
     expect(title?.textContent).toBe('My Site');
   });
 
   it('should provide context to child SEO components', () => {
     render(
-      <DefaultSEO
-        titleTemplate="%s | My Site"
-        openGraph={{ siteName: 'My Site' }}
-      >
-        <SEO
-          title="About"
-          openGraph={{ title: 'About Us' }}
-        />
+      <DefaultSEO titleTemplate="%s | My Site" openGraph={{ siteName: 'My Site' }}>
+        <SEO title="About" openGraph={{ title: 'About Us' }} />
       </DefaultSEO>,
     );
 

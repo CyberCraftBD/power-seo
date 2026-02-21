@@ -152,9 +152,7 @@ export function stripTrackingParams(url: string): string {
     for (const param of trackingParams) {
       parsed.searchParams.delete(param);
     }
-    parsed.search = parsed.searchParams.toString()
-      ? `?${parsed.searchParams.toString()}`
-      : '';
+    parsed.search = parsed.searchParams.toString() ? `?${parsed.searchParams.toString()}` : '';
     return parsed.toString();
   } catch {
     return url;

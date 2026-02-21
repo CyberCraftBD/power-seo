@@ -21,7 +21,10 @@ beforeEach(() => {
 describe('querySearchAnalytics', () => {
   it('should send correct request body', async () => {
     const client = createMockClient([
-      { rows: [{ keys: ['test'], clicks: 10, impressions: 100, ctr: 0.1, position: 5 }], responseAggregationType: 'auto' },
+      {
+        rows: [{ keys: ['test'], clicks: 10, impressions: 100, ctr: 0.1, position: 5 }],
+        responseAggregationType: 'auto',
+      },
     ]);
 
     const result = await querySearchAnalytics(client, {
@@ -39,9 +42,7 @@ describe('querySearchAnalytics', () => {
   });
 
   it('should cap rowLimit to 25000', async () => {
-    const client = createMockClient([
-      { rows: [], responseAggregationType: 'auto' },
-    ]);
+    const client = createMockClient([{ rows: [], responseAggregationType: 'auto' }]);
 
     await querySearchAnalytics(client, {
       startDate: '2024-01-01',
@@ -49,21 +50,25 @@ describe('querySearchAnalytics', () => {
       rowLimit: 50000,
     });
 
-    const [, options] = (client.request as ReturnType<typeof vi.fn>).mock.calls[0] as [string, { body: { rowLimit: number } }];
+    const [, options] = (client.request as ReturnType<typeof vi.fn>).mock.calls[0] as [
+      string,
+      { body: { rowLimit: number } },
+    ];
     expect(options.body.rowLimit).toBe(25000);
   });
 
   it('should use default rowLimit of 1000', async () => {
-    const client = createMockClient([
-      { rows: [], responseAggregationType: 'auto' },
-    ]);
+    const client = createMockClient([{ rows: [], responseAggregationType: 'auto' }]);
 
     await querySearchAnalytics(client, {
       startDate: '2024-01-01',
       endDate: '2024-01-31',
     });
 
-    const [, options] = (client.request as ReturnType<typeof vi.fn>).mock.calls[0] as [string, { body: { rowLimit: number } }];
+    const [, options] = (client.request as ReturnType<typeof vi.fn>).mock.calls[0] as [
+      string,
+      { body: { rowLimit: number } },
+    ];
     expect(options.body.rowLimit).toBe(1000);
   });
 });

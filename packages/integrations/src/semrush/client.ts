@@ -132,14 +132,16 @@ export function createSemrushClient(
         keywordDifficultyPath(),
         params,
       );
-      return (raw.data ?? []).map((r): SemrushKeywordDifficulty => ({
-        keyword: r.Ph,
-        difficulty: r.Kd,
-        searchVolume: r.Nq,
-        cpc: r.Cp,
-        competition: r.Co,
-        results: r.Nr,
-      }));
+      return (raw.data ?? []).map(
+        (r): SemrushKeywordDifficulty => ({
+          keyword: r.Ph,
+          difficulty: r.Kd,
+          searchVolume: r.Nq,
+          cpc: r.Cp,
+          competition: r.Co,
+          results: r.Nr,
+        }),
+      );
     },
 
     async getRelatedKeywords(keyword, database = DEFAULT_DATABASE) {
@@ -148,14 +150,16 @@ export function createSemrushClient(
         relatedKeywordsPath(),
         params,
       );
-      return (raw.data ?? []).map((r): SemrushRelatedKeyword => ({
-        keyword: r.Ph,
-        searchVolume: r.Nq,
-        cpc: r.Cp,
-        competition: r.Co,
-        results: r.Nr,
-        relatedTo: r.Rr,
-      }));
+      return (raw.data ?? []).map(
+        (r): SemrushRelatedKeyword => ({
+          keyword: r.Ph,
+          searchVolume: r.Nq,
+          cpc: r.Cp,
+          competition: r.Co,
+          results: r.Nr,
+          relatedTo: r.Rr,
+        }),
+      );
     },
   };
 }

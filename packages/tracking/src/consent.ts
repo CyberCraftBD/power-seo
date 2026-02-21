@@ -2,7 +2,12 @@
 // @power-seo/tracking — Consent Manager
 // ============================================================================
 
-import type { ConsentState, ConsentCategory, ConsentManager, ConsentChangeCallback } from './types.js';
+import type {
+  ConsentState,
+  ConsentCategory,
+  ConsentManager,
+  ConsentChangeCallback,
+} from './types.js';
 
 const DEFAULT_STATE: ConsentState = {
   necessary: true,
@@ -11,9 +16,7 @@ const DEFAULT_STATE: ConsentState = {
   preferences: false,
 };
 
-export function createConsentManager(
-  initial?: Partial<ConsentState>,
-): ConsentManager {
+export function createConsentManager(initial?: Partial<ConsentState>): ConsentManager {
   const state: ConsentState = {
     ...DEFAULT_STATE,
     ...initial,

@@ -15,7 +15,12 @@ describe('mergeGscWithAudit', () => {
       { url: 'https://example.com/page/', clicks: 100, impressions: 1000, ctr: 0.1, position: 5 },
     ];
     const audit = [
-      { url: 'https://example.com/page', score: 85, categories: mockCategories, recommendations: [] },
+      {
+        url: 'https://example.com/page',
+        score: 85,
+        categories: mockCategories,
+        recommendations: [],
+      },
     ];
     const result = mergeGscWithAudit(gsc, audit);
     expect(result).toHaveLength(1);
@@ -36,7 +41,12 @@ describe('mergeGscWithAudit', () => {
 
   it('should create audit-only insight when no GSC data exists', () => {
     const audit = [
-      { url: 'https://example.com/orphan', score: 30, categories: mockCategories, recommendations: ['Fix title'] },
+      {
+        url: 'https://example.com/orphan',
+        score: 30,
+        categories: mockCategories,
+        recommendations: ['Fix title'],
+      },
     ];
     const result = mergeGscWithAudit([], audit);
     expect(result).toHaveLength(1);
@@ -49,7 +59,12 @@ describe('mergeGscWithAudit', () => {
       { url: 'https://example.com/page', clicks: 200, impressions: 2000, ctr: 0.1, position: 5 },
     ];
     const audit = [
-      { url: 'https://example.com/page', score: 45, categories: mockCategories, recommendations: ['Fix meta'] },
+      {
+        url: 'https://example.com/page',
+        score: 45,
+        categories: mockCategories,
+        recommendations: ['Fix meta'],
+      },
     ];
     const result = mergeGscWithAudit(gsc, audit);
     expect(result[0].opportunities.length).toBeGreaterThan(0);
@@ -65,9 +80,24 @@ describe('mergeGscWithAudit', () => {
 describe('correlateScoreAndTraffic', () => {
   it('should compute Pearson correlation', () => {
     const insights = [
-      { url: 'https://a.com', gscMetrics: { clicks: 100, impressions: 1000, ctr: 0.1, position: 5 }, auditScore: 90, opportunities: [] },
-      { url: 'https://b.com', gscMetrics: { clicks: 50, impressions: 500, ctr: 0.1, position: 10 }, auditScore: 70, opportunities: [] },
-      { url: 'https://c.com', gscMetrics: { clicks: 10, impressions: 100, ctr: 0.1, position: 20 }, auditScore: 40, opportunities: [] },
+      {
+        url: 'https://a.com',
+        gscMetrics: { clicks: 100, impressions: 1000, ctr: 0.1, position: 5 },
+        auditScore: 90,
+        opportunities: [],
+      },
+      {
+        url: 'https://b.com',
+        gscMetrics: { clicks: 50, impressions: 500, ctr: 0.1, position: 10 },
+        auditScore: 70,
+        opportunities: [],
+      },
+      {
+        url: 'https://c.com',
+        gscMetrics: { clicks: 10, impressions: 100, ctr: 0.1, position: 20 },
+        auditScore: 40,
+        opportunities: [],
+      },
     ];
     const { correlation } = correlateScoreAndTraffic(insights);
     expect(correlation).toBeGreaterThan(0); // Positive correlation between score and traffic
@@ -76,8 +106,18 @@ describe('correlateScoreAndTraffic', () => {
 
   it('should return top opportunities sorted by click/score ratio', () => {
     const insights = [
-      { url: 'https://a.com', gscMetrics: { clicks: 200, impressions: 2000, ctr: 0.1, position: 5 }, auditScore: 30, opportunities: [] },
-      { url: 'https://b.com', gscMetrics: { clicks: 100, impressions: 1000, ctr: 0.1, position: 8 }, auditScore: 90, opportunities: [] },
+      {
+        url: 'https://a.com',
+        gscMetrics: { clicks: 200, impressions: 2000, ctr: 0.1, position: 5 },
+        auditScore: 30,
+        opportunities: [],
+      },
+      {
+        url: 'https://b.com',
+        gscMetrics: { clicks: 100, impressions: 1000, ctr: 0.1, position: 8 },
+        auditScore: 90,
+        opportunities: [],
+      },
     ];
     const { topOpportunities } = correlateScoreAndTraffic(insights);
     expect(topOpportunities[0].url).toBe('https://a.com'); // Higher clicks/lower score = bigger opportunity
