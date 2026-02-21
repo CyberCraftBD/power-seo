@@ -51,7 +51,7 @@ jobs:
 
       - name: Configure git
         run: |
-          git config --global user.email "ci@ccbd.dev"
+          git config --global user.email "info@ccbd.dev"
           git config --global user.name "CyberCraft CI"
 
       - name: Commit auto-fixes (if any)
@@ -79,6 +79,11 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Publishing version: $VERSION"
 
+      - name: Verify npm auth
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish all packages to npm
         run: |
           for dir in packages/*/; do
@@ -86,10 +91,14 @@ jobs:
             if [ -f "$pkg" ] && [ "$(node -p "require('./$pkg').private")" != "true" ]; then
               NAME=$(node -p "require('./$pkg').name")
               VERSION=$(node -p "require('./$pkg').version")
-              echo "Publishing $NAME@$VERSION..."
-              cd "$dir"
-              npm publish --access public --provenance
-              cd ../..
+              if npm view "$NAME@$VERSION" version 2>/dev/null | grep -q "$VERSION"; then
+                echo "Skipping $NAME@$VERSION — already published"
+              else
+                echo "Publishing $NAME@$VERSION..."
+                cd "$dir"
+                npm publish --access public --provenance
+                cd ../..
+              fi
             fi
           done
         env:
