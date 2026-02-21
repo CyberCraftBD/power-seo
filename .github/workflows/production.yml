@@ -82,12 +82,10 @@ jobs:
               fi
               echo "Publishing $NAME@$VERSION..."
               cd "$dir"
-              npm publish --access public
+              npm publish --access public --provenance
               cd ../..
             fi
           done
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit any auto-fixes
         run: |
