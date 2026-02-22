@@ -115,13 +115,23 @@ jobs:
 
       - name: Tag and push
         run: |
-          git tag "v${{ steps.version.outputs.version }}"
-          git push origin main
-          git push origin "v${{ steps.version.outputs.version }}"
+          TAG="v${{ steps.version.outputs.version }}"
+          if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
+            echo "Tag $TAG already exists — skipping tag and push"
+          else
+            git tag "$TAG"
+            git push origin main
+            git push origin "$TAG"
+          fi
 
       - name: Create GitHub Release
         run: |
-          gh release create "v${{ steps.version.outputs.version }}" \
+          TAG="v${{ steps.version.outputs.version }}"
+          if gh release view "$TAG" &>/dev/null; then
+            echo "Release $TAG already exists — skipping"
+            exit 0
+          fi
+          gh release create "$TAG" \
             --title "Release v${{ steps.version.outputs.version }}" \
             --notes "## @power-seo v${{ steps.version.outputs.version }}
 
