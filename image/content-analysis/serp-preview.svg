@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" width="680" height="320" font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="680" height="320" fill="#f1f5f9" rx="16"/>
+
+  <!-- Header -->
+  <rect width="680" height="64" fill="url(#hdr)" rx="16"/>
+  <rect y="48" width="680" height="16" fill="#1e293b"/>
+  <circle cx="28" cy="32" r="6" fill="#ef4444" opacity="0.8"/>
+  <circle cx="48" cy="32" r="6" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="68" cy="32" r="6" fill="#22c55e" opacity="0.8"/>
+  <text x="340" y="37" text-anchor="middle" fill="white" font-size="14" font-weight="700">Google SERP Preview · @power-seo/content-analysis</text>
+
+  <!-- Google search bar simulation -->
+  <rect x="20" y="80" width="640" height="228" fill="white" rx="12" filter="url(#shadow)"/>
+
+  <!-- Google logo area -->
+  <text x="44" y="114" fill="#4285f4" font-size="18" font-weight="800">G</text>
+  <text x="58" y="114" fill="#ea4335" font-size="18" font-weight="800">o</text>
+  <text x="71" y="114" fill="#fbbc05" font-size="18" font-weight="800">o</text>
+  <text x="84" y="114" fill="#4285f4" font-size="18" font-weight="800">g</text>
+  <text x="96" y="114" fill="#34a853" font-size="18" font-weight="800">l</text>
+  <text x="104" y="114" fill="#ea4335" font-size="18" font-weight="800">e</text>
+
+  <!-- Search box -->
+  <rect x="140" y="98" width="400" height="30" rx="15" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="156" y="117" fill="#94a3b8" font-size="12">react seo guide typescript</text>
+  <text x="526" y="117" fill="#4285f4" font-size="14">🔍</text>
+
+  <!-- Divider -->
+  <line x1="36" y1="140" x2="644" y2="140" stroke="#f1f5f9" stroke-width="1.5"/>
+
+  <!-- SERP result card -->
+  <!-- Favion / site -->
+  <circle cx="60" cy="168" r="12" fill="#e0e7ff"/>
+  <text x="60" y="173" text-anchor="middle" fill="#4f46e5" font-size="11" font-weight="700">PS</text>
+
+  <!-- URL breadcrumb -->
+  <text x="84" y="162" fill="#202124" font-size="12" font-weight="600">example.com</text>
+  <text x="168" y="162" fill="#5f6368" font-size="12"> › blog › react-seo-guide</text>
+
+  <!-- Title -->
+  <text x="44" y="188" fill="#1a0dab" font-size="18" font-weight="400">How to Add SEO to React Apps — Complete Guide 2026</text>
+
+  <!-- Description with keyphrase highlighted -->
+  <text x="44" y="210" fill="#4d5156" font-size="13">A complete guide to adding SEO meta tags, Open Graph, and structured data in</text>
+  <text x="44" y="228" fill="#4d5156" font-size="13">
+    <tspan>React. Learn how </tspan>
+    <tspan font-weight="700" fill="#202124">react seo</tspan>
+    <tspan> best practices improve Lighthouse scores, Core Web</tspan>
+  </text>
+  <text x="44" y="246" fill="#4d5156" font-size="13">Vitals, and organic search ranking with @power-seo/content-analysis.</text>
+
+  <!-- Meta indicators row -->
+  <rect x="44" y="260" width="80" height="20" rx="10" fill="#e8f5e9"/>
+  <text x="84" y="274" text-anchor="middle" fill="#1b5e20" font-size="11" font-weight="600">✓ Score 91</text>
+
+  <rect x="134" y="260" width="110" height="20" rx="10" fill="#e8f5e9"/>
+  <text x="189" y="274" text-anchor="middle" fill="#1b5e20" font-size="11" font-weight="600">✓ 142 char meta</text>
+
+  <rect x="254" y="260" width="120" height="20" rx="10" fill="#e8f5e9"/>
+  <text x="314" y="274" text-anchor="middle" fill="#1b5e20" font-size="11" font-weight="600">✓ Keyphrase in title</text>
+
+  <rect x="384" y="260" width="120" height="20" rx="10" fill="#e8f5e9"/>
+  <text x="444" y="274" text-anchor="middle" fill="#1b5e20" font-size="11" font-weight="600">✓ H1 optimized</text>
+
+  <!-- Footer -->
+  <text x="340" y="316" text-anchor="middle" fill="#94a3b8" font-size="11">@power-seo/content-analysis · github.com/CyberCraftBD/power-seo</text>
+</svg>

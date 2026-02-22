@@ -29,6 +29,8 @@ Yoast-Style SEO Content Scoring for TypeScript, React & Node.js — Real-Time Ke
 | SEO score | ❌ Guesswork | ✅ 0–100 aggregate with per-check breakdown |
 | Framework support | ❌ WordPress-only | ✅ Next.js, Remix, Vite, Node.js, Edge |
 
+![SEO Score Dashboard](../../image/content-analysis/score-dashboard.svg)
+
 ---
 
 ## Installation
@@ -69,6 +71,8 @@ console.log(result.score);   // e.g. 82
 console.log(result.status);  // "good" | "improvement" | "error"
 console.log(result.results); // [{ id, status, message }, ...]
 ```
+
+![SEO Check Results](../../image/content-analysis/check-results.svg)
 
 **Score thresholds:**
 - `good` — ≥ 70
@@ -123,6 +127,8 @@ const titleResult = checkTitle({ keyphrase: 'react seo', title: 'React SEO Guide
 const wc = checkWordCount({ wordCount: 250 });
 // { id: 'word-count', status: 'improvement', message: 'Word count is below 300 words.' }
 ```
+
+![Keyword Density Analysis](../../image/content-analysis/keyword-density.svg)
 
 ### Disabling Specific Checks
 
@@ -291,6 +297,8 @@ function analyzeContent(
 - **eCommerce product pages** — validate product titles, descriptions, and image alt text at scale
 - **Blog platforms** — provide real-time Yoast-style feedback in the post editor
 - **CI/CD content gates** — block deploys when SEO score falls below an acceptable threshold
+
+![Google SERP Preview](../../image/content-analysis/serp-preview.svg)
 
 ---
 
