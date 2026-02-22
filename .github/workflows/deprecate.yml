@@ -1,0 +1,51 @@
+name: Deprecate Legacy Packages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deprecate:
+    name: Deprecate @ccbd-seo packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Authenticate with npm
+        run: npm config set "//registry.npmjs.org/:_authToken" "$NPM_TOKEN"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
+
+      - name: Deprecate @ccbd-seo/readability
+        run: |
+          npm deprecate @ccbd-seo/readability \
+            "⚠️ This package has moved. Use @power-seo/readability instead: npm install @power-seo/readability"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
+
+      - name: Deprecate @ccbd-seo/sitemap
+        run: |
+          npm deprecate @ccbd-seo/sitemap \
+            "⚠️ This package has moved. Use @power-seo/sitemap instead: npm install @power-seo/sitemap"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
+
+      - name: Deprecate @ccbd-seo/tracking
+        run: |
+          npm deprecate @ccbd-seo/tracking \
+            "⚠️ This package has moved. Use @power-seo/tracking instead: npm install @power-seo/tracking"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
+
+      - name: Summary
+        run: |
+          echo "## Deprecated Legacy Packages" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Old Package | Replacement |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| \`@ccbd-seo/readability\` | \`@power-seo/readability\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| \`@ccbd-seo/sitemap\` | \`@power-seo/sitemap\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| \`@ccbd-seo/tracking\` | \`@power-seo/tracking\` |" >> $GITHUB_STEP_SUMMARY

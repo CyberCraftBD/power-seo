@@ -54,5 +54,13 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/CyberCraftBD/power-seo/issues"
+  },
+  "homepage": "https://github.com/CyberCraftBD/power-seo/tree/main/packages/meta#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/cybercraftbd"
   }
 }
