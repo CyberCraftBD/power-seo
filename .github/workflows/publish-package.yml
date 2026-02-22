@@ -1,0 +1,71 @@
+name: Publish Single Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package directory name (e.g. content-analysis)'
+        required: true
+        type: string
+
+jobs:
+  publish:
+    name: Publish @power-seo/${{ inputs.package }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build package
+        run: pnpm turbo run build --filter=./packages/${{ inputs.package }}
+
+      - name: Authenticate with npm
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "::error::NPM_TOKEN secret is not set."
+            exit 1
+          fi
+          npm config set "//registry.npmjs.org/:_authToken" "$NPM_TOKEN"
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
+
+      - name: Publish
+        run: |
+          PKG_DIR="packages/${{ inputs.package }}"
+          NAME=$(node -p "require('./$PKG_DIR/package.json').name")
+          VERSION=$(node -p "require('./$PKG_DIR/package.json').version")
+          if npm view "$NAME@$VERSION" version 2>/dev/null | grep -q "$VERSION"; then
+            echo "::error::$NAME@$VERSION is already published — bump the version first."
+            exit 1
+          fi
+          echo "Publishing $NAME@$VERSION..."
+          cd "$PKG_DIR"
+          npm publish --access public --provenance
+          echo "✅ Published $NAME@$VERSION"
+
+      - name: Summary
+        run: |
+          PKG_DIR="packages/${{ inputs.package }}"
+          NAME=$(node -p "require('./$PKG_DIR/package.json').name")
+          VERSION=$(node -p "require('./$PKG_DIR/package.json').version")
+          echo "## Published $NAME@$VERSION" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📦 [View on npm](https://www.npmjs.com/package/$NAME)" >> $GITHUB_STEP_SUMMARY
