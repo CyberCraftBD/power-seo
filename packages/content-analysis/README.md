@@ -12,7 +12,7 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/content-analysis)
 
-`@power-seo/content-analysis` delivers a comprehensive, WordPress SEO plugin–style scoring pipeline for evaluating text content, comparable to Yoast SEO, All in One SEO (AIOSEO), Rank Math, SEOPress, and The SEO Framework. By providing inputs such as a page title, meta description, body HTML, focus keyphrase, images, and links, it returns structured `good` / `improvement` / `error` results across all critical SEO factors. It can be seamlessly executed server-side within an application, client-side in a React editor, or integrated into a CI-based content quality gate. All 13 analysis checks are fully configurable and tree-shakeable for optimal performance and flexibility.
+`@power-seo/content-analysis` delivers a comprehensive, WordPress SEO plugin–style scoring pipeline for evaluating text content, comparable to Yoast SEO, All in One SEO (AIOSEO), Rank Math, SEOPress, and The SEO Framework. Provide a page title, meta description, body content, focus keyphrase, images, and links — get back structured `good` / `needs-improvement` / `poor` results across all critical SEO factors. Run it server-side in a CMS, client-side in a React editor, or inside a CI content quality gate. All 13 analysis checks are fully configurable and tree-shakeable.
 
 > **Zero runtime dependencies** — only `@power-seo/core` as a peer.
 
@@ -24,11 +24,11 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 |---|---|---|
 | Keyphrase check | ❌ Manual grep | ✅ Density + distribution scoring |
 | Title validation | ❌ Eye-check only | ✅ Presence, length, keyphrase match |
-| Meta description | ❌ Unchecked | ✅ Length (120–158 chars) + keyphrase |
-| Heading structure | ❌ Missed H1s | ✅ H1 existence + keyphrase in headings |
+| Meta description | ❌ Unchecked | ✅ Length (120–160 chars) + keyphrase |
+| Heading structure | ❌ Missed H1s | ✅ H1 hierarchy + keyphrase in subheadings |
 | Image alt text | ❌ Skipped | ✅ Alt presence + keyphrase in alt |
 | Link analysis | ❌ Unknown | ✅ Internal + external link presence |
-| SEO score | ❌ Guesswork | ✅ 0–100 aggregate with per-check breakdown |
+| SEO score | ❌ Guesswork | ✅ Aggregate score with per-check breakdown |
 | Framework support | ❌ WordPress-only | ✅ Next.js, Remix, Vite, Node.js, Edge |
 
 ![SEO Score Dashboard](../../image/content-analysis/score-dashboard.svg)
@@ -36,25 +36,25 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 ---
 
 ## Features
-- **Per-check disable config** — skip irrelevant checks for text-only or image-only pages
-- **Keyphrase density check** — scores optimal 0.5–3% keyword frequency in body copy
-- **Keyphrase distribution** — verifies the focus keyword appears in the first 10% of content
-- **Title checks** — detects missing titles and keyphrase absence in the <title> tag
-- **Meta description checks** — validates presence, length (120–158 chars), and keyphrase inclusion
-- **Heading structure** — ensures H1 exists and that the keyphrase appears in at least one heading
-- **Word count** — flags pages under the 300-word minimum threshold
+
+- **Keyphrase density check** — scores optimal 0.5–2.5% keyword frequency in body copy
+- **Keyphrase distribution** — verifies the focus keyword appears in intro, headings, slug, and image alt
+- **Title checks** — detects missing titles and keyphrase absence in the `<title>` tag
+- **Meta description checks** — validates presence, length (120–160 chars), and keyphrase inclusion
+- **Heading structure** — validates H1 existence, hierarchy, and keyphrase in subheadings
+- **Word count** — flags pages under 300 words (good at 1,000+)
 - **Image alt text** — scans all images for missing alt attributes
 - **Image keyphrase** — checks whether at least one image alt contains the focus keyphrase
-- **Internal and external link analysis** — verifies outbound and inbound link presence
-- **Configurable check suite** — disable any individual check via disabledChecks config
-- **Framework-agnostic** — works in Next.js, Remix, Gatsby, Vite, vanilla Node.js
+- **Internal and external link analysis** — verifies inbound and outbound link presence
+- **Per-check disable config** — skip irrelevant checks via `disabledChecks` config
+- **React components** — pre-built `ScorePanel`, `CheckList`, and `ContentAnalyzer` UI components
+- **Framework-agnostic** — works in Next.js, Remix, Gatsby, Vite, vanilla Node.js, Edge
 - **Full TypeScript support** — complete type definitions for all inputs, outputs, and check IDs
 - **Tree-shakeable** — import only the checks you use; zero dead code in your bundle
 
 ![Google SERP Preview](../../image/content-analysis/serp-preview.svg)
 
 ---
-
 
 ## Comparison
 
@@ -66,15 +66,14 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 | Heading structure check        | ✅                          | ✅        | ❌       | ❌           | ❌           |
 | Image alt + keyphrase check    | ✅                          | ✅        | ❌       | ❌           | ❌           |
 | Internal / external link check | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| 0–100 aggregate score          | ✅                          | ✅        | ❌       | Partial      | ❌           |
+| Aggregate SEO score            | ✅                          | ✅        | ❌       | Partial      | ❌           |
 | Per-check disable config       | ✅                          | ❌        | ❌       | ❌           | ❌           |
 | Works outside WordPress        | ✅                          | ❌        | ✅       | ✅           | ✅           |
 | TypeScript-first               | ✅                          | ❌        | Partial  | ❌           | ❌           |
 | Tree-shakeable                 | ✅                          | ❌        | Partial  | ❌           | ❌           |
-| React editor integration       | ✅                          | ✅        | ❌       | ❌           | ❌           |
+| React UI components            | ✅                          | ✅        | ❌       | ❌           | ❌           |
 | CI / Node.js usage             | ✅                          | ❌        | ❌       | ✅           | ❌           |
 | Zero runtime dependencies      | ✅                          | ❌        | ❌       | ❌           | ❌           |
-
 
 ![Keyword Density Analysis](../../image/content-analysis/keyword-density.svg)
 
@@ -83,15 +82,15 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 ## Installation
 
 ```bash
-npm install @power-seo/content-analysis
+npm install @power-seo/content-analysis @power-seo/core
 ```
 
 ```bash
-yarn add @power-seo/content-analysis
+yarn add @power-seo/content-analysis @power-seo/core
 ```
 
 ```bash
-pnpm add @power-seo/content-analysis
+pnpm add @power-seo/content-analysis @power-seo/core
 ```
 
 ---
@@ -101,30 +100,25 @@ pnpm add @power-seo/content-analysis
 ```ts
 import { analyzeContent } from '@power-seo/content-analysis';
 
-const result = await analyzeContent({
-  keyphrase: 'react seo',
-  title: 'How to Add SEO to React Apps',
-  metaDescription:
-    'A complete guide to adding SEO meta tags, Open Graph, and structured data in React.',
-  bodyHtml: '<h1>React SEO Guide</h1><p>Search engine optimization for React...</p>',
-  images: [{ src: '/hero.jpg', alt: 'React SEO diagram' }],
-  links: {
-    internal: ['https://example.com/blog'],
-    external: ['https://developers.google.com/search'],
-  },
+const result = analyzeContent({
+  title: 'Best Running Shoes for Beginners',
+  metaDescription: 'Discover the best running shoes for beginners with our expert guide.',
+  keyphrase: 'running shoes for beginners',
+  content: '<h1>Best Running Shoes</h1><p>Finding the right running shoes...</p>',
+  url: 'https://example.com/best-running-shoes',
 });
 
-console.log(result.score);   // e.g. 82
-console.log(result.status);  // "good" | "improvement" | "error"
-console.log(result.results); // [{ id, status, message }, ...]
+console.log(result.overallStatus); // "good" | "needs-improvement" | "poor"
+console.log(result.results);
+// [{ id: 'title-presence', status: 'good', message: '...' }, ...]
 ```
 
 ![SEO Check Results](../../image/content-analysis/check-results.svg)
 
-**Score thresholds:**
-- `good` — ≥ 70
-- `improvement` — ≥ 40
-- `error` — < 40
+**Status thresholds (per check):**
+- `good` — check fully passes
+- `needs-improvement` — check partially passes
+- `poor` — check fails
 
 ---
 
@@ -132,25 +126,24 @@ console.log(result.results); // [{ id, status, message }, ...]
 
 ### Running All Checks at Once
 
-`analyzeContent()` runs all 13 built-in checks and returns an aggregated score (0–100) along with per-check results.
+`analyzeContent()` runs all 13 built-in checks and returns an aggregated status along with per-check results.
 
 ```ts
 import { analyzeContent } from '@power-seo/content-analysis';
 
-const output = await analyzeContent({
-  keyphrase: 'next.js seo',
+const output = analyzeContent({
   title: 'Next.js SEO Best Practices',
-  metaDescription:
-    'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
-  bodyHtml: htmlString,
-  wordCount: 1250,
+  metaDescription: 'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
+  keyphrase: 'next.js seo',
+  content: htmlString,
+  url: 'https://example.com/nextjs-seo',
   images: imageList,
-  links: { internal: internalLinks, external: externalLinks },
+  internalLinks: internalLinks,
+  externalLinks: externalLinks,
 });
 
-// output.score     → number 0–100
-// output.results   → AnalysisResult[]
-// output.status    → 'good' | 'improvement' | 'error'
+// output.overallStatus  → 'good' | 'needs-improvement' | 'poor'
+// output.results        → AnalysisResult[]
 ```
 
 ### Running Individual Checks
@@ -168,75 +161,69 @@ import {
   checkLinks,
 } from '@power-seo/content-analysis';
 
-const titleResult = checkTitle({ keyphrase: 'react seo', title: 'React SEO Guide' });
-// { id: 'title-keyphrase', status: 'good', message: 'Focus keyphrase found in title.' }
+const titleResults = checkTitle({
+  title: 'React SEO Guide',
+  keyphrase: 'react seo',
+  content: '',
+});
+// [{ id: 'title-presence', status: 'good', message: '...' },
+//  { id: 'title-keyphrase', status: 'good', message: '...' }]
 
-const wc = checkWordCount({ wordCount: 250 });
-// { id: 'word-count', status: 'improvement', message: 'Word count is below 300 words.' }
+const wcResult = checkWordCount({ content: shortHtml });
+// { id: 'word-count', status: 'poor', message: 'Content is 180 words, below minimum of 300.' }
 ```
 
 ### Disabling Specific Checks
 
-Pass `config.disabledChecks` to skip checks that don't apply to your content type (e.g. skip image checks on text-only pages):
+Pass `config.disabledChecks` to skip checks that don't apply to your content type:
 
 ```ts
 import { analyzeContent } from '@power-seo/content-analysis';
 
-const output = await analyzeContent(input, {
+const output = analyzeContent(input, {
   disabledChecks: ['image-alt', 'image-keyphrase', 'external-links'],
 });
 ```
 
-### Using in a React Editor
+### React Components
 
-Integrate live scoring into a content editor — re-run analysis on every keystroke or debounced change:
+Import from the `/react` entry point for pre-built analysis UI components:
 
 ```tsx
-import { useState, useEffect } from 'react';
-import { analyzeContent } from '@power-seo/content-analysis';
-import type { ContentAnalysisOutput } from '@power-seo/content-analysis';
+import { ContentAnalyzer, ScorePanel, CheckList } from '@power-seo/content-analysis/react';
+import type { ContentAnalysisInput } from '@power-seo/content-analysis';
 
-function SeoScorePanel({ content }: { content: EditorContent }) {
-  const [analysis, setAnalysis] = useState<ContentAnalysisOutput | null>(null);
+// All-in-one component
+function Editor({ input }: { input: ContentAnalysisInput }) {
+  return <ContentAnalyzer input={input} />;
+}
 
-  useEffect(() => {
-    analyzeContent({
-      keyphrase: content.keyphrase,
-      title: content.title,
-      metaDescription: content.description,
-      bodyHtml: content.html,
-    }).then(setAnalysis);
-  }, [content]);
-
-  if (!analysis) return null;
-
+// Or compose individually
+function SeoPanel({ input }: { input: ContentAnalysisInput }) {
+  const result = analyzeContent(input);
   return (
-    <div>
-      <p>SEO Score: {analysis.score}/100</p>
-      {analysis.results.map((r) => (
-        <div key={r.id} className={`check-${r.status}`}>
-          {r.message}
-        </div>
-      ))}
-    </div>
+    <>
+      <ScorePanel score={result.score} maxScore={result.maxScore} />
+      <CheckList results={result.results} />
+    </>
   );
 }
 ```
 
 ### Inside a CI Content Quality Gate
 
-Block deploys when SEO score drops below a threshold:
+Block deploys when SEO checks fail:
 
 ```ts
 import { analyzeContent } from '@power-seo/content-analysis';
 
-const output = await analyzeContent({ keyphrase, title, metaDescription, bodyHtml });
+const output = analyzeContent({ title, metaDescription, keyphrase, content });
 
-if (output.score < 70) {
-  console.error('SEO score too low:', output.score);
-  output.results
-    .filter((r) => r.status === 'error')
-    .forEach((r) => console.error(' ✗', r.message));
+const failures = output.results.filter((r) => r.status === 'poor');
+
+if (failures.length > 0) {
+  console.error('SEO checks failed:');
+  failures.forEach((r) => console.error(' ✗', r.message));
   process.exit(1);
 }
 ```
@@ -245,71 +232,83 @@ if (output.score < 70) {
 
 ## API Reference
 
+### Entry Points
+
+| Import | Description |
+| --- | --- |
+| `@power-seo/content-analysis` | Core analyzer and individual check functions |
+| `@power-seo/content-analysis/react` | React components for analysis UI |
+
 ### `analyzeContent()`
 
 ```ts
 function analyzeContent(
   input: ContentAnalysisInput,
   config?: AnalysisConfig,
-): Promise<ContentAnalysisOutput>;
+): ContentAnalysisOutput;
 ```
 
 #### `ContentAnalysisInput`
 
-| Prop              | Type                                       | Required | Description                                                                  |
-| ----------------- | ------------------------------------------ | -------- | ---------------------------------------------------------------------------- |
-| `keyphrase`       | `string`                                   | ✅       | Focus keyphrase to analyze against                                           |
-| `title`           | `string`                                   | ✅       | Page `<title>` content                                                       |
-| `metaDescription` | `string`                                   | ✅       | Meta description content                                                     |
-| `bodyHtml`        | `string`                                   | ✅       | Full body HTML string                                                        |
-| `wordCount`       | `number`                                   | —        | Pre-computed word count (auto-detected from `bodyHtml` if omitted)           |
-| `images`          | `Array<{ src: string; alt?: string }>`     | —        | Images found on the page                                                     |
-| `links`           | `{ internal: string[]; external: string[] }` | —      | Internal and external link URLs                                              |
+| Prop              | Type                                   | Required | Description                                    |
+| ----------------- | -------------------------------------- | -------- | ---------------------------------------------- |
+| `content`         | `string`                               | ✅       | Body HTML string                               |
+| `title`           | `string`                               | —        | Page `<title>` content                         |
+| `metaDescription` | `string`                               | —        | Meta description content                       |
+| `keyphrase`       | `string`                               | —        | Focus keyphrase to analyze against             |
+| `url`             | `string`                               | —        | Page URL (used for slug analysis)              |
+| `images`          | `Array<{ src: string; alt?: string }>` | —        | Images found on the page                       |
+| `internalLinks`   | `string[]`                             | —        | Internal link URLs                             |
+| `externalLinks`   | `string[]`                             | —        | External link URLs                             |
 
 #### `ContentAnalysisOutput`
 
-| Field     | Type               | Description                                                  |
-| --------- | ------------------ | ------------------------------------------------------------ |
-| `score`   | `number`           | Aggregate score 0–100                                        |
-| `status`  | `AnalysisStatus`   | `'good'` (≥70) \| `'improvement'` (≥40) \| `'error'` (<40) |
-| `results` | `AnalysisResult[]` | Per-check results                                            |
+| Field           | Type               | Description                                               |
+| --------------- | ------------------ | --------------------------------------------------------- |
+| `overallStatus` | `AnalysisStatus`   | `'good'` \| `'needs-improvement'` \| `'poor'`            |
+| `score`         | `number`           | Sum of all individual check scores                        |
+| `maxScore`      | `number`           | Maximum possible score (varies by enabled checks)         |
+| `results`       | `AnalysisResult[]` | Per-check results                                         |
+| `recommendations` | `string[]`       | Descriptions from all failed or partial checks            |
 
 #### `AnalysisResult`
 
-| Field     | Type             | Description                              |
-| --------- | ---------------- | ---------------------------------------- |
-| `id`      | `CheckId`        | Unique check identifier                  |
-| `status`  | `AnalysisStatus` | `'good'` \| `'improvement'` \| `'error'` |
-| `message` | `string`         | Human-readable actionable feedback       |
+| Field     | Type             | Description                                   |
+| --------- | ---------------- | --------------------------------------------- |
+| `id`      | `CheckId`        | Unique check identifier (see table below)     |
+| `status`  | `AnalysisStatus` | `'good'` \| `'needs-improvement'` \| `'poor'` |
+| `message` | `string`         | Human-readable actionable feedback            |
+| `score`   | `number`         | Points earned for this check                  |
+| `maxScore`| `number`         | Maximum points for this check                 |
 
 #### `AnalysisConfig`
 
-| Field            | Type        | Description                                    |
-| ---------------- | ----------- | ---------------------------------------------- |
-| `disabledChecks` | `CheckId[]` | List of check IDs to skip during analysis      |
+| Field            | Type        | Description                               |
+| ---------------- | ----------- | ----------------------------------------- |
+| `disabledChecks` | `CheckId[]` | List of check IDs to skip during analysis |
 
 ### Individual Check Functions
 
-| Function                      | Check ID(s)                              | Checks For                               |
-| ----------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `checkTitle(input)`           | `title-presence`, `title-keyphrase`      | Title presence and keyphrase inclusion   |
-| `checkMetaDescription(input)` | `meta-presence`, `meta-length`, `meta-keyphrase` | Description presence, length, keyphrase |
-| `checkKeyphraseUsage(input)`  | `keyphrase-density`, `keyphrase-distribution` | Density (0.5–3%) and early occurrence  |
-| `checkHeadings(input)`        | `h1-presence`, `heading-keyphrase`       | H1 existence and keyphrase in headings   |
-| `checkWordCount(input)`       | `word-count`                             | Minimum 300-word threshold               |
-| `checkImages(input)`          | `image-alt`, `image-keyphrase`           | Alt text presence and keyphrase in alt   |
-| `checkLinks(input)`           | `internal-links`, `external-links`       | Internal and external link presence      |
+| Function                      | Check ID(s)                                                    | Checks For                                         |
+| ----------------------------- | -------------------------------------------------------------- | -------------------------------------------------- |
+| `checkTitle(input)`           | `title-presence`, `title-keyphrase`                            | Title presence, length (30–60 chars), keyphrase    |
+| `checkMetaDescription(input)` | `meta-description-presence`, `meta-description-keyphrase`      | Description presence, length (120–160 chars), keyphrase |
+| `checkKeyphraseUsage(input)`  | `keyphrase-density`, `keyphrase-distribution`                  | Density (0.5–2.5%) and occurrence in key areas     |
+| `checkHeadings(input)`        | `heading-structure`, `heading-keyphrase`                       | H1 presence, hierarchy, keyphrase in subheadings   |
+| `checkWordCount(input)`       | `word-count`                                                   | Min 300 words (good at 1,000+)                     |
+| `checkImages(input)`          | `image-alt`, `image-keyphrase`                                 | Alt text presence and keyphrase in alt             |
+| `checkLinks(input)`           | `internal-links`, `external-links`                             | Internal and external link presence                |
 
 ### Types
 
-| Type                    | Description                                |
-| ----------------------- | ------------------------------------------ |
-| `CheckId`               | Union of all 13 built-in check IDs         |
-| `AnalysisConfig`        | `{ disabledChecks?: CheckId[] }`           |
-| `AnalysisStatus`        | `'good' \| 'improvement' \| 'error'`       |
-| `ContentAnalysisInput`  | Input shape for `analyzeContent()`         |
-| `ContentAnalysisOutput` | Output shape from `analyzeContent()`       |
-| `AnalysisResult`        | Single check result with id, status, message |
+| Type                    | Description                                               |
+| ----------------------- | --------------------------------------------------------- |
+| `CheckId`               | Union of all 13 built-in check IDs                        |
+| `AnalysisConfig`        | `{ disabledChecks?: CheckId[] }`                          |
+| `AnalysisStatus`        | `'good' \| 'needs-improvement' \| 'poor'`                 |
+| `ContentAnalysisInput`  | Input shape for `analyzeContent()`                        |
+| `ContentAnalysisOutput` | Output shape from `analyzeContent()`                      |
+| `AnalysisResult`        | Single check result with id, status, message, score       |
 
 ---
 
@@ -320,20 +319,7 @@ function analyzeContent(
 - **SaaS landing pages** — enforce SEO quality programmatically across all marketing pages
 - **eCommerce product pages** — validate product titles, descriptions, and image alt text at scale
 - **Blog platforms** — provide real-time Yoast-style feedback in the post editor
-- **CI/CD content gates** — block deploys when SEO score falls below an acceptable threshold
-
----
-
-## Key Features
-
-- **13 built-in checks** covering title, meta, headings, keyphrase density, distribution, word count, images, and links
-- **0–100 aggregate score** with `good / improvement / error` status per check
-- **Per-check disable config** — skip irrelevant checks for text-only or image-only pages
-- **Real-time React integration** — re-score on every content change in an editor
-- **CI quality gates** — run as a Node.js script to enforce minimum SEO scores
-- **Framework-agnostic** — Next.js, Remix, Gatsby, Vite, vanilla Node.js, Edge runtime
-- **Full TypeScript** — complete type definitions for all inputs, outputs, and check IDs
-- **Tree-shakeable** — import only what you use; zero dead code in your bundle
+- **CI/CD content gates** — block deploys when SEO checks fail
 
 ---
 
