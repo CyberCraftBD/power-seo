@@ -1,8 +1,8 @@
-# @power-seo — WordPress-Level SEO Toolkit for React, Next.js & Remix
+<div align="center">
+  <img src="https://raw.githubusercontent.com/cybercraftbd/power-seo/main/docs/banner.svg" alt="@power-seo — Production-Grade SEO Toolkit for TypeScript, React & Node.js" width="100%" />
+</div>
 
-> 17 independently installable TypeScript packages covering every SEO concern — from meta tags and structured data to content analysis, sitemaps, redirects, robots directives, auditing, AI-assisted optimization, and analytics integrations.
-
-[![CI](https://github.com/cybercraftbd/power-seo/actions/workflows/ci.yml/badge.svg)](https://github.com/cybercraftbd/power-seo/actions/workflows/ci.yml)
+[![CI](https://github.com/cybercraftbd/power-seo/actions/workflows/production.yml/badge.svg)](https://github.com/cybercraftbd/power-seo/actions/workflows/production.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
