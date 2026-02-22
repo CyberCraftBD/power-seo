@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question / Discussion
+    url: https://github.com/CyberCraftBD/power-seo/discussions
+    about: Ask questions and discuss ideas in GitHub Discussions
+  - name: npm Organization
+    url: https://www.npmjs.com/org/power-seo
+    about: Browse all @power-seo packages on npm

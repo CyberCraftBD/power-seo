@@ -3,10 +3,11 @@
 </div>
 
 [![CI](https://github.com/CyberCraftBD/power-seo/actions/workflows/production.yml/badge.svg)](https://github.com/CyberCraftBD/power-seo/actions/workflows/production.yml)
+[![npm version](https://img.shields.io/npm/v/@power-seo/core?label=version)](https://www.npmjs.com/org/power-seo)
+[![npm downloads](https://img.shields.io/npm/dm/@power-seo/core)](https://www.npmjs.com/package/@power-seo/core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
-[![pnpm >= 9](https://img.shields.io/badge/pnpm-%3E%3D9.0.0-orange)](https://pnpm.io/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
 `@power-seo` is a monorepo of 17 modular, TypeScript-first SEO packages for React and its frameworks. Each package is independently installable — install only what your project needs. Dual ESM + CJS output, fully tree-shakeable, zero compromise on type safety.
