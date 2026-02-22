@@ -2,10 +2,15 @@ name: Deprecate Legacy Packages
 
 on:
   workflow_dispatch:
+    inputs:
+      scope:
+        description: 'npm scope of the legacy packages (without @), e.g. ccbd-seo'
+        required: true
+        default: 'ccbd-seo'
 
 jobs:
   deprecate:
-    name: Deprecate @ccbd-seo packages
+    name: Deprecate legacy packages
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js
@@ -19,33 +24,24 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
 
-      - name: Deprecate @ccbd-seo/readability
+      - name: Deprecate packages
         run: |
-          npm deprecate @ccbd-seo/readability \
-            "⚠️ This package has moved. Use @power-seo/readability instead: npm install @power-seo/readability"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
-
-      - name: Deprecate @ccbd-seo/sitemap
-        run: |
-          npm deprecate @ccbd-seo/sitemap \
-            "⚠️ This package has moved. Use @power-seo/sitemap instead: npm install @power-seo/sitemap"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
-
-      - name: Deprecate @ccbd-seo/tracking
-        run: |
-          npm deprecate @ccbd-seo/tracking \
-            "⚠️ This package has moved. Use @power-seo/tracking instead: npm install @power-seo/tracking"
+          SCOPE="${{ github.event.inputs.scope }}"
+          for pkg in readability sitemap tracking; do
+            FULL="@${SCOPE}/${pkg}"
+            if npm view "$FULL" version &>/dev/null; then
+              echo "Deprecating $FULL..."
+              npm deprecate "$FULL" "⚠️ This package has moved. Use @power-seo/${pkg} instead: npm install @power-seo/${pkg}"
+              echo "✓ Deprecated $FULL"
+            else
+              echo "⚠️ $FULL not found on npm — skipping"
+            fi
+          done
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
 
       - name: Summary
         run: |
-          echo "## Deprecated Legacy Packages" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Old Package | Replacement |" >> $GITHUB_STEP_SUMMARY
-          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
-          echo "| \`@ccbd-seo/readability\` | \`@power-seo/readability\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| \`@ccbd-seo/sitemap\` | \`@power-seo/sitemap\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| \`@ccbd-seo/tracking\` | \`@power-seo/tracking\` |" >> $GITHUB_STEP_SUMMARY
+          SCOPE="${{ github.event.inputs.scope }}"
+          echo "## Deprecation Complete" >> $GITHUB_STEP_SUMMARY
+          echo "Processed packages under \`@${SCOPE}/\` scope." >> $GITHUB_STEP_SUMMARY
