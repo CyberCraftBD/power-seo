@@ -70,27 +70,24 @@
 
 ## 📚 Documentation
 
-Complete guides and API reference available in the [`docs/`](./docs) directory:
+Complete guides, API reference, and 38+ wiki pages available on the [GitHub Wiki](https://github.com/CyberCraftBD/power-seo/wiki):
 
 ### Getting Started
-- **[Installation & Setup](./docs/wiki/01-installation-setup.md)** - Install power-seo for your framework
-- **[Quick Start](./docs/wiki/02-quick-start.md)** - Get running in 5 minutes
-- **[Package Selection](./docs/wiki/03-package-selection.md)** - Choose the right packages
+- **[Installation & Setup](https://github.com/CyberCraftBD/power-seo/wiki/Installation-&-Setup)** - Install power-seo for your framework
+- **[Quick Start](https://github.com/CyberCraftBD/power-seo/wiki/Quick-Start)** - Get running in 5 minutes
+- **[Package Selection](https://github.com/CyberCraftBD/power-seo/wiki/Package-Selection)** - Choose the right packages
 
 ### Learning
-- **[Architecture Overview](./docs/wiki/04-architecture.md)** - Monorepo structure & design principles
-- **[Package Guides](./docs/wiki/pkg-core.md)** - Detailed API documentation for all 17 packages
-- **[Use Cases](./docs/wiki/uc-cms-blog.md)** - Real-world implementation examples
-- **[Troubleshooting](./docs/wiki/10-troubleshooting.md)** - Solutions to common issues
+- **[Architecture Overview](https://github.com/CyberCraftBD/power-seo/wiki/Architecture-Overview)** - Monorepo structure & design principles
+- **[API References](https://github.com/CyberCraftBD/power-seo/wiki)** - Detailed documentation for all 17 packages
+- **[Use Cases](https://github.com/CyberCraftBD/power-seo/wiki)** - Real-world implementation examples (CMS, eCommerce, SaaS, Multi-language, CI/CD)
+- **[Troubleshooting](https://github.com/CyberCraftBD/power-seo/wiki/Troubleshooting-Guide)** - Solutions to common issues
 
-### Community
-- **[Discussions](./docs/DISCUSSIONS.md)** - 20+ Q&A topics and best practices
-- **[Wiki Home](./docs/WIKI_HOME.md)** - Full wiki navigation and overview
-
-### Support
-- **GitHub Issues**: [Report bugs](https://github.com/CyberCraftBD/power-seo/issues)
-- **GitHub Discussions**: [Ask questions](https://github.com/CyberCraftBD/power-seo/discussions)
-- **Email**: info@ccbd.dev
+### Community & Support
+- **[GitHub Wiki Home](https://github.com/CyberCraftBD/power-seo/wiki/Home)** - Full wiki navigation and 38+ pages
+- **[GitHub Discussions](https://github.com/CyberCraftBD/power-seo/discussions)** - 17+ Q&A threads and best practices
+- **[GitHub Issues](https://github.com/CyberCraftBD/power-seo/issues)** - Report bugs and feature requests
+- **[Email Support](mailto:info@ccbd.dev)** - info@ccbd.dev
 
 ---
 
