@@ -75,6 +75,9 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 | CI / Node.js usage             | ✅                          | ❌        | ❌       | ✅           | ❌           |
 | Zero runtime dependencies      | ✅                          | ❌        | ❌       | ❌           | ❌           |
 
+
+![Keyword Density Analysis](../../image/content-analysis/keyword-density.svg)
+
 ---
 
 ## Installation
@@ -171,8 +174,6 @@ const titleResult = checkTitle({ keyphrase: 'react seo', title: 'React SEO Guide
 const wc = checkWordCount({ wordCount: 250 });
 // { id: 'word-count', status: 'improvement', message: 'Word count is below 300 words.' }
 ```
-
-![Keyword Density Analysis](../../image/content-analysis/keyword-density.svg)
 
 ### Disabling Specific Checks
 
