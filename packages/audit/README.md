@@ -344,7 +344,7 @@ import type {
 } from '@power-seo/audit';
 ```
 
-## The @power-seo Ecosystem
+## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
 
 `@power-seo/audit` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
 
@@ -370,9 +370,9 @@ import type {
 
 ---
 
-## About CyberCraft Bangladesh
+## About [CyberCraft Bangladesh](https://ccbd.dev)
 
-**CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
 |                      |                                                                |
 | -------------------- | -------------------------------------------------------------- |
@@ -381,4 +381,4 @@ import type {
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
 | **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
 
-© 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)
+© 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)

@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/ai",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "LLM-agnostic prompt templates and response parsers for AI-assisted SEO",
   "license": "MIT",
   "type": "module",

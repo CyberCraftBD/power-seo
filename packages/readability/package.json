@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/readability",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Readability scoring algorithms (Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI) with configurable thresholds",
   "license": "MIT",
   "type": "module",

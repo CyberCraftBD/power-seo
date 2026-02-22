@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/integrations",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Third-party SEO tool API clients for Semrush and Ahrefs with shared HTTP client",
   "license": "MIT",
   "type": "module",

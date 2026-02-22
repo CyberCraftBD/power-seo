@@ -278,7 +278,7 @@ import type {
 } from '@power-seo/integrations';
 ```
 
-## The @power-seo Ecosystem
+## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
 
 All 17 packages are independently installable — use only what you need.
 
@@ -304,9 +304,9 @@ All 17 packages are independently installable — use only what you need.
 
 ---
 
-## About CyberCraft Bangladesh
+## About [CyberCraft Bangladesh](https://ccbd.dev)
 
-**CyberCraft Bangladesh** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
 |                      |                                                                |
 | -------------------- | -------------------------------------------------------------- |
@@ -315,4 +315,4 @@ All 17 packages are independently installable — use only what you need.
 | **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
 | **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
 
-© 2026 CyberCraft Bangladesh · Released under the [MIT License](../../LICENSE)
+© 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)
