@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/cybercraftbd/power-seo/main/docs/banner.svg" alt="@power-seo — Production-Grade SEO Toolkit for TypeScript, React & Node.js" width="100%" />
+  <img src="./image/banner.svg" alt="@power-seo — Production-Grade SEO Toolkit for TypeScript, React & Node.js" width="100%" />
 </div>
 
-[![CI](https://github.com/cybercraftbd/power-seo/actions/workflows/production.yml/badge.svg)](https://github.com/cybercraftbd/power-seo/actions/workflows/production.yml)
+[![CI](https://github.com/CyberCraftBD/power-seo/actions/workflows/production.yml/badge.svg)](https://github.com/CyberCraftBD/power-seo/actions/workflows/production.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
@@ -33,38 +33,6 @@
 - **TypeScript-first** — full `.d.ts` declarations, no `@types/` package needed
 - **Tree-shakeable** — `sideEffects: false` on all packages
 - **Dual ESM + CJS** — works in any bundler or Node.js environment
-
-## Table of Contents
-
-- [Why @power-seo?](#why-power-seo)
-- [Packages](#packages)
-- [Quick Start](#quick-start)
-  - [Next.js App Router](#nextjs-app-router)
-  - [Remix v2](#remix-v2)
-  - [React Components (CSR/SPA)](#react-components-csrspa)
-  - [Robots Directives](#robots-directives)
-  - [Content Analysis](#content-analysis)
-  - [Structured Data (JSON-LD)](#structured-data-json-ld)
-  - [SERP & Social Previews](#serp--social-previews)
-  - [Sitemap Generation](#sitemap-generation)
-  - [Redirect Engine](#redirect-engine)
-  - [SEO Audit](#seo-audit)
-  - [Readability Analysis](#readability-analysis)
-  - [Image SEO](#image-seo)
-  - [Link Graph Analysis](#link-graph-analysis)
-  - [AI-Assisted SEO](#ai-assisted-seo)
-  - [Analytics Dashboard](#analytics-dashboard)
-  - [Google Search Console](#google-search-console)
-  - [Third-Party Integrations](#third-party-integrations)
-  - [Analytics Tracking & GDPR Consent](#analytics-tracking--gdpr-consent)
-  - [Core Utilities](#core-utilities)
-- [Framework Compatibility](#framework-compatibility)
-- [Architecture](#architecture)
-- [Development](#development)
-- [Contributing](#contributing)
-- [License](#license)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
 
 ---
 
@@ -161,8 +129,6 @@ export default function Page() {
 }
 ```
 
----
-
 ### Remix v2
 
 ```bash
@@ -181,8 +147,6 @@ export const meta = () =>
     openGraph: { type: 'article', images: [{ url: 'https://example.com/og.jpg' }] },
   });
 ```
-
----
 
 ### React Components (CSR/SPA)
 
@@ -246,8 +210,6 @@ function BlogPage() {
 }
 ```
 
----
-
 ### Robots Directives
 
 ```bash
@@ -285,8 +247,6 @@ parseRobotsContent('noindex, nofollow, noarchive');
 // → { index: false, follow: false, noarchive: true }
 ```
 
-**Robots Directive Reference:**
-
 | Directive          | Type                              | Description                                    |
 | ------------------ | --------------------------------- | ---------------------------------------------- |
 | `index`            | `boolean`                         | `true` → `index`, `false` → `noindex`          |
@@ -299,8 +259,6 @@ parseRobotsContent('noindex, nofollow, noarchive');
 | `maxImagePreview`  | `'none' \| 'standard' \| 'large'` | Max image preview size                         |
 | `maxVideoPreview`  | `number`                          | Max video preview duration in seconds          |
 | `unavailableAfter` | `string`                          | Date after which to remove page from results   |
-
----
 
 ### Content Analysis
 
@@ -324,8 +282,6 @@ console.log(output.maxScore); // 21
 console.log(output.status); // "good" | "ok" | "poor"
 console.log(output.recommendations); // string[] of actionable suggestions
 ```
-
----
 
 ### Structured Data (JSON-LD)
 
@@ -353,8 +309,6 @@ import { ArticleJsonLd, FAQJsonLd, BreadcrumbJsonLd } from '@power-seo/schema/re
 <BreadcrumbJsonLd items={[{ name: 'Home', url: 'https://example.com' }, { name: 'Blog', url: 'https://example.com/blog' }]} />
 ```
 
----
-
 ### SERP & Social Previews
 
 ```bash
@@ -374,8 +328,6 @@ import { PreviewPanel } from '@power-seo/preview/react';
   twitterCardType="summary_large_image"
 />;
 ```
-
----
 
 ### Sitemap Generation
 
@@ -400,8 +352,6 @@ export async function GET() {
 }
 ```
 
----
-
 ### Redirect Engine
 
 ```bash
@@ -421,8 +371,6 @@ const engine = createRedirectEngine({
 const match = engine.match('/old-page');
 // { destination: '/new-page', statusCode: 301 }
 ```
-
----
 
 ### SEO Audit
 
@@ -449,8 +397,6 @@ console.log(result.categories); // { meta, content, structure, performance }
 console.log(result.recommendations); // string[] of actionable fixes
 ```
 
----
-
 ### Readability Analysis
 
 ```bash
@@ -466,8 +412,6 @@ console.log(result.scores.fleschReadingEase); // 0-100
 console.log(result.scores.gradeLevel); // US grade level
 console.log(result.recommendations); // ['Shorten sentences...']
 ```
-
----
 
 ### Image SEO
 
@@ -495,8 +439,6 @@ const lazyResult = auditLazyLoading({
 const formatResult = analyzeImageFormats({ images: [{ src: '/photo.jpg', size: 450_000 }] });
 ```
 
----
-
 ### Link Graph Analysis
 
 ```bash
@@ -516,8 +458,6 @@ const orphans = findOrphanPages(graph); // [{ url: '/hidden', inboundCount: 0 }]
 const suggestions = suggestLinks(graph);
 const equity = analyzeLinkEquity(graph);
 ```
-
----
 
 ### AI-Assisted SEO
 
@@ -541,8 +481,6 @@ const result = parseMetaDescriptionResponse(llmResponse.choices[0].message.conte
 console.log(result.descriptions[0].text);
 ```
 
----
-
 ### Analytics Dashboard
 
 ```bash
@@ -557,8 +495,6 @@ const rankings = analyzeQueryRankings(gscRows);
 const changes = trackPositionChanges(previousRows, currentRows);
 const dashboard = buildDashboardData({ gscPages: currentRows, gscQueries: queryRows, auditResults: latestAudit });
 ```
-
----
 
 ### Google Search Console
 
@@ -590,8 +526,6 @@ const rows = await querySearchAnalytics(client, {
 const inspection = await inspectUrl(client, 'https://example.com/my-page');
 ```
 
----
-
 ### Third-Party Integrations
 
 ```bash
@@ -607,8 +541,6 @@ const overview = await semrush.getDomainOverview({ domain: 'example.com' });
 const ahrefs = createAhrefsClient({ apiKey: process.env.AHREFS_API_KEY! });
 const siteOverview = await ahrefs.getSiteOverview({ target: 'example.com' });
 ```
-
----
 
 ### Analytics Tracking & GDPR Consent
 
@@ -632,8 +564,6 @@ import { AnalyticsScript, ConsentBanner } from '@power-seo/tracking/react';
 <ConsentBanner manager={manager} privacyPolicyUrl="/privacy" />
 <AnalyticsScript scripts={ga4Scripts} consent={manager.getState()} />
 ```
-
----
 
 ### Core Utilities
 
@@ -728,7 +658,7 @@ calculateKeywordDensity('react seo is great for react apps', 'react'); // → 0.
 ### Setup
 
 ```bash
-git clone https://github.com/cybercraftbd/power-seo.git
+git clone https://github.com/CyberCraftBD/power-seo.git
 cd power-seo
 pnpm install
 pnpm build
@@ -764,32 +694,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, branch naming, c
 ## License
 
 [MIT](./LICENSE) © 2026 CyberCraft Bangladesh
-
----
-
-## The @power-seo Ecosystem
-
-All 17 packages are independently installable — use only what you need.
-
-| Package                                                                                    | Install                             | Description                                                                |
-| ------------------------------------------------------------------------------------------ | ----------------------------------- | -------------------------------------------------------------------------- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants             |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, robots, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR         |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components      |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components               |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI       |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                    |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation         |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters                  |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring        |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules        |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps        |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks                 |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard        |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection        |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination           |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management    |
 
 ---
 
