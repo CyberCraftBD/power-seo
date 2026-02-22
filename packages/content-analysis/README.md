@@ -2,7 +2,7 @@
 
 ![content-analysis banner](../../image/content-analysis/banner.svg)
 
-Yoast-Style SEO Content Scoring for TypeScript, React & Node.js — Real-Time Keyword Analysis, Readability Checks, and Actionable Feedback Without WordPress.
+Keyword-focused content analysis with real-time scoring, readability checks, and actionable feedback — like Yoast SEO, but as a standalone TypeScript library that works anywhere.
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/content-analysis)](https://www.npmjs.com/package/@power-seo/content-analysis)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/content-analysis)](https://www.npmjs.com/package/@power-seo/content-analysis)
@@ -12,7 +12,7 @@ Yoast-Style SEO Content Scoring for TypeScript, React & Node.js — Real-Time Ke
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/content-analysis)
 
-`@power-seo/content-analysis` gives you a complete Yoast-style SEO scoring pipeline for any text content. Feed it a page's title, meta description, body HTML, focus keyphrase, images, and links — get back structured `good` / `improvement` / `error` results for every SEO factor. Run it server-side in a CMS, client-side in a React editor, or inside a CI content quality gate. All 13 checks are individually configurable and tree-shakeable.
+`@power-seo/content-analysis` delivers a comprehensive, WordPress SEO plugin–style scoring pipeline for evaluating text content, comparable to Yoast SEO, All in One SEO (AIOSEO), Rank Math, SEOPress, and The SEO Framework. By providing inputs such as a page title, meta description, body HTML, focus keyphrase, images, and links, it returns structured `good` / `improvement` / `error` results across all critical SEO factors. It can be seamlessly executed server-side within an application, client-side in a React editor, or integrated into a CI-based content quality gate. All 13 analysis checks are fully configurable and tree-shakeable for optimal performance and flexibility.
 
 > **Zero runtime dependencies** — only `@power-seo/core` as a peer.
 
@@ -32,6 +32,48 @@ Yoast-Style SEO Content Scoring for TypeScript, React & Node.js — Real-Time Ke
 | Framework support | ❌ WordPress-only | ✅ Next.js, Remix, Vite, Node.js, Edge |
 
 ![SEO Score Dashboard](../../image/content-analysis/score-dashboard.svg)
+
+---
+
+## Features
+- **Per-check disable config** — skip irrelevant checks for text-only or image-only pages
+- **Keyphrase density check** — scores optimal 0.5–3% keyword frequency in body copy
+- **Keyphrase distribution** — verifies the focus keyword appears in the first 10% of content
+- **Title checks** — detects missing titles and keyphrase absence in the <title> tag
+- **Meta description checks** — validates presence, length (120–158 chars), and keyphrase inclusion
+- **Heading structure** — ensures H1 exists and that the keyphrase appears in at least one heading
+- **Word count** — flags pages under the 300-word minimum threshold
+- **Image alt text** — scans all images for missing alt attributes
+- **Image keyphrase** — checks whether at least one image alt contains the focus keyphrase
+- **Internal and external link analysis** — verifies outbound and inbound link presence
+- **Configurable check suite** — disable any individual check via disabledChecks config
+- **Framework-agnostic** — works in Next.js, Remix, Gatsby, Vite, vanilla Node.js
+- **Full TypeScript support** — complete type definitions for all inputs, outputs, and check IDs
+- **Tree-shakeable** — import only the checks you use; zero dead code in your bundle
+
+![Google SERP Preview](../../image/content-analysis/serp-preview.svg)
+
+---
+
+
+## Comparison
+
+| Feature                        | @power-seo/content-analysis | Yoast SEO | next-seo | seo-analyzer | react-helmet |
+| ------------------------------ | :-------------------------: | :-------: | :------: | :----------: | :----------: |
+| Keyphrase density check        | ✅                          | ✅        | ❌       | Partial      | ❌           |
+| Keyphrase distribution         | ✅                          | ✅        | ❌       | ❌           | ❌           |
+| Title + meta validation        | ✅                          | ✅        | ❌       | Partial      | ❌           |
+| Heading structure check        | ✅                          | ✅        | ❌       | ❌           | ❌           |
+| Image alt + keyphrase check    | ✅                          | ✅        | ❌       | ❌           | ❌           |
+| Internal / external link check | ✅                          | ✅        | ❌       | ❌           | ❌           |
+| 0–100 aggregate score          | ✅                          | ✅        | ❌       | Partial      | ❌           |
+| Per-check disable config       | ✅                          | ❌        | ❌       | ❌           | ❌           |
+| Works outside WordPress        | ✅                          | ❌        | ✅       | ✅           | ✅           |
+| TypeScript-first               | ✅                          | ❌        | Partial  | ❌           | ❌           |
+| Tree-shakeable                 | ✅                          | ❌        | Partial  | ❌           | ❌           |
+| React editor integration       | ✅                          | ✅        | ❌       | ❌           | ❌           |
+| CI / Node.js usage             | ✅                          | ❌        | ❌       | ✅           | ❌           |
+| Zero runtime dependencies      | ✅                          | ❌        | ❌       | ❌           | ❌           |
 
 ---
 
@@ -270,27 +312,6 @@ function analyzeContent(
 
 ---
 
-## Comparison
-
-| Feature                        | @power-seo/content-analysis | Yoast SEO | next-seo | seo-analyzer | react-helmet |
-| ------------------------------ | :-------------------------: | :-------: | :------: | :----------: | :----------: |
-| Keyphrase density check        | ✅                          | ✅        | ❌       | Partial      | ❌           |
-| Keyphrase distribution         | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| Title + meta validation        | ✅                          | ✅        | ❌       | Partial      | ❌           |
-| Heading structure check        | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| Image alt + keyphrase check    | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| Internal / external link check | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| 0–100 aggregate score          | ✅                          | ✅        | ❌       | Partial      | ❌           |
-| Per-check disable config       | ✅                          | ❌        | ❌       | ❌           | ❌           |
-| Works outside WordPress        | ✅                          | ❌        | ✅       | ✅           | ✅           |
-| TypeScript-first               | ✅                          | ❌        | Partial  | ❌           | ❌           |
-| Tree-shakeable                 | ✅                          | ❌        | Partial  | ❌           | ❌           |
-| React editor integration       | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| CI / Node.js usage             | ✅                          | ❌        | ❌       | ✅           | ❌           |
-| Zero runtime dependencies      | ✅                          | ❌        | ❌       | ❌           | ❌           |
-
----
-
 ## Use Cases
 
 - **Headless CMS** — score content as editors write, before publishing
@@ -299,8 +320,6 @@ function analyzeContent(
 - **eCommerce product pages** — validate product titles, descriptions, and image alt text at scale
 - **Blog platforms** — provide real-time Yoast-style feedback in the post editor
 - **CI/CD content gates** — block deploys when SEO score falls below an acceptable threshold
-
-![Google SERP Preview](../../image/content-analysis/serp-preview.svg)
 
 ---
 
@@ -374,13 +393,11 @@ seo content analysis · yoast seo alternative · content scoring typescript · k
 
 ## About [CyberCraft Bangladesh](https://ccbd.dev)
 
-**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms.
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software development and Full Stack SEO service provider company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-|                      |                                                                |
-| -------------------- | -------------------------------------------------------------- |
-| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
-| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
-| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
+[![Website](https://img.shields.io/badge/Website-ccbd.dev-blue?style=for-the-badge)](https://ccbd.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-cybercraftbd-black?style=for-the-badge&logo=github)](https://github.com/cybercraftbd)
+[![npm](https://img.shields.io/badge/npm-power--seo-red?style=for-the-badge&logo=npm)](https://www.npmjs.com/org/power-seo)
+[![Email](https://img.shields.io/badge/Email-info@ccbd.dev-green?style=for-the-badge&logo=gmail)](mailto:info@ccbd.dev)
 
 © 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)
