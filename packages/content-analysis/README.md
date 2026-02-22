@@ -1,5 +1,7 @@
 # @power-seo/content-analysis
 
+![content-analysis banner](../../image/content-analysis/banner.svg)
+
 Yoast-Style SEO Content Scoring for TypeScript, React & Node.js — Real-Time Keyword Analysis, Readability Checks, and Actionable Feedback Without WordPress.
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/content-analysis)](https://www.npmjs.com/package/@power-seo/content-analysis)
