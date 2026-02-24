@@ -12,6 +12,8 @@ jobs:
   deprecate:
     name: Deprecate legacy packages
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v4

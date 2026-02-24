@@ -99,28 +99,28 @@ export function analyzeKeyphraseOccurrences(config: {
   // Check meta description
   const inMetaDescription = metaDescription ? metaDescription.toLowerCase().includes(kp) : false;
 
-  // Check first paragraph
-  const firstParagraphMatch = content.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+  // Check first paragraph — use non-backtracking pattern to avoid ReDoS
+  const firstParagraphMatch = content.match(/<p[^>]*>((?:[^<]|<(?!\/p>))*)<\/p>/i);
   const firstParagraph = firstParagraphMatch
     ? stripHtml(firstParagraphMatch[1] ?? '').toLowerCase()
     : (plainContent.split(/\n\n/)[0]?.toLowerCase() ?? '');
   const inFirstParagraph = firstParagraph.includes(kp);
 
-  // Check H1
-  const h1Match = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  // Check H1 — use non-backtracking pattern to avoid ReDoS
+  const h1Match = content.match(/<h1[^>]*>((?:[^<]|<(?!\/h1>))*)<\/h1>/i);
   const inH1 = h1Match
     ? stripHtml(h1Match[1] ?? '')
         .toLowerCase()
         .includes(kp)
     : false;
 
-  // Count in headings (h2-h6)
-  const headingRegex = /<h[2-6][^>]*>([\s\S]*?)<\/h[2-6]>/gi;
+  // Count in headings (h2-h6) — use non-backtracking pattern to avoid ReDoS
+  const headingRegex = /<h([2-6])[^>]*>((?:[^<]|<(?!\/h[2-6]>))*)<\/h\1>/gi;
   let headingMatch;
   let inHeadings = 0;
   while ((headingMatch = headingRegex.exec(content)) !== null) {
     if (
-      stripHtml(headingMatch[1] ?? '')
+      stripHtml(headingMatch[2] ?? '')
         .toLowerCase()
         .includes(kp)
     ) {
