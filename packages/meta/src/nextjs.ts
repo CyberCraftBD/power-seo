@@ -32,13 +32,34 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     metadata.description = config.description;
   }
 
-  // Robots
+  // Robots — map all standard and advanced directives
   if (config.noindex !== undefined || config.nofollow !== undefined || config.robots) {
-    const index = config.noindex ? false : config.robots?.index;
-    const follow = config.nofollow ? false : config.robots?.follow;
+    const r = config.robots;
+    const index = config.noindex ? false : r?.index;
+    const follow = config.nofollow ? false : r?.follow;
     metadata.robots = {};
     if (index !== undefined) metadata.robots.index = index;
     if (follow !== undefined) metadata.robots.follow = follow;
+    // Standard directives supported directly by Next.js Metadata
+    if (r?.noarchive !== undefined) metadata.robots.noarchive = r.noarchive;
+    if (r?.nosnippet !== undefined) metadata.robots.nosnippet = r.nosnippet;
+    if (r?.noimageindex !== undefined) metadata.robots.noimageindex = r.noimageindex;
+    if (r?.notranslate !== undefined) metadata.robots.notranslate = r.notranslate;
+    if (r?.unavailableAfter !== undefined) metadata.robots.unavailableAfter = r.unavailableAfter;
+    // Advanced crawler directives → googleBot sub-object (rendered as X-Robots-Tag / googleBot meta)
+    const hasAdvanced =
+      r?.maxSnippet !== undefined ||
+      r?.maxImagePreview !== undefined ||
+      r?.maxVideoPreview !== undefined;
+    if (hasAdvanced) {
+      metadata.robots.googleBot = {
+        index,
+        follow,
+        ...(r?.maxSnippet !== undefined && { 'max-snippet': r.maxSnippet }),
+        ...(r?.maxImagePreview !== undefined && { 'max-image-preview': r.maxImagePreview }),
+        ...(r?.maxVideoPreview !== undefined && { 'max-video-preview': r.maxVideoPreview }),
+      };
+    }
   }
 
   // Open Graph

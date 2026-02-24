@@ -6,6 +6,8 @@ export { generateSitemap } from './generator.js';
 export { generateSitemapIndex, splitSitemap } from './sitemap-index.js';
 export { streamSitemap } from './stream.js';
 export { validateSitemapUrl } from './validate.js';
+export { toNextSitemap } from './next-adapter.js';
+export type { NextSitemapEntry } from './next-adapter.js';
 
 export type {
   SitemapURL,

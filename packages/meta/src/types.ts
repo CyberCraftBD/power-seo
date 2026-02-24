@@ -19,7 +19,20 @@ export interface NextMetadata {
   robots?: {
     index?: boolean;
     follow?: boolean;
-    googleBot?: { index?: boolean; follow?: boolean };
+    noarchive?: boolean;
+    nosnippet?: boolean;
+    noimageindex?: boolean;
+    notranslate?: boolean;
+    unavailableAfter?: string;
+    googleBot?: {
+      index?: boolean;
+      follow?: boolean;
+      noimageindex?: boolean;
+      nosnippet?: boolean;
+      'max-video-preview'?: number | string;
+      'max-image-preview'?: 'none' | 'standard' | 'large';
+      'max-snippet'?: number;
+    };
   };
   openGraph?: {
     type?: string;

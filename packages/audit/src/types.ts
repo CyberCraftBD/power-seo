@@ -32,6 +32,8 @@ export interface PageAuditInput {
   statusCode?: number;
   responseTime?: number;
   contentLength?: number;
+  wordCount?: number;
+  keywordDensity?: number;
 }
 
 export interface PageAuditResult {

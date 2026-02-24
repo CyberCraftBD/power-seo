@@ -58,7 +58,8 @@ jobs:
           fi
           echo "Publishing $NAME@$VERSION..."
           cd "$PKG_DIR"
-          npm publish --access public --provenance
+          # Use pnpm publish so workspace:* references are resolved to real version numbers
+          pnpm publish --access public --provenance --no-git-checks
           echo "✅ Published $NAME@$VERSION"
 
       - name: Summary
