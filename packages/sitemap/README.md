@@ -42,6 +42,7 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 - **Automatic index splitting** — `splitSitemap()` chunks at `MAX_URLS_PER_SITEMAP` (50,000) and returns both sitemaps and the index XML
 - **Sitemap index generation** — `generateSitemapIndex()` creates a `<sitemapindex>` pointing to child sitemaps
 - **URL validation** — `validateSitemapUrl()` returns `{ valid, errors, warnings }` without throwing
+- **Next.js App Router adapter** — `toNextSitemap()` (from `@power-seo/sitemap/next`) converts `SitemapURL[]` to the `MetadataRoute.Sitemap[]` format for `app/sitemap.ts`
 - **Constants exported** — `MAX_URLS_PER_SITEMAP` (50,000) and `MAX_SITEMAP_SIZE_BYTES` (52,428,800)
 - **Framework-agnostic** — works in Next.js API routes, Remix loaders, Express, Fastify, and edge runtimes
 - **Full TypeScript support** — typed `SitemapURL`, `SitemapImage`, `SitemapVideo`, `SitemapNews`, `SitemapConfig`
@@ -65,6 +66,7 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 | Edge runtime compatible        | ✅                 | ❌           | ❌            | ❌          |
 | TypeScript-first               | ✅                 | Partial      | ❌            | ❌          |
 | Tree-shakeable                 | ✅                 | ❌           | ❌            | ❌          |
+| Next.js `app/sitemap.ts` adapter | ✅               | ✅           | ❌            | ❌          |
 
 ---
 
@@ -244,7 +246,27 @@ const result = validateSitemapUrl({
 // result.warnings → []
 ```
 
-### Next.js App Router Route Handler
+### Next.js App Router — `app/sitemap.ts` Convention
+
+Next.js App Router has a built-in `app/sitemap.ts` file convention that returns an array of URL objects (not XML). Use `toNextSitemap()` from the `/next` subpath to convert `SitemapURL[]` to the required format:
+
+```ts
+// app/sitemap.ts
+import { toNextSitemap } from '@power-seo/sitemap/next';
+
+export default async function sitemap() {
+  const urls = await fetchUrlsFromCms();
+
+  return toNextSitemap(urls);
+  // Returns NextSitemapEntry[] — Next.js renders the XML automatically
+}
+```
+
+`toNextSitemap()` filters out invalid URLs, converts `lastmod` strings to `Date` objects, and maps `changefreq` to `changeFrequency` as required by Next.js.
+
+### Next.js App Router — Route Handler (XML)
+
+For full control over the XML output (useful when you need image/video/news extensions), use a route handler instead:
 
 ```ts
 // app/sitemap.xml/route.ts
@@ -358,6 +380,23 @@ function validateSitemapUrl(url: SitemapURL): SitemapValidationResult;
 ```
 
 Returns `{ valid: boolean; errors: string[]; warnings: string[] }`. Never throws.
+
+### `toNextSitemap(urls)` — from `@power-seo/sitemap/next`
+
+```ts
+import { toNextSitemap } from '@power-seo/sitemap/next';
+
+function toNextSitemap(urls: SitemapURL[]): NextSitemapEntry[];
+```
+
+Converts a `SitemapURL[]` to the array format expected by Next.js App Router's `app/sitemap.ts` file convention. Invalid URLs (per `validateSitemapUrl`) are filtered out automatically. `lastmod` strings are converted to `Date` objects; `changefreq` is mapped to `changeFrequency`.
+
+| Field             | Type                   | Description                              |
+| ----------------- | ---------------------- | ---------------------------------------- |
+| `url`             | `string`               | Absolute URL (`loc`)                     |
+| `lastModified`    | `Date \| string`       | From `lastmod` (converted to `Date`)     |
+| `changeFrequency` | `string`               | From `changefreq`                        |
+| `priority`        | `number`               | From `priority`                          |
 
 ---
 

@@ -74,26 +74,21 @@ const result = auditPage({
   canonical: 'https://example.com/blog/react-seo-guide',
   robots: 'index, follow',
   content: '<h1>React SEO Guide</h1><p>Search engine optimization for React apps...</p>',
-  headings: [
-    { level: 1, text: 'React SEO Guide' },
-    { level: 2, text: 'Why SEO Matters for React' },
-    { level: 2, text: 'Meta Tags in React' },
-  ],
-  images: [{ src: '/hero.webp', alt: 'React SEO guide illustration', width: 1200, height: 630 }],
-  links: {
-    internal: ['/blog', '/docs/meta-tags'],
-    external: ['https://developers.google.com/search'],
-  },
-  keyphrase: 'react seo',
+  headings: ['h1:React SEO Guide', 'h2:Why SEO Matters for React', 'h2:Meta Tags in React'],
+  images: [{ src: '/hero.webp', alt: 'React SEO guide illustration' }],
+  internalLinks: ['/blog', '/docs/meta-tags'],
+  externalLinks: ['https://developers.google.com/search'],
+  focusKeyphrase: 'react seo',
   wordCount: 1850,
 });
 
 console.log(result.score); // e.g. 84
-console.log(result.categories); // { meta: 90, content: 82, structure: 88, performance: 75 }
-console.log(result.issues);
+console.log(result.categories);
+// { meta: { score: 90, passed: 9, warnings: 1, errors: 0 }, content: { score: 82, ... }, ... }
+console.log(result.rules);
 // [
-//   { rule: 'meta-description-length', severity: 'info', message: 'Meta description is 162 chars — aim for 120–158' },
-//   { rule: 'image-format', severity: 'warning', message: 'Consider using AVIF for /hero.webp' },
+//   { id: 'meta-description-length', category: 'meta', severity: 'warning', title: '...', description: '...' },
+//   { id: 'content-word-count', category: 'content', severity: 'pass', ... },
 // ]
 ```
 
@@ -114,36 +109,28 @@ const input: PageAuditInput = {
     'Buy our premium widget online. Free shipping on orders over $50. Trusted by 10,000+ customers.',
   canonical: 'https://example.com/products/widget',
   robots: 'index, follow',
-  og: {
+  openGraph: {
     title: 'Premium Widget',
     description: 'Buy our premium widget with free shipping.',
     image: 'https://example.com/images/widget-og.jpg',
-    url: 'https://example.com/products/widget',
   },
   content: '<h1>Premium Widget</h1><p>Our best-selling product...</p>',
-  headings: [
-    { level: 1, text: 'Premium Widget' },
-    { level: 2, text: 'Features' },
-    { level: 2, text: 'Customer Reviews' },
-  ],
+  headings: ['h1:Premium Widget', 'h2:Features', 'h2:Customer Reviews'],
   images: [
-    { src: '/images/widget.jpg', alt: 'Premium widget product photo', width: 800, height: 600 },
-    { src: '/images/widget-detail.jpg', alt: '', width: 400, height: 300 },
+    { src: '/images/widget.jpg', alt: 'Premium widget product photo' },
+    { src: '/images/widget-detail.jpg', alt: '' },
   ],
-  links: {
-    internal: ['/products', '/cart', '/about'],
-    external: [],
-  },
-  schema: { '@type': 'Product', name: 'Premium Widget' },
-  keyphrase: 'premium widget',
+  internalLinks: ['/products', '/cart', '/about'],
+  externalLinks: [],
+  focusKeyphrase: 'premium widget',
   wordCount: 620,
 };
 
 const result: PageAuditResult = auditPage(input);
 
-// Filter by severity
-const errors = result.issues.filter((i) => i.severity === 'error');
-const warnings = result.issues.filter((i) => i.severity === 'warning');
+// Filter rules by severity
+const errors = result.rules.filter((r) => r.severity === 'error');
+const warnings = result.rules.filter((r) => r.severity === 'warning');
 
 console.log(`Score: ${result.score}/100`);
 console.log(`Errors: ${errors.length}, Warnings: ${warnings.length}`);
@@ -163,15 +150,16 @@ const siteInput: SiteAuditInput = {
 
 const report: SiteAuditResult = auditSite(siteInput);
 
-console.log(`Average score: ${report.averageScore}/100`);
-console.log(`Pages audited: ${report.pageCount}`);
+console.log(`Average score: ${report.score}/100`);
+console.log(`Pages audited: ${report.totalPages}`);
 console.log('Top issues across site:');
-report.topIssues.forEach(({ rule, occurrences, severity }) => {
-  console.log(`  ${rule}: ${occurrences} pages affected [${severity}]`);
+report.topIssues.forEach(({ id, title, severity }) => {
+  console.log(`  ${id} (${title}) [${severity}]`);
 });
 
 // Access individual page results
-report.pages.forEach(({ url, score, issues }) => {
+report.pageResults.forEach(({ url, score, rules }) => {
+  const issues = rules.filter((r) => r.severity === 'error' || r.severity === 'warning');
   console.log(`${url}: ${score}/100 (${issues.length} issues)`);
 });
 ```
@@ -194,18 +182,20 @@ const input: PageAuditInput = {
 };
 
 // Run only meta checks — title, description, canonical, robots, OG
-const metaResult: CategoryResult = runMetaRules(input);
-console.log(`Meta score: ${metaResult.score}/100`);
-metaResult.issues.forEach((issue) => console.log(`  [${issue.severity}] ${issue.message}`));
+const metaRules = runMetaRules(input);
+const errors = metaRules.filter((r) => r.severity === 'error');
+const passes = metaRules.filter((r) => r.severity === 'pass');
+console.log(`Meta: ${passes.length} passed, ${errors.length} errors`);
+metaRules.forEach((r) => console.log(`  [${r.severity}] ${r.title}: ${r.description}`));
 
 // Run only content checks — word count, keyphrase, readability
-const contentResult: CategoryResult = runContentRules(input);
+const contentRules = runContentRules(input);
 
 // Run only structure checks — headings, images, links, schema
-const structureResult: CategoryResult = runStructureRules(input);
+const structureRules = runStructureRules(input);
 
 // Run only performance checks — image formats, resource hints
-const perfResult: CategoryResult = runPerformanceRules(input);
+const perfRules = runPerformanceRules(input);
 ```
 
 ### Processing Audit Issues
@@ -218,20 +208,19 @@ import type { AuditSeverity } from '@power-seo/audit';
 
 const result = auditPage(input);
 
-// Group issues by category
-const byCategory = result.issues.reduce(
-  (acc, issue) => {
-    const cat = issue.category ?? 'general';
-    acc[cat] = acc[cat] ?? [];
-    acc[cat].push(issue);
+// Group rules by category
+const byCategory = result.rules.reduce(
+  (acc, rule) => {
+    acc[rule.category] = acc[rule.category] ?? [];
+    acc[rule.category]!.push(rule);
     return acc;
   },
-  {} as Record<string, typeof result.issues>,
+  {} as Record<string, typeof result.rules>,
 );
 
-// Priority order: errors first, then warnings, then info
-const prioritized = [...result.issues].sort((a, b) => {
-  const order: Record<AuditSeverity, number> = { error: 0, warning: 1, info: 2 };
+// Priority order: errors first, then warnings, then info, then pass
+const prioritized = [...result.rules].sort((a, b) => {
+  const order: Record<AuditSeverity, number> = { error: 0, warning: 1, info: 2, pass: 3 };
   return order[a.severity] - order[b.severity];
 });
 
@@ -256,76 +245,86 @@ const report = auditSite({ pages });
 const SCORE_THRESHOLD = 75;
 const ALLOWED_ERRORS = 0;
 
-const totalErrors = report.pages.flatMap((p) =>
-  p.issues.filter((i) => i.severity === 'error'),
+const totalErrors = report.pageResults.flatMap((p) =>
+  p.rules.filter((r) => r.severity === 'error'),
 ).length;
 
-if (report.averageScore < SCORE_THRESHOLD || totalErrors > ALLOWED_ERRORS) {
+if (report.score < SCORE_THRESHOLD || totalErrors > ALLOWED_ERRORS) {
   console.error(`SEO audit FAILED`);
-  console.error(`  Average score: ${report.averageScore} (min: ${SCORE_THRESHOLD})`);
+  console.error(`  Average score: ${report.score} (min: ${SCORE_THRESHOLD})`);
   console.error(`  Critical errors: ${totalErrors} (max: ${ALLOWED_ERRORS})`);
   process.exit(1);
 }
 
-console.log(`SEO audit PASSED — average score: ${report.averageScore}/100`);
+console.log(`SEO audit PASSED — average score: ${report.score}/100`);
 ```
 
 ## API Reference
 
 ### `auditPage(input)`
 
-| Parameter               | Type                                         | Default     | Description                                                |
-| ----------------------- | -------------------------------------------- | ----------- | ---------------------------------------------------------- |
-| `input.url`             | `string`                                     | required    | Canonical URL of the page being audited                    |
-| `input.title`           | `string`                                     | required    | Page `<title>` tag content                                 |
-| `input.metaDescription` | `string`                                     | `''`        | Content of the `meta[name="description"]` tag              |
-| `input.canonical`       | `string`                                     | `''`        | Canonical URL from `link[rel="canonical"]`                 |
-| `input.robots`          | `string`                                     | `''`        | Content of `meta[name="robots"]` tag                       |
-| `input.og`              | `object`                                     | `{}`        | Open Graph tags: `title`, `description`, `image`, `url`    |
-| `input.content`         | `string`                                     | required    | Full HTML content of the page body                         |
-| `input.headings`        | `Array<{ level: number; text: string }>`     | `[]`        | All headings extracted from the page                       |
-| `input.images`          | `Array<ImageInfo>`                           | `[]`        | Image metadata: `src`, `alt`, `width`, `height`, `loading` |
-| `input.links`           | `{ internal: string[]; external: string[] }` | required    | Categorized page links                                     |
-| `input.schema`          | `object`                                     | `undefined` | JSON-LD schema object present on the page                  |
-| `input.keyphrase`       | `string`                                     | `''`        | Focus keyphrase for content analysis                       |
-| `input.wordCount`       | `number`                                     | `0`         | Total word count of the page body text                     |
+| Parameter                | Type                                            | Required | Description                                                     |
+| ------------------------ | ----------------------------------------------- | -------- | --------------------------------------------------------------- |
+| `input.url`              | `string`                                        | ✅       | Canonical URL of the page being audited                         |
+| `input.title`            | `string`                                        | —        | Page `<title>` tag content                                      |
+| `input.metaDescription`  | `string`                                        | —        | Content of the `meta[name="description"]` tag                   |
+| `input.canonical`        | `string`                                        | —        | Canonical URL from `link[rel="canonical"]`                      |
+| `input.robots`           | `string`                                        | —        | Content of `meta[name="robots"]` tag (e.g. `'index, follow'`)  |
+| `input.openGraph`        | `{ title?, description?, image? }`              | —        | Open Graph tag values                                           |
+| `input.content`          | `string`                                        | —        | Full HTML/text content of the page body                         |
+| `input.headings`         | `string[]`                                      | —        | Headings as `'h1:text'` / `'h2:text'` strings (e.g. `['h1:My Title', 'h2:Section']`) |
+| `input.images`           | `Array<{ src: string; alt?: string; size?: number }>` | — | Images extracted from the page                            |
+| `input.internalLinks`    | `string[]`                                      | —        | Internal link href values found on the page                     |
+| `input.externalLinks`    | `string[]`                                      | —        | External link href values found on the page                     |
+| `input.schema`           | `SchemaBase[]`                                  | —        | JSON-LD schema objects present on the page                      |
+| `input.focusKeyphrase`   | `string`                                        | —        | Focus keyphrase for content analysis                            |
+| `input.wordCount`        | `number`                                        | —        | Word count proxy — used when `content` is not provided          |
+| `input.keywordDensity`   | `number`                                        | —        | Keyword density % proxy — used when `content` is not provided   |
+| `input.statusCode`       | `number`                                        | —        | HTTP status code of the page                                    |
+| `input.responseTime`     | `number`                                        | —        | Page response time in milliseconds                              |
+| `input.contentLength`    | `number`                                        | —        | Content length in bytes                                         |
 
 Returns `PageAuditResult`:
 
-| Property     | Type                                    | Description                                    |
-| ------------ | --------------------------------------- | ---------------------------------------------- |
-| `url`        | `string`                                | The audited page URL                           |
-| `score`      | `number`                                | Overall weighted score 0–100                   |
-| `categories` | `Record<AuditCategory, CategoryResult>` | Per-category scores and issues                 |
-| `issues`     | `AuditIssue[]`                          | Flat array of all issues across all categories |
+| Property          | Type                                    | Description                                                    |
+| ----------------- | --------------------------------------- | -------------------------------------------------------------- |
+| `url`             | `string`                                | The audited page URL                                           |
+| `score`           | `number`                                | Overall weighted score 0–100                                   |
+| `categories`      | `Record<AuditCategory, CategoryResult>` | Per-category scores with `score`, `passed`, `warnings`, `errors` |
+| `rules`           | `AuditRule[]`                           | Flat array of all rule results across all categories           |
+| `recommendations` | `string[]`                              | Human-readable descriptions of errors and warnings             |
 
 ---
 
 ### `auditSite(input)`
 
-| Parameter     | Type               | Default  | Description                            |
+| Parameter     | Type               | Required | Description                            |
 | ------------- | ------------------ | -------- | -------------------------------------- |
-| `input.pages` | `PageAuditInput[]` | required | Array of page audit inputs to evaluate |
+| `input.pages` | `PageAuditInput[]` | ✅       | Array of page audit inputs to evaluate |
 
 Returns `SiteAuditResult`:
 
-| Property       | Type                                     | Description                         |
-| -------------- | ---------------------------------------- | ----------------------------------- |
-| `averageScore` | `number`                                 | Mean score across all pages (0–100) |
-| `pageCount`    | `number`                                 | Total number of pages audited       |
-| `pages`        | `PageAuditResult[]`                      | Individual page audit results       |
-| `topIssues`    | `Array<{ rule, occurrences, severity }>` | Most common issues across all pages |
+| Property      | Type                                    | Description                                         |
+| ------------- | --------------------------------------- | --------------------------------------------------- |
+| `score`       | `number`                                | Mean score across all pages (0–100)                 |
+| `totalPages`  | `number`                                | Total number of pages audited                       |
+| `pageResults` | `PageAuditResult[]`                     | Individual page audit results                       |
+| `topIssues`   | `AuditRule[]`                           | Most frequently occurring non-pass rules across all pages |
+| `summary`     | `Record<AuditCategory, CategoryResult>` | Aggregated category scores across all pages         |
 
 ---
 
 ### `runMetaRules(input)` / `runContentRules(input)` / `runStructureRules(input)` / `runPerformanceRules(input)`
 
-Each rule runner accepts a `PageAuditInput` and returns a `CategoryResult`:
+Each rule runner accepts a `PageAuditInput` and returns `AuditRule[]`:
 
-| Property | Type           | Description                   |
-| -------- | -------------- | ----------------------------- |
-| `score`  | `number`       | Category score 0–100          |
-| `issues` | `AuditIssue[]` | Issues found in this category |
+| Property      | Type           | Description                                                   |
+| ------------- | -------------- | ------------------------------------------------------------- |
+| `id`          | `string`       | Unique rule identifier (e.g. `'meta-title-length'`)           |
+| `category`    | `AuditCategory`| `'meta'` \| `'content'` \| `'structure'` \| `'performance'`  |
+| `title`       | `string`       | Short human-readable rule name                                |
+| `description` | `string`       | Detailed description of the finding                           |
+| `severity`    | `AuditSeverity`| `'error'` \| `'warning'` \| `'info'` \| `'pass'`             |
 
 ---
 
@@ -333,14 +332,14 @@ Each rule runner accepts a `PageAuditInput` and returns a `CategoryResult`:
 
 ```ts
 import type {
-  AuditCategory, // 'meta' | 'content' | 'structure' | 'performance'
-  AuditSeverity, // 'error' | 'warning' | 'info'
-  AuditRule, // { id: string; category: AuditCategory; severity: AuditSeverity; check(input): AuditIssue[] }
-  PageAuditInput, // Full page input object (see auditPage parameters above)
-  PageAuditResult, // { url, score, categories, issues }
-  CategoryResult, // { score: number; issues: AuditIssue[] }
-  SiteAuditInput, // { pages: PageAuditInput[] }
-  SiteAuditResult, // { averageScore, pageCount, pages, topIssues }
+  AuditCategory,   // 'meta' | 'content' | 'structure' | 'performance'
+  AuditSeverity,   // 'error' | 'warning' | 'info' | 'pass'
+  AuditRule,       // { id, category, title, description, severity }
+  PageAuditInput,  // Full page input object (see auditPage parameters above)
+  PageAuditResult, // { url, score, categories, rules, recommendations }
+  CategoryResult,  // { score: number; passed: number; warnings: number; errors: number }
+  SiteAuditInput,  // { pages: PageAuditInput[] }
+  SiteAuditResult, // { score, totalPages, pageResults, topIssues, summary }
 } from '@power-seo/audit';
 ```
 
