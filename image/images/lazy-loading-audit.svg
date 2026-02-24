@@ -1,0 +1,130 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <text x="600" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Lazy Loading &amp; Performance Audit — auditLazyLoading()</text>
+  <text x="600" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">LCP · CLS · missing dimensions · srcset — every issue that slows your Core Web Vitals</text>
+
+  <rect x="40" y="68" width="1120" height="384" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="40" y="68" width="1120" height="32" rx="10" fill="#111827"/>
+  <rect x="40" y="88" width="1120" height="12" fill="#111827"/>
+  <circle cx="62" cy="84" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="80" cy="84" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="98" cy="84" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="600" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">yourapp.com/audit/images/performance</text>
+
+  <!-- Page viewport illustration -->
+  <rect x="56" y="108" width="320" height="328" rx="8" fill="#111827" stroke="#1e293b"/>
+  <text x="216" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#f8fafc" text-anchor="middle">Page Viewport</text>
+  <text x="216" y="142" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">isAboveFold detection</text>
+
+  <!-- Viewport line -->
+  <rect x="76" y="152" width="280" height="130" rx="4" fill="#0d1525" stroke="#334155"/>
+  <text x="216" y="166" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b" text-anchor="middle">ABOVE FOLD (visible on load)</text>
+
+  <!-- Above-fold images -->
+  <rect x="84" y="172" width="120" height="70" rx="3" fill="#1a0a0a" stroke="#ef4444" stroke-opacity="0.6"/>
+  <text x="144" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5" text-anchor="middle">🖼 hero.jpg</text>
+  <text x="144" y="213" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#ef4444" text-anchor="middle">loading="lazy" ✗ LCP!</text>
+  <text x="144" y="225" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#ef4444" text-anchor="middle">no width/height ✗ CLS!</text>
+
+  <rect x="216" y="172" width="128" height="70" rx="3" fill="#1a130a" stroke="#f59e0b" stroke-opacity="0.6"/>
+  <text x="280" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d" text-anchor="middle">🖼 logo.svg</text>
+  <text x="280" y="213" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#6ee7b7" text-anchor="middle">loading="eager" ✓</text>
+  <text x="280" y="225" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#fcd34d" text-anchor="middle">no decoding △</text>
+
+  <!-- Fold separator -->
+  <line x1="76" y1="282" x2="356" y2="282" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="216" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fb923c" text-anchor="middle">— fold —</text>
+
+  <!-- Below-fold -->
+  <text x="216" y="312" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b" text-anchor="middle">BELOW FOLD</text>
+  <rect x="76" y="318" width="115" height="48" rx="3" fill="#0a1a0f" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="133" y="340" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">🖼 product.webp</text>
+  <text x="133" y="353" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#6ee7b7" text-anchor="middle">loading="lazy" ✓</text>
+
+  <rect x="202" y="318" width="142" height="48" rx="3" fill="#1a130a" stroke="#f59e0b" stroke-opacity="0.4"/>
+  <text x="273" y="340" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">🖼 gallery-3.jpg</text>
+  <text x="273" y="353" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#fcd34d" text-anchor="middle">no loading attr △</text>
+
+  <!-- Right: issues table -->
+  <rect x="392" y="108" width="768" height="328" rx="8" fill="#111827" stroke="#1e293b"/>
+  <text x="412" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Audit Issues — LazyLoadingAuditResult</text>
+  <text x="412" y="142" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">auditLazyLoading(images) · result.issues[] · result.recommendations[]</text>
+
+  <rect x="408" y="150" width="744" height="20" rx="3" fill="#1e293b"/>
+  <text x="424" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Issue</text>
+  <text x="684" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Impact</text>
+  <text x="780" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Severity</text>
+  <text x="868" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Image</text>
+
+  <!-- Issue 1: above-fold lazy -->
+  <rect x="408" y="172" width="744" height="38" rx="2" fill="#1a0a0a"/>
+  <text x="424" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="600" fill="#fca5a5">Above-fold image has loading="lazy"</text>
+  <text x="424" y="202" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b">Delays LCP — browser won't start loading until user scrolls, hurting page load time</text>
+  <text x="684" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">LCP ↓</text>
+  <rect x="772" y="177" width="46" height="16" rx="8" fill="#ef4444" fill-opacity="0.25"/>
+  <text x="795" y="189" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fca5a5" text-anchor="middle">error</text>
+  <text x="868" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">hero.jpg</text>
+  <line x1="408" y1="210" x2="1152" y2="210" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Issue 2: missing dimensions -->
+  <rect x="408" y="212" width="744" height="38" rx="2" fill="#1a0a0a"/>
+  <text x="424" y="228" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="600" fill="#fca5a5">Missing width and height attributes</text>
+  <text x="424" y="242" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b">Browser can't reserve space — causes layout shift when image loads (Cumulative Layout Shift)</text>
+  <text x="684" y="232" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">CLS ↑</text>
+  <rect x="772" y="217" width="54" height="16" rx="8" fill="#f59e0b" fill-opacity="0.25"/>
+  <text x="799" y="229" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">warning</text>
+  <text x="868" y="232" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">hero.jpg</text>
+  <line x1="408" y1="250" x2="1152" y2="250" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Issue 3: below-fold no lazy -->
+  <rect x="408" y="252" width="744" height="38" rx="2" fill="#1a130a"/>
+  <text x="424" y="268" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="600" fill="#fcd34d">Below-fold image missing loading="lazy"</text>
+  <text x="424" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b">Image loads immediately — wastes bandwidth for users who never scroll that far</text>
+  <text x="684" y="272" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">bandwidth</text>
+  <rect x="772" y="257" width="54" height="16" rx="8" fill="#f59e0b" fill-opacity="0.25"/>
+  <text x="799" y="269" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">warning</text>
+  <text x="868" y="272" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">gallery-3.jpg</text>
+  <line x1="408" y1="290" x2="1152" y2="290" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Issue 4: srcset without sizes -->
+  <rect x="408" y="292" width="744" height="38" rx="2" fill="#1a130a"/>
+  <text x="424" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="600" fill="#fcd34d">srcset present but sizes attribute missing</text>
+  <text x="424" y="322" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b">Browser can't pick the best candidate — may download oversized image on mobile</text>
+  <text x="684" y="312" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">mobile perf</text>
+  <rect x="772" y="297" width="54" height="16" rx="8" fill="#f59e0b" fill-opacity="0.25"/>
+  <text x="799" y="309" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">warning</text>
+  <text x="868" y="312" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">banner.webp</text>
+  <line x1="408" y1="330" x2="1152" y2="330" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Issue 5: missing decoding -->
+  <rect x="408" y="332" width="744" height="38" rx="2" fill="#0f1729"/>
+  <text x="424" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="600" fill="#94a3b8">Missing decoding attribute</text>
+  <text x="424" y="362" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b">Add decoding="async" to avoid blocking the main thread during image decode</text>
+  <text x="684" y="352" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">threading</text>
+  <rect x="772" y="337" width="32" height="16" rx="8" fill="#334155" fill-opacity="0.4"/>
+  <text x="788" y="349" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b" text-anchor="middle">info</text>
+  <text x="868" y="352" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">logo.svg</text>
+  <line x1="408" y1="370" x2="1152" y2="370" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Recommendations -->
+  <rect x="408" y="374" width="744" height="54" rx="4" fill="#0d1525" stroke="#f97316" stroke-opacity="0.3"/>
+  <text x="424" y="390" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="600" fill="#fb923c">result.recommendations[]</text>
+  <text x="424" y="404" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">→ Remove loading="lazy" from 2 above-fold images to improve LCP score</text>
+  <text x="424" y="418" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">→ Add width/height to all images to eliminate CLS · Add loading="lazy" to 6 below-fold images</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

@@ -1,0 +1,110 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <text x="600" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">ContentAnalyzer Component — Live SEO Feedback</text>
+  <text x="600" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">&lt;ContentAnalyzer input={page} /&gt; — ScorePanel + CheckList rendered automatically alongside your editor</text>
+
+  <rect x="40" y="68" width="1120" height="384" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="40" y="68" width="1120" height="32" rx="10" fill="#111827"/>
+  <rect x="40" y="88" width="1120" height="12" fill="#111827"/>
+  <circle cx="62" cy="84" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="80" cy="84" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="98" cy="84" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="600" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">yourapp.com/cms/posts/edit/nextjs-seo-guide</text>
+
+  <!-- Left: CMS editor -->
+  <rect x="56" y="108" width="560" height="328" rx="8" fill="#111827" stroke="#1e293b"/>
+  <text x="76" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Post Editor</text>
+  <text x="76" y="142" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">Content analysis updates as you type</text>
+
+  <!-- Editor fields -->
+  <text x="76" y="162" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Focus keyphrase</text>
+  <rect x="76" y="166" width="524" height="26" rx="4" fill="#0d1525" stroke="#8b5cf6" stroke-opacity="0.6"/>
+  <text x="92" y="183" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c4b5fd">next.js seo optimization</text>
+  <text x="584" y="183" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#8b5cf6" text-anchor="end">●</text>
+
+  <text x="76" y="208" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">SEO Title</text>
+  <rect x="76" y="212" width="524" height="26" rx="4" fill="#0d1525" stroke="#334155"/>
+  <text x="92" y="229" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f8fafc">Next.js SEO Optimization: Complete Guide</text>
+  <text x="584" y="229" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#10b981" text-anchor="end">58 ✓</text>
+
+  <text x="76" y="252" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Meta Description</text>
+  <rect x="76" y="256" width="524" height="26" rx="4" fill="#0d1525" stroke="#ef4444" stroke-opacity="0.5"/>
+  <text x="92" y="273" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Start typing a meta description...</text>
+  <text x="584" y="273" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5" text-anchor="end">0 ✗</text>
+
+  <!-- Content area -->
+  <text x="76" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Content</text>
+  <rect x="76" y="300" width="524" height="120" rx="4" fill="#0d1525" stroke="#334155"/>
+  <text x="92" y="318" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#f8fafc"># Next.js SEO Optimization: Complete Guide</text>
+  <text x="92" y="334" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Learn how to implement next.js seo optimization in your</text>
+  <text x="92" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">projects. This guide covers meta tags, sitemaps, structured</text>
+  <text x="92" y="362" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">data and performance best practices.</text>
+  <text x="92" y="378" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#f8fafc">## Why SEO Matters for Next.js Apps</text>
+  <text x="92" y="394" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">SEO drives organic traffic. Without proper optimization...</text>
+  <text x="92" y="410" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">1,240 words · 6 images · 5 internal links · 2 external</text>
+
+  <!-- Right: ContentAnalyzer panel -->
+  <rect x="632" y="108" width="488" height="328" rx="8" fill="#111827" stroke="#8b5cf6" stroke-opacity="0.4"/>
+  <rect x="632" y="108" width="488" height="34" rx="8" fill="#160e2a"/>
+  <rect x="632" y="128" width="488" height="14" fill="#160e2a"/>
+  <text x="652" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#c4b5fd">SEO Analysis</text>
+  <text x="652" y="142" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">analyzeContent() · updates on each keystroke</text>
+
+  <!-- ScorePanel component -->
+  <text x="652" y="162" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">ScorePanel</text>
+  <text x="1104" y="162" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#8b5cf6" text-anchor="end">72 / 100</text>
+  <rect x="652" y="166" width="452" height="14" rx="7" fill="#1e293b"/>
+  <rect x="652" y="166" width="325" height="14" rx="7" fill="#8b5cf6" opacity="0.85"/>
+  <text x="977" y="177" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#f8fafc" text-anchor="end">72%</text>
+
+  <line x1="652" y1="190" x2="1104" y2="190" stroke="#1e293b" stroke-width="1"/>
+  <text x="652" y="204" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">CheckList  —  13 checks</text>
+
+  <!-- Check items -->
+  <text x="652" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="664" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">title-presence: Title tag found</text>
+  <text x="652" y="234" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="664" y="234" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">title-keyphrase: Focus keyphrase in title</text>
+  <text x="652" y="248" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">✗</text>
+  <text x="664" y="248" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">meta-description-presence: No description</text>
+  <text x="652" y="262" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">—</text>
+  <text x="664" y="262" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">meta-description-keyphrase: (skipped)</text>
+  <text x="652" y="276" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△</text>
+  <text x="664" y="276" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">keyphrase-density: 0.4% — below 1%</text>
+  <text x="652" y="290" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△</text>
+  <text x="664" y="290" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">keyphrase-distribution: Missing from intro</text>
+  <text x="652" y="304" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="664" y="304" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">heading-structure: H1 → H2 hierarchy OK</text>
+  <text x="652" y="318" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="664" y="318" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">heading-keyphrase: Keyphrase in subheading</text>
+  <text x="652" y="332" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="664" y="332" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">word-count: 1,240 words — good</text>
+  <text x="652" y="346" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△</text>
+  <text x="664" y="346" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">image-alt: 3 of 6 images missing alt text</text>
+  <text x="652" y="360" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="664" y="360" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">image-keyphrase: Keyphrase in hero image alt</text>
+  <text x="652" y="374" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="664" y="374" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">internal-links: 5 internal links found</text>
+  <text x="652" y="388" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="664" y="388" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">external-links: 2 external links found</text>
+
+  <line x1="652" y1="400" x2="1104" y2="400" stroke="#1e293b" stroke-width="1"/>
+  <text x="652" y="416" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#c4b5fd">→ Add meta description to fix biggest gap</text>
+  <text x="652" y="428" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#c4b5fd">→ Use keyphrase in first paragraph</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

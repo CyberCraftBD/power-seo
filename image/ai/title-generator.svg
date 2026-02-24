@@ -1,0 +1,113 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <text x="600" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Title Generator UI — What You Can Build</text>
+  <text x="600" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">buildTitlePrompt() + parseTitleResponse() → production title picker panel</text>
+
+  <!-- Browser mockup -->
+  <rect x="40" y="70" width="1120" height="376" rx="10" fill="#0d1525" stroke="#1e293b" stroke-width="1"/>
+  <rect x="40" y="70" width="1120" height="34" rx="10" fill="#111827"/>
+  <rect x="40" y="90" width="1120" height="14" fill="#111827"/>
+  <circle cx="62" cy="87" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="80" cy="87" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="98" cy="87" r="5" fill="#10b981" opacity="0.6"/>
+  <rect x="140" y="79" width="500" height="16" rx="8" fill="#1e293b"/>
+  <text x="390" y="91" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">localhost:3000/seo-tools/title-generator</text>
+
+  <!-- App layout: left panel + right SERP preview -->
+  <!-- Left panel -->
+  <rect x="56" y="114" width="540" height="316" rx="8" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+  <text x="76" y="136" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">AI Title Generator</text>
+  <text x="76" y="152" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569">Powered by @power-seo/ai · buildTitlePrompt()</text>
+
+  <!-- Input fields -->
+  <text x="76" y="174" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Focus Keyphrase</text>
+  <rect x="76" y="180" width="504" height="26" rx="5" fill="#1e293b" stroke="#334155"/>
+  <text x="88" y="197" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8">nextjs seo optimization guide</text>
+
+  <text x="76" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Tone</text>
+  <rect x="76" y="226" width="120" height="26" rx="5" fill="#1e293b" stroke="#334155"/>
+  <text x="136" y="243" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Professional ▾</text>
+
+  <!-- Generate button -->
+  <rect x="460" y="220" width="120" height="26" rx="5" fill="#06b6d4" fill-opacity="0.9"/>
+  <text x="520" y="237" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">✨ Generate</text>
+
+  <!-- Results list -->
+  <line x1="76" y1="262" x2="564" y2="262" stroke="#1e293b" stroke-width="1"/>
+  <text x="76" y="278" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Generated Titles — click to select</text>
+
+  <!-- Result 1 selected -->
+  <rect x="76" y="284" width="504" height="36" rx="5" fill="#0a2a1e" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="92" cy="302" r="6" fill="#10b981"/>
+  <text x="104" y="297" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f8fafc">Next.js SEO Optimization: The Complete 2024 Guide</text>
+  <text x="104" y="311" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">49 chars · 481px · ✓ Optimal</text>
+  <rect x="510" y="290" width="60" height="18" rx="9" fill="#10b981"/>
+  <text x="540" y="302" font-family="system-ui,-apple-system,sans-serif" font-size="9" font-weight="600" fill="#fff" text-anchor="middle">Selected</text>
+
+  <!-- Result 2 -->
+  <rect x="76" y="326" width="504" height="36" rx="5" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="92" cy="344" r="6" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="104" y="339" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f8fafc">How to Optimize Your Next.js App for Search Engines</text>
+  <text x="104" y="353" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">51 chars · 498px · ✓ Optimal</text>
+
+  <!-- Result 3 -->
+  <rect x="76" y="368" width="504" height="36" rx="5" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="92" cy="386" r="6" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="104" y="381" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f8fafc">10 Next.js SEO Tips That Actually Improve Rankings</text>
+  <text x="104" y="395" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">50 chars · 490px · ✓ Optimal</text>
+
+  <!-- Right panel: SERP Preview -->
+  <rect x="612" y="114" width="532" height="316" rx="8" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+  <text x="632" y="136" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">Live SERP Preview</text>
+  <text x="632" y="152" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569">How your title looks in Google search results</text>
+
+  <!-- SERP result mock -->
+  <rect x="632" y="164" width="492" height="100" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="648" y="184" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#186aa5">https://yoursite.com › guides › nextjs-seo</text>
+  <text x="648" y="202" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="600" fill="#1a0dab">Next.js SEO Optimization: The Complete 2024 Guide</text>
+  <text x="648" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4d5156">Learn how to implement SEO best practices in your Next.js</text>
+  <text x="648" y="236" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#4d5156">application with this step-by-step guide...</text>
+  <text x="648" y="255" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#888">Dec 14, 2024</text>
+
+  <!-- Pixel width bar -->
+  <text x="632" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Title display width</text>
+  <rect x="632" y="290" width="492" height="10" rx="5" fill="#1e293b"/>
+  <!-- limit at 580/600 = 96.6% -->
+  <rect x="632" y="290" width="394" height="10" rx="5" fill="#10b981" opacity="0.8"/>
+  <line x1="1106" y1="284" x2="1106" y2="306" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="1106" y="318" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#ef4444" text-anchor="middle">580px limit</text>
+  <text x="632" y="318" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7">481px ✓ safe zone</text>
+
+  <!-- Stats row -->
+  <line x1="632" y1="330" x2="1124" y2="330" stroke="#1e293b" stroke-width="1"/>
+  <text x="632" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8">Characters</text>
+  <text x="720" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">49</text>
+  <text x="780" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8">Pixel Width</text>
+  <text x="878" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">481px</text>
+  <text x="950" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8">Status</text>
+  <rect x="1010" y="338" width="80" height="18" rx="9" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-opacity="0.5"/>
+  <text x="1050" y="351" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="middle">✓ Optimal</text>
+
+  <text x="632" y="390" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Keyphrase found at position</text>
+  <rect x="802" y="378" width="56" height="18" rx="9" fill="#06b6d4" fill-opacity="0.2" stroke="#06b6d4" stroke-opacity="0.5"/>
+  <text x="830" y="391" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#67e8f9" text-anchor="middle">Front ✓</text>
+  <text x="870" y="390" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">· Variant type</text>
+  <rect x="966" y="378" width="56" height="18" rx="9" fill="#8b5cf6" fill-opacity="0.2" stroke="#8b5cf6" stroke-opacity="0.5"/>
+  <text x="994" y="391" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="middle">How-To</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

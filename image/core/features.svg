@@ -1,0 +1,113 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/>
+      <stop offset="100%" stop-color="#0d1a35"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Heading -->
+  <text x="600" y="38" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="600" fill="#f8fafc" text-anchor="middle">Core Features</text>
+  <text x="600" y="58" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Everything you need for production-grade SEO in one zero-dependency package</text>
+
+  <!-- === CARD 1: Meta Tag Builder === -->
+  <rect x="40"  y="74" width="352" height="168" rx="10" fill="#0f1729" stroke="#1e293b" stroke-width="1"/>
+  <rect x="40"  y="74" width="352" height="4"   rx="2"  fill="#6366f1"/>
+  <!-- icon: stacked tag rectangles -->
+  <rect x="62" y="100" width="36" height="8"  rx="2" fill="#6366f1" opacity="0.9"/>
+  <rect x="62" y="113" width="28" height="8"  rx="2" fill="#6366f1" opacity="0.55"/>
+  <rect x="62" y="126" width="32" height="8"  rx="2" fill="#6366f1" opacity="0.3"/>
+  <text x="110" y="112" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="600" fill="#f8fafc">Meta Tag Builder</text>
+  <text x="62" y="152" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Open Graph · Twitter Cards</text>
+  <text x="62" y="170" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">hreflang alternates · canonical</text>
+  <text x="62" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Any framework · Zero deps</text>
+  <!-- badge -->
+  <rect x="62" y="206" width="90" height="22" rx="4" fill="#6366f1" fill-opacity="0.15" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="107" y="221" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#a5b4fc" text-anchor="middle">buildMetaTags()</text>
+
+  <!-- === CARD 2: SEO Validator === -->
+  <rect x="424" y="74" width="352" height="168" rx="10" fill="#0f1729" stroke="#1e293b" stroke-width="1"/>
+  <rect x="424" y="74" width="352" height="4"   rx="2"  fill="#06b6d4"/>
+  <!-- icon: ruler ticks -->
+  <rect x="446" y="100" width="40" height="6" rx="1" fill="#06b6d4" opacity="0.8"/>
+  <line x1="446" y1="110" x2="486" y2="110" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
+  <line x1="451" y1="110" x2="451" y2="116" stroke="#06b6d4" stroke-width="1.5" opacity="0.7"/>
+  <line x1="460" y1="110" x2="460" y2="120" stroke="#06b6d4" stroke-width="2"   opacity="0.9"/>
+  <line x1="469" y1="110" x2="469" y2="116" stroke="#06b6d4" stroke-width="1.5" opacity="0.7"/>
+  <line x1="478" y1="110" x2="478" y2="116" stroke="#06b6d4" stroke-width="1.5" opacity="0.7"/>
+  <text x="498" y="112" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="600" fill="#f8fafc">Pixel-Accurate Validator</text>
+  <text x="446" y="152" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Title: 50–60 chars / 580px limit</text>
+  <text x="446" y="170" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Description: 120–160 chars / 920px</text>
+  <text x="446" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Matches Google SERP display width</text>
+  <rect x="446" y="206" width="106" height="22" rx="4" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="499" y="221" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#67e8f9" text-anchor="middle">validateTitle()</text>
+
+  <!-- === CARD 3: Content Analyzer === -->
+  <rect x="808" y="74" width="352" height="168" rx="10" fill="#0f1729" stroke="#1e293b" stroke-width="1"/>
+  <rect x="808" y="74" width="352" height="4"   rx="2"  fill="#8b5cf6"/>
+  <!-- icon: bar chart -->
+  <rect x="830" y="122" width="8"  height="16" rx="1" fill="#8b5cf6" opacity="0.5"/>
+  <rect x="842" y="110" width="8"  height="28" rx="1" fill="#8b5cf6" opacity="0.75"/>
+  <rect x="854" y="104" width="8"  height="34" rx="1" fill="#8b5cf6" opacity="1"/>
+  <rect x="866" y="114" width="8"  height="24" rx="1" fill="#8b5cf6" opacity="0.65"/>
+  <text x="886" y="112" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="600" fill="#f8fafc">Content Analyzer</text>
+  <text x="830" y="152" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Word count · Sentence stats</text>
+  <text x="830" y="170" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Keyword density · Keyphrase scan</text>
+  <text x="830" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Optimal density: 0.5%–2.5%</text>
+  <rect x="830" y="206" width="120" height="22" rx="4" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="890" y="221" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c4b5fd" text-anchor="middle">getTextStatistics()</text>
+
+  <!-- === CARD 4: Readability === -->
+  <rect x="40"  y="270" width="352" height="168" rx="10" fill="#0f1729" stroke="#1e293b" stroke-width="1"/>
+  <rect x="40"  y="270" width="352" height="4"   rx="2"  fill="#10b981"/>
+  <!-- icon: gauge arc -->
+  <path d="M 62 320 A 20 20 0 0 1 102 320" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <path d="M 62 320 A 20 20 0 0 1 87 302" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.9"/>
+  <line x1="82" y1="320" x2="92" y2="305" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="82" cy="320" r="3" fill="#10b981"/>
+  <text x="116" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="600" fill="#f8fafc">Readability Scoring</text>
+  <text x="62" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Flesch Reading Ease · Kincaid Grade</text>
+  <text x="62" y="366" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Passive voice % · Transition words</text>
+  <text x="62" y="384" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Sentence length · Paragraph length</text>
+  <rect x="62" y="402" width="128" height="22" rx="4" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="126" y="417" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">calculateKeywordDensity()</text>
+
+  <!-- === CARD 5: URL Normalizer === -->
+  <rect x="424" y="270" width="352" height="168" rx="10" fill="#0f1729" stroke="#1e293b" stroke-width="1"/>
+  <rect x="424" y="270" width="352" height="4"   rx="2"  fill="#f59e0b"/>
+  <!-- icon: chain links -->
+  <rect x="446" y="300" width="14" height="10" rx="5" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.9"/>
+  <rect x="456" y="300" width="14" height="10" rx="5" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.7"/>
+  <rect x="466" y="300" width="14" height="10" rx="5" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.5"/>
+  <text x="492" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="600" fill="#f8fafc">URL Normalizer</text>
+  <text x="446" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Canonical resolution · Slug gen</text>
+  <text x="446" y="366" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Tracking param removal (UTM etc.)</text>
+  <text x="446" y="384" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Trailing slash · Absolute URL check</text>
+  <rect x="446" y="402" width="104" height="22" rx="4" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="498" y="417" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fcd34d" text-anchor="middle">stripTrackingParams()</text>
+
+  <!-- === CARD 6: Title Templates === -->
+  <rect x="808" y="270" width="352" height="168" rx="10" fill="#0f1729" stroke="#1e293b" stroke-width="1"/>
+  <rect x="808" y="270" width="352" height="4"   rx="2"  fill="#ec4899"/>
+  <!-- icon: curly braces -->
+  <text x="830" y="316" font-family="monospace,Courier New,monospace" font-size="22" fill="#ec4899" opacity="0.9">{  }</text>
+  <text x="886" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="15" font-weight="600" fill="#f8fafc">Title Templates</text>
+  <text x="830" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Variable substitution engine</text>
+  <text x="830" y="366" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">{title} | {siteName} · separator ctrl</text>
+  <text x="830" y="384" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#64748b">Page number · Tagline support</text>
+  <rect x="830" y="402" width="120" height="22" rx="4" fill="#ec4899" fill-opacity="0.15" stroke="#ec4899" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="890" y="417" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f9a8d4" text-anchor="middle">applyTitleTemplate()</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

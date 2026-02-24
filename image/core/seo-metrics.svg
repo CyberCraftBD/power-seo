@@ -1,0 +1,134 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/>
+      <stop offset="100%" stop-color="#0d1a35"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Heading -->
+  <text x="600" y="38" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="600" fill="#f8fafc" text-anchor="middle">SEO Thresholds &amp; Metrics</text>
+  <text x="600" y="58" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Built-in constants from @power-seo/core — tuned to Google's current guidelines</text>
+
+  <!-- BAR TRACK WIDTH = 860, starts at x=200, y offset per row = 80px -->
+  <!-- Track bg helper: x=200, w=860 -->
+
+  <!-- ── ROW 1: Title Length ── -->
+  <text x="48"  y="104" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">Title Length</text>
+  <text x="48"  y="120" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#475569">chars / pixels</text>
+  <!-- track -->
+  <rect x="200" y="96" width="860" height="28" rx="6" fill="#1e293b"/>
+  <!-- too short zone: 0-50 chars => 0–(50/80)*860 = 537.5 → scale to 60 max = (50/70)*860=614 ... let's map 0–80 chars to 860px -->
+  <!-- scale: 80 chars = 860px → 1 char = 10.75px -->
+  <!-- too short: 0–50 → 0–537 -->
+  <rect x="200" y="96" width="537" height="28" rx="6" fill="#f59e0b" opacity="0.25"/>
+  <!-- optimal: 50–60 → 537–645 -->
+  <rect x="737" y="96" width="108" height="28" fill="#10b981" opacity="0.35"/>
+  <!-- too long: 60–80 → 645–860 -->
+  <rect x="845" y="96" width="215" height="28" rx="6" fill="#ef4444" opacity="0.25"/>
+  <!-- 50 marker -->
+  <line x1="737" y1="90" x2="737" y2="130" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="737" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f59e0b" text-anchor="middle">50</text>
+  <!-- 60 marker -->
+  <line x1="845" y1="90" x2="845" y2="130" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="845" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#10b981" text-anchor="middle">60</text>
+  <!-- zone labels -->
+  <text x="368" y="114" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fcd34d" text-anchor="middle">Too short</text>
+  <text x="791" y="114" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">Optimal ✓</text>
+  <text x="952" y="114" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">Too long</text>
+  <!-- pixel note -->
+  <text x="1080" y="104" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#475569">580px limit</text>
+
+  <!-- ── ROW 2: Meta Description ── -->
+  <text x="48"  y="182" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">Meta Description</text>
+  <text x="48"  y="198" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#475569">chars / pixels</text>
+  <!-- track: scale 0-200 chars = 860px → 1 char = 4.3px -->
+  <rect x="200" y="174" width="860" height="28" rx="6" fill="#1e293b"/>
+  <!-- too short: 0–120 → 0–516 -->
+  <rect x="200" y="174" width="516" height="28" rx="6" fill="#f59e0b" opacity="0.25"/>
+  <!-- optimal: 120–160 → 516–688 -->
+  <rect x="716" y="174" width="172" height="28" fill="#10b981" opacity="0.35"/>
+  <!-- too long: 160+ → 688–860 -->
+  <rect x="888" y="174" width="172" height="28" rx="6" fill="#ef4444" opacity="0.25"/>
+  <line x1="716" y1="168" x2="716" y2="208" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="716" y="166" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f59e0b" text-anchor="middle">120</text>
+  <line x1="888" y1="168" x2="888" y2="208" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="888" y="166" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#10b981" text-anchor="middle">160</text>
+  <text x="458" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fcd34d" text-anchor="middle">Too short</text>
+  <text x="802" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">Optimal ✓</text>
+  <text x="974" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">Too long</text>
+  <text x="1080" y="182" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#475569">920px limit</text>
+
+  <!-- ── ROW 3: Keyword Density ── -->
+  <text x="48"  y="260" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">Keyword Density</text>
+  <text x="48"  y="276" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#475569">% of total words</text>
+  <!-- track: 0–4% = 860px → 1% = 215px -->
+  <rect x="200" y="252" width="860" height="28" rx="6" fill="#1e293b"/>
+  <!-- too low: 0–0.5% → 0–107 -->
+  <rect x="200" y="252" width="107" height="28" rx="6" fill="#475569" opacity="0.4"/>
+  <!-- optimal: 0.5–2.5% → 107–645 -->
+  <rect x="307" y="252" width="538" height="28" fill="#10b981" opacity="0.3"/>
+  <!-- over: 2.5–4% → 645–860 -->
+  <rect x="845" y="252" width="215" height="28" rx="6" fill="#ef4444" opacity="0.25"/>
+  <!-- optimal star at 1.5% = 322 from start = x 522 -->
+  <line x1="522" y1="246" x2="522" y2="286" stroke="#10b981" stroke-width="2" stroke-dasharray="3,2" opacity="0.9"/>
+  <text x="522" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="middle">1.5% optimal</text>
+  <line x1="307" y1="246" x2="307" y2="286" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="307" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">0.5%</text>
+  <line x1="845" y1="246" x2="845" y2="286" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="845" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f59e0b" text-anchor="middle">2.5%</text>
+  <text x="253" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Low</text>
+  <text x="576" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">Optimal range</text>
+  <text x="952" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">Over-optimized</text>
+
+  <!-- ── ROW 4: Readability (Flesch) ── -->
+  <text x="48"  y="338" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">Readability Score</text>
+  <text x="48"  y="354" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#475569">Flesch Reading Ease</text>
+  <!-- track: 0–100 = 860px -->
+  <rect x="200" y="330" width="860" height="28" rx="6" fill="#1e293b"/>
+  <!-- difficult: 0–30 → 0–258 -->
+  <rect x="200" y="330" width="258" height="28" rx="6" fill="#ef4444" opacity="0.25"/>
+  <!-- moderate: 30–60 → 258–516 -->
+  <rect x="458" y="330" width="258" height="28" fill="#f59e0b" opacity="0.25"/>
+  <!-- easy: 60–100 → 516–860 -->
+  <rect x="716" y="330" width="344" height="28" rx="6" fill="#10b981" opacity="0.3"/>
+  <line x1="458" y1="324" x2="458" y2="364" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="458" y="322" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5" text-anchor="middle">30</text>
+  <line x1="716" y1="324" x2="716" y2="364" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="716" y="322" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d" text-anchor="middle">60</text>
+  <text x="329" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">Difficult</text>
+  <text x="587" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fcd34d" text-anchor="middle">Moderate</text>
+  <text x="888" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">Easy to read ✓</text>
+
+  <!-- ── ROW 5: Word Count ── -->
+  <text x="48"  y="416" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="600" fill="#f8fafc">Word Count</text>
+  <text x="48"  y="432" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#475569">content length</text>
+  <!-- track: 0–2000 = 860px → 1 word = 0.43px -->
+  <rect x="200" y="408" width="860" height="28" rx="6" fill="#1e293b"/>
+  <!-- thin: 0–300 → 0–129 -->
+  <rect x="200" y="408" width="129" height="28" rx="6" fill="#ef4444" opacity="0.2"/>
+  <!-- ok: 300–1000 → 129–430 -->
+  <rect x="329" y="408" width="301" height="28" fill="#f59e0b" opacity="0.2"/>
+  <!-- recommended: 1000+ → 430–860 -->
+  <rect x="630" y="408" width="430" height="28" rx="6" fill="#10b981" opacity="0.28"/>
+  <line x1="329" y1="402" x2="329" y2="442" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="329" y="400" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5" text-anchor="middle">300</text>
+  <line x1="630" y1="402" x2="630" y2="442" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.8"/>
+  <text x="630" y="400" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="middle">1,000</text>
+  <text x="264" y="426" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">Thin</text>
+  <text x="479" y="426" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fcd34d" text-anchor="middle">Acceptable</text>
+  <text x="845" y="426" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">Recommended ✓</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

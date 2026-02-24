@@ -1,0 +1,92 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  <rect width="1200" height="400" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Right side: mini AI title generator UI mockup -->
+  <rect x="630" y="44" width="530" height="316" rx="10" fill="#0d1525" stroke="#1e293b" stroke-width="1"/>
+  <!-- window chrome -->
+  <rect x="630" y="44" width="530" height="30" rx="10" fill="#111827"/>
+  <rect x="630" y="64" width="530" height="10" fill="#111827"/>
+  <circle cx="650" cy="59" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="666" cy="59" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="682" cy="59" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="895" y="63" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#334155" text-anchor="middle">AI SEO Assistant</text>
+
+  <!-- Input area -->
+  <text x="650" y="92" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">Focus keyphrase</text>
+  <rect x="650" y="98" width="230" height="22" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="660" y="113" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">nextjs seo optimization</text>
+  <rect x="890" y="98" width="60" height="22" rx="4" fill="#06b6d4" fill-opacity="0.2" stroke="#06b6d4" stroke-opacity="0.5" stroke-width="1"/>
+  <text x="920" y="113" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#67e8f9" text-anchor="middle">Generate</text>
+
+  <!-- Divider -->
+  <line x1="650" y1="130" x2="1140" y2="130" stroke="#1e293b" stroke-width="1"/>
+  <text x="650" y="146" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">5 AI-Generated Titles  •  sorted by quality</text>
+
+  <!-- Title result 1 — best -->
+  <rect x="650" y="152" width="460" height="32" rx="5" fill="#0f2d1e" stroke="#10b981" stroke-opacity="0.5" stroke-width="1"/>
+  <text x="660" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">Next.js SEO Optimization: The Complete 2024 Guide</text>
+  <rect x="1050" y="157" width="52" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
+  <text x="1076" y="169" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">49 ch ✓</text>
+  <text x="660" y="177" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">How-to · 49 chars · 481px</text>
+
+  <!-- Title result 2 -->
+  <rect x="650" y="190" width="460" height="32" rx="5" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+  <text x="660" y="202" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">How to Optimize Your Next.js App for Search Engines</text>
+  <rect x="1050" y="195" width="52" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
+  <text x="1076" y="207" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">51 ch ✓</text>
+  <text x="660" y="215" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">Action · 51 chars · 498px</text>
+
+  <!-- Title result 3 -->
+  <rect x="650" y="228" width="460" height="32" rx="5" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+  <text x="660" y="240" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">10 Next.js SEO Tips That Actually Improve Rankings</text>
+  <rect x="1050" y="233" width="52" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
+  <text x="1076" y="245" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">50 ch ✓</text>
+  <text x="660" y="253" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">List · 50 chars · 490px</text>
+
+  <!-- Title result 4 -->
+  <rect x="650" y="266" width="460" height="32" rx="5" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+  <text x="660" y="278" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">Is Your Next.js App Missing These SEO Essentials?</text>
+  <rect x="1050" y="271" width="52" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
+  <text x="1076" y="283" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">50 ch ✓</text>
+  <text x="660" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">Question · 50 chars · 489px</text>
+
+  <!-- Title result 5 — warning -->
+  <rect x="650" y="304" width="460" height="32" rx="5" fill="#111827" stroke="#f59e0b" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="660" y="316" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">Boost Rankings: Next.js SEO Optimization Strategies</text>
+  <rect x="1050" y="309" width="52" height="18" rx="3" fill="#f59e0b" fill-opacity="0.15"/>
+  <text x="1076" y="321" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d" text-anchor="middle">52 ch</text>
+  <text x="660" y="329" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b">Benefit · 52 chars · 511px</text>
+
+  <!-- Left side -->
+  <rect x="72" y="60" width="4" height="280" rx="2" fill="url(#accent)" opacity="0.35"/>
+  <rect x="286" y="108" width="88" height="22" rx="4" fill="#1e293b" stroke="#334155"/>
+  <text x="330" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">npm v1.0.7</text>
+  <rect x="382" y="108" width="100" height="22" rx="4" fill="#06b6d4" fill-opacity="0.12" stroke="#06b6d4" stroke-opacity="0.4"/>
+  <text x="432" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#67e8f9" text-anchor="middle">LLM-Agnostic</text>
+  <text x="286" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="44" font-weight="700" fill="#f8fafc">@power-seo/ai</text>
+  <text x="286" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">AI-powered SEO prompt builders —</text>
+  <text x="286" y="242" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">titles, meta, SERP &amp; content suggestions</text>
+  <line x1="286" y1="264" x2="580" y2="264" stroke="#1e293b" stroke-width="1"/>
+  <rect x="286" y="278" width="106" height="26" rx="13" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4"/>
+  <text x="339" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#67e8f9" text-anchor="middle">Title Generator</text>
+  <rect x="402" y="278" width="116" height="26" rx="13" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-opacity="0.4"/>
+  <text x="460" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c4b5fd" text-anchor="middle">Meta Description</text>
+  <rect x="528" y="278" width="110" height="26" rx="13" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="583" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">SERP Predictor</text>
+  <text x="286" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569">8 functions · 10 types · Claude · GPT-4 · Gemini · Mistral</text>
+
+  <rect x="0" y="396" width="1200" height="4" fill="url(#accent)"/>
+</svg>

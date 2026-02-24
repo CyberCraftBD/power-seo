@@ -1,0 +1,135 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <text x="600" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Alt Text Audit — analyzeAltText()</text>
+  <text x="600" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Per-image alt quality scoring · keyphrase detection · accessibility + SEO impact</text>
+
+  <rect x="40" y="68" width="1120" height="384" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="40" y="68" width="1120" height="32" rx="10" fill="#111827"/>
+  <rect x="40" y="88" width="1120" height="12" fill="#111827"/>
+  <circle cx="62" cy="84" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="80" cy="84" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="98" cy="84" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="600" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">yourapp.com/audit/images/alt-text?focus=next.js+seo</text>
+
+  <!-- Stats row -->
+  <text x="60" y="116" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Alt Text Analysis</text>
+  <text x="60" y="130" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">analyzeAltText(images, focusKeyphrase)  ·  result: ImageAuditResult</text>
+
+  <rect x="56" y="140" width="130" height="44" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="121" y="157" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Total Score</text>
+  <text x="121" y="176" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#fb923c" text-anchor="middle">170 / 240</text>
+
+  <rect x="200" y="140" width="130" height="44" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="265" y="157" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Images Passed</text>
+  <text x="265" y="176" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#6ee7b7" text-anchor="middle">17 / 24</text>
+
+  <rect x="344" y="140" width="130" height="44" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="409" y="157" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Missing Alt</text>
+  <text x="409" y="176" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#fca5a5" text-anchor="middle">7</text>
+
+  <rect x="488" y="140" width="130" height="44" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="553" y="157" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b" text-anchor="middle">With Keyphrase</text>
+  <text x="553" y="176" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#c4b5fd" text-anchor="middle">3 / 24</text>
+
+  <!-- Per-image table -->
+  <rect x="56" y="196" width="1104" height="22" rx="3" fill="#1e293b"/>
+  <text x="72" y="211" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Image</text>
+  <text x="320" y="211" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Alt Text</text>
+  <text x="640" y="211" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Issue</text>
+  <text x="880" y="211" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Severity</text>
+  <text x="980" y="211" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Score</text>
+  <text x="1060" y="211" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Keyphrase</text>
+
+  <!-- Row 1: missing alt -->
+  <rect x="56" y="220" width="1104" height="30" rx="2" fill="#1a0a0a"/>
+  <rect x="68" y="226" width="44" height="18" rx="3" fill="#1e293b"/>
+  <text x="90" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569" text-anchor="middle">🖼</text>
+  <text x="120" y="232" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">hero-banner.jpg</text>
+  <text x="120" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">1200×630 · 148KB</text>
+  <text x="320" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#ef4444">— no alt attribute</text>
+  <text x="640" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">Missing alt text — screen readers can't describe this image</text>
+  <rect x="872" y="224" width="46" height="16" rx="8" fill="#ef4444" fill-opacity="0.25"/>
+  <text x="895" y="236" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fca5a5" text-anchor="middle">error</text>
+  <text x="988" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5">0 / 10</text>
+  <text x="1090" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">—</text>
+  <line x1="56" y1="250" x2="1160" y2="250" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Row 2: filename as alt -->
+  <rect x="56" y="252" width="1104" height="30" rx="2" fill="#1a0a0a"/>
+  <rect x="68" y="258" width="44" height="18" rx="3" fill="#1e293b"/>
+  <text x="90" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569" text-anchor="middle">🖼</text>
+  <text x="120" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">IMG_20241105.jpg</text>
+  <text x="120" y="276" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">640×480 · 88KB</text>
+  <text x="320" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">"IMG_20241105"</text>
+  <text x="640" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">Alt text looks like a filename — describe the image content</text>
+  <rect x="872" y="256" width="46" height="16" rx="8" fill="#f59e0b" fill-opacity="0.25"/>
+  <text x="895" y="268" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">warning</text>
+  <text x="988" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">5 / 10</text>
+  <text x="1090" y="270" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">—</text>
+  <line x1="56" y1="282" x2="1160" y2="282" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Row 3: redundant prefix -->
+  <rect x="56" y="284" width="1104" height="30" rx="2" fill="#1a130a"/>
+  <rect x="68" y="290" width="44" height="18" rx="3" fill="#1e293b"/>
+  <text x="90" y="302" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569" text-anchor="middle">🖼</text>
+  <text x="120" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">about-team.jpg</text>
+  <text x="120" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">800×400 · 112KB</text>
+  <text x="320" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">"Image of our team"</text>
+  <text x="320" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#64748b">18 chars</text>
+  <text x="640" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">Redundant prefix "Image of" — remove, screen readers say "image" already</text>
+  <rect x="872" y="288" width="54" height="16" rx="8" fill="#f59e0b" fill-opacity="0.25"/>
+  <text x="899" y="300" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">warning</text>
+  <text x="988" y="300" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">7 / 10</text>
+  <text x="1090" y="300" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">—</text>
+  <line x1="56" y1="314" x2="1160" y2="314" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Row 4: good with keyphrase -->
+  <rect x="56" y="316" width="1104" height="30" rx="2" fill="#0a1a0f"/>
+  <rect x="68" y="322" width="44" height="18" rx="3" fill="#1e293b"/>
+  <text x="90" y="334" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569" text-anchor="middle">🖼</text>
+  <text x="120" y="328" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">product-shot.webp</text>
+  <text x="120" y="340" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">600×600 · 42KB</text>
+  <text x="320" y="328" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">"Next.js SEO dashboard"</text>
+  <text x="320" y="340" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#64748b">26 chars</text>
+  <text x="640" y="334" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">Good descriptive alt text · keyphrase present</text>
+  <rect x="872" y="320" width="36" height="16" rx="8" fill="#10b981" fill-opacity="0.25"/>
+  <text x="890" y="332" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">pass</text>
+  <text x="988" y="332" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7">10 / 10</text>
+  <text x="1090" y="332" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#c4b5fd" text-anchor="middle">✓ found</text>
+  <line x1="56" y1="346" x2="1160" y2="346" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Row 5: too long -->
+  <rect x="56" y="348" width="1104" height="30" rx="2" fill="#1a130a"/>
+  <rect x="68" y="354" width="44" height="18" rx="3" fill="#1e293b"/>
+  <text x="90" y="366" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569" text-anchor="middle">🖼</text>
+  <text x="120" y="360" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">screenshot-2024.png</text>
+  <text x="120" y="372" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">1440×900 · 890KB</text>
+  <text x="320" y="360" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">"A very detailed screenshot of the..."</text>
+  <text x="320" y="372" font-family="system-ui,-apple-system,sans-serif" font-size="7" fill="#64748b">142 chars — over limit</text>
+  <text x="640" y="360" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">Alt text too long (142 chars) — keep under 125 for best compatibility</text>
+  <rect x="872" y="352" width="54" height="16" rx="8" fill="#f59e0b" fill-opacity="0.25"/>
+  <text x="899" y="364" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">warning</text>
+  <text x="988" y="364" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">7 / 10</text>
+  <text x="1090" y="364" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">—</text>
+  <line x1="56" y1="378" x2="1160" y2="378" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="60" y="396" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">+ 19 more images  ·  result.perImage[] · result.issues[] · result.recommendations[]</text>
+  <text x="60" y="412" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fb923c">Scoring: 10 pts per image · −5 per error · −2 per warning  ·  perImage.score / perImage.maxScore</text>
+  <text x="60" y="428" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">Checks: missing · too-short · too-long · filename-pattern · redundant-prefix · duplicates · keyphrase</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

@@ -1,0 +1,106 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  <rect width="1200" height="400" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Right: image audit preview panel -->
+  <rect x="620" y="44" width="542" height="316" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="620" y="44" width="542" height="30" rx="10" fill="#111827"/>
+  <rect x="620" y="64" width="542" height="10" fill="#111827"/>
+  <circle cx="640" cy="59" r="4" fill="#ef4444" opacity="0.6"/>
+  <circle cx="655" cy="59" r="4" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="670" cy="59" r="4" fill="#10b981" opacity="0.6"/>
+  <text x="891" y="63" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#334155" text-anchor="middle">Image SEO Audit</text>
+
+  <!-- Summary strip -->
+  <rect x="636" y="84" width="110" height="36" rx="6" fill="#1a0c06" stroke="#f97316" stroke-opacity="0.4"/>
+  <text x="691" y="99" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Images</text>
+  <text x="691" y="114" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="#fb923c" text-anchor="middle">24</text>
+
+  <rect x="756" y="84" width="110" height="36" rx="6" fill="#1a0a0a" stroke="#ef4444" stroke-opacity="0.4"/>
+  <text x="811" y="99" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Missing Alt</text>
+  <text x="811" y="114" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="#fca5a5" text-anchor="middle">7</text>
+
+  <rect x="876" y="84" width="110" height="36" rx="6" fill="#1a130a" stroke="#f59e0b" stroke-opacity="0.4"/>
+  <text x="931" y="99" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Legacy Format</text>
+  <text x="931" y="114" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="#fcd34d" text-anchor="middle">11</text>
+
+  <rect x="996" y="84" width="110" height="36" rx="6" fill="#0a2a1e" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="1051" y="99" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b" text-anchor="middle">Modern Format</text>
+  <text x="1051" y="114" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="#6ee7b7" text-anchor="middle">13</text>
+
+  <!-- Image rows -->
+  <line x1="636" y1="130" x2="1144" y2="130" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Row 1 -->
+  <rect x="636" y="136" width="48" height="32" rx="3" fill="#1e293b"/>
+  <text x="660" y="156" font-family="system-ui,-apple-system,sans-serif" font-size="14" fill="#475569" text-anchor="middle">🖼</text>
+  <text x="694" y="148" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">hero-banner.jpg</text>
+  <text x="694" y="161" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">1200×630 · JPEG · 148KB</text>
+  <rect x="960" y="138" width="52" height="16" rx="8" fill="#ef4444" fill-opacity="0.2"/>
+  <text x="986" y="150" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fca5a5" text-anchor="middle">no alt</text>
+  <rect x="1022" y="138" width="52" height="16" rx="8" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="1048" y="150" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">JPEG→WebP</text>
+  <line x1="636" y1="172" x2="1144" y2="172" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Row 2 -->
+  <rect x="636" y="178" width="48" height="32" rx="3" fill="#1e293b"/>
+  <text x="660" y="198" font-family="system-ui,-apple-system,sans-serif" font-size="14" fill="#475569" text-anchor="middle">🖼</text>
+  <text x="694" y="190" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">team-photo.png</text>
+  <text x="694" y="203" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">800×600 · PNG · 340KB</text>
+  <rect x="960" y="180" width="80" height="16" rx="8" fill="#10b981" fill-opacity="0.2"/>
+  <text x="1000" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">alt: "Our team"</text>
+  <rect x="1050" y="180" width="52" height="16" rx="8" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="1076" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">PNG→WebP</text>
+  <line x1="636" y1="214" x2="1144" y2="214" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Row 3 -->
+  <rect x="636" y="220" width="48" height="32" rx="3" fill="#1e293b"/>
+  <text x="660" y="240" font-family="system-ui,-apple-system,sans-serif" font-size="14" fill="#475569" text-anchor="middle">🖼</text>
+  <text x="694" y="232" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">product-shot.webp</text>
+  <text x="694" y="245" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">600×600 · WebP · 42KB</text>
+  <rect x="960" y="222" width="100" height="16" rx="8" fill="#10b981" fill-opacity="0.2"/>
+  <text x="1010" y="234" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">alt: "Blue widget"</text>
+  <rect x="1070" y="222" width="50" height="16" rx="8" fill="#10b981" fill-opacity="0.2"/>
+  <text x="1095" y="234" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">modern ✓</text>
+  <line x1="636" y1="256" x2="1144" y2="256" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="636" y="272" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">+ 21 more images  ·  LCP impact  ·  lazy-loading audit</text>
+
+  <!-- Recommendations -->
+  <line x1="636" y1="282" x2="1144" y2="282" stroke="#1e293b" stroke-width="1"/>
+  <text x="636" y="298" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fb923c">→ Convert 11 JPEG/PNG images to WebP/AVIF (50% size saving)</text>
+  <text x="636" y="314" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">→ Add alt text to 7 images for accessibility + indexing</text>
+  <text x="636" y="330" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">→ 3 above-fold images have loading="lazy" — fix LCP</text>
+  <text x="636" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">analyzeAltText() · analyzeImageFormats() · auditLazyLoading() · generateImageSitemap()</text>
+
+  <!-- Left -->
+  <rect x="72" y="60" width="4" height="280" rx="2" fill="url(#accent)" opacity="0.35"/>
+  <rect x="286" y="108" width="88" height="22" rx="4" fill="#1e293b" stroke="#334155"/>
+  <text x="330" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">npm v1.0.7</text>
+  <rect x="382" y="108" width="56" height="22" rx="4" fill="#f97316" fill-opacity="0.12" stroke="#f97316" stroke-opacity="0.4"/>
+  <text x="410" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fb923c" text-anchor="middle">MIT</text>
+  <text x="286" y="190" font-family="system-ui,-apple-system,sans-serif" font-size="40" font-weight="700" fill="#f8fafc">@power-seo/images</text>
+  <text x="286" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">Alt text · format · lazy-loading audit</text>
+  <text x="286" y="242" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">+ image sitemap generation</text>
+  <line x1="286" y1="260" x2="580" y2="260" stroke="#1e293b" stroke-width="1"/>
+  <rect x="286" y="274" width="68" height="26" rx="13" fill="#f97316" fill-opacity="0.15" stroke="#f97316" stroke-opacity="0.4"/>
+  <text x="320" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fb923c" text-anchor="middle">Alt Text</text>
+  <rect x="364" y="274" width="72" height="26" rx="13" fill="#ec4899" fill-opacity="0.15" stroke="#ec4899" stroke-opacity="0.4"/>
+  <text x="400" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f9a8d4" text-anchor="middle">Formats</text>
+  <rect x="446" y="274" width="64" height="26" rx="13" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-opacity="0.4"/>
+  <text x="478" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c4b5fd" text-anchor="middle">Sitemap</text>
+  <text x="286" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569">6 functions · 8 types · LCP + CLS + indexing coverage</text>
+  <rect x="0" y="396" width="1200" height="4" fill="url(#accent)"/>
+</svg>

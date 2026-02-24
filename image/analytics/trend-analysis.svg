@@ -1,0 +1,122 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <text x="600" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Trend Analysis — What You Can Build</text>
+  <text x="600" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">buildTrendLines() + analyzeTrend() + detectAnomalies() → visual SEO health over time</text>
+
+  <rect x="40" y="68" width="1120" height="384" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="40" y="68" width="1120" height="32" rx="10" fill="#111827"/>
+  <rect x="40" y="88" width="1120" height="12" fill="#111827"/>
+  <circle cx="62" cy="84" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="80" cy="84" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="98" cy="84" r="5" fill="#10b981" opacity="0.6"/>
+
+  <!-- Top: 3 trend summary badges -->
+  <rect x="56" y="112" width="340" height="58" rx="8" fill="#0a2a1e" stroke="#10b981" stroke-opacity="0.5"/>
+  <text x="76" y="132" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f8fafc">Overall SEO Score</text>
+  <text x="76" y="152" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="#10b981">↑ Improving</text>
+  <text x="76" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">+12.4% over 90 days · slope: +0.82/week</text>
+
+  <rect x="430" y="112" width="340" height="58" rx="8" fill="#0a0a1a" stroke="#f59e0b" stroke-opacity="0.5"/>
+  <text x="450" y="132" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f8fafc">Technical SEO</text>
+  <text x="450" y="152" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="#f59e0b">→ Stable</text>
+  <text x="450" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">+1.2% over 90 days · within ±2% threshold</text>
+
+  <rect x="804" y="112" width="356" height="58" rx="8" fill="#1a0a0a" stroke="#ef4444" stroke-opacity="0.5"/>
+  <text x="824" y="132" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#f8fafc">Content Freshness</text>
+  <text x="824" y="152" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="#ef4444">↓ Declining</text>
+  <text x="824" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">−8.1% over 90 days · action required</text>
+
+  <!-- Main chart area: overall score trend -->
+  <rect x="56" y="182" width="740" height="256" rx="8" fill="#111827" stroke="#1e293b"/>
+  <text x="76" y="202" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Overall SEO Score — 90 day history</text>
+  <text x="76" y="218" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569">buildTrendLines(auditSnapshots)  · detectAnomalies() marks anomalous drops</text>
+
+  <!-- chart grid -->
+  <line x1="76" y1="232" x2="780" y2="232" stroke="#1e293b" stroke-width="1"/>
+  <line x1="76" y1="260" x2="780" y2="260" stroke="#1e293b" stroke-width="1"/>
+  <line x1="76" y1="288" x2="780" y2="288" stroke="#1e293b" stroke-width="1"/>
+  <line x1="76" y1="316" x2="780" y2="316" stroke="#1e293b" stroke-width="1"/>
+  <line x1="76" y1="344" x2="780" y2="344" stroke="#1e293b" stroke-width="1"/>
+  <line x1="76" y1="372" x2="780" y2="372" stroke="#1e293b" stroke-width="1"/>
+  <line x1="76" y1="420" x2="780" y2="420" stroke="#1e293b" stroke-width="0.5"/>
+  <!-- y-axis labels -->
+  <text x="68" y="236" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="end">100</text>
+  <text x="68" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="end">90</text>
+  <text x="68" y="292" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="end">80</text>
+  <text x="68" y="320" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="end">70</text>
+  <text x="68" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="end">60</text>
+  <text x="68" y="376" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="end">50</text>
+
+  <!-- trend line: improving from ~56 to 78 with one anomaly dip -->
+  <!-- Area fill under line -->
+  <polygon points="76,388 102,384 128,381 154,377 180,373 206,366 232,318 258,358 284,352 310,348 336,344 362,340 388,336 414,332 440,328 466,324 492,320 518,316 544,312 570,308 596,304 622,300 648,296 674,292 700,288 726,284 752,280 778,276 778,420 76,420" fill="#10b981" opacity="0.08"/>
+  <!-- main line -->
+  <polyline points="76,388 102,384 128,381 154,377 180,373 206,366 232,318 258,358 284,352 310,348 336,344 362,340 388,336 414,332 440,328 466,324 492,320 518,316 544,312 570,308 596,304 622,300 648,296 674,292 700,288 726,284 752,280 778,276" stroke="#10b981" stroke-width="2" fill="none"/>
+  <!-- dots on line -->
+  <circle cx="76"  cy="388" r="3" fill="#10b981"/>
+  <circle cx="206" cy="366" r="3" fill="#10b981"/>
+  <circle cx="336" cy="344" r="3" fill="#10b981"/>
+  <circle cx="466" cy="324" r="3" fill="#10b981"/>
+  <circle cx="596" cy="304" r="3" fill="#10b981"/>
+  <circle cx="726" cy="284" r="3" fill="#10b981"/>
+  <circle cx="778" cy="276" r="4" fill="#06b6d4"/>
+  <!-- anomaly point -->
+  <circle cx="232" cy="318" r="6" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="232" cy="318" r="3" fill="#ef4444"/>
+  <line x1="232" y1="312" x2="232" y2="280" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2"/>
+  <rect x="196" y="268" width="116" height="26" rx="4" fill="#1a0a0a" stroke="#ef4444" stroke-opacity="0.5"/>
+  <text x="254" y="280" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5" text-anchor="middle">⚠ Anomaly detected</text>
+  <text x="254" y="290" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b" text-anchor="middle">3σ below mean · Feb 12</text>
+  <!-- x-axis labels -->
+  <text x="76"  y="432" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="middle">Oct 1</text>
+  <text x="206" y="432" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="middle">Nov 1</text>
+  <text x="336" y="432" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="middle">Dec 1</text>
+  <text x="466" y="432" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="middle">Jan 1</text>
+  <text x="596" y="432" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="middle">Feb 1</text>
+  <text x="726" y="432" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#334155" text-anchor="middle">Mar 1</text>
+  <text x="778" y="432" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#06b6d4" text-anchor="middle">Today</text>
+
+  <!-- Right: per-category sparklines -->
+  <rect x="808" y="182" width="352" height="256" rx="8" fill="#111827" stroke="#1e293b"/>
+  <text x="828" y="202" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Per-Category Trends</text>
+  <text x="828" y="218" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569">90-day sparkline per audit category</text>
+
+  <!-- Content Quality -->
+  <text x="828" y="242" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8">Content Quality</text>
+  <polyline points="828,268 858,264 888,260 918,256 948,253 978,250 1008,247 1038,244 1068,241 1098,238 1128,235 1148,233" stroke="#10b981" stroke-width="2" fill="none"/>
+  <text x="1148" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#10b981">78 ↑</text>
+  <line x1="828" y1="278" x2="1144" y2="278" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Technical SEO -->
+  <text x="828" y="298" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8">Technical SEO</text>
+  <polyline points="828,322 858,321 888,323 918,320 948,322 978,319 1008,321 1038,320 1068,318 1098,320 1128,319 1148,318" stroke="#f59e0b" stroke-width="2" fill="none"/>
+  <text x="1148" y="329" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#f59e0b">85 →</text>
+  <line x1="828" y1="334" x2="1144" y2="334" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- On-Page -->
+  <text x="828" y="354" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8">On-Page SEO</text>
+  <polyline points="828,378 858,376 888,374 918,372 948,370 978,368 1008,365 1038,362 1068,360 1098,357 1128,355 1148,353" stroke="#06b6d4" stroke-width="2" fill="none"/>
+  <text x="1148" y="364" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#06b6d4">72 ↑</text>
+  <line x1="828" y1="390" x2="1144" y2="390" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- Links -->
+  <text x="828" y="410" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8">Link Health</text>
+  <polyline points="828,424 858,422 888,425 918,430 948,428 978,432 1008,435 1038,436 1068,438 1098,434 1128,436 1148,438" stroke="#ef4444" stroke-width="2" fill="none"/>
+  <text x="1148" y="449" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#ef4444">62 ↓</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

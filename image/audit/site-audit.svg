@@ -1,0 +1,148 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <text x="600" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Site Audit Dashboard — auditSite() Output</text>
+  <text x="600" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">auditSite(input) → SiteAuditResult · crawls multiple pages and aggregates results</text>
+
+  <rect x="40" y="68" width="1120" height="384" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="40" y="68" width="1120" height="32" rx="10" fill="#111827"/>
+  <rect x="40" y="88" width="1120" height="12" fill="#111827"/>
+  <circle cx="62" cy="84" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="80" cy="84" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="98" cy="84" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="600" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">yourapp.com/audit/site?domain=example.com</text>
+
+  <!-- Header row: site stats -->
+  <text x="60" y="116" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#f8fafc">example.com — Site Audit</text>
+  <text x="60" y="130" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">auditSite() completed · 42 pages · crawled in 12.4s</text>
+
+  <!-- Summary KPI strip -->
+  <rect x="56" y="140" width="168" height="56" rx="6" fill="#111827" stroke="#10b981" stroke-opacity="0.3"/>
+  <text x="76" y="158" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Avg Site Score</text>
+  <text x="76" y="180" font-family="system-ui,-apple-system,sans-serif" font-size="26" font-weight="700" fill="#10b981">74</text>
+  <text x="112" y="180" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#64748b">/ 100</text>
+  <text x="76" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7">↑ +4 from last scan</text>
+
+  <rect x="238" y="140" width="168" height="56" rx="6" fill="#111827" stroke="#ef4444" stroke-opacity="0.3"/>
+  <text x="258" y="158" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Critical Errors</text>
+  <text x="258" y="180" font-family="system-ui,-apple-system,sans-serif" font-size="26" font-weight="700" fill="#ef4444">18</text>
+  <text x="258" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fca5a5">Across 11 pages</text>
+
+  <rect x="420" y="140" width="168" height="56" rx="6" fill="#111827" stroke="#f59e0b" stroke-opacity="0.3"/>
+  <text x="440" y="158" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Warnings</text>
+  <text x="440" y="180" font-family="system-ui,-apple-system,sans-serif" font-size="26" font-weight="700" fill="#f59e0b">34</text>
+  <text x="440" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d">Across 24 pages</text>
+
+  <rect x="602" y="140" width="168" height="56" rx="6" fill="#111827" stroke="#06b6d4" stroke-opacity="0.3"/>
+  <text x="622" y="158" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Pages Passing</text>
+  <text x="622" y="180" font-family="system-ui,-apple-system,sans-serif" font-size="26" font-weight="700" fill="#06b6d4">7</text>
+  <text x="622" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#67e8f9">Score 90+</text>
+
+  <rect x="784" y="140" width="176" height="56" rx="6" fill="#111827" stroke="#8b5cf6" stroke-opacity="0.3"/>
+  <text x="804" y="158" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Pages Audited</text>
+  <text x="804" y="180" font-family="system-ui,-apple-system,sans-serif" font-size="26" font-weight="700" fill="#8b5cf6">42</text>
+  <text x="804" y="192" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#c4b5fd">result.pages[] array</text>
+
+  <!-- Pages table -->
+  <rect x="56" y="208" width="816" height="22" rx="3" fill="#1e293b"/>
+  <text x="72" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">URL</text>
+  <text x="460" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Score</text>
+  <text x="530" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Errors</text>
+  <text x="600" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Warnings</text>
+  <text x="690" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Top Issue</text>
+
+  <!-- Page rows -->
+  <text x="72" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">/blog/nextjs-seo-guide</text>
+  <rect x="450" y="233" width="54" height="16" rx="8" fill="#ef4444" fill-opacity="0.2"/>
+  <text x="477" y="245" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5" text-anchor="middle">52</text>
+  <text x="535" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5">3</text>
+  <text x="605" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">4</text>
+  <text x="690" y="244" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">Meta description missing</text>
+  <line x1="56" y1="250" x2="872" y2="250" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="72" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">/guides/typescript-seo</text>
+  <rect x="450" y="253" width="54" height="16" rx="8" fill="#10b981" fill-opacity="0.2"/>
+  <text x="477" y="265" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="middle">91</text>
+  <text x="535" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7">0</text>
+  <text x="605" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">1</text>
+  <text x="690" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">Image sizes missing</text>
+  <line x1="56" y1="270" x2="872" y2="270" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="72" y="284" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">/docs/react-seo-components</text>
+  <rect x="450" y="273" width="54" height="16" rx="8" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="477" y="285" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d" text-anchor="middle">74</text>
+  <text x="535" y="284" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5">1</text>
+  <text x="605" y="284" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">2</text>
+  <text x="690" y="284" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">Word count below threshold</text>
+  <line x1="56" y1="290" x2="872" y2="290" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="72" y="304" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">/blog/sitemap-nextjs</text>
+  <rect x="450" y="293" width="54" height="16" rx="8" fill="#10b981" fill-opacity="0.2"/>
+  <text x="477" y="305" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="middle">88</text>
+  <text x="535" y="304" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7">0</text>
+  <text x="605" y="304" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7">0</text>
+  <text x="690" y="304" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">All checks passing</text>
+  <line x1="56" y1="310" x2="872" y2="310" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="72" y="324" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">/blog/structured-data-101</text>
+  <rect x="450" y="313" width="54" height="16" rx="8" fill="#ef4444" fill-opacity="0.2"/>
+  <text x="477" y="325" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5" text-anchor="middle">44</text>
+  <text x="535" y="324" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5">2</text>
+  <text x="605" y="324" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">3</text>
+  <text x="690" y="324" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">No structured data, slow response</text>
+  <line x1="56" y1="330" x2="872" y2="330" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="72" y="344" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569">+ 37 more pages  ·  result.pages.length === 42  ·  sort by score asc/desc  ·  export CSV</text>
+
+  <!-- Right: score distribution chart -->
+  <rect x="888" y="208" width="272" height="180" rx="8" fill="#111827" stroke="#1e293b"/>
+  <text x="908" y="228" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Score Distribution</text>
+  <text x="908" y="242" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">result.summary.distribution</text>
+
+  <text x="908" y="262" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">90–100</text>
+  <rect x="960" y="252" width="170" height="14" rx="3" fill="#1e293b"/>
+  <rect x="960" y="252" width="29" height="14" rx="3" fill="#10b981" opacity="0.85"/>
+  <text x="1142" y="263" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="end">7</text>
+
+  <text x="908" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">70–89</text>
+  <rect x="960" y="272" width="170" height="14" rx="3" fill="#1e293b"/>
+  <rect x="960" y="272" width="68" height="14" rx="3" fill="#f59e0b" opacity="0.85"/>
+  <text x="1142" y="283" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d" text-anchor="end">17</text>
+
+  <text x="908" y="302" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">50–69</text>
+  <rect x="960" y="292" width="170" height="14" rx="3" fill="#1e293b"/>
+  <rect x="960" y="292" width="52" height="14" rx="3" fill="#f59e0b" opacity="0.5"/>
+  <text x="1142" y="303" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#f59e0b" text-anchor="end">13</text>
+
+  <text x="908" y="322" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">0–49</text>
+  <rect x="960" y="312" width="170" height="14" rx="3" fill="#1e293b"/>
+  <rect x="960" y="312" width="20" height="14" rx="3" fill="#ef4444" opacity="0.85"/>
+  <text x="1142" y="323" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5" text-anchor="end">5</text>
+
+  <line x1="908" y1="340" x2="1144" y2="340" stroke="#1e293b" stroke-width="1"/>
+  <text x="908" y="356" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Common errors site-wide:</text>
+  <text x="908" y="370" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">✗ meta description (26 pages)</text>
+  <text x="908" y="383" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△ image alt text (19 pages)</text>
+
+  <!-- Recommendations -->
+  <rect x="56" y="358" width="816" height="70" rx="6" fill="#0d1a2e" stroke="#1e293b"/>
+  <text x="76" y="374" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="600" fill="#f8fafc">result.recommendations[]  — Top actions across site</text>
+  <text x="76" y="390" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">1. Add meta descriptions to 26 pages — highest impact fix   2. Fix alt text on images across 19 pages</text>
+  <text x="76" y="404" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">3. Improve response time on 8 pages exceeding 2s threshold   4. Add structured data to 14 key pages</text>
+  <text x="76" y="418" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">5. Expand word count on 11 pages below 500 words · result.summary.totalIssues: 52</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

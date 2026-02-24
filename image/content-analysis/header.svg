@@ -1,0 +1,76 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  <rect width="1200" height="400" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Right: live analyzer preview -->
+  <rect x="620" y="44" width="542" height="316" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="620" y="44" width="542" height="30" rx="10" fill="#111827"/>
+  <rect x="620" y="64" width="542" height="10" fill="#111827"/>
+  <circle cx="640" cy="59" r="4" fill="#ef4444" opacity="0.6"/>
+  <circle cx="655" cy="59" r="4" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="670" cy="59" r="4" fill="#10b981" opacity="0.6"/>
+  <text x="891" y="63" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#334155" text-anchor="middle">Content Analysis</text>
+
+  <!-- Score bar -->
+  <text x="636" y="94" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">SEO Score</text>
+  <text x="1144" y="94" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#8b5cf6" text-anchor="end">72 / 100</text>
+  <rect x="636" y="98" width="492" height="10" rx="5" fill="#1e293b"/>
+  <rect x="636" y="98" width="354" height="10" rx="5" fill="#8b5cf6" opacity="0.85"/>
+
+  <!-- Check list -->
+  <text x="636" y="124" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="648" y="124" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Title includes focus keyphrase</text>
+  <text x="636" y="140" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">✗</text>
+  <text x="648" y="140" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Meta description missing</text>
+  <text x="636" y="156" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△</text>
+  <text x="648" y="156" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Keyphrase density 0.4% — too low</text>
+  <text x="636" y="172" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="648" y="172" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">H1 present and structured correctly</text>
+  <text x="636" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="648" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">1240 words — above recommended</text>
+  <text x="636" y="204" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△</text>
+  <text x="648" y="204" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">3 of 6 images missing alt text</text>
+  <text x="636" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="648" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">5 internal links found</text>
+  <text x="636" y="236" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">✗</text>
+  <text x="648" y="236" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Keyphrase absent from intro paragraph</text>
+
+  <line x1="636" y1="248" x2="1144" y2="248" stroke="#1e293b" stroke-width="1"/>
+  <text x="636" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Recommendations</text>
+  <text x="636" y="280" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#c4b5fd">→ Add meta description (120–155 chars) to improve CTR</text>
+  <text x="636" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#c4b5fd">→ Use keyphrase in opening sentence</text>
+  <text x="636" y="312" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#c4b5fd">→ Add alt text to 3 images for accessibility + SEO</text>
+  <text x="636" y="332" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">analyzeContent() · 13 checks · ContentAnalyzer component</text>
+
+  <!-- Left -->
+  <rect x="72" y="60" width="4" height="280" rx="2" fill="url(#accent)" opacity="0.35"/>
+  <rect x="286" y="108" width="88" height="22" rx="4" fill="#1e293b" stroke="#334155"/>
+  <text x="330" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">npm v1.0.8</text>
+  <rect x="382" y="108" width="56" height="22" rx="4" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-opacity="0.4"/>
+  <text x="410" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c4b5fd" text-anchor="middle">MIT</text>
+  <text x="286" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="38" font-weight="700" fill="#f8fafc">@power-seo/</text>
+  <text x="286" y="224" font-family="system-ui,-apple-system,sans-serif" font-size="38" font-weight="700" fill="#8b5cf6">content-analysis</text>
+  <text x="286" y="254" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">13-point SEO content checker — keyphrase,</text>
+  <text x="286" y="274" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">headings, word count, links &amp; React UI</text>
+  <line x1="286" y1="292" x2="580" y2="292" stroke="#1e293b" stroke-width="1"/>
+  <rect x="286" y="306" width="96" height="26" rx="13" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-opacity="0.4"/>
+  <text x="334" y="323" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c4b5fd" text-anchor="middle">Keyphrase</text>
+  <rect x="392" y="306" width="80" height="26" rx="13" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4"/>
+  <text x="432" y="323" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#67e8f9" text-anchor="middle">Headings</text>
+  <rect x="482" y="306" width="68" height="26" rx="13" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="516" y="323" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">React UI</text>
+  <text x="286" y="372" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569">7 functions · 13 checks · 3 React components · configurable</text>
+  <rect x="0" y="396" width="1200" height="4" fill="url(#accent)"/>
+</svg>

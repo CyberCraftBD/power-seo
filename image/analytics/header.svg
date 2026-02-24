@@ -1,0 +1,111 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  <rect width="1200" height="400" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Right: mini dashboard preview -->
+  <rect x="620" y="44" width="542" height="316" rx="10" fill="#0d1525" stroke="#1e293b" stroke-width="1"/>
+  <rect x="620" y="44" width="542" height="30" rx="10" fill="#111827"/>
+  <rect x="620" y="64" width="542" height="10" fill="#111827"/>
+  <circle cx="640" cy="59" r="4" fill="#ef4444" opacity="0.6"/>
+  <circle cx="655" cy="59" r="4" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="670" cy="59" r="4" fill="#10b981" opacity="0.6"/>
+  <text x="891" y="63" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#334155" text-anchor="middle">SEO Analytics Dashboard</text>
+
+  <!-- 4 metric cards -->
+  <rect x="634" y="86" width="118" height="52" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="644" y="103" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Total Clicks</text>
+  <text x="644" y="122" font-family="system-ui,-apple-system,sans-serif" font-size="17" font-weight="700" fill="#10b981">24,812</text>
+  <text x="644" y="133" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#10b981">↑ 18.4% vs last month</text>
+
+  <rect x="762" y="86" width="118" height="52" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="772" y="103" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Impressions</text>
+  <text x="772" y="122" font-family="system-ui,-apple-system,sans-serif" font-size="17" font-weight="700" fill="#06b6d4">481K</text>
+  <text x="772" y="133" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#06b6d4">↑ 12.1% vs last month</text>
+
+  <rect x="890" y="86" width="118" height="52" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="900" y="103" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Avg. Position</text>
+  <text x="900" y="122" font-family="system-ui,-apple-system,sans-serif" font-size="17" font-weight="700" fill="#8b5cf6">6.4</text>
+  <text x="900" y="133" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#10b981">↑ improved 2.1 pts</text>
+
+  <rect x="1018" y="86" width="130" height="52" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="1028" y="103" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Audit Score</text>
+  <text x="1028" y="122" font-family="system-ui,-apple-system,sans-serif" font-size="17" font-weight="700" fill="#f59e0b">78/100</text>
+  <text x="1028" y="133" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#f59e0b">↑ +6 pts this week</text>
+
+  <!-- Trend sparkline chart -->
+  <rect x="634" y="150" width="382" height="84" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="644" y="166" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Clicks — 30 day trend</text>
+  <!-- bars -->
+  <rect x="650" y="208" width="8" height="18" rx="1" fill="#10b981" opacity="0.5"/>
+  <rect x="662" y="200" width="8" height="26" rx="1" fill="#10b981" opacity="0.55"/>
+  <rect x="674" y="205" width="8" height="21" rx="1" fill="#10b981" opacity="0.6"/>
+  <rect x="686" y="197" width="8" height="29" rx="1" fill="#10b981" opacity="0.65"/>
+  <rect x="698" y="199" width="8" height="27" rx="1" fill="#10b981" opacity="0.68"/>
+  <rect x="710" y="193" width="8" height="33" rx="1" fill="#10b981" opacity="0.72"/>
+  <rect x="722" y="190" width="8" height="36" rx="1" fill="#10b981" opacity="0.76"/>
+  <rect x="734" y="186" width="8" height="40" rx="1" fill="#10b981" opacity="0.8"/>
+  <rect x="746" y="182" width="8" height="44" rx="1" fill="#10b981" opacity="0.85"/>
+  <rect x="758" y="178" width="8" height="48" rx="1" fill="#10b981" opacity="0.9"/>
+  <rect x="770" y="175" width="8" height="51" rx="1" fill="#10b981" opacity="0.95"/>
+  <rect x="782" y="172" width="8" height="54" rx="1" fill="#06b6d4"/>
+  <polyline points="654,215 666,207 678,212 690,204 702,206 714,200 726,196 738,192 750,188 762,183 774,179 786,177" stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <text x="810" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#10b981">↑ Improving</text>
+
+  <!-- Ranking buckets mini -->
+  <rect x="1026" y="150" width="122" height="84" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="1036" y="166" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Ranking Buckets</text>
+  <text x="1036" y="182" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Pos 1–3</text>
+  <rect x="1082" y="174" width="58" height="9" rx="2" fill="#10b981" opacity="0.85"/>
+  <text x="1036" y="198" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Pos 4–10</text>
+  <rect x="1082" y="190" width="42" height="9" rx="2" fill="#06b6d4" opacity="0.85"/>
+  <text x="1036" y="214" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Pos 11–20</text>
+  <rect x="1082" y="206" width="26" height="9" rx="2" fill="#8b5cf6" opacity="0.85"/>
+  <text x="1036" y="228" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">Pos 21+</text>
+  <rect x="1082" y="220" width="14" height="9" rx="2" fill="#475569" opacity="0.85"/>
+
+  <!-- Striking distance table -->
+  <rect x="634" y="246" width="514" height="100" rx="6" fill="#111827" stroke="#1e293b"/>
+  <text x="644" y="262" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#f59e0b">⚡ Striking Distance — quick-win keywords (pos 4–20)</text>
+  <text x="644" y="278" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">best seo tools 2024</text>
+  <text x="644" y="278" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f59e0b" x="990">  #11</text>
+  <text x="980" y="278" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f59e0b" text-anchor="end">#11 · 2,140 impr</text>
+  <text x="644" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">nextjs seo guide</text>
+  <text x="980" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f59e0b" text-anchor="end">#14 · 1,870 impr</text>
+  <text x="644" y="310" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">typescript seo package</text>
+  <text x="980" y="310" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f59e0b" text-anchor="end">#18 · 940 impr</text>
+  <text x="644" y="326" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">react meta tags tutorial</text>
+  <text x="980" y="326" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f59e0b" text-anchor="end">#19 · 810 impr</text>
+  <text x="644" y="342" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569">+ 23 more striking-distance keywords</text>
+
+  <!-- Left side text -->
+  <rect x="72" y="60" width="4" height="280" rx="2" fill="url(#accent)" opacity="0.35"/>
+  <rect x="286" y="108" width="88" height="22" rx="4" fill="#1e293b" stroke="#334155"/>
+  <text x="330" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">npm v1.0.7</text>
+  <rect x="382" y="108" width="56" height="22" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="410" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">MIT</text>
+  <text x="286" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="34" font-weight="700" fill="#f8fafc">@power-seo/analytics</text>
+  <text x="286" y="218" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">Merge GSC traffic data with audit scores.</text>
+  <text x="286" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">Trend analysis · Rankings · Dashboard builder</text>
+  <line x1="286" y1="260" x2="580" y2="260" stroke="#1e293b" stroke-width="1"/>
+  <rect x="286" y="274" width="104" height="26" rx="13" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="338" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">GSC Data</text>
+  <rect x="400" y="274" width="110" height="26" rx="13" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4"/>
+  <text x="455" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#67e8f9" text-anchor="middle">Trend Lines</text>
+  <rect x="520" y="274" width="104" height="26" rx="13" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-opacity="0.4"/>
+  <text x="572" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c4b5fd" text-anchor="middle">Rankings</text>
+  <text x="286" y="344" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569">7 functions · 15 types · Google Search Console compatible</text>
+
+  <rect x="0" y="396" width="1200" height="4" fill="url(#accent)"/>
+</svg>

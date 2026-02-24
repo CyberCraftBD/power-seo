@@ -1,0 +1,96 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/>
+      <stop offset="100%" stop-color="#0d1a35"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="iconGlow" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.6"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  <rect width="1200" height="400" fill="url(#dots)"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Decorative right blobs -->
+  <circle cx="1080" cy="140" r="160" fill="#6366f1" opacity="0.04"/>
+  <circle cx="1120" cy="260" r="100" fill="#8b5cf6" opacity="0.06"/>
+  <circle cx="1040" cy="320" r="70"  fill="#06b6d4" opacity="0.05"/>
+
+  <!-- Left glow bar -->
+  <rect x="72" y="60" width="4" height="280" rx="2" fill="url(#accent)" opacity="0.35"/>
+
+  <!-- Power icon circle -->
+  <circle cx="178" cy="200" r="68" fill="#0f1a2e" stroke="#6366f1" stroke-width="2" opacity="0.9"/>
+  <circle cx="178" cy="200" r="68" fill="#6366f1" opacity="0.06"/>
+  <!-- power arc -->
+  <path d="M 155 172 A 38 38 0 1 0 201 172" stroke="url(#iconGlow)" stroke-width="5" fill="none" stroke-linecap="round" filter="url(#glow)"/>
+  <!-- power line -->
+  <line x1="178" y1="152" x2="178" y2="196" stroke="#a5b4fc" stroke-width="5" stroke-linecap="round" filter="url(#glow)"/>
+
+  <!-- Badges row -->
+  <rect x="286" y="108" width="88" height="22" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="330" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">npm  v1.0.3</text>
+
+  <rect x="382" y="108" width="56" height="22" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="410" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">MIT</text>
+
+  <rect x="446" y="108" width="80" height="22" rx="4" fill="#6366f1" fill-opacity="0.12" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="486" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#a5b4fc" text-anchor="middle">TypeScript</text>
+
+  <!-- Title -->
+  <text x="286" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="46" font-weight="700" fill="#f8fafc">@power-seo/core</text>
+
+  <!-- Subtitle -->
+  <text x="286" y="224" font-family="system-ui,-apple-system,sans-serif" font-size="16" fill="#94a3b8">Framework-agnostic SEO foundation — meta tags, validation, content analysis &amp; more</text>
+
+  <!-- Divider -->
+  <line x1="286" y1="248" x2="820" y2="248" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Pills -->
+  <rect x="286" y="264" width="118" height="28" rx="14" fill="#6366f1" fill-opacity="0.15" stroke="#6366f1" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="345" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#a5b4fc" text-anchor="middle">Meta Builder</text>
+
+  <rect x="414" y="264" width="118" height="28" rx="14" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="473" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#c4b5fd" text-anchor="middle">SEO Validator</text>
+
+  <rect x="542" y="264" width="134" height="28" rx="14" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="609" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#67e8f9" text-anchor="middle">Content Analysis</text>
+
+  <rect x="686" y="264" width="96" height="28" rx="14" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="734" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#6ee7b7" text-anchor="middle">URL Utils</text>
+
+  <rect x="792" y="264" width="124" height="28" rx="14" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="854" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#fcd34d" text-anchor="middle">Title Templates</text>
+
+  <rect x="926" y="264" width="108" height="28" rx="14" fill="#ec4899" fill-opacity="0.15" stroke="#ec4899" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="980" y="282" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#f9a8d4" text-anchor="middle">Rate Limiter</text>
+
+  <!-- Stats row -->
+  <text x="286" y="336" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#475569">40+ utilities</text>
+  <circle cx="358" cy="330" r="2" fill="#334155"/>
+  <text x="368" y="336" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#475569">60+ TypeScript types</text>
+  <circle cx="480" cy="330" r="2" fill="#334155"/>
+  <text x="490" y="336" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#475569">Zero dependencies</text>
+  <circle cx="596" cy="330" r="2" fill="#334155"/>
+  <text x="606" y="336" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#475569">Works everywhere</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="396" width="1200" height="4" fill="url(#accent)"/>
+</svg>

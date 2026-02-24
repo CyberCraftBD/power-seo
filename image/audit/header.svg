@@ -1,0 +1,82 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  <rect width="1200" height="400" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Right: audit score preview -->
+  <rect x="620" y="44" width="542" height="316" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="620" y="44" width="542" height="30" rx="10" fill="#111827"/>
+  <rect x="620" y="64" width="542" height="10" fill="#111827"/>
+  <circle cx="640" cy="59" r="4" fill="#ef4444" opacity="0.6"/>
+  <circle cx="655" cy="59" r="4" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="670" cy="59" r="4" fill="#10b981" opacity="0.6"/>
+  <text x="891" y="63" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#334155" text-anchor="middle">SEO Audit Report</text>
+
+  <!-- Score circle -->
+  <circle cx="720" cy="160" r="52" fill="#111827" stroke="#1e293b" stroke-width="2"/>
+  <path d="M 720 108 A 52 52 0 0 1 772 160" stroke="#ef4444" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M 720 108 A 52 52 0 1 1 685 200" stroke="#f59e0b" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M 685 200 A 52 52 0 0 1 720 212" stroke="#10b981" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="720" y="155" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="700" fill="#f8fafc" text-anchor="middle">78</text>
+  <text x="720" y="172" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">/ 100</text>
+
+  <!-- Category bars -->
+  <text x="790" y="110" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Meta Tags</text>
+  <rect x="790" y="116" width="340" height="12" rx="3" fill="#1e293b"/>
+  <rect x="790" y="116" width="272" height="12" rx="3" fill="#10b981" opacity="0.85"/>
+  <text x="1136" y="126" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="end">80%</text>
+
+  <text x="790" y="144" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Content</text>
+  <rect x="790" y="150" width="340" height="12" rx="3" fill="#1e293b"/>
+  <rect x="790" y="150" width="238" height="12" rx="3" fill="#f59e0b" opacity="0.85"/>
+  <text x="1136" y="160" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d" text-anchor="end">70%</text>
+
+  <text x="790" y="178" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Structure</text>
+  <rect x="790" y="184" width="340" height="12" rx="3" fill="#1e293b"/>
+  <rect x="790" y="184" width="306" height="12" rx="3" fill="#06b6d4" opacity="0.85"/>
+  <text x="1136" y="194" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#67e8f9" text-anchor="end">90%</text>
+
+  <text x="790" y="212" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">Performance</text>
+  <rect x="790" y="218" width="340" height="12" rx="3" fill="#1e293b"/>
+  <rect x="790" y="218" width="170" height="12" rx="3" fill="#8b5cf6" opacity="0.85"/>
+  <text x="1136" y="228" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#c4b5fd" text-anchor="end">50%</text>
+
+  <!-- Issues list -->
+  <line x1="634" y1="248" x2="1144" y2="248" stroke="#1e293b" stroke-width="1"/>
+  <text x="634" y="264" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Top issues to fix</text>
+  <text x="634" y="280" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5">✗  Meta description missing (error)</text>
+  <text x="634" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">△  Response time 2.8s — exceeds 2s (warning)</text>
+  <text x="634" y="312" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d">△  3 images missing alt text (warning)</text>
+  <text x="634" y="328" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7">✓  Title length optimal · canonical set</text>
+  <text x="634" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#475569">+ 8 more checks →</text>
+
+  <!-- Left -->
+  <rect x="72" y="60" width="4" height="280" rx="2" fill="url(#accent)" opacity="0.35"/>
+  <rect x="286" y="108" width="88" height="22" rx="4" fill="#1e293b" stroke="#334155"/>
+  <text x="330" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">npm v1.0.7</text>
+  <rect x="382" y="108" width="56" height="22" rx="4" fill="#f59e0b" fill-opacity="0.12" stroke="#f59e0b" stroke-opacity="0.4"/>
+  <text x="410" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fcd34d" text-anchor="middle">MIT</text>
+  <text x="286" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="40" font-weight="700" fill="#f8fafc">@power-seo/audit</text>
+  <text x="286" y="218" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">Full SEO audit engine — meta, content,</text>
+  <text x="286" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">structure &amp; performance rules with scoring</text>
+  <line x1="286" y1="260" x2="580" y2="260" stroke="#1e293b" stroke-width="1"/>
+  <rect x="286" y="274" width="80" height="26" rx="13" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-opacity="0.4"/>
+  <text x="326" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#fcd34d" text-anchor="middle">Meta</text>
+  <rect x="376" y="274" width="90" height="26" rx="13" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="421" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">Content</text>
+  <rect x="476" y="274" width="96" height="26" rx="13" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4"/>
+  <text x="524" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#67e8f9" text-anchor="middle">Structure</text>
+  <text x="286" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569">6 functions · 8 types · 4 rule categories · weighted scoring</text>
+  <rect x="0" y="396" width="1200" height="4" fill="url(#accent)"/>
+</svg>

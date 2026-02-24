@@ -1,0 +1,123 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <text x="600" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">ScorePanel &amp; CheckList Components — Before vs After</text>
+  <text x="600" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">Drop-in React components — fix the warnings and watch the score climb in real time</text>
+
+  <rect x="40" y="68" width="1120" height="384" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="40" y="68" width="1120" height="32" rx="10" fill="#111827"/>
+  <rect x="40" y="88" width="1120" height="12" fill="#111827"/>
+  <circle cx="62" cy="84" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="80" cy="84" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="98" cy="84" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="600" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">yourapp.com/cms/posts/edit — SEO sidebar</text>
+
+  <!-- BEFORE panel -->
+  <rect x="56" y="108" width="508" height="328" rx="8" fill="#111827" stroke="#ef4444" stroke-opacity="0.3"/>
+  <rect x="56" y="108" width="508" height="32" rx="8" fill="#1a0a0a"/>
+  <rect x="56" y="126" width="508" height="14" fill="#1a0a0a"/>
+  <text x="76" y="126" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#fca5a5">Before  — initial draft</text>
+  <text x="556" y="126" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#ef4444" text-anchor="end">72 / 100</text>
+
+  <!-- ScorePanel: before -->
+  <text x="76" y="154" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">&lt;ScorePanel score={72} maxScore={100} /&gt;</text>
+  <rect x="76" y="158" width="468" height="18" rx="9" fill="#1e293b"/>
+  <rect x="76" y="158" width="337" height="18" rx="9" fill="#f59e0b" opacity="0.85"/>
+  <text x="413" y="171" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#111827" font-weight="600">72%</text>
+
+  <!-- CheckList: before -->
+  <text x="76" y="194" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">&lt;CheckList results={output.results} /&gt;</text>
+
+  <text x="76" y="210" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="90" y="210" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">title-presence — Title tag found (58 chars)</text>
+  <text x="76" y="224" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="90" y="224" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">title-keyphrase — Keyphrase in title</text>
+  <text x="76" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">✗</text>
+  <text x="90" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">meta-description-presence — Missing</text>
+  <text x="76" y="252" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△</text>
+  <text x="90" y="252" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">keyphrase-density — 0.4% (too low)</text>
+  <text x="76" y="266" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△</text>
+  <text x="90" y="266" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">keyphrase-distribution — Missing from intro</text>
+  <text x="76" y="280" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="90" y="280" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">heading-structure — H1→H2 correct</text>
+  <text x="76" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="90" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">heading-keyphrase — In 2 subheadings</text>
+  <text x="76" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="90" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">word-count — 1,240 words</text>
+  <text x="76" y="322" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">△</text>
+  <text x="90" y="322" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">image-alt — 3 images missing alt text</text>
+  <text x="76" y="336" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="90" y="336" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">internal-links — 5 internal links</text>
+  <text x="76" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="90" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">external-links — 2 external links</text>
+
+  <line x1="76" y1="364" x2="548" y2="364" stroke="#1e293b" stroke-width="1"/>
+  <text x="76" y="380" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">output.recommendations</text>
+  <text x="76" y="394" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">→ Add meta description (120–155 chars)</text>
+  <text x="76" y="408" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">→ Use keyphrase in opening paragraph</text>
+  <text x="76" y="422" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">→ Add alt text to 3 images</text>
+
+  <!-- Arrow between panels -->
+  <text x="590" y="278" font-family="system-ui,-apple-system,sans-serif" font-size="24" font-weight="700" fill="#8b5cf6" text-anchor="middle">→</text>
+  <text x="590" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">fix issues</text>
+
+  <!-- AFTER panel -->
+  <rect x="636" y="108" width="508" height="328" rx="8" fill="#111827" stroke="#10b981" stroke-opacity="0.4"/>
+  <rect x="636" y="108" width="508" height="32" rx="8" fill="#0a1a0f"/>
+  <rect x="636" y="126" width="508" height="14" fill="#0a1a0f"/>
+  <text x="656" y="126" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#6ee7b7">After  — fixes applied</text>
+  <text x="1136" y="126" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#10b981" text-anchor="end">96 / 100</text>
+
+  <!-- ScorePanel: after -->
+  <text x="656" y="154" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">&lt;ScorePanel score={96} maxScore={100} /&gt;</text>
+  <rect x="656" y="158" width="468" height="18" rx="9" fill="#1e293b"/>
+  <rect x="656" y="158" width="449" height="18" rx="9" fill="#10b981" opacity="0.85"/>
+  <text x="1104" y="171" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#111827" font-weight="600">96%</text>
+
+  <!-- CheckList: after -->
+  <text x="656" y="194" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">&lt;CheckList results={output.results} /&gt;</text>
+
+  <text x="656" y="210" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="210" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">title-presence — Title tag found (58 chars)</text>
+  <text x="656" y="224" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="224" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">title-keyphrase — Keyphrase in title</text>
+  <text x="656" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="238" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">meta-description-presence — 148 chars added</text>
+  <text x="656" y="252" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="252" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">keyphrase-density — 1.8% (optimal range)</text>
+  <text x="656" y="266" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="266" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">keyphrase-distribution — All 4 locations covered</text>
+  <text x="656" y="280" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="280" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">heading-structure — H1→H2 correct</text>
+  <text x="656" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="294" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">heading-keyphrase — In 2 subheadings</text>
+  <text x="656" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="308" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">word-count — 1,240 words</text>
+  <text x="656" y="322" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="322" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">image-alt — All 6 images have alt text</text>
+  <text x="656" y="336" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="336" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">internal-links — 5 internal links</text>
+  <text x="656" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓</text>
+  <text x="670" y="350" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">external-links — 2 external links</text>
+
+  <line x1="656" y1="364" x2="1128" y2="364" stroke="#1e293b" stroke-width="1"/>
+  <rect x="656" y="374" width="468" height="52" rx="6" fill="#0a2a1e" stroke="#10b981" stroke-opacity="0.3"/>
+  <text x="676" y="390" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#6ee7b7">Score improved:  72 → 96  (+24 points)</text>
+  <text x="676" y="406" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">output.recommendations[]: [] — nothing left to fix!</text>
+  <text x="676" y="420" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">React.useMemo ensures analysis re-runs efficiently on each update</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>

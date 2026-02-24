@@ -1,0 +1,137 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="480" fill="url(#bg)"/>
+  <rect width="1200" height="480" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+
+  <text x="600" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="16" font-weight="600" fill="#f8fafc" text-anchor="middle">Image Format Optimizer — analyzeImageFormats()</text>
+  <text x="600" y="54" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569" text-anchor="middle">detectFormat() per image · modern vs legacy · conversion recommendations with size savings</text>
+
+  <rect x="40" y="68" width="1120" height="384" rx="10" fill="#0d1525" stroke="#1e293b"/>
+  <rect x="40" y="68" width="1120" height="32" rx="10" fill="#111827"/>
+  <rect x="40" y="88" width="1120" height="12" fill="#111827"/>
+  <circle cx="62" cy="84" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="80" cy="84" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="98" cy="84" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="600" y="88" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569" text-anchor="middle">yourapp.com/audit/images/formats</text>
+
+  <!-- Left: summary donut + breakdown -->
+  <rect x="56" y="108" width="340" height="328" rx="8" fill="#111827" stroke="#1e293b"/>
+  <text x="76" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Format Distribution</text>
+  <text x="76" y="142" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">analyzeImageFormats() · 24 images</text>
+
+  <!-- Visual donut representation using arcs -->
+  <circle cx="226" cy="210" r="70" fill="#0d1525" stroke="#1e293b" stroke-width="2"/>
+  <!-- Legacy arc ~46%: JPEG 7, PNG 3, GIF 1 = 11 -->
+  <path d="M 226 140 A 70 70 0 0 1 296 210" stroke="#f59e0b" stroke-width="14" fill="none"/>
+  <path d="M 296 210 A 70 70 0 0 1 246 276" stroke="#ef4444" stroke-width="14" fill="none"/>
+  <!-- Modern arc ~54%: WebP 8, AVIF 3, SVG 2 = 13 -->
+  <path d="M 246 276 A 70 70 0 1 1 226 140" stroke="#10b981" stroke-width="14" fill="none"/>
+  <text x="226" y="205" font-family="system-ui,-apple-system,sans-serif" font-size="22" font-weight="700" fill="#f8fafc" text-anchor="middle">24</text>
+  <text x="226" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">images</text>
+
+  <!-- Legend -->
+  <rect x="76" y="296" width="12" height="12" rx="2" fill="#10b981"/>
+  <text x="94" y="306" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">Modern (WebP/AVIF/SVG)</text>
+  <text x="376" y="306" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="end">13</text>
+
+  <rect x="76" y="316" width="12" height="12" rx="2" fill="#f59e0b"/>
+  <text x="94" y="326" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">Legacy (JPEG/PNG/GIF)</text>
+  <text x="376" y="326" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d" text-anchor="end">11</text>
+
+  <line x1="76" y1="338" x2="376" y2="338" stroke="#1e293b" stroke-width="1"/>
+  <text x="76" y="354" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">WebP</text><text x="376" y="354" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="end">8</text>
+  <text x="76" y="368" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">AVIF</text><text x="376" y="368" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="end">3</text>
+  <text x="76" y="382" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">SVG</text><text x="376" y="382" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7" text-anchor="end">2</text>
+  <text x="76" y="396" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">JPEG</text><text x="376" y="396" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d" text-anchor="end">7</text>
+  <text x="76" y="410" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">PNG</text><text x="376" y="410" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fcd34d" text-anchor="end">3</text>
+  <text x="76" y="424" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#64748b">GIF</text><text x="376" y="424" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#fca5a5" text-anchor="end">1</text>
+
+  <!-- Right: per-image results table -->
+  <rect x="412" y="108" width="748" height="328" rx="8" fill="#111827" stroke="#1e293b"/>
+  <text x="432" y="128" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Per-Image Format Results</text>
+  <text x="432" y="142" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">result.results[] · FormatAnalysisResult per image · getFormatRecommendation() output</text>
+
+  <rect x="428" y="150" width="724" height="20" rx="3" fill="#1e293b"/>
+  <text x="444" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">File</text>
+  <text x="620" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Format</text>
+  <text x="700" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Modern?</text>
+  <text x="786" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#64748b">Recommendation</text>
+
+  <!-- Rows -->
+  <!-- JPEG rows -->
+  <text x="444" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">hero-banner.jpg</text>
+  <rect x="612" y="175" width="40" height="16" rx="8" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="632" y="187" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">jpeg</text>
+  <text x="706" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#ef4444">✗ legacy</text>
+  <text x="786" y="186" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">Convert to WebP/AVIF — 25–50% smaller</text>
+  <line x1="428" y1="194" x2="1152" y2="194" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="444" y="208" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">team-photo.jpg</text>
+  <rect x="612" y="197" width="40" height="16" rx="8" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="632" y="209" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">jpeg</text>
+  <text x="706" y="208" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#ef4444">✗ legacy</text>
+  <text x="786" y="208" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">Convert to WebP/AVIF — 25–50% smaller</text>
+  <line x1="428" y1="216" x2="1152" y2="216" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- PNG row -->
+  <text x="444" y="230" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">diagram.png</text>
+  <rect x="612" y="219" width="40" height="16" rx="8" fill="#f59e0b" fill-opacity="0.2"/>
+  <text x="632" y="231" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fcd34d" text-anchor="middle">png</text>
+  <text x="706" y="230" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#ef4444">✗ legacy</text>
+  <text x="786" y="230" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d">Convert to WebP/AVIF — significant size reduction</text>
+  <line x1="428" y1="238" x2="1152" y2="238" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- GIF row -->
+  <text x="444" y="252" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">animation.gif</text>
+  <rect x="612" y="241" width="40" height="16" rx="8" fill="#ef4444" fill-opacity="0.2"/>
+  <text x="632" y="253" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#fca5a5" text-anchor="middle">gif</text>
+  <text x="706" y="252" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#ef4444">✗ legacy</text>
+  <text x="786" y="252" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fca5a5">Use WebP or MP4 — dramatic file size reduction</text>
+  <line x1="428" y1="260" x2="1152" y2="260" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- WebP row -->
+  <text x="444" y="274" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">product-shot.webp</text>
+  <rect x="612" y="263" width="40" height="16" rx="8" fill="#10b981" fill-opacity="0.2"/>
+  <text x="632" y="275" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">webp</text>
+  <text x="706" y="274" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓ modern</text>
+  <text x="786" y="274" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">Already in optimal format</text>
+  <line x1="428" y1="282" x2="1152" y2="282" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- AVIF row -->
+  <text x="444" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">hero-2024.avif</text>
+  <rect x="612" y="285" width="40" height="16" rx="8" fill="#10b981" fill-opacity="0.2"/>
+  <text x="632" y="297" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">avif</text>
+  <text x="706" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓ modern</text>
+  <text x="786" y="296" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">Already in optimal format</text>
+  <line x1="428" y1="304" x2="1152" y2="304" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- SVG row -->
+  <text x="444" y="318" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#94a3b8">logo.svg</text>
+  <rect x="612" y="307" width="40" height="16" rx="8" fill="#10b981" fill-opacity="0.2"/>
+  <text x="632" y="319" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#6ee7b7" text-anchor="middle">svg</text>
+  <text x="706" y="318" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7">✓ modern</text>
+  <text x="786" y="318" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">Already in optimal format</text>
+  <line x1="428" y1="326" x2="1152" y2="326" stroke="#1e293b" stroke-width="0.5"/>
+
+  <text x="432" y="342" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">+ 17 more images</text>
+
+  <!-- Savings summary -->
+  <rect x="428" y="352" width="724" height="76" rx="6" fill="#0d1525" stroke="#f97316" stroke-opacity="0.3"/>
+  <text x="448" y="370" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Estimated Size Savings — if all legacy converted to WebP</text>
+  <text x="448" y="386" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">Current legacy size: ~2.4MB (7 JPEG + 3 PNG + 1 GIF)</text>
+  <text x="448" y="400" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#6ee7b7">After WebP conversion: ~1.1MB  →  save ~1.3MB (54% reduction)</text>
+  <text x="448" y="416" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">result.recommendations[]  ·  result.legacyFormatCount: 11  ·  result.modernFormatCount: 13</text>
+
+  <rect x="0" y="476" width="1200" height="4" fill="url(#accent)"/>
+</svg>
