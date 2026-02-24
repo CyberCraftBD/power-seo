@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/audit — Structure Rules
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { isAbsoluteUrl } from '@power-seo/core';
 import { validateSchema } from '@power-seo/schema';
@@ -10,17 +9,6 @@ import type { PageAuditInput, AuditRule } from '../types.js';
 export function runStructureRules(input: PageAuditInput): AuditRule[] {
   const rules: AuditRule[] = [];
 
-  // Backward-compatible shim: if caller passed `h1` (string) instead of `headings`,
-  // synthesize a headings array so the H1 check below still fires correctly.
-  if (
-    !(input.headings && input.headings.length > 0) &&
-    typeof (input as unknown as Record<string, unknown>)['h1'] === 'string'
-  ) {
-    const h1Value = (input as unknown as Record<string, unknown>)['h1'] as string;
-    input = { ...input, headings: [`h1:${h1Value}`] };
-  }
-
-  // Canonical validation
   if (input.canonical) {
     if (!isAbsoluteUrl(input.canonical)) {
       rules.push({
@@ -39,28 +27,19 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
         severity: 'pass',
       });
 
-      // Check self-referencing canonical
-      if (input.canonical !== input.url) {
-        rules.push({
-          id: 'structure-canonical-self',
-          category: 'structure',
-          title: 'Self-referencing canonical',
-          description: 'Canonical URL does not match the page URL. Verify this is intentional.',
-          severity: 'warning',
-        });
-      } else {
-        rules.push({
-          id: 'structure-canonical-self',
-          category: 'structure',
-          title: 'Self-referencing canonical',
-          description: 'Canonical URL correctly references this page.',
-          severity: 'pass',
-        });
-      }
+      rules.push({
+        id: 'structure-canonical-self',
+        category: 'structure',
+        title: 'Self-referencing canonical',
+        description:
+          input.canonical !== input.url
+            ? 'Canonical URL does not match the page URL. Verify this is intentional.'
+            : 'Canonical URL correctly references this page.',
+        severity: input.canonical !== input.url ? 'warning' : 'pass',
+      });
     }
   }
 
-  // Schema validation
   if (input.schema && input.schema.length > 0) {
     rules.push({
       id: 'structure-schema-present',
@@ -72,24 +51,14 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
 
     for (const schema of input.schema) {
       const result = validateSchema(schema as unknown as SchemaObject);
-      if (!result.valid) {
+      if (!result.valid || result.issues.length > 0) {
         for (const issue of result.issues) {
           rules.push({
             id: `structure-schema-${schema['@type']?.toLowerCase() ?? 'unknown'}-${issue.field}`,
             category: 'structure',
             title: `Schema: ${schema['@type']} — ${issue.field}`,
             description: issue.message,
-            severity: issue.severity === 'error' ? 'error' : 'warning',
-          });
-        }
-      } else if (result.issues.length > 0) {
-        for (const issue of result.issues) {
-          rules.push({
-            id: `structure-schema-${schema['@type']?.toLowerCase() ?? 'unknown'}-${issue.field}`,
-            category: 'structure',
-            title: `Schema: ${schema['@type']} — ${issue.field}`,
-            description: issue.message,
-            severity: 'warning',
+            severity: !result.valid && issue.severity === 'error' ? 'error' : 'warning',
           });
         }
       }
@@ -104,7 +73,6 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
     });
   }
 
-  // Heading H1
   if (input.headings && input.headings.length > 0) {
     rules.push({
       id: 'structure-heading-h1',
@@ -114,7 +82,6 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
       severity: 'pass',
     });
 
-    // Check heading hierarchy (assumes headings are in order with level prefix like "h1:", "h2:")
     const levels = input.headings
       .map((h) => {
         const match = h.match(/^h(\d)/i);
@@ -130,24 +97,15 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
       }
     }
 
-    if (hierarchyOk) {
-      rules.push({
-        id: 'structure-heading-hierarchy',
-        category: 'structure',
-        title: 'Heading hierarchy',
-        description: 'Heading levels follow a logical hierarchy.',
-        severity: 'pass',
-      });
-    } else {
-      rules.push({
-        id: 'structure-heading-hierarchy',
-        category: 'structure',
-        title: 'Heading hierarchy',
-        description:
-          'Heading levels skip one or more levels (e.g. H1 to H3). Use sequential heading levels.',
-        severity: 'warning',
-      });
-    }
+    rules.push({
+      id: 'structure-heading-hierarchy',
+      category: 'structure',
+      title: 'Heading hierarchy',
+      description: hierarchyOk
+        ? 'Heading levels follow a logical hierarchy.'
+        : 'Heading levels skip one or more levels (e.g. H1 to H3). Use sequential heading levels.',
+      severity: hierarchyOk ? 'pass' : 'warning',
+    });
   } else {
     rules.push({
       id: 'structure-heading-h1',
@@ -158,7 +116,6 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
     });
   }
 
-  // HTTPS check
   if (input.url.startsWith('http://')) {
     rules.push({
       id: 'structure-https',

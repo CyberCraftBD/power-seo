@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/audit — Site Audit
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type {
   SiteAuditInput,
@@ -13,20 +12,13 @@ import { auditPage } from './page-audit.js';
 
 const CATEGORIES: AuditCategory[] = ['meta', 'content', 'structure', 'performance'];
 
-/**
- * Audit an entire site by running page audits across all pages
- * and aggregating the results.
- */
 export function auditSite(input: SiteAuditInput): SiteAuditResult {
   const pageResults = input.pages.map((page) => auditPage(page));
-
   const totalPages = pageResults.length;
 
-  // Average score
   const score =
     totalPages > 0 ? Math.round(pageResults.reduce((sum, r) => sum + r.score, 0) / totalPages) : 0;
 
-  // Aggregate category results
   const summary = {} as Record<AuditCategory, CategoryResult>;
   for (const cat of CATEGORIES) {
     if (totalPages === 0) {
@@ -34,26 +26,25 @@ export function auditSite(input: SiteAuditInput): SiteAuditResult {
       continue;
     }
 
-    let totalPassed = 0;
-    let totalWarnings = 0;
-    let totalErrors = 0;
+    let passed = 0;
+    let warnings = 0;
+    let errors = 0;
 
     for (const result of pageResults) {
-      totalPassed += result.categories[cat].passed;
-      totalWarnings += result.categories[cat].warnings;
-      totalErrors += result.categories[cat].errors;
+      passed += result.categories[cat].passed;
+      warnings += result.categories[cat].warnings;
+      errors += result.categories[cat].errors;
     }
 
-    const totalChecks = totalPassed + totalWarnings + totalErrors;
+    const total = passed + warnings + errors;
     summary[cat] = {
-      score: totalChecks > 0 ? Math.round((totalPassed / totalChecks) * 100) : 100,
-      passed: totalPassed,
-      warnings: totalWarnings,
-      errors: totalErrors,
+      score: total > 0 ? Math.round((passed / total) * 100) : 100,
+      passed,
+      warnings,
+      errors,
     };
   }
 
-  // Find top issues (most frequently occurring non-pass rules)
   const issueCount = new Map<string, { rule: AuditRule; count: number }>();
   for (const result of pageResults) {
     for (const rule of result.rules) {
@@ -71,11 +62,5 @@ export function auditSite(input: SiteAuditInput): SiteAuditResult {
     .sort((a, b) => b.count - a.count)
     .map((entry) => entry.rule);
 
-  return {
-    score,
-    totalPages,
-    pageResults,
-    topIssues,
-    summary,
-  };
+  return { score, totalPages, pageResults, topIssues, summary };
 }
