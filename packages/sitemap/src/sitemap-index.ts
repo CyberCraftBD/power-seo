@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/sitemap — Sitemap Index Generator
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { SitemapConfig } from '@power-seo/core';
 import type { SitemapIndexConfig, SitemapIndexEntry } from './types.js';

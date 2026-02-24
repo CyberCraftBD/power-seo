@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/readability — Combined Readability Analyzer
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { ReadabilityInput, ReadabilityOutput, AnalysisResult } from '@power-seo/core';
 import {

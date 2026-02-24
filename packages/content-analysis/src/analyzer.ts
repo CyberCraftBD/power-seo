@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/content-analysis — Content Analyzer Orchestrator
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, ContentAnalysisOutput, AnalysisResult } from '@power-seo/core';
 import type { AnalysisConfig, CheckId } from './types.js';

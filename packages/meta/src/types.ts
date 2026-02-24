@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/meta — Framework Type Definitions
-// ============================================================================
+// ----------------------------------------------------------------------------
 // Local types that mirror framework shapes (no framework dependencies).
 
 // --- Next.js App Router Metadata ---

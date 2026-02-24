@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/integrations — Shared HTTP Client
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { HttpClientConfig, HttpClient, AuthStrategy } from './types.js';
 import { IntegrationApiError } from './types.js';

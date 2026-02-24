@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/analytics — Merge GSC + Audit Data
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { normalizeUrl } from '@power-seo/core';
 import type { GscPageData, PageInsight, AuditCategory, CategoryResult } from './types.js';

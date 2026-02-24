@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/redirects — Redirect Engine
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { RedirectRule } from '@power-seo/core';
 import type { RedirectMatch, RedirectEngine, RedirectEngineConfig } from './types.js';

@@ -1,5 +1,5 @@
 // @power-seo/audit — Performance Rules
-// ----------------------------------------------------------------------------
+
 
 import type { PageAuditInput, AuditRule } from '../types.js';
 

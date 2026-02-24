@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/readability — Public API
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 export { analyzeReadability } from './analyzer.js';
 export { fleschReadingEase, fleschKincaidGrade } from './algorithms/flesch-kincaid.js';

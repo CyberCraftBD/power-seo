@@ -1,5 +1,5 @@
 // @power-seo/audit — Content Rules
-// ----------------------------------------------------------------------------
+
 
 import { analyzeContent } from '@power-seo/content-analysis';
 import { analyzeReadability } from '@power-seo/readability';

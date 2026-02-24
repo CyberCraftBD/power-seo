@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/ai — SERP Feature Prediction Prompt Builder & Parser
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { stripHtml, getWords } from '@power-seo/core';
 import type { PromptTemplate, SerpFeatureInput, SerpFeaturePrediction } from '../types.js';

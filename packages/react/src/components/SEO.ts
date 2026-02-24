@@ -1,6 +1,6 @@
 'use client';
 // @power-seo/react — SEO Component
-// ----------------------------------------------------------------------------
+
 
 import { createElement, Fragment } from 'react';
 import type { SEOConfig } from '@power-seo/core';

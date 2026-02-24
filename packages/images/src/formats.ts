@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/images — Format Detection & Optimization
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { ImageInfo, ImageFormat, FormatAnalysisResult, FormatAuditResult } from './types.js';
 

@@ -1,5 +1,5 @@
 // @power-seo/meta — Next.js App Router Metadata
-// ----------------------------------------------------------------------------
+
 
 import type { SEOConfig } from '@power-seo/core';
 import { resolveTitle } from '@power-seo/core';

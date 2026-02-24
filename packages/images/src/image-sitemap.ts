@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/images — Image Sitemap Generator
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { normalizeUrl, isAbsoluteUrl } from '@power-seo/core';
 import type { SitemapImage } from '@power-seo/core';

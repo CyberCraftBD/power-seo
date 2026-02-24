@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/preview — Open Graph Preview Generator
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { OG_IMAGE } from '@power-seo/core';
 import type { OgPreviewInput, OgPreviewData, OgImageValidation } from './types.js';

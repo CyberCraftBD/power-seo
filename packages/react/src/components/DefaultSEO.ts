@@ -1,6 +1,6 @@
 'use client';
 // @power-seo/react — DefaultSEO Component
-// ----------------------------------------------------------------------------
+
 
 import { createElement } from 'react';
 import type { ReactNode } from 'react';

@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/analytics — Dashboard Data Builder
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { DashboardInput, DashboardData, DashboardOverview } from './types.js';
 import { buildTrendLines } from './trends.js';

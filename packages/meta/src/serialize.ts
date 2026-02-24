@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/meta — Generic SSR HTML Serialization
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { SEOConfig } from '@power-seo/core';
 import { resolveTitle, buildMetaTags, buildLinkTags } from '@power-seo/core';

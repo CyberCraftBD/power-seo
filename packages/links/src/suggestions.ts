@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/links — Link Suggestion Engine
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { stripHtml, getWords, extractSlug } from '@power-seo/core';
 import type { PageData, LinkSuggestion, LinkSuggestionOptions } from './types.js';

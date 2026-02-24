@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/analytics — Public API
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 export { mergeGscWithAudit, correlateScoreAndTraffic } from './merge.js';
 export { analyzeTrend, buildTrendLines, detectAnomalies } from './trends.js';

@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/tracking — React Components
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { createElement, useEffect, useState, useCallback } from 'react';
 import type { ScriptConfig, ConsentManager, ConsentState } from './types.js';

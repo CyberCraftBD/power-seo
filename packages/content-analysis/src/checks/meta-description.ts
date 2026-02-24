@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/content-analysis — Meta Description Check
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 import { validateMetaDescription } from '@power-seo/core';

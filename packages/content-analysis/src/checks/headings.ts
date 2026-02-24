@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/content-analysis — Headings Check
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 import { stripHtml } from '@power-seo/core';

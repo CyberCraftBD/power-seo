@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/content-analysis — Word Count Check
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 import { getWords, MIN_WORD_COUNT, RECOMMENDED_WORD_COUNT } from '@power-seo/core';

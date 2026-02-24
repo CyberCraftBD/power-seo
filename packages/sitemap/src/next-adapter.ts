@@ -1,5 +1,5 @@
 // @power-seo/sitemap — Next.js App Router Adapter
-// ----------------------------------------------------------------------------
+
 
 import type { SitemapURL } from '@power-seo/core';
 import { validateSitemapUrl } from './validate.js';

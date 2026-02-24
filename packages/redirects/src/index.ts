@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/redirects — Public API
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 export { createRedirectEngine } from './engine.js';
 export { matchExact, matchGlob, matchRegex, substituteParams } from './matcher.js';

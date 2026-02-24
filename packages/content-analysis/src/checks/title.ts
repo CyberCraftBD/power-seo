@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/content-analysis — Title Check
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 import { validateTitle } from '@power-seo/core';

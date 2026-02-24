@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/react — Head Tag Rendering (React 19 native + fallback)
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { createElement, Fragment } from 'react';
 import type { MetaTag, LinkTag } from '@power-seo/core';

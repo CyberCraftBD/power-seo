@@ -1,5 +1,5 @@
 // @power-seo/audit — Meta Rules
-// ----------------------------------------------------------------------------
+
 
 import { validateTitle, validateMetaDescription } from '@power-seo/core';
 import type { PageAuditInput, AuditRule } from '../types.js';

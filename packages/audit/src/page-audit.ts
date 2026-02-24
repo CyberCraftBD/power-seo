@@ -1,5 +1,5 @@
 // @power-seo/audit — Page Audit
-// ----------------------------------------------------------------------------
+
 
 import type {
   PageAuditInput,
