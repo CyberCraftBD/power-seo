@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/meta",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "SSR-optimized meta tag helpers for Next.js App Router, Remix, and generic SSR",
   "license": "MIT",
   "type": "module",
