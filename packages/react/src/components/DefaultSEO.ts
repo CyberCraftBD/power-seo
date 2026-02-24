@@ -1,7 +1,6 @@
 'use client';
-// ============================================================================
-// @power-seo/react — <DefaultSEO> Component
-// ============================================================================
+// @power-seo/react — DefaultSEO Component
+// ----------------------------------------------------------------------------
 
 import { createElement } from 'react';
 import type { ReactNode } from 'react';
@@ -14,25 +13,7 @@ export interface DefaultSEOProps extends SEOConfig {
   children?: ReactNode;
 }
 
-/**
- * Provide global default SEO configuration.
- * Renders default meta tags and wraps children with SEO context.
- *
- * @example
- * ```tsx
- * <DefaultSEO
- *   titleTemplate="%s | My Site"
- *   defaultTitle="My Site"
- *   description="Default description"
- *   openGraph={{
- *     type: 'website',
- *     siteName: 'My Site',
- *   }}
- * >
- *   <App />
- * </DefaultSEO>
- * ```
- */
+/** Provide global default SEO configuration and render default meta tags. */
 export function DefaultSEO({ children, ...config }: DefaultSEOProps) {
   const title = resolveTitle(config);
   const metaTags = buildMetaTags(config);
