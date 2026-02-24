@@ -1,6 +1,5 @@
-// ============================================================================
 // @power-seo/audit — Content Rules
-// ============================================================================
+// ----------------------------------------------------------------------------
 
 import { analyzeContent } from '@power-seo/content-analysis';
 import { analyzeReadability } from '@power-seo/readability';
@@ -22,8 +21,6 @@ export function runContentRules(input: PageAuditInput): AuditRule[] {
   const rules: AuditRule[] = [];
 
   if (!input.content) {
-    // If numeric proxies were supplied, generate rule results from them directly
-    // instead of returning a generic "no content" warning.
     const hasProxies =
       typeof input.wordCount === 'number' || typeof input.keywordDensity === 'number';
 
@@ -38,62 +35,39 @@ export function runContentRules(input: PageAuditInput): AuditRule[] {
       return rules;
     }
 
-    // Word-count rule from proxy value
     if (typeof input.wordCount === 'number') {
       const wc = input.wordCount;
-      if (wc >= 300) {
-        rules.push({
-          id: 'content-word-count',
-          category: 'content',
-          title: 'Word count',
-          description: `Page has ${wc} words — meets the recommended minimum of 300.`,
-          severity: 'pass',
-        });
-      } else {
-        rules.push({
-          id: 'content-word-count',
-          category: 'content',
-          title: 'Word count',
-          description: `Page has only ${wc} words. Aim for at least 300 words for substantive content.`,
-          severity: wc === 0 ? 'error' : 'warning',
-        });
-      }
+      rules.push({
+        id: 'content-word-count',
+        category: 'content',
+        title: 'Word count',
+        description:
+          wc >= 300
+            ? `Page has ${wc} words — meets the recommended minimum of 300.`
+            : `Page has only ${wc} words. Aim for at least 300 words for substantive content.`,
+        severity: wc >= 300 ? 'pass' : wc === 0 ? 'error' : 'warning',
+      });
     }
 
-    // Keyword density rule from proxy value
     if (typeof input.keywordDensity === 'number') {
       const kd = input.keywordDensity;
-      if (kd >= 0.5 && kd <= 3.0) {
-        rules.push({
-          id: 'content-keyphrase-density',
-          category: 'content',
-          title: 'Keyphrase density',
-          description: `Keyphrase density is ${kd.toFixed(2)}% — within the recommended 0.5–3.0% range.`,
-          severity: 'pass',
-        });
-      } else if (kd > 3.0) {
-        rules.push({
-          id: 'content-keyphrase-density',
-          category: 'content',
-          title: 'Keyphrase density',
-          description: `Keyphrase density is ${kd.toFixed(2)}% — above 3.0%. Reduce keyphrase repetition to avoid over-optimisation.`,
-          severity: 'warning',
-        });
-      } else {
-        rules.push({
-          id: 'content-keyphrase-density',
-          category: 'content',
-          title: 'Keyphrase density',
-          description: `Keyphrase density is ${kd.toFixed(2)}% — below the recommended 0.5%. Use the focus keyphrase more naturally in the content.`,
-          severity: 'warning',
-        });
-      }
+      rules.push({
+        id: 'content-keyphrase-density',
+        category: 'content',
+        title: 'Keyphrase density',
+        description:
+          kd >= 0.5 && kd <= 3.0
+            ? `Keyphrase density is ${kd.toFixed(2)}% — within the recommended 0.5–3.0% range.`
+            : kd > 3.0
+              ? `Keyphrase density is ${kd.toFixed(2)}% — above 3.0%. Reduce keyphrase repetition to avoid over-optimisation.`
+              : `Keyphrase density is ${kd.toFixed(2)}% — below the recommended 0.5%. Use the focus keyphrase more naturally in the content.`,
+        severity: kd >= 0.5 && kd <= 3.0 ? 'pass' : 'warning',
+      });
     }
 
     return rules;
   }
 
-  // Content analysis
   const contentResult = analyzeContent({
     title: input.title,
     metaDescription: input.metaDescription,
@@ -114,7 +88,6 @@ export function runContentRules(input: PageAuditInput): AuditRule[] {
     });
   }
 
-  // Readability analysis
   const readabilityResult = analyzeReadability({ content: input.content });
 
   for (const result of readabilityResult.results) {
