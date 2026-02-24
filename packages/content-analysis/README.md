@@ -12,7 +12,7 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/content-analysis)
 
-`@power-seo/content-analysis` delivers a comprehensive, WordPress SEO plugin–style scoring pipeline for evaluating text content, comparable to Yoast SEO, All in One SEO (AIOSEO), Rank Math, SEOPress, and The SEO Framework. Provide a page title, meta description, body content, focus keyphrase, images, and links — get back structured `good` / `needs-improvement` / `poor` results across all critical SEO factors. Run it server-side in a CMS, client-side in a React editor, or inside a CI content quality gate. All 13 analysis checks are fully configurable and tree-shakeable.
+`@power-seo/content-analysis` delivers a comprehensive, WordPress SEO plugin–style scoring pipeline for evaluating text content, comparable to Yoast SEO, All in One SEO (AIOSEO), Rank Math, SEOPress, and The SEO Framework. Provide a page title, meta description, body content, focus keyphrase, images, and links — get back structured `good` / `ok` / `poor` results across all critical SEO factors. Run it server-side in a CMS, client-side in a React editor, or inside a CI content quality gate. All 13 analysis checks are fully configurable and tree-shakeable.
 
 > **Zero external runtime dependencies** — `@power-seo/core` is a direct dependency bundled with this package; no extra install needed.
 
@@ -117,7 +117,7 @@ console.log(result.results);
 
 **Status thresholds (per check):**
 - `good` — check fully passes
-- `needs-improvement` — check partially passes
+- `ok` — check partially passes
 - `poor` — check fails
 
 ---
@@ -177,7 +177,7 @@ const wcResult = checkWordCount({ content: shortHtml });
 
 ### Disabling Specific Checks
 
-Pass `config.disabledChecks` to skip checks that don't apply to your content type:
+Pass `config.disabledChecks` to exclude specific checks from the output. Checks are still executed internally but their results are filtered from `output.results` and excluded from `score`/`maxScore` totals. Invalid check IDs are silently ignored.
 
 ```ts
 import { analyzeContent } from '@power-seo/content-analysis';
@@ -193,6 +193,7 @@ Import from the `/react` entry point for pre-built analysis UI components:
 
 ```tsx
 import { ContentAnalyzer, ScorePanel, CheckList } from '@power-seo/content-analysis/react';
+import { analyzeContent } from '@power-seo/content-analysis';
 import type { ContentAnalysisInput } from '@power-seo/content-analysis';
 
 // All-in-one component
