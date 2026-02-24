@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/preview",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "SERP, Open Graph, and Twitter Card preview generators with React components",
   "license": "MIT",
   "type": "module",
