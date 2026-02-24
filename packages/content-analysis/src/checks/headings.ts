@@ -10,18 +10,45 @@ interface HeadingInfo {
   text: string;
 }
 
+/**
+ * Parse all headings (h1-h6) from HTML using plain string search.
+ * Avoids regex ReDoS on crafted inputs with many repeated heading-like tags.
+ */
 function parseHeadings(html: string): HeadingInfo[] {
   const headings: HeadingInfo[] = [];
-  // Use non-backtracking inner pattern to avoid ReDoS on crafted input.
-  // [^<] matches any non-tag char; <(?!\/h[1-6]>) matches a '<' not starting a closing heading tag.
-  const regex = /<h([1-6])[^>]*>((?:[^<]|<(?!\/h[1-6]>))*)<\/h\1>/gi;
-  let match;
-  while ((match = regex.exec(html)) !== null) {
+  const lc = html.toLowerCase();
+  let pos = 0;
+
+  while (pos < lc.length) {
+    // Find the next heading tag of any level
+    let earliest = -1;
+    let earliestLevel = 0;
+    for (let level = 1; level <= 6; level++) {
+      const idx = lc.indexOf(`<h${level}`, pos);
+      if (idx !== -1 && (earliest === -1 || idx < earliest)) {
+        earliest = idx;
+        earliestLevel = level;
+      }
+    }
+    if (earliest === -1) break;
+
+    const contentStart = lc.indexOf('>', earliest);
+    if (contentStart === -1) break;
+
+    const closeTag = `</h${earliestLevel}>`;
+    const closeIdx = lc.indexOf(closeTag, contentStart + 1);
+    if (closeIdx === -1) {
+      pos = contentStart + 1;
+      continue;
+    }
+
     headings.push({
-      level: parseInt(match[1]!, 10),
-      text: stripHtml(match[2]!),
+      level: earliestLevel,
+      text: stripHtml(html.slice(contentStart + 1, closeIdx)),
     });
+    pos = closeIdx + closeTag.length;
   }
+
   return headings;
 }
 

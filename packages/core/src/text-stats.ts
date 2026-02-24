@@ -27,6 +27,67 @@ function removeBlockTag(html: string, tag: string): string {
 }
 
 /**
+ * Remove HTML tags using a character-by-character scanner (no regex).
+ * Avoids ReDoS from patterns like /<[^>]+>/g on crafted inputs.
+ */
+function removeHtmlTags(html: string): string {
+  let result = '';
+  let i = 0;
+  while (i < html.length) {
+    if (html[i] === '<') {
+      const end = html.indexOf('>', i + 1);
+      if (end === -1) break; // malformed — stop
+      result += ' ';
+      i = end + 1;
+    } else {
+      result += html[i]!;
+      i++;
+    }
+  }
+  return result;
+}
+
+/**
+ * Extract the inner HTML of the first occurrence of a tag (e.g. 'p', 'h1').
+ * Uses plain string search — no regex, no ReDoS.
+ */
+export function extractFirstTagContent(html: string, tag: string): string | null {
+  const lc = html.toLowerCase();
+  const openTag = `<${tag}`;
+  const closeTag = `</${tag}>`;
+  const start = lc.indexOf(openTag);
+  if (start === -1) return null;
+  const contentStart = lc.indexOf('>', start);
+  if (contentStart === -1) return null;
+  const end = lc.indexOf(closeTag, contentStart + 1);
+  if (end === -1) return null;
+  return html.slice(contentStart + 1, end);
+}
+
+/**
+ * Extract inner HTML of all occurrences of a tag (e.g. 'h2').
+ * Uses plain string search — no regex, no ReDoS.
+ */
+export function extractTagContents(html: string, tag: string): string[] {
+  const results: string[] = [];
+  const lc = html.toLowerCase();
+  const openTag = `<${tag}`;
+  const closeTag = `</${tag}>`;
+  let pos = 0;
+  while (pos < lc.length) {
+    const start = lc.indexOf(openTag, pos);
+    if (start === -1) break;
+    const contentStart = lc.indexOf('>', start);
+    if (contentStart === -1) break;
+    const end = lc.indexOf(closeTag, contentStart + 1);
+    if (end === -1) break;
+    results.push(html.slice(contentStart + 1, end));
+    pos = end + closeTag.length;
+  }
+  return results;
+}
+
+/**
  * Strip HTML tags from content, returning plain text.
  */
 export function stripHtml(html: string): string {
@@ -34,8 +95,10 @@ export function stripHtml(html: string): string {
   let result = removeBlockTag(html, 'script');
   result = removeBlockTag(result, 'style');
 
+  // Remove remaining tags with a character scanner (no regex) to avoid ReDoS.
+  result = removeHtmlTags(result);
+
   return result
-    .replace(/<[^>]+>/g, ' ')
     .replace(/&nbsp;/g, ' ')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
