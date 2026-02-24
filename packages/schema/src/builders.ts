@@ -208,11 +208,19 @@ export function schemaGraph(schemas: SchemaObject[]): SchemaGraph {
 }
 
 /**
- * Serialize a schema object to a JSON-LD string.
+ * Serialize a schema object to a JSON-LD string safe for use with
+ * `dangerouslySetInnerHTML` inside a `<script>` tag.
+ *
+ * HTML special characters (`<`, `>`, `&`) are escaped to their Unicode
+ * escape sequences so that a string value like `"</script>"` cannot
+ * prematurely close the script tag (XSS vector).
  */
 export function toJsonLdString(
   schema: WithContext<SchemaObject> | SchemaGraph,
   pretty = false,
 ): string {
-  return JSON.stringify(schema, null, pretty ? 2 : undefined);
+  return JSON.stringify(schema, null, pretty ? 2 : undefined)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026');
 }

@@ -262,6 +262,9 @@ export default function BlogPost({ post }: { post: Post }) {
 }
 ```
 
+> **Security note:** `toJsonLdString()` escapes `<`, `>`, and `&` to their Unicode escape sequences (`\u003c`, `\u003e`, `\u0026`) so a schema string value such as `"</script>"` cannot break out of the surrounding `<script>` tag. This protection is applied automatically — you do not need to sanitize schema field values yourself when using `toJsonLdString()` or the React components. If you write schema JSON manually and inject it with `dangerouslySetInnerHTML`, apply the same escaping or use `toJsonLdString()`.
+
+
 ### CI Validation Gate
 
 Block deploys when schema validation fails:
