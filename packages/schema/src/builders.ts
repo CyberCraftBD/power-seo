@@ -23,6 +23,9 @@ import type {
   ItemListSchema,
   ReviewSchema,
   ServiceSchema,
+  BrandSchema,
+  SiteNavigationElementSchema,
+  ImageObject,
   SchemaGraph,
   SchemaObject,
 } from './types.js';
@@ -166,6 +169,22 @@ export function review(props: Omit<ReviewSchema, '@type'>): WithContext<ReviewSc
 
 export function service(props: Omit<ServiceSchema, '@type'>): WithContext<ServiceSchema> {
   return withContext(clean({ '@type': 'Service', ...props }) as ServiceSchema);
+}
+
+export function brand(props: Omit<BrandSchema, '@type'>): WithContext<BrandSchema> {
+  return withContext(clean({ '@type': 'Brand', ...props }) as BrandSchema);
+}
+
+export function siteNavigationElement(
+  props: Omit<SiteNavigationElementSchema, '@type'>,
+): WithContext<SiteNavigationElementSchema> {
+  return withContext(
+    clean({ '@type': 'SiteNavigationElement', ...props }) as SiteNavigationElementSchema,
+  );
+}
+
+export function imageObject(props: Omit<ImageObject, '@type'>): WithContext<ImageObject> {
+  return withContext(clean({ '@type': 'ImageObject', ...props }) as ImageObject);
 }
 
 // --- Schema Graph Builder ---

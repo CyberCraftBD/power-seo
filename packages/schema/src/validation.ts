@@ -16,10 +16,22 @@ export interface SchemaValidationResult {
 }
 
 /**
- * Validate a schema object against Google Rich Results requirements.
- * This checks required fields beyond basic Schema.org conformance.
+ * Validate one or more schema objects against Google Rich Results requirements.
+ * When an array is passed, each object is validated and all issues are merged.
  */
-export function validateSchema(schema: SchemaObject): SchemaValidationResult {
+export function validateSchema(schema: SchemaObject | SchemaObject[]): SchemaValidationResult {
+  if (Array.isArray(schema)) {
+    const allIssues: ValidationIssue[] = [];
+    for (const s of schema) {
+      const result = validateSchema(s);
+      allIssues.push(...result.issues);
+    }
+    return {
+      valid: allIssues.filter((i) => i.severity === 'error').length === 0,
+      issues: allIssues,
+    };
+  }
+
   const issues: ValidationIssue[] = [];
 
   const obj = schema as unknown as Record<string, unknown>;

@@ -9,7 +9,7 @@ export const TITLE_MAX_PIXELS = 580;
 export const TITLE_MAX_LENGTH = 60;
 
 /** Google SERP title minimum recommended character length */
-export const TITLE_MIN_LENGTH = 30;
+export const TITLE_MIN_LENGTH = 50;
 
 /** Google SERP meta description max display width in pixels (desktop) */
 export const META_DESCRIPTION_MAX_PIXELS = 920;

@@ -848,8 +848,7 @@ Transitive dependency vulnerabilities in `devDependencies` are addressed via `pn
 
 | Channel | Use for |
 | --- | --- |
-| [GitHub Issues](https://github.com/CyberCraftBD/power-seo/issues) | Bug reports, feature requests, questions |
-| [GitHub Discussions](https://github.com/CyberCraftBD/power-seo/discussions) | General questions, ideas, show & tell |
+| [GitHub Issues](https://github.com/CyberCraftBD/power-seo/issues) | Bug reports, feature requests, general questions, ideas |
 | [info@ccbd.dev](mailto:info@ccbd.dev) | Security issues, partnership inquiries |
 
 If you're unsure whether a change is appropriate for a PR, open an issue first and describe what you want to do. It's better to discuss upfront than to submit a large PR that needs to be redesigned.

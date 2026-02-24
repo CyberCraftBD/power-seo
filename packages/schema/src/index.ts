@@ -42,6 +42,8 @@ export type {
   ItemListSchema,
   ListItem,
   ServiceSchema,
+  BrandSchema,
+  SiteNavigationElementSchema,
   SchemaObject,
   WithContext,
   SchemaGraph,
@@ -69,6 +71,9 @@ export {
   itemList,
   review,
   service,
+  brand,
+  siteNavigationElement,
+  imageObject,
   schemaGraph,
   toJsonLdString,
 } from './builders.js';

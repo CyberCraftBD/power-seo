@@ -1,72 +1,79 @@
-# @power-seo/schema — Type-Safe JSON-LD Structured Data for React, Next.js & Remix — 20 Builders, 18 Components, Schema Graph
+# @power-seo/schema
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/schema)](https://www.npmjs.com/package/@power-seo/schema)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/schema)](https://www.npmjs.com/package/@power-seo/schema)
+[![Socket](https://socket.dev/api/badge/npm/package/@power-seo/schema)](https://socket.dev/npm/package/@power-seo/schema)
+[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/schema)
 
----
+Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org builder functions, 21 React components, schema graph support, and field validation. Works in Next.js, Remix, Node.js, and Edge runtimes.
 
-## Overview
+`@power-seo/schema` gives you a fully typed, builder-function API for generating Google-compliant schema.org markup — with compile-time type checking on every schema property, a `validateSchema()` utility that surfaces missing required fields before pages go live, and pre-built React components that render `<script type="application/ld+json">` tags in one line. Combine multiple schemas into a single `@graph` document via `schemaGraph()` so Google parses all of them. All 23 schema types are independently importable and tree-shakeable.
 
-**@power-seo/schema** is a type-safe JSON-LD structured data library for TypeScript developers and React teams that helps you build Google-compliant schema.org markup — with 20 builder functions, 18 pre-built React components, schema graph support, and field validation.
-
-**What it does**
-
-- ✅ **20 schema.org type builders** — Article, FAQPage, Product, LocalBusiness, Event, Recipe, HowTo, VideoObject, Course, JobPosting, and more
-- ✅ **18 ready-to-use React components** — `<ArticleJsonLd>`, `<FAQJsonLd>`, `<ProductJsonLd>`, `<BreadcrumbJsonLd>`, and more
-- ✅ **Schema graph** — combine multiple schemas into a single `@graph` document with `schemaGraph()`
-- ✅ **Field validation** — `validateSchema()` checks required fields and returns `{ valid, errors }` without throwing
-- ✅ **Safe serialization** — `toJsonLdString()` for `dangerouslySetInnerHTML`
-
-**What it is not**
-
-- ❌ **Not a Google Search Console validator** — validates field presence, not full Google Rich Results spec compliance
-- ❌ **Not a scraper** — does not fetch structured data from external pages
-
-**Recommended for**
-
-- **Next.js App Router pages**, **Remix routes**, **React SSR apps**, and **programmatic SEO sites** targeting Google rich results
+> **Zero runtime dependencies** — only `@power-seo/core` as a peer.
 
 ---
 
-## Why @power-seo/schema Matters
+## Why @power-seo/schema?
 
-**The problem**
-
-- **Hand-written JSON-LD has no type checking** — missing required fields like `datePublished` or `author` silently fail Google Rich Results
-- **Multiple schemas per page need `@graph`** — without it, Google may only process the first schema it finds
-- **Schema types differ** — Article, FAQPage, Product, LocalBusiness each have different required fields and data shapes
-
-**Why developers care**
-
-- **SEO:** Rich results (FAQ dropdowns, star ratings, breadcrumb trails) increase SERP real estate and click-through rates
-- **UX:** Rich results improve brand visibility and trust signals in search
-- **Performance:** Server-side serialized JSON-LD adds zero client-side JavaScript overhead
+| | Without | With |
+|---|---|---|
+| Field type safety | ❌ Hand-written JSON, no types | ✅ Typed builder functions catch missing fields at compile time |
+| Multiple schemas per page | ❌ Separate `<script>` tags, Google may miss some | ✅ `schemaGraph()` combines all into one `@graph` document |
+| Field validation | ❌ Silent failures in rich results | ✅ `validateSchema()` returns structured issues before deploy |
+| React rendering | ❌ Manual `dangerouslySetInnerHTML` boilerplate | ✅ `<ArticleJsonLd>` and 20 other components in one import |
+| Schema coverage | ❌ Only Article/FAQ in most packages | ✅ 23 types: Article, Product, FAQ, LocalBusiness, Event, Recipe, and more |
+| Framework support | ❌ WordPress / next-seo only | ✅ Next.js, Remix, Node.js, Edge, static site generators |
 
 ---
 
-## Key Features
+## Features
 
-- **20 schema.org type builder functions** — Article, BlogPosting, NewsArticle, Product, FAQPage, BreadcrumbList, LocalBusiness, Organization, Person, Event, Recipe, HowTo, VideoObject, Course, JobPosting, SoftwareApplication, WebSite, ItemList, Review, Service
-- **18 pre-built React components** — `<ArticleJsonLd>`, `<FAQJsonLd>`, `<ProductJsonLd>`, `<BreadcrumbJsonLd>`, `<LocalBusinessJsonLd>`, `<EventJsonLd>`, `<RecipeJsonLd>`, `<HowToJsonLd>`, `<VideoJsonLd>`, `<CourseJsonLd>`, `<JobPostingJsonLd>`, `<SoftwareAppJsonLd>`, `<WebSiteJsonLd>`, `<OrganizationJsonLd>`, `<PersonJsonLd>`, `<ItemListJsonLd>`, `<ReviewJsonLd>`, `<NewsArticleJsonLd>`
+- **23 schema.org type builder functions** — Article, BlogPosting, NewsArticle, Product, FAQPage, BreadcrumbList, LocalBusiness, Organization, Person, Event, Recipe, HowTo, VideoObject, Course, JobPosting, SoftwareApplication, WebSite, ItemList, Review, Service, Brand, SiteNavigationElement, ImageObject
+- **21 pre-built React components** — `<ArticleJsonLd>`, `<FAQJsonLd>`, `<ProductJsonLd>`, `<BreadcrumbJsonLd>`, `<LocalBusinessJsonLd>`, `<OrganizationJsonLd>`, `<PersonJsonLd>`, `<EventJsonLd>`, `<RecipeJsonLd>`, `<HowToJsonLd>`, `<VideoJsonLd>`, `<CourseJsonLd>`, `<JobPostingJsonLd>`, `<SoftwareAppJsonLd>`, `<WebSiteJsonLd>`, `<ItemListJsonLd>`, `<ReviewJsonLd>`, `<ServiceJsonLd>`, `<BrandJsonLd>`, `<NewsArticleJsonLd>`, `<BlogPostingJsonLd>`
 - **Generic `<JsonLd>` component** — renders any custom schema object as a JSON-LD script tag
 - **`schemaGraph()`** — combine multiple schemas into a single `@graph` document for optimal Google parsing
-- **`toJsonLdString()`** — serialize any schema object to a safe JSON-LD string
-- **`validateSchema()`** — validate required fields without throwing; returns `{ valid, errors }`
-- **React optional** — builder functions work without React; components available via `/react` subpath export
+- **`toJsonLdString()`** — serialize any schema object to a safe JSON-LD string for `dangerouslySetInnerHTML`
+- **`validateSchema()`** — validate required fields without throwing; returns `{ valid, issues }` with severity, field, and message per issue
+- **React optional** — all 23 builder functions work without React; components available via `/react` subpath export
 - **Type-safe API** — TypeScript-first with full typed interfaces for every schema type including nested objects
-- **Tree-shakeable** — import only the schema types you use
+- **Tree-shakeable** — import only the schema types you use; zero dead code in your bundle
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
 
 ---
 
-## Benefits of Using @power-seo/schema
+## Comparison
 
-- **Improved rich result eligibility**: Typed builder functions surface missing required fields at compile time
-- **Better SERP visibility**: FAQ dropdowns, product ratings, breadcrumb trails, and job listings in search results
-- **Safer implementation**: `validateSchema()` catches missing fields in CI before pages are published
-- **Faster delivery**: React components render JSON-LD in one line; no hand-coding script tags
+| Feature                        | @power-seo/schema | next-seo | schema-dts | json-ld.js | react-schemaorg |
+| ------------------------------ | :---------------: | :------: | :--------: | :--------: | :-------------: |
+| Typed builder functions        | ✅                | Partial  | ❌         | ❌         | ❌              |
+| Ready-to-use React components  | ✅                | ✅       | ❌         | ❌         | Partial         |
+| `@graph` support               | ✅                | ❌       | ❌         | ✅         | ❌              |
+| Built-in field validation      | ✅                | ❌       | ❌         | ❌         | ❌              |
+| Works without React            | ✅                | ❌       | ✅         | ✅         | ❌              |
+| 23 schema types                | ✅                | Partial  | ✅         | ✅         | ❌              |
+| CI / Node.js usage             | ✅                | ❌       | ✅         | ✅         | ❌              |
+| Zero runtime dependencies      | ✅                | ❌       | ✅         | ❌         | ❌              |
+| TypeScript-first               | ✅                | Partial  | ✅         | ❌         | ❌              |
+| Tree-shakeable                 | ✅                | ❌       | ✅         | ❌         | ❌              |
+
+---
+
+## Installation
+
+```bash
+npm install @power-seo/schema
+```
+
+```bash
+yarn add @power-seo/schema
+```
+
+```bash
+pnpm add @power-seo/schema
+```
 
 ---
 
@@ -76,7 +83,7 @@
 // Builder function approach (works without React)
 import { article, toJsonLdString } from '@power-seo/schema';
 
-const jsonLd = article({
+const schema = article({
   headline: 'My Blog Post',
   description: 'An informative article about SEO.',
   datePublished: '2026-01-15',
@@ -85,7 +92,7 @@ const jsonLd = article({
   image: { url: 'https://example.com/article-cover.jpg', width: 1200, height: 630 },
 });
 
-const script = toJsonLdString(jsonLd);
+const script = toJsonLdString(schema);
 // → '{"@context":"https://schema.org","@type":"Article","headline":"My Blog Post",...}'
 ```
 
@@ -99,291 +106,364 @@ import { ArticleJsonLd } from '@power-seo/schema/react';
   datePublished="2026-01-15"
   author={{ name: 'Jane Doe', url: 'https://example.com/authors/jane-doe' }}
   image={{ url: 'https://example.com/cover.jpg', width: 1200, height: 630 }}
-/>;
+/>
 // Renders: <script type="application/ld+json">{"@context":"https://schema.org",...}</script>
 ```
 
-**What you should see**
-
-- A `<script type="application/ld+json">` tag in the page `<head>` with valid schema.org JSON
-- `validateSchema(schema).valid === true` for fully populated schemas
-
 ---
 
-## Installation
+## Usage
 
-```bash
-npm i @power-seo/schema
-# or
-yarn add @power-seo/schema
-# or
-pnpm add @power-seo/schema
-# or
-bun add @power-seo/schema
+### Builder Functions (No React Required)
+
+Call any builder function with a typed props object to produce a schema-ready JSON-LD object, then pass it to `toJsonLdString()` for serialization or `schemaGraph()` to combine with other schemas.
+
+```ts
+import { product, toJsonLdString } from '@power-seo/schema';
+
+const schema = product({
+  name: 'Wireless Headphones',
+  description: 'Premium noise-cancelling headphones.',
+  image: { url: 'https://example.com/headphones.jpg' },
+  offers: {
+    price: 149.99,
+    priceCurrency: 'USD',
+    availability: 'InStock',
+  },
+  aggregateRating: {
+    ratingValue: 4.7,
+    reviewCount: 312,
+  },
+});
+
+console.log(toJsonLdString(schema));
+```
+
+### React Components
+
+Import from the `/react` entry point for pre-built JSON-LD components that render `<script type="application/ld+json">` tags:
+
+```tsx
+import { FAQJsonLd, BreadcrumbJsonLd } from '@power-seo/schema/react';
+
+function PageHead() {
+  return (
+    <>
+      <FAQJsonLd
+        questions={[
+          { question: 'What is JSON-LD?', answer: 'A structured data format used by Google.' },
+          { question: 'Do I need React?', answer: 'No — builder functions work without React.' },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://example.com' },
+          { name: 'Blog', url: 'https://example.com/blog' },
+          { name: 'My Post' },
+        ]}
+      />
+    </>
+  );
+}
+```
+
+### Schema Graph (Multiple Schemas Per Page)
+
+Use `schemaGraph()` to combine multiple schema objects into a single `@graph` document. This ensures Google parses all schemas on the page, not just the first `<script>` tag it finds.
+
+```ts
+import { article, breadcrumbList, organization, schemaGraph, toJsonLdString } from '@power-seo/schema';
+
+const graph = schemaGraph([
+  article({ headline: 'My Post', datePublished: '2026-01-01', author: { name: 'Jane Doe' } }),
+  breadcrumbList([
+    { name: 'Home', url: 'https://example.com' },
+    { name: 'Blog', url: 'https://example.com/blog' },
+    { name: 'My Post' },
+  ]),
+  organization({ name: 'Acme Corp', url: 'https://example.com' }),
+]);
+
+const script = toJsonLdString(graph);
+// → '{"@context":"https://schema.org","@graph":[{...},{...},{...}]}'
+```
+
+### Field Validation
+
+`validateSchema()` checks required fields and returns a structured result without throwing. Use it in CI pipelines to catch missing fields before pages are published.
+
+```ts
+import { article, validateSchema } from '@power-seo/schema';
+
+const schema = article({ headline: 'Incomplete Article' }); // missing datePublished, author
+
+const result = validateSchema(schema);
+// result.valid → false
+// result.issues → [
+//   { severity: 'error', field: 'datePublished', message: 'datePublished is required for Article' },
+//   { severity: 'error', field: 'author', message: 'author is required for Article' },
+// ]
+
+if (!result.valid) {
+  const errors = result.issues.filter((i) => i.severity === 'error');
+  console.error(`${errors.length} validation error(s) found`);
+  errors.forEach((i) => console.error(` ✗ [${i.field}] ${i.message}`));
+  process.exit(1);
+}
+```
+
+### FAQ and Breadcrumb Builder Signatures
+
+`faqPage()` and `breadcrumbList()` accept plain arrays directly — not a config object wrapper:
+
+```ts
+import { faqPage, breadcrumbList } from '@power-seo/schema';
+
+// faqPage takes a plain array of { question, answer } items
+const faq = faqPage([
+  { question: 'What is schema.org?', answer: 'A shared vocabulary for structured data.' },
+  { question: 'Does Google require JSON-LD?', answer: 'JSON-LD is the recommended format.' },
+]);
+
+// breadcrumbList takes a plain array of { name, url? } items
+const breadcrumb = breadcrumbList([
+  { name: 'Home', url: 'https://example.com' },
+  { name: 'Products', url: 'https://example.com/products' },
+  { name: 'Headphones' },
+]);
+```
+
+### Next.js App Router
+
+Use builder functions in `page.tsx` to generate JSON-LD for server-side rendering:
+
+```tsx
+import { article, toJsonLdString } from '@power-seo/schema';
+
+export default function BlogPost({ post }: { post: Post }) {
+  const schema = article({
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt,
+    author: { name: post.author.name, url: post.author.profileUrl },
+    image: { url: post.coverImage, width: 1200, height: 630 },
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLdString(schema) }}
+      />
+      <article>{/* page content */}</article>
+    </>
+  );
+}
+```
+
+### CI Validation Gate
+
+Block deploys when schema validation fails:
+
+```ts
+import { validateSchema } from '@power-seo/schema';
+import { allPageSchemas } from './build-schemas';
+
+for (const schema of allPageSchemas) {
+  const result = validateSchema(schema);
+  if (!result.valid) {
+    const errors = result.issues.filter((i) => i.severity === 'error');
+    if (errors.length > 0) {
+      console.error('Schema validation failed:');
+      errors.forEach((i) => console.error(` ✗ [${i.field}] ${i.message}`));
+      process.exit(1);
+    }
+  }
+}
 ```
 
 ---
 
-## Framework Compatibility
+## API Reference
 
-**Supported**
+### Entry Points
 
-- ✅ Next.js App Router — use builder functions in `page.tsx`, pass `toJsonLdString()` to `dangerouslySetInnerHTML`
-- ✅ Next.js Pages Router — use React components or builder functions in `getServerSideProps`
-- ✅ Remix — use builder functions in loaders; render in route components
-- ✅ Node.js 18+ — pure TypeScript, no DOM required for builder functions
-- ✅ Static site generators — generate JSON-LD at build time
+| Import | Description |
+| --- | --- |
+| `@power-seo/schema` | Builder functions, utilities, and TypeScript types |
+| `@power-seo/schema/react` | React components for rendering JSON-LD script tags |
 
-**Environment notes**
+### Builder Functions
 
-- **SSR/SSG:** Fully supported — JSON-LD is serialized server-side
-- **Edge runtime:** Builder functions and utilities supported; React components require React runtime
-- **Browser-only usage:** Supported for React components; not recommended for builder functions alone
+| Function | Schema `@type` | Rich Result Eligible |
+| --- | --- | --- |
+| `article(props)` | `Article` | Yes — Article rich results |
+| `blogPosting(props)` | `BlogPosting` | Yes — Article rich results |
+| `newsArticle(props)` | `NewsArticle` | Yes — Top Stories |
+| `product(props)` | `Product` | Yes — Product rich results |
+| `faqPage(questions)` | `FAQPage` | Yes — FAQ rich results |
+| `breadcrumbList(items)` | `BreadcrumbList` | Yes — Breadcrumbs in SERP |
+| `localBusiness(props)` | `LocalBusiness` | Yes — Local Business panel |
+| `organization(props)` | `Organization` | Yes — Knowledge Panel |
+| `person(props)` | `Person` | Yes — Knowledge Panel |
+| `event(props)` | `Event` | Yes — Event rich results |
+| `recipe(props)` | `Recipe` | Yes — Recipe rich results |
+| `howTo(props)` | `HowTo` | Yes — How-to rich results |
+| `videoObject(props)` | `VideoObject` | Yes — Video rich results |
+| `course(props)` | `Course` | Yes — Course rich results |
+| `jobPosting(props)` | `JobPosting` | Yes — Job Posting results |
+| `softwareApp(props)` | `SoftwareApplication` | Yes — App rich results |
+| `webSite(props)` | `WebSite` | Yes — Sitelinks Searchbox |
+| `itemList(props)` | `ItemList` | Yes — Carousel results |
+| `review(props)` | `Review` | Yes — Review snippet |
+| `service(props)` | `Service` | Partial |
+| `brand(props)` | `Brand` | Partial |
+| `siteNavigationElement(props)` | `SiteNavigationElement` | Partial |
+| `imageObject(props)` | `ImageObject` | Yes — Image rich results |
+
+### Utility Functions
+
+| Function | Signature | Description |
+| --- | --- | --- |
+| `toJsonLdString` | `(schema: object, pretty?: boolean) => string` | Serialize schema to safe JSON-LD string |
+| `schemaGraph` | `(schemas: object[]) => object` | Combine schemas into a single `@graph` document |
+| `validateSchema` | `(schema: object) => { valid: boolean; issues: ValidationIssue[] }` | Validate required fields; returns structured issues |
+
+### React Components
+
+Import all components from `@power-seo/schema/react`.
+
+| Component | Props | Description |
+| --- | --- | --- |
+| `<ArticleJsonLd>` | `Omit<ArticleSchema, '@type' \| '@context'>` | Article schema |
+| `<BlogPostingJsonLd>` | `Omit<ArticleSchema, '@type' \| '@context'>` | BlogPosting schema |
+| `<NewsArticleJsonLd>` | `Omit<ArticleSchema, '@type' \| '@context'>` | NewsArticle schema for Top Stories |
+| `<ProductJsonLd>` | `Omit<ProductSchema, '@type' \| '@context'>` | Product with offers and ratings |
+| `<FAQJsonLd>` | `{ questions: Array<{ question: string; answer: string }> }` | FAQPage schema |
+| `<BreadcrumbJsonLd>` | `{ items: Array<{ name: string; url?: string }> }` | BreadcrumbList schema |
+| `<LocalBusinessJsonLd>` | `Omit<LocalBusinessSchema, '@type' \| '@context'>` | LocalBusiness schema |
+| `<OrganizationJsonLd>` | `Omit<OrganizationSchema, '@type' \| '@context'>` | Organization schema |
+| `<PersonJsonLd>` | `Omit<PersonSchema, '@type' \| '@context'>` | Person schema |
+| `<EventJsonLd>` | `Omit<EventSchema, '@type' \| '@context'>` | Event schema |
+| `<RecipeJsonLd>` | `Omit<RecipeSchema, '@type' \| '@context'>` | Recipe schema |
+| `<HowToJsonLd>` | `Omit<HowToSchema, '@type' \| '@context'>` | HowTo schema |
+| `<VideoJsonLd>` | `Omit<VideoObjectSchema, '@type' \| '@context'>` | VideoObject schema |
+| `<CourseJsonLd>` | `Omit<CourseSchema, '@type' \| '@context'>` | Course schema |
+| `<JobPostingJsonLd>` | `Omit<JobPostingSchema, '@type' \| '@context'>` | JobPosting schema |
+| `<SoftwareAppJsonLd>` | `Omit<SoftwareAppSchema, '@type' \| '@context'>` | SoftwareApplication schema |
+| `<WebSiteJsonLd>` | `Omit<WebSiteSchema, '@type' \| '@context'>` | WebSite with SearchAction |
+| `<ItemListJsonLd>` | `Omit<ItemListSchema, '@type' \| '@context'>` | ItemList schema |
+| `<ReviewJsonLd>` | `Omit<ReviewSchema, '@type' \| '@context'>` | Review schema |
+| `<ServiceJsonLd>` | `Omit<ServiceSchema, '@type' \| '@context'>` | Service schema |
+| `<BrandJsonLd>` | `Omit<BrandSchema, '@type' \| '@context'>` | Brand schema |
+| `<JsonLd>` | `{ schema: object }` | Generic — any schema object |
+
+### Types
+
+| Type | Description |
+| --- | --- |
+| `ArticleSchema` | Props for Article, BlogPosting, and NewsArticle builder functions |
+| `ProductSchema` | Props for `product()` builder |
+| `FAQPageSchema` | Output type of `faqPage()` |
+| `BreadcrumbListSchema` | Output type of `breadcrumbList()` |
+| `LocalBusinessSchema` | Props for `localBusiness()` builder |
+| `OrganizationSchema` | Props for `organization()` builder |
+| `PersonSchema` | Props for `person()` builder |
+| `EventSchema` | Props for `event()` builder |
+| `RecipeSchema` | Props for `recipe()` builder |
+| `HowToSchema` | Props for `howTo()` builder |
+| `VideoObjectSchema` | Props for `videoObject()` builder |
+| `CourseSchema` | Props for `course()` builder |
+| `JobPostingSchema` | Props for `jobPosting()` builder |
+| `SoftwareAppSchema` | Props for `softwareApp()` builder |
+| `WebSiteSchema` | Props for `webSite()` builder |
+| `ItemListSchema` | Props for `itemList()` builder |
+| `ReviewSchema` | Props for `review()` builder |
+| `ServiceSchema` | Props for `service()` builder |
+| `BrandSchema` | Props for `brand()` builder |
+| `ValidationIssue` | `{ severity: 'error' \| 'warning'; field: string; message: string }` |
 
 ---
 
 ## Use Cases
 
-- **Blog posts and articles** — Article/BlogPosting schema for Google Discover and Top Stories eligibility
-- **FAQ pages** — FAQPage schema for FAQ dropdown rich results
-- **Product pages** — Product schema with offers and aggregate ratings for product rich results
+- **Blog posts and articles** — Article and BlogPosting schema for Google Discover and Top Stories eligibility
+- **FAQ pages** — FAQPage schema for FAQ accordion rich results in SERPs
+- **Product pages** — Product schema with offers and aggregate ratings for product rich results and star display
 - **Local business sites** — LocalBusiness schema for Google Business Panel and Local Pack
 - **Recipe sites** — Recipe schema for rich cards with images, ratings, and cooking time
 - **Job boards** — JobPosting schema for Google for Jobs integration
 - **Event pages** — Event schema for Google Events rich results
 - **Course platforms** — Course schema for education carousels in Google Search
 - **Software landing pages** — SoftwareApplication schema for app details in results
-
----
-
-## Example (Before / After)
-
-```text
-Before:
-- Hand-written JSON-LD: missing "datePublished" → Article not eligible for rich results
-- Multiple schemas in separate <script> tags → Google may only parse the first one
-- No TypeScript types → runtime errors when API data shape changes
-
-After (@power-seo/schema):
-- article({ headline, datePublished, author }) → TypeScript flags missing required fields
-- schemaGraph([article, breadcrumb, org]) → single @graph document, all schemas parsed
-- validateSchema(schema).errors → ['Article: datePublished is required'] caught in CI
-```
-
----
-
-## Implementation Best Practices
-
-- **Always use `schemaGraph()`** when rendering multiple schemas on the same page
-- **Validate in CI** with `validateSchema()` — catch missing required fields before deploying
-- **Use `toJsonLdString()` for `dangerouslySetInnerHTML`** — avoids double-encoding issues
-- **Include `publisher` on Article schemas** — required for Google News eligibility
-- **Set `aggregateRating.reviewCount`** on Product schemas — minimum threshold for star display
+- **Multi-schema pages** — `schemaGraph()` to combine Article + Breadcrumb + Organization into a single `@graph`
+- **CI content pipelines** — `validateSchema()` to block deploys when required fields are missing
 
 ---
 
 ## Architecture Overview
 
-**Where it runs**
-
-- **Build-time**: Generate and validate JSON-LD for all static pages; fail CI on validation errors
-- **Runtime**: Builder functions in SSR routes produce JSON-LD for each request
-- **CI/CD**: Run `validateSchema()` across all schema outputs in pull request checks
-
-**Data flow**
-
-1. **Input**: Typed config objects (article config, FAQ questions, product offers, etc.)
-2. **Analysis**: Builder function assembles `@context`, `@type`, and typed properties
-3. **Output**: JSON-LD object or serialized string embedded in `<script type="application/ld+json">`
-4. **Action**: Google parses schema, evaluates eligibility for rich results in SERP
+- **Pure TypeScript** — no compiled binary, no native modules
+- **Zero runtime dependencies** — only `@power-seo/core` as a peer dependency
+- **Framework-agnostic** — builder functions work in any JavaScript environment with no DOM requirement
+- **SSR compatible** — safe to run in Next.js Server Components, Remix loaders, or Express handlers
+- **Edge runtime safe** — no Node.js-specific APIs; builder functions run in Cloudflare Workers, Vercel Edge, Deno
+- **Tree-shakeable** — `"sideEffects": false` with named exports per schema type
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
 
 ---
 
-## Features Comparison with Popular Packages
+## Supply Chain Security
 
-| Capability                    |     next-seo | schema-dts | json-ld | @power-seo/schema |
-| ----------------------------- | -----------: | ---------: | ------: | ----------------: |
-| Typed builder functions       |           ✅ |         ❌ |      ❌ |                ✅ |
-| Ready-to-use React components |           ✅ |         ❌ |      ❌ |                ✅ |
-| `@graph` support              |           ❌ |         ❌ |      ❌ |                ✅ |
-| Built-in field validation     |           ❌ |         ❌ |      ❌ |                ✅ |
-| Works without React           |           ❌ |         ✅ |      ✅ |                ✅ |
-| 20+ schema types              | ❌ (partial) |         ✅ |      ✅ |                ✅ |
+- No install scripts (`postinstall`, `preinstall`)
+- No runtime network access
+- No `eval` or dynamic code execution
+- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
+- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
+- Safe for SSR, Edge, and server environments
 
 ---
 
-## [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
+## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
 
 All 17 packages are independently installable — use only what you need.
 
-| Package                                                                                    | Install                             | Description                                                                |
-| ------------------------------------------------------------------------------------------ | ----------------------------------- | -------------------------------------------------------------------------- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants             |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, robots, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR         |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components      |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components               |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI       |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                    |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation         |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters                  |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring        |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules        |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps        |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks                 |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard        |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection        |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination           |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management    |
-
-### Ecosystem vs alternatives
-
-| Need                    | Common approach            | @power-seo approach                       |
-| ----------------------- | -------------------------- | ----------------------------------------- |
-| JSON-LD structured data | `next-seo` (limited types) | `@power-seo/schema` — 20 types + graph    |
-| React components        | Manual `<script>` tags     | `@power-seo/schema/react` — 18 components |
-| Meta tags               | `react-helmet`             | `@power-seo/react` + `@power-seo/meta`    |
-| Sitemap                 | `next-sitemap`             | `@power-seo/sitemap` — streaming + index  |
-
----
-
-## Enterprise Integration
-
-**Multi-tenant SaaS**
-
-- **Tenant-aware schemas**: Inject tenant `organization` into every page's `@graph` dynamically
-- **Per-page schema pipelines**: Generate and validate schemas in CI for all content types
-- **Compliance**: `validateSchema()` ensures no rich result opportunities are silently missed
-
-**ERP / internal portals**
-
-- Add `Organization` schema to public-facing portals for Knowledge Panel eligibility
-- Use `BreadcrumbList` schema on all navigable public pages
-- Validate schemas as part of the release pipeline
-
-**Recommended integration pattern**
-
-- Run `validateSchema()` in **CI** for all schema objects
-- Fail build on `valid === false` for Article, Product, and FAQ schemas
-- Track rich result status in **Google Search Console** after deployment
-
----
-
-## Scope and Limitations
-
-**This package does**
-
-- ✅ Build typed JSON-LD objects for 20 schema.org types
-- ✅ Render JSON-LD `<script>` tags via 18 React components
-- ✅ Validate required fields and return structured errors
-- ✅ Combine multiple schemas into a single `@graph` document
-
-**This package does not**
-
-- ❌ Guarantee Google Rich Results eligibility (Google's spec changes independently)
-- ❌ Fetch schema data from live pages
-- ❌ Submit schemas to Google directly — use Google Search Console for testing
-
----
-
-## API Reference
-
-### Builder Functions
-
-| Function                      | Schema `@type`        | Rich Result Eligible       |
-| ----------------------------- | --------------------- | -------------------------- |
-| `article(config)`             | `Article`             | Yes — Article rich results |
-| `blogPosting(config)`         | `BlogPosting`         | Yes — Article rich results |
-| `newsArticle(config)`         | `NewsArticle`         | Yes — Top Stories          |
-| `faqPage(config)`             | `FAQPage`             | Yes — FAQ rich results     |
-| `product(config)`             | `Product`             | Yes — Product rich results |
-| `breadcrumbList(config)`      | `BreadcrumbList`      | Yes — Breadcrumbs in SERP  |
-| `localBusiness(config)`       | `LocalBusiness`       | Yes — Local Business panel |
-| `organization(config)`        | `Organization`        | Yes — Knowledge Panel      |
-| `person(config)`              | `Person`              | Yes — Knowledge Panel      |
-| `event(config)`               | `Event`               | Yes — Event rich results   |
-| `recipe(config)`              | `Recipe`              | Yes — Recipe rich results  |
-| `howTo(config)`               | `HowTo`               | Yes — How-to rich results  |
-| `videoObject(config)`         | `VideoObject`         | Yes — Video rich results   |
-| `course(config)`              | `Course`              | Yes — Course rich results  |
-| `jobPosting(config)`          | `JobPosting`          | Yes — Job Posting results  |
-| `softwareApplication(config)` | `SoftwareApplication` | Yes — App rich results     |
-| `webSite(config)`             | `WebSite`             | Yes — Sitelinks Searchbox  |
-| `itemList(config)`            | `ItemList`            | Yes — Carousel results     |
-| `review(config)`              | `Review`              | Yes — Review snippet       |
-| `service(config)`             | `Service`             | Partial                    |
-
-### React Components
-
-| Component               | Prop Type                     | Description                        |
-| ----------------------- | ----------------------------- | ---------------------------------- |
-| `<ArticleJsonLd>`       | `ArticleConfig`               | Article / BlogPosting schema       |
-| `<NewsArticleJsonLd>`   | `NewsArticleConfig`           | NewsArticle schema for Top Stories |
-| `<FAQJsonLd>`           | `{ questions: FAQItem[] }`    | FAQPage schema                     |
-| `<ProductJsonLd>`       | `ProductConfig`               | Product with offers and ratings    |
-| `<BreadcrumbJsonLd>`    | `{ items: BreadcrumbItem[] }` | BreadcrumbList schema              |
-| `<LocalBusinessJsonLd>` | `LocalBusinessConfig`         | LocalBusiness schema               |
-| `<OrganizationJsonLd>`  | `OrganizationConfig`          | Organization schema                |
-| `<PersonJsonLd>`        | `PersonConfig`                | Person schema                      |
-| `<EventJsonLd>`         | `EventConfig`                 | Event schema                       |
-| `<RecipeJsonLd>`        | `RecipeConfig`                | Recipe schema                      |
-| `<HowToJsonLd>`         | `HowToConfig`                 | HowTo schema                       |
-| `<VideoJsonLd>`         | `VideoObjectConfig`           | VideoObject schema                 |
-| `<CourseJsonLd>`        | `CourseConfig`                | Course schema                      |
-| `<JobPostingJsonLd>`    | `JobPostingConfig`            | JobPosting schema                  |
-| `<SoftwareAppJsonLd>`   | `SoftwareApplicationConfig`   | SoftwareApplication schema         |
-| `<WebSiteJsonLd>`       | `WebSiteConfig`               | WebSite with SearchAction          |
-| `<ItemListJsonLd>`      | `ItemListConfig`              | ItemList schema                    |
-| `<ReviewJsonLd>`        | `ReviewConfig`                | Review schema                      |
-| `<JsonLd>`              | `{ schema: object }`          | Generic — any schema object        |
-
-### Utilities
-
-| Function         | Signature                                                  | Description                             |
-| ---------------- | ---------------------------------------------------------- | --------------------------------------- |
-| `toJsonLdString` | `(schema: object) => string`                               | Serialize schema to safe JSON-LD string |
-| `schemaGraph`    | `(schemas: object[]) => object`                            | Combine schemas into `@graph` document  |
-| `validateSchema` | `(schema: object) => { valid: boolean; errors: string[] }` | Validate required fields                |
-
----
-
-## Contributing
-
-- Issues: [github.com/cybercraftbd/power-seo/issues](https://github.com/cybercraftbd/power-seo/issues)
-- PRs: [github.com/cybercraftbd/power-seo/pulls](https://github.com/cybercraftbd/power-seo/pulls)
-- Development setup:
-  1. `pnpm i`
-  2. `pnpm build`
-  3. `pnpm test`
-
-**Release workflow**
-
-- `npm version patch|minor|major`
-- `npm publish --access public`
-
----
-
-## About [CyberCraft Bangladesh](https://ccbd.dev)
-
-**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
-
-|                      |                                                                |
-| -------------------- | -------------------------------------------------------------- |
-| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
-| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
-| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
-
----
-
-## License
-
-**MIT**
+| Package | Install | Description |
+| --- | --- | --- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 21 React components |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 
 ## Keywords
 
-```text
-seo, json-ld, structured-data, schema-org, rich-results, typescript, react, nextjs, remix, faq-schema, product-schema, article-schema, local-business, breadcrumb
-```
+json-ld structured data · schema.org typescript · rich results seo · next.js json-ld · react structured data · faq schema · product schema · article schema · breadcrumb schema · local business schema · schema graph · validate schema · seo schema builder · typescript json-ld · nextjs schema · remix seo · job posting schema · event schema · recipe schema · seo rich results · structured data react · schema.org builder · programmatic seo
+
+---
+
+## About [CyberCraft Bangladesh](https://ccbd.dev)
+
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software development and Full Stack SEO service provider company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+
+[![Website](https://img.shields.io/badge/Website-ccbd.dev-blue?style=for-the-badge)](https://ccbd.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-cybercraftbd-black?style=for-the-badge&logo=github)](https://github.com/cybercraftbd)
+[![npm](https://img.shields.io/badge/npm-power--seo-red?style=for-the-badge&logo=npm)](https://www.npmjs.com/org/power-seo)
+[![Email](https://img.shields.io/badge/Email-info@ccbd.dev-green?style=for-the-badge&logo=gmail)](mailto:info@ccbd.dev)
+
+© 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)
