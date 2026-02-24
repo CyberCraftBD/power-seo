@@ -1,75 +1,90 @@
-# @power-seo/sitemap — XML Sitemap Generator for TypeScript — Streaming, Index Splitting & Image/Video/News Extensions
+# @power-seo/sitemap
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/sitemap)](https://www.npmjs.com/package/@power-seo/sitemap)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/sitemap)](https://www.npmjs.com/package/@power-seo/sitemap)
+[![Socket](https://socket.dev/api/badge/npm/package/@power-seo/sitemap)](https://socket.dev/npm/package/@power-seo/sitemap)
+[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/sitemap)
 
----
+XML sitemap generation for TypeScript — streaming output, automatic index splitting, image/video/news extensions, and URL validation — works in Next.js, Remix, Express, and edge runtimes with zero runtime dependencies.
 
-## Overview
+`@power-seo/sitemap` produces standards-compliant `<urlset>` and `<sitemapindex>` XML from typed URL arrays. Provide a hostname and URL list — get back a valid XML string ready to serve as `Content-Type: application/xml`. For large catalogs, stream chunks with constant memory usage or auto-split at the 50,000-URL spec limit with a generated index file. All five functions are independently importable and tree-shakeable.
 
-**@power-seo/sitemap** is a zero-dependency XML sitemap generator for TypeScript that helps you generate standards-compliant sitemaps with image, video, and news extensions — including streaming generation and automatic index splitting for large sites.
-
-**What it does**
-
-- ✅ **Generate XML sitemaps** — `generateSitemap()` produces spec-compliant `<urlset>` XML strings
-- ✅ **Stream large sitemaps** — `streamSitemap()` yields XML chunks with constant memory usage
-- ✅ **Split into multiple files** — `splitSitemap()` auto-chunks at the 50,000-URL limit
-- ✅ **Generate sitemap indexes** — `generateSitemapIndex()` creates `<sitemapindex>` files pointing to child sitemaps
-- ✅ **Validate URL entries** — `validateSitemapUrl()` checks against Google's sitemap spec requirements
-
-**What it is not**
-
-- ❌ **Not a sitemap crawler** — does not discover URLs by crawling your site
-- ❌ **Not a submission client** — use `@power-seo/search-console` to submit sitemaps to GSC
-
-**Recommended for**
-
-- **Next.js App Router sites**, **Remix apps**, **Express servers**, **static site generators**, and any Node.js/edge environment that generates sitemaps programmatically
+> **Zero runtime dependencies** — only `@power-seo/core` as a peer.
 
 ---
 
-## Why @power-seo/sitemap Matters
+## Why @power-seo/sitemap?
 
-**The problem**
-
-- **Sites with 50,000+ URLs** cannot fit in a single sitemap file — the spec mandates splitting
-- **Image and video sitemaps** require `<image:image>` and `<video:video>` namespace extensions that most generators don't support
-- **Memory spikes** during XML string concatenation cause crashes or timeouts on large e-commerce catalogs
-
-**Why developers care**
-
-- **SEO:** Well-structured sitemaps improve crawl coverage and ensure all pages are discovered
-- **Performance:** Streaming generation keeps memory usage constant for million-URL datasets
-- **Indexing:** Image sitemaps help Google discover and index product images for Google Images
+| | Without | With |
+|---|---|---|
+| Spec compliance | ❌ Hand-built XML, wrong namespaces | ✅ Correct `<urlset>` + namespace declarations |
+| Large sites | ❌ Single file breaks at 50,000 URLs | ✅ Auto-split + sitemap index generation |
+| Memory usage | ❌ String concat spikes on large catalogs | ✅ Synchronous generator yields chunks |
+| Image indexing | ❌ Product images undiscoverable | ✅ `<image:image>` extension per URL |
+| Video SEO | ❌ No structured video metadata | ✅ `<video:video>` extension with title, duration |
+| News sitemaps | ❌ Missing publication + date tags | ✅ `<news:news>` extension for Google News |
+| Hostname handling | ❌ Hardcode absolute URLs everywhere | ✅ Pass `hostname` once; use relative `loc` paths |
+| Validation | ❌ Silent bad data reaches Google | ✅ `validateSitemapUrl()` returns errors + warnings |
 
 ---
 
-## Key Features
+## Features
 
-- **Full sitemap spec support** — `<loc>`, `<lastmod>`, `<changefreq>`, `<priority>`, and all optional elements
-- **Image sitemap extension** — `<image:image>` tags with `loc`, `caption`, `title`, `license`
-- **Video sitemap extension** — `<video:video>` tags with title, description, thumbnail, duration
+- **Full sitemap spec support** — `<loc>`, `<lastmod>`, `<changefreq>`, `<priority>`, all optional elements
+- **Hostname + relative paths** — pass `hostname` in config; `loc` can be a relative path like `/about`
+- **Image sitemap extension** — `<image:image>` tags with `loc`, `caption`, `title`, `geoLocation`, `license`
+- **Video sitemap extension** — `<video:video>` tags with title, description, thumbnail, duration, rating
 - **News sitemap extension** — `<news:news>` tags with publication name, language, date
-- **Streaming generation** — `streamSitemap()` returns `AsyncIterable<string>` — no memory spike on large lists
-- **Automatic index splitting** — `splitSitemap()` chunks at `MAX_URLS_PER_SITEMAP` (50,000)
+- **Streaming generation** — `streamSitemap()` is a synchronous generator yielding XML string chunks; no memory spike on large lists
+- **Automatic index splitting** — `splitSitemap()` chunks at `MAX_URLS_PER_SITEMAP` (50,000) and returns both sitemaps and the index XML
 - **Sitemap index generation** — `generateSitemapIndex()` creates a `<sitemapindex>` pointing to child sitemaps
 - **URL validation** — `validateSitemapUrl()` returns `{ valid, errors, warnings }` without throwing
-- **Constants exported** — `MAX_URLS_PER_SITEMAP` (50,000) and `MAX_SITEMAP_SIZE_BYTES` (50MB)
+- **Constants exported** — `MAX_URLS_PER_SITEMAP` (50,000) and `MAX_SITEMAP_SIZE_BYTES` (52,428,800)
 - **Framework-agnostic** — works in Next.js API routes, Remix loaders, Express, Fastify, and edge runtimes
 - **Full TypeScript support** — typed `SitemapURL`, `SitemapImage`, `SitemapVideo`, `SitemapNews`, `SitemapConfig`
 - **Zero runtime dependencies** — pure TypeScript, no external XML libraries
+- **Tree-shakeable** — import only the functions you use
 
 ---
 
-## Benefits of Using @power-seo/sitemap
+## Comparison
 
-- **Improved crawl coverage**: Well-structured sitemaps with `lastmod` help Googlebot prioritize fresh pages
-- **Better image indexing**: `<image:image>` extensions surface product images in Google Images
-- **Safer implementation**: `validateSitemapUrl()` catches out-of-range `priority` values and invalid dates before serving
-- **Faster delivery**: Zero-dependency streaming generation works in any runtime without configuration
+| Feature                        | @power-seo/sitemap | next-sitemap | sitemap (npm) | xmlbuilder2 |
+| ------------------------------ | :----------------: | :----------: | :-----------: | :---------: |
+| Image sitemap extension        | ✅                 | ✅           | ✅            | ❌          |
+| Video sitemap extension        | ✅                 | ❌           | ✅            | ❌          |
+| News sitemap extension         | ✅                 | ❌           | ✅            | ❌          |
+| Streaming generation           | ✅                 | ❌           | ❌            | ❌          |
+| Auto index splitting           | ✅                 | ✅           | ❌            | ❌          |
+| URL validation                 | ✅                 | ❌           | ❌            | ❌          |
+| Hostname + relative loc paths  | ✅                 | ❌           | ❌            | ❌          |
+| Zero runtime dependencies      | ✅                 | ❌           | ❌            | ❌          |
+| Edge runtime compatible        | ✅                 | ❌           | ❌            | ❌          |
+| TypeScript-first               | ✅                 | Partial      | ❌            | ❌          |
+| Tree-shakeable                 | ✅                 | ❌           | ❌            | ❌          |
+
+---
+
+## Installation
+
+```bash
+npm install @power-seo/sitemap
+```
+
+```bash
+yarn add @power-seo/sitemap
+```
+
+```bash
+pnpm add @power-seo/sitemap
+```
+
+```bash
+bun add @power-seo/sitemap
+```
 
 ---
 
@@ -79,200 +94,196 @@
 import { generateSitemap } from '@power-seo/sitemap';
 
 const xml = generateSitemap({
+  hostname: 'https://example.com',
   urls: [
-    { loc: 'https://example.com/', lastmod: '2026-01-01', changefreq: 'daily', priority: 1.0 },
-    { loc: 'https://example.com/about', changefreq: 'monthly', priority: 0.8 },
-    { loc: 'https://example.com/blog/post-1', lastmod: '2026-01-15', priority: 0.6 },
+    { loc: '/', lastmod: '2026-01-01', changefreq: 'daily', priority: 1.0 },
+    { loc: '/about', changefreq: 'monthly', priority: 0.8 },
+    { loc: '/blog/post-1', lastmod: '2026-01-15', priority: 0.6 },
   ],
 });
 
 // Returns valid XML string:
 // <?xml version="1.0" encoding="UTF-8"?>
-// <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">...
+// <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+//   <url><loc>https://example.com/</loc>...
 ```
 
-**What you should see**
-
-- A standards-compliant XML sitemap string ready to serve as `Content-Type: application/xml`
-- `<urlset>` containing `<url>` entries with the fields you provided
+`hostname` is required — it is prepended to any `loc` value that is a relative path. Absolute `loc` values (starting with `http`) are used as-is.
 
 ---
 
-## Installation
+## Usage
 
-```bash
-npm i @power-seo/sitemap
-# or
-yarn add @power-seo/sitemap
-# or
-pnpm add @power-seo/sitemap
-# or
-bun add @power-seo/sitemap
+### Generating a Sitemap
+
+`generateSitemap()` accepts a `SitemapConfig` with `hostname` and `urls` and returns a complete XML string.
+
+```ts
+import { generateSitemap } from '@power-seo/sitemap';
+
+const xml = generateSitemap({
+  hostname: 'https://example.com',
+  urls: [
+    { loc: '/', lastmod: '2026-01-01', changefreq: 'daily', priority: 1.0 },
+    { loc: '/products', changefreq: 'weekly', priority: 0.9 },
+    { loc: '/blog', changefreq: 'daily', priority: 0.8 },
+  ],
+});
+
+// Serve as application/xml
+res.setHeader('Content-Type', 'application/xml');
+res.send(xml);
 ```
 
----
+### Streaming a Large Sitemap
 
-## Framework Compatibility
+`streamSitemap()` is a synchronous generator. It yields XML string chunks one `<url>` at a time — keeping memory usage constant regardless of catalog size.
 
-**Supported**
+```ts
+import { streamSitemap } from '@power-seo/sitemap';
 
-- ✅ Next.js App Router — use in `app/sitemap.xml/route.ts` API route
-- ✅ Next.js Pages Router — use in `pages/api/sitemap.xml.ts`
-- ✅ Remix — use in resource routes
-- ✅ Node.js 18+ — pure TypeScript, no native bindings
-- ✅ Edge runtimes — no `fs`, no `path`, no Node.js-specific APIs (except `streamSitemap` which uses `AsyncIterable`)
-- ✅ Fastify / Express — serve the XML string as response body
+const urls = fetchAllProductUrls(); // Iterable<SitemapURL>
 
-**Environment notes**
-
-- **SSR/SSG:** Fully supported — generate at request time or at build time
-- **Edge runtime:** `generateSitemap()` and `generateSitemapIndex()` are edge-compatible; `streamSitemap()` requires Node.js streams if writing to disk
-- **Browser-only usage:** Not applicable — sitemap generation is a server-side concern
-
----
-
-## Use Cases
-
-- **Next.js SSG sites** — generate a full sitemap from your CMS at build time
-- **E-commerce catalogs** — product image sitemaps with `<image:image>` for every listing
-- **News publishers** — `<news:news>` extension for Google News sitemap submission
-- **Multi-locale sites** — separate sitemaps per locale with a unified sitemap index
-- **Programmatic SEO** — generate sitemaps for thousands of auto-generated pages
-- **Large sites** — automatic splitting at 50,000 URLs per file with index generation
-- **Video platforms** — `<video:video>` extension for YouTube-style video SEO
-
----
-
-## Example (Before / After)
-
-```text
-Before:
-- Hand-built XML strings: missing namespace declarations, wrong date formats
-- Single 80,000-URL sitemap: invalid per spec (max 50,000), Google truncates
-- No image sitemap: product images not discovered by Googlebot Images
-
-After (@power-seo/sitemap):
-- generateSitemap({ urls }) → spec-compliant XML with correct namespace
-- splitSitemap(allUrls) + generateSitemapIndex() → auto-split + index file
-- urls[i].images = [{ loc, caption }] → <image:image> tags for each product
+const stream = streamSitemap('https://example.com', urls);
+for (const chunk of stream) {
+  response.write(chunk);
+}
+response.end();
 ```
 
----
+### Splitting Large Sitemaps with an Index
 
-## Implementation Best Practices
+`splitSitemap()` chunks a config at the 50,000-URL spec limit and returns all individual sitemap XML strings plus a sitemap index XML string that references them.
 
-- **Always include `lastmod`** — Googlebot uses it to prioritize re-crawling updated pages
-- **Keep `priority` values realistic** — setting everything to 1.0 signals ignored priority; reserve 1.0 for the homepage
-- **Use `changefreq: 'never'` for permanent content** — signals Googlebot to skip re-crawling
-- **Set `sitemap.xml` URL in `robots.txt`** — `Sitemap: https://example.com/sitemap.xml` is required for discovery
-- **Submit to Google Search Console** after generating — use `@power-seo/search-console` `submitSitemap()`
+```ts
+import { splitSitemap } from '@power-seo/sitemap';
 
----
+const { index, sitemaps } = splitSitemap({
+  hostname: 'https://example.com',
+  urls: largeUrlArray, // more than 50,000 entries
+});
 
-## Architecture Overview
+// Write each sitemap file
+for (const { filename, xml } of sitemaps) {
+  fs.writeFileSync(`./public${filename}`, xml);
+}
 
-**Where it runs**
+// Write the index (default filenames: /sitemap-0.xml, /sitemap-1.xml, ...)
+fs.writeFileSync('./public/sitemap.xml', index);
+```
 
-- **Build-time**: Generate static `sitemap.xml` files during `next build` or Remix production builds
-- **Runtime**: Serve dynamically from an API route; regenerate on demand or on ISR revalidation
-- **CI/CD**: Validate sitemap URL entries as part of pull request checks
+Custom filename pattern:
 
-**Data flow**
+```ts
+const { index, sitemaps } = splitSitemap(
+  { hostname: 'https://example.com', urls: largeUrlArray },
+  '/sitemaps/part-{index}.xml', // default: '/sitemap-{index}.xml'
+);
+```
 
-1. **Input**: Array of `SitemapURL` objects with `loc`, `lastmod`, optional images/videos/news
-2. **Analysis**: Spec validation, namespace detection, XML serialization
-3. **Output**: Valid XML string or `AsyncIterable<string>` stream
-4. **Action**: Serve as `application/xml`, write to disk, or submit to GSC via `@power-seo/search-console`
+### Generating a Sitemap Index Manually
 
----
+Use `generateSitemapIndex()` when you maintain separate sitemaps per section or locale and want to combine them under a single index file.
 
-## Features Comparison with Popular Packages
+```ts
+import { generateSitemapIndex } from '@power-seo/sitemap';
 
-| Capability                | next-sitemap | sitemap (npm) | xmlbuilder2 | @power-seo/sitemap |
-| ------------------------- | -----------: | ------------: | ----------: | -----------------: |
-| Image sitemap extension   |           ✅ |            ✅ |          ❌ |                 ✅ |
-| Video sitemap extension   |           ❌ |            ✅ |          ❌ |                 ✅ |
-| News sitemap extension    |           ❌ |            ✅ |          ❌ |                 ✅ |
-| Streaming generation      |           ❌ |            ❌ |          ❌ |                 ✅ |
-| Auto index splitting      |           ✅ |            ❌ |          ❌ |                 ✅ |
-| URL validation            |           ❌ |            ❌ |          ❌ |                 ✅ |
-| Zero runtime dependencies |           ❌ |            ❌ |          ❌ |                 ✅ |
-| Edge runtime compatible   |           ❌ |            ❌ |          ❌ |                 ✅ |
+const indexXml = generateSitemapIndex({
+  sitemaps: [
+    { loc: 'https://example.com/sitemap-pages.xml', lastmod: '2026-01-01' },
+    { loc: 'https://example.com/sitemap-products.xml', lastmod: '2026-01-15' },
+    { loc: 'https://example.com/sitemap-blog.xml', lastmod: '2026-01-20' },
+  ],
+});
+```
 
----
+### Image Sitemaps
 
-## [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
+Add `images` to any `SitemapURL` entry to emit `<image:image>` extension tags:
 
-All 17 packages are independently installable — use only what you need.
+```ts
+import { generateSitemap } from '@power-seo/sitemap';
 
-| Package                                                                                    | Install                             | Description                                                             |
-| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+const xml = generateSitemap({
+  hostname: 'https://example.com',
+  urls: [
+    {
+      loc: '/products/blue-sneaker',
+      lastmod: '2026-01-10',
+      images: [
+        {
+          loc: 'https://cdn.example.com/sneaker-blue.jpg',
+          caption: 'Blue sneaker — side view',
+          title: 'Blue Running Sneaker',
+        },
+        {
+          loc: 'https://cdn.example.com/sneaker-blue-top.jpg',
+          caption: 'Blue sneaker — top view',
+        },
+      ],
+    },
+  ],
+});
+```
 
-### Ecosystem vs alternatives
+### Validating URL Entries
 
-| Need               | Common approach        | @power-seo approach                                  |
-| ------------------ | ---------------------- | ---------------------------------------------------- |
-| Sitemap generation | `next-sitemap`         | `@power-seo/sitemap` — streaming, image, video, news |
-| Sitemap submission | Manual GSC UI          | `@power-seo/search-console` — `submitSitemap()`      |
-| Image SEO          | Manual `<image:image>` | `@power-seo/sitemap` + `@power-seo/images`           |
-| Structured data    | Manual JSON-LD         | `@power-seo/schema` — typed builders                 |
+`validateSitemapUrl()` checks a `SitemapURL` against the sitemap spec and returns structured errors and warnings — useful in CI or before serving.
 
----
+```ts
+import { validateSitemapUrl } from '@power-seo/sitemap';
 
-## Enterprise Integration
+const result = validateSitemapUrl({
+  loc: '/about',
+  priority: 1.5, // out of range
+  changefreq: 'daily',
+});
 
-**Multi-tenant SaaS**
+// result.valid   → false
+// result.errors  → ['priority must be between 0.0 and 1.0']
+// result.warnings → []
+```
 
-- **Per-tenant sitemaps**: Generate separate sitemaps per client domain; serve from tenant-aware API routes
-- **Sitemap index**: Use `generateSitemapIndex()` to aggregate tenant sitemaps into a root index
-- **Scheduled regeneration**: Rebuild sitemaps nightly as new content is published
+### Next.js App Router Route Handler
 
-**ERP / internal portals**
+```ts
+// app/sitemap.xml/route.ts
+import { generateSitemap } from '@power-seo/sitemap';
 
-- Generate sitemaps only for public-facing modules (knowledge base, product catalog)
-- Use `validateSitemapUrl()` to enforce URL format standards across generated entries
-- Pipe large catalogs through `streamSitemap()` to avoid memory limits in serverless environments
+export async function GET() {
+  const urls = await fetchUrlsFromCms();
 
-**Recommended integration pattern**
+  const xml = generateSitemap({
+    hostname: 'https://example.com',
+    urls,
+  });
 
-- Generate sitemaps in **CI** at build time for static content
-- Serve dynamically from **API routes** for frequently updated content
-- Submit new sitemaps to GSC via `@power-seo/search-console` after deployment
-- Monitor crawl coverage in Google Search Console
+  return new Response(xml, {
+    headers: { 'Content-Type': 'application/xml' },
+  });
+}
+```
 
----
+### Remix Resource Route
 
-## Scope and Limitations
+```ts
+// app/routes/sitemap[.xml].ts
+import { generateSitemap } from '@power-seo/sitemap';
+import type { LoaderFunctionArgs } from '@remix-run/node';
 
-**This package does**
+export async function loader({ request }: LoaderFunctionArgs) {
+  const urls = await fetchUrlsFromDb();
 
-- ✅ Generate spec-compliant XML sitemaps from URL arrays
-- ✅ Support image, video, and news sitemap extensions
-- ✅ Stream large sitemaps to avoid memory spikes
-- ✅ Split sitemaps and generate sitemap index files
+  const xml = generateSitemap({
+    hostname: 'https://example.com',
+    urls,
+  });
 
-**This package does not**
-
-- ❌ Crawl your site to discover URLs — you provide the URL list
-- ❌ Submit sitemaps to Google — use `@power-seo/search-console` for submission
-- ❌ Monitor sitemap status — use Google Search Console for crawl coverage reports
+  return new Response(xml, {
+    headers: { 'Content-Type': 'application/xml' },
+  });
+}
+```
 
 ---
 
@@ -284,37 +295,51 @@ All 17 packages are independently installable — use only what you need.
 function generateSitemap(config: SitemapConfig): string;
 ```
 
-| Prop   | Type           | Description          |
-| ------ | -------------- | -------------------- |
-| `urls` | `SitemapURL[]` | Array of URL entries |
+| Prop | Type | Required | Description |
+| --- | --- | --- | --- |
+| `hostname` | `string` | ✅ | Base URL prepended to relative `loc` paths (e.g. `'https://example.com'`) |
+| `urls` | `SitemapURL[]` | ✅ | Array of URL entries |
+| `maxUrlsPerSitemap` | `number` | — | Override the 50,000-URL chunk size (used by `splitSitemap`) |
+| `outputDir` | `string` | — | Optional output directory hint (informational; does not write files) |
 
-#### `SitemapURL`
-
-| Prop         | Type                                                                              | Default | Description                              |
-| ------------ | --------------------------------------------------------------------------------- | ------- | ---------------------------------------- |
-| `loc`        | `string`                                                                          | —       | **Required.** Absolute URL               |
-| `lastmod`    | `string`                                                                          | —       | Last modified (ISO 8601 or `YYYY-MM-DD`) |
-| `changefreq` | `'always' \| 'hourly' \| 'daily' \| 'weekly' \| 'monthly' \| 'yearly' \| 'never'` | —       | Change frequency                         |
-| `priority`   | `number`                                                                          | `0.5`   | Priority 0.0–1.0                         |
-| `images`     | `SitemapImage[]`                                                                  | —       | Image extension entries                  |
-| `videos`     | `SitemapVideo[]`                                                                  | —       | Video extension entries                  |
-| `news`       | `SitemapNews`                                                                     | —       | News extension entry                     |
-
-### `streamSitemap(config)`
+### `streamSitemap(hostname, urls)`
 
 ```ts
-function streamSitemap(config: SitemapConfig): AsyncIterable<string>;
+function streamSitemap(
+  hostname: string,
+  urls: Iterable<SitemapURL>,
+): Generator<string, void, undefined>;
 ```
 
-Returns an async iterable that yields XML chunks. Suitable for piping to a Node.js `Writable`.
+Synchronous generator. Yields XML string chunks — one for the XML declaration and opening tag, one per `<url>` block, and one for the closing tag. Does not buffer the full XML in memory.
 
-### `splitSitemap(urls, maxPerFile?)`
+| Param | Type | Description |
+| --- | --- | --- |
+| `hostname` | `string` | Base URL prepended to relative `loc` paths |
+| `urls` | `Iterable<SitemapURL>` | Any iterable of URL entries — arrays, generators, database cursors |
+
+### `splitSitemap(config, sitemapUrlPattern?)`
 
 ```ts
-function splitSitemap(urls: SitemapURL[], maxPerFile?: number): SitemapURL[][];
+function splitSitemap(
+  config: SitemapConfig,
+  sitemapUrlPattern?: string,
+): { index: string; sitemaps: Array<{ filename: string; xml: string }> };
 ```
 
-Splits `urls` into chunks of at most `maxPerFile` (default: `MAX_URLS_PER_SITEMAP` = 50,000).
+Splits a large URL set into multiple sitemap files and returns the index XML and all sitemap XMLs. The `sitemapUrlPattern` parameter controls generated filenames using `{index}` as a placeholder.
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| `config` | `SitemapConfig` | — | Same config as `generateSitemap()` |
+| `sitemapUrlPattern` | `string` | `'/sitemap-{index}.xml'` | Filename pattern for each split sitemap |
+
+**Return value:**
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `index` | `string` | Sitemap index XML (`<sitemapindex>`) referencing all split files |
+| `sitemaps` | `Array<{ filename: string; xml: string }>` | Each split sitemap with its filename and XML string |
 
 ### `generateSitemapIndex(config)`
 
@@ -322,9 +347,9 @@ Splits `urls` into chunks of at most `maxPerFile` (default: `MAX_URLS_PER_SITEMA
 function generateSitemapIndex(config: SitemapIndexConfig): string;
 ```
 
-| Prop       | Type                  | Description                                  |
-| ---------- | --------------------- | -------------------------------------------- |
-| `sitemaps` | `SitemapIndexEntry[]` | Array of `{ loc: string; lastmod?: string }` |
+| Prop | Type | Description |
+| --- | --- | --- |
+| `sitemaps` | `SitemapIndexEntry[]` | Array of `{ loc: string; lastmod?: string }` entries |
 
 ### `validateSitemapUrl(url)`
 
@@ -332,47 +357,121 @@ function generateSitemapIndex(config: SitemapIndexConfig): string;
 function validateSitemapUrl(url: SitemapURL): SitemapValidationResult;
 ```
 
-Returns `{ valid: boolean; errors: string[]; warnings: string[] }`.
+Returns `{ valid: boolean; errors: string[]; warnings: string[] }`. Never throws.
 
 ---
 
-## Contributing
+## Types
 
-- Issues: [github.com/cybercraftbd/power-seo/issues](https://github.com/cybercraftbd/power-seo/issues)
-- PRs: [github.com/cybercraftbd/power-seo/pulls](https://github.com/cybercraftbd/power-seo/pulls)
-- Development setup:
-  1. `pnpm i`
-  2. `pnpm build`
-  3. `pnpm test`
+| Type | Description |
+| --- | --- |
+| `SitemapConfig` | `{ hostname: string; urls: SitemapURL[]; maxUrlsPerSitemap?: number; outputDir?: string }` |
+| `SitemapURL` | Single URL entry — see field table below |
+| `SitemapImage` | `{ loc: string; caption?: string; geoLocation?: string; title?: string; license?: string }` |
+| `SitemapVideo` | Video extension entry with `thumbnailLoc`, `title`, `description`, and optional fields |
+| `SitemapNews` | `{ publication: { name: string; language: string }; publicationDate: string; title: string }` |
+| `SitemapIndexConfig` | `{ sitemaps: SitemapIndexEntry[] }` |
+| `SitemapIndexEntry` | `{ loc: string; lastmod?: string }` |
+| `SitemapValidationResult` | `{ valid: boolean; errors: string[]; warnings: string[] }` |
 
-**Release workflow**
+### `SitemapURL` Fields
 
-- `npm version patch|minor|major`
-- `npm publish --access public`
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `loc` | `string` | — | **Required.** URL path (e.g. `/about`) or absolute URL. Hostname is prepended to relative paths. |
+| `lastmod` | `string` | — | Last modified date — ISO 8601 or `YYYY-MM-DD` |
+| `changefreq` | `'always' \| 'hourly' \| 'daily' \| 'weekly' \| 'monthly' \| 'yearly' \| 'never'` | — | Suggested crawl frequency |
+| `priority` | `number` | (no tag emitted) | Priority 0.0–1.0. When omitted, no `<priority>` tag is written. |
+| `images` | `SitemapImage[]` | — | Image extension entries — emits `<image:image>` blocks |
+| `videos` | `SitemapVideo[]` | — | Video extension entries — emits `<video:video>` blocks |
+| `news` | `SitemapNews` | — | News extension entry — emits `<news:news>` block |
+
+### Constants
+
+| Constant | Value | Description |
+| --- | --- | --- |
+| `MAX_URLS_PER_SITEMAP` | `50_000` | Maximum URLs allowed per sitemap file (spec limit) |
+| `MAX_SITEMAP_SIZE_BYTES` | `52_428_800` | Maximum sitemap file size in bytes (50 MB = 50 × 1024 × 1024) |
 
 ---
 
-## About [CyberCraft Bangladesh](https://ccbd.dev)
+## Use Cases
 
-**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
-
-|                      |                                                                |
-| -------------------- | -------------------------------------------------------------- |
-| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
-| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
-| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
+- **Next.js App Router** — generate sitemaps in `app/sitemap.xml/route.ts` at request time or build time
+- **E-commerce catalogs** — product image sitemaps with `<image:image>` for every listing; keep Google Images up to date
+- **News publishers** — `<news:news>` extension for Google News sitemap submission
+- **Multi-locale sites** — separate sitemaps per locale with a unified sitemap index
+- **Programmatic SEO** — generate sitemaps for thousands of auto-generated pages with no memory overhead
+- **Large sites** — automatic splitting at 50,000 URLs per file with a generated index
+- **Video platforms** — `<video:video>` extension with title, description, and thumbnail for video SEO
+- **CI/CD pipelines** — validate URL entries with `validateSitemapUrl()` as part of pull request checks
 
 ---
 
-## License
+## Architecture Overview
 
-**MIT**
+- **Pure TypeScript** — no compiled binary, no native modules
+- **Zero runtime dependencies** — only `@power-seo/core` as a peer dependency
+- **Framework-agnostic** — works in any JavaScript environment that supports ES2020+
+- **SSR compatible** — safe to run in Next.js Server Components, Remix loaders, or Express handlers
+- **Edge runtime safe** — no `fs`, no `path`, no Node.js-specific APIs; runs in Cloudflare Workers, Vercel Edge, Deno
+- **Synchronous generator streaming** — `streamSitemap()` uses `function*` — no async overhead, no backpressure complexity
+- **Auto namespace detection** — `generateSitemap()` only adds `xmlns:image`, `xmlns:video`, `xmlns:news` declarations when the URL set actually uses those extensions
+- **Tree-shakeable** — `"sideEffects": false` with named exports per function
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+
+---
+
+## Supply Chain Security
+
+- No install scripts (`postinstall`, `preinstall`)
+- No runtime network access
+- No `eval` or dynamic code execution
+- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
+- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
+- Safe for SSR, Edge, and server environments
+
+---
+
+## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
+
+All 17 packages are independently installable — use only what you need.
+
+| Package | Install | Description |
+| --- | --- | --- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 
 ## Keywords
 
-```text
-seo, sitemap, xml-sitemap, sitemap-generator, image-sitemap, video-sitemap, news-sitemap, sitemap-index, typescript, nextjs, remix, streaming, crawl-budget, google-indexing
-```
+xml sitemap generator typescript · sitemap npm package · nextjs sitemap · streaming sitemap · sitemap index generator · image sitemap extension · video sitemap extension · news sitemap google · split sitemap 50000 urls · sitemap validation · edge runtime sitemap · remix sitemap · programmatic seo sitemap · sitemap generator zero dependencies · typescript xml sitemap · sitemap url priority · crawl budget optimization · sitemap changelog · google sitemap spec · seo sitemap typescript
+
+---
+
+## About [CyberCraft Bangladesh](https://ccbd.dev)
+
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software development and Full Stack SEO service provider company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+
+[![Website](https://img.shields.io/badge/Website-ccbd.dev-blue?style=for-the-badge)](https://ccbd.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-cybercraftbd-black?style=for-the-badge&logo=github)](https://github.com/cybercraftbd)
+[![npm](https://img.shields.io/badge/npm-power--seo-red?style=for-the-badge&logo=npm)](https://www.npmjs.com/org/power-seo)
+[![Email](https://img.shields.io/badge/Email-info@ccbd.dev-green?style=for-the-badge&logo=gmail)](mailto:info@ccbd.dev)
+
+© 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)

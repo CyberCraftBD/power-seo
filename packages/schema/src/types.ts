@@ -16,6 +16,10 @@ export interface ThingBase extends JsonLdBase {
   description?: string;
   image?: string | ImageObject | Array<string | ImageObject>;
   sameAs?: string | string[];
+  identifier?: string | { '@type': 'PropertyValue'; name: string; value: string };
+  alternateName?: string | string[];
+  mainEntity?: JsonLdBase | JsonLdBase[];
+  potentialAction?: JsonLdBase | JsonLdBase[];
 }
 
 export interface ImageObject extends JsonLdBase {
@@ -42,6 +46,11 @@ export interface OrganizationSchema extends ThingBase {
   address?: PostalAddress;
   foundingDate?: string;
   numberOfEmployees?: number;
+  areaServed?: string | string[];
+  foundingLocation?: PostalAddress | string;
+  knowsAbout?: string | string[];
+  legalName?: string;
+  parentOrganization?: OrganizationSchema;
 }
 
 export interface ContactPoint extends JsonLdBase {
@@ -332,9 +341,29 @@ export interface SoftwareAppSchema extends ThingBase {
   softwareVersion?: string;
 }
 
+export interface BrandSchema extends JsonLdBase {
+  '@type': 'Brand';
+  name: string;
+  logo?: string | ImageObject;
+  slogan?: string;
+  url?: string;
+  sameAs?: string | string[];
+}
+
+export interface SiteNavigationElementSchema extends ThingBase {
+  '@type': 'SiteNavigationElement';
+  url: string;
+}
+
 export interface WebSiteSchema extends ThingBase {
   '@type': 'WebSite';
   potentialAction?: SearchActionSchema;
+  author?: PersonSchema | OrganizationSchema;
+  publisher?: OrganizationSchema;
+  mainEntity?: SiteNavigationElementSchema | SiteNavigationElementSchema[];
+  inLanguage?: string;
+  dateCreated?: string;
+  dateModified?: string;
 }
 
 export interface SearchActionSchema extends JsonLdBase {
@@ -390,7 +419,9 @@ export type SchemaObject =
   | WebSiteSchema
   | ItemListSchema
   | ReviewSchema
-  | ServiceSchema;
+  | ServiceSchema
+  | BrandSchema
+  | SiteNavigationElementSchema;
 
 /** JSON-LD with context */
 export type WithContext<T extends JsonLdBase> = T & {

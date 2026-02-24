@@ -8,6 +8,7 @@ import type {
   ProductSchema,
   LocalBusinessSchema,
   OrganizationSchema,
+  PersonSchema,
   EventSchema,
   RecipeSchema,
   HowToSchema,
@@ -16,8 +17,10 @@ import type {
   JobPostingSchema,
   SoftwareAppSchema,
   WebSiteSchema,
+  ItemListSchema,
   ReviewSchema,
   ServiceSchema,
+  BrandSchema,
   SchemaGraph,
   WithContext,
   JsonLdBase,
@@ -31,6 +34,7 @@ import {
   breadcrumbList,
   localBusiness,
   organization,
+  person,
   event,
   recipe,
   howTo,
@@ -39,8 +43,10 @@ import {
   jobPosting,
   softwareApp,
   webSite,
+  itemList,
   review,
   service,
+  brand,
 } from './builders.js';
 
 // --- Generic JsonLd Component ---
@@ -167,4 +173,16 @@ export function ReviewJsonLd(props: OmitType<ReviewSchema>) {
 
 export function ServiceJsonLd(props: OmitType<ServiceSchema>) {
   return createElement(JsonLd, { schema: service(props) });
+}
+
+export function PersonJsonLd(props: OmitType<PersonSchema>) {
+  return createElement(JsonLd, { schema: person(props) });
+}
+
+export function ItemListJsonLd(props: OmitType<ItemListSchema>) {
+  return createElement(JsonLd, { schema: itemList(props) });
+}
+
+export function BrandJsonLd(props: OmitType<BrandSchema>) {
+  return createElement(JsonLd, { schema: brand(props) });
 }

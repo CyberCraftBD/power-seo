@@ -29,7 +29,7 @@ export interface SitemapValidationResult {
 }
 
 /** Maximum URLs allowed per sitemap file. */
-export const MAX_URLS_PER_SITEMAP = 50_000;
+export const MAX_URLS_PER_SITEMAP = 50_000 as const;
 
 /** Maximum sitemap file size in bytes (50MB). */
-export const MAX_SITEMAP_SIZE_BYTES = 50 * 1024 * 1024;
+export const MAX_SITEMAP_SIZE_BYTES = 52_428_800 as const;
