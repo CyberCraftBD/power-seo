@@ -36,6 +36,12 @@
 | TypeScript support | ❌ Scattered `@types/` packages or none | ✅ Full `.d.ts` across all 17 packages — zero extra installs |
 | Bundle impact | ❌ All-or-nothing monolithic imports | ✅ `"sideEffects": false` on every package — tree-shake anything |
 
+
+
+<a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee"/></a>
+
+
+
 ![Power-SEO Ecosystem Comparison](./image/core/comparison.svg)
 
 ---
