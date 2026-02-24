@@ -5,19 +5,43 @@
 import type { TextStatistics } from './types.js';
 
 /**
+ * Remove all occurrences of a paired HTML block tag (e.g. script, style)
+ * using plain string search to avoid regex ReDoS on crafted input.
+ */
+function removeBlockTag(html: string, tag: string): string {
+  const open = `<${tag}`;
+  const close = `</${tag}>`;
+  let result = html;
+  let start = result.toLowerCase().indexOf(open);
+  while (start !== -1) {
+    const end = result.toLowerCase().indexOf(close, start);
+    if (end === -1) {
+      // No closing tag found — remove everything from the opening tag onwards.
+      result = result.slice(0, start);
+      break;
+    }
+    result = result.slice(0, start) + result.slice(end + close.length);
+    start = result.toLowerCase().indexOf(open, start);
+  }
+  return result;
+}
+
+/**
  * Strip HTML tags from content, returning plain text.
  */
 export function stripHtml(html: string): string {
-  return html
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+  // Remove script and style blocks without regex to avoid ReDoS.
+  let result = removeBlockTag(html, 'script');
+  result = removeBlockTag(result, 'style');
+
+  return result
     .replace(/<[^>]+>/g, ' ')
     .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&') // decode & last to prevent double-unescaping (&amp;lt; → &lt; → <)
     .replace(/\s+/g, ' ')
     .trim();
 }

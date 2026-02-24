@@ -22,7 +22,7 @@ function normalizePath(url: string, config?: RedirectEngineConfig): string {
   // Handle trailing slash
   const trailingSlash = config?.trailingSlash ?? 'remove';
   if (trailingSlash === 'remove' && path !== '/' && path.endsWith('/')) {
-    path = path.replace(/\/+$/, '');
+    while (path.endsWith('/') && path !== '/') path = path.slice(0, -1);
   } else if (trailingSlash === 'add' && path !== '/' && !path.endsWith('/')) {
     path = path + '/';
   }
@@ -62,7 +62,9 @@ export function matchGlob(
   const urlParts = normalizedUrl.split('/').filter(Boolean);
   const patternParts = normalizedPattern.split('/').filter(Boolean);
   // Keep original pattern parts for param names (before case normalization)
-  const originalPatternParts = pattern.replace(/\/+$/, '').split('/').filter(Boolean);
+  let trimmedPattern = pattern;
+  while (trimmedPattern.endsWith('/')) trimmedPattern = trimmedPattern.slice(0, -1);
+  const originalPatternParts = trimmedPattern.split('/').filter(Boolean);
 
   let urlIdx = 0;
   let patIdx = 0;

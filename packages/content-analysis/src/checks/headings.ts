@@ -12,7 +12,9 @@ interface HeadingInfo {
 
 function parseHeadings(html: string): HeadingInfo[] {
   const headings: HeadingInfo[] = [];
-  const regex = /<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi;
+  // Use non-backtracking inner pattern to avoid ReDoS on crafted input.
+  // [^<] matches any non-tag char; <(?!\/h[1-6]>) matches a '<' not starting a closing heading tag.
+  const regex = /<h([1-6])[^>]*>((?:[^<]|<(?!\/h[1-6]>))*)<\/h\1>/gi;
   let match;
   while ((match = regex.exec(html)) !== null) {
     headings.push({

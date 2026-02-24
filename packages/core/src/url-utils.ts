@@ -21,7 +21,8 @@ export function resolveCanonical(baseUrl: string, path?: string): string {
     return normalizeUrl(path);
   }
 
-  const base = baseUrl.replace(/\/+$/, '');
+  let base = baseUrl;
+  while (base.endsWith('/')) base = base.slice(0, -1);
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
 
   return normalizeUrl(`${base}${cleanPath}`);
