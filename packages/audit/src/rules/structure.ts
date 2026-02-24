@@ -14,9 +14,9 @@ export function runStructureRules(input: PageAuditInput): AuditRule[] {
   // synthesize a headings array so the H1 check below still fires correctly.
   if (
     !(input.headings && input.headings.length > 0) &&
-    typeof (input as Record<string, unknown>)['h1'] === 'string'
+    typeof (input as unknown as Record<string, unknown>)['h1'] === 'string'
   ) {
-    const h1Value = (input as Record<string, unknown>)['h1'] as string;
+    const h1Value = (input as unknown as Record<string, unknown>)['h1'] as string;
     input = { ...input, headings: [`h1:${h1Value}`] };
   }
 
