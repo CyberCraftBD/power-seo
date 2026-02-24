@@ -10,6 +10,16 @@ import type { PageAuditInput, AuditRule } from '../types.js';
 export function runStructureRules(input: PageAuditInput): AuditRule[] {
   const rules: AuditRule[] = [];
 
+  // Backward-compatible shim: if caller passed `h1` (string) instead of `headings`,
+  // synthesize a headings array so the H1 check below still fires correctly.
+  if (
+    !(input.headings && input.headings.length > 0) &&
+    typeof (input as Record<string, unknown>)['h1'] === 'string'
+  ) {
+    const h1Value = (input as Record<string, unknown>)['h1'] as string;
+    input = { ...input, headings: [`h1:${h1Value}`] };
+  }
+
   // Canonical validation
   if (input.canonical) {
     if (!isAbsoluteUrl(input.canonical)) {
