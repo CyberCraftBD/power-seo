@@ -82,6 +82,8 @@ export {
 // Text Statistics
 export {
   stripHtml,
+  extractFirstTagContent,
+  extractTagContents,
   getWords,
   getSentences,
   getParagraphs,

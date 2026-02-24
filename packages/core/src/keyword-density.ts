@@ -2,7 +2,7 @@
 // @power-seo/core — Keyword Density Calculator
 // ============================================================================
 
-import { getWords, stripHtml } from './text-stats.js';
+import { getWords, stripHtml, extractFirstTagContent, extractTagContents } from './text-stats.js';
 
 export interface KeywordDensityResult {
   keyword: string;
@@ -99,32 +99,26 @@ export function analyzeKeyphraseOccurrences(config: {
   // Check meta description
   const inMetaDescription = metaDescription ? metaDescription.toLowerCase().includes(kp) : false;
 
-  // Check first paragraph — use non-backtracking pattern to avoid ReDoS
-  const firstParagraphMatch = content.match(/<p[^>]*>((?:[^<]|<(?!\/p>))*)<\/p>/i);
-  const firstParagraph = firstParagraphMatch
-    ? stripHtml(firstParagraphMatch[1] ?? '').toLowerCase()
+  // Check first paragraph — use string-based extraction to avoid regex ReDoS
+  const firstParaInner = extractFirstTagContent(content, 'p');
+  const firstParagraph = firstParaInner !== null
+    ? stripHtml(firstParaInner).toLowerCase()
     : (plainContent.split(/\n\n/)[0]?.toLowerCase() ?? '');
   const inFirstParagraph = firstParagraph.includes(kp);
 
-  // Check H1 — use non-backtracking pattern to avoid ReDoS
-  const h1Match = content.match(/<h1[^>]*>((?:[^<]|<(?!\/h1>))*)<\/h1>/i);
-  const inH1 = h1Match
-    ? stripHtml(h1Match[1] ?? '')
-        .toLowerCase()
-        .includes(kp)
+  // Check H1 — use string-based extraction to avoid regex ReDoS
+  const h1Inner = extractFirstTagContent(content, 'h1');
+  const inH1 = h1Inner !== null
+    ? stripHtml(h1Inner).toLowerCase().includes(kp)
     : false;
 
-  // Count in headings (h2-h6) — use non-backtracking pattern to avoid ReDoS
-  const headingRegex = /<h([2-6])[^>]*>((?:[^<]|<(?!\/h[2-6]>))*)<\/h\1>/gi;
-  let headingMatch;
+  // Count in headings (h2-h6) — use string-based extraction to avoid regex ReDoS
   let inHeadings = 0;
-  while ((headingMatch = headingRegex.exec(content)) !== null) {
-    if (
-      stripHtml(headingMatch[2] ?? '')
-        .toLowerCase()
-        .includes(kp)
-    ) {
-      inHeadings++;
+  for (let level = 2; level <= 6; level++) {
+    for (const inner of extractTagContents(content, `h${level}`)) {
+      if (stripHtml(inner).toLowerCase().includes(kp)) {
+        inHeadings++;
+      }
     }
   }
 
