@@ -1,0 +1,58 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Auto-Paginate 25,000-Row API Limit Transparently</text>
+  <!-- Left: Without pagination -->
+  <rect x="30" y="56" width="390" height="300" rx="8" fill="#161b22"/>
+  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1a0505"/>
+  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Without pagination — 3 manual calls</text>
+  <!-- Manual approach -->
+  <text x="48" y="120" font-family="'Courier New', monospace" font-size="11" fill="#6b7280">// Manual pagination boilerplate</text>
+  <text x="48" y="140" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">let rows = [], startRow = 0</text>
+  <text x="48" y="160" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">while (true) &#123;</text>
+  <text x="64" y="180" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">  const batch = await rawApi.query(&#123;</text>
+  <text x="80" y="200" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">    rowLimit: 25000,</text>
+  <text x="80" y="220" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">    startRow</text>
+  <text x="64" y="240" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">  &#125;)</text>
+  <text x="64" y="260" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">  rows.push(...batch.rows)</text>
+  <text x="64" y="280" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">  if (batch.rows.length &lt; 25000) break</text>
+  <text x="64" y="300" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">  startRow += 25000</text>
+  <text x="48" y="320" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&#125;</text>
+  <!-- Arrow -->
+  <text x="450" y="215" font-family="'Segoe UI', sans-serif" font-size="36" fill="#4285f4" text-anchor="middle" font-weight="700">→</text>
+  <!-- Right: With auto-pagination -->
+  <rect x="480" y="56" width="390" height="300" rx="8" fill="#161b22"/>
+  <rect x="480" y="56" width="390" height="34" rx="8" fill="#0a1628"/>
+  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#4285f4" text-anchor="middle">With @power-seo/search-console</text>
+  <!-- Auto-paginated API -->
+  <text x="498" y="120" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">// Auto-paginated — all rows fetched</text>
+  <text x="498" y="148" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">const</text>
+  <text x="538" y="148" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc"> rows</text>
+  <text x="568" y="148" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0"> = await </text>
+  <text x="620" y="148" font-family="'Courier New', monospace" font-size="11" fill="#4285f4">gsc</text>
+  <text x="644" y="148" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">.</text>
+  <text x="650" y="148" font-family="'Courier New', monospace" font-size="11" fill="#8b5cf6">getAllSearchAnalytics</text>
+  <text x="498" y="170" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">(&#123; startDate, endDate, dimensions &#125;)</text>
+  <!-- Result indicator -->
+  <rect x="498" y="194" width="354" height="100" rx="4" fill="#0d1117"/>
+  <text x="514" y="218" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">// Automatically fetches pages:</text>
+  <text x="514" y="238" font-family="'Courier New', monospace" font-size="11" fill="#4285f4">  rows 0–25000</text>
+  <text x="514" y="258" font-family="'Courier New', monospace" font-size="11" fill="#4285f4">  rows 25001–50000</text>
+  <text x="514" y="278" font-family="'Courier New', monospace" font-size="11" fill="#4285f4">  rows 50001–62,847 ✓ done</text>
+  <!-- Count badge -->
+  <rect x="498" y="308" width="354" height="30" rx="6" fill="#0a1628"/>
+  <text x="675" y="327" font-family="'Segoe UI', sans-serif" font-size="13" fill="#4285f4" text-anchor="middle">62,847 rows · 3 API calls · 1 await</text>
+  <!-- Bottom stats -->
+  <rect x="30" y="376" width="840" height="72" rx="8" fill="#161b22"/>
+  <rect x="50" y="392" width="180" height="40" rx="6" fill="#0a1628"/>
+  <text x="140" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Lines of code</text>
+  <text x="140" y="428" font-family="'Segoe UI', sans-serif" font-size="16" fill="#4285f4" text-anchor="middle" font-weight="700">1 vs 12</text>
+  <rect x="250" y="392" width="180" height="40" rx="6" fill="#0a1628"/>
+  <text x="340" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Error handling</text>
+  <text x="340" y="428" font-family="'Segoe UI', sans-serif" font-size="16" fill="#4285f4" text-anchor="middle" font-weight="700">Built-in</text>
+  <rect x="450" y="392" width="180" height="40" rx="6" fill="#0a1628"/>
+  <text x="540" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Retry on 429</text>
+  <text x="540" y="428" font-family="'Segoe UI', sans-serif" font-size="16" fill="#4285f4" text-anchor="middle" font-weight="700">Automatic</text>
+  <rect x="650" y="392" width="200" height="40" rx="6" fill="#0a1628"/>
+  <text x="750" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Type: SearchAnalyticsRow[]</text>
+  <text x="750" y="428" font-family="'Segoe UI', sans-serif" font-size="16" fill="#4285f4" text-anchor="middle" font-weight="700">Always typed</text>
+</svg>

@@ -13,7 +13,7 @@ npm install @power-seo/meta @power-seo/core @power-seo/schema
 
 ```typescript
 import { createMetaDescriptors } from '@power-seo/meta';
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/react';
 
 export const meta: MetaFunction = () => createMetaDescriptors({
   title: 'My Site',
@@ -28,7 +28,7 @@ export const meta: MetaFunction = () => createMetaDescriptors({
 ```typescript
 // app/routes/about.tsx
 import { createMetaDescriptors } from '@power-seo/meta';
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/react';
 
 export const meta: MetaFunction = () => createMetaDescriptors({
   title: 'About Us | My Site',
@@ -64,18 +64,20 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 ## JSON-LD Structured Data
 
 ```typescript
-import { article } from '@power-seo/schema';
+import { article, toJsonLdString } from '@power-seo/schema';
 import { useLoaderData } from '@remix-run/react';
 
 export default function BlogPost() {
   const { post } = useLoaderData<typeof loader>();
   const jsonLd = article({
-    headline: post.title, author: { name: post.author },
-    datePublished: post.publishedAt, image: post.ogImage,
+    headline: post.title,
+    author: { name: post.author },
+    datePublished: post.publishedAt,
+    image: { url: post.ogImage },
   });
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toJsonLdString(jsonLd) }} />
       <article>{/* page content */}</article>
     </>
   );
@@ -91,7 +93,10 @@ import type { LoaderFunction } from '@remix-run/node';
 
 export const loader: LoaderFunction = async () => {
   const pages = await getAllPages();
-  const xml = generateSitemap({ urls: pages.map((p) => ({ loc: p.url, lastmod: p.updatedAt })) });
+  const xml = generateSitemap({
+    hostname: 'https://example.com',
+    urls: pages.map((p) => ({ loc: p.url, lastmod: p.updatedAt })),
+  });
   return new Response(xml, { headers: { 'Content-Type': 'application/xml' } });
 };
 ```

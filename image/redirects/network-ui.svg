@@ -1,0 +1,56 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Redirect Chain Visualization — Catch Loops Before They Go Live</text>
+  <!-- Left panel: chain warning -->
+  <rect x="30" y="58" width="390" height="300" rx="8" fill="#161b22"/>
+  <rect x="30" y="58" width="390" height="34" rx="8" fill="#1a0505"/>
+  <text x="225" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">⚠ Redirect chain detected (3 hops)</text>
+  <!-- Chain A→B→C -->
+  <rect x="60" y="116" width="120" height="36" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
+  <text x="120" y="139" font-family="'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle">/page-v1</text>
+  <line x1="180" y1="134" x2="220" y2="134" stroke="#f97316" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="220" y="116" width="120" height="36" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
+  <text x="280" y="139" font-family="'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle">/page-v2</text>
+  <line x1="280" y1="152" x2="280" y2="174" stroke="#f97316" stroke-width="2"/>
+  <rect x="220" y="174" width="120" height="36" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
+  <text x="280" y="197" font-family="'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle">/page-v3</text>
+  <line x1="220" y1="192" x2="180" y2="192" stroke="#f97316" stroke-width="2"/>
+  <rect x="60" y="174" width="120" height="36" rx="6" fill="#0d2444" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="120" y="197" font-family="'Courier New', monospace" font-size="12" fill="#22c55e" text-anchor="middle">/page-final</text>
+  <!-- hop count -->
+  <text x="225" y="240" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">3 hops — Google stops at 5</text>
+  <!-- Engine warning output -->
+  <rect x="48" y="258" width="352" height="72" rx="4" fill="#0d1117"/>
+  <text x="64" y="278" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">engine.validate() →</text>
+  <text x="64" y="298" font-family="'Courier New', monospace" font-size="11" fill="#f97316">  warnings: [</text>
+  <text x="64" y="316" font-family="'Courier New', monospace" font-size="11" fill="#fbbf24">    'Chain: /v1→/v2→/v3→/final (3 hops)'</text>
+  <!-- Right panel: resolved direct -->
+  <rect x="470" y="58" width="400" height="300" rx="8" fill="#161b22"/>
+  <rect x="470" y="58" width="400" height="34" rx="8" fill="#0d1f0d"/>
+  <text x="670" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e" text-anchor="middle">✓ Chain resolved — direct redirect</text>
+  <!-- Direct A→Final -->
+  <rect x="500" y="116" width="130" height="36" rx="6" fill="#0d2444" stroke="#f97316" stroke-width="1.5"/>
+  <text x="565" y="139" font-family="'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle">/page-v1</text>
+  <line x1="630" y1="134" x2="700" y2="134" stroke="#22c55e" stroke-width="3"/>
+  <!-- Arrow head -->
+  <polygon points="700,128 712,134 700,140" fill="#22c55e"/>
+  <rect x="712" y="116" width="130" height="36" rx="6" fill="#0d2444" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="777" y="139" font-family="'Courier New', monospace" font-size="12" fill="#22c55e" text-anchor="middle">/page-final</text>
+  <!-- 1 hop badge -->
+  <rect x="620" y="166" width="100" height="24" rx="12" fill="#14532d"/>
+  <text x="670" y="182" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">1 hop — optimal</text>
+  <!-- Engine resolve output -->
+  <rect x="488" y="220" width="364" height="114" rx="4" fill="#0d1117"/>
+  <text x="504" y="240" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">engine.resolveChain('/page-v1') →</text>
+  <text x="504" y="260" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&#123;</text>
+  <text x="520" y="280" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc">  destination</text>
+  <text x="634" y="280" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">: </text>
+  <text x="646" y="280" font-family="'Courier New', monospace" font-size="11" fill="#7ee787">'/page-final'</text>
+  <text x="520" y="300" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc">  hops</text>
+  <text x="572" y="300" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">: </text>
+  <text x="584" y="300" font-family="'Courier New', monospace" font-size="11" fill="#22c55e">1</text>
+  <text x="504" y="320" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&#125;</text>
+  <!-- Caption -->
+  <text x="450" y="400" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Detect chains, loops, and conflicts before deployment.</text>
+  <text x="450" y="424" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/redirects — validate() · resolveChain() · loop detection · max-hop warnings</text>
+</svg>

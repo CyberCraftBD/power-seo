@@ -1,0 +1,53 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Pixel-accurate canvas font metrics. No guessing.</text>
+  <!-- Left: generated preview -->
+  <rect x="30" y="58" width="380" height="340" rx="8" fill="#161b22"/>
+  <rect x="30" y="58" width="380" height="34" rx="8" fill="#1e2430"/>
+  <rect x="30" y="80" width="380" height="12" fill="#1e2430"/>
+  <text x="220" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ec4899" text-anchor="middle">@power-seo/preview output</text>
+  <rect x="46" y="110" width="348" height="160" rx="4" fill="#ffffff"/>
+  <text x="58" y="132" font-family="'Segoe UI', sans-serif" font-size="11" fill="#3c4043">example.com › blog › my-article</text>
+  <text x="58" y="154" font-family="'Segoe UI', sans-serif" font-size="16" fill="#1a0dab">My Article Title — Example Si...</text>
+  <!-- Truncation arrow/underline -->
+  <line x1="278" y1="156" x2="394" y2="156" stroke="#ec4899" stroke-width="2"/>
+  <text x="58" y="176" font-family="'Segoe UI', sans-serif" font-size="12" fill="#3c4043">Discover the best TypeScript SEO library. Build</text>
+  <text x="58" y="192" font-family="'Segoe UI', sans-serif" font-size="12" fill="#3c4043">SEO-ready apps with zero configuration needed.</text>
+  <text x="58" y="212" font-family="'Segoe UI', sans-serif" font-size="11" fill="#70757a">Jan 15, 2025</text>
+  <!-- Result data -->
+  <text x="46" y="296" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&#123;</text>
+  <text x="60" y="314" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc">  titleTruncated</text>
+  <text x="170" y="314" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">: </text>
+  <text x="180" y="314" font-family="'Courier New', monospace" font-size="11" fill="#ef4444">true</text>
+  <text x="60" y="332" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc">  pixelWidth</text>
+  <text x="148" y="332" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">: </text>
+  <text x="158" y="332" font-family="'Courier New', monospace" font-size="11" fill="#ec4899">631</text>
+  <text x="60" y="350" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc">  truncatedAt</text>
+  <text x="153" y="350" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">: </text>
+  <text x="163" y="350" font-family="'Courier New', monospace" font-size="11" fill="#7ee787">36</text>
+  <text x="46" y="368" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&#125;</text>
+  <!-- Equals sign -->
+  <text x="450" y="228" font-family="'Segoe UI', sans-serif" font-size="42" fill="#ec4899" text-anchor="middle" font-weight="700">=</text>
+  <text x="450" y="260" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">identical</text>
+  <!-- Right: actual Google SERP -->
+  <rect x="490" y="58" width="380" height="340" rx="8" fill="#161b22"/>
+  <rect x="490" y="58" width="380" height="34" rx="8" fill="#1e2430"/>
+  <rect x="490" y="80" width="380" height="12" fill="#1e2430"/>
+  <text x="680" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Actual Google SERP</text>
+  <rect x="506" y="110" width="348" height="160" rx="4" fill="#ffffff"/>
+  <text x="518" y="132" font-family="'Segoe UI', sans-serif" font-size="11" fill="#3c4043">example.com › blog › my-article</text>
+  <text x="518" y="154" font-family="'Segoe UI', sans-serif" font-size="16" fill="#1a0dab">My Article Title — Example Si...</text>
+  <!-- Pink arrow pointing to truncation -->
+  <path d="M630,170 L630,185 L650,185 L650,170" stroke="#ec4899" stroke-width="2" fill="none"/>
+  <text x="660" y="172" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ec4899">same cut!</text>
+  <text x="518" y="176" font-family="'Segoe UI', sans-serif" font-size="12" fill="#3c4043">Discover the best TypeScript SEO library. Build</text>
+  <text x="518" y="192" font-family="'Segoe UI', sans-serif" font-size="12" fill="#3c4043">SEO-ready apps with zero configuration needed.</text>
+  <text x="518" y="212" font-family="'Segoe UI', sans-serif" font-size="11" fill="#70757a">Jan 15, 2025</text>
+  <!-- Camera/screenshot icon label -->
+  <rect x="510" y="296" width="348" height="48" rx="4" fill="#0d1117"/>
+  <text x="684" y="318" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Live Google Search Result</text>
+  <text x="684" y="336" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Truncation at identical character position</text>
+  <!-- Caption -->
+  <text x="450" y="440" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">generateSerpPreview() matches Google's rendering — pixel for pixel</text>
+  <text x="450" y="464" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ec4899" text-anchor="middle">TITLE_MAX_PIXELS = 580 · SerpPreviewData: &#123; titleTruncated, pixelWidth, truncatedAt &#125;</text>
+</svg>

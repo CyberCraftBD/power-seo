@@ -1,0 +1,52 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">One Rule Set. Three Middleware Targets.</text>
+  <!-- Left: scattered approach -->
+  <rect x="30" y="58" width="380" height="300" rx="8" fill="#161b22"/>
+  <rect x="30" y="58" width="380" height="34" rx="8" fill="#1a0505"/>
+  <text x="220" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Before — Scattered configs</text>
+  <!-- Express redirects.js -->
+  <rect x="48" y="110" width="344" height="34" rx="4" fill="#0d1117"/>
+  <text x="64" y="131" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">// express-redirects.js — 47 lines</text>
+  <rect x="48" y="152" width="344" height="34" rx="4" fill="#0d1117"/>
+  <text x="64" y="173" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">// next.config.js redirects — 89 lines</text>
+  <rect x="48" y="194" width="344" height="34" rx="4" fill="#0d1117"/>
+  <text x="64" y="215" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">// nginx.conf location blocks — 120 lines</text>
+  <!-- Pain points -->
+  <text x="48" y="260" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ Same rules in 3 different formats</text>
+  <text x="48" y="280" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ Update one, forget the others</text>
+  <text x="48" y="300" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ No loop detection across configs</text>
+  <text x="48" y="320" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ Conflicts cause 500 errors</text>
+  <!-- Arrow -->
+  <text x="450" y="218" font-family="'Segoe UI', sans-serif" font-size="36" fill="#f97316" text-anchor="middle" font-weight="700">→</text>
+  <!-- Right: unified approach -->
+  <rect x="490" y="58" width="380" height="300" rx="8" fill="#161b22"/>
+  <rect x="490" y="58" width="380" height="34" rx="8" fill="#1f1005"/>
+  <text x="680" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#f97316" text-anchor="middle">After — @power-seo/redirects</text>
+  <!-- Single rule file -->
+  <rect x="508" y="100" width="344" height="110" rx="4" fill="#0d1117"/>
+  <text x="524" y="122" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// rules.ts — defined once</text>
+  <text x="524" y="144" font-family="'Courier New', monospace" font-size="12" fill="#f97316">engine</text>
+  <text x="580" y="144" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">.</text>
+  <text x="586" y="144" font-family="'Courier New', monospace" font-size="12" fill="#8b5cf6">addRule</text>
+  <text x="640" y="144" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">(&#123; from, to, status &#125;)</text>
+  <!-- Arrow lines from single source to 3 targets -->
+  <line x1="680" y1="220" x2="540" y2="260" stroke="#f97316" stroke-width="2" opacity="0.7"/>
+  <line x1="680" y1="220" x2="680" y2="260" stroke="#f97316" stroke-width="2" opacity="0.7"/>
+  <line x1="680" y1="220" x2="820" y2="260" stroke="#f97316" stroke-width="2" opacity="0.7"/>
+  <circle cx="680" cy="220" r="8" fill="#f97316"/>
+  <!-- Target badges -->
+  <rect x="508" y="262" width="80" height="28" rx="6" fill="#f97316" opacity="0.2"/>
+  <text x="548" y="280" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Express</text>
+  <rect x="640" y="262" width="80" height="28" rx="6" fill="#f97316" opacity="0.2"/>
+  <text x="680" y="280" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Next.js</text>
+  <rect x="772" y="262" width="80" height="28" rx="6" fill="#f97316" opacity="0.2"/>
+  <text x="812" y="280" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Fastify</text>
+  <!-- Benefits -->
+  <text x="508" y="320" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Define once, deploy everywhere</text>
+  <text x="508" y="340" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Automatic loop detection</text>
+  <text x="508" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ TypeScript typed rules</text>
+  <!-- Caption -->
+  <text x="450" y="410" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Write redirect rules once. Run them anywhere.</text>
+  <text x="450" y="434" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/redirects — Express · Next.js · Fastify · pattern matching · loop detection</text>
+</svg>

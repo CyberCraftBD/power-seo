@@ -1,0 +1,47 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="38" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Average CTR — Titles Optimized With Preview vs Unoptimized</text>
+  <!-- Grid -->
+  <line x1="80" y1="60" x2="80" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="80" y1="360" x2="820" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="80" y1="280" x2="820" y2="280" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="80" y1="200" x2="820" y2="200" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="80" y1="120" x2="820" y2="120" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <!-- Y labels -->
+  <text x="70" y="364" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0%</text>
+  <text x="70" y="284" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">2%</text>
+  <text x="70" y="204" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">4%</text>
+  <text x="70" y="124" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">6%</text>
+  <!-- X labels -->
+  <text x="200" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 1</text>
+  <text x="370" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 2</text>
+  <text x="540" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 3</text>
+  <text x="710" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 4</text>
+  <!-- Unoptimized line (flat red dashed) -->
+  <polyline points="200,310 370,311 540,309 710,310" stroke="#ef4444" stroke-width="2" fill="none" stroke-dasharray="8,5"/>
+  <!-- Optimized line (rising pink solid) -->
+  <polyline points="200,310 370,287 540,264 710,239" stroke="#ec4899" stroke-width="3" fill="none"/>
+  <!-- Shaded area -->
+  <polygon points="200,310 370,287 540,264 710,239 710,310 540,310 370,311" fill="#ec4899" opacity="0.1"/>
+  <!-- Data points -->
+  <circle cx="200" cy="310" r="5" fill="#ec4899"/>
+  <circle cx="370" cy="287" r="5" fill="#ec4899"/>
+  <circle cx="540" cy="264" r="5" fill="#ec4899"/>
+  <circle cx="710" cy="239" r="5" fill="#ec4899"/>
+  <!-- CTR values on points -->
+  <text x="205" y="304" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ec4899">3.1%</text>
+  <text x="375" y="281" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ec4899">3.4%</text>
+  <text x="545" y="258" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ec4899">3.6%</text>
+  <text x="715" y="233" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ec4899">3.8%</text>
+  <!-- Legend -->
+  <line x1="100" y1="428" x2="140" y2="428" stroke="#ef4444" stroke-width="2" stroke-dasharray="8,5"/>
+  <text x="148" y="432" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Unoptimized titles (truncation present)</text>
+  <line x1="400" y1="428" x2="440" y2="428" stroke="#ec4899" stroke-width="3"/>
+  <circle cx="420" cy="428" r="4" fill="#ec4899"/>
+  <text x="448" y="432" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Optimized — no truncation</text>
+  <!-- Badge -->
+  <rect x="570" y="155" width="240" height="56" rx="8" fill="#500724"/>
+  <text x="690" y="178" font-family="'Segoe UI', sans-serif" font-size="14" fill="#f9a8d4" text-anchor="middle" font-weight="700">+22% avg CTR when</text>
+  <text x="690" y="198" font-family="'Segoe UI', sans-serif" font-size="14" fill="#f9a8d4" text-anchor="middle" font-weight="700">truncation is eliminated</text>
+  <text x="450" y="478" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Pixel-accurate SERP preview catches truncation before it costs you clicks — @power-seo/preview</text>
+</svg>

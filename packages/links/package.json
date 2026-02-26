@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/links",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Internal link graph analysis, orphan detection, link suggestions, and link equity scoring",
   "license": "MIT",
   "type": "module",

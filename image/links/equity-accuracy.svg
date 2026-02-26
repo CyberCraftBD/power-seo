@@ -1,0 +1,66 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="38" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">PageRank Convergence — Equity Stabilizes Over Iterations</text>
+  <!-- Grid -->
+  <line x1="80" y1="60" x2="80" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="80" y1="360" x2="820" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="80" y1="280" x2="820" y2="280" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="80" y1="200" x2="820" y2="200" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="80" y1="120" x2="820" y2="120" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <!-- Y labels -->
+  <text x="70" y="364" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0.0</text>
+  <text x="70" y="284" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0.25</text>
+  <text x="70" y="204" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0.50</text>
+  <text x="70" y="124" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0.75</text>
+  <text x="70" y="75" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">1.0</text>
+  <!-- X labels (iterations) -->
+  <text x="155" y="380" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Iter 1</text>
+  <text x="245" y="380" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Iter 2</text>
+  <text x="335" y="380" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Iter 3</text>
+  <text x="425" y="380" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Iter 4</text>
+  <text x="515" y="380" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Iter 5</text>
+  <text x="605" y="380" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Iter 6</text>
+  <text x="695" y="380" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Iter 7</text>
+  <text x="785" y="380" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Iter 8</text>
+  <!-- Lines for 5 page nodes (converging) -->
+  <!-- Page 1: starts high ~0.8, converges to ~0.65 -->
+  <polyline points="155,104 245,140 335,162 425,172 515,176 605,178 695,178 785,178" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+  <!-- Page 2: starts at ~0.3, converges to ~0.55 -->
+  <polyline points="155,280 245,246 335,228 425,220 515,216 605,214 695,213 785,213" stroke="#22c55e" stroke-width="2.5" fill="none"/>
+  <!-- Page 3: starts at ~0.5, converges to ~0.42 -->
+  <polyline points="155,200 245,215 335,224 425,228 515,230 605,230 695,231 785,231" stroke="#0ea5e9" stroke-width="2.5" fill="none"/>
+  <!-- Page 4: starts at ~0.1, converges to ~0.32 -->
+  <polyline points="155,328 245,305 335,292 425,287 515,284 605,283 695,283 785,283" stroke="#ec4899" stroke-width="2.5" fill="none"/>
+  <!-- Page 5: starts at ~0.7, converges to ~0.52 -->
+  <polyline points="155,136 245,166 335,183 425,192 515,195 605,197 695,197 785,197" stroke="#a855f7" stroke-width="2.5" fill="none"/>
+  <!-- Convergence line -->
+  <line x1="695" y1="60" x2="695" y2="360" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="700" y="80" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Converged</text>
+  <text x="700" y="96" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Δ &lt; 0.0001</text>
+  <!-- Data points at convergence -->
+  <circle cx="695" cy="178" r="4" fill="#f59e0b"/>
+  <circle cx="695" cy="213" r="4" fill="#22c55e"/>
+  <circle cx="695" cy="231" r="4" fill="#0ea5e9"/>
+  <circle cx="695" cy="283" r="4" fill="#ec4899"/>
+  <circle cx="695" cy="197" r="4" fill="#a855f7"/>
+  <!-- Legend -->
+  <line x1="100" y1="418" x2="130" y2="418" stroke="#f59e0b" stroke-width="2"/>
+  <text x="138" y="422" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">/home</text>
+  <line x1="190" y1="418" x2="220" y2="418" stroke="#22c55e" stroke-width="2"/>
+  <text x="228" y="422" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">/blog</text>
+  <line x1="280" y1="418" x2="310" y2="418" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="318" y="422" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">/about</text>
+  <line x1="378" y1="418" x2="408" y2="418" stroke="#ec4899" stroke-width="2"/>
+  <text x="416" y="422" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">/guide</text>
+  <line x1="476" y1="418" x2="506" y2="418" stroke="#a855f7" stroke-width="2"/>
+  <text x="514" y="422" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">/docs</text>
+  <!-- Code snippet -->
+  <rect x="540" y="406" width="330" height="38" rx="6" fill="#0d1117" stroke="#f59e0b" stroke-width="1"/>
+  <text x="556" y="422" font-family="'Courier New', monospace" font-size="11" fill="#f59e0b">calculatePageRank</text>
+  <text x="690" y="422" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">(graph, &#123;</text>
+  <text x="556" y="438" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc">  dampingFactor</text>
+  <text x="670" y="438" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">: </text>
+  <text x="680" y="438" font-family="'Courier New', monospace" font-size="11" fill="#79c0ff">0.85</text>
+  <text x="706" y="438" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">, ...</text>
+  <text x="450" y="480" font-family="'Segoe UI', sans-serif" font-size="13" fill="#f59e0b" text-anchor="middle">@power-seo/links — PageRank with damping factor 0.85, convergence threshold 0.0001</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Improve Readability — Watch the Score Rise</text>
+  <!-- Before paragraph -->
+  <rect x="30" y="56" width="390" height="280" rx="8" fill="#161b22"/>
+  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1a0505"/>
+  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Before — Score: 34 (Very Difficult)</text>
+  <text x="48" y="120" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">The implementation of comprehensive algorithmic</text>
+  <text x="48" y="140" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">methodologies for the facilitation of enhanced</text>
+  <text x="48" y="160" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">user comprehension necessitates a multifaceted</text>
+  <text x="48" y="180" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">perspectival examination of the subject matter.</text>
+  <!-- Metrics before -->
+  <rect x="48" y="202" width="354" height="80" rx="4" fill="#0d1117"/>
+  <text x="64" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">Flesch-Kincaid:</text>
+  <text x="200" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">34 (College grad)</text>
+  <text x="64" y="242" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">Avg sentence:</text>
+  <text x="200" y="242" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">38 words</text>
+  <text x="64" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">Complex words:</text>
+  <text x="200" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">62% of total</text>
+  <!-- Score bar -->
+  <rect x="48" y="300" width="354" height="18" rx="9" fill="#1e2430"/>
+  <rect x="48" y="300" width="120" height="18" rx="9" fill="#ef4444"/>
+  <text x="225" y="313" font-family="'Segoe UI', sans-serif" font-size="10" fill="white" text-anchor="middle">34 / 100</text>
+  <!-- Arrow -->
+  <text x="450" y="210" font-family="'Segoe UI', sans-serif" font-size="36" fill="#8b5cf6" text-anchor="middle" font-weight="700">→</text>
+  <!-- After paragraph -->
+  <rect x="490" y="56" width="390" height="280" rx="8" fill="#161b22"/>
+  <rect x="490" y="56" width="390" height="34" rx="8" fill="#0d1f0d"/>
+  <text x="685" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e" text-anchor="middle">After — Score: 74 (Easy)</text>
+  <text x="508" y="120" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">Using a clear approach helps readers understand</text>
+  <text x="508" y="140" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">complex topics. Break long sentences into short</text>
+  <text x="508" y="160" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">ones. Use simple words. Your readers will thank</text>
+  <text x="508" y="180" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">you — and so will Google.</text>
+  <!-- Metrics after -->
+  <rect x="508" y="202" width="354" height="80" rx="4" fill="#0d1117"/>
+  <text x="524" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Flesch-Kincaid:</text>
+  <text x="660" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">74 (7th grade)</text>
+  <text x="524" y="242" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Avg sentence:</text>
+  <text x="660" y="242" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">14 words</text>
+  <text x="524" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Complex words:</text>
+  <text x="660" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">8% of total</text>
+  <!-- Score bar after -->
+  <rect x="508" y="300" width="354" height="18" rx="9" fill="#1e2430"/>
+  <rect x="508" y="300" width="262" height="18" rx="9" fill="#22c55e"/>
+  <text x="685" y="313" font-family="'Segoe UI', sans-serif" font-size="10" fill="white" text-anchor="middle">74 / 100</text>
+  <!-- Bottom delta badge -->
+  <rect x="330" y="370" width="240" height="60" rx="8" fill="#1a0d2e"/>
+  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="14" fill="#8b5cf6" text-anchor="middle" font-weight="700">Score improved +40 points</text>
+  <text x="450" y="416" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a78bfa" text-anchor="middle">34 → 74 with 3 simple changes</text>
+  <!-- Caption -->
+  <text x="450" y="462" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Shorter sentences. Simpler words. Higher rankings.</text>
+  <text x="450" y="484" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">@power-seo/readability — actionable suggestions · before/after comparison · target grade level</text>
+</svg>

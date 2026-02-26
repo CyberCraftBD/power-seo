@@ -1,9 +1,9 @@
 ---
 title: "Migration Guide"
-description: "Migrate from next-seo or react-helmet to the @power-seo modular SEO toolkit."
+description: "Migrate from next-seo, react-helmet, or Yoast to the @power-seo modular SEO toolkit."
 ---
 
-The `@power-seo` monorepo offers modular, tree-shakeable packages you can adopt incrementally.
+The `@power-seo` monorepo offers modular, tree-shakeable packages you can adopt incrementally — replace only what you need, one piece at a time.
 
 ## From next-seo
 
@@ -12,6 +12,8 @@ The `@power-seo` monorepo offers modular, tree-shakeable packages you can adopt 
 | `<NextSeo>` | `<SEO>` from `@power-seo/react` | Same prop shape |
 | `<DefaultSeo>` | `<DefaultSEO>` from `@power-seo/react` | Context-based defaults |
 | `<ArticleJsonLd>` | From `@power-seo/schema/react` | Separate package |
+| `useNextSeoConfig()` | `<DefaultSEO>` | Provider pattern |
+| Next.js App Router metadata | `createMetadata()` from `@power-seo/meta` | Returns native `Metadata` object |
 
 ### Before
 
@@ -22,7 +24,7 @@ function Page() {
   return (
     <>
       <NextSeo title="My Page" description="Description" canonical="https://example.com" />
-      <ArticleJsonLd headline="My Article" datePublished="2025-01-01" />
+      <ArticleJsonLd headline="My Article" datePublished="2026-01-01" />
     </>
   );
 }
@@ -38,7 +40,7 @@ function Page() {
   return (
     <>
       <SEO title="My Page" description="Description" canonical="https://example.com" />
-      <ArticleJsonLd headline="My Article" datePublished="2025-01-01" />
+      <ArticleJsonLd headline="My Article" datePublished="2026-01-01" />
     </>
   );
 }
@@ -58,6 +60,7 @@ export const metadata = createMetadata({ title: 'My Page', description: 'Descrip
 | `<Helmet><title>` | `<SEO title="...">` | Prop-based API |
 | `<Helmet><meta>` | `<SEO description="...">` | Structured props |
 | `<Helmet><link rel="canonical">` | `<SEO canonical="...">` | Dedicated prop |
+| `<Helmet><link rel="alternate">` | `<Hreflang alternates={[...]}>` | Typed hreflang component |
 
 ### Before
 
@@ -86,15 +89,76 @@ function Page() {
 }
 ```
 
-## Modular Packages
+## From Yoast (WordPress)
+
+Moving from a WordPress + Yoast setup to a headless TypeScript stack? `@power-seo/content-analysis` is a direct Yoast-style replacement — same scoring checks, same green/orange/red feedback, framework-independent.
+
+| Yoast Feature | @power-seo | Notes |
+|---|---|---|
+| SEO analysis panel | `analyzeContent()` from `@power-seo/content-analysis` | Returns score + per-check results |
+| Readability analysis | `analyzeReadability()` from `@power-seo/readability` | Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
+| SERP snippet preview | `generateSerpPreview()` from `@power-seo/preview` | Pixel-accurate at 580px |
+| Focus keyphrase | `focusKeyphrase` field in `analyzeContent()` | Same concept, typed |
+| Meta description editor | `validateMetaDescription()` from `@power-seo/core` | Char count + pixel-width validation |
+| XML sitemaps | `generateSitemap()` from `@power-seo/sitemap` | Streaming, splitting, image sitemaps |
+| Schema.org markup | `@power-seo/schema` | 23 builders + `validateSchema()` |
+| Redirect manager | `@power-seo/redirects` | Next.js, Remix, Express adapters |
+
+### Before (Yoast PHP)
+
+```php
+// Yoast handled automatically via WordPress hooks
+add_filter('wpseo_metadesc', fn() => 'My meta description');
+```
+
+### After (TypeScript)
+
+```typescript
+import { analyzeContent } from '@power-seo/content-analysis';
+import { analyzeReadability } from '@power-seo/readability';
+import { generateSerpPreview } from '@power-seo/preview';
+
+const content = analyzeContent({
+  title: 'Best Coffee Shops in NYC',
+  metaDescription: 'Discover the top coffee shops in New York City.',
+  content: articleHtml,
+  focusKeyphrase: 'coffee shops nyc',
+  internalLinks: ['/blog', '/about'],
+  externalLinks: ['https://maps.google.com'],
+});
+
+const readability = analyzeReadability({ content: articleHtml });
+const serp = generateSerpPreview({ title, description: metaDescription, url, siteTitle });
+
+console.log(content.score, '/', content.maxScore);  // e.g. 42 / 55
+console.log(readability.status);                    // 'good' | 'ok' | 'poor'
+console.log(serp.titleTruncated);                   // false
+```
+
+```tsx
+// Real-time CMS editor feedback (React)
+import { ContentAnalyzer } from '@power-seo/content-analysis/react';
+<ContentAnalyzer input={editorInput} />
+```
+
+## Modular Packages Reference
 
 | Need | Package |
 |---|---|
-| Meta tags (React) | `@power-seo/react` |
-| Meta tags (SSR) | `@power-seo/meta` |
-| JSON-LD | `@power-seo/schema` |
-| Content scoring | `@power-seo/content-analysis` |
-| SERP previews | `@power-seo/preview` |
-| Readability | `@power-seo/readability` |
-| Sitemaps | `@power-seo/sitemap` |
-| Auditing | `@power-seo/audit` |
+| Meta tags (React SPA) | `@power-seo/react` |
+| Meta tags (SSR / Next.js / Remix) | `@power-seo/meta` |
+| JSON-LD structured data | `@power-seo/schema` |
+| SEO content scoring | `@power-seo/content-analysis` |
+| Readability scoring | `@power-seo/readability` |
+| SERP + social previews | `@power-seo/preview` |
+| XML sitemaps | `@power-seo/sitemap` |
+| Redirect engine | `@power-seo/redirects` |
+| Link graph analysis | `@power-seo/links` |
+| Full SEO audit | `@power-seo/audit` |
+| Image SEO | `@power-seo/images` |
+| AI prompt builders | `@power-seo/ai` |
+| Google Search Console API | `@power-seo/search-console` |
+| Analytics + GSC data merging | `@power-seo/analytics` |
+| Semrush + Ahrefs API clients | `@power-seo/integrations` |
+| Analytics tracking + GDPR consent | `@power-seo/tracking` |
+| Shared utilities + types | `@power-seo/core` |

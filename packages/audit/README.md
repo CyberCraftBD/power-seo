@@ -1,12 +1,16 @@
-# @power-seo/audit — Full SEO Audit Engine for Pages and Sites
+# @power-seo/audit
+
+![audit banner](../../image/audit/banner.svg)
 
 Comprehensive SEO auditing with 0–100 scoring across four rule categories: meta tags, content quality, structural correctness, and performance optimization.
 
-[![npm version](https://img.shields.io/npm/v/@power-seo/audit?style=flat-square)](https://www.npmjs.com/package/@power-seo/audit)
-[![npm downloads](https://img.shields.io/npm/dm/@power-seo/audit?style=flat-square)](https://www.npmjs.com/package/@power-seo/audit)
-[![MIT License](https://img.shields.io/npm/l/@power-seo/audit?style=flat-square)](../../LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square)](https://www.typescriptlang.org/)
-[![Tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen?style=flat-square)](#)
+[![npm version](https://img.shields.io/npm/v/@power-seo/audit)](https://www.npmjs.com/package/@power-seo/audit)
+[![npm downloads](https://img.shields.io/npm/dm/@power-seo/audit)](https://www.npmjs.com/package/@power-seo/audit)
+[![Socket](https://socket.dev/api/badge/npm/package/@power-seo/audit)](https://socket.dev/npm/package/@power-seo/audit)
+[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/audit)
 
 `@power-seo/audit` is a production-grade SEO audit engine that evaluates pages against a structured rule set and returns scored, actionable reports. A single call to `auditPage` produces a 0–100 overall score plus per-category breakdowns across meta tags, content quality, document structure, and performance — along with an issue list where every item carries a severity level (`error`, `warning`, `info`) and a human-readable message.
 
@@ -14,11 +18,25 @@ For site-wide audits, `auditSite` accepts an array of page inputs and returns an
 
 The four rule sets can also be called independently — `runMetaRules`, `runContentRules`, `runStructureRules`, and `runPerformanceRules` — so you can selectively run only the rules relevant to your use case without paying for the full audit overhead.
 
-## Documentation
+> **Zero runtime dependencies** — entirely local, synchronous computation; no external API required.
 
-- **Package docs:** [`apps/docs/src/content/docs/packages/audit.mdx`](../../apps/docs/src/content/docs/packages/audit.mdx)
-- **Ecosystem overview:** [`README.md`](../../README.md)
-- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+---
+
+## Why @power-seo/audit?
+
+| | Without | With |
+|---|---|---|
+| Meta tag audit | ❌ Manual checking | ✅ 0–100 scored across 4 rule categories |
+| Site-wide audit | ❌ Page-by-page | ✅ `auditSite()` — aggregate + per-page results |
+| Rule granularity | ❌ Pass/fail only | ✅ `error` / `warning` / `info` / `pass` severity |
+| Content analysis | ❌ Eye-check | ✅ Word count, keyphrase density, readability |
+| CI integration | ❌ Manual review | ✅ Node.js script with configurable score threshold |
+| Framework support | ❌ WordPress-only | ✅ Framework-agnostic, runs anywhere |
+| TypeScript support | ❌ Untyped | ✅ Full type coverage for all inputs and results |
+
+![Audit Comparison](../../image/audit/comparison.svg)
+
+---
 
 ## Features
 
@@ -34,32 +52,42 @@ The four rule sets can also be called independently — `runMetaRules`, `runCont
 - **Type-safe throughout** — complete TypeScript types for inputs, results, issues, categories, and severities
 - **Zero network calls** — entirely local, synchronous computation; no external API required
 
-## Table of Contents
+![Audit Report UI](../../image/audit/report-ui.svg)
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Page Audit](#page-audit)
-  - [Site Audit](#site-audit)
-  - [Individual Rule Sets](#individual-rule-sets)
-  - [Processing Audit Issues](#processing-audit-issues)
-  - [Using with CI/CD](#using-with-cicd)
-- [API Reference](#api-reference)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
+---
+
+## Comparison
+
+| Feature | @power-seo/audit | Screaming Frog | Lighthouse | next-seo | ahrefs site audit |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Programmatic API | ✅ | ❌ | Partial | ❌ | ❌ |
+| 4 rule categories | ✅ | Partial | Partial | ❌ | Partial |
+| 0–100 scored output | ✅ | ❌ | ✅ | ❌ | ✅ |
+| Site-wide aggregation | ✅ | ✅ | ❌ | ❌ | ✅ |
+| CI/CD integration | ✅ | ❌ | Partial | ❌ | ❌ |
+| Zero network calls | ✅ | ❌ | Partial | ✅ | ❌ |
+| TypeScript-first | ✅ | ❌ | ❌ | Partial | ❌ |
+| Tree-shakeable | ✅ | ❌ | ❌ | ❌ | ❌ |
+
+![Audit Rules Accuracy](../../image/audit/rules-accuracy.svg)
+
+---
 
 ## Installation
 
 ```bash
-# npm
 npm install @power-seo/audit
+```
 
-# yarn
+```bash
 yarn add @power-seo/audit
+```
 
-# pnpm
+```bash
 pnpm add @power-seo/audit
 ```
+
+---
 
 ## Quick Start
 
@@ -91,6 +119,10 @@ console.log(result.rules);
 //   { id: 'content-word-count', category: 'content', severity: 'pass', ... },
 // ]
 ```
+
+![Site Audit Benefit](../../image/audit/site-audit-benefit.svg)
+
+---
 
 ## Usage
 
@@ -259,6 +291,8 @@ if (report.score < SCORE_THRESHOLD || totalErrors > ALLOWED_ERRORS) {
 console.log(`SEO audit PASSED — average score: ${report.score}/100`);
 ```
 
+---
+
 ## API Reference
 
 ### `auditPage(input)`
@@ -272,8 +306,8 @@ console.log(`SEO audit PASSED — average score: ${report.score}/100`);
 | `input.robots`           | `string`                                        | —        | Content of `meta[name="robots"]` tag (e.g. `'index, follow'`)  |
 | `input.openGraph`        | `{ title?, description?, image? }`              | —        | Open Graph tag values                                           |
 | `input.content`          | `string`                                        | —        | Full HTML/text content of the page body                         |
-| `input.headings`         | `string[]`                                      | —        | Headings as `'h1:text'` / `'h2:text'` strings (e.g. `['h1:My Title', 'h2:Section']`) |
-| `input.images`           | `Array<{ src: string; alt?: string; size?: number }>` | — | Images extracted from the page                            |
+| `input.headings`         | `string[]`                                      | —        | Headings as `'h1:text'` / `'h2:text'` strings                  |
+| `input.images`           | `Array<{ src: string; alt?: string; size?: number }>` | —   | Images extracted from the page                                  |
 | `input.internalLinks`    | `string[]`                                      | —        | Internal link href values found on the page                     |
 | `input.externalLinks`    | `string[]`                                      | —        | External link href values found on the page                     |
 | `input.schema`           | `SchemaBase[]`                                  | —        | JSON-LD schema objects present on the page                      |
@@ -318,13 +352,13 @@ Returns `SiteAuditResult`:
 
 Each rule runner accepts a `PageAuditInput` and returns `AuditRule[]`:
 
-| Property      | Type           | Description                                                   |
-| ------------- | -------------- | ------------------------------------------------------------- |
-| `id`          | `string`       | Unique rule identifier (e.g. `'meta-title-length'`)           |
-| `category`    | `AuditCategory`| `'meta'` \| `'content'` \| `'structure'` \| `'performance'`  |
-| `title`       | `string`       | Short human-readable rule name                                |
-| `description` | `string`       | Detailed description of the finding                           |
-| `severity`    | `AuditSeverity`| `'error'` \| `'warning'` \| `'info'` \| `'pass'`             |
+| Property      | Type            | Description                                                   |
+| ------------- | --------------- | ------------------------------------------------------------- |
+| `id`          | `string`        | Unique rule identifier (e.g. `'meta-title-length'`)           |
+| `category`    | `AuditCategory` | `'meta'` \| `'content'` \| `'structure'` \| `'performance'`  |
+| `title`       | `string`        | Short human-readable rule name                                |
+| `description` | `string`        | Detailed description of the finding                           |
+| `severity`    | `AuditSeverity` | `'error'` \| `'warning'` \| `'info'` \| `'pass'`             |
 
 ---
 
@@ -343,16 +377,51 @@ import type {
 } from '@power-seo/audit';
 ```
 
+---
+
+## Use Cases
+
+- **Headless CMS** — score pages before publish; block publication if score drops below threshold
+- **Next.js / Remix apps** — run server-side audit per route and expose scores in admin dashboards
+- **CI/CD quality gates** — block deploys when audit scores fall below a configurable threshold
+- **SaaS platforms** — provide per-client SEO health scores across all managed pages
+- **Reporting tools** — generate structured audit reports for agencies delivering SEO as a service
+
+---
+
+## Architecture Overview
+
+- **Pure TypeScript** — no compiled binary, no native modules
+- **Zero external runtime dependencies** — entirely local, synchronous computation
+- **Framework-agnostic** — works in Next.js, Remix, Vite, Express, Edge runtimes, or CI scripts
+- **SSR compatible** — no browser-specific APIs; safe for server-side use
+- **Edge runtime safe** — no Node.js-specific APIs; runs in Cloudflare Workers, Vercel Edge, Deno
+- **Tree-shakeable** — `"sideEffects": false` with named exports per rule runner
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+
+---
+
+## Supply Chain Security
+
+- No install scripts (`postinstall`, `preinstall`)
+- No runtime network access
+- No `eval` or dynamic code execution
+- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
+- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
+- Safe for SSR, Edge, and server environments
+
+---
+
 ## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
 
-`@power-seo/audit` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
+All 17 packages are independently installable — use only what you need.
 
 | Package                                                                                    | Install                             | Description                                                             |
 | ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
@@ -369,15 +438,19 @@ import type {
 
 ---
 
+## Keywords
+
+seo audit · page audit · site audit · seo score · meta tag audit · content audit · heading audit · image alt audit · structured data audit · performance audit · typescript seo audit · nextjs seo audit · ci seo audit · seo quality gate · headless cms audit · seo rules engine · seo report generator · programmatic seo · seo scoring library · seo npm package
+
+---
+
 ## About [CyberCraft Bangladesh](https://ccbd.dev)
 
-**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software development and Full Stack SEO service provider company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-|                      |                                                                |
-| -------------------- | -------------------------------------------------------------- |
-| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
-| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
-| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
+[![Website](https://img.shields.io/badge/Website-ccbd.dev-blue?style=for-the-badge)](https://ccbd.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-cybercraftbd-black?style=for-the-badge&logo=github)](https://github.com/cybercraftbd)
+[![npm](https://img.shields.io/badge/npm-power--seo-red?style=for-the-badge&logo=npm)](https://www.npmjs.com/org/power-seo)
+[![Email](https://img.shields.io/badge/Email-info@ccbd.dev-green?style=for-the-badge&logo=gmail)](mailto:info@ccbd.dev)
 
 © 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)

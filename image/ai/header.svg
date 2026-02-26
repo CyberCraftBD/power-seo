@@ -1,92 +1,117 @@
-<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
-      <stop offset="0%" stop-color="#070d1f"/><stop offset="100%" stop-color="#0d1a2e"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
-      <stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#6366f1"/>
-    </linearGradient>
-    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
-      <circle cx="1.5" cy="1.5" r="1.5" fill="#1e293b" opacity="0.45"/>
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+      .font-ui { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d1117"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#161b22" stroke-width="1"/>
     </pattern>
   </defs>
-  <rect width="1200" height="400" fill="url(#bg)"/>
-  <rect width="1200" height="400" fill="url(#dots)"/>
-  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
 
-  <!-- Right side: mini AI title generator UI mockup -->
-  <rect x="630" y="44" width="530" height="316" rx="10" fill="#0d1525" stroke="#1e293b" stroke-width="1"/>
-  <!-- window chrome -->
-  <rect x="630" y="44" width="530" height="30" rx="10" fill="#111827"/>
-  <rect x="630" y="64" width="530" height="10" fill="#111827"/>
-  <circle cx="650" cy="59" r="5" fill="#ef4444" opacity="0.6"/>
-  <circle cx="666" cy="59" r="5" fill="#f59e0b" opacity="0.6"/>
-  <circle cx="682" cy="59" r="5" fill="#10b981" opacity="0.6"/>
-  <text x="895" y="63" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#334155" text-anchor="middle">AI SEO Assistant</text>
+  <!-- Left two-thirds content area -->
+  <!-- Main heading -->
+  <text x="80" y="200" class="font-mono" font-size="52" font-weight="700" fill="#a855f7" letter-spacing="-1">@power-seo/ai</text>
 
-  <!-- Input area -->
-  <text x="650" y="92" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">Focus keyphrase</text>
-  <rect x="650" y="98" width="230" height="22" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="660" y="113" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#94a3b8">nextjs seo optimization</text>
-  <rect x="890" y="98" width="60" height="22" rx="4" fill="#06b6d4" fill-opacity="0.2" stroke="#06b6d4" stroke-opacity="0.5" stroke-width="1"/>
-  <text x="920" y="113" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#67e8f9" text-anchor="middle">Generate</text>
+  <!-- Subtitle -->
+  <text x="80" y="260" class="font-ui" font-size="28" font-weight="400" fill="#ffffff">LLM-agnostic. Any provider.</text>
 
-  <!-- Divider -->
-  <line x1="650" y1="130" x2="1140" y2="130" stroke="#1e293b" stroke-width="1"/>
-  <text x="650" y="146" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#475569">5 AI-Generated Titles  •  sorted by quality</text>
+  <!-- Decorative fuchsia underline under subtitle -->
+  <line x1="80" y1="273" x2="460" y2="273" stroke="#a855f7" stroke-width="2" opacity="0.5"/>
 
-  <!-- Title result 1 — best -->
-  <rect x="650" y="152" width="460" height="32" rx="5" fill="#0f2d1e" stroke="#10b981" stroke-opacity="0.5" stroke-width="1"/>
-  <text x="660" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">Next.js SEO Optimization: The Complete 2024 Guide</text>
-  <rect x="1050" y="157" width="52" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
-  <text x="1076" y="169" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">49 ch ✓</text>
-  <text x="660" y="177" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">How-to · 49 chars · 481px</text>
+  <!-- Provider badges row -->
+  <!-- OpenAI badge (green) -->
+  <rect x="80" y="300" width="100" height="32" rx="16" fill="#166534"/>
+  <text x="130" y="321" class="font-ui" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">OpenAI</text>
 
-  <!-- Title result 2 -->
-  <rect x="650" y="190" width="460" height="32" rx="5" fill="#111827" stroke="#1e293b" stroke-width="1"/>
-  <text x="660" y="202" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">How to Optimize Your Next.js App for Search Engines</text>
-  <rect x="1050" y="195" width="52" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
-  <text x="1076" y="207" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">51 ch ✓</text>
-  <text x="660" y="215" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">Action · 51 chars · 498px</text>
+  <!-- Claude badge (orange) -->
+  <rect x="192" y="300" width="100" height="32" rx="16" fill="#7c2d12"/>
+  <text x="242" y="321" class="font-ui" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Claude</text>
 
-  <!-- Title result 3 -->
-  <rect x="650" y="228" width="460" height="32" rx="5" fill="#111827" stroke="#1e293b" stroke-width="1"/>
-  <text x="660" y="240" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">10 Next.js SEO Tips That Actually Improve Rankings</text>
-  <rect x="1050" y="233" width="52" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
-  <text x="1076" y="245" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">50 ch ✓</text>
-  <text x="660" y="253" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">List · 50 chars · 490px</text>
+  <!-- Gemini badge (blue) -->
+  <rect x="304" y="300" width="100" height="32" rx="16" fill="#1e3a5f"/>
+  <text x="354" y="321" class="font-ui" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Gemini</text>
 
-  <!-- Title result 4 -->
-  <rect x="650" y="266" width="460" height="32" rx="5" fill="#111827" stroke="#1e293b" stroke-width="1"/>
-  <text x="660" y="278" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">Is Your Next.js App Missing These SEO Essentials?</text>
-  <rect x="1050" y="271" width="52" height="18" rx="3" fill="#10b981" fill-opacity="0.2"/>
-  <text x="1076" y="283" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#6ee7b7" text-anchor="middle">50 ch ✓</text>
-  <text x="660" y="291" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#475569">Question · 50 chars · 489px</text>
+  <!-- Ollama badge (gray) -->
+  <rect x="416" y="300" width="100" height="32" rx="16" fill="#374151"/>
+  <text x="466" y="321" class="font-ui" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Ollama</text>
 
-  <!-- Title result 5 — warning -->
-  <rect x="650" y="304" width="460" height="32" rx="5" fill="#111827" stroke="#f59e0b" stroke-opacity="0.3" stroke-width="1"/>
-  <text x="660" y="316" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#f8fafc">Boost Rankings: Next.js SEO Optimization Strategies</text>
-  <rect x="1050" y="309" width="52" height="18" rx="3" fill="#f59e0b" fill-opacity="0.15"/>
-  <text x="1076" y="321" font-family="system-ui,-apple-system,sans-serif" font-size="9" fill="#fcd34d" text-anchor="middle">52 ch</text>
-  <text x="660" y="329" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="#64748b">Benefit · 52 chars · 511px</text>
+  <!-- Feature highlights -->
+  <text x="80" y="390" class="font-ui" font-size="16" fill="#6b7280">✓ TypeScript native API</text>
+  <text x="80" y="418" class="font-ui" font-size="16" fill="#6b7280">✓ Typed output. Zero hallucination risk.</text>
+  <text x="80" y="446" class="font-ui" font-size="16" fill="#6b7280">✓ Batch process entire sites</text>
+  <text x="80" y="474" class="font-ui" font-size="16" fill="#6b7280">✓ Built-in keyphrase validation</text>
 
-  <!-- Left side -->
-  <rect x="72" y="60" width="4" height="280" rx="2" fill="url(#accent)" opacity="0.35"/>
-  <rect x="286" y="108" width="88" height="22" rx="4" fill="#1e293b" stroke="#334155"/>
-  <text x="330" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">npm v1.0.7</text>
-  <rect x="382" y="108" width="100" height="22" rx="4" fill="#06b6d4" fill-opacity="0.12" stroke="#06b6d4" stroke-opacity="0.4"/>
-  <text x="432" y="123" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#67e8f9" text-anchor="middle">LLM-Agnostic</text>
-  <text x="286" y="188" font-family="system-ui,-apple-system,sans-serif" font-size="44" font-weight="700" fill="#f8fafc">@power-seo/ai</text>
-  <text x="286" y="222" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">AI-powered SEO prompt builders —</text>
-  <text x="286" y="242" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#94a3b8">titles, meta, SERP &amp; content suggestions</text>
-  <line x1="286" y1="264" x2="580" y2="264" stroke="#1e293b" stroke-width="1"/>
-  <rect x="286" y="278" width="106" height="26" rx="13" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4"/>
-  <text x="339" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#67e8f9" text-anchor="middle">Title Generator</text>
-  <rect x="402" y="278" width="116" height="26" rx="13" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-opacity="0.4"/>
-  <text x="460" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c4b5fd" text-anchor="middle">Meta Description</text>
-  <rect x="528" y="278" width="110" height="26" rx="13" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
-  <text x="583" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#6ee7b7" text-anchor="middle">SERP Predictor</text>
-  <text x="286" y="348" font-family="system-ui,-apple-system,sans-serif" font-size="12" fill="#475569">8 functions · 10 types · Claude · GPT-4 · Gemini · Mistral</text>
+  <!-- Package name watermark bottom-left -->
+  <text x="80" y="590" class="font-mono" font-size="13" fill="#a855f7" opacity="0.6">npm install @power-seo/ai</text>
 
-  <rect x="0" y="396" width="1200" height="4" fill="url(#accent)"/>
+  <!-- Vertical fuchsia divider -->
+  <line x1="800" y1="40" x2="800" y2="590" stroke="#a855f7" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- RIGHT one-third: AI Suggestions sidebar panel -->
+  <rect x="820" y="40" width="360" height="550" rx="8" fill="#161b22" stroke="#a855f7" stroke-width="1.5"/>
+
+  <!-- Panel header -->
+  <rect x="820" y="40" width="360" height="48" rx="8" fill="#1a1025"/>
+  <rect x="820" y="72" width="360" height="16" fill="#1a1025"/>
+  <text x="844" y="70" class="font-ui" font-size="14" font-weight="700" fill="#a855f7">✦ AI Suggestions</text>
+  <!-- Header dots -->
+  <circle cx="1144" cy="64" r="4" fill="#374151"/>
+  <circle cx="1158" cy="64" r="4" fill="#374151"/>
+
+  <!-- Divider under header -->
+  <line x1="820" y1="88" x2="1180" y2="88" stroke="#a855f7" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Card 1 -->
+  <rect x="836" y="100" width="328" height="112" rx="8" fill="#1e2430"/>
+  <text x="852" y="122" class="font-ui" font-size="11" fill="#9ca3af">CANDIDATE 1</text>
+  <text x="852" y="142" class="font-ui" font-size="12" fill="#ffffff">Discover the best TypeScript SEO</text>
+  <text x="852" y="159" class="font-ui" font-size="12" fill="#ffffff">library for your Next.js project...</text>
+  <!-- Badge row -->
+  <rect x="852" y="170" width="72" height="20" rx="10" fill="#166534"/>
+  <text x="888" y="184" class="font-ui" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">142 chars</text>
+  <rect x="934" y="170" width="90" height="20" rx="10" fill="#a855f7"/>
+  <text x="979" y="184" class="font-ui" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">Keyphrase ✓</text>
+  <!-- Apply button filled -->
+  <rect x="1080" y="168" width="68" height="24" rx="6" fill="#a855f7"/>
+  <text x="1114" y="184" class="font-ui" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Apply</text>
+
+  <!-- Card 2 -->
+  <rect x="836" y="224" width="328" height="112" rx="8" fill="#1e2430"/>
+  <text x="852" y="246" class="font-ui" font-size="11" fill="#9ca3af">CANDIDATE 2</text>
+  <text x="852" y="266" class="font-ui" font-size="12" fill="#ffffff">Build production-ready SEO with</text>
+  <text x="852" y="283" class="font-ui" font-size="12" fill="#ffffff">zero configuration...</text>
+  <!-- Badge row -->
+  <rect x="852" y="294" width="72" height="20" rx="10" fill="#166534"/>
+  <text x="888" y="308" class="font-ui" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">138 chars</text>
+  <!-- Apply button outlined -->
+  <rect x="1080" y="292" width="68" height="24" rx="6" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="1114" y="308" class="font-ui" font-size="11" font-weight="600" fill="#a855f7" text-anchor="middle">Apply</text>
+
+  <!-- Card 3 -->
+  <rect x="836" y="348" width="328" height="112" rx="8" fill="#1e2430"/>
+  <text x="852" y="370" class="font-ui" font-size="11" fill="#9ca3af">CANDIDATE 3</text>
+  <text x="852" y="390" class="font-ui" font-size="12" fill="#ffffff">The complete TypeScript SEO toolkit</text>
+  <text x="852" y="407" class="font-ui" font-size="12" fill="#ffffff">for modern web applications...</text>
+  <!-- Badge row -->
+  <rect x="852" y="418" width="72" height="20" rx="10" fill="#92400e"/>
+  <text x="888" y="432" class="font-ui" font-size="10" font-weight="600" fill="#fbbf24" text-anchor="middle">151 chars</text>
+  <!-- Apply button outlined -->
+  <rect x="1080" y="416" width="68" height="24" rx="6" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="1114" y="432" class="font-ui" font-size="11" font-weight="600" fill="#a855f7" text-anchor="middle">Apply</text>
+
+  <!-- Regenerate button at bottom of panel -->
+  <rect x="836" y="476" width="328" height="36" rx="6" fill="#0d1117" stroke="#374151" stroke-width="1"/>
+  <text x="1000" y="498" class="font-ui" font-size="12" fill="#6b7280" text-anchor="middle">↻ Regenerate suggestions</text>
+
+  <!-- Powered by caption -->
+  <text x="1000" y="550" class="font-ui" font-size="11" fill="#4b5563" text-anchor="middle">Powered by your LLM provider</text>
 </svg>

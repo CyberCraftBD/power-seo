@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/search-console",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Google Search Console API client with OAuth2/service account auth, rate limiting, and retry",
   "license": "MIT",
   "type": "module",

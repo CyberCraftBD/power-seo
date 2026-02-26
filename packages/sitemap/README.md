@@ -1,5 +1,9 @@
 # @power-seo/sitemap
 
+![sitemap banner](../../image/sitemap/banner.svg)
+
+XML sitemap generation for TypeScript — streaming output, automatic index splitting, image/video/news extensions, and URL validation — works in Next.js, Remix, Express, and edge runtimes with zero runtime dependencies.
+
 [![npm version](https://img.shields.io/npm/v/@power-seo/sitemap)](https://www.npmjs.com/package/@power-seo/sitemap)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/sitemap)](https://www.npmjs.com/package/@power-seo/sitemap)
 [![Socket](https://socket.dev/api/badge/npm/package/@power-seo/sitemap)](https://socket.dev/npm/package/@power-seo/sitemap)
@@ -7,8 +11,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/sitemap)
-
-XML sitemap generation for TypeScript — streaming output, automatic index splitting, image/video/news extensions, and URL validation — works in Next.js, Remix, Express, and edge runtimes with zero runtime dependencies.
 
 `@power-seo/sitemap` produces standards-compliant `<urlset>` and `<sitemapindex>` XML from typed URL arrays. Provide a hostname and URL list — get back a valid XML string ready to serve as `Content-Type: application/xml`. For large catalogs, stream chunks with constant memory usage or auto-split at the 50,000-URL spec limit with a generated index file. All five functions are independently importable and tree-shakeable.
 
@@ -28,6 +30,8 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 | News sitemaps | ❌ Missing publication + date tags | ✅ `<news:news>` extension for Google News |
 | Hostname handling | ❌ Hardcode absolute URLs everywhere | ✅ Pass `hostname` once; use relative `loc` paths |
 | Validation | ❌ Silent bad data reaches Google | ✅ `validateSitemapUrl()` returns errors + warnings |
+
+![Sitemap Generator Comparison](../../image/sitemap/comparison.svg)
 
 ---
 
@@ -49,6 +53,8 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 - **Zero runtime dependencies** — pure TypeScript, no external XML libraries
 - **Tree-shakeable** — import only the functions you use
 
+![Google Search Console Sitemap UI](../../image/sitemap/gsc-ui.svg)
+
 ---
 
 ## Comparison
@@ -68,6 +74,8 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 | Tree-shakeable                 | ✅                 | ❌           | ❌            | ❌          |
 | Next.js `app/sitemap.ts` adapter | ✅               | ✅           | ❌            | ❌          |
 
+![Sitemap Extensions Accuracy](../../image/sitemap/extensions-accuracy.svg)
+
 ---
 
 ## Installation
@@ -82,10 +90,6 @@ yarn add @power-seo/sitemap
 
 ```bash
 pnpm add @power-seo/sitemap
-```
-
-```bash
-bun add @power-seo/sitemap
 ```
 
 ---
@@ -111,6 +115,8 @@ const xml = generateSitemap({
 ```
 
 `hostname` is required — it is prepended to any `loc` value that is a relative path. Absolute `loc` values (starting with `http`) are used as-is.
+
+![Sitemap Streaming Benefit](../../image/sitemap/streaming-benefit.svg)
 
 ---
 
@@ -481,7 +487,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 21 React components |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |

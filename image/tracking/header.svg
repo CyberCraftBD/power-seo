@@ -1,0 +1,97 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <!-- Left code panel -->
+  <rect x="40" y="60" width="520" height="490" rx="8" fill="#161b22"/>
+  <rect x="40" y="60" width="520" height="32" rx="8" fill="#031a1a"/>
+  <rect x="40" y="80" width="520" height="12" fill="#031a1a"/>
+  <circle cx="62" cy="76" r="6" fill="#ff5f56"/>
+  <circle cx="82" cy="76" r="6" fill="#ffbd2e"/>
+  <circle cx="102" cy="76" r="6" fill="#27c93f"/>
+  <text x="130" y="81" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">analytics.ts</text>
+  <!-- Code lines -->
+  <text x="60" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">import</text>
+  <text x="108" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#123; </text>
+  <text x="128" y="120" font-family="'Courier New', monospace" font-size="13" fill="#06b6d4">createTracker</text>
+  <text x="272" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#125; </text>
+  <text x="304" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">from</text>
+  <text x="336" y="120" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'@power-seo/tracking'</text>
+  <text x="60" y="158" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">const</text>
+  <text x="98" y="158" font-family="'Courier New', monospace" font-size="13" fill="#06b6d4"> tracker</text>
+  <text x="160" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="184" y="158" font-family="'Courier New', monospace" font-size="13" fill="#06b6d4">createTracker</text>
+  <text x="316" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(&#123;</text>
+  <text x="76" y="184" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  providers</text>
+  <text x="176" y="184" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: [</text>
+  <text x="204" y="184" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'ga4'</text>
+  <text x="240" y="184" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="252" y="184" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'gtm'</text>
+  <text x="288" y="184" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="300" y="184" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'plausible'</text>
+  <text x="380" y="184" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">]</text>
+  <text x="76" y="208" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  consent</text>
+  <text x="148" y="208" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: &#123;</text>
+  <text x="76" y="232" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">    required</text>
+  <text x="168" y="232" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="180" y="232" font-family="'Courier New', monospace" font-size="13" fill="#06b6d4">true</text>
+  <text x="76" y="256" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">    defaultState</text>
+  <text x="212" y="256" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="224" y="256" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'denied'</text>
+  <text x="60" y="280" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">  &#125; &#125;)</text>
+  <!-- track event call -->
+  <text x="60" y="316" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">// Track when user consents</text>
+  <text x="60" y="340" font-family="'Courier New', monospace" font-size="13" fill="#06b6d4">tracker</text>
+  <text x="120" y="340" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">.</text>
+  <text x="126" y="340" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">grantConsent</text>
+  <text x="238" y="340" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">()</text>
+  <text x="60" y="368" font-family="'Courier New', monospace" font-size="13" fill="#06b6d4">tracker</text>
+  <text x="120" y="368" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">.</text>
+  <text x="126" y="368" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">trackEvent</text>
+  <text x="218" y="368" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(&#123;</text>
+  <text x="76" y="392" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  name</text>
+  <text x="124" y="392" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="136" y="392" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'purchase'</text>
+  <text x="76" y="416" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  value</text>
+  <text x="130" y="416" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="142" y="416" font-family="'Courier New', monospace" font-size="13" fill="#06b6d4">49.99</text>
+  <text x="60" y="440" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">&#125;)</text>
+  <!-- Vertical divider -->
+  <line x1="600" y1="40" x2="600" y2="590" stroke="#06b6d4" stroke-width="1.5" opacity="0.4"/>
+  <!-- Right: Consent + Provider status -->
+  <rect x="630" y="60" width="530" height="490" rx="8" fill="#161b22"/>
+  <text x="895" y="98" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Consent-Gated Analytics</text>
+  <!-- Consent states -->
+  <rect x="648" y="110" width="240" height="60" rx="8" fill="#031a1a" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="768" y="132" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Before consent</text>
+  <text x="768" y="156" font-family="'Segoe UI', sans-serif" font-size="14" fill="#06b6d4" text-anchor="middle" font-weight="700">Analytics blocked</text>
+  <rect x="900" y="110" width="240" height="60" rx="8" fill="#042614" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1020" y="132" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">After grantConsent()</text>
+  <text x="1020" y="156" font-family="'Segoe UI', sans-serif" font-size="14" fill="#22c55e" text-anchor="middle" font-weight="700">All providers fire ✓</text>
+  <!-- Provider badges -->
+  <text x="648" y="196" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Active providers</text>
+  <rect x="648" y="204" width="100" height="28" rx="6" fill="#031a1a"/>
+  <text x="698" y="222" font-family="'Segoe UI', sans-serif" font-size="13" fill="#f59e0b" text-anchor="middle">GA4</text>
+  <rect x="758" y="204" width="100" height="28" rx="6" fill="#031a1a"/>
+  <text x="808" y="222" font-family="'Segoe UI', sans-serif" font-size="13" fill="#06b6d4" text-anchor="middle">GTM</text>
+  <rect x="868" y="204" width="100" height="28" rx="6" fill="#031a1a"/>
+  <text x="918" y="222" font-family="'Segoe UI', sans-serif" font-size="13" fill="#8b5cf6" text-anchor="middle">Plausible</text>
+  <rect x="978" y="204" width="100" height="28" rx="6" fill="#031a1a"/>
+  <text x="1028" y="222" font-family="'Segoe UI', sans-serif" font-size="13" fill="#06b6d4" text-anchor="middle">Fathom</text>
+  <!-- Event flow diagram -->
+  <text x="648" y="258" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Event routing</text>
+  <rect x="648" y="266" width="110" height="34" rx="6" fill="#0d2444"/>
+  <text x="703" y="287" font-family="'Segoe UI', sans-serif" font-size="12" fill="#06b6d4" text-anchor="middle">trackEvent()</text>
+  <line x1="758" y1="283" x2="810" y2="283" stroke="#06b6d4" stroke-width="2"/>
+  <polygon points="810,277 822,283 810,289" fill="#06b6d4"/>
+  <rect x="822" y="266" width="300" height="60" rx="6" fill="#031a1a"/>
+  <text x="972" y="286" font-family="'Segoe UI', sans-serif" font-size="11" fill="#06b6d4" text-anchor="middle">→ GA4 dataLayer.push()</text>
+  <text x="972" y="304" font-family="'Segoe UI', sans-serif" font-size="11" fill="#06b6d4" text-anchor="middle">→ GTM dataLayer.push()</text>
+  <text x="972" y="322" font-family="'Segoe UI', sans-serif" font-size="11" fill="#06b6d4" text-anchor="middle">→ Plausible event()</text>
+  <!-- GDPR badge -->
+  <rect x="648" y="354" width="480" height="60" rx="8" fill="#031a1a"/>
+  <text x="888" y="378" font-family="'Segoe UI', sans-serif" font-size="14" fill="#06b6d4" text-anchor="middle" font-weight="700">GDPR · CCPA · ePrivacy compliant</text>
+  <text x="888" y="400" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Consent mode v2 · default denied · no data before opt-in</text>
+  <!-- Tagline -->
+  <text x="600" y="560" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">Multi-provider analytics. Consent-first. Fully typed.</text>
+  <text x="600" y="592" font-family="'Segoe UI', sans-serif" font-size="15" fill="#6b7280" text-anchor="middle">@power-seo/tracking — GA4 · GTM · Plausible · Fathom · GDPR/CCPA · consent mode v2</text>
+  <text x="80" y="46" font-family="'Segoe UI', sans-serif" font-size="14" fill="#06b6d4">@power-seo/tracking</text>
+</svg>

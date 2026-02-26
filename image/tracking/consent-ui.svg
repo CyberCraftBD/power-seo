@@ -1,0 +1,62 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Consent Banner + Multi-Provider Routing</text>
+  <!-- Left: Consent UI panel -->
+  <rect x="30" y="56" width="400" height="350" rx="8" fill="#161b22"/>
+  <rect x="30" y="56" width="400" height="34" rx="8" fill="#031a1a"/>
+  <text x="230" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#06b6d4" text-anchor="middle">Cookie Consent Banner</text>
+  <!-- Simulated website in background -->
+  <rect x="46" y="100" width="368" height="160" rx="4" fill="#0d1117"/>
+  <text x="230" y="130" font-family="'Segoe UI', sans-serif" font-size="11" fill="#374151" text-anchor="middle">Website content behind banner...</text>
+  <!-- Consent popup overlaid -->
+  <rect x="56" y="210" width="348" height="150" rx="8" fill="#1e2430" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="230" y="236" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="700">We use analytics cookies</text>
+  <text x="230" y="258" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Help us improve by allowing analytics.</text>
+  <text x="230" y="276" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">No data is collected until you consent.</text>
+  <!-- Consent buttons -->
+  <rect x="76" y="294" width="130" height="36" rx="6" fill="#06b6d4"/>
+  <text x="141" y="316" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">Accept All</text>
+  <rect x="224" y="294" width="130" height="36" rx="6" fill="#1e2430" stroke="#374151" stroke-width="1"/>
+  <text x="289" y="316" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Decline</text>
+  <!-- Right: Provider event routing -->
+  <rect x="450" y="56" width="420" height="350" rx="8" fill="#161b22"/>
+  <rect x="450" y="56" width="420" height="34" rx="8" fill="#031a1a"/>
+  <text x="660" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#06b6d4" text-anchor="middle">Event Routing After Consent</text>
+  <!-- User clicks Accept → -->
+  <rect x="466" y="108" width="140" height="28" rx="6" fill="#042614"/>
+  <text x="536" y="126" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">grantConsent() ✓</text>
+  <line x1="606" y1="122" x2="640" y2="122" stroke="#06b6d4" stroke-width="2"/>
+  <polygon points="640,116 652,122 640,128" fill="#06b6d4"/>
+  <!-- trackPageView fires -->
+  <rect x="652" y="108" width="200" height="28" rx="6" fill="#0d2444"/>
+  <text x="752" y="126" font-family="'Segoe UI', sans-serif" font-size="12" fill="#06b6d4" text-anchor="middle">trackPageView() queued</text>
+  <!-- Fired to all providers -->
+  <line x1="752" y1="136" x2="752" y2="180" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- Providers -->
+  <rect x="466" y="182" width="110" height="32" rx="6" fill="#1e2430"/>
+  <text x="521" y="202" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b" text-anchor="middle">→ GA4 fired</text>
+  <rect x="586" y="182" width="110" height="32" rx="6" fill="#1e2430"/>
+  <text x="641" y="202" font-family="'Segoe UI', sans-serif" font-size="12" fill="#06b6d4" text-anchor="middle">→ GTM fired</text>
+  <rect x="706" y="182" width="120" height="32" rx="6" fill="#1e2430"/>
+  <text x="766" y="202" font-family="'Segoe UI', sans-serif" font-size="12" fill="#8b5cf6" text-anchor="middle">→ Plausible fired</text>
+  <!-- Provider status table -->
+  <rect x="466" y="232" width="366" height="130" rx="4" fill="#0d1117"/>
+  <rect x="466" y="232" width="366" height="24" rx="4" fill="#1e2430"/>
+  <text x="520" y="248" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Provider</text>
+  <text x="660" y="248" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Status</text>
+  <text x="750" y="248" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Events sent</text>
+  <text x="480" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">GA4</text>
+  <text x="660" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">active</text>
+  <text x="750" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">847</text>
+  <text x="480" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#06b6d4">GTM</text>
+  <text x="660" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">active</text>
+  <text x="750" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">847</text>
+  <text x="480" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#8b5cf6">Plausible</text>
+  <text x="660" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">active</text>
+  <text x="750" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">847</text>
+  <text x="480" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Fathom</text>
+  <text x="660" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">not configured</text>
+  <!-- Caption -->
+  <text x="450" y="440" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">One consent gate. All providers activated simultaneously.</text>
+  <text x="450" y="464" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/tracking — queued events fire after consent · per-provider config · status tracking</text>
+</svg>

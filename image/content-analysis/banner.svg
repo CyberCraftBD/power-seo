@@ -1,31 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1a1040"/>
+      <stop offset="100%" style="stop-color:#1e1b4b"/>
     </linearGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#6366f1"/>
-      <stop offset="100%" style="stop-color:#22d3ee"/>
+      <stop offset="0%" style="stop-color:#eab308"/>
+      <stop offset="100%" style="stop-color:#fde047"/>
     </linearGradient>
     <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:0.2"/>
+      <stop offset="0%" style="stop-color:#eab308;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#fde047;stop-opacity:0.2"/>
     </linearGradient>
-    <linearGradient id="scoreRing" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#22c55e"/>
-      <stop offset="100%" style="stop-color:#16a34a"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
   </defs>
-
-  <!-- Background -->
   <rect width="1280" height="280" fill="url(#bg)" rx="12"/>
-
-  <!-- Subtle grid lines -->
   <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
     <line x1="0" y1="56" x2="1280" y2="56"/>
     <line x1="0" y1="112" x2="1280" y2="112"/>
@@ -36,66 +24,18 @@
     <line x1="768" y1="0" x2="768" y2="280"/>
     <line x1="1024" y1="0" x2="1024" y2="280"/>
   </g>
-
-  <!-- Decorative glow circles top-right -->
-  <circle cx="1160" cy="50" r="110" fill="#6366f1" fill-opacity="0.07"/>
-  <circle cx="1210" cy="25" r="60" fill="#22d3ee" fill-opacity="0.06"/>
-
-  <!-- Decorative circle bottom-left -->
-  <circle cx="70" cy="240" r="80" fill="#6366f1" fill-opacity="0.05"/>
-
-  <!-- ── Right side: SEO score ring decoration ── -->
-  <!-- Outer ring track -->
-  <circle cx="1090" cy="140" r="90" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="14"/>
-  <!-- Score arc: 91% of circumference = 91/100 * 2π*90 ≈ 514.7; remainder ≈ 50.5 -->
-  <circle cx="1090" cy="140" r="90" fill="none" stroke="url(#scoreRing)" stroke-width="14"
-          stroke-dasharray="514.7 50.5" stroke-linecap="round"
-          transform="rotate(-90 1090 140)" opacity="0.85"/>
-  <!-- Score label -->
-  <text x="1090" y="128" text-anchor="middle" fill="#22c55e" font-size="52" font-weight="800" opacity="0.9">91</text>
-  <text x="1090" y="152" text-anchor="middle" fill="#64748b" font-size="16">/100</text>
-  <text x="1090" y="174" text-anchor="middle" fill="#22c55e" font-size="13" font-weight="600" opacity="0.75">SEO Score</text>
-
-  <!-- Check badges floating around ring -->
-  <!-- badge 1: title -->
-  <rect x="944" y="52" width="80" height="22" rx="11" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-opacity="0.3" stroke-width="1"/>
-  <text x="984" y="67" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="600">✓ Title</text>
-  <!-- badge 2: meta -->
-  <rect x="1158" y="52" width="80" height="22" rx="11" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-opacity="0.3" stroke-width="1"/>
-  <text x="1198" y="67" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="600">✓ Meta</text>
-  <!-- badge 3: density -->
-  <rect x="930" y="198" width="96" height="22" rx="11" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-opacity="0.3" stroke-width="1"/>
-  <text x="978" y="213" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="600">✓ Density</text>
-  <!-- badge 4: headings -->
-  <rect x="1158" y="198" width="96" height="22" rx="11" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-opacity="0.3" stroke-width="1"/>
-  <text x="1206" y="213" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="600">✓ Headings</text>
-
-  <!-- ── Left side: text content ── -->
-  <!-- Accent bar -->
-  <rect x="80" y="70" width="6" height="100" rx="3" fill="url(#accent)"/>
-
-  <!-- Scope label -->
-  <text x="108" y="100" font-size="15" font-weight="500" fill="#64748b" letter-spacing="1">@power-seo</text>
-
-  <!-- Package name -->
-  <text x="108" y="158" font-size="58" font-weight="800" letter-spacing="-1.5" fill="url(#accent)">content-analysis</text>
-
-  <!-- Tagline -->
-  <text x="110" y="196" font-size="18" font-weight="400" fill="#94a3b8" letter-spacing="0.3">Yoast-Style SEO Scoring for TypeScript, React &amp; Node.js</text>
-
-  <!-- Pills row -->
-  <rect x="110" y="216" width="82" height="26" rx="13" fill="url(#pill)" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="151" y="233" font-size="12" font-weight="600" fill="#a5b4fc" text-anchor="middle">13 checks</text>
-
-  <rect x="204" y="216" width="86" height="26" rx="13" fill="url(#pill)" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="247" y="233" font-size="12" font-weight="600" fill="#a5b4fc" text-anchor="middle">0–100 score</text>
-
-  <rect x="302" y="216" width="84" height="26" rx="13" fill="url(#pill)" stroke="#22d3ee" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="344" y="233" font-size="12" font-weight="600" fill="#67e8f9" text-anchor="middle">Zero deps</text>
-
-  <rect x="398" y="216" width="120" height="26" rx="13" fill="url(#pill)" stroke="#22d3ee" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="458" y="233" font-size="12" font-weight="600" fill="#67e8f9" text-anchor="middle">TypeScript-first</text>
-
-  <rect x="530" y="216" width="96" height="26" rx="13" fill="url(#pill)" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="578" y="233" font-size="12" font-weight="600" fill="#a5b4fc" text-anchor="middle">Tree-shakeable</text>
+  <circle cx="1180" cy="60" r="90" fill="#eab308" fill-opacity="0.06"/>
+  <circle cx="1220" cy="30" r="50" fill="#fde047" fill-opacity="0.06"/>
+  <circle cx="80" cy="230" r="70" fill="#eab308" fill-opacity="0.05"/>
+  <rect x="80" y="96" width="6" height="88" rx="3" fill="url(#accent)"/>
+  <text x="108" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="46" font-weight="800" letter-spacing="-2" fill="url(#accent)">@power-seo/content-analysis</text>
+  <text x="110" y="195" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="0.5">Yoast-style content scoring. Any framework.</text>
+  <rect x="110" y="220" width="102" height="28" rx="14" fill="url(#pill)" stroke="#eab308" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="161" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fde047" text-anchor="middle">Yoast-style</text>
+  <rect x="222" y="220" width="112" height="28" rx="14" fill="url(#pill)" stroke="#eab308" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="278" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fde047" text-anchor="middle">Any framework</text>
+  <rect x="344" y="220" width="96" height="28" rx="14" fill="url(#pill)" stroke="#fde047" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="392" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fef08a" text-anchor="middle">Keyphrase</text>
+  <rect x="450" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#fde047" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="519" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fef08a" text-anchor="middle">TypeScript-first</text>
 </svg>

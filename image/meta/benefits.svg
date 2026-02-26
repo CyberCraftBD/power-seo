@@ -1,0 +1,69 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <!-- Before section -->
+  <text x="150" y="40" font-family="'Segoe UI', sans-serif" font-size="16" fill="#ef4444" text-anchor="middle" font-weight="700">Before</text>
+  <!-- Next.js panel -->
+  <rect x="20" y="55" width="240" height="100" rx="6" fill="#161b22"/>
+  <rect x="20" y="55" width="240" height="24" rx="6" fill="#1e2430"/>
+  <text x="30" y="72" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">next.js — metadata.ts</text>
+  <text x="28" y="98" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">export const metadata = &#123;</text>
+  <text x="28" y="113" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  title: 'My Page',</text>
+  <text x="28" y="128" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  description: '...',</text>
+  <text x="28" y="143" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">&#125;</text>
+  <!-- Remix panel -->
+  <rect x="20" y="170" width="240" height="100" rx="6" fill="#161b22"/>
+  <rect x="20" y="170" width="240" height="24" rx="6" fill="#1e2430"/>
+  <text x="30" y="187" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">remix — meta.ts</text>
+  <text x="28" y="213" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">export function meta() &#123;</text>
+  <text x="28" y="228" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  return [&#123; title: '...' &#125;,</text>
+  <text x="28" y="243" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  &#123; name: 'desc', ... &#125;]</text>
+  <text x="28" y="258" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">&#125;</text>
+  <!-- Express panel -->
+  <rect x="20" y="285" width="240" height="100" rx="6" fill="#161b22"/>
+  <rect x="20" y="285" width="240" height="24" rx="6" fill="#1e2430"/>
+  <text x="30" y="302" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">express — router.ts</text>
+  <text x="28" y="328" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">res.render('page', &#123;</text>
+  <text x="28" y="343" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  title: 'My Page',</text>
+  <text x="28" y="358" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  meta: &#123; desc: '...' &#125;</text>
+  <text x="28" y="373" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">&#125;)</text>
+  <!-- Arrow -->
+  <polygon points="295,230 360,200 360,260" fill="#7c3aed"/>
+  <rect x="275" y="221" width="85" height="18" fill="#7c3aed"/>
+  <!-- After section -->
+  <text x="650" y="40" font-family="'Segoe UI', sans-serif" font-size="16" fill="#22c55e" text-anchor="middle" font-weight="700">After</text>
+  <rect x="370" y="80" width="510" height="260" rx="8" fill="#161b22" stroke="#7c3aed" stroke-width="2"/>
+  <text x="385" y="108" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">const</text>
+  <text x="425" y="108" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> config</text>
+  <text x="480" y="108" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">:</text>
+  <text x="490" y="108" font-family="'Courier New', monospace" font-size="12" fill="#7c3aed"> MetaConfig</text>
+  <text x="575" y="108" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> = &#123;</text>
+  <text x="400" y="130" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  title</text>
+  <text x="440" y="130" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="452" y="130" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'My Page'</text>
+  <text x="400" y="152" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  description</text>
+  <text x="500" y="152" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="512" y="152" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'...'</text>
+  <text x="400" y="174" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  og</text>
+  <text x="420" y="174" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123; image: </text>
+  <text x="502" y="174" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'/og.jpg'</text>
+  <text x="564" y="174" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> &#125;</text>
+  <text x="385" y="196" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">&#125;</text>
+  <!-- Output arrows to frameworks -->
+  <line x1="625" y1="344" x2="440" y2="390" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="625" y1="344" x2="625" y2="398" stroke="#7c3aed" stroke-width="1.5"/>
+  <line x1="625" y1="344" x2="810" y2="390" stroke="#7c3aed" stroke-width="1.5"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <!-- Framework badges -->
+  <rect x="375" y="398" width="120" height="28" rx="4" fill="#1e2430" stroke="#7c3aed" stroke-width="1"/>
+  <text x="435" y="417" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Next.js ✓</text>
+  <rect x="568" y="398" width="120" height="28" rx="4" fill="#1e2430" stroke="#7c3aed" stroke-width="1"/>
+  <text x="628" y="417" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Remix ✓</text>
+  <rect x="760" y="398" width="120" height="28" rx="4" fill="#1e2430" stroke="#7c3aed" stroke-width="1"/>
+  <text x="820" y="417" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Express ✓</text>
+  <!-- Caption -->
+  <text x="450" y="472" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle">One MetaConfig. Three frameworks. Zero duplication.</text>
+</svg>

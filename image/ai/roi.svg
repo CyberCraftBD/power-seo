@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+      .font-ui { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- Horizontal grid lines -->
+  <line x1="0" y1="120" x2="900" y2="120" stroke="#1e2430" stroke-width="1"/>
+  <line x1="0" y1="160" x2="900" y2="160" stroke="#1e2430" stroke-width="1"/>
+  <line x1="0" y1="200" x2="900" y2="200" stroke="#1e2430" stroke-width="1"/>
+  <line x1="0" y1="240" x2="900" y2="240" stroke="#1e2430" stroke-width="1"/>
+  <line x1="0" y1="280" x2="900" y2="280" stroke="#1e2430" stroke-width="1"/>
+  <line x1="0" y1="320" x2="900" y2="320" stroke="#1e2430" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="450" y="46" class="font-ui" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Time to Write Meta Descriptions — 100 Pages</text>
+
+  <!-- Chart area: x=200 to x=860, y=90 to y=310 -->
+  <!-- Chart border -->
+  <rect x="200" y="88" width="660" height="230" rx="4" fill="#0b0e12" stroke="#1e2430" stroke-width="1"/>
+
+  <!-- Y-axis label area -->
+  <!-- Bar 1: Manual writing -->
+  <!-- Y center of bar 1: y = 88 + 57 = 145, height = 58 -->
+  <text x="190" y="152" class="font-ui" font-size="13" font-weight="500" fill="#e2e8f0" text-anchor="end">Manual writing</text>
+
+  <!-- Bar 1 background track -->
+  <rect x="204" y="112" width="652" height="62" rx="4" fill="#111418"/>
+
+  <!-- Bar 1 fill (82% of 652 = 534.64 ~ 535) -->
+  <rect x="204" y="118" width="535" height="50" rx="4" fill="#374151"/>
+
+  <!-- Bar 1 label at end -->
+  <text x="748" y="148" class="font-ui" font-size="14" font-weight="700" fill="#ffffff">~5 hours</text>
+
+  <!-- Bar 2: With @power-seo/ai -->
+  <!-- Y center of bar 2: y = 88 + 57*2 = 202 + offset -->
+  <text x="190" y="260" class="font-ui" font-size="13" font-weight="500" fill="#e2e8f0" text-anchor="end">With</text>
+  <text x="190" y="276" class="font-mono" font-size="11" font-weight="600" fill="#a855f7" text-anchor="end">@power-seo/ai</text>
+
+  <!-- Bar 2 background track -->
+  <rect x="204" y="222" width="652" height="62" rx="4" fill="#111418"/>
+
+  <!-- Bar 2 fill (7% of 652 = 45.6 ~ 46) -->
+  <rect x="204" y="228" width="46" height="50" rx="4" fill="#a855f7"/>
+
+  <!-- Bar 2 label at end -->
+  <text x="258" y="258" class="font-ui" font-size="14" font-weight="700" fill="#ffffff">~20 min</text>
+
+  <!-- Percentage markers on X axis -->
+  <text x="204" y="308" class="font-ui" font-size="10" fill="#4b5563" text-anchor="middle">0%</text>
+  <text x="369" y="308" class="font-ui" font-size="10" fill="#4b5563" text-anchor="middle">25%</text>
+  <text x="530" y="308" class="font-ui" font-size="10" fill="#4b5563" text-anchor="middle">50%</text>
+  <text x="694" y="308" class="font-ui" font-size="10" fill="#4b5563" text-anchor="middle">75%</text>
+  <text x="856" y="308" class="font-ui" font-size="10" fill="#4b5563" text-anchor="middle">100%</text>
+
+  <!-- Vertical tick marks -->
+  <line x1="369" y1="88" x2="369" y2="295" stroke="#1e2430" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="530" y1="88" x2="530" y2="295" stroke="#1e2430" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="694" y1="88" x2="694" y2="295" stroke="#1e2430" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- Large callout box -->
+  <rect x="130" y="330" width="640" height="72" rx="8" fill="#1a0a2e" stroke="#a855f7" stroke-width="2"/>
+  <text x="450" y="366" class="font-ui" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">-93% time for SEO copywriting</text>
+  <text x="450" y="390" class="font-ui" font-size="13" fill="#d8b4fe" text-anchor="middle">Switch providers anytime — your time savings stay the same</text>
+
+  <!-- Caption -->
+  <text x="450" y="440" class="font-ui" font-size="14" fill="#9ca3af" text-anchor="middle">AI handles the drafts. You handle the quality check.</text>
+
+  <!-- @power-seo/ai watermark bottom-right -->
+  <text x="875" y="484" class="font-mono" font-size="11" fill="#a855f7" text-anchor="end" opacity="0.7">@power-seo/ai</text>
+
+  <!-- Comparison annotation -->
+  <line x1="739" y1="143" x2="739" y2="248" stroke="#a855f7" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+  <rect x="750" y="182" width="98" height="28" rx="6" fill="#2d1246"/>
+  <text x="799" y="200" class="font-ui" font-size="11" font-weight="700" fill="#a855f7" text-anchor="middle">15x faster</text>
+</svg>

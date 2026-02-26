@@ -1,22 +1,40 @@
-# @power-seo/analytics — SEO Analytics Engine for GSC Data, Trend Analysis, and Ranking Insights
+# @power-seo/analytics
+
+![analytics banner](../../image/analytics/banner.svg)
 
 Merge Google Search Console data with audit results, compute Pearson correlations, analyze trends, detect anomalies, and build dashboard-ready aggregated outputs.
 
-[![npm version](https://img.shields.io/npm/v/@power-seo/analytics?style=flat-square)](https://www.npmjs.com/package/@power-seo/analytics)
-[![npm downloads](https://img.shields.io/npm/dm/@power-seo/analytics?style=flat-square)](https://www.npmjs.com/package/@power-seo/analytics)
-[![MIT License](https://img.shields.io/npm/l/@power-seo/analytics?style=flat-square)](../../LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square)](https://www.typescriptlang.org/)
-[![Tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen?style=flat-square)](#)
+[![npm version](https://img.shields.io/npm/v/@power-seo/analytics)](https://www.npmjs.com/package/@power-seo/analytics)
+[![npm downloads](https://img.shields.io/npm/dm/@power-seo/analytics)](https://www.npmjs.com/package/@power-seo/analytics)
+[![Socket](https://socket.dev/api/badge/npm/package/@power-seo/analytics)](https://socket.dev/npm/package/@power-seo/analytics)
+[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/analytics)
 
 `@power-seo/analytics` is the data intelligence layer of the `@power-seo` ecosystem. It answers the question that every SEO practitioner asks but most tools cannot answer well: does improving the SEO audit score of a page actually increase its organic traffic? By merging Google Search Console performance data with audit results — keyed on normalized URLs — and computing the Pearson correlation between audit scores and click counts, you can verify the relationship empirically across your own site.
 
 Beyond correlation, the package provides a full trend analysis pipeline: time-series data flows through `analyzeTrend` (direction, rate of change, confidence) → `buildTrendLines` (chart-ready data points) → `detectAnomalies` (statistically significant spikes and drops). The ranking module groups your queries into position buckets (1–3, 4–10, 11–20, 21–50, 50+) matching how SEO professionals think about ranking tiers, and `trackPositionChanges` produces a before/after diff across two snapshots. Everything culminates in `buildDashboardData`, which aggregates all of the above into a single structured object ready to be consumed by any charting library or reporting UI.
 
-## Documentation
+> **Zero runtime dependencies** — pure TypeScript computation; no external API calls.
 
-- **Package docs:** [`apps/docs/src/content/docs/packages/analytics.mdx`](../../apps/docs/src/content/docs/packages/analytics.mdx)
-- **Ecosystem overview:** [`README.md`](../../README.md)
-- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+---
+
+## Why @power-seo/analytics?
+
+| | Without | With |
+|---|---|---|
+| GSC + audit correlation | ❌ Two separate tools | ✅ Merged by URL with Pearson correlation |
+| Trend analysis | ❌ Manual spreadsheet | ✅ Direction, rate, confidence in one call |
+| Anomaly detection | ❌ Manual review | ✅ Statistical spike/drop flagging |
+| Ranking tiers | ❌ Raw position data | ✅ Bucket groups (1–3, 4–10, 11–20...) |
+| Position tracking | ❌ Manual comparison | ✅ Before/after diff with `trackPositionChanges` |
+| Dashboard output | ❌ Build from scratch | ✅ Structured `DashboardData` ready for any chart library |
+| TypeScript support | ❌ Untyped data | ✅ Full type coverage for all data structures |
+
+![Analytics Comparison](../../image/analytics/comparison.svg)
+
+---
 
 ## Features
 
@@ -32,34 +50,43 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 - **Zero runtime dependencies** — pure TypeScript computation
 - **Type-safe throughout** — complete TypeScript types for all data structures
 
-## Table of Contents
+![Analytics Dashboard UI](../../image/analytics/dashboard-ui.svg)
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Merge GSC and Audit Data](#merge-gsc-and-audit-data)
-  - [Correlation Analysis](#correlation-analysis)
-  - [Trend Analysis](#trend-analysis)
-  - [Anomaly Detection](#anomaly-detection)
-  - [Ranking Analysis](#ranking-analysis)
-  - [Position Change Tracking](#position-change-tracking)
-  - [Dashboard Data](#dashboard-data)
-- [API Reference](#api-reference)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
+---
+
+## Comparison
+
+| Feature | @power-seo/analytics | Looker Studio | GA4 | Custom scripts |
+| --- | :---: | :---: | :---: | :---: |
+| GSC + audit data merge | ✅ | ❌ | ❌ | Manual |
+| Pearson correlation | ✅ | ❌ | ❌ | Manual |
+| Trend direction analysis | ✅ | Partial | Partial | Manual |
+| Anomaly detection | ✅ | ❌ | Partial | Manual |
+| Position change tracking | ✅ | ❌ | ❌ | Manual |
+| Ranking bucket grouping | ✅ | ❌ | ❌ | Manual |
+| Dashboard-ready output | ✅ | ✅ | Partial | Manual |
+| Zero external dependencies | ✅ | ❌ | ❌ | — |
+| TypeScript-first | ✅ | ❌ | ❌ | — |
+
+![Analytics Trend Accuracy](../../image/analytics/trend-accuracy.svg)
+
+---
 
 ## Installation
 
 ```bash
-# npm
 npm install @power-seo/analytics
+```
 
-# yarn
+```bash
 yarn add @power-seo/analytics
+```
 
-# pnpm
+```bash
 pnpm add @power-seo/analytics
 ```
+
+---
 
 ## Quick Start
 
@@ -88,6 +115,10 @@ console.log(dashboard.overview.averagePosition); // 10.67
 console.log(dashboard.overview.averageAuditScore); // 67.7
 console.log(dashboard.topPages[0].url); // '/blog/react-seo'
 ```
+
+![Analytics Merge Benefit](../../image/analytics/merge-benefit.svg)
+
+---
 
 ## Usage
 
@@ -297,6 +328,8 @@ dashboard.issues.forEach(({ rule, severity, affectedPages }) =>
 );
 ```
 
+---
+
 ## API Reference
 
 ### `mergeGscWithAudit(input)`
@@ -406,16 +439,51 @@ import type {
 } from '@power-seo/analytics';
 ```
 
+---
+
+## Use Cases
+
+- **SEO dashboards** — feed `buildDashboardData` output directly into Recharts, Chart.js, or any admin UI
+- **Monthly reporting** — automate correlation analysis to demonstrate SEO ROI to stakeholders
+- **Quick-win identification** — use position bucket analysis to prioritize pages ranked 11–20 for content updates
+- **Algorithm update monitoring** — use anomaly detection to flag traffic drops aligned with Google algorithm updates
+- **Site migration tracking** — compare position snapshots before and after migration with `trackPositionChanges`
+
+---
+
+## Architecture Overview
+
+- **Pure TypeScript** — no compiled binary, no native modules
+- **Zero external runtime dependencies** — pure computational logic; no external API calls
+- **Framework-agnostic** — works in any JavaScript environment: Next.js, Remix, Node.js, Edge
+- **SSR compatible** — no browser-specific APIs; safe for server-side or CLI usage
+- **Edge runtime safe** — no Node.js-specific APIs; runs in Cloudflare Workers, Vercel Edge
+- **Tree-shakeable** — `"sideEffects": false` with named exports per function
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+
+---
+
+## Supply Chain Security
+
+- No install scripts (`postinstall`, `preinstall`)
+- No runtime network access
+- No `eval` or dynamic code execution
+- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
+- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
+- Safe for SSR, Edge, and server environments
+
+---
+
 ## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
 
-`@power-seo/analytics` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
+All 17 packages are independently installable — use only what you need.
 
 | Package                                                                                    | Install                             | Description                                                             |
 | ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
@@ -432,15 +500,19 @@ import type {
 
 ---
 
+## Keywords
+
+seo analytics · gsc analytics · google search console data · seo trend analysis · pearson correlation seo · ranking analysis · anomaly detection seo · position tracking · dashboard seo · seo data merge · click correlation · seo insights typescript · ranking tier analysis · seo reporting · traffic trend · nextjs analytics seo · position change tracking · seo dashboard npm · typescript seo analytics · seo data pipeline
+
+---
+
 ## About [CyberCraft Bangladesh](https://ccbd.dev)
 
-**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software development and Full Stack SEO service provider company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-|                      |                                                                |
-| -------------------- | -------------------------------------------------------------- |
-| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
-| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
-| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
+[![Website](https://img.shields.io/badge/Website-ccbd.dev-blue?style=for-the-badge)](https://ccbd.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-cybercraftbd-black?style=for-the-badge&logo=github)](https://github.com/cybercraftbd)
+[![npm](https://img.shields.io/badge/npm-power--seo-red?style=for-the-badge&logo=npm)](https://www.npmjs.com/org/power-seo)
+[![Email](https://img.shields.io/badge/Email-info@ccbd.dev-green?style=for-the-badge&logo=gmail)](mailto:info@ccbd.dev)
 
 © 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)

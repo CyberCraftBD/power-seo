@@ -1,0 +1,61 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Consent Mode v2 — No Analytics Before Opt-In</text>
+  <!-- Left: Without consent management -->
+  <rect x="30" y="56" width="390" height="280" rx="8" fill="#161b22"/>
+  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1a0505"/>
+  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Without consent management</text>
+  <!-- Fires immediately -->
+  <text x="48" y="120" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// Fires even without user consent!</text>
+  <text x="48" y="144" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">gtag('event', 'page_view')  // ⚠ GDPR risk</text>
+  <text x="48" y="168" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">fbq('track', 'PageView')    // ⚠ GDPR risk</text>
+  <text x="48" y="192" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">_paq.push(['trackPageView']) // ⚠ GDPR risk</text>
+  <!-- Risk box -->
+  <rect x="48" y="214" width="352" height="62" rx="6" fill="#1a0505"/>
+  <text x="224" y="234" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="700">GDPR Violations</text>
+  <text x="224" y="254" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">Up to €20M or 4% global revenue</text>
+  <text x="224" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">CCPA fines: $7,500 per intentional violation</text>
+  <!-- Arrow -->
+  <text x="450" y="210" font-family="'Segoe UI', sans-serif" font-size="36" fill="#06b6d4" text-anchor="middle" font-weight="700">→</text>
+  <!-- Right: With consent management -->
+  <rect x="480" y="56" width="390" height="280" rx="8" fill="#161b22"/>
+  <rect x="480" y="56" width="390" height="34" rx="8" fill="#031a1a"/>
+  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#06b6d4" text-anchor="middle">With @power-seo/tracking</text>
+  <!-- Consent-gated -->
+  <text x="498" y="120" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// Safe — default denied</text>
+  <text x="498" y="144" font-family="'Courier New', monospace" font-size="12" fill="#06b6d4">const tracker = createTracker(&#123;</text>
+  <text x="514" y="164" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  consent</text>
+  <text x="578" y="164" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123; </text>
+  <text x="514" y="184" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    defaultState</text>
+  <text x="634" y="184" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="646" y="184" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'denied'</text>
+  <text x="498" y="204" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">&#125;)</text>
+  <!-- Safe badge -->
+  <rect x="498" y="226" width="352" height="62" rx="6" fill="#031a1a"/>
+  <text x="674" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle" font-weight="700">GDPR · CCPA · ePrivacy Compliant ✓</text>
+  <text x="674" y="266" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">No data collected before opt-in</text>
+  <text x="674" y="284" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Consent mode v2 — GA4 modelling preserved</text>
+  <!-- Bottom flow diagram -->
+  <rect x="30" y="356" width="840" height="100" rx="8" fill="#161b22"/>
+  <text x="450" y="380" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">Consent state machine</text>
+  <!-- States -->
+  <rect x="60" y="392" width="110" height="28" rx="6" fill="#1a0505"/>
+  <text x="115" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">denied (default)</text>
+  <line x1="170" y1="406" x2="260" y2="406" stroke="#06b6d4" stroke-width="2"/>
+  <polygon points="260,400 272,406 260,412" fill="#06b6d4"/>
+  <text x="215" y="398" font-family="'Segoe UI', sans-serif" font-size="10" fill="#06b6d4" text-anchor="middle">grantConsent()</text>
+  <rect x="272" y="392" width="110" height="28" rx="6" fill="#031a1a"/>
+  <text x="327" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#06b6d4" text-anchor="middle">granted</text>
+  <line x1="382" y1="406" x2="470" y2="406" stroke="#06b6d4" stroke-width="2"/>
+  <polygon points="470,400 482,406 470,412" fill="#06b6d4"/>
+  <text x="426" y="398" font-family="'Segoe UI', sans-serif" font-size="10" fill="#06b6d4" text-anchor="middle">analytics fire</text>
+  <rect x="482" y="392" width="140" height="28" rx="6" fill="#042614"/>
+  <text x="552" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">All providers active ✓</text>
+  <line x1="622" y1="406" x2="710" y2="406" stroke="#6b7280" stroke-width="2"/>
+  <polygon points="710,400 722,406 710,412" fill="#6b7280"/>
+  <text x="666" y="398" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">revokeConsent()</text>
+  <rect x="722" y="392" width="110" height="28" rx="6" fill="#1a0505"/>
+  <text x="777" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">denied again</text>
+  <!-- Caption -->
+  <text x="450" y="472" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Compliant by default. Opt-in to activate. Revocable at any time.</text>
+</svg>

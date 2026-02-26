@@ -1,0 +1,82 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <!-- Left code panel -->
+  <rect x="40" y="60" width="520" height="490" rx="8" fill="#161b22"/>
+  <rect x="40" y="60" width="520" height="32" rx="8" fill="#1a0d2e"/>
+  <rect x="40" y="80" width="520" height="12" fill="#1a0d2e"/>
+  <circle cx="62" cy="76" r="6" fill="#ff5f56"/>
+  <circle cx="82" cy="76" r="6" fill="#ffbd2e"/>
+  <circle cx="102" cy="76" r="6" fill="#27c93f"/>
+  <text x="130" y="81" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">readability.ts</text>
+  <!-- Code lines -->
+  <text x="60" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">import</text>
+  <text x="108" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#123; </text>
+  <text x="128" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">analyzeReadability</text>
+  <text x="298" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#125; </text>
+  <text x="330" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">from</text>
+  <text x="362" y="120" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'@power-seo/readability'</text>
+  <text x="60" y="158" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">const</text>
+  <text x="98" y="158" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6"> result</text>
+  <text x="148" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="168" y="158" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">analyzeReadability</text>
+  <text x="340" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(&#123;</text>
+  <text x="76" y="184" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  content</text>
+  <text x="144" y="184" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: blogContent,</text>
+  <text x="76" y="208" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  algorithm</text>
+  <text x="168" y="208" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="180" y="208" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'flesch-kincaid'</text>
+  <text x="76" y="232" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  targetAudience</text>
+  <text x="228" y="232" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
+  <text x="240" y="232" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'general'</text>
+  <text x="60" y="258" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">&#125;)</text>
+  <!-- Result object -->
+  <text x="60" y="296" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">// result →</text>
+  <rect x="60" y="308" width="460" height="180" rx="6" fill="#0d1117"/>
+  <text x="78" y="332" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#123;</text>
+  <text x="94" y="354" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  score</text>
+  <text x="148" y="354" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="160" y="354" font-family="'Courier New', monospace" font-size="12" fill="#8b5cf6">72.4</text>
+  <text x="200" y="354" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">  // 0-100 scale</text>
+  <text x="94" y="376" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  gradeLevel</text>
+  <text x="200" y="376" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="212" y="376" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'8th grade'</text>
+  <text x="94" y="398" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  readingTime</text>
+  <text x="210" y="398" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="222" y="398" font-family="'Courier New', monospace" font-size="12" fill="#8b5cf6">4.2</text>
+  <text x="250" y="398" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">  // minutes</text>
+  <text x="94" y="420" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  suggestions</text>
+  <text x="212" y="420" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: [</text>
+  <text x="94" y="442" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">    'Shorten sentences over 25 words'</text>
+  <text x="78" y="464" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#125;</text>
+  <!-- Vertical divider -->
+  <line x1="600" y1="40" x2="600" y2="590" stroke="#8b5cf6" stroke-width="1.5" opacity="0.4"/>
+  <!-- Right: Score dashboard -->
+  <rect x="630" y="60" width="530" height="490" rx="8" fill="#161b22"/>
+  <text x="895" y="100" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Readability Score</text>
+  <!-- Score circle -->
+  <circle cx="895" cy="200" r="80" fill="none" stroke="#1e2430" stroke-width="16"/>
+  <circle cx="895" cy="200" r="80" fill="none" stroke="#8b5cf6" stroke-width="16" stroke-dasharray="361" stroke-dashoffset="101" transform="rotate(-90 895 200)"/>
+  <text x="895" y="195" font-family="'Segoe UI', sans-serif" font-size="36" fill="white" text-anchor="middle" font-weight="700">72</text>
+  <text x="895" y="220" font-family="'Segoe UI', sans-serif" font-size="14" fill="#8b5cf6" text-anchor="middle">Good</text>
+  <!-- Stats row -->
+  <rect x="648" y="308" width="146" height="60" rx="6" fill="#1a0d2e"/>
+  <text x="721" y="330" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Grade Level</text>
+  <text x="721" y="354" font-family="'Segoe UI', sans-serif" font-size="18" fill="#8b5cf6" text-anchor="middle" font-weight="700">8th</text>
+  <rect x="806" y="308" width="146" height="60" rx="6" fill="#1a0d2e"/>
+  <text x="879" y="330" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Reading Time</text>
+  <text x="879" y="354" font-family="'Segoe UI', sans-serif" font-size="18" fill="#8b5cf6" text-anchor="middle" font-weight="700">4.2 min</text>
+  <!-- Algorithm badges -->
+  <text x="648" y="398" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Algorithms supported</text>
+  <rect x="648" y="408" width="130" height="24" rx="6" fill="#1a0d2e"/>
+  <text x="713" y="424" font-family="'Segoe UI', sans-serif" font-size="12" fill="#8b5cf6" text-anchor="middle">Flesch-Kincaid</text>
+  <rect x="788" y="408" width="100" height="24" rx="6" fill="#1a0d2e"/>
+  <text x="838" y="424" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a78bfa" text-anchor="middle">Gunning Fog</text>
+  <rect x="648" y="440" width="100" height="24" rx="6" fill="#1a0d2e"/>
+  <text x="698" y="456" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a78bfa" text-anchor="middle">Coleman-Liau</text>
+  <rect x="758" y="440" width="130" height="24" rx="6" fill="#1a0d2e"/>
+  <text x="823" y="456" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a78bfa" text-anchor="middle">SMOG + ARI</text>
+  <!-- Tagline -->
+  <text x="600" y="560" font-family="'Segoe UI', sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="700">Content that ranks starts with content people read.</text>
+  <text x="600" y="592" font-family="'Segoe UI', sans-serif" font-size="15" fill="#6b7280" text-anchor="middle">@power-seo/readability — Flesch-Kincaid · Gunning Fog · Coleman-Liau · SMOG · ARI</text>
+  <text x="80" y="46" font-family="'Segoe UI', sans-serif" font-size="14" fill="#8b5cf6">@power-seo/readability</text>
+</svg>

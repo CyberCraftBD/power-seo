@@ -54,6 +54,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description: post.excerpt,
     canonical: `https://example.com/blog/${params.slug}`,
     openGraph: { type: 'article', title: post.title, images: [{ url: post.ogImage }] },
+    robots: { index: true, follow: true, maxSnippet: 150, maxImagePreview: 'large' },
   });
 }
 ```
@@ -62,7 +63,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 ```typescript
 // app/blog/[slug]/page.tsx
-import { article } from '@power-seo/schema';
+import { article, toJsonLdString } from '@power-seo/schema';
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
@@ -70,11 +71,11 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     headline: post.title,
     author: { name: post.author },
     datePublished: post.publishedAt,
-    image: post.ogImage,
+    image: { url: post.ogImage },
   });
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: toJsonLdString(jsonLd) }} />
       <article>{/* page content */}</article>
     </>
   );
@@ -83,6 +84,22 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
 ## Sitemap Generation
 
+Use `toNextSitemap()` from `@power-seo/sitemap/next` for the native Next.js format:
+
+```typescript
+// app/sitemap.ts
+import { toNextSitemap } from '@power-seo/sitemap/next';
+
+export default async function sitemap() {
+  const pages = await getAllPages();
+  return toNextSitemap(
+    pages.map((p) => ({ loc: p.url, lastmod: p.updatedAt, priority: 0.8 }))
+  );
+}
+```
+
+Or use a route handler to return raw XML:
+
 ```typescript
 // app/sitemap.xml/route.ts
 import { generateSitemap } from '@power-seo/sitemap';
@@ -90,6 +107,7 @@ import { generateSitemap } from '@power-seo/sitemap';
 export async function GET() {
   const pages = await getAllPages();
   const xml = generateSitemap({
+    hostname: 'https://example.com',
     urls: pages.map((p) => ({ loc: p.url, lastmod: p.updatedAt, priority: 0.8 })),
   });
   return new Response(xml, { headers: { 'Content-Type': 'application/xml' } });

@@ -1,0 +1,40 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <text x="600" y="50" font-family="'Segoe UI', sans-serif" font-size="14" fill="#ec4899" text-anchor="middle" font-weight="600">@power-seo/preview</text>
+  <!-- Google SERP Card -->
+  <rect x="120" y="70" width="960" height="130" rx="8" fill="#ffffff" stroke="#ec4899" stroke-width="2"/>
+  <rect x="140" y="90" width="50" height="18" rx="9" fill="#e8f0fe"/>
+  <text x="165" y="103" font-family="'Segoe UI', sans-serif" font-size="10" fill="#1a73e8" text-anchor="middle">Google</text>
+  <text x="140" y="124" font-family="'Segoe UI', sans-serif" font-size="12" fill="#3c4043">example.com › blog › my-article-title</text>
+  <text x="140" y="146" font-family="'Segoe UI', sans-serif" font-size="20" fill="#1a0dab">My Article Title That Will Display — Example Site</text>
+  <text x="140" y="168" font-family="'Segoe UI', sans-serif" font-size="13" fill="#3c4043">Discover the complete guide to TypeScript SEO patterns. Zero-dependency, fully-typed, works...</text>
+  <rect x="1080" y="80" width="90" height="20" rx="10" fill="#e8f0fe"/>
+  <text x="1125" y="94" font-family="'Segoe UI', sans-serif" font-size="10" fill="#1a73e8" text-anchor="middle">SERP Preview</text>
+  <!-- Facebook OG Card -->
+  <rect x="120" y="220" width="460" height="200" rx="8" fill="#ffffff" stroke="#ec4899" stroke-width="2"/>
+  <rect x="120" y="220" width="460" height="120" rx="8" fill="#6b7280"/>
+  <text x="350" y="285" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">og:image — 1200×630</text>
+  <rect x="120" y="328" width="460" height="2" fill="#d1d5db"/>
+  <text x="135" y="350" font-family="'Segoe UI', sans-serif" font-size="10" fill="#65676b">EXAMPLE.COM</text>
+  <text x="135" y="370" font-family="'Segoe UI', sans-serif" font-size="16" fill="#0f172a" font-weight="700">My Article Title That Will Display</text>
+  <text x="135" y="390" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4b5563">Discover the complete guide to TypeScript SEO...</text>
+  <text x="135" y="408" font-family="'Segoe UI', sans-serif" font-size="10" fill="#9ca3af">example.com</text>
+  <rect x="140" y="418" width="70" height="20" rx="10" fill="#e8f0fe"/>
+  <text x="175" y="432" font-family="'Segoe UI', sans-serif" font-size="10" fill="#ec4899" text-anchor="middle">OG Preview</text>
+  <!-- Twitter Card -->
+  <rect x="620" y="220" width="460" height="200" rx="8" fill="#15202b" stroke="#ec4899" stroke-width="2"/>
+  <rect x="620" y="220" width="460" height="120" rx="8" fill="#374151"/>
+  <text x="850" y="285" font-family="'Segoe UI', sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">summary_large_image</text>
+  <text x="635" y="358" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" font-weight="600">My Article Title That Will Display</text>
+  <text x="635" y="378" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Discover the complete guide to TypeScript SEO</text>
+  <text x="635" y="398" font-family="'Segoe UI', sans-serif" font-size="11" fill="#64748b">example.com</text>
+  <rect x="640" y="418" width="80" height="20" rx="10" fill="#1d3a5f"/>
+  <text x="680" y="432" font-family="'Segoe UI', sans-serif" font-size="10" fill="#ec4899" text-anchor="middle">Twitter/X Card</text>
+  <!-- Badges -->
+  <rect x="340" y="444" width="220" height="28" rx="14" fill="#ec4899" opacity="0.15" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="450" y="463" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f9a8d4" text-anchor="middle">Canvas-accurate pixel metrics</text>
+  <!-- Bottom tagline -->
+  <text x="600" y="538" font-family="'Segoe UI', sans-serif" font-size="26" fill="white" text-anchor="middle" font-weight="700">See exactly what users see. Before you deploy.</text>
+  <text x="600" y="572" font-family="'Segoe UI', sans-serif" font-size="16" fill="#6b7280" text-anchor="middle">Google SERP · Facebook OG · Twitter/X · Pixel-accurate truncation detection</text>
+  <text x="600" y="604" font-family="'Segoe UI', sans-serif" font-size="14" fill="#ec4899" text-anchor="middle">generateSerpPreview() · generateOGPreview() · generateTwitterPreview() · isTitleTruncated()</text>
+</svg>

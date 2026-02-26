@@ -1,0 +1,58 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="42" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Feature Comparison</text>
+  <!-- Headers -->
+  <rect x="30" y="58" width="230" height="38" rx="6" fill="#0ea5e9"/>
+  <text x="145" y="82" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">@power-seo/schema</text>
+  <rect x="275" y="58" width="200" height="38" rx="6" fill="#1e2430"/>
+  <text x="375" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Manual JSON-LD</text>
+  <rect x="490" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
+  <text x="580" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">schema-dts</text>
+  <rect x="685" y="58" width="185" height="38" rx="6" fill="#1e2430"/>
+  <text x="777" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">next-seo</text>
+  <!-- Rows -->
+  <rect x="0" y="108" width="900" height="40" fill="#0f1621"/>
+  <text x="870" y="133" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">23 schema types</text>
+  <text x="145" y="133" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="375" y="133" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="580" y="133" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="777" y="133" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
+  <rect x="0" y="148" width="900" height="40" fill="#161b22"/>
+  <text x="870" y="173" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">React components</text>
+  <text x="145" y="173" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="375" y="173" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="580" y="173" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="777" y="173" font-size="16" fill="#94a3b8" text-anchor="middle">some</text>
+  <rect x="0" y="188" width="900" height="40" fill="#0f1621"/>
+  <text x="870" y="213" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">validateSchema()</text>
+  <text x="145" y="213" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="375" y="213" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="580" y="213" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="777" y="213" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <rect x="0" y="228" width="900" height="40" fill="#161b22"/>
+  <text x="870" y="253" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Build-time safety</text>
+  <text x="145" y="253" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="375" y="253" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="580" y="253" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="777" y="253" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <rect x="0" y="268" width="900" height="40" fill="#0f1621"/>
+  <text x="870" y="293" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Schema.org compliant</text>
+  <text x="145" y="293" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="375" y="293" font-size="18" fill="#94a3b8" text-anchor="middle">manual</text>
+  <text x="580" y="293" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="777" y="293" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
+  <rect x="0" y="308" width="900" height="40" fill="#161b22"/>
+  <text x="870" y="333" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">TypeScript native</text>
+  <text x="145" y="333" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="375" y="333" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="580" y="333" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <text x="777" y="333" font-size="18" fill="#0ea5e9" text-anchor="middle">✓</text>
+  <!-- Dividers -->
+  <line x1="260" y1="58" x2="260" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="470" y1="58" x2="470" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="665" y1="58" x2="665" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="870" y1="58" x2="870" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <!-- Caption -->
+  <text x="450" y="400" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">The only schema package that does everything.</text>
+  <text x="450" y="426" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">21 React components + 23 schema types + runtime validation + build-time safety</text>
+</svg>

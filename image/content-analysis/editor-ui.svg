@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- ── EDITOR PANEL (left 2/3) ── -->
+  <rect x="16" y="16" width="580" height="468" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Editor top bar -->
+  <rect x="16" y="16" width="580" height="34" rx="6" fill="#1c2128"/>
+  <rect x="16" y="36" width="580" height="14" fill="#1c2128"/>
+  <circle cx="37" cy="33" r="5.5" fill="#ff5f56"/>
+  <circle cx="54" cy="33" r="5.5" fill="#ffbd2e"/>
+  <circle cx="71" cy="33" r="5.5" fill="#27c93f"/>
+  <text x="94" y="38" fill="#8b949e" font-size="11">content-editor.tsx</text>
+
+  <!-- Line numbers strip -->
+  <rect x="16" y="50" width="30" height="340" fill="#161b22"/>
+  <text x="38" y="76" text-anchor="end" fill="#484f58" font-size="11" class="mono">1</text>
+  <text x="38" y="96" text-anchor="end" fill="#484f58" font-size="11" class="mono">2</text>
+  <text x="38" y="116" text-anchor="end" fill="#484f58" font-size="11" class="mono">3</text>
+  <text x="38" y="136" text-anchor="end" fill="#484f58" font-size="11" class="mono">4</text>
+  <text x="38" y="156" text-anchor="end" fill="#484f58" font-size="11" class="mono">5</text>
+  <text x="38" y="176" text-anchor="end" fill="#484f58" font-size="11" class="mono">6</text>
+  <text x="38" y="196" text-anchor="end" fill="#484f58" font-size="11" class="mono">7</text>
+  <text x="38" y="216" text-anchor="end" fill="#484f58" font-size="11" class="mono">8</text>
+  <text x="38" y="236" text-anchor="end" fill="#484f58" font-size="11" class="mono">9</text>
+  <text x="38" y="256" text-anchor="end" fill="#484f58" font-size="11" class="mono">10</text>
+  <text x="38" y="276" text-anchor="end" fill="#484f58" font-size="11" class="mono">11</text>
+  <text x="38" y="296" text-anchor="end" fill="#484f58" font-size="11" class="mono">12</text>
+  <text x="38" y="316" text-anchor="end" fill="#484f58" font-size="11" class="mono">13</text>
+  <text x="38" y="336" text-anchor="end" fill="#484f58" font-size="11" class="mono">14</text>
+  <text x="38" y="356" text-anchor="end" fill="#484f58" font-size="11" class="mono">15</text>
+
+  <!-- Article title -->
+  <text x="54" y="76" fill="#e6edf3" font-size="15" font-weight="700">TypeScript SEO: A Developer's Complete Guide</text>
+
+  <!-- Line 2: blank -->
+
+  <!-- Line 3 -->
+  <text x="54" y="116" fill="#c9d1d9" font-size="13">Search engine optimization has evolved. Today, developers need </text>
+
+  <!-- Line 4 with first keyphrase highlight -->
+  <text x="54" y="136" fill="#c9d1d9" font-size="13">programmatic tools for </text>
+  <rect x="196" y="122" width="116" height="17" rx="2" fill="#eab308" opacity="0.22"/>
+  <text x="198" y="136" fill="#f0d060" font-size="13" font-weight="600">TypeScript SEO</text>
+  <text x="316" y="136" fill="#c9d1d9" font-size="13"> scoring at build time.</text>
+
+  <!-- Line 5 -->
+  <text x="54" y="156" fill="#c9d1d9" font-size="13">This guide explores modern approaches to automated analysis.</text>
+
+  <!-- Line 6: blank -->
+
+  <!-- Line 7 with second keyphrase highlight -->
+  <text x="54" y="196" fill="#c9d1d9" font-size="13">The @power-seo ecosystem makes </text>
+  <rect x="262" y="182" width="116" height="17" rx="2" fill="#eab308" opacity="0.22"/>
+  <text x="264" y="196" fill="#f0d060" font-size="13" font-weight="600">TypeScript SEO</text>
+  <text x="382" y="196" fill="#c9d1d9" font-size="13"> accessible to all</text>
+  <!-- Line 8 -->
+  <text x="54" y="216" fill="#c9d1d9" font-size="13">developers regardless of framework choice or CMS platform.</text>
+
+  <!-- Line 9: amber underline paragraph (tooltip) -->
+  <rect x="54" y="228" width="480" height="17" rx="2" fill="#f59e0b" opacity="0.08"/>
+  <rect x="54" y="243" width="480" height="2" rx="1" fill="#f59e0b" opacity="0.6"/>
+  <text x="54" y="242" fill="#c9d1d9" font-size="13">Structured data and meta descriptions further improve click-through rates</text>
+
+  <!-- Tooltip -->
+  <rect x="200" y="252" width="264" height="28" rx="4" fill="#2d2200" stroke="#f59e0b" stroke-width="1"/>
+  <!-- Tooltip arrow -->
+  <polygon points="264,248 272,252 256,252" fill="#2d2200"/>
+  <line x1="264" y1="248" x2="256" y2="252" stroke="#f59e0b" stroke-width="1"/>
+  <line x1="264" y1="248" x2="272" y2="252" stroke="#f59e0b" stroke-width="1"/>
+  <text x="332" y="270" text-anchor="middle" fill="#f59e0b" font-size="11">Consider adding keyphrase to this paragraph</text>
+
+  <!-- Lines 10-14 -->
+  <text x="54" y="296" fill="#c9d1d9" font-size="13">from search results. When </text>
+  <rect x="202" y="282" width="116" height="17" rx="2" fill="#eab308" opacity="0.22"/>
+  <text x="204" y="296" fill="#f0d060" font-size="13" font-weight="600">TypeScript SEO</text>
+  <text x="322" y="296" fill="#c9d1d9" font-size="13"> tools are integrated</text>
+  <text x="54" y="316" fill="#c9d1d9" font-size="13">early in the workflow, teams catch issues before deployment.</text>
+
+  <!-- Line 13 -->
+  <text x="54" y="356" fill="#c9d1d9" font-size="13">Automated scoring ensures consistent quality across every page,</text>
+  <!-- Line 14 -->
+  <text x="54" y="376" fill="#c9d1d9" font-size="13">whether generated statically or rendered server-side.</text>
+
+  <!-- Bottom keyphrase input -->
+  <line x1="16" y1="398" x2="596" y2="398" stroke="#30363d" stroke-width="1"/>
+  <text x="32" y="418" fill="#8b949e" font-size="11" font-weight="500">FOCUS KEYPHRASE</text>
+  <rect x="32" y="425" width="240" height="30" rx="4" fill="#0d1117" stroke="#eab308" stroke-width="1.5"/>
+  <text x="46" y="445" fill="#eab308" font-size="13" font-weight="500">TypeScript SEO</text>
+  <rect x="160" y="431" width="1.5" height="14" fill="#eab308" opacity="0.8"/>
+  <text x="284" y="443" fill="#6e7681" font-size="11">press Enter to update</text>
+  <text x="430" y="443" fill="#484f58" font-size="11">842 words</text>
+
+  <!-- ── ANALYSIS SIDEBAR (right 1/3) ── -->
+  <rect x="612" y="16" width="272" height="468" rx="6" fill="#1a1508" stroke="#2d2200" stroke-width="1"/>
+  <rect x="612" y="16" width="3" height="468" fill="#eab308"/>
+
+  <!-- Sidebar score -->
+  <text x="750" y="62" text-anchor="middle" fill="#eab308" font-size="42" font-weight="800">74</text>
+  <text x="796" y="62" fill="#8b949e" font-size="20" font-weight="400">/100</text>
+
+  <!-- "updated" badge -->
+  <rect x="820" y="38" width="56" height="18" rx="9" fill="#1a3300"/>
+  <text x="848" y="50" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">▸ updated</text>
+
+  <!-- Score bar -->
+  <rect x="623" y="74" width="249" height="8" rx="4" fill="#2d2200"/>
+  <rect x="623" y="74" width="184" height="8" rx="4" fill="#eab308"/>
+
+  <text x="623" y="96" fill="#8b949e" font-size="10" font-weight="600">SEO CHECKS</text>
+
+  <!-- 9 check items: 5 green, 2 amber, 2 red -->
+  <!-- 1 green -->
+  <circle cx="632" cy="112" r="5.5" fill="#22c55e"/>
+  <text x="645" y="116" fill="#e6edf3" font-size="12">Keyphrase in title</text>
+
+  <!-- 2 green -->
+  <circle cx="632" cy="132" r="5.5" fill="#22c55e"/>
+  <text x="645" y="136" fill="#e6edf3" font-size="12">Keyphrase in intro</text>
+
+  <!-- 3 green -->
+  <circle cx="632" cy="152" r="5.5" fill="#22c55e"/>
+  <text x="645" y="156" fill="#e6edf3" font-size="12">Content length: 842w</text>
+
+  <!-- 4 green -->
+  <circle cx="632" cy="172" r="5.5" fill="#22c55e"/>
+  <text x="645" y="176" fill="#e6edf3" font-size="12">Meta description set</text>
+
+  <!-- 5 green -->
+  <circle cx="632" cy="192" r="5.5" fill="#22c55e"/>
+  <text x="645" y="196" fill="#e6edf3" font-size="12">H1 heading present</text>
+
+  <!-- 6 amber -->
+  <circle cx="632" cy="212" r="5.5" fill="#f59e0b"/>
+  <text x="645" y="216" fill="#e6edf3" font-size="12">Density: 0.8%</text>
+  <text x="730" y="216" fill="#8b949e" font-size="11">(low)</text>
+
+  <!-- 7 amber -->
+  <circle cx="632" cy="232" r="5.5" fill="#f59e0b"/>
+  <text x="645" y="236" fill="#e6edf3" font-size="12">Keyphrase in subheadings</text>
+
+  <!-- 8 red -->
+  <circle cx="632" cy="252" r="5.5" fill="#ef4444"/>
+  <text x="645" y="256" fill="#e6edf3" font-size="12">No outbound links</text>
+
+  <!-- 9 red -->
+  <circle cx="632" cy="272" r="5.5" fill="#ef4444"/>
+  <text x="645" y="276" fill="#e6edf3" font-size="12">Image alt text missing</text>
+
+  <!-- Divider -->
+  <line x1="623" y1="292" x2="872" y2="292" stroke="#2d2200" stroke-width="1"/>
+
+  <!-- Recommendations section -->
+  <text x="623" y="310" fill="#8b949e" font-size="10" font-weight="600">RECOMMENDATIONS</text>
+
+  <rect x="623" y="318" width="249" height="46" rx="4" fill="#2d0808" opacity="0.8"/>
+  <text x="633" y="334" fill="#ef4444" font-size="11" font-weight="600">High priority</text>
+  <text x="633" y="350" fill="#fca5a5" font-size="11">Add outbound links to authority sources</text>
+  <text x="633" y="362" fill="#fca5a5" font-size="11">and add alt text to images.</text>
+
+  <rect x="623" y="372" width="249" height="36" rx="4" fill="#2d2200" opacity="0.8"/>
+  <text x="633" y="388" fill="#f59e0b" font-size="11" font-weight="600">Improvement</text>
+  <text x="633" y="402" fill="#fde68a" font-size="11">Increase keyphrase density to 1–3%.</text>
+
+  <!-- Status row -->
+  <rect x="623" y="420" width="76" height="20" rx="3" fill="#14290f"/>
+  <text x="661" y="434" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="600">5 PASS</text>
+
+  <rect x="705" y="420" width="76" height="20" rx="3" fill="#2d2200"/>
+  <text x="743" y="434" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="600">2 WARN</text>
+
+  <rect x="787" y="420" width="76" height="20" rx="3" fill="#2d0808"/>
+  <text x="825" y="434" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="600">2 FAIL</text>
+
+  <!-- Footer -->
+  <line x1="623" y1="448" x2="872" y2="448" stroke="#2d2200" stroke-width="1"/>
+  <text x="748" y="465" text-anchor="middle" fill="#484f58" font-size="11">@power-seo/content-analysis</text>
+</svg>

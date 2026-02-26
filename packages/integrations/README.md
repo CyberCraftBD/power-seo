@@ -1,9 +1,13 @@
-# @power-seo/integrations — Semrush & Ahrefs API Clients for TypeScript — Rate Limiting, Pagination & Full Type Safety
+# @power-seo/integrations
+
+![integrations banner](../../image/integrations/banner.svg)
 
 Query keyword data, domain overviews, backlinks, and keyword difficulty from Semrush and Ahrefs APIs with a shared HTTP client that handles rate limiting and pagination automatically.
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations)
+[![Socket](https://socket.dev/api/badge/npm/package/@power-seo/integrations)](https://socket.dev/npm/package/@power-seo/integrations)
+[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/integrations)
@@ -12,11 +16,23 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 
 > **Zero runtime dependencies beyond `fetch`** — runs in Node.js 18+, Deno, Bun, and modern edge runtimes.
 
-## Documentation
+---
 
-- **Package docs:** [`apps/docs/src/content/docs/packages/integrations.mdx`](../../apps/docs/src/content/docs/packages/integrations.mdx)
-- **Ecosystem overview:** [`README.md`](../../README.md)
-- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+## Why @power-seo/integrations?
+
+| | Without | With |
+|---|---|---|
+| Semrush API | ❌ Write raw HTTP client | ✅ Typed client with auto-pagination |
+| Ahrefs API | ❌ Manual SDK setup | ✅ Typed client with rate limiting |
+| Rate limiting | ❌ Manual throttle | ✅ Built-in configurable window rate limiter |
+| Pagination | ❌ Manual offset tracking | ✅ Automatic — receive a flat result array |
+| Error handling | ❌ Raw HTTP errors | ✅ `IntegrationApiError` with `statusCode` |
+| TypeScript types | ❌ `any` everywhere | ✅ Full type coverage for all endpoints |
+| Bundle size | ❌ Full SDK in bundle | ✅ Tree-shakeable — import only what you use |
+
+![Integrations Comparison](../../image/integrations/comparison.svg)
+
+---
 
 ## Features
 
@@ -28,22 +44,26 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 - **Consistent error handling** — `IntegrationApiError` with `statusCode`, `message`, and raw `response` payload from both APIs
 - **Tree-shakeable** — `createSemrushClient` and `createAhrefsClient` are separate exports; import only what you use
 
-## Table of Contents
+![SEO Research UI](../../image/integrations/seo-research-ui.svg)
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Semrush Client](#semrush-client)
-  - [Ahrefs Client](#ahrefs-client)
-  - [Shared HTTP Client](#shared-http-client)
-  - [Error Handling](#error-handling)
-- [API Reference](#api-reference)
-  - [Semrush](#semrush)
-  - [Ahrefs](#ahrefs)
-  - [Shared](#shared)
-  - [Types](#types)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
+---
+
+## Comparison
+
+| Feature | @power-seo/integrations | semrush-sdk | ahrefs-client | Custom fetch |
+| --- | :---: | :---: | :---: | :---: |
+| Semrush API client | ✅ | ✅ | ❌ | Manual |
+| Ahrefs API client | ✅ | ❌ | Partial | Manual |
+| Rate limiting | ✅ | Partial | ❌ | Manual |
+| Auto-pagination | ✅ | ❌ | ❌ | Manual |
+| Shared HTTP client | ✅ | ❌ | ❌ | — |
+| Consistent error handling | ✅ | Partial | ❌ | Manual |
+| TypeScript-first | ✅ | ❌ | ❌ | — |
+| Tree-shakeable | ✅ | ❌ | ❌ | — |
+
+![Rate Limit Accuracy](../../image/integrations/rate-limit-accuracy.svg)
+
+---
 
 ## Installation
 
@@ -58,6 +78,8 @@ yarn add @power-seo/integrations
 ```bash
 pnpm add @power-seo/integrations
 ```
+
+---
 
 ## Quick Start
 
@@ -76,6 +98,10 @@ const site = await ahrefs.getSiteOverview({ target: 'example.com' });
 console.log(site.domainRating); // 47
 console.log(site.organicTraffic); // 9_800
 ```
+
+![Unification Benefit](../../image/integrations/unification-benefit.svg)
+
+---
 
 ## Usage
 
@@ -208,6 +234,8 @@ try {
 }
 ```
 
+---
+
 ## API Reference
 
 ### Semrush
@@ -278,6 +306,41 @@ import type {
 } from '@power-seo/integrations';
 ```
 
+---
+
+## Use Cases
+
+- **Keyword research pipelines** — pull volume and difficulty from Semrush to prioritize content creation
+- **Backlink monitoring** — automate periodic Ahrefs backlink snapshots for link building tracking
+- **Competitor analysis** — use domain overview data to compare your metrics against competitors
+- **Content brief generation** — combine keyword difficulty and volume to prioritize blog topics
+- **SEO reporting dashboards** — pull live Semrush/Ahrefs data into internal analytics tools built with `@power-seo/analytics`
+
+---
+
+## Architecture Overview
+
+- **Pure TypeScript** — no compiled binary, no native modules
+- **Minimal runtime dependencies** — only native `fetch` (available in Node 18+, Deno, Bun, and all Edge runtimes)
+- **Framework-agnostic** — works in Next.js API routes, Remix loaders, Express, Cloudflare Workers
+- **SSR compatible** — safe for server-side use; no browser-specific APIs
+- **Edge runtime safe** — uses only `fetch`; runs in Cloudflare Workers, Vercel Edge, Deno
+- **Tree-shakeable** — `createSemrushClient` and `createAhrefsClient` are separate named exports
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+
+---
+
+## Supply Chain Security
+
+- No install scripts (`postinstall`, `preinstall`)
+- No runtime network access beyond explicit API calls you initiate
+- No `eval` or dynamic code execution
+- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
+- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
+- Safe for SSR, Edge, and server environments
+
+---
+
 ## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
 
 All 17 packages are independently installable — use only what you need.
@@ -287,7 +350,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
@@ -304,15 +367,19 @@ All 17 packages are independently installable — use only what you need.
 
 ---
 
+## Keywords
+
+semrush api · ahrefs api · seo api client · keyword research api · backlink api · domain overview api · keyword difficulty api · seo data api typescript · rate limiting seo · semrush typescript · ahrefs typescript · seo api wrapper · keyword volume api · seo integration npm · seo third party api · paginated seo api · typescript seo api · seo data fetching · semrush client · ahrefs client
+
+---
+
 ## About [CyberCraft Bangladesh](https://ccbd.dev)
 
-**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software development and Full Stack SEO service provider company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-|                      |                                                                |
-| -------------------- | -------------------------------------------------------------- |
-| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
-| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
-| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
+[![Website](https://img.shields.io/badge/Website-ccbd.dev-blue?style=for-the-badge)](https://ccbd.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-cybercraftbd-black?style=for-the-badge&logo=github)](https://github.com/cybercraftbd)
+[![npm](https://img.shields.io/badge/npm-power--seo-red?style=for-the-badge&logo=npm)](https://www.npmjs.com/org/power-seo)
+[![Email](https://img.shields.io/badge/Email-info@ccbd.dev-green?style=for-the-badge&logo=gmail)](mailto:info@ccbd.dev)
 
 © 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)

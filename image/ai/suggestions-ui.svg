@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+      .font-ui { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- === LEFT: Content Editor Panel === -->
+  <rect x="20" y="20" width="530" height="460" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Editor title bar -->
+  <rect x="20" y="20" width="530" height="42" rx="8" fill="#1c2128"/>
+  <rect x="20" y="50" width="530" height="12" fill="#1c2128"/>
+  <!-- Window dots -->
+  <circle cx="42" cy="41" r="5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="60" cy="41" r="5" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="78" cy="41" r="5" fill="#22c55e" opacity="0.8"/>
+  <text x="450" y="46" class="font-ui" font-size="14" font-weight="600" fill="#ffffff" text-anchor="end">Content Editor</text>
+
+  <!-- Line numbers column -->
+  <rect x="20" y="62" width="36" height="338" fill="#13181f"/>
+  <text x="38" y="90" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">1</text>
+  <text x="38" y="108" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">2</text>
+  <text x="38" y="126" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">3</text>
+  <text x="38" y="144" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">4</text>
+  <text x="38" y="162" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">5</text>
+  <text x="38" y="180" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">6</text>
+  <text x="38" y="198" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">7</text>
+  <text x="38" y="216" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">8</text>
+  <text x="38" y="234" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">9</text>
+  <text x="38" y="252" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">10</text>
+  <text x="38" y="270" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">11</text>
+  <text x="38" y="288" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">12</text>
+  <text x="38" y="306" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">13</text>
+  <text x="38" y="324" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">14</text>
+  <text x="38" y="342" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">15</text>
+  <text x="38" y="360" class="font-mono" font-size="11" fill="#4b5563" text-anchor="end">16</text>
+
+  <!-- Editor text content -->
+  <text x="66" y="90" class="font-mono" font-size="11" fill="#e2e8f0"># Introduction to TypeScript SEO</text>
+  <text x="66" y="108" class="font-mono" font-size="11" fill="#6b7280"></text>
+  <text x="66" y="126" class="font-mono" font-size="11" fill="#e2e8f0">TypeScript SEO libraries have revolutionized</text>
+  <text x="66" y="144" class="font-mono" font-size="11" fill="#e2e8f0">how developers approach search optimization.</text>
+  <text x="66" y="162" class="font-mono" font-size="11" fill="#6b7280"></text>
+  <text x="66" y="180" class="font-mono" font-size="11" fill="#e2e8f0">With type-safe APIs, you can build production-</text>
+  <text x="66" y="198" class="font-mono" font-size="11" fill="#e2e8f0">ready SEO features in minutes, not hours.</text>
+  <text x="66" y="216" class="font-mono" font-size="11" fill="#6b7280"></text>
+  <text x="66" y="234" class="font-mono" font-size="11" fill="#e2e8f0">## Key Benefits</text>
+  <text x="66" y="252" class="font-mono" font-size="11" fill="#6b7280"></text>
+  <text x="66" y="270" class="font-mono" font-size="11" fill="#e2e8f0">- Zero configuration needed for common cases</text>
+  <text x="66" y="288" class="font-mono" font-size="11" fill="#e2e8f0">- Full TypeScript support with generics</text>
+  <text x="66" y="306" class="font-mono" font-size="11" fill="#e2e8f0">- Works with Next.js, Remix, and Astro</text>
+  <text x="66" y="324" class="font-mono" font-size="11" fill="#e2e8f0">- LLM-agnostic AI suggestions built-in</text>
+  <text x="66" y="342" class="font-mono" font-size="11" fill="#6b7280"></text>
+  <text x="66" y="360" class="font-mono" font-size="11" fill="#e2e8f0">The ecosystem of packages covers everything</text>
+
+  <!-- Cursor blink -->
+  <rect x="66" y="368" width="7" height="14" fill="#a855f7" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0;0.9" dur="1.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Editor bottom toolbar -->
+  <rect x="20" y="400" width="530" height="40" rx="0" fill="#1c2128" stroke="#30363d" stroke-width="0" opacity="0.8"/>
+  <rect x="20" y="400" width="530" height="1" fill="#30363d"/>
+  <text x="38" y="425" class="font-ui" font-size="11" fill="#6b7280">Focus keyphrase:</text>
+  <rect x="148" y="410" width="160" height="22" rx="4" fill="#0d1117" stroke="#374151" stroke-width="1"/>
+  <text x="156" y="426" class="font-ui" font-size="11" fill="#a855f7">TypeScript SEO</text>
+
+  <!-- Generate SEO button -->
+  <rect x="82" y="448" width="386" height="18" rx="0" fill="#0d1117"/>
+  <rect x="195" y="442" width="160" height="36" rx="8" fill="#a855f7"/>
+  <text x="275" y="465" class="font-ui" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">✦ Generate SEO</text>
+
+  <!-- === RIGHT: Candidates panel === -->
+  <rect x="566" y="20" width="314" height="460" rx="8" fill="#0d1117" stroke="#a855f7" stroke-width="1.5"/>
+
+  <!-- Panel header -->
+  <rect x="566" y="20" width="314" height="46" rx="8" fill="#1a0a2e"/>
+  <rect x="566" y="54" width="314" height="12" fill="#1a0a2e"/>
+  <text x="580" y="48" class="font-ui" font-size="13" font-weight="700" fill="#a855f7">3 AI-generated candidates</text>
+  <line x1="566" y1="66" x2="880" y2="66" stroke="#a855f7" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Candidate Card 1 -->
+  <rect x="580" y="76" width="286" height="118" rx="8" fill="#1e2430"/>
+  <rect x="580" y="76" width="3" height="118" rx="2" fill="#a855f7"/>
+  <text x="592" y="96" class="font-ui" font-size="10" fill="#6b7280" font-weight="600" letter-spacing="0.5">CANDIDATE 1</text>
+  <text x="592" y="114" class="font-ui" font-size="11" fill="#ffffff">Discover the best TypeScript SEO</text>
+  <text x="592" y="130" class="font-ui" font-size="11" fill="#ffffff">library for your Next.js project...</text>
+  <!-- Badges -->
+  <rect x="592" y="141" width="64" height="18" rx="9" fill="#166534"/>
+  <text x="624" y="154" class="font-ui" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">142 chars</text>
+  <rect x="664" y="141" width="78" height="18" rx="9" fill="#a855f7"/>
+  <text x="703" y="154" class="font-ui" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">Keyphrase ✓</text>
+  <!-- Apply link -->
+  <text x="843" y="183" class="font-ui" font-size="11" font-weight="600" fill="#a855f7" text-anchor="end">Apply →</text>
+
+  <!-- Candidate Card 2 -->
+  <rect x="580" y="206" width="286" height="118" rx="8" fill="#1e2430"/>
+  <rect x="580" y="206" width="3" height="118" rx="2" fill="#374151"/>
+  <text x="592" y="226" class="font-ui" font-size="10" fill="#6b7280" font-weight="600" letter-spacing="0.5">CANDIDATE 2</text>
+  <text x="592" y="244" class="font-ui" font-size="11" fill="#ffffff">Build production-ready SEO with</text>
+  <text x="592" y="260" class="font-ui" font-size="11" fill="#ffffff">zero configuration in TypeScript...</text>
+  <!-- Badges -->
+  <rect x="592" y="271" width="64" height="18" rx="9" fill="#166534"/>
+  <text x="624" y="284" class="font-ui" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">138 chars</text>
+  <!-- Apply link -->
+  <text x="843" y="313" class="font-ui" font-size="11" font-weight="600" fill="#a855f7" text-anchor="end">Apply →</text>
+
+  <!-- Candidate Card 3 -->
+  <rect x="580" y="336" width="286" height="118" rx="8" fill="#1e2430"/>
+  <rect x="580" y="336" width="3" height="118" rx="2" fill="#92400e"/>
+  <text x="592" y="356" class="font-ui" font-size="10" fill="#6b7280" font-weight="600" letter-spacing="0.5">CANDIDATE 3</text>
+  <text x="592" y="374" class="font-ui" font-size="11" fill="#ffffff">The complete TypeScript SEO toolkit</text>
+  <text x="592" y="390" class="font-ui" font-size="11" fill="#ffffff">for modern web applications...</text>
+  <!-- Badges -->
+  <rect x="592" y="401" width="64" height="18" rx="9" fill="#92400e"/>
+  <text x="624" y="414" class="font-ui" font-size="9" font-weight="700" fill="#fbbf24" text-anchor="middle">151 chars</text>
+  <!-- Apply link -->
+  <text x="843" y="443" class="font-ui" font-size="11" font-weight="600" fill="#a855f7" text-anchor="end">Apply →</text>
+
+  <!-- @power-seo/ai watermark -->
+  <text x="723" y="470" class="font-mono" font-size="10" fill="#a855f7" text-anchor="middle" opacity="0.5">@power-seo/ai</text>
+</svg>

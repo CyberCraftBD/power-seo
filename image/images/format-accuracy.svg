@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      .font-ui { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; }
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+    </style>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1520;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1d4ed8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="cardGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#3b82f6" flood-opacity="0.25"/>
+    </filter>
+    <filter id="greenGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e2430" stroke-width="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="500" fill="url(#grid)" opacity="0.4"/>
+
+  <!-- Top accent -->
+  <line x1="0" y1="3" x2="900" y2="3" stroke="#3b82f6" stroke-width="3" opacity="0.8"/>
+
+  <!-- Title -->
+  <text x="450" y="44" class="font-ui" fill="#e6edf3" font-size="22" font-weight="700" text-anchor="middle">Real-world compression ratios</text>
+
+  <!-- Caption -->
+  <text x="450" y="476" class="font-mono" fill="#3b82f6" font-size="12" text-anchor="middle">calculateFormatSavings() — industry-verified ratios</text>
+
+  <!-- ===== CARD 1: JPEG → WebP (top-left) ===== -->
+  <rect x="36" y="68" width="390" height="190" rx="12" fill="#161b22" stroke="#3b82f6" stroke-width="1.5" filter="url(#cardGlow)"/>
+
+  <!-- Source format pill: JPEG -->
+  <rect x="60" y="98" width="74" height="34" rx="17" fill="#431407" stroke="#f97316" stroke-width="1.5"/>
+  <text x="97" y="121" class="font-ui" fill="#fb923c" font-size="15" font-weight="700" text-anchor="middle">JPEG</text>
+
+  <!-- Arrow -->
+  <line x1="142" y1="115" x2="210" y2="115" stroke="url(#arrowGrad)" stroke-width="3"/>
+  <polygon points="210,108 226,115 210,122" fill="#3b82f6"/>
+
+  <!-- Target format pill: WebP -->
+  <rect x="232" y="98" width="74" height="34" rx="17" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="269" y="121" class="font-ui" fill="#60a5fa" font-size="15" font-weight="700" text-anchor="middle">WebP</text>
+
+  <!-- Savings percentage -->
+  <text x="213" y="176" class="font-ui" fill="#4ade80" font-size="42" font-weight="800" text-anchor="middle" filter="url(#greenGlow)">67%</text>
+  <text x="213" y="198" class="font-ui" fill="#22c55e" font-size="15" font-weight="600" text-anchor="middle">smaller</text>
+
+  <!-- Detail -->
+  <rect x="60" y="214" width="306" height="30" rx="6" fill="#1a2030"/>
+  <text x="213" y="234" class="font-mono" fill="#6e7681" font-size="12" text-anchor="middle">1 MB JPEG  →  330 KB WebP</text>
+
+  <!-- ===== CARD 2: PNG → WebP (top-right) ===== -->
+  <rect x="474" y="68" width="390" height="190" rx="12" fill="#161b22" stroke="#3b82f6" stroke-width="1.5" filter="url(#cardGlow)"/>
+
+  <!-- Source format pill: PNG -->
+  <rect x="498" y="98" width="74" height="34" rx="17" fill="#431407" stroke="#f97316" stroke-width="1.5"/>
+  <text x="535" y="121" class="font-ui" fill="#fb923c" font-size="15" font-weight="700" text-anchor="middle">PNG</text>
+
+  <!-- Arrow -->
+  <line x1="580" y1="115" x2="648" y2="115" stroke="url(#arrowGrad)" stroke-width="3"/>
+  <polygon points="648,108 664,115 648,122" fill="#3b82f6"/>
+
+  <!-- Target format pill: WebP -->
+  <rect x="670" y="98" width="74" height="34" rx="17" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="707" y="121" class="font-ui" fill="#60a5fa" font-size="15" font-weight="700" text-anchor="middle">WebP</text>
+
+  <!-- Savings percentage -->
+  <text x="651" y="176" class="font-ui" fill="#4ade80" font-size="42" font-weight="800" text-anchor="middle" filter="url(#greenGlow)">60%</text>
+  <text x="651" y="198" class="font-ui" fill="#22c55e" font-size="15" font-weight="600" text-anchor="middle">smaller</text>
+
+  <!-- Detail -->
+  <rect x="498" y="214" width="306" height="30" rx="6" fill="#1a2030"/>
+  <text x="651" y="234" class="font-mono" fill="#6e7681" font-size="12" text-anchor="middle">1 MB PNG  →  400 KB WebP</text>
+
+  <!-- ===== CARD 3: PNG → AVIF (bottom-left) ===== -->
+  <rect x="36" y="278" width="390" height="200" rx="12" fill="#161b22" stroke="#3b82f6" stroke-width="1.5" filter="url(#cardGlow)"/>
+
+  <!-- Best badge -->
+  <rect x="60" y="288" width="70" height="22" rx="11" fill="#14532d" stroke="#22c55e" stroke-width="1"/>
+  <text x="95" y="304" class="font-ui" fill="#4ade80" font-size="11" font-weight="700" text-anchor="middle">BEST</text>
+
+  <!-- Source format pill: PNG -->
+  <rect x="60" y="316" width="74" height="34" rx="17" fill="#431407" stroke="#f97316" stroke-width="1.5"/>
+  <text x="97" y="339" class="font-ui" fill="#fb923c" font-size="15" font-weight="700" text-anchor="middle">PNG</text>
+
+  <!-- Arrow -->
+  <line x1="142" y1="333" x2="210" y2="333" stroke="url(#arrowGrad)" stroke-width="3"/>
+  <polygon points="210,326 226,333 210,340" fill="#3b82f6"/>
+
+  <!-- Target format pill: AVIF -->
+  <rect x="232" y="316" width="74" height="34" rx="17" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="269" y="339" class="font-ui" fill="#60a5fa" font-size="15" font-weight="700" text-anchor="middle">AVIF</text>
+
+  <!-- Savings percentage -->
+  <text x="213" y="398" class="font-ui" fill="#4ade80" font-size="42" font-weight="800" text-anchor="middle" filter="url(#greenGlow)">78%</text>
+  <text x="213" y="420" class="font-ui" fill="#22c55e" font-size="15" font-weight="600" text-anchor="middle">smaller</text>
+
+  <!-- Detail -->
+  <rect x="60" y="432" width="306" height="30" rx="6" fill="#1a2030"/>
+  <text x="213" y="452" class="font-mono" fill="#6e7681" font-size="12" text-anchor="middle">1 MB PNG  →  220 KB AVIF</text>
+
+  <!-- ===== CARD 4: JPEG → AVIF (bottom-right) ===== -->
+  <rect x="474" y="278" width="390" height="200" rx="12" fill="#161b22" stroke="#3b82f6" stroke-width="1.5" filter="url(#cardGlow)"/>
+
+  <!-- Source format pill: JPEG -->
+  <rect x="498" y="316" width="74" height="34" rx="17" fill="#431407" stroke="#f97316" stroke-width="1.5"/>
+  <text x="535" y="339" class="font-ui" fill="#fb923c" font-size="15" font-weight="700" text-anchor="middle">JPEG</text>
+
+  <!-- Arrow -->
+  <line x1="580" y1="333" x2="648" y2="333" stroke="url(#arrowGrad)" stroke-width="3"/>
+  <polygon points="648,326 664,333 648,340" fill="#3b82f6"/>
+
+  <!-- Target format pill: AVIF -->
+  <rect x="670" y="316" width="74" height="34" rx="17" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="707" y="339" class="font-ui" fill="#60a5fa" font-size="15" font-weight="700" text-anchor="middle">AVIF</text>
+
+  <!-- Savings percentage -->
+  <text x="651" y="398" class="font-ui" fill="#4ade80" font-size="42" font-weight="800" text-anchor="middle" filter="url(#greenGlow)">72%</text>
+  <text x="651" y="420" class="font-ui" fill="#22c55e" font-size="15" font-weight="600" text-anchor="middle">smaller</text>
+
+  <!-- Detail -->
+  <rect x="498" y="432" width="306" height="30" rx="6" fill="#1a2030"/>
+  <text x="651" y="452" class="font-mono" fill="#6e7681" font-size="12" text-anchor="middle">1 MB JPEG  →  280 KB AVIF</text>
+
+  <!-- Center divider lines -->
+  <line x1="450" y1="68" x2="450" y2="462" stroke="#30363d" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <line x1="36" y1="270" x2="864" y2="270" stroke="#30363d" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+</svg>

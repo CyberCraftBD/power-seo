@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- Main panel -->
+  <rect x="30" y="20" width="840" height="442" rx="12" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="450" y="58" fill="#ffffff" font-size="18" font-weight="700" text-anchor="middle">Feature Comparison</text>
+  <line x1="340" y1="64" x2="560" y2="64" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Column header backgrounds -->
+  <!-- @power-seo/analytics header — green accent -->
+  <rect x="414" y="76" width="220" height="52" rx="6" fill="#22c55e"/>
+  <!-- GSC Native UI header -->
+  <rect x="644" y="76" width="110" height="52" rx="6" fill="#21262d"/>
+  <!-- Semrush header -->
+  <rect x="764" y="76" width="96" height="52" rx="6" fill="#21262d"/>
+
+  <!-- Feature column header -->
+  <text x="56" y="110" fill="#8b949e" font-size="12" font-weight="600">Feature</text>
+
+  <!-- Column headers text -->
+  <text x="524" y="97" fill="#000000" font-size="13" font-weight="700" text-anchor="middle">@power-seo</text>
+  <text x="524" y="116" fill="#000000" font-size="11" font-weight="600" text-anchor="middle">/analytics</text>
+
+  <text x="699" y="107" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">GSC Native UI</text>
+
+  <text x="812" y="107" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">Semrush</text>
+
+  <!-- Column dividers -->
+  <line x1="404" y1="76" x2="404" y2="454" stroke="#21262d" stroke-width="1"/>
+  <line x1="634" y1="76" x2="634" y2="454" stroke="#21262d" stroke-width="1"/>
+  <line x1="754" y1="76" x2="754" y2="454" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row data -->
+  <!-- Row heights: 8 rows, ~42px each, starting at y=138 -->
+
+  <!-- ===== ROW 1: Combines audit + GSC data ===== -->
+  <rect x="36" y="134" width="828" height="36" fill="#0d1117"/>
+  <text x="56" y="156" fill="#ffffff" font-size="12">Combines audit + GSC data</text>
+  <!-- analytics: check -->
+  <circle cx="524" cy="152" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="524" y="157" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <!-- GSC: cross -->
+  <circle cx="699" cy="152" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="699" y="157" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+  <!-- Semrush: cross -->
+  <circle cx="812" cy="152" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="812" y="157" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+
+  <!-- ===== ROW 2: TypeScript API ===== -->
+  <rect x="36" y="170" width="828" height="36" fill="#161b22"/>
+  <text x="56" y="192" fill="#ffffff" font-size="12">TypeScript API</text>
+  <circle cx="524" cy="188" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="524" y="193" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="699" cy="188" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="699" y="193" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+  <circle cx="812" cy="188" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="812" y="193" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+
+  <!-- ===== ROW 3: Free / open source ===== -->
+  <rect x="36" y="206" width="828" height="36" fill="#0d1117"/>
+  <text x="56" y="228" fill="#ffffff" font-size="12">Free / open source</text>
+  <circle cx="524" cy="224" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="524" y="229" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="699" cy="224" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="699" y="229" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="812" cy="224" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="812" y="229" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+
+  <!-- ===== ROW 4: Embed in your app ===== -->
+  <rect x="36" y="242" width="828" height="36" fill="#161b22"/>
+  <text x="56" y="264" fill="#ffffff" font-size="12">Embed in your app</text>
+  <circle cx="524" cy="260" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="524" y="265" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="699" cy="260" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="699" y="265" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+  <circle cx="812" cy="260" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="812" y="265" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+
+  <!-- ===== ROW 5: Custom opportunities logic ===== -->
+  <rect x="36" y="278" width="828" height="36" fill="#0d1117"/>
+  <text x="56" y="300" fill="#ffffff" font-size="12">Custom opportunities logic</text>
+  <circle cx="524" cy="296" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="524" y="301" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="699" cy="296" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="699" y="301" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+  <circle cx="812" cy="296" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="812" y="301" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+
+  <!-- ===== ROW 6: Automated reporting ===== -->
+  <rect x="36" y="314" width="828" height="36" fill="#161b22"/>
+  <text x="56" y="336" fill="#ffffff" font-size="12">Automated reporting</text>
+  <circle cx="524" cy="332" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="524" y="337" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="699" cy="332" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="699" y="337" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+  <circle cx="812" cy="332" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="812" y="337" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+
+  <!-- ===== ROW 7: Position trend tracking ===== -->
+  <rect x="36" y="350" width="828" height="36" fill="#0d1117"/>
+  <text x="56" y="372" fill="#ffffff" font-size="12">Position trend tracking</text>
+  <circle cx="524" cy="368" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="524" y="373" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="699" cy="368" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="699" y="373" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="812" cy="368" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="812" y="373" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+
+  <!-- ===== ROW 8: No subscription ===== -->
+  <rect x="36" y="386" width="828" height="36" fill="#161b22"/>
+  <text x="56" y="408" fill="#ffffff" font-size="12">No subscription</text>
+  <circle cx="524" cy="404" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="524" y="409" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="699" cy="404" r="10" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="699" y="409" fill="#22c55e" font-size="16" font-weight="700" text-anchor="middle">✓</text>
+  <circle cx="812" cy="404" r="10" fill="#dc2626" fill-opacity="0.15"/>
+  <text x="812" y="409" fill="#dc2626" font-size="16" font-weight="700" text-anchor="middle">✗</text>
+
+  <!-- Rounded bottom edge clip for last row -->
+  <rect x="36" y="418" width="828" height="4" fill="#161b22"/>
+
+  <!-- Caption -->
+  <text x="450" y="476" fill="#ffffff" font-size="15" text-anchor="middle" font-weight="500">Your data. Your app. No subscription.</text>
+
+  <!-- @power-seo column highlight border -->
+  <rect x="414" y="134" width="220" height="288" fill="#22c55e" fill-opacity="0.03" stroke="#22c55e" stroke-width="1" stroke-opacity="0.3"/>
+</svg>

@@ -1,12 +1,16 @@
-# @power-seo/links — Internal Link Graph Analysis, Orphan Detection, and Link Equity Scoring
+# @power-seo/links
+
+![links banner](../../image/links/banner.svg)
 
 Build a directed link graph from your site's pages, detect orphan pages with zero inbound links, generate keyword-overlap-based link suggestions, and score link equity with a PageRank-style algorithm.
 
-[![npm version](https://img.shields.io/npm/v/@power-seo/links?style=flat-square)](https://www.npmjs.com/package/@power-seo/links)
-[![npm downloads](https://img.shields.io/npm/dm/@power-seo/links?style=flat-square)](https://www.npmjs.com/package/@power-seo/links)
-[![MIT License](https://img.shields.io/npm/l/@power-seo/links?style=flat-square)](../../LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square)](https://www.typescriptlang.org/)
-[![Tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen?style=flat-square)](#)
+[![npm version](https://img.shields.io/npm/v/@power-seo/links)](https://www.npmjs.com/package/@power-seo/links)
+[![npm downloads](https://img.shields.io/npm/dm/@power-seo/links)](https://www.npmjs.com/package/@power-seo/links)
+[![Socket](https://socket.dev/api/badge/npm/package/@power-seo/links)](https://socket.dev/npm/package/@power-seo/links)
+[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/links)
 
 `@power-seo/links` gives you a complete internal linking intelligence layer for your SEO tooling. Internal link structure is one of the most actionable on-page SEO signals — it determines how search engines discover and understand your content, and how link equity flows through your site. Yet most SEO tools treat it as a secondary concern. This package makes it a first-class concern.
 
@@ -14,11 +18,25 @@ Given a list of pages and their outbound links, `buildLinkGraph` constructs a fu
 
 The package is designed to integrate directly with `@power-seo/audit` for site-wide SEO audits, and with `@power-seo/analytics` for correlating link equity with traffic data. It is dependency-free, fully typed, and tree-shakeable.
 
-## Documentation
+> **Zero dependencies** — no runtime dependencies; pure TypeScript computation.
 
-- **Package docs:** [`apps/docs/src/content/docs/packages/links.mdx`](../../apps/docs/src/content/docs/packages/links.mdx)
-- **Ecosystem overview:** [`README.md`](../../README.md)
-- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+---
+
+## Why @power-seo/links?
+
+| | Without | With |
+|---|---|---|
+| Orphan detection | ❌ Manual crawl | ✅ `findOrphanPages()` in-memory graph |
+| Link suggestions | ❌ Guesswork | ✅ Keyword-overlap-based contextual suggestions |
+| Link equity | ❌ Third-party tools | ✅ PageRank-style scoring built-in |
+| Graph construction | ❌ Build from scratch | ✅ `buildLinkGraph()` — directed graph in one call |
+| Audit integration | ❌ Separate toolchain | ✅ Designed to integrate with `@power-seo/audit` |
+| TypeScript support | ❌ Untyped | ✅ Full type coverage for all graph structures |
+| Zero dependencies | ❌ External libs | ✅ Pure TypeScript, no runtime dependencies |
+
+![Links Comparison](../../image/links/comparison.svg)
+
+---
 
 ## Features
 
@@ -32,32 +50,42 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 - **Normalized URL handling** — URLs are normalized before graph construction to prevent duplicate nodes from trailing slashes or case differences
 - **Zero dependencies** — no runtime dependencies; pure TypeScript computation
 
-## Table of Contents
+![Link Dashboard UI](../../image/links/dashboard-ui.svg)
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Build a Link Graph](#build-a-link-graph)
-  - [Find Orphan Pages](#find-orphan-pages)
-  - [Generate Link Suggestions](#generate-link-suggestions)
-  - [Analyze Link Equity](#analyze-link-equity)
-  - [Integration with Audit](#integration-with-audit)
-- [API Reference](#api-reference)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
+---
+
+## Comparison
+
+| Feature | @power-seo/links | Screaming Frog | Ahrefs | Custom scripts |
+| --- | :---: | :---: | :---: | :---: |
+| Programmatic link graph | ✅ | ❌ | ❌ | Manual |
+| Orphan page detection | ✅ | ✅ | ✅ | Manual |
+| Keyword-based suggestions | ✅ | ❌ | ❌ | Manual |
+| PageRank-style equity | ✅ | ❌ | ✅ | Manual |
+| Audit integration | ✅ | ❌ | ❌ | — |
+| Zero dependencies | ✅ | ❌ | ❌ | — |
+| TypeScript-first | ✅ | ❌ | ❌ | — |
+| Tree-shakeable | ✅ | ❌ | ❌ | — |
+
+![Link Equity Accuracy](../../image/links/equity-accuracy.svg)
+
+---
 
 ## Installation
 
 ```bash
-# npm
 npm install @power-seo/links
+```
 
-# yarn
+```bash
 yarn add @power-seo/links
+```
 
-# pnpm
+```bash
 pnpm add @power-seo/links
 ```
+
+---
 
 ## Quick Start
 
@@ -80,6 +108,10 @@ const orphans = findOrphanPages(graph);
 const equity = analyzeLinkEquity(graph);
 // { 'https://example.com/': 0.48, 'https://example.com/about': 0.18, ... }
 ```
+
+![Orphan Detection Benefit](../../image/links/orphan-benefit.svg)
+
+---
 
 ## Usage
 
@@ -241,6 +273,8 @@ const enrichedPages = auditReport.pages.map((page) => ({
 }));
 ```
 
+---
+
 ## API Reference
 
 ### `buildLinkGraph(pages)`
@@ -304,16 +338,51 @@ import type {
 } from '@power-seo/links';
 ```
 
+---
+
+## Use Cases
+
+- **Content audit tools** — detect orphan pages and prioritize internal linking improvements across your site
+- **Headless CMS** — run link analysis after every publish to keep the site graph healthy
+- **SEO dashboards** — visualize link equity distribution and identify pages that need more inbound links
+- **CI/CD pipelines** — fail builds when orphan pages exceed a configurable threshold
+- **Content strategy** — use link suggestions to build topical clusters automatically
+
+---
+
+## Architecture Overview
+
+- **Pure TypeScript** — no compiled binary, no native modules
+- **Zero dependencies** — no runtime dependencies; pure TypeScript computation
+- **Framework-agnostic** — works in Next.js, Remix, Vite, Node.js, Edge, or any JS runtime
+- **SSR compatible** — no browser-specific APIs; safe for server-side or CLI usage
+- **Edge runtime safe** — no Node.js-specific APIs; runs in Cloudflare Workers, Vercel Edge, Deno
+- **Tree-shakeable** — `"sideEffects": false` with named exports per function
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+
+---
+
+## Supply Chain Security
+
+- No install scripts (`postinstall`, `preinstall`)
+- No runtime network access
+- No `eval` or dynamic code execution
+- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
+- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
+- Safe for SSR, Edge, and server environments
+
+---
+
 ## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
 
-`@power-seo/links` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
+All 17 packages are independently installable — use only what you need.
 
 | Package                                                                                    | Install                             | Description                                                             |
 | ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
@@ -330,15 +399,19 @@ import type {
 
 ---
 
+## Keywords
+
+internal links seo · link graph · orphan pages · link equity · pagerank typescript · internal linking tool · link suggestion · seo link analysis · orphan page detection · link structure · internal link audit · link graph analysis · seo link building · pagerank algorithm · typescript link graph · nextjs internal links · headless cms links · link equity scoring · seo link suggestions · programmatic internal linking
+
+---
+
 ## About [CyberCraft Bangladesh](https://ccbd.dev)
 
-**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software development and Full Stack SEO service provider company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-|                      |                                                                |
-| -------------------- | -------------------------------------------------------------- |
-| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
-| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
-| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
+[![Website](https://img.shields.io/badge/Website-ccbd.dev-blue?style=for-the-badge)](https://ccbd.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-cybercraftbd-black?style=for-the-badge&logo=github)](https://github.com/cybercraftbd)
+[![npm](https://img.shields.io/badge/npm-power--seo-red?style=for-the-badge&logo=npm)](https://www.npmjs.com/org/power-seo)
+[![Email](https://img.shields.io/badge/Email-info@ccbd.dev-green?style=for-the-badge&logo=gmail)](mailto:info@ccbd.dev)
 
 © 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)

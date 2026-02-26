@@ -1,0 +1,52 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Rate-Limit Aware — Auto-Retry and Backoff</text>
+  <!-- Left: Without rate-limit handling -->
+  <rect x="30" y="56" width="390" height="280" rx="8" fill="#161b22"/>
+  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1a0505"/>
+  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Without rate-limit handling</text>
+  <!-- Failed requests timeline -->
+  <text x="48" y="116" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">Request 1: OK (200)</text>
+  <text x="48" y="136" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">Request 2: OK (200)</text>
+  <text x="48" y="156" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">Request 3: OK (200)</text>
+  <text x="48" y="176" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">Request 4: 429 TOO MANY REQUESTS</text>
+  <text x="48" y="196" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">Request 5: 429 TOO MANY REQUESTS</text>
+  <text x="48" y="216" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">Error: API rate limit exceeded</text>
+  <text x="48" y="236" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">  at AhrefsClient.request</text>
+  <!-- Error box -->
+  <rect x="48" y="258" width="354" height="42" rx="6" fill="#1a0505"/>
+  <text x="225" y="276" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">Data pipeline crashes</text>
+  <text x="225" y="292" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Manual retry required — full backfill lost</text>
+  <!-- Arrow -->
+  <text x="450" y="210" font-family="'Segoe UI', sans-serif" font-size="36" fill="#14b8a6" text-anchor="middle" font-weight="700">→</text>
+  <!-- Right: With rate-limit handling -->
+  <rect x="480" y="56" width="390" height="280" rx="8" fill="#161b22"/>
+  <rect x="480" y="56" width="390" height="34" rx="8" fill="#031a1a"/>
+  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#14b8a6" text-anchor="middle">With @power-seo/integrations</text>
+  <!-- Auto-retry timeline -->
+  <text x="498" y="116" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 1: OK (200)</text>
+  <text x="498" y="136" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 2: OK (200)</text>
+  <text x="498" y="156" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 3: OK (200)</text>
+  <text x="498" y="176" font-family="'Courier New', monospace" font-size="12" fill="#f59e0b">Request 4: 429 → wait 2s → retry</text>
+  <text x="498" y="196" font-family="'Courier New', monospace" font-size="12" fill="#f59e0b">Request 4: 429 → wait 4s → retry</text>
+  <text x="498" y="216" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 4: OK (200) ✓</text>
+  <text x="498" y="236" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 5: OK (200) ✓</text>
+  <!-- Success box -->
+  <rect x="498" y="258" width="354" height="42" rx="6" fill="#031a1a"/>
+  <text x="675" y="276" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">All requests completed — zero data loss</text>
+  <text x="675" y="292" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Exponential backoff: 1s → 2s → 4s → 8s</text>
+  <!-- Bottom config -->
+  <rect x="30" y="356" width="840" height="100" rx="8" fill="#161b22"/>
+  <text x="450" y="382" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">Configurable retry behavior</text>
+  <text x="120" y="410" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">new SeoResearchClient(&#123;</text>
+  <text x="120" y="430" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  retry</text>
+  <text x="164" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123; </text>
+  <text x="188" y="430" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">maxRetries</text>
+  <text x="278" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="290" y="430" font-family="'Courier New', monospace" font-size="12" fill="#14b8a6">5</text>
+  <text x="306" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">, </text>
+  <text x="318" y="430" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">strategy</text>
+  <text x="390" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="402" y="430" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'exponential'</text>
+  <text x="504" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> &#125; &#125;)</text>
+</svg>

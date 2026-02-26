@@ -1,0 +1,54 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">validateSchema() — Catch Errors Before Google Does</text>
+  <!-- Left panel -->
+  <rect x="30" y="58" width="400" height="290" rx="8" fill="#161b22"/>
+  <rect x="30" y="58" width="400" height="32" rx="8" fill="#1e2430"/>
+  <rect x="30" y="78" width="400" height="12" fill="#1e2430"/>
+  <text x="230" y="79" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">validateSchema(articleData)</text>
+  <!-- Valid fields -->
+  <text x="46" y="120" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
+  <text x="64" y="120" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">headline: </text>
+  <text x="148" y="120" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'Article Title'</text>
+  <text x="46" y="146" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
+  <text x="64" y="146" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">url: </text>
+  <text x="100" y="146" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'https://example.com/a'</text>
+  <text x="46" y="172" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
+  <text x="64" y="172" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">datePublished: </text>
+  <text x="190" y="172" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'2025-01-15'</text>
+  <!-- Invalid fields -->
+  <text x="46" y="198" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">✗</text>
+  <text x="64" y="198" font-family="'Courier New', monospace" font-size="12" fill="#fca5a5">author: </text>
+  <text x="122" y="198" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">undefined</text>
+  <text x="210" y="198" font-family="'Courier New', monospace" font-size="12" fill="#ef4444"> ← required</text>
+  <text x="46" y="224" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">✗</text>
+  <text x="64" y="224" font-family="'Courier New', monospace" font-size="12" fill="#fca5a5">@type: </text>
+  <text x="118" y="224" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">missing</text>
+  <text x="185" y="224" font-family="'Courier New', monospace" font-size="12" fill="#ef4444"> ← required</text>
+  <!-- Valid count -->
+  <text x="46" y="270" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e">3 fields valid</text>
+  <text x="46" y="292" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444">2 required fields missing</text>
+  <!-- Right panel -->
+  <rect x="470" y="58" width="400" height="290" rx="8" fill="#161b22"/>
+  <rect x="470" y="58" width="400" height="32" rx="8" fill="#1e2430"/>
+  <rect x="470" y="78" width="400" height="12" fill="#1e2430"/>
+  <text x="670" y="79" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Build output</text>
+  <!-- Error box -->
+  <rect x="486" y="100" width="368" height="120" rx="6" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="670" y="124" font-family="'Segoe UI', sans-serif" font-size="14" fill="#fca5a5" text-anchor="middle" font-weight="700">SchemaValidationError</text>
+  <text x="670" y="148" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">2 required fields missing in ArticleSchema.</text>
+  <text x="670" y="168" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">Missing: author, @type</text>
+  <text x="670" y="190" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">Build will warn in production.</text>
+  <!-- Result object -->
+  <text x="486" y="250" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#123;</text>
+  <text x="500" y="270" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  valid</text>
+  <text x="545" y="270" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="555" y="270" font-family="'Courier New', monospace" font-size="12" fill="#79c0ff">false</text>
+  <text x="500" y="292" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  issues</text>
+  <text x="551" y="292" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: [ ... 2 issues ]</text>
+  <text x="486" y="312" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#125;</text>
+  <!-- Caption -->
+  <text x="450" y="388" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Catch schema errors before Google does.</text>
+  <text x="450" y="412" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">validateSchema() returns { valid, issues } with per-field error messages — all typed</text>
+  <text x="450" y="438" font-family="'Segoe UI', sans-serif" font-size="13" fill="#0ea5e9" text-anchor="middle">@power-seo/schema</text>
+</svg>

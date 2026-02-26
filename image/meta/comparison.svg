@@ -1,0 +1,56 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="46" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Feature Comparison</text>
+  <!-- Column headers -->
+  <rect x="40" y="60" width="240" height="38" rx="6" fill="#7c3aed"/>
+  <text x="160" y="84" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">@power-seo/meta</text>
+  <rect x="300" y="60" width="240" height="38" rx="6" fill="#1e2430"/>
+  <text x="420" y="84" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">next-seo</text>
+  <rect x="560" y="60" width="240" height="38" rx="6" fill="#1e2430"/>
+  <text x="680" y="84" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Manual Metadata</text>
+  <!-- Row labels and cells -->
+  <defs>
+    <style>
+      .rowLabel { font-family: 'Segoe UI', sans-serif; font-size: 13px; fill: #e2e8f0; }
+      .check { font-size: 16px; fill: #7c3aed; }
+      .cross { font-size: 16px; fill: #ef4444; }
+    </style>
+  </defs>
+  <!-- Rows -->
+  <rect x="0" y="112" width="900" height="40" fill="#0f1621"/>
+  <rect x="0" y="192" width="900" height="40" fill="#0f1621"/>
+  <rect x="0" y="272" width="900" height="40" fill="#0f1621"/>
+  <rect x="0" y="352" width="900" height="40" fill="#0f1621"/>
+  <rect x="0" y="432" width="900" height="40" fill="#0f1621"/>
+  <!-- Row 1: Next.js App Router -->
+  <text x="820" y="137" class="rowLabel" text-anchor="end">Next.js App Router</text>
+  <text x="160" y="140" text-anchor="middle" font-size="18" fill="#7c3aed">✓</text>
+  <text x="420" y="140" text-anchor="middle" font-size="18" fill="#7c3aed">✓</text>
+  <text x="680" y="140" text-anchor="middle" font-size="18" fill="#7c3aed">✓</text>
+  <!-- Row 2: Remix -->
+  <text x="820" y="217" class="rowLabel" text-anchor="end">Remix support</text>
+  <text x="160" y="220" text-anchor="middle" font-size="18" fill="#7c3aed">✓</text>
+  <text x="420" y="220" text-anchor="middle" font-size="18" fill="#ef4444">✗</text>
+  <text x="680" y="220" text-anchor="middle" font-size="18" fill="#ef4444">✗</text>
+  <!-- Row 3: Express -->
+  <text x="820" y="297" class="rowLabel" text-anchor="end">Express support</text>
+  <text x="160" y="300" text-anchor="middle" font-size="18" fill="#7c3aed">✓</text>
+  <text x="420" y="300" text-anchor="middle" font-size="18" fill="#ef4444">✗</text>
+  <text x="680" y="300" text-anchor="middle" font-size="18" fill="#ef4444">✗</text>
+  <!-- Row 4: Robots builder -->
+  <text x="820" y="377" class="rowLabel" text-anchor="end">Robots builder</text>
+  <text x="160" y="380" text-anchor="middle" font-size="18" fill="#7c3aed">✓</text>
+  <text x="420" y="380" text-anchor="middle" font-size="18" fill="#ef4444">✗</text>
+  <text x="680" y="380" text-anchor="middle" font-size="18" fill="#ef4444">✗</text>
+  <!-- Row 5: Type validation -->
+  <text x="820" y="457" class="rowLabel" text-anchor="end">Type validation</text>
+  <text x="160" y="460" text-anchor="middle" font-size="18" fill="#7c3aed">✓</text>
+  <text x="420" y="460" text-anchor="middle" font-size="18" fill="#ef4444">✗</text>
+  <text x="680" y="460" text-anchor="middle" font-size="18" fill="#ef4444">✗</text>
+  <!-- Column dividers -->
+  <line x1="280" y1="60" x2="280" y2="480" stroke="#1e2430" stroke-width="1"/>
+  <line x1="540" y1="60" x2="540" y2="480" stroke="#1e2430" stroke-width="1"/>
+  <line x1="800" y1="60" x2="800" y2="480" stroke="#1e2430" stroke-width="1"/>
+  <!-- Bottom caption -->
+  <text x="450" y="498" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle">The only meta package that works everywhere.</text>
+</svg>

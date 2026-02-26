@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+      .font-ui { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="450" y="38" class="font-ui" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">Feature Comparison</text>
+
+  <!-- Table container -->
+  <rect x="60" y="56" width="780" height="390" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Column definitions:
+       Col 1 (feature label): x=60, w=220
+       Col 2 (@power-seo/ai): x=280, w=180
+       Col 3 (SurferSEO AI): x=460, w=180
+       Col 4 (Custom prompts): x=640, w=200
+  -->
+
+  <!-- Header row background -->
+  <rect x="60" y="56" width="780" height="50" rx="8" fill="#161b22"/>
+  <rect x="60" y="90" width="780" height="16" fill="#161b22"/>
+
+  <!-- Header: Feature (col 1) -->
+  <text x="170" y="87" class="font-ui" font-size="13" font-weight="600" fill="#9ca3af" text-anchor="middle">Feature</text>
+
+  <!-- Header: @power-seo/ai (col 2) - fuchsia background -->
+  <rect x="280" y="60" width="178" height="46" fill="#2d1246"/>
+  <rect x="280" y="90" width="178" height="16" fill="#2d1246"/>
+  <text x="369" y="83" class="font-mono" font-size="12" font-weight="700" fill="#a855f7" text-anchor="middle">@power-seo/ai</text>
+  <text x="369" y="98" class="font-ui" font-size="10" fill="#d8b4fe" text-anchor="middle">this package</text>
+
+  <!-- Header: SurferSEO AI (col 3) -->
+  <rect x="458" y="60" width="180" height="46" fill="#1c2128"/>
+  <rect x="458" y="90" width="180" height="16" fill="#1c2128"/>
+  <text x="548" y="87" class="font-ui" font-size="12" font-weight="600" fill="#9ca3af" text-anchor="middle">SurferSEO AI</text>
+
+  <!-- Header: Custom prompts (col 4) -->
+  <rect x="638" y="60" width="202" height="46" fill="#1c2128"/>
+  <rect x="638" y="90" width="202" height="16" fill="#1c2128"/>
+  <text x="739" y="87" class="font-ui" font-size="12" font-weight="600" fill="#9ca3af" text-anchor="middle">Custom prompts</text>
+
+  <!-- Column dividers -->
+  <line x1="280" y1="56" x2="280" y2="446" stroke="#30363d" stroke-width="1"/>
+  <line x1="458" y1="56" x2="458" y2="446" stroke="#30363d" stroke-width="1"/>
+  <line x1="638" y1="56" x2="638" y2="446" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Row height = 36, starting y = 106 -->
+  <!-- Row 1: TypeScript API -->
+  <rect x="60" y="106" width="780" height="36" fill="#161b22"/>
+  <rect x="280" y="106" width="178" height="36" fill="#1e1030" opacity="0.5"/>
+  <text x="100" y="129" class="font-ui" font-size="13" fill="#e2e8f0">TypeScript API</text>
+  <text x="369" y="129" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <text x="548" y="129" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="739" y="129" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <line x1="60" y1="142" x2="840" y2="142" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 2: Any LLM provider -->
+  <rect x="60" y="142" width="780" height="36" fill="#161b22"/>
+  <rect x="280" y="142" width="178" height="36" fill="#1e1030" opacity="0.5"/>
+  <text x="100" y="165" class="font-ui" font-size="13" fill="#e2e8f0">Any LLM provider</text>
+  <text x="369" y="165" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <text x="548" y="165" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="739" y="165" class="font-ui" font-size="15" fill="#9ca3af" text-anchor="middle">~</text>
+  <line x1="60" y1="178" x2="840" y2="178" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 3: Free / open source -->
+  <rect x="60" y="178" width="780" height="36" fill="#0f1519"/>
+  <rect x="280" y="178" width="178" height="36" fill="#1e1030" opacity="0.5"/>
+  <text x="100" y="201" class="font-ui" font-size="13" fill="#e2e8f0">Free / open source</text>
+  <text x="369" y="201" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <text x="548" y="201" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="739" y="201" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <line x1="60" y1="214" x2="840" y2="214" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 4: Typed output -->
+  <rect x="60" y="214" width="780" height="36" fill="#161b22"/>
+  <rect x="280" y="214" width="178" height="36" fill="#1e1030" opacity="0.5"/>
+  <text x="100" y="237" class="font-ui" font-size="13" fill="#e2e8f0">Typed output</text>
+  <text x="369" y="237" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <text x="548" y="237" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="739" y="237" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <line x1="60" y1="250" x2="840" y2="250" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 5: Robust parser -->
+  <rect x="60" y="250" width="780" height="36" fill="#0f1519"/>
+  <rect x="280" y="250" width="178" height="36" fill="#1e1030" opacity="0.5"/>
+  <text x="100" y="273" class="font-ui" font-size="13" fill="#e2e8f0">Robust parser</text>
+  <text x="369" y="273" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <text x="548" y="273" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="739" y="273" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <line x1="60" y1="286" x2="840" y2="286" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 6: Batch processing -->
+  <rect x="60" y="286" width="780" height="36" fill="#161b22"/>
+  <rect x="280" y="286" width="178" height="36" fill="#1e1030" opacity="0.5"/>
+  <text x="100" y="309" class="font-ui" font-size="13" fill="#e2e8f0">Batch processing</text>
+  <text x="369" y="309" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <text x="548" y="309" class="font-ui" font-size="15" fill="#9ca3af" text-anchor="middle">~</text>
+  <text x="739" y="309" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <line x1="60" y1="322" x2="840" y2="322" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 7: No subscription -->
+  <rect x="60" y="322" width="780" height="36" fill="#0f1519"/>
+  <rect x="280" y="322" width="178" height="36" fill="#1e1030" opacity="0.5"/>
+  <text x="100" y="345" class="font-ui" font-size="13" fill="#e2e8f0">No subscription</text>
+  <text x="369" y="345" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <text x="548" y="345" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="739" y="345" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <line x1="60" y1="358" x2="840" y2="358" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Row 8: Keyphrase validation -->
+  <rect x="60" y="358" width="780" height="36" fill="#161b22"/>
+  <rect x="280" y="358" width="178" height="36" fill="#1e1030" opacity="0.5"/>
+  <text x="100" y="381" class="font-ui" font-size="13" fill="#e2e8f0">Keyphrase validation</text>
+  <text x="369" y="381" class="font-ui" font-size="16" font-weight="700" fill="#a855f7" text-anchor="middle">✓</text>
+  <text x="548" y="381" class="font-ui" font-size="15" fill="#9ca3af" text-anchor="middle">~</text>
+  <text x="739" y="381" class="font-ui" font-size="16" font-weight="700" fill="#ef4444" text-anchor="middle">✗</text>
+  <line x1="60" y1="394" x2="840" y2="394" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Score row -->
+  <rect x="60" y="394" width="780" height="52" rx="0" fill="#0d1117"/>
+  <rect x="60" y="430" width="780" height="16" rx="8" fill="#0d1117"/>
+  <text x="100" y="424" class="font-ui" font-size="12" font-weight="600" fill="#9ca3af">Score</text>
+  <rect x="310" y="404" width="118" height="28" rx="6" fill="#2d1246"/>
+  <text x="369" y="423" class="font-mono" font-size="13" font-weight="700" fill="#a855f7" text-anchor="middle">8 / 8</text>
+  <rect x="498" y="404" width="100" height="28" rx="6" fill="#1c2128"/>
+  <text x="548" y="423" class="font-ui" font-size="13" font-weight="600" fill="#ef4444" text-anchor="middle">2 / 8</text>
+  <rect x="689" y="404" width="100" height="28" rx="6" fill="#1c2128"/>
+  <text x="739" y="423" class="font-ui" font-size="13" font-weight="600" fill="#9ca3af" text-anchor="middle">3 / 8</text>
+
+  <!-- Caption -->
+  <text x="450" y="473" class="font-ui" font-size="15" fill="#ffffff" text-anchor="middle">AI SEO assistance. Without the subscription.</text>
+</svg>

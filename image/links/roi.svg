@@ -1,0 +1,43 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="38" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Organic Sessions — Previously Orphaned Pages</text>
+  <!-- Grid -->
+  <line x1="80" y1="60" x2="80" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="80" y1="360" x2="820" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="80" y1="280" x2="820" y2="280" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="80" y1="200" x2="820" y2="200" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="80" y1="120" x2="820" y2="120" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <!-- Y labels -->
+  <text x="70" y="364" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0</text>
+  <text x="70" y="284" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">500</text>
+  <text x="70" y="204" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">1,000</text>
+  <text x="70" y="124" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">1,500</text>
+  <!-- X labels (weeks) -->
+  <text x="170" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 1</text>
+  <text x="290" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 2</text>
+  <text x="410" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 3</text>
+  <text x="530" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 4</text>
+  <text x="650" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 5</text>
+  <text x="770" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Week 6</text>
+  <!-- "Links added" vertical dashed line -->
+  <line x1="410" y1="60" x2="410" y2="360" stroke="#f59e0b" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="415" y="80" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f59e0b">Links added</text>
+  <!-- Orphan detection label -->
+  <text x="250" y="80" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Orphan pages detected</text>
+  <!-- Data line -->
+  <polygon points="170,340 290,338 410,336 530,295 650,245 770,280" fill="#f59e0b" opacity="0.12"/>
+  <polyline points="170,340 290,338 410,336 530,295 650,245 770,280" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <!-- Data points -->
+  <circle cx="170" cy="340" r="5" fill="#f59e0b"/>
+  <circle cx="290" cy="338" r="5" fill="#f59e0b"/>
+  <circle cx="410" cy="336" r="5" fill="#f59e0b"/>
+  <circle cx="530" cy="295" r="5" fill="#f59e0b"/>
+  <circle cx="650" cy="245" r="5" fill="#f59e0b"/>
+  <circle cx="770" cy="280" r="5" fill="#f59e0b"/>
+  <!-- ROI Badge -->
+  <rect x="560" y="110" width="240" height="56" rx="8" fill="#451a03"/>
+  <text x="680" y="133" font-family="'Segoe UI', sans-serif" font-size="14" fill="#fde68a" text-anchor="middle" font-weight="700">+18% organic sessions</text>
+  <text x="680" y="154" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fbbf24" text-anchor="middle">from fixed orphan pages</text>
+  <text x="450" y="435" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Orphan pages recovered. Equity redistributed. Traffic follows.</text>
+  <text x="450" y="458" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Internal links are one of the most impactful (and often overlooked) SEO levers</text>
+</svg>
