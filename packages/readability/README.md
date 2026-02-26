@@ -33,7 +33,7 @@ Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Fles
 ![Readability Comparison](../../image/readability/comparison.svg)
 
 
-<a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" alt="Buy me a coffee"/></a>
+[![Buy me a coffee](https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/ccbd.dev)
 
 ---
 
