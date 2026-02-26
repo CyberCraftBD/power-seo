@@ -133,19 +133,7 @@ jobs:
           fi
           gh release create "$TAG" \
             --title "Release v${{ steps.version.outputs.version }}" \
-            --notes "## @power-seo v${{ steps.version.outputs.version }}
-
-          All 17 packages published to npm under the \`@power-seo\` scope.
-
-          ### Install any package
-
-          \`\`\`bash
-          npm install @power-seo/core
-          npm install @power-seo/react
-          # ...any of the 17 packages
-          \`\`\`
-
-          See the [full package list](https://www.npmjs.com/org/power-seo) on npm."
+            --notes-file CHANGELOG.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

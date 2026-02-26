@@ -1,0 +1,66 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Pattern Matching — Named Params, Wildcards, Regex</text>
+  <!-- Pattern table -->
+  <rect x="30" y="56" width="840" height="300" rx="8" fill="#161b22"/>
+  <!-- Header row -->
+  <rect x="30" y="56" width="840" height="36" rx="8" fill="#1f1005"/>
+  <text x="160" y="79" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle" font-weight="700">Pattern (from)</text>
+  <text x="390" y="79" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle" font-weight="700">Incoming URL</text>
+  <text x="590" y="79" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle" font-weight="700">Destination (to)</text>
+  <text x="790" y="79" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle" font-weight="700">Match</text>
+  <!-- Dividers -->
+  <line x1="280" y1="56" x2="280" y2="356" stroke="#1e2430" stroke-width="1"/>
+  <line x1="500" y1="56" x2="500" y2="356" stroke="#1e2430" stroke-width="1"/>
+  <line x1="700" y1="56" x2="700" y2="356" stroke="#1e2430" stroke-width="1"/>
+  <!-- Row 1: named param -->
+  <rect x="30" y="92" width="840" height="38" fill="#0f1621"/>
+  <text x="48" y="115" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">/blog/:slug</text>
+  <text x="298" y="115" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">/blog/my-post</text>
+  <text x="518" y="115" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">/articles/my-post</text>
+  <text x="790" y="115" font-family="'Segoe UI', sans-serif" font-size="16" fill="#22c55e" text-anchor="middle">✓</text>
+  <!-- Row 2: wildcard -->
+  <rect x="30" y="130" width="840" height="38" fill="#161b22"/>
+  <text x="48" y="153" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">/old/*</text>
+  <text x="298" y="153" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">/old/any/deep/path</text>
+  <text x="518" y="153" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">/new/any/deep/path</text>
+  <text x="790" y="153" font-family="'Segoe UI', sans-serif" font-size="16" fill="#22c55e" text-anchor="middle">✓</text>
+  <!-- Row 3: query string -->
+  <rect x="30" y="168" width="840" height="38" fill="#0f1621"/>
+  <text x="48" y="191" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">/shop?cat=:cat</text>
+  <text x="298" y="191" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">/shop?cat=shoes</text>
+  <text x="518" y="191" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">/category/shoes</text>
+  <text x="790" y="191" font-family="'Segoe UI', sans-serif" font-size="16" fill="#22c55e" text-anchor="middle">✓</text>
+  <!-- Row 4: regex -->
+  <rect x="30" y="206" width="840" height="38" fill="#161b22"/>
+  <text x="48" y="229" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">/^\/p\/(\d+)$/</text>
+  <text x="298" y="229" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">/p/4827</text>
+  <text x="518" y="229" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">/products/4827</text>
+  <text x="790" y="229" font-family="'Segoe UI', sans-serif" font-size="16" fill="#22c55e" text-anchor="middle">✓</text>
+  <!-- Row 5: no match -->
+  <rect x="30" y="244" width="840" height="38" fill="#0f1621"/>
+  <text x="48" y="267" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">/blog/:slug</text>
+  <text x="298" y="267" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">/news/headline</text>
+  <text x="518" y="267" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">—</text>
+  <text x="790" y="267" font-family="'Segoe UI', sans-serif" font-size="16" fill="#ef4444" text-anchor="middle">✗</text>
+  <!-- Row 6: multi param -->
+  <rect x="30" y="282" width="840" height="38" fill="#161b22"/>
+  <text x="48" y="305" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">/:lang/blog/:slug</text>
+  <text x="298" y="305" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">/en/blog/typescript</text>
+  <text x="518" y="305" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">/en/articles/typescript</text>
+  <text x="790" y="305" font-family="'Segoe UI', sans-serif" font-size="16" fill="#22c55e" text-anchor="middle">✓</text>
+  <!-- Bottom feature chips -->
+  <rect x="30" y="374" width="160" height="30" rx="6" fill="#1f1005"/>
+  <text x="110" y="393" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Named params :slug</text>
+  <rect x="200" y="374" width="120" height="30" rx="6" fill="#1f1005"/>
+  <text x="260" y="393" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Wildcards *</text>
+  <rect x="330" y="374" width="140" height="30" rx="6" fill="#1f1005"/>
+  <text x="400" y="393" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Query strings</text>
+  <rect x="480" y="374" width="130" height="30" rx="6" fill="#1f1005"/>
+  <text x="545" y="393" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Regex patterns</text>
+  <rect x="620" y="374" width="140" height="30" rx="6" fill="#1f1005"/>
+  <text x="690" y="393" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Multi-param paths</text>
+  <!-- Caption -->
+  <text x="450" y="436" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Every URL pattern matched — named params, wildcards, regex, query strings.</text>
+  <text x="450" y="460" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/redirects — O(log n) lookup · 301/302/307/308/410 · TypeScript typed</text>
+</svg>

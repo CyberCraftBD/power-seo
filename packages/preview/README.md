@@ -1,5 +1,7 @@
 # @power-seo/preview
 
+![preview banner](../../image/preview/banner.svg)
+
 Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeScript — compute exactly how a page appears in Google search results and social shares without a headless browser or canvas.
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/preview)](https://www.npmjs.com/package/@power-seo/preview)
@@ -28,6 +30,8 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 | React preview components | ❌ Build from scratch | ✅ Drop-in `SerpPreview`, `OgPreview`, `TwitterPreview`, `PreviewPanel` |
 | Framework support | ❌ Browser tools only | ✅ Next.js, Remix, Node.js, Edge, any JS environment |
 
+![SERP Preview Comparison](../../image/preview/comparison.svg)
+
 ---
 
 ## Features
@@ -44,6 +48,8 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 - **Full TypeScript support** — complete type definitions for all inputs, outputs, and validation results
 - **Tree-shakeable** — import only the generators you use; `"sideEffects": false`
 - **Zero runtime dependencies** — pure computation, no canvas, no browser, no external libraries
+
+![Preview UI Components](../../image/preview/preview-ui.svg)
 
 ---
 
@@ -64,6 +70,8 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 | Tree-shakeable | ✅ | ❌ | Partial | ❌ | ❌ |
 | CI / Node.js usage | ✅ | ❌ | ❌ | ❌ | ✅ |
 | Zero runtime dependencies | ✅ | ❌ | ❌ | ❌ | ❌ |
+
+![Pixel Truncation Accuracy](../../image/preview/truncation-accuracy.svg)
 
 ---
 
@@ -109,6 +117,8 @@ const og = generateOgPreview({
 console.log(og.image?.valid);    // true
 console.log(og.image?.message);  // undefined (dimensions are correct)
 ```
+
+![CMS Preview Benefit](../../image/preview/cms-benefit.svg)
 
 ---
 
@@ -492,7 +502,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 20 builders + 18 React components |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 21 React components |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |

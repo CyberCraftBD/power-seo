@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+      .font-ui { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    </style>
+    <marker id="arrow-fuchsia" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a855f7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- Subtle grid -->
+  <defs>
+    <pattern id="grid2" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#161b22" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="500" fill="url(#grid2)"/>
+
+  <!-- Title -->
+  <text x="450" y="38" class="font-ui" font-size="15" font-weight="600" fill="#6b7280" text-anchor="middle">LLM-Agnostic Architecture</text>
+
+  <!-- CENTER AIConfig box -->
+  <rect x="295" y="170" width="210" height="140" rx="8" fill="#161b22" stroke="#a855f7" stroke-width="2"/>
+  <text x="400" y="196" class="font-mono" font-size="13" font-weight="700" fill="#a855f7" text-anchor="middle">AIConfig</text>
+  <line x1="295" y1="202" x2="505" y2="202" stroke="#a855f7" stroke-width="0.8" opacity="0.4"/>
+  <text x="310" y="222" class="font-mono" font-size="11" fill="#e2e8f0">provider:</text>
+  <text x="400" y="222" class="font-mono" font-size="11" fill="#86efac">'anthropic'</text>
+  <text x="310" y="242" class="font-mono" font-size="11" fill="#e2e8f0">content:</text>
+  <text x="400" y="242" class="font-mono" font-size="11" fill="#93c5fd">articleText</text>
+  <text x="310" y="262" class="font-mono" font-size="11" fill="#e2e8f0">targetKeyword:</text>
+  <text x="310" y="278" class="font-mono" font-size="11" fill="#86efac">'TypeScript SEO'</text>
+
+  <!-- ARROW: AIConfig top-left to OpenAI (top-left corner) -->
+  <!-- Top-left provider: OpenAI -->
+  <rect x="30" y="60" width="200" height="100" rx="8" fill="#0f1a12" stroke="#166534" stroke-width="1.5"/>
+  <circle cx="52" cy="82" r="6" fill="#22c55e"/>
+  <text x="66" y="87" class="font-ui" font-size="13" font-weight="700" fill="#ffffff">OpenAI GPT-4o</text>
+  <line x1="30" y1="96" x2="230" y2="96" stroke="#166534" stroke-width="0.5" opacity="0.4"/>
+  <text x="44" y="115" class="font-mono" font-size="10" fill="#9ca3af">MetaDescriptionResult[]</text>
+  <text x="44" y="132" class="font-mono" font-size="10" fill="#6b7280">&#x2192; text, charCount, ...</text>
+
+  <!-- Arrow from AIConfig top to OpenAI -->
+  <line x1="330" y1="170" x2="220" y2="160" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrow-fuchsia)" opacity="0.85"/>
+
+  <!-- Top-right provider: Anthropic Claude -->
+  <rect x="670" y="60" width="200" height="100" rx="8" fill="#1a0e08" stroke="#c2410c" stroke-width="1.5"/>
+  <circle cx="692" cy="82" r="6" fill="#f97316"/>
+  <text x="706" y="87" class="font-ui" font-size="13" font-weight="700" fill="#ffffff">Anthropic Claude</text>
+  <line x1="670" y1="96" x2="870" y2="96" stroke="#c2410c" stroke-width="0.5" opacity="0.4"/>
+  <text x="684" y="115" class="font-mono" font-size="10" fill="#9ca3af">MetaDescriptionResult[]</text>
+  <text x="684" y="132" class="font-mono" font-size="10" fill="#6b7280">&#x2192; text, charCount, ...</text>
+
+  <!-- Arrow from AIConfig top-right to Claude -->
+  <line x1="470" y1="170" x2="690" y2="160" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrow-fuchsia)" opacity="0.85"/>
+
+  <!-- Bottom-left provider: Google Gemini -->
+  <rect x="30" y="340" width="200" height="100" rx="8" fill="#080f1a" stroke="#1d4ed8" stroke-width="1.5"/>
+  <circle cx="52" cy="362" r="6" fill="#3b82f6"/>
+  <text x="66" y="367" class="font-ui" font-size="13" font-weight="700" fill="#ffffff">Google Gemini</text>
+  <line x1="30" y1="376" x2="230" y2="376" stroke="#1d4ed8" stroke-width="0.5" opacity="0.4"/>
+  <text x="44" y="395" class="font-mono" font-size="10" fill="#9ca3af">MetaDescriptionResult[]</text>
+  <text x="44" y="412" class="font-mono" font-size="10" fill="#6b7280">&#x2192; text, charCount, ...</text>
+
+  <!-- Arrow from AIConfig bottom-left to Gemini -->
+  <line x1="330" y1="310" x2="220" y2="342" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrow-fuchsia)" opacity="0.85"/>
+
+  <!-- Bottom-right provider: Ollama -->
+  <rect x="670" y="340" width="200" height="100" rx="8" fill="#111318" stroke="#4b5563" stroke-width="1.5"/>
+  <circle cx="692" cy="362" r="6" fill="#9ca3af"/>
+  <text x="706" y="367" class="font-ui" font-size="13" font-weight="700" fill="#ffffff">Ollama (local)</text>
+  <line x1="670" y1="376" x2="870" y2="376" stroke="#4b5563" stroke-width="0.5" opacity="0.4"/>
+  <text x="684" y="395" class="font-mono" font-size="10" fill="#9ca3af">MetaDescriptionResult[]</text>
+  <text x="684" y="412" class="font-mono" font-size="10" fill="#6b7280">&#x2192; text, charCount, ...</text>
+
+  <!-- Arrow from AIConfig bottom-right to Ollama -->
+  <line x1="470" y1="310" x2="690" y2="342" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arrow-fuchsia)" opacity="0.85"/>
+
+  <!-- RIGHT: Same output box -->
+  <rect x="590" y="185" width="248" height="100" rx="8" fill="#0a1f0a" stroke="#22c55e" stroke-width="2"/>
+  <text x="714" y="214" class="font-ui" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Same typed output.</text>
+  <text x="714" y="236" class="font-ui" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Any provider.</text>
+  <line x1="590" y1="250" x2="838" y2="250" stroke="#22c55e" stroke-width="0.5" opacity="0.4"/>
+  <text x="714" y="270" class="font-mono" font-size="11" fill="#86efac" text-anchor="middle">MetaDescriptionResult[]</text>
+
+  <!-- Arrows from providers converging to output box -->
+  <line x1="230" y1="110" x2="590" y2="220" stroke="#22c55e" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" marker-end="url(#arrow-fuchsia)"/>
+  <line x1="670" y1="110" x2="838" y2="210" stroke="#22c55e" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+  <line x1="230" y1="390" x2="590" y2="265" stroke="#22c55e" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+  <line x1="670" y1="390" x2="838" y2="265" stroke="#22c55e" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+  <!-- Caption -->
+  <text x="450" y="470" class="font-ui" font-size="14" fill="#ffffff" text-anchor="middle">Switch LLMs without changing your SEO code.</text>
+</svg>

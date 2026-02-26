@@ -1,22 +1,40 @@
-# @power-seo/images — Image SEO Auditing, Format Analysis, and Image Sitemap Generation
+# @power-seo/images
+
+![images banner](../../image/images/banner.svg)
 
 Alt text auditing, CWV-aware lazy loading checks, WebP/AVIF format recommendations, and image sitemap XML generation with the `<image:image>` extension.
 
-[![npm version](https://img.shields.io/npm/v/@power-seo/images?style=flat-square)](https://www.npmjs.com/package/@power-seo/images)
-[![npm downloads](https://img.shields.io/npm/dm/@power-seo/images?style=flat-square)](https://www.npmjs.com/package/@power-seo/images)
-[![MIT License](https://img.shields.io/npm/l/@power-seo/images?style=flat-square)](../../LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square)](https://www.typescriptlang.org/)
-[![Tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen?style=flat-square)](#)
+[![npm version](https://img.shields.io/npm/v/@power-seo/images)](https://www.npmjs.com/package/@power-seo/images)
+[![npm downloads](https://img.shields.io/npm/dm/@power-seo/images)](https://www.npmjs.com/package/@power-seo/images)
+[![Socket](https://socket.dev/api/badge/npm/package/@power-seo/images)](https://socket.dev/npm/package/@power-seo/images)
+[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/images)
 
 `@power-seo/images` is a focused toolkit for every image-related SEO concern. Images are consistently among the top contributors to poor Core Web Vitals scores and lost organic visibility — yet they are also the easiest wins once you have the right analysis in place. This package gives you precise, programmatic insight into your image SEO health.
 
 The alt text auditor catches not just empty alt attributes but the subtler issues: filenames used as alt text, alt text that is too short to be meaningful, duplicate alt text across multiple images, and whether your focus keyphrase appears in at least one image's alt text. The lazy loading auditor is CWV-aware — it will flag above-the-fold images that have `loading="lazy"` applied (which delays LCP) and below-the-fold images that are missing it (which wastes bandwidth). The format analyzer detects each image's current format by URL extension and recommends modern alternatives (WebP, AVIF) for formats that lack compression efficiency. Finally, `generateImageSitemap` produces standards-compliant XML using Google's `image:` namespace extension so your images appear in image search results.
 
-## Documentation
+> **Zero dependencies** — pure TypeScript; no external runtime libraries required.
 
-- **Package docs:** [`apps/docs/src/content/docs/packages/images.mdx`](../../apps/docs/src/content/docs/packages/images.mdx)
-- **Ecosystem overview:** [`README.md`](../../README.md)
-- **Contributing guide:** [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+---
+
+## Why @power-seo/images?
+
+| | Without | With |
+|---|---|---|
+| Alt text quality | ❌ Spot-check | ✅ 6 issue types: missing, short, filename, duplicate... |
+| CWV-aware loading | ❌ Generic advice | ✅ Above/below-fold-aware lazy loading audit |
+| Format detection | ❌ Manual | ✅ JPEG/PNG/GIF → WebP/AVIF recommendations |
+| Image sitemap | ❌ Write XML manually | ✅ Standards-compliant `image:` namespace XML |
+| Scoring | ❌ None | ✅ Per-analyzer 0–100 scores |
+| LCP protection | ❌ Unknown | ✅ Flags hero images incorrectly marked lazy |
+| TypeScript support | ❌ Untyped | ✅ Full type coverage for all inputs and results |
+
+![Images Comparison](../../image/images/comparison.svg)
+
+---
 
 ## Features
 
@@ -31,33 +49,42 @@ The alt text auditor catches not just empty alt attributes but the subtler issue
 - **Type-safe throughout** — complete TypeScript types covering all inputs, outputs, formats, and issue structures
 - **Zero dependencies** — pure TypeScript, no external runtime libraries
 
-## Table of Contents
+![Image Audit UI](../../image/images/audit-ui.svg)
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Alt Text Analysis](#alt-text-analysis)
-  - [Lazy Loading Audit](#lazy-loading-audit)
-  - [Format Detection and Recommendations](#format-detection-and-recommendations)
-  - [Batch Format Analysis](#batch-format-analysis)
-  - [Image Sitemap Generation](#image-sitemap-generation)
-  - [Full Page Image Audit](#full-page-image-audit)
-- [API Reference](#api-reference)
-- [The @power-seo Ecosystem](#the-power-seo-ecosystem)
-- [About CyberCraft Bangladesh](#about-cybercraft-bangladesh)
+---
+
+## Comparison
+
+| Feature | @power-seo/images | sharp | Lighthouse | next/image | imagemin |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Alt text quality audit | ✅ | ❌ | Partial | ❌ | ❌ |
+| CWV-aware lazy loading audit | ✅ | ❌ | Partial | ❌ | ❌ |
+| Format recommendations | ✅ | ❌ | Partial | ✅ | Partial |
+| Image sitemap generation | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Severity-leveled issues | ✅ | ❌ | ✅ | ❌ | ❌ |
+| Programmatic API | ✅ | ✅ | Partial | ✅ | ✅ |
+| Zero dependencies | ✅ | ❌ | ❌ | ❌ | ❌ |
+| TypeScript-first | ✅ | Partial | ❌ | ✅ | ❌ |
+
+![Image Format Accuracy](../../image/images/format-accuracy.svg)
+
+---
 
 ## Installation
 
 ```bash
-# npm
 npm install @power-seo/images
+```
 
-# yarn
+```bash
 yarn add @power-seo/images
+```
 
-# pnpm
+```bash
 pnpm add @power-seo/images
 ```
+
+---
 
 ## Quick Start
 
@@ -101,6 +128,10 @@ const formatResult = analyzeImageFormats({ images });
 console.log(formatResult.recommendations);
 // [{ src: '/hero.jpg', current: 'jpeg', recommended: 'webp', reason: '...' }, ...]
 ```
+
+![CWV Benefit](../../image/images/cwv-benefit.svg)
+
+---
 
 ## Usage
 
@@ -210,9 +241,6 @@ const gifRec = getFormatRecommendation('gif');
 //   reason: 'Animated GIF files are very large. Use animated WebP or consider a video element instead.',
 //   priority: 'high',
 // }
-
-const webpRec = getFormatRecommendation('webp');
-// { format: 'webp', recommended: ['avif'], reason: 'AVIF provides additional compression gains over WebP.', priority: 'low' }
 ```
 
 ### Batch Format Analysis
@@ -255,10 +283,6 @@ const htmlContent = `
   <img src="/products/widget-detail.webp" alt="Widget detail view" />
 `;
 const images: SitemapImage[] = extractImageEntries(htmlContent, 'https://example.com');
-// [
-//   { loc: 'https://example.com/products/widget.jpg', title: 'Premium blue widget', caption: 'Blue widget' },
-//   { loc: 'https://example.com/products/widget-detail.webp', caption: 'Widget detail view' },
-// ]
 
 // Generate image sitemap XML
 const sitemapXml = generateImageSitemap([
@@ -270,40 +294,12 @@ const sitemapXml = generateImageSitemap([
         title: 'Premium Blue Widget',
         caption: 'Front view of our blue widget',
       },
-      {
-        loc: 'https://example.com/products/widget-detail.webp',
-        title: 'Widget Detail',
-        caption: 'Close-up detail view',
-      },
-    ],
-  },
-  {
-    pageUrl: 'https://example.com/about',
-    images: [
-      {
-        loc: 'https://example.com/team/team-photo.jpg',
-        title: 'Our Team',
-        caption: 'The CyberCraft Bangladesh team',
-      },
     ],
   },
 ]);
 
 // Save to public/image-sitemap.xml
 console.log(sitemapXml);
-// <?xml version="1.0" encoding="UTF-8"?>
-// <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-//         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-//   <url>
-//     <loc>https://example.com/products/widget</loc>
-//     <image:image>
-//       <image:loc>https://example.com/products/widget.jpg</image:loc>
-//       <image:title>Premium Blue Widget</image:title>
-//       <image:caption>Front view of our blue widget</image:caption>
-//     </image:image>
-//     ...
-//   </url>
-// </urlset>
 ```
 
 ### Full Page Image Audit
@@ -328,6 +324,8 @@ console.log(`Alt text issues: ${altResult.issueCount}`);
 console.log(`Lazy loading issues: ${lazyResult.issues.length}`);
 console.log(`Format optimizations needed: ${formatResult.recommendations.length}`);
 ```
+
+---
 
 ## API Reference
 
@@ -440,16 +438,51 @@ import type {
 } from '@power-seo/images';
 ```
 
+---
+
+## Use Cases
+
+- **E-commerce platforms** — audit product image alt text and format optimization at scale before publishing
+- **CMS integrations** — validate image SEO health before content goes live; surface issues to authors
+- **Performance optimization pipelines** — run format recommendations as a CI step before deployment
+- **Image sitemap automation** — generate and update Google image sitemaps on every content change
+- **CWV optimization** — identify LCP-damaging lazy-loaded hero images automatically across all pages
+
+---
+
+## Architecture Overview
+
+- **Pure TypeScript** — no compiled binary, no native modules
+- **Zero dependencies** — no external runtime libraries required
+- **Framework-agnostic** — works in Next.js, Remix, Vite, Node.js, Edge
+- **SSR compatible** — no browser-specific APIs; safe for server-side use
+- **Edge runtime safe** — no Node.js-specific APIs; runs in Cloudflare Workers, Vercel Edge, Deno
+- **Tree-shakeable** — `"sideEffects": false` with named exports per analyzer function
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+
+---
+
+## Supply Chain Security
+
+- No install scripts (`postinstall`, `preinstall`)
+- No runtime network access
+- No `eval` or dynamic code execution
+- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
+- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
+- Safe for SSR, Edge, and server environments
+
+---
+
 ## The [@power-seo](https://www.npmjs.com/org/power-seo) Ecosystem
 
-`@power-seo/images` is part of the **@power-seo** monorepo — a complete, modular SEO toolkit for modern JavaScript applications.
+All 17 packages are independently installable — use only what you need.
 
 | Package                                                                                    | Install                             | Description                                                             |
 | ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
@@ -466,15 +499,19 @@ import type {
 
 ---
 
+## Keywords
+
+image seo · image alt text · alt text audit · lazy loading audit · core web vitals images · webp optimization · avif format · image sitemap · cwv image · image format audit · lcp image · cls images · image seo typescript · nextjs image seo · image optimization npm · seo image audit · alt text checker · image sitemap generator · image seo automation · typescript image seo
+
+---
+
 ## About [CyberCraft Bangladesh](https://ccbd.dev)
 
-**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software engineering company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
+**[CyberCraft Bangladesh](https://ccbd.dev)** is a Bangladesh-based enterprise-grade software development and Full Stack SEO service provider company specializing in ERP system development, AI-powered SaaS and business applications, full-stack SEO services, custom website development, and scalable eCommerce platforms. We design and develop intelligent, automation-driven SaaS and enterprise solutions that help startups, SMEs, NGOs, educational institutes, and large organizations streamline operations, enhance digital visibility, and accelerate growth through modern cloud-native technologies.
 
-|                      |                                                                |
-| -------------------- | -------------------------------------------------------------- |
-| **Website**          | [ccbd.dev](https://ccbd.dev)                                   |
-| **GitHub**           | [github.com/cybercraftbd](https://github.com/cybercraftbd)     |
-| **npm Organization** | [npmjs.com/org/power-seo](https://www.npmjs.com/org/power-seo) |
-| **Email**            | [info@ccbd.dev](mailto:info@ccbd.dev)                          |
+[![Website](https://img.shields.io/badge/Website-ccbd.dev-blue?style=for-the-badge)](https://ccbd.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-cybercraftbd-black?style=for-the-badge&logo=github)](https://github.com/cybercraftbd)
+[![npm](https://img.shields.io/badge/npm-power--seo-red?style=for-the-badge&logo=npm)](https://www.npmjs.com/org/power-seo)
+[![Email](https://img.shields.io/badge/Email-info@ccbd.dev-green?style=for-the-badge&logo=gmail)](mailto:info@ccbd.dev)
 
 © 2026 [CyberCraft Bangladesh](https://ccbd.dev) · Released under the [MIT License](../../LICENSE)

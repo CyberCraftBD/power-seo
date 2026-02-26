@@ -1,0 +1,70 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="42" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">SEO Data Integration Comparison</text>
+  <!-- Headers -->
+  <rect x="30" y="58" width="196" height="38" rx="6" fill="#14b8a6" opacity="0.9"/>
+  <text x="128" y="82" font-family="'Segoe UI', sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="700">@power-seo/integrations</text>
+  <rect x="238" y="58" width="148" height="38" rx="6" fill="#1e2430"/>
+  <text x="312" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Direct Ahrefs SDK</text>
+  <rect x="398" y="58" width="148" height="38" rx="6" fill="#1e2430"/>
+  <text x="472" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Semrush API</text>
+  <rect x="558" y="58" width="148" height="38" rx="6" fill="#1e2430"/>
+  <text x="632" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">DataForSEO</text>
+  <rect x="718" y="58" width="152" height="38" rx="6" fill="#1e2430"/>
+  <text x="794" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Manual fetch</text>
+  <!-- Dividers -->
+  <line x1="226" y1="58" x2="226" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="386" y1="58" x2="386" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="546" y1="58" x2="546" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <line x1="706" y1="58" x2="706" y2="360" stroke="#1e2430" stroke-width="1"/>
+  <!-- Row 1 -->
+  <rect x="0" y="108" width="900" height="36" fill="#0f1621"/>
+  <text x="870" y="131" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Unified response shape</text>
+  <text x="128" y="131" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="312" y="131" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="472" y="131" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="632" y="131" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="794" y="131" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <!-- Row 2 -->
+  <rect x="0" y="144" width="900" height="36" fill="#161b22"/>
+  <text x="870" y="167" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">6+ providers</text>
+  <text x="128" y="167" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="312" y="167" font-size="16" fill="#94a3b8" text-anchor="middle">Ahrefs only</text>
+  <text x="472" y="167" font-size="16" fill="#94a3b8" text-anchor="middle">Semrush only</text>
+  <text x="632" y="167" font-size="16" fill="#94a3b8" text-anchor="middle">DFSE only</text>
+  <text x="794" y="167" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <!-- Row 3 -->
+  <rect x="0" y="180" width="900" height="36" fill="#0f1621"/>
+  <text x="870" y="203" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Auto-retry on 429</text>
+  <text x="128" y="203" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="312" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="472" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="632" y="203" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
+  <text x="794" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <!-- Row 4 -->
+  <rect x="0" y="216" width="900" height="36" fill="#161b22"/>
+  <text x="870" y="239" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">TypeScript generics</text>
+  <text x="128" y="239" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="312" y="239" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
+  <text x="472" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="632" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="794" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <!-- Row 5 -->
+  <rect x="0" y="252" width="900" height="36" fill="#0f1621"/>
+  <text x="870" y="275" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Switch provider in 1 line</text>
+  <text x="128" y="275" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="312" y="275" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="472" y="275" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="632" y="275" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="794" y="275" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <!-- Row 6 -->
+  <rect x="0" y="288" width="900" height="36" fill="#161b22"/>
+  <text x="870" y="311" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Keywords + Backlinks + Rankings</text>
+  <text x="128" y="311" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="312" y="311" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="472" y="311" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="632" y="311" font-size="18" fill="#14b8a6" text-anchor="middle">✓</text>
+  <text x="794" y="311" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">One adapter layer for all major SEO data providers.</text>
+  <text x="450" y="420" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Unified shape · 6+ providers · auto-retry · TypeScript generics · switch in 1 line</text>
+</svg>

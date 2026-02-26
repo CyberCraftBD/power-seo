@@ -1,0 +1,60 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Events Queue Before Consent — None Lost</text>
+  <!-- Timeline diagram -->
+  <rect x="30" y="58" width="840" height="200" rx="8" fill="#161b22"/>
+  <!-- Timeline axis -->
+  <line x1="60" y1="180" x2="840" y2="180" stroke="#374151" stroke-width="2"/>
+  <!-- Time markers -->
+  <text x="60" y="200" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">t=0</text>
+  <text x="180" y="200" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">t=1s</text>
+  <text x="300" y="200" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">t=2s</text>
+  <text x="420" y="200" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">t=3s</text>
+  <text x="540" y="200" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">consent</text>
+  <text x="660" y="200" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">t=7s</text>
+  <text x="780" y="200" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">t=10s</text>
+  <!-- Consent line -->
+  <line x1="540" y1="80" x2="540" y2="195" stroke="#06b6d4" stroke-width="2" stroke-dasharray="5,3"/>
+  <rect x="548" y="80" width="110" height="20" rx="4" fill="#031a1a"/>
+  <text x="603" y="94" font-family="'Segoe UI', sans-serif" font-size="11" fill="#06b6d4" text-anchor="middle">grantConsent()</text>
+  <!-- Queued events (before consent, blocked) -->
+  <rect x="100" y="140" width="90" height="28" rx="4" fill="#2d1a00" stroke="#f59e0b" stroke-width="1"/>
+  <text x="145" y="158" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f59e0b" text-anchor="middle">page_view</text>
+  <rect x="230" y="140" width="90" height="28" rx="4" fill="#2d1a00" stroke="#f59e0b" stroke-width="1"/>
+  <text x="275" y="158" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f59e0b" text-anchor="middle">scroll_50</text>
+  <rect x="360" y="140" width="90" height="28" rx="4" fill="#2d1a00" stroke="#f59e0b" stroke-width="1"/>
+  <text x="405" y="158" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f59e0b" text-anchor="middle">click_cta</text>
+  <!-- Queue label -->
+  <text x="265" y="130" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f59e0b" text-anchor="middle">⏸ Events queued (waiting for consent)</text>
+  <!-- Flushed events (after consent, fires) -->
+  <rect x="560" y="140" width="90" height="28" rx="4" fill="#031a1a" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="605" y="158" font-family="'Courier New', monospace" font-size="10" fill="#06b6d4" text-anchor="middle">page_view ✓</text>
+  <rect x="660" y="140" width="90" height="28" rx="4" fill="#031a1a" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="705" y="158" font-family="'Courier New', monospace" font-size="10" fill="#06b6d4" text-anchor="middle">scroll_50 ✓</text>
+  <rect x="760" y="140" width="90" height="28" rx="4" fill="#031a1a" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="805" y="158" font-family="'Courier New', monospace" font-size="10" fill="#06b6d4" text-anchor="middle">click_cta ✓</text>
+  <text x="700" y="130" font-family="'Segoe UI', sans-serif" font-size="11" fill="#06b6d4" text-anchor="middle">▶ Queue flushed → all 3 providers</text>
+  <!-- Before/After table -->
+  <rect x="30" y="278" width="840" height="130" rx="8" fill="#161b22"/>
+  <!-- Header -->
+  <rect x="30" y="278" width="840" height="30" rx="8" fill="#1e2430"/>
+  <text x="180" y="297" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Scenario</text>
+  <text x="420" y="297" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Events before consent</text>
+  <text x="620" y="297" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Events lost</text>
+  <text x="800" y="297" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Result</text>
+  <!-- Row 1: No queue -->
+  <rect x="30" y="308" width="840" height="34" fill="#0f1621"/>
+  <text x="180" y="329" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">No queue (naive impl.)</text>
+  <text x="420" y="329" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Ignored / dropped</text>
+  <text x="620" y="329" font-family="'Segoe UI', sans-serif" font-size="16" fill="#ef4444" text-anchor="middle">✗ Lost</text>
+  <text x="800" y="329" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">Data gap in analytics</text>
+  <!-- Row 2: With queue -->
+  <rect x="30" y="342" width="840" height="34" fill="#161b22"/>
+  <text x="180" y="363" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">@power-seo/tracking queue</text>
+  <text x="420" y="363" font-family="'Segoe UI', sans-serif" font-size="12" fill="#06b6d4" text-anchor="middle">Queued in memory</text>
+  <text x="620" y="363" font-family="'Segoe UI', sans-serif" font-size="16" fill="#22c55e" text-anchor="middle">✓ Zero lost</text>
+  <text x="800" y="363" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">Full session captured</text>
+  <!-- Caption -->
+  <text x="450" y="430" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Events are queued, not dropped. Full session captured after opt-in.</text>
+  <text x="450" y="454" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/tracking — in-memory queue · flush on consent · per-provider event routing</text>
+</svg>

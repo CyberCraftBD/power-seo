@@ -1,5 +1,9 @@
 # @power-seo/react
 
+![react banner](../../image/react/banner.svg)
+
+Declarative React components for SEO meta tag management — title templates, Open Graph, Twitter Cards, canonical URLs, robots directives, hreflang, and breadcrumbs with JSON-LD, all from a single composable API that renders directly to the DOM.
+
 [![npm version](https://img.shields.io/npm/v/@power-seo/react)](https://www.npmjs.com/package/@power-seo/react)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/react)](https://www.npmjs.com/package/@power-seo/react)
 [![Socket](https://socket.dev/api/badge/npm/package/@power-seo/react)](https://socket.dev/npm/package/@power-seo/react)
@@ -8,8 +12,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-%3E%3D18-61DAFB)](https://react.dev/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/react)
-
-Declarative React components for SEO meta tag management — title templates, Open Graph, Twitter Cards, canonical URLs, robots directives, hreflang, and breadcrumbs with JSON-LD, all from a single composable API that renders directly to the DOM.
 
 > **Zero third-party dependencies** — only `react` and `@power-seo/core` as peers.
 
@@ -28,6 +30,8 @@ Declarative React components for SEO meta tag management — title templates, Op
 | Breadcrumbs | ❌ HTML nav only, no structured data | ✅ `<Breadcrumb>` renders nav + BreadcrumbList JSON-LD |
 | Framework support | ❌ Locked to next-seo or react-helmet | ✅ Next.js Pages Router, Vite, Gatsby, React 18/19 |
 
+![React SEO Comparison](../../image/react/comparison.svg)
+
 ---
 
 ## Features
@@ -44,6 +48,8 @@ Declarative React components for SEO meta tag management — title templates, Op
 - **React 19 native hoisting** — `<title>`, `<meta>`, and `<link>` tags hoist to `<head>` automatically in React 19; works with framework Head components in React 18
 - **TypeScript-first** — full `.d.ts` declarations, all props fully typed
 - **Tree-shakeable** — import only the components you use
+
+![React Head Component UI](../../image/react/head-ui.svg)
 
 ---
 
@@ -62,6 +68,8 @@ Declarative React components for SEO meta tag management — title templates, Op
 | Tree-shakeable                   | ✅               | Partial  | ❌           | ❌                 |
 | Works in Next.js Pages Router    | ✅               | ✅       | ✅           | ✅                 |
 | Works in Vite / Gatsby / CRA     | ✅               | ❌       | ✅           | ✅                 |
+
+![SSR Rendering Accuracy](../../image/react/ssr-accuracy.svg)
 
 ---
 
@@ -124,6 +132,8 @@ function BlogPage({ post }) {
 
 - `<title>My Post Title | My Site</title>`
 - Correct `og:image`, `twitter:card`, and `link rel="canonical"` tags on every page
+
+![React SEO Components Benefit](../../image/react/components-benefit.svg)
 
 ---
 
@@ -500,7 +510,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 20 builders + 18 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |

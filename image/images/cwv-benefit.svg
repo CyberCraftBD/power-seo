@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      .font-ui { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; }
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+    </style>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1520;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glowRed">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowGreen">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e2430" stroke-width="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="500" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- Top accent line -->
+  <line x1="0" y1="3" x2="900" y2="3" stroke="#3b82f6" stroke-width="3" opacity="0.8"/>
+
+  <!-- Title -->
+  <text x="450" y="42" class="font-ui" fill="#e6edf3" font-size="18" font-weight="700" text-anchor="middle">Core Web Vitals: LCP Improvement</text>
+
+  <!-- LEFT PANEL — Before -->
+  <rect x="28" y="60" width="390" height="400" rx="12" fill="#161b22" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- Panel header -->
+  <rect x="28" y="60" width="390" height="50" rx="12" fill="#2d0e0e"/>
+  <rect x="28" y="90" width="390" height="20" fill="#2d0e0e"/>
+  <text x="223" y="92" class="font-ui" fill="#ef4444" font-size="16" font-weight="700" text-anchor="middle">Before Image Audit</text>
+
+  <!-- LCP Gauge — Left (Red, Poor) -->
+  <!-- Gauge arc background -->
+  <path d="M 93 290 A 130 130 0 0 1 353 290" fill="none" stroke="#2d1a1a" stroke-width="20" stroke-linecap="round"/>
+  <!-- Gauge zones: green (good), yellow (needs improvement), red (poor) -->
+  <!-- Full arc = 180 degrees. Circumference of semicircle = π × r = 408.4 -->
+  <!-- Good: 0-130ms → roughly 0-30% = 54° -->
+  <!-- NI: 130-400ms → roughly 30-60% = 54° -->
+  <!-- Poor: 400ms+ → roughly 60-100% = 72° -->
+
+  <!-- Zone: green (0 to ~60° = left portion) -->
+  <path d="M 93 290 A 130 130 0 0 1 158 170" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="butt" opacity="0.3"/>
+  <!-- Zone: yellow (~60° to ~120°) -->
+  <path d="M 158 170 A 130 130 0 0 1 288 170" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="butt" opacity="0.3"/>
+  <!-- Zone: red (~120° to 180°) -->
+  <path d="M 288 170 A 130 130 0 0 1 353 290" fill="none" stroke="#ef4444" stroke-width="8" stroke-linecap="butt" opacity="0.3"/>
+
+  <!-- Arc fill: 4.2s is "Poor" → fill ~85% of arc (153°) -->
+  <path d="M 93 290 A 130 130 0 0 1 339 266" fill="none" stroke="#ef4444" stroke-width="20" stroke-linecap="round" opacity="0.9" filter="url(#glowRed)"/>
+
+  <!-- Needle for 4.2s (at ~153° from start = ~27° from right) -->
+  <line x1="223" y1="290" x2="319" y2="248" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="223" cy="290" r="8" fill="#1a0808" stroke="#ef4444" stroke-width="2"/>
+
+  <!-- Center LCP label -->
+  <text x="223" y="325" class="font-ui" fill="#ef4444" font-size="32" font-weight="800" text-anchor="middle">4.2s</text>
+  <text x="223" y="348" class="font-ui" fill="#6e7681" font-size="13" font-weight="400" text-anchor="middle">Largest Contentful Paint</text>
+
+  <!-- Poor badge -->
+  <rect x="183" y="358" width="80" height="26" rx="13" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="223" y="376" class="font-ui" fill="#f87171" font-size="13" font-weight="700" text-anchor="middle">Poor</text>
+
+  <!-- Issue list -->
+  <text x="58" y="405" class="font-ui" fill="#f87171" font-size="13">&#10007; 3 hero images loading eagerly</text>
+  <text x="58" y="428" class="font-ui" fill="#f87171" font-size="13">&#10007; No WebP conversion</text>
+  <text x="58" y="451" class="font-ui" fill="#f87171" font-size="13">&#10007; Missing lazy loading</text>
+
+  <!-- RIGHT PANEL — After -->
+  <rect x="482" y="60" width="390" height="400" rx="12" fill="#161b22" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- Panel header -->
+  <rect x="482" y="60" width="390" height="50" rx="12" fill="#0e1e3d"/>
+  <rect x="482" y="90" width="390" height="20" fill="#0e1e3d"/>
+  <text x="677" y="92" class="font-ui" fill="#3b82f6" font-size="16" font-weight="700" text-anchor="middle">After @power-seo/images</text>
+
+  <!-- LCP Gauge — Right (Green, Good) -->
+  <path d="M 547 290 A 130 130 0 0 1 807 290" fill="none" stroke="#1a2d1a" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- Zone backgrounds (same) -->
+  <path d="M 547 290 A 130 130 0 0 1 612 170" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="butt" opacity="0.3"/>
+  <path d="M 612 170 A 130 130 0 0 1 742 170" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="butt" opacity="0.3"/>
+  <path d="M 742 170 A 130 130 0 0 1 807 290" fill="none" stroke="#ef4444" stroke-width="8" stroke-linecap="butt" opacity="0.3"/>
+
+  <!-- Arc fill: 1.8s is "Good" → fill ~15% of arc (27°) -->
+  <path d="M 547 290 A 130 130 0 0 1 591 182" fill="none" stroke="#22c55e" stroke-width="20" stroke-linecap="round" opacity="0.9" filter="url(#glowGreen)"/>
+
+  <!-- Needle for 1.8s (at ~27° from left = near start) -->
+  <line x1="677" y1="290" x2="600" y2="196" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="677" cy="290" r="8" fill="#0a1a0a" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Center LCP label -->
+  <text x="677" y="325" class="font-ui" fill="#22c55e" font-size="32" font-weight="800" text-anchor="middle">1.8s</text>
+  <text x="677" y="348" class="font-ui" fill="#6e7681" font-size="13" font-weight="400" text-anchor="middle">Largest Contentful Paint</text>
+
+  <!-- Good badge -->
+  <rect x="637" y="358" width="80" height="26" rx="13" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="677" y="376" class="font-ui" fill="#4ade80" font-size="13" font-weight="700" text-anchor="middle">Good</text>
+
+  <!-- Success list -->
+  <text x="512" y="405" class="font-ui" fill="#4ade80" font-size="13">&#10003; Lazy loading added</text>
+  <text x="512" y="428" class="font-ui" fill="#4ade80" font-size="13">&#10003; Format converted to WebP</text>
+  <text x="512" y="451" class="font-ui" fill="#4ade80" font-size="13">&#10003; Images optimized</text>
+
+  <!-- Connecting arrow between panels -->
+  <rect x="425" y="226" width="50" height="28" rx="14" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <!-- Arrow body -->
+  <line x1="430" y1="240" x2="460" y2="240" stroke="#3b82f6" stroke-width="2.5"/>
+  <!-- Arrow head -->
+  <polygon points="462,234 474,240 462,246" fill="#3b82f6"/>
+
+  <!-- Improvement annotation -->
+  <rect x="388" y="272" width="124" height="40" rx="6" fill="#0d1a2e" stroke="#3b82f6" stroke-width="1"/>
+  <text x="450" y="289" class="font-ui" fill="#60a5fa" font-size="11" font-weight="700" text-anchor="middle">-57% LCP</text>
+  <text x="450" y="305" class="font-ui" fill="#6e7681" font-size="10" text-anchor="middle">4.2s → 1.8s</text>
+
+  <!-- Caption -->
+  <text x="450" y="484" class="font-ui" fill="#e6edf3" font-size="16" font-weight="400" text-anchor="middle">Image optimization is the fastest LCP win available.</text>
+</svg>

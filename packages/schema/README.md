@@ -1,5 +1,9 @@
 # @power-seo/schema
 
+![schema banner](../../image/schema/banner.svg)
+
+Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org builder functions, 21 React components, schema graph support, and field validation. Works in Next.js, Remix, Node.js, and Edge runtimes.
+
 [![npm version](https://img.shields.io/npm/v/@power-seo/schema)](https://www.npmjs.com/package/@power-seo/schema)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/schema)](https://www.npmjs.com/package/@power-seo/schema)
 [![Socket](https://socket.dev/api/badge/npm/package/@power-seo/schema)](https://socket.dev/npm/package/@power-seo/schema)
@@ -7,8 +11,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/schema)
-
-Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org builder functions, 21 React components, schema graph support, and field validation. Works in Next.js, Remix, Node.js, and Edge runtimes.
 
 `@power-seo/schema` gives you a fully typed, builder-function API for generating Google-compliant schema.org markup — with compile-time type checking on every schema property, a `validateSchema()` utility that surfaces missing required fields before pages go live, and pre-built React components that render `<script type="application/ld+json">` tags in one line. Combine multiple schemas into a single `@graph` document via `schemaGraph()` so Google parses all of them. All 23 schema types are independently importable and tree-shakeable.
 
@@ -27,6 +29,8 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 | Schema coverage | ❌ Only Article/FAQ in most packages | ✅ 23 types: Article, Product, FAQ, LocalBusiness, Event, Recipe, and more |
 | Framework support | ❌ WordPress / next-seo only | ✅ Next.js, Remix, Node.js, Edge, static site generators |
 
+![Schema Builder Comparison](../../image/schema/comparison.svg)
+
 ---
 
 ## Features
@@ -41,6 +45,8 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 - **Type-safe API** — TypeScript-first with full typed interfaces for every schema type including nested objects
 - **Tree-shakeable** — import only the schema types you use; zero dead code in your bundle
 - **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+
+![Schema React Component UI](../../image/schema/react-ui.svg)
 
 ---
 
@@ -58,6 +64,8 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 | Zero runtime dependencies      | ✅                | ❌       | ✅         | ❌         | ❌              |
 | TypeScript-first               | ✅                | Partial  | ✅         | ❌         | ❌              |
 | Tree-shakeable                 | ✅                | ❌       | ✅         | ❌         | ❌              |
+
+![Schema Validation Accuracy](../../image/schema/validation-accuracy.svg)
 
 ---
 
@@ -109,6 +117,8 @@ import { ArticleJsonLd } from '@power-seo/schema/react';
 />
 // Renders: <script type="application/ld+json">{"@context":"https://schema.org",...}</script>
 ```
+
+![Schema Rich Results](../../image/schema/rich-results.svg)
 
 ---
 

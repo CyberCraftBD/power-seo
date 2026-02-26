@@ -1,0 +1,58 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Readable Content Earns More Organic Traffic</text>
+  <!-- Chart -->
+  <rect x="60" y="56" width="780" height="290" rx="8" fill="#161b22"/>
+  <!-- Grid -->
+  <line x1="110" y1="80" x2="820" y2="80" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="115" x2="820" y2="115" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="150" x2="820" y2="150" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="185" x2="820" y2="185" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="220" x2="820" y2="220" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="255" x2="820" y2="255" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="290" x2="820" y2="290" stroke="#1e2430" stroke-width="1"/>
+  <!-- Y axis -->
+  <text x="105" y="84" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">40k</text>
+  <text x="105" y="119" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">32k</text>
+  <text x="105" y="154" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">24k</text>
+  <text x="105" y="189" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">16k</text>
+  <text x="105" y="224" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">8k</text>
+  <text x="105" y="259" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">4k</text>
+  <text x="105" y="294" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">0</text>
+  <!-- X labels -->
+  <text x="165" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Jan</text>
+  <text x="275" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Feb</text>
+  <text x="385" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Mar</text>
+  <text x="495" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Apr</text>
+  <text x="605" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">May</text>
+  <text x="715" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Jun</text>
+  <!-- Readable content line (purple, high) -->
+  <polyline points="165,260 275,240 385,210 495,175 605,130 715,90" stroke="#8b5cf6" stroke-width="3" fill="none" stroke-linejoin="round"/>
+  <circle cx="715" cy="90" r="5" fill="#8b5cf6"/>
+  <rect x="650" y="74" width="150" height="18" rx="4" fill="#1a0d2e"/>
+  <text x="725" y="87" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b5cf6" text-anchor="middle">Readable: 38.4k visits</text>
+  <!-- Difficult content line (red, low) -->
+  <polyline points="165,280 275,275 385,268 495,262 605,258 715,255" stroke="#ef4444" stroke-width="2" fill="none" stroke-dasharray="6,3" stroke-linejoin="round"/>
+  <circle cx="715" cy="255" r="5" fill="#ef4444"/>
+  <rect x="640" y="240" width="160" height="18" rx="4" fill="#1a0505"/>
+  <text x="720" y="253" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444" text-anchor="middle">Difficult: 4.8k visits</text>
+  <!-- Readability optimization marker -->
+  <line x1="385" y1="70" x2="385" y2="300" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="390" y="78" width="130" height="18" rx="4" fill="#1a0d2e"/>
+  <text x="455" y="91" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b5cf6" text-anchor="middle">Readability audit</text>
+  <!-- Legend -->
+  <line x1="130" y1="100" x2="160" y2="100" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="170" y="104" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b5cf6">Optimized content (FK score 65+)</text>
+  <line x1="130" y1="124" x2="160" y2="124" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="170" y="128" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">Difficult content (FK score below 50)</text>
+  <!-- KPI cards -->
+  <rect x="80" y="370" width="200" height="68" rx="8" fill="#161b22"/>
+  <text x="180" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Traffic increase</text>
+  <text x="180" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#8b5cf6" text-anchor="middle" font-weight="700">+700%</text>
+  <rect x="350" y="370" width="200" height="68" rx="8" fill="#161b22"/>
+  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Avg time on page</text>
+  <text x="450" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#8b5cf6" text-anchor="middle" font-weight="700">+2.4 min</text>
+  <rect x="620" y="370" width="200" height="68" rx="8" fill="#1a0d2e"/>
+  <text x="720" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Bounce rate drop</text>
+  <text x="720" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#8b5cf6" text-anchor="middle" font-weight="700">-28%</text>
+</svg>

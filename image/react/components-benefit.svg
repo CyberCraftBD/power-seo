@@ -1,0 +1,67 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">One Component. All Your SEO Tags.</text>
+  <!-- BEFORE panel -->
+  <rect x="30" y="56" width="390" height="330" rx="8" fill="#161b22"/>
+  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1e2430"/>
+  <rect x="30" y="78" width="390" height="12" fill="#1e2430"/>
+  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Before — Manual Meta Tags</text>
+  <!-- 8 manual tags -->
+  <text x="48" y="116" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;title&gt;My Page&lt;/title&gt;</text>
+  <text x="48" y="136" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta name="description" content="..." /&gt;</text>
+  <text x="48" y="156" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta property="og:title" content="..." /&gt;</text>
+  <text x="48" y="176" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta property="og:description" content="..." /&gt;</text>
+  <text x="48" y="196" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta property="og:image" content="..." /&gt;</text>
+  <text x="48" y="216" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta property="og:type" content="..." /&gt;</text>
+  <text x="48" y="236" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta name="twitter:card" content="..." /&gt;</text>
+  <text x="48" y="256" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;link rel="canonical" href="..." /&gt;</text>
+  <!-- Count badge -->
+  <rect x="48" y="275" width="160" height="28" rx="6" fill="#2d1b1b"/>
+  <text x="128" y="294" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">8 tags · spread across files</text>
+  <!-- Pain points -->
+  <text x="48" y="332" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">• Easy to miss OG tags</text>
+  <text x="48" y="350" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">• No TypeScript validation</text>
+  <text x="48" y="368" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">• Duplicated across routes</text>
+  <!-- Arrow -->
+  <text x="450" y="230" font-family="'Segoe UI', sans-serif" font-size="36" fill="#61dafb" text-anchor="middle" font-weight="700">→</text>
+  <!-- AFTER panel -->
+  <rect x="480" y="56" width="390" height="330" rx="8" fill="#161b22"/>
+  <rect x="480" y="56" width="390" height="34" rx="8" fill="#0c2444"/>
+  <rect x="480" y="78" width="390" height="12" fill="#0c2444"/>
+  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#61dafb" text-anchor="middle">After — @power-seo/react</text>
+  <!-- Single SEO component -->
+  <text x="498" y="116" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">import </text>
+  <text x="548" y="116" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">&#123; </text>
+  <text x="568" y="116" font-family="'Courier New', monospace" font-size="12" fill="#61dafb">SEO</text>
+  <text x="591" y="116" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> &#125; </text>
+  <text x="614" y="116" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">from</text>
+  <text x="648" y="116" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'@power-seo/react'</text>
+  <text x="498" y="144" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&lt;</text>
+  <text x="508" y="144" font-family="'Courier New', monospace" font-size="12" fill="#61dafb">SEO</text>
+  <text x="498" y="164" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  title</text>
+  <text x="540" y="164" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">=</text>
+  <text x="550" y="164" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">"My Page"</text>
+  <text x="498" y="184" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  description</text>
+  <text x="594" y="184" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">=</text>
+  <text x="604" y="184" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">"..."</text>
+  <text x="498" y="204" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  canonical</text>
+  <text x="578" y="204" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">=</text>
+  <text x="588" y="204" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">"https://..."</text>
+  <text x="498" y="224" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  og</text>
+  <text x="522" y="224" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">=&#123;&#123; </text>
+  <text x="548" y="224" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">image</text>
+  <text x="590" y="224" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="602" y="224" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">"..."</text>
+  <text x="636" y="224" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> &#125;&#125;</text>
+  <text x="498" y="244" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">/&gt;</text>
+  <!-- Count badge -->
+  <rect x="498" y="265" width="160" height="28" rx="6" fill="#0c2444"/>
+  <text x="578" y="284" font-family="'Segoe UI', sans-serif" font-size="13" fill="#61dafb" text-anchor="middle">1 component · all tags</text>
+  <!-- Benefits -->
+  <text x="498" y="332" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ All OG + Twitter auto-generated</text>
+  <text x="498" y="350" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Full TypeScript intellisense</text>
+  <text x="498" y="368" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Works in Next.js + Remix + Gatsby</text>
+  <!-- Caption -->
+  <text x="450" y="430" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Replace 8 scattered tags with a single typed component.</text>
+  <text x="450" y="454" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/react — SSR-compatible · OG · Twitter · Schema · TypeScript</text>
+</svg>
