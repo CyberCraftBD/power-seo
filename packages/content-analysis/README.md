@@ -379,7 +379,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-seo content analysis · yoast seo alternative · content scoring typescript · keyword density checker · react seo scoring · nextjs content analysis · seo score npm · focus keyphrase checker · meta description validator · heading seo checker · content quality gate · headless cms seo · seo readability checker · content optimization library · programmatic seo · keyphrase density analyzer · seo audit npm package · typescript seo library · content seo automation · react editor seo · ci seo check · edge runtime seo
+seo content analysis · yoast seo alternative · content scoring typescript · keyword density checker · react seo scoring · nextjs content analysis · seo score npm · focus keyphrase checker · meta description validator · heading seo checker · content quality gate · headless cms seo · seo readability checker · content optimization library · programmatic seo · keyphrase density analyzer · seo audit npm package · typescript seo library · content seo automation · edge runtime seo
 
 ---
 

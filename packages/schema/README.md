@@ -466,7 +466,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-json-ld structured data · schema.org typescript · rich results seo · next.js json-ld · react structured data · faq schema · product schema · article schema · breadcrumb schema · local business schema · schema graph · validate schema · seo schema builder · typescript json-ld · nextjs schema · remix seo · job posting schema · event schema · recipe schema · seo rich results · structured data react · schema.org builder · programmatic seo
+json-ld structured data · schema.org typescript · rich results seo · next.js json-ld · react structured data · faq schema · product schema · article schema · breadcrumb schema · local business schema · schema graph · validate schema · seo schema builder · typescript json-ld · nextjs schema · remix seo · job posting schema · event schema · recipe schema · programmatic seo
 
 ---
 

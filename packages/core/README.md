@@ -507,7 +507,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-seo utilities typescript · meta tag builder npm · pixel-accurate serp validator · keyword density calculator typescript · url normalization seo · canonical url builder · text statistics library · open graph meta tag builder · twitter card builder · hreflang link tag generator · robots directive builder · title template engine · seo primitives library · framework-agnostic seo utilities · token bucket rate limiter · seo types typescript · slug generator npm · html text extractor · nextjs seo utilities · seo constants npm · serp pixel width calculator · keyphrase occurrence analyzer · seo foundation package · shared seo types monorepo · seo utility functions typescript · meta description validator · structured data types typescript
+seo utilities typescript · meta tag builder npm · pixel-accurate serp validator · keyword density calculator typescript · url normalization seo · canonical url builder · text statistics library · open graph meta tag builder · twitter card builder · hreflang link tag generator · robots directive builder · title template engine · seo primitives library · framework-agnostic seo utilities · token bucket rate limiter · seo types typescript · html text extractor · nextjs seo utilities · seo foundation package · meta description validator
 
 ---
 
