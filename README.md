@@ -68,6 +68,32 @@
 
 ---
 
+## 📚 Documentation
+
+Complete guides and API reference available in the [`docs/`](./docs) directory:
+
+### Getting Started
+- **[Installation & Setup](./docs/wiki/01-installation-setup.md)** - Install power-seo for your framework
+- **[Quick Start](./docs/wiki/02-quick-start.md)** - Get running in 5 minutes
+- **[Package Selection](./docs/wiki/03-package-selection.md)** - Choose the right packages
+
+### Learning
+- **[Architecture Overview](./docs/wiki/04-architecture.md)** - Monorepo structure & design principles
+- **[Package Guides](./docs/wiki/pkg-core.md)** - Detailed API documentation for all 17 packages
+- **[Use Cases](./docs/wiki/uc-cms-blog.md)** - Real-world implementation examples
+- **[Troubleshooting](./docs/wiki/10-troubleshooting.md)** - Solutions to common issues
+
+### Community
+- **[Discussions](./docs/DISCUSSIONS.md)** - 20+ Q&A topics and best practices
+- **[Wiki Home](./docs/WIKI_HOME.md)** - Full wiki navigation and overview
+
+### Support
+- **GitHub Issues**: [Report bugs](https://github.com/CyberCraftBD/power-seo/issues)
+- **GitHub Discussions**: [Ask questions](https://github.com/CyberCraftBD/power-seo/discussions)
+- **Email**: info@ccbd.dev
+
+---
+
 ## Packages
 
 All 17 packages are independently installable — use only what you need.
