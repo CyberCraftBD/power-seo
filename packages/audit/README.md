@@ -440,7 +440,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-seo audit · page audit · site audit · seo score · meta tag audit · content audit · heading audit · image alt audit · structured data audit · performance audit · typescript seo audit · nextjs seo audit · ci seo audit · seo quality gate · headless cms audit · seo rules engine · seo report generator · programmatic seo · seo scoring library · seo npm package
+seo · audit · site health · page audit · seo score · meta audit · content audit · heading audit · image alt · structured data · seo rules · ci seo · nextjs · headless cms · programmatic seo · seo report · seo quality gate · typescript · seo audit engine · site audit
 
 ---
 

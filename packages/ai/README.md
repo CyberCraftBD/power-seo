@@ -488,7 +488,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-ai seo · llm seo · ai meta description generator · ai title generator · seo ai prompt · openai seo · anthropic seo · gemini seo · content suggestions ai · serp feature prediction · ai content optimization · provider agnostic llm · seo prompt template · ai keyphrase · typescript ai seo · nextjs ai seo · edge runtime ai · seo automation ai · llm prompt builder · ai seo npm
+seo · ai · llm · openai · anthropic · gemini · ai seo · prompts · meta description · content suggestions · title generator · ai content · seo automation · nextjs · edge runtime · keyphrase · ai prompt · typescript · provider agnostic · serp optimization
 
 ---
 

@@ -506,7 +506,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-xml sitemap generator typescript · sitemap npm package · nextjs sitemap · streaming sitemap · sitemap index generator · image sitemap extension · video sitemap extension · news sitemap google · split sitemap 50000 urls · sitemap validation · edge runtime sitemap · remix sitemap · programmatic seo sitemap · sitemap generator zero dependencies · typescript xml sitemap · sitemap url priority · crawl budget optimization · sitemap changelog · google sitemap spec · seo sitemap typescript
+seo · sitemap · xml · xml sitemap · sitemap generator · sitemap index · nextjs sitemap · streaming sitemap · image sitemap · video sitemap · news sitemap · split sitemap · sitemap validation · edge runtime · remix · crawl budget · google sitemap · url priority · typescript · zero dependency
 
 ---
 

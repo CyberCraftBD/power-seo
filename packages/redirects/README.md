@@ -332,7 +332,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-url redirect engine · 301 redirect typescript · redirect rule engine · nextjs redirects config · remix redirect handler · express redirect middleware · glob url matching · regex redirect · named param redirect · site migration redirects · trailing slash redirect · typescript redirect · link equity redirect · seo redirects npm · programmatic redirects · canonical url redirect · next.js redirects · multi-framework redirect · redirect rule testing · framework-agnostic redirect
+seo · redirects · 301 redirect · url matching · redirect rule engine · glob matching · regex redirect · named params · site migration · trailing slash · link equity · next js · remix · express · redirect testing · canonical redirect · framework agnostic · programmatic redirects · typescript · url redirect
 
 ---
 

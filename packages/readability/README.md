@@ -312,7 +312,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-readability score typescript · flesch kincaid typescript · gunning fog index · coleman liau index · automated readability index · flesch reading ease · content readability npm · text readability score · readability checker nodejs · seo readability · content scoring typescript · readability api · programmatic readability · ci readability check · cms readability · content quality typescript · seo content scoring · multi-algorithm readability · status labels readability · zero dependency readability
+seo · readability · flesch kincaid · flesch reading ease · gunning fog · coleman liau · automated readability index · ari · reading score · text readability · content quality · readability checker · seo readability · content scoring · zero dependency · ci readability · cms readability · readability api · typescript · multi algorithm
 
 ---
 

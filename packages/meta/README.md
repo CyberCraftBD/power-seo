@@ -363,7 +363,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-seo meta tags · next.js app router metadata · remix meta descriptors · ssr meta tags · open graph typescript · twitter card typescript · canonical url ssr · robots directives typescript · hreflang ssr · next.js generateMetadata · remix meta function · generic ssr meta · headless seo meta · meta tag generator typescript · seo config · server side meta · nextjs seo · remix seo · astro seo meta · sveltekit seo
+seo · meta · nextjs · remix · ssr · app router · metadata · open graph · twitter card · canonical url · robots directives · hreflang · generate metadata · server side rendering · seo meta · meta tags · head · typescript · astro · sveltekit
 
 ---
 

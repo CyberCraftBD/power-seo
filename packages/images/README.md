@@ -501,7 +501,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-image seo · image alt text · alt text audit · lazy loading audit · core web vitals images · webp optimization · avif format · image sitemap · cwv image · image format audit · lcp image · cls images · image seo typescript · nextjs image seo · image optimization npm · seo image audit · alt text checker · image sitemap generator · image seo automation · typescript image seo
+seo · images · image seo · alt text · lazy loading · webp · avif · core web vitals · lcp · cls · image sitemap · image optimization · image audit · nextjs · alt text checker · image format · cwv · typescript · seo images · image accessibility
 
 ---
 

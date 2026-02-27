@@ -502,7 +502,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-seo analytics · gsc analytics · google search console data · seo trend analysis · pearson correlation seo · ranking analysis · anomaly detection seo · position tracking · dashboard seo · seo data merge · click correlation · seo insights typescript · ranking tier analysis · seo reporting · traffic trend · nextjs analytics seo · position change tracking · seo dashboard npm · typescript seo analytics · seo data pipeline
+seo · analytics · gsc · google search console · trends · rankings · dashboard · position tracking · click through rate · impressions · seo insights · anomaly detection · traffic trends · nextjs · pearson correlation · seo reporting · ranking analysis · seo data · typescript · seo pipeline
 
 ---
 

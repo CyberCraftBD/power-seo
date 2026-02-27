@@ -395,7 +395,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-analytics tracking · google analytics 4 · microsoft clarity · posthog integration · plausible analytics · fathom analytics · gdpr compliant · consent management · cookie consent · typescript analytics · react analytics · nextjs tracking · privacy first analytics · script loader · analytics api · seo analytics · consent banner · gdpr compliance · web analytics · multi provider analytics
+seo · analytics · ga4 · google analytics · clarity · microsoft clarity · posthog · plausible · fathom · tracking · gdpr · consent management · cookie consent · consent · react · nextjs · privacy · script loader · gdpr compliance · typescript
 
 ---
 

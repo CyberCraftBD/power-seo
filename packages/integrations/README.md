@@ -369,7 +369,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-semrush api · ahrefs api · seo api client · keyword research api · backlink api · domain overview api · keyword difficulty api · seo data api typescript · rate limiting seo · semrush typescript · ahrefs typescript · seo api wrapper · keyword volume api · seo integration npm · seo third party api · paginated seo api · typescript seo api · seo data fetching · semrush client · ahrefs client
+seo · semrush · semrush api · ahrefs · ahrefs api · keyword research · backlink api · domain overview · keyword difficulty · seo api · rate limiting · keyword volume · paginated api · seo data · third party seo · typescript · integrations · seo api client · api wrapper · seo data fetching
 
 ---
 

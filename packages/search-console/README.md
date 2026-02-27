@@ -384,7 +384,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-seo · google search console · gsc api · search analytics · url inspection api · sitemap submission · oauth2 authentication · service account · typescript seo · nextjs integration · keyword tracking · click through rate · impressions data · position tracking · auto pagination · seo automation · ci cd pipeline · ranking data · search performance · google api client
+seo · google search console · gsc · search analytics · url inspection · sitemap submission · oauth2 · service account · keyword tracking · click through rate · impressions · position tracking · auto pagination · seo automation · ci cd · ranking data · search performance · nextjs · typescript · api
 
 ---
 

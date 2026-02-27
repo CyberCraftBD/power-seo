@@ -401,7 +401,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-internal links seo · link graph · orphan pages · link equity · pagerank typescript · internal linking tool · link suggestion · seo link analysis · orphan page detection · link structure · internal link audit · link graph analysis · seo link building · pagerank algorithm · typescript link graph · nextjs internal links · headless cms links · link equity scoring · seo link suggestions · programmatic internal linking
+seo · links · internal linking · link graph · pagerank · link equity · orphan pages · link analysis · internal links · link suggestions · seo links · orphan detection · link structure · pagerank algorithm · nextjs · headless cms · programmatic linking · link audit · link building · typescript
 
 ---
 

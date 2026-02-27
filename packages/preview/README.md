@@ -521,7 +521,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-seo preview · serp preview · open graph preview · twitter card preview · pixel truncation · meta description truncation · serp snippet generator · og image validation · typescript seo · nextjs seo preview · react serp preview · cms preview panel · social card preview · seo audit npm · programmatic seo · pixel-accurate truncation · og card validator · twitter card validator · seo tooling typescript · headless seo preview
+seo · serp · serp preview · preview · open graph · og preview · twitter card · pixel truncation · meta preview · seo preview · social preview · og image · pixel accurate · nextjs · cms preview · seo tooling · og validator · react · typescript · meta description truncation
 
 ---
 

@@ -529,7 +529,7 @@ All 17 packages are independently installable — use only what you need.
 
 ## Keywords
 
-react seo · meta tags react · open graph react · twitter card react · react helmet alternative · next.js pages router seo · react canonical url · robots meta react · hreflang react · breadcrumb json-ld · react seo components · typescript react seo · declarative seo react · react head management · seo context react · react 19 seo · vite react seo · gatsby seo components · noindex react · react meta description
+seo · react · react seo · meta tags · open graph · twitter card · breadcrumbs · react helmet alternative · nextjs · canonical url · robots meta · hreflang · breadcrumb jsonld · typescript · react 19 · vite · gatsby · noindex · declarative seo · react head
 
 ---
 
