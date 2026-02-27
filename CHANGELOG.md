@@ -15,10 +15,9 @@ Comprehensive documentation overhaul, SVG asset library restructure, and API acc
 ### Documentation
 
 #### Keywords (all 17 packages)
-- Curated `## Keywords` section in every package README to ~20 targeted, search-relevant phrases
-- Standardized keyword format to space-separated terms joined by ` · ` (consistent across all packages)
-- Trimmed over-populated lists (`core` 27→20, `react` 23→20, `schema` 23→20, `content-analysis` 22→20)
-- Reformatted hyphenated npm-style keywords in `search-console` and `tracking` to match ecosystem style
+- Expanded `keywords` array in every `package.json` to ~20 targeted, search-relevant npm keywords
+- `content-analysis` already had 20; all other 16 packages expanded from 5–11 up to 20 keywords
+- Curated per-package to reflect purpose: framework integrations, algorithms, tool names, use cases
 
 #### Package READMEs (all 17 packages)
 - Standardized all package READMEs to follow the canonical style guide
