@@ -22,15 +22,15 @@ The alt text auditor catches not just empty alt attributes but the subtler issue
 
 ## Why @power-seo/images?
 
-| | Without | With |
-|---|---|---|
-| Alt text quality | ❌ Spot-check | ✅ 6 issue types: missing, short, filename, duplicate... |
-| CWV-aware loading | ❌ Generic advice | ✅ Above/below-fold-aware lazy loading audit |
-| Format detection | ❌ Manual | ✅ JPEG/PNG/GIF → WebP/AVIF recommendations |
-| Image sitemap | ❌ Write XML manually | ✅ Standards-compliant `image:` namespace XML |
-| Scoring | ❌ None | ✅ Per-analyzer 0–100 scores |
-| LCP protection | ❌ Unknown | ✅ Flags hero images incorrectly marked lazy |
-| TypeScript support | ❌ Untyped | ✅ Full type coverage for all inputs and results |
+|                    | Without               | With                                                     |
+| ------------------ | --------------------- | -------------------------------------------------------- |
+| Alt text quality   | ❌ Spot-check         | ✅ 6 issue types: missing, short, filename, duplicate... |
+| CWV-aware loading  | ❌ Generic advice     | ✅ Above/below-fold-aware lazy loading audit             |
+| Format detection   | ❌ Manual             | ✅ JPEG/PNG/GIF → WebP/AVIF recommendations              |
+| Image sitemap      | ❌ Write XML manually | ✅ Standards-compliant `image:` namespace XML            |
+| Scoring            | ❌ None               | ✅ Per-analyzer 0–100 scores                             |
+| LCP protection     | ❌ Unknown            | ✅ Flags hero images incorrectly marked lazy             |
+| TypeScript support | ❌ Untyped            | ✅ Full type coverage for all inputs and results         |
 
 ![Images Comparison](../../image/images/comparison.svg)
 
@@ -55,16 +55,16 @@ The alt text auditor catches not just empty alt attributes but the subtler issue
 
 ## Comparison
 
-| Feature | @power-seo/images | sharp | Lighthouse | next/image | imagemin |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Alt text quality audit | ✅ | ❌ | Partial | ❌ | ❌ |
-| CWV-aware lazy loading audit | ✅ | ❌ | Partial | ❌ | ❌ |
-| Format recommendations | ✅ | ❌ | Partial | ✅ | Partial |
-| Image sitemap generation | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Severity-leveled issues | ✅ | ❌ | ✅ | ❌ | ❌ |
-| Programmatic API | ✅ | ✅ | Partial | ✅ | ✅ |
-| Zero dependencies | ✅ | ❌ | ❌ | ❌ | ❌ |
-| TypeScript-first | ✅ | Partial | ❌ | ✅ | ❌ |
+| Feature                      | @power-seo/images |  sharp  | Lighthouse | next/image | imagemin |
+| ---------------------------- | :---------------: | :-----: | :--------: | :--------: | :------: |
+| Alt text quality audit       |        ✅         |   ❌    |  Partial   |     ❌     |    ❌    |
+| CWV-aware lazy loading audit |        ✅         |   ❌    |  Partial   |     ❌     |    ❌    |
+| Format recommendations       |        ✅         |   ❌    |  Partial   |     ✅     | Partial  |
+| Image sitemap generation     |        ✅         |   ❌    |     ❌     |     ❌     |    ❌    |
+| Severity-leveled issues      |        ✅         |   ❌    |     ✅     |     ❌     |    ❌    |
+| Programmatic API             |        ✅         |   ✅    |  Partial   |     ✅     |    ✅    |
+| Zero dependencies            |        ✅         |   ❌    |     ❌     |     ❌     |    ❌    |
+| TypeScript-first             |        ✅         | Partial |     ❌     |     ✅     |    ❌    |
 
 ![Image Format Accuracy](../../image/images/format-accuracy.svg)
 

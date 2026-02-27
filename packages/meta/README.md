@@ -20,15 +20,15 @@ Generate perfectly structured SSR meta tags from one unified config — native `
 
 ## Why @power-seo/meta?
 
-| | Without | With |
-|---|---|---|
-| Cross-framework meta | ❌ Different boilerplate for Next.js, Remix, Astro | ✅ One `SeoConfig` → correct output for every framework |
-| Robots directives | ❌ `maxSnippet`, `maxImagePreview` require framework-specific mapping | ✅ Translated automatically per framework |
-| Open Graph images | ❌ Manual array construction, inconsistent fields | ✅ Typed `OGImage[]` with `width`, `height`, `alt`, `type` |
-| Twitter Cards | ❌ Hand-coded string fields, easy typos | ✅ Typed `TwitterCardConfig` with all card types |
-| Canonical URLs | ❌ Omitted or duplicated across pages | ✅ Always in `SeoConfig`; output to the right field |
-| Hreflang | ❌ Manual `<link>` tag per locale | ✅ `languageAlternates` renders all alternates |
-| TypeScript | ❌ Return type is `any`, no autocomplete | ✅ Fully typed return per framework — no casting |
+|                      | Without                                                               | With                                                       |
+| -------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Cross-framework meta | ❌ Different boilerplate for Next.js, Remix, Astro                    | ✅ One `SeoConfig` → correct output for every framework    |
+| Robots directives    | ❌ `maxSnippet`, `maxImagePreview` require framework-specific mapping | ✅ Translated automatically per framework                  |
+| Open Graph images    | ❌ Manual array construction, inconsistent fields                     | ✅ Typed `OGImage[]` with `width`, `height`, `alt`, `type` |
+| Twitter Cards        | ❌ Hand-coded string fields, easy typos                               | ✅ Typed `TwitterCardConfig` with all card types           |
+| Canonical URLs       | ❌ Omitted or duplicated across pages                                 | ✅ Always in `SeoConfig`; output to the right field        |
+| Hreflang             | ❌ Manual `<link>` tag per locale                                     | ✅ `languageAlternates` renders all alternates             |
+| TypeScript           | ❌ Return type is `any`, no autocomplete                              | ✅ Fully typed return per framework — no casting           |
 
 ![Meta Comparison](../../image/meta/comparison.svg)
 
@@ -55,17 +55,17 @@ Generate perfectly structured SSR meta tags from one unified config — native `
 
 ## Comparison
 
-| Feature | @power-seo/meta | next-seo | remix-seo | react-helmet |
-| --- | :---: | :---: | :---: | :---: |
-| Next.js App Router native `Metadata` | ✅ | ❌ | ❌ | ❌ |
-| Remix v2 native `MetaDescriptor[]` | ✅ | ❌ | ✅ | ❌ |
-| Generic SSR HTML string output | ✅ | ❌ | ❌ | ❌ |
-| Full robots directive support | ✅ | ✅ | ✅ | ✅ |
-| One config → multiple frameworks | ✅ | ❌ | ❌ | ❌ |
-| Structured tag object output | ✅ | ❌ | ❌ | ❌ |
-| Zero runtime dependencies | ✅ | ❌ | ✅ | ❌ |
-| TypeScript-first with typed returns | ✅ | ✅ | ✅ | ❌ |
-| Tree-shakeable | ✅ | ❌ | Partial | ❌ |
+| Feature                              | @power-seo/meta | next-seo | remix-seo | react-helmet |
+| ------------------------------------ | :-------------: | :------: | :-------: | :----------: |
+| Next.js App Router native `Metadata` |       ✅        |    ❌    |    ❌     |      ❌      |
+| Remix v2 native `MetaDescriptor[]`   |       ✅        |    ❌    |    ✅     |      ❌      |
+| Generic SSR HTML string output       |       ✅        |    ❌    |    ❌     |      ❌      |
+| Full robots directive support        |       ✅        |    ✅    |    ✅     |      ✅      |
+| One config → multiple frameworks     |       ✅        |    ❌    |    ❌     |      ❌      |
+| Structured tag object output         |       ✅        |    ❌    |    ❌     |      ❌      |
+| Zero runtime dependencies            |       ✅        |    ❌    |    ✅     |      ❌      |
+| TypeScript-first with typed returns  |       ✅        |    ✅    |    ✅     |      ❌      |
+| Tree-shakeable                       |       ✅        |    ❌    |  Partial  |      ❌      |
 
 ![Robots Precision](../../image/meta/robots-precision.svg)
 
@@ -133,7 +133,9 @@ export const metadata = createMetadata({
   openGraph: {
     type: 'website',
     siteName: 'Example Site',
-    images: [{ url: 'https://example.com/og-home.jpg', width: 1200, height: 630, alt: 'Example Site' }],
+    images: [
+      { url: 'https://example.com/og-home.jpg', width: 1200, height: 630, alt: 'Example Site' },
+    ],
   },
   twitter: { card: 'summary_large_image', site: '@examplesite' },
   robots: { index: true, follow: true },
@@ -232,69 +234,69 @@ const tags = createHeadTagObjects({
 
 ### Functions
 
-| Function | Signature | Description |
-| --- | --- | --- |
-| `createMetadata` | `(config: SeoConfig) => Metadata` | Returns Next.js App Router `Metadata` object |
-| `createMetaDescriptors` | `(config: SeoConfig) => MetaDescriptor[]` | Returns Remix v2 `MetaDescriptor[]` array |
-| `createHeadTags` | `(config: SeoConfig) => string` | Returns HTML string of `<meta>` and `<link>` tags |
-| `createHeadTagObjects` | `(config: SeoConfig) => HeadTagObject[]` | Returns structured tag objects |
+| Function                | Signature                                 | Description                                       |
+| ----------------------- | ----------------------------------------- | ------------------------------------------------- |
+| `createMetadata`        | `(config: SeoConfig) => Metadata`         | Returns Next.js App Router `Metadata` object      |
+| `createMetaDescriptors` | `(config: SeoConfig) => MetaDescriptor[]` | Returns Remix v2 `MetaDescriptor[]` array         |
+| `createHeadTags`        | `(config: SeoConfig) => string`           | Returns HTML string of `<meta>` and `<link>` tags |
+| `createHeadTagObjects`  | `(config: SeoConfig) => HeadTagObject[]`  | Returns structured tag objects                    |
 
 ### `SeoConfig`
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `title` | `string` | Page title |
-| `titleTemplate` | `string` | Title template e.g. `'%s \| Site Name'` |
-| `description` | `string` | Meta description |
-| `canonical` | `string` | Canonical URL |
-| `robots` | `RobotsDirective` | Robots directive configuration |
-| `openGraph` | `OpenGraphConfig` | Open Graph properties |
-| `twitter` | `TwitterCardConfig` | Twitter Card properties |
-| `languageAlternates` | `HreflangEntry[]` | Hreflang entries for i18n |
-| `additionalMetaTags` | `MetaTag[]` | Extra custom meta tags |
-| `additionalLinkTags` | `LinkTag[]` | Extra custom link tags |
+| Prop                 | Type                | Description                             |
+| -------------------- | ------------------- | --------------------------------------- |
+| `title`              | `string`            | Page title                              |
+| `titleTemplate`      | `string`            | Title template e.g. `'%s \| Site Name'` |
+| `description`        | `string`            | Meta description                        |
+| `canonical`          | `string`            | Canonical URL                           |
+| `robots`             | `RobotsDirective`   | Robots directive configuration          |
+| `openGraph`          | `OpenGraphConfig`   | Open Graph properties                   |
+| `twitter`            | `TwitterCardConfig` | Twitter Card properties                 |
+| `languageAlternates` | `HreflangEntry[]`   | Hreflang entries for i18n               |
+| `additionalMetaTags` | `MetaTag[]`         | Extra custom meta tags                  |
+| `additionalLinkTags` | `LinkTag[]`         | Extra custom link tags                  |
 
 ### `RobotsDirective`
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `index` | `boolean` | `true` → `index`, `false` → `noindex` |
-| `follow` | `boolean` | `true` → `follow`, `false` → `nofollow` |
-| `noarchive` | `boolean` | Prevent cached version |
-| `nosnippet` | `boolean` | Prevent snippet in results |
-| `noimageindex` | `boolean` | Prevent image indexing |
-| `notranslate` | `boolean` | Prevent translation offer |
-| `maxSnippet` | `number` | Max snippet length |
-| `maxImagePreview` | `'none' \| 'standard' \| 'large'` | Max image preview size |
-| `maxVideoPreview` | `number` | Max video preview seconds |
-| `unavailableAfter` | `string` | ISO 8601 expiry date |
+| Prop               | Type                              | Description                             |
+| ------------------ | --------------------------------- | --------------------------------------- |
+| `index`            | `boolean`                         | `true` → `index`, `false` → `noindex`   |
+| `follow`           | `boolean`                         | `true` → `follow`, `false` → `nofollow` |
+| `noarchive`        | `boolean`                         | Prevent cached version                  |
+| `nosnippet`        | `boolean`                         | Prevent snippet in results              |
+| `noimageindex`     | `boolean`                         | Prevent image indexing                  |
+| `notranslate`      | `boolean`                         | Prevent translation offer               |
+| `maxSnippet`       | `number`                          | Max snippet length                      |
+| `maxImagePreview`  | `'none' \| 'standard' \| 'large'` | Max image preview size                  |
+| `maxVideoPreview`  | `number`                          | Max video preview seconds               |
+| `unavailableAfter` | `string`                          | ISO 8601 expiry date                    |
 
 ### `OpenGraphConfig`
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `type` | `'website' \| 'article' \| 'book' \| 'profile'` | OG object type |
-| `title` | `string` | og:title (falls back to `title`) |
-| `description` | `string` | og:description (falls back to `description`) |
-| `url` | `string` | og:url (falls back to `canonical`) |
-| `siteName` | `string` | og:site_name |
-| `images` | `OGImage[]` | Array of image objects |
-| `locale` | `string` | og:locale (default: `'en_US'`) |
-| `article` | `OGArticle` | Article-specific OG properties |
+| Prop          | Type                                            | Description                                  |
+| ------------- | ----------------------------------------------- | -------------------------------------------- |
+| `type`        | `'website' \| 'article' \| 'book' \| 'profile'` | OG object type                               |
+| `title`       | `string`                                        | og:title (falls back to `title`)             |
+| `description` | `string`                                        | og:description (falls back to `description`) |
+| `url`         | `string`                                        | og:url (falls back to `canonical`)           |
+| `siteName`    | `string`                                        | og:site_name                                 |
+| `images`      | `OGImage[]`                                     | Array of image objects                       |
+| `locale`      | `string`                                        | og:locale (default: `'en_US'`)               |
+| `article`     | `OGArticle`                                     | Article-specific OG properties               |
 
 ### Types
 
-| Type | Description |
-| --- | --- |
-| `SeoConfig` | Unified input configuration |
-| `RobotsDirective` | Robots directive configuration |
-| `OpenGraphConfig` | Open Graph properties |
-| `TwitterCardConfig` | Twitter Card configuration |
-| `OGImage` | `{ url: string; width?: number; height?: number; alt?: string; type?: string }` |
-| `HreflangEntry` | `{ hrefLang: string; href: string }` |
-| `HeadTagObject` | `{ tag: string; attrs?: Record<string, string>; children?: string }` |
-| `MetaTag` | Custom meta tag with `name` or `property` attributes |
-| `LinkTag` | Custom link tag attributes |
+| Type                | Description                                                                     |
+| ------------------- | ------------------------------------------------------------------------------- |
+| `SeoConfig`         | Unified input configuration                                                     |
+| `RobotsDirective`   | Robots directive configuration                                                  |
+| `OpenGraphConfig`   | Open Graph properties                                                           |
+| `TwitterCardConfig` | Twitter Card configuration                                                      |
+| `OGImage`           | `{ url: string; width?: number; height?: number; alt?: string; type?: string }` |
+| `HreflangEntry`     | `{ hrefLang: string; href: string }`                                            |
+| `HeadTagObject`     | `{ tag: string; attrs?: Record<string, string>; children?: string }`            |
+| `MetaTag`           | Custom meta tag with `name` or `property` attributes                            |
+| `LinkTag`           | Custom link tag attributes                                                      |
 
 ---
 

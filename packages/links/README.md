@@ -24,15 +24,15 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 
 ## Why @power-seo/links?
 
-| | Without | With |
-|---|---|---|
-| Orphan detection | ❌ Manual crawl | ✅ `findOrphanPages()` in-memory graph |
-| Link suggestions | ❌ Guesswork | ✅ Keyword-overlap-based contextual suggestions |
-| Link equity | ❌ Third-party tools | ✅ PageRank-style scoring built-in |
+|                    | Without               | With                                               |
+| ------------------ | --------------------- | -------------------------------------------------- |
+| Orphan detection   | ❌ Manual crawl       | ✅ `findOrphanPages()` in-memory graph             |
+| Link suggestions   | ❌ Guesswork          | ✅ Keyword-overlap-based contextual suggestions    |
+| Link equity        | ❌ Third-party tools  | ✅ PageRank-style scoring built-in                 |
 | Graph construction | ❌ Build from scratch | ✅ `buildLinkGraph()` — directed graph in one call |
-| Audit integration | ❌ Separate toolchain | ✅ Designed to integrate with `@power-seo/audit` |
-| TypeScript support | ❌ Untyped | ✅ Full type coverage for all graph structures |
-| Zero dependencies | ❌ External libs | ✅ Pure TypeScript, no runtime dependencies |
+| Audit integration  | ❌ Separate toolchain | ✅ Designed to integrate with `@power-seo/audit`   |
+| TypeScript support | ❌ Untyped            | ✅ Full type coverage for all graph structures     |
+| Zero dependencies  | ❌ External libs      | ✅ Pure TypeScript, no runtime dependencies        |
 
 ![Links Comparison](../../image/links/comparison.svg)
 
@@ -56,16 +56,16 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 
 ## Comparison
 
-| Feature | @power-seo/links | Screaming Frog | Ahrefs | Custom scripts |
-| --- | :---: | :---: | :---: | :---: |
-| Programmatic link graph | ✅ | ❌ | ❌ | Manual |
-| Orphan page detection | ✅ | ✅ | ✅ | Manual |
-| Keyword-based suggestions | ✅ | ❌ | ❌ | Manual |
-| PageRank-style equity | ✅ | ❌ | ✅ | Manual |
-| Audit integration | ✅ | ❌ | ❌ | — |
-| Zero dependencies | ✅ | ❌ | ❌ | — |
-| TypeScript-first | ✅ | ❌ | ❌ | — |
-| Tree-shakeable | ✅ | ❌ | ❌ | — |
+| Feature                   | @power-seo/links | Screaming Frog | Ahrefs | Custom scripts |
+| ------------------------- | :--------------: | :------------: | :----: | :------------: |
+| Programmatic link graph   |        ✅        |       ❌       |   ❌   |     Manual     |
+| Orphan page detection     |        ✅        |       ✅       |   ✅   |     Manual     |
+| Keyword-based suggestions |        ✅        |       ❌       |   ❌   |     Manual     |
+| PageRank-style equity     |        ✅        |       ❌       |   ✅   |     Manual     |
+| Audit integration         |        ✅        |       ❌       |   ❌   |       —        |
+| Zero dependencies         |        ✅        |       ❌       |   ❌   |       —        |
+| TypeScript-first          |        ✅        |       ❌       |   ❌   |       —        |
+| Tree-shakeable            |        ✅        |       ❌       |   ❌   |       —        |
 
 ![Link Equity Accuracy](../../image/links/equity-accuracy.svg)
 

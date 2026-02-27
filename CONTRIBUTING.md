@@ -38,26 +38,26 @@ This project follows a straightforward standard: be respectful and constructive.
 
 You do not need to write code to contribute. Here are all the ways you can help:
 
-| Contribution type | How |
-| --- | --- |
-| **Bug report** | [Open an issue](https://github.com/CyberCraftBD/power-seo/issues/new) with the `bug` label |
-| **Feature request** | Open an issue with the `enhancement` label, describe the use case |
-| **Documentation fix** | Edit a `README.md` or this file and submit a PR |
-| **Bug fix** | Fork → branch → fix → test → PR |
-| **New feature** | Discuss in an issue first, then implement |
-| **New package** | See [Adding a New Package](#adding-a-new-package) — discuss first |
-| **Test coverage** | Add missing tests for any package |
-| **Performance improvement** | Benchmark before and after, include results in the PR |
+| Contribution type           | How                                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------------------ |
+| **Bug report**              | [Open an issue](https://github.com/CyberCraftBD/power-seo/issues/new) with the `bug` label |
+| **Feature request**         | Open an issue with the `enhancement` label, describe the use case                          |
+| **Documentation fix**       | Edit a `README.md` or this file and submit a PR                                            |
+| **Bug fix**                 | Fork → branch → fix → test → PR                                                            |
+| **New feature**             | Discuss in an issue first, then implement                                                  |
+| **New package**             | See [Adding a New Package](#adding-a-new-package) — discuss first                          |
+| **Test coverage**           | Add missing tests for any package                                                          |
+| **Performance improvement** | Benchmark before and after, include results in the PR                                      |
 
 ---
 
 ## Prerequisites
 
-| Tool | Minimum version | Install |
-| --- | --- | --- |
-| [Node.js](https://nodejs.org/) | 18.0.0 | `nvm install 22` (LTS recommended) |
-| [pnpm](https://pnpm.io/) | 9.0.0 | `npm install -g pnpm` |
-| [Git](https://git-scm.com/) | Any modern version | OS package manager |
+| Tool                           | Minimum version    | Install                            |
+| ------------------------------ | ------------------ | ---------------------------------- |
+| [Node.js](https://nodejs.org/) | 18.0.0             | `nvm install 22` (LTS recommended) |
+| [pnpm](https://pnpm.io/)       | 9.0.0              | `npm install -g pnpm`              |
+| [Git](https://git-scm.com/)    | Any modern version | OS package manager                 |
 
 Verify your environment:
 
@@ -409,7 +409,8 @@ describe('analyzeContent', () => {
   it('returns a "good" status when all checks pass', () => {
     const result = analyzeContent({
       title: 'Best Coffee Shops in NYC — 2026 Guide',
-      metaDescription: 'Discover the top-rated coffee shops in New York City, from specialty roasters to hidden gems.',
+      metaDescription:
+        'Discover the top-rated coffee shops in New York City, from specialty roasters to hidden gems.',
       content: '<h1>Best Coffee Shops in NYC</h1><p>Long enough body text here...</p>',
       focusKeyphrase: 'coffee shops nyc',
       url: 'https://example.com/coffee-shops-nyc',
@@ -429,7 +430,7 @@ describe('analyzeContent', () => {
       url: 'https://example.com/test',
     });
 
-    expect(result.recommendations.some(r => r.toLowerCase().includes('title'))).toBe(true);
+    expect(result.recommendations.some((r) => r.toLowerCase().includes('title'))).toBe(true);
   });
 });
 ```
@@ -472,13 +473,13 @@ pnpm lint:fix        # Auto-fix
 
 Key rules in effect:
 
-| Rule | Effect |
-| --- | --- |
-| `no-undef` | Must use `globalThis.*` for globals |
-| `noUnusedLocals` | TypeScript removes unused local variables |
-| `noUnusedParameters` | TypeScript removes unused function params |
+| Rule                                 | Effect                                      |
+| ------------------------------------ | ------------------------------------------- |
+| `no-undef`                           | Must use `globalThis.*` for globals         |
+| `noUnusedLocals`                     | TypeScript removes unused local variables   |
+| `noUnusedParameters`                 | TypeScript removes unused function params   |
 | `@typescript-eslint/no-explicit-any` | Avoid `any` — use `unknown` or proper types |
-| `react-hooks/rules-of-hooks` | React hook rules enforced |
+| `react-hooks/rules-of-hooks`         | React hook rules enforced                   |
 
 ### General style guidelines
 
@@ -495,16 +496,16 @@ Key rules in effect:
 
 Create branches from `main` using these prefixes:
 
-| Prefix | Use case | Example |
-| --- | --- | --- |
-| `feat/` | New features | `feat/add-recipe-schema` |
-| `fix/` | Bug fixes | `fix/sitemap-streaming-empty-urls` |
-| `docs/` | Documentation only | `docs/improve-analytics-readme` |
-| `refactor/` | Code restructure (no behaviour change) | `refactor/extract-keyword-helpers` |
-| `test/` | Adding or improving tests | `test/audit-meta-edge-cases` |
-| `chore/` | Maintenance, dependency updates | `chore/update-vitest-v3` |
-| `perf/` | Performance improvements | `perf/sitemap-streaming-throughput` |
-| `ci/` | CI/CD pipeline changes | `ci/add-bundle-size-check` |
+| Prefix      | Use case                               | Example                             |
+| ----------- | -------------------------------------- | ----------------------------------- |
+| `feat/`     | New features                           | `feat/add-recipe-schema`            |
+| `fix/`      | Bug fixes                              | `fix/sitemap-streaming-empty-urls`  |
+| `docs/`     | Documentation only                     | `docs/improve-analytics-readme`     |
+| `refactor/` | Code restructure (no behaviour change) | `refactor/extract-keyword-helpers`  |
+| `test/`     | Adding or improving tests              | `test/audit-meta-edge-cases`        |
+| `chore/`    | Maintenance, dependency updates        | `chore/update-vitest-v3`            |
+| `perf/`     | Performance improvements               | `perf/sitemap-streaming-throughput` |
+| `ci/`       | CI/CD pipeline changes                 | `ci/add-bundle-size-check`          |
 
 Keep branch names lowercase, hyphen-separated, and concise. Include the package name when the change is scoped to one package.
 
@@ -524,17 +525,17 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 ### Type reference
 
-| Type | When to use |
-| --- | --- |
-| `feat` | A new exported function, component, or behaviour |
-| `fix` | A bug fix |
-| `docs` | README, CONTRIBUTING, or inline comment changes only |
-| `refactor` | Internal restructure with no API change |
-| `test` | Adding or updating tests |
-| `perf` | A change that improves performance |
-| `chore` | Dependency updates, config changes, build tooling |
-| `ci` | Changes to `.github/workflows/` |
-| `style` | Formatting only (auto-committed by CI) |
+| Type       | When to use                                          |
+| ---------- | ---------------------------------------------------- |
+| `feat`     | A new exported function, component, or behaviour     |
+| `fix`      | A bug fix                                            |
+| `docs`     | README, CONTRIBUTING, or inline comment changes only |
+| `refactor` | Internal restructure with no API change              |
+| `test`     | Adding or updating tests                             |
+| `perf`     | A change that improves performance                   |
+| `chore`    | Dependency updates, config changes, build tooling    |
+| `ci`       | Changes to `.github/workflows/`                      |
+| `style`    | Formatting only (auto-committed by CI)               |
 
 ### Scope
 
@@ -774,19 +775,19 @@ pnpm changeset
 
 The `production.yml` workflow runs on every push to `main`. It is **not** a traditional test-and-gate CI — it is a full release pipeline:
 
-| Step | What it does |
-| --- | --- |
-| **Checkout** | Full history clone (`fetch-depth: 0`) for correct versioning |
-| **Install** | `pnpm install --frozen-lockfile` — lockfile must match |
-| **Build** | `turbo run build --filter='./packages/*'` |
-| **Type-check** | `turbo run typecheck --filter='./packages/*'` |
-| **Auto-fix lint** | `turbo run lint:fix` (failures are non-blocking — `|| true`) |
-| **Auto-fix format** | `pnpm format` (non-blocking) |
-| **Commit fixes** | If lint/format changed files, commits them with `[skip ci]` |
-| **Bump versions** | Bumps all packages to the next patch version |
-| **Publish to npm** | Publishes each package if the version doesn't already exist on npm |
-| **Commit + tag** | Commits version bumps, creates a git tag `vX.Y.Z` |
-| **GitHub Release** | Creates a GitHub Release with install instructions |
+| Step                | What it does                                                       |
+| ------------------- | ------------------------------------------------------------------ | --- | ------ |
+| **Checkout**        | Full history clone (`fetch-depth: 0`) for correct versioning       |
+| **Install**         | `pnpm install --frozen-lockfile` — lockfile must match             |
+| **Build**           | `turbo run build --filter='./packages/*'`                          |
+| **Type-check**      | `turbo run typecheck --filter='./packages/*'`                      |
+| **Auto-fix lint**   | `turbo run lint:fix` (failures are non-blocking — `                |     | true`) |
+| **Auto-fix format** | `pnpm format` (non-blocking)                                       |
+| **Commit fixes**    | If lint/format changed files, commits them with `[skip ci]`        |
+| **Bump versions**   | Bumps all packages to the next patch version                       |
+| **Publish to npm**  | Publishes each package if the version doesn't already exist on npm |
+| **Commit + tag**    | Commits version bumps, creates a git tag `vX.Y.Z`                  |
+| **GitHub Release**  | Creates a GitHub Release with install instructions                 |
 
 > The `[skip ci]` tag in auto-fix commit messages prevents infinite loops.
 
@@ -803,11 +804,11 @@ The `production.yml` workflow runs on every push to `main`. It is **not** a trad
 
 `@power-seo` follows [Semantic Versioning](https://semver.org/):
 
-| Change type | Version bump | Examples |
-| --- | --- | --- |
-| Bug fix, internal refactor | `patch` (1.0.x) | Fix a broken regex, improve performance |
-| New exported function or option | `minor` (1.x.0) | Add `buildFaqPrompt()`, add optional param |
-| Breaking API change | `major` (x.0.0) | Remove an export, change a function signature |
+| Change type                     | Version bump    | Examples                                      |
+| ------------------------------- | --------------- | --------------------------------------------- |
+| Bug fix, internal refactor      | `patch` (1.0.x) | Fix a broken regex, improve performance       |
+| New exported function or option | `minor` (1.x.0) | Add `buildFaqPrompt()`, add optional param    |
+| Breaking API change             | `major` (x.0.0) | Remove an export, change a function signature |
 
 ### Stability guarantees
 
@@ -831,6 +832,7 @@ Do **not** open a public GitHub issue for security vulnerabilities. Contact us p
 **Subject:** `[SECURITY] @power-seo — <short description>`
 
 Include:
+
 - The package name and version affected
 - A description of the vulnerability
 - Steps to reproduce
@@ -846,10 +848,10 @@ Transitive dependency vulnerabilities in `devDependencies` are addressed via `pn
 
 ## Getting Help
 
-| Channel | Use for |
-| --- | --- |
+| Channel                                                           | Use for                                                 |
+| ----------------------------------------------------------------- | ------------------------------------------------------- |
 | [GitHub Issues](https://github.com/CyberCraftBD/power-seo/issues) | Bug reports, feature requests, general questions, ideas |
-| [info@ccbd.dev](mailto:info@ccbd.dev) | Security issues, partnership inquiries |
+| [info@ccbd.dev](mailto:info@ccbd.dev)                             | Security issues, partnership inquiries                  |
 
 If you're unsure whether a change is appropriate for a PR, open an issue first and describe what you want to do. It's better to discuss upfront than to submit a large PR that needs to be redesigned.
 

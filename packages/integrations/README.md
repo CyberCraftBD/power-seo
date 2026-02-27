@@ -20,15 +20,15 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 
 ## Why @power-seo/integrations?
 
-| | Without | With |
-|---|---|---|
-| Semrush API | ❌ Write raw HTTP client | ✅ Typed client with auto-pagination |
-| Ahrefs API | ❌ Manual SDK setup | ✅ Typed client with rate limiting |
-| Rate limiting | ❌ Manual throttle | ✅ Built-in configurable window rate limiter |
-| Pagination | ❌ Manual offset tracking | ✅ Automatic — receive a flat result array |
-| Error handling | ❌ Raw HTTP errors | ✅ `IntegrationApiError` with `statusCode` |
-| TypeScript types | ❌ `any` everywhere | ✅ Full type coverage for all endpoints |
-| Bundle size | ❌ Full SDK in bundle | ✅ Tree-shakeable — import only what you use |
+|                  | Without                   | With                                         |
+| ---------------- | ------------------------- | -------------------------------------------- |
+| Semrush API      | ❌ Write raw HTTP client  | ✅ Typed client with auto-pagination         |
+| Ahrefs API       | ❌ Manual SDK setup       | ✅ Typed client with rate limiting           |
+| Rate limiting    | ❌ Manual throttle        | ✅ Built-in configurable window rate limiter |
+| Pagination       | ❌ Manual offset tracking | ✅ Automatic — receive a flat result array   |
+| Error handling   | ❌ Raw HTTP errors        | ✅ `IntegrationApiError` with `statusCode`   |
+| TypeScript types | ❌ `any` everywhere       | ✅ Full type coverage for all endpoints      |
+| Bundle size      | ❌ Full SDK in bundle     | ✅ Tree-shakeable — import only what you use |
 
 ![Integrations Comparison](../../image/integrations/comparison.svg)
 
@@ -50,16 +50,16 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 
 ## Comparison
 
-| Feature | @power-seo/integrations | semrush-sdk | ahrefs-client | Custom fetch |
-| --- | :---: | :---: | :---: | :---: |
-| Semrush API client | ✅ | ✅ | ❌ | Manual |
-| Ahrefs API client | ✅ | ❌ | Partial | Manual |
-| Rate limiting | ✅ | Partial | ❌ | Manual |
-| Auto-pagination | ✅ | ❌ | ❌ | Manual |
-| Shared HTTP client | ✅ | ❌ | ❌ | — |
-| Consistent error handling | ✅ | Partial | ❌ | Manual |
-| TypeScript-first | ✅ | ❌ | ❌ | — |
-| Tree-shakeable | ✅ | ❌ | ❌ | — |
+| Feature                   | @power-seo/integrations | semrush-sdk | ahrefs-client | Custom fetch |
+| ------------------------- | :---------------------: | :---------: | :-----------: | :----------: |
+| Semrush API client        |           ✅            |     ✅      |      ❌       |    Manual    |
+| Ahrefs API client         |           ✅            |     ❌      |    Partial    |    Manual    |
+| Rate limiting             |           ✅            |   Partial   |      ❌       |    Manual    |
+| Auto-pagination           |           ✅            |     ❌      |      ❌       |    Manual    |
+| Shared HTTP client        |           ✅            |     ❌      |      ❌       |      —       |
+| Consistent error handling |           ✅            |   Partial   |      ❌       |    Manual    |
+| TypeScript-first          |           ✅            |     ❌      |      ❌       |      —       |
+| Tree-shakeable            |           ✅            |     ❌      |      ❌       |      —       |
 
 ![Rate Limit Accuracy](../../image/integrations/rate-limit-accuracy.svg)
 

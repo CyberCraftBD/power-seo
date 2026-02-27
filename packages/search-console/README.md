@@ -20,15 +20,15 @@ Typed Google Search Console API client for TypeScript — OAuth2 and service acc
 
 ## Why @power-seo/search-console?
 
-| | Without | With |
-|---|---|---|
-| OAuth2 token refresh | ❌ 50+ lines of boilerplate per project | ✅ Auto-refresh via `createTokenManager()` |
-| GSC data pagination | ❌ Manual rowOffset loops and array merging | ✅ `querySearchAnalyticsAll()` — one call, all rows |
-| URL inspection | ❌ Manual GSC UI check only | ✅ Programmatic `inspectUrl()` in CI pipelines |
-| Service accounts | ❌ Complex JWT signing setup | ✅ `createTokenManager({ type: 'service-account' })` |
-| Type safety | ❌ Raw API responses typed as `any` | ✅ Fully typed request and response shapes |
-| Sitemap management | ❌ Manual GSC UI operations | ✅ `submitSitemap()`, `listSitemaps()`, `deleteSitemap()` |
-| Framework support | ❌ Tied to googleapis setup | ✅ Works in Next.js, Remix, Node.js, CI/CD |
+|                      | Without                                     | With                                                      |
+| -------------------- | ------------------------------------------- | --------------------------------------------------------- |
+| OAuth2 token refresh | ❌ 50+ lines of boilerplate per project     | ✅ Auto-refresh via `createTokenManager()`                |
+| GSC data pagination  | ❌ Manual rowOffset loops and array merging | ✅ `querySearchAnalyticsAll()` — one call, all rows       |
+| URL inspection       | ❌ Manual GSC UI check only                 | ✅ Programmatic `inspectUrl()` in CI pipelines            |
+| Service accounts     | ❌ Complex JWT signing setup                | ✅ `createTokenManager({ type: 'service-account' })`      |
+| Type safety          | ❌ Raw API responses typed as `any`         | ✅ Fully typed request and response shapes                |
+| Sitemap management   | ❌ Manual GSC UI operations                 | ✅ `submitSitemap()`, `listSitemaps()`, `deleteSitemap()` |
+| Framework support    | ❌ Tied to googleapis setup                 | ✅ Works in Next.js, Remix, Node.js, CI/CD                |
 
 ![Search Console Comparison](../../image/search-console/comparison.svg)
 
@@ -56,16 +56,16 @@ Typed Google Search Console API client for TypeScript — OAuth2 and service acc
 
 ## Comparison
 
-| Feature | google-auth-library | googleapis | custom fetch | @power-seo/search-console |
+| Feature                            | google-auth-library | googleapis | custom fetch | @power-seo/search-console |
 | ---------------------------------- | :-----------------: | :--------: | :----------: | :-----------------------: |
-| OAuth2 token auto-refresh          | ✅ | ✅ | ❌ | ✅ |
-| Service account JWT signing        | ✅ | ✅ | ❌ | ✅ |
-| Auto-paginated analytics fetch     | ❌ | ❌ | ❌ | ✅ |
-| Typed GSC-specific response shapes | ❌ | ⚠️ | ❌ | ✅ |
-| URL inspection support             | ❌ | ⚠️ | ❌ | ✅ |
-| Sitemap management                 | ❌ | ⚠️ | ❌ | ✅ |
-| Zero runtime dependencies          | ❌ | ❌ | ✅ | ✅ |
-| TypeScript-first                   | ❌ | ⚠️ | ❌ | ✅ |
+| OAuth2 token auto-refresh          |         ✅          |     ✅     |      ❌      |            ✅             |
+| Service account JWT signing        |         ✅          |     ✅     |      ❌      |            ✅             |
+| Auto-paginated analytics fetch     |         ❌          |     ❌     |      ❌      |            ✅             |
+| Typed GSC-specific response shapes |         ❌          |     ⚠️     |      ❌      |            ✅             |
+| URL inspection support             |         ❌          |     ⚠️     |      ❌      |            ✅             |
+| Sitemap management                 |         ❌          |     ⚠️     |      ❌      |            ✅             |
+| Zero runtime dependencies          |         ❌          |     ❌     |      ✅      |            ✅             |
+| TypeScript-first                   |         ❌          |     ⚠️     |      ❌      |            ✅             |
 
 ![Pagination Accuracy](../../image/search-console/pagination-accuracy.svg)
 
@@ -197,9 +197,9 @@ import { inspectUrl } from '@power-seo/search-console';
 
 const result = await inspectUrl(client, 'https://example.com/blog/my-post');
 
-console.log(result.verdict);            // 'PASS' | 'FAIL' | 'NEUTRAL'
-console.log(result.indexingState);      // 'INDEXING_ALLOWED' | ...
-console.log(result.lastCrawlTime);      // ISO timestamp
+console.log(result.verdict); // 'PASS' | 'FAIL' | 'NEUTRAL'
+console.log(result.indexingState); // 'INDEXING_ALLOWED' | ...
+console.log(result.lastCrawlTime); // ISO timestamp
 console.log(result.mobileUsabilityResult.verdict); // 'PASS' | 'FAIL'
 ```
 
@@ -222,7 +222,11 @@ await deleteSitemap(client, 'https://example.com/old-sitemap.xml');
 ### CI/CD Keyword Position Check
 
 ```ts
-import { createTokenManager, createGSCClient, querySearchAnalyticsAll } from '@power-seo/search-console';
+import {
+  createTokenManager,
+  createGSCClient,
+  querySearchAnalyticsAll,
+} from '@power-seo/search-console';
 
 const tokenManager = createTokenManager({
   type: 'service-account',
@@ -239,10 +243,10 @@ const rows = await querySearchAnalyticsAll(client, {
   dimensions: ['query', 'page'],
 });
 
-const dropped = rows.filter(r => r.position > 20 && r.impressions > 100);
+const dropped = rows.filter((r) => r.position > 20 && r.impressions > 100);
 if (dropped.length > 0) {
   console.error('Pages dropped below position 20:');
-  dropped.forEach(r => console.error(' -', r.keys[1], `pos ${r.position.toFixed(1)}`));
+  dropped.forEach((r) => console.error(' -', r.keys[1], `pos ${r.position.toFixed(1)}`));
   process.exit(1);
 }
 ```
@@ -276,14 +280,14 @@ Returns `GSCClient`.
 
 ### `querySearchAnalytics(client, request)`
 
-| Parameter                       | Type          | Default    | Description                                                                  |
-| ------------------------------- | ------------- | ---------- | ---------------------------------------------------------------------------- |
-| `request.startDate`             | `string`      | required   | `YYYY-MM-DD`                                                                 |
-| `request.endDate`               | `string`      | required   | `YYYY-MM-DD`                                                                 |
-| `request.dimensions`            | `Dimension[]` | `[]`       | `'query'`, `'page'`, `'country'`, `'device'`, `'date'`, `'searchAppearance'` |
-| `request.searchType`            | `SearchType`  | `'web'`    | `'web'`, `'image'`, `'video'`, `'news'`                                      |
-| `request.rowLimit`              | `number`      | `1000`     | Rows per request (max 25,000)                                                |
-| `request.dimensionFilterGroups` | `object[]`    | `[]`       | Filter groups to narrow results                                              |
+| Parameter                       | Type          | Default  | Description                                                                  |
+| ------------------------------- | ------------- | -------- | ---------------------------------------------------------------------------- |
+| `request.startDate`             | `string`      | required | `YYYY-MM-DD`                                                                 |
+| `request.endDate`               | `string`      | required | `YYYY-MM-DD`                                                                 |
+| `request.dimensions`            | `Dimension[]` | `[]`     | `'query'`, `'page'`, `'country'`, `'device'`, `'date'`, `'searchAppearance'` |
+| `request.searchType`            | `SearchType`  | `'web'`  | `'web'`, `'image'`, `'video'`, `'news'`                                      |
+| `request.rowLimit`              | `number`      | `1000`   | Rows per request (max 25,000)                                                |
+| `request.dimensionFilterGroups` | `object[]`    | `[]`     | Filter groups to narrow results                                              |
 
 ### `querySearchAnalyticsAll(client, request)`
 
@@ -299,23 +303,23 @@ Returns `Promise<InspectionResult>`: `{ verdict, indexingState, lastCrawlTime, m
 
 ### Types
 
-| Type                    | Description                                                      |
-| ----------------------- | ---------------------------------------------------------------- |
-| `OAuthCredentials`      | `{ clientId, clientSecret, refreshToken }`                       |
-| `ServiceAccountCredentials` | `{ clientEmail, privateKey, scopes }`                        |
-| `TokenResult`           | `{ accessToken: string, expiresAt: number }`                     |
-| `TokenManager`          | `{ getAccessToken(): Promise<TokenResult> }`                     |
-| `GSCClientConfig`       | `{ siteUrl: string, tokenManager: TokenManager }`                |
-| `GSCClient`             | Scoped API client instance                                       |
-| `SearchType`            | `'web' \| 'image' \| 'video' \| 'news'`                          |
-| `Dimension`             | `'query' \| 'page' \| 'country' \| 'device' \| 'date' \| 'searchAppearance'` |
-| `SearchAnalyticsRequest` | Request shape for `querySearchAnalytics()`                      |
-| `SearchAnalyticsRow`    | `{ keys: string[], clicks, impressions, ctr, position }`         |
-| `SearchAnalyticsResponse` | API response wrapper with `rows: SearchAnalyticsRow[]`         |
-| `InspectionResult`      | URL inspection verdict, indexing state, and details              |
-| `SitemapEntry`          | Single sitemap with status, lastDownloaded, errors               |
-| `SitemapListResponse`   | `{ sitemap: SitemapEntry[] }`                                    |
-| `GSCApiError`           | Error class with `status`, `code`, and `message`                 |
+| Type                        | Description                                                                  |
+| --------------------------- | ---------------------------------------------------------------------------- |
+| `OAuthCredentials`          | `{ clientId, clientSecret, refreshToken }`                                   |
+| `ServiceAccountCredentials` | `{ clientEmail, privateKey, scopes }`                                        |
+| `TokenResult`               | `{ accessToken: string, expiresAt: number }`                                 |
+| `TokenManager`              | `{ getAccessToken(): Promise<TokenResult> }`                                 |
+| `GSCClientConfig`           | `{ siteUrl: string, tokenManager: TokenManager }`                            |
+| `GSCClient`                 | Scoped API client instance                                                   |
+| `SearchType`                | `'web' \| 'image' \| 'video' \| 'news'`                                      |
+| `Dimension`                 | `'query' \| 'page' \| 'country' \| 'device' \| 'date' \| 'searchAppearance'` |
+| `SearchAnalyticsRequest`    | Request shape for `querySearchAnalytics()`                                   |
+| `SearchAnalyticsRow`        | `{ keys: string[], clicks, impressions, ctr, position }`                     |
+| `SearchAnalyticsResponse`   | API response wrapper with `rows: SearchAnalyticsRow[]`                       |
+| `InspectionResult`          | URL inspection verdict, indexing state, and details                          |
+| `SitemapEntry`              | Single sitemap with status, lastDownloaded, errors                           |
+| `SitemapListResponse`       | `{ sitemap: SitemapEntry[] }`                                                |
+| `GSCApiError`               | Error class with `status`, `code`, and `message`                             |
 
 ---
 

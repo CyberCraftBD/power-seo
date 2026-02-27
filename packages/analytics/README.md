@@ -22,15 +22,15 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 
 ## Why @power-seo/analytics?
 
-| | Without | With |
-|---|---|---|
-| GSC + audit correlation | ❌ Two separate tools | ✅ Merged by URL with Pearson correlation |
-| Trend analysis | ❌ Manual spreadsheet | ✅ Direction, rate, confidence in one call |
-| Anomaly detection | ❌ Manual review | ✅ Statistical spike/drop flagging |
-| Ranking tiers | ❌ Raw position data | ✅ Bucket groups (1–3, 4–10, 11–20...) |
-| Position tracking | ❌ Manual comparison | ✅ Before/after diff with `trackPositionChanges` |
-| Dashboard output | ❌ Build from scratch | ✅ Structured `DashboardData` ready for any chart library |
-| TypeScript support | ❌ Untyped data | ✅ Full type coverage for all data structures |
+|                         | Without               | With                                                      |
+| ----------------------- | --------------------- | --------------------------------------------------------- |
+| GSC + audit correlation | ❌ Two separate tools | ✅ Merged by URL with Pearson correlation                 |
+| Trend analysis          | ❌ Manual spreadsheet | ✅ Direction, rate, confidence in one call                |
+| Anomaly detection       | ❌ Manual review      | ✅ Statistical spike/drop flagging                        |
+| Ranking tiers           | ❌ Raw position data  | ✅ Bucket groups (1–3, 4–10, 11–20...)                    |
+| Position tracking       | ❌ Manual comparison  | ✅ Before/after diff with `trackPositionChanges`          |
+| Dashboard output        | ❌ Build from scratch | ✅ Structured `DashboardData` ready for any chart library |
+| TypeScript support      | ❌ Untyped data       | ✅ Full type coverage for all data structures             |
 
 ![Analytics Comparison](../../image/analytics/comparison.svg)
 
@@ -56,17 +56,17 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 
 ## Comparison
 
-| Feature | @power-seo/analytics | Looker Studio | GA4 | Custom scripts |
-| --- | :---: | :---: | :---: | :---: |
-| GSC + audit data merge | ✅ | ❌ | ❌ | Manual |
-| Pearson correlation | ✅ | ❌ | ❌ | Manual |
-| Trend direction analysis | ✅ | Partial | Partial | Manual |
-| Anomaly detection | ✅ | ❌ | Partial | Manual |
-| Position change tracking | ✅ | ❌ | ❌ | Manual |
-| Ranking bucket grouping | ✅ | ❌ | ❌ | Manual |
-| Dashboard-ready output | ✅ | ✅ | Partial | Manual |
-| Zero external dependencies | ✅ | ❌ | ❌ | — |
-| TypeScript-first | ✅ | ❌ | ❌ | — |
+| Feature                    | @power-seo/analytics | Looker Studio |   GA4   | Custom scripts |
+| -------------------------- | :------------------: | :-----------: | :-----: | :------------: |
+| GSC + audit data merge     |          ✅          |      ❌       |   ❌    |     Manual     |
+| Pearson correlation        |          ✅          |      ❌       |   ❌    |     Manual     |
+| Trend direction analysis   |          ✅          |    Partial    | Partial |     Manual     |
+| Anomaly detection          |          ✅          |      ❌       | Partial |     Manual     |
+| Position change tracking   |          ✅          |      ❌       |   ❌    |     Manual     |
+| Ranking bucket grouping    |          ✅          |      ❌       |   ❌    |     Manual     |
+| Dashboard-ready output     |          ✅          |      ✅       | Partial |     Manual     |
+| Zero external dependencies |          ✅          |      ❌       |   ❌    |       —        |
+| TypeScript-first           |          ✅          |      ❌       |   ❌    |       —        |
 
 ![Analytics Trend Accuracy](../../image/analytics/trend-accuracy.svg)
 

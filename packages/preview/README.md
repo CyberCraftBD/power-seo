@@ -20,15 +20,15 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 
 ## Why @power-seo/preview?
 
-| | Without | With |
-|---|---|---|
-| SERP title truncation | ❌ Guesswork (character count) | ✅ Pixel-accurate truncation at 580px |
-| SERP description truncation | ❌ Unchecked | ✅ Pixel-accurate truncation at 920px |
-| OG image validation | ❌ Silent drop by Facebook/LinkedIn | ✅ Dimension check with pass/fail message |
-| Twitter/X Card preview | ❌ Manual spec lookup | ✅ `summary` + `summary_large_image` with image validation |
-| breadcrumb path | ❌ Unknown | ✅ Google-style `example.com › blog › post` format |
-| React preview components | ❌ Build from scratch | ✅ Drop-in `SerpPreview`, `OgPreview`, `TwitterPreview`, `PreviewPanel` |
-| Framework support | ❌ Browser tools only | ✅ Next.js, Remix, Node.js, Edge, any JS environment |
+|                             | Without                             | With                                                                    |
+| --------------------------- | ----------------------------------- | ----------------------------------------------------------------------- |
+| SERP title truncation       | ❌ Guesswork (character count)      | ✅ Pixel-accurate truncation at 580px                                   |
+| SERP description truncation | ❌ Unchecked                        | ✅ Pixel-accurate truncation at 920px                                   |
+| OG image validation         | ❌ Silent drop by Facebook/LinkedIn | ✅ Dimension check with pass/fail message                               |
+| Twitter/X Card preview      | ❌ Manual spec lookup               | ✅ `summary` + `summary_large_image` with image validation              |
+| breadcrumb path             | ❌ Unknown                          | ✅ Google-style `example.com › blog › post` format                      |
+| React preview components    | ❌ Build from scratch               | ✅ Drop-in `SerpPreview`, `OgPreview`, `TwitterPreview`, `PreviewPanel` |
+| Framework support           | ❌ Browser tools only               | ✅ Next.js, Remix, Node.js, Edge, any JS environment                    |
 
 ![SERP Preview Comparison](../../image/preview/comparison.svg)
 
@@ -55,21 +55,21 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 
 ## Comparison
 
-| Feature | @power-seo/preview | Yoast SEO | next-seo | react-helmet | seo-analyzer |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Pixel-accurate SERP truncation | ✅ | ✅ (browser only) | ❌ | ❌ | ❌ |
-| SERP description truncation | ✅ | ✅ (browser only) | ❌ | ❌ | ❌ |
-| Google breadcrumb URL format | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Open Graph image validation | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Twitter/X Card preview generation | ✅ | ❌ | ❌ | ❌ | ❌ |
-| React preview components | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Works outside WordPress | ✅ | ❌ | ✅ | ✅ | ✅ |
-| Edge runtime safe | ✅ | ❌ | ✅ | ✅ | ❌ |
-| Structured data output (not HTML) | ✅ | ❌ | ❌ | ❌ | ❌ |
-| TypeScript-first | ✅ | ❌ | Partial | ❌ | ❌ |
-| Tree-shakeable | ✅ | ❌ | Partial | ❌ | ❌ |
-| CI / Node.js usage | ✅ | ❌ | ❌ | ❌ | ✅ |
-| Zero runtime dependencies | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Feature                           | @power-seo/preview |     Yoast SEO     | next-seo | react-helmet | seo-analyzer |
+| --------------------------------- | :----------------: | :---------------: | :------: | :----------: | :----------: |
+| Pixel-accurate SERP truncation    |         ✅         | ✅ (browser only) |    ❌    |      ❌      |      ❌      |
+| SERP description truncation       |         ✅         | ✅ (browser only) |    ❌    |      ❌      |      ❌      |
+| Google breadcrumb URL format      |         ✅         |        ✅         |    ❌    |      ❌      |      ❌      |
+| Open Graph image validation       |         ✅         |        ❌         |    ❌    |      ❌      |      ❌      |
+| Twitter/X Card preview generation |         ✅         |        ❌         |    ❌    |      ❌      |      ❌      |
+| React preview components          |         ✅         |        ✅         |    ❌    |      ❌      |      ❌      |
+| Works outside WordPress           |         ✅         |        ❌         |    ✅    |      ✅      |      ✅      |
+| Edge runtime safe                 |         ✅         |        ❌         |    ✅    |      ✅      |      ❌      |
+| Structured data output (not HTML) |         ✅         |        ❌         |    ❌    |      ❌      |      ❌      |
+| TypeScript-first                  |         ✅         |        ❌         | Partial  |      ❌      |      ❌      |
+| Tree-shakeable                    |         ✅         |        ❌         | Partial  |      ❌      |      ❌      |
+| CI / Node.js usage                |         ✅         |        ❌         |    ❌    |      ❌      |      ✅      |
+| Zero runtime dependencies         |         ✅         |        ❌         |    ❌    |      ❌      |      ❌      |
 
 ![Pixel Truncation Accuracy](../../image/preview/truncation-accuracy.svg)
 
@@ -100,12 +100,12 @@ const serp = generateSerpPreview({
   title: 'How to Add SEO to React Apps',
   description: 'Learn how to add meta tags, Open Graph, and JSON-LD to any React application.',
   url: 'https://example.com/blog/react-seo',
-  siteTitle: 'My Blog',  // optional — appended as "title - siteTitle"
+  siteTitle: 'My Blog', // optional — appended as "title - siteTitle"
 });
 
-console.log(serp.title);            // 'How to Add SEO to React Apps - My Blog' (truncated at 580px if too long)
-console.log(serp.displayUrl);       // 'example.com › blog › react-seo'
-console.log(serp.titleTruncated);   // false
+console.log(serp.title); // 'How to Add SEO to React Apps - My Blog' (truncated at 580px if too long)
+console.log(serp.displayUrl); // 'example.com › blog › react-seo'
+console.log(serp.titleTruncated); // false
 
 const og = generateOgPreview({
   title: 'React SEO Guide',
@@ -114,8 +114,8 @@ const og = generateOgPreview({
   image: { url: 'https://example.com/og.jpg', width: 1200, height: 630 },
 });
 
-console.log(og.image?.valid);    // true
-console.log(og.image?.message);  // undefined (dimensions are correct)
+console.log(og.image?.valid); // true
+console.log(og.image?.message); // undefined (dimensions are correct)
 ```
 
 ![CMS Preview Benefit](../../image/preview/cms-benefit.svg)
@@ -133,9 +133,10 @@ import { generateSerpPreview } from '@power-seo/preview';
 
 const serp = generateSerpPreview({
   title: 'Next.js SEO Best Practices',
-  description: 'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
+  description:
+    'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
   url: 'https://example.com/nextjs-seo',
-  siteTitle: 'Dev Blog',  // optional
+  siteTitle: 'Dev Blog', // optional
 });
 
 // serp.title            → 'Next.js SEO Best Practices - Dev Blog' (possibly truncated)
@@ -192,7 +193,10 @@ const twitter = generateTwitterPreview({
 ```ts
 import { truncateAtPixelWidth } from '@power-seo/preview';
 
-const result = truncateAtPixelWidth('Buy Premium Running Shoes Online — Free Shipping Worldwide', 580);
+const result = truncateAtPixelWidth(
+  'Buy Premium Running Shoes Online — Free Shipping Worldwide',
+  580,
+);
 
 // result.text      → 'Buy Premium Running Shoes Online — Free Shippi...'
 // result.truncated → true
@@ -261,10 +265,10 @@ if (og.image && !og.image.valid) {
 
 ### Entry Points
 
-| Import | Description |
-| --- | --- |
-| `@power-seo/preview` | Core preview generators and truncation utility |
-| `@power-seo/preview/react` | React components for preview UI |
+| Import                     | Description                                    |
+| -------------------------- | ---------------------------------------------- |
+| `@power-seo/preview`       | Core preview generators and truncation utility |
+| `@power-seo/preview/react` | React components for preview UI                |
 
 ### `generateSerpPreview()`
 
@@ -274,24 +278,24 @@ function generateSerpPreview(input: SerpPreviewInput): SerpPreviewData;
 
 #### `SerpPreviewInput`
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | Page title |
-| `description` | `string` | ✅ | Meta description |
-| `url` | `string` | ✅ | Canonical page URL |
-| `siteTitle` | `string` | — | Site name — appended as `"title - siteTitle"` before truncation |
+| Prop          | Type     | Required | Description                                                     |
+| ------------- | -------- | -------- | --------------------------------------------------------------- |
+| `title`       | `string` | ✅       | Page title                                                      |
+| `description` | `string` | ✅       | Meta description                                                |
+| `url`         | `string` | ✅       | Canonical page URL                                              |
+| `siteTitle`   | `string` | —        | Site name — appended as `"title - siteTitle"` before truncation |
 
 #### `SerpPreviewData`
 
-| Output Field | Type | Description |
-| --- | --- | --- |
-| `title` | `string` | Display title (truncated at 580px if needed) |
-| `displayUrl` | `string` | Breadcrumb path (e.g. `example.com › blog › post`) |
-| `description` | `string` | Display description (truncated at 920px if needed) |
-| `titleTruncated` | `boolean` | Whether title was truncated |
-| `descriptionTruncated` | `boolean` | Whether description was truncated |
-| `titleValidation` | `ValidationResult` | Title length/pixel validation result |
-| `descriptionValidation` | `ValidationResult` | Description length/pixel validation result |
+| Output Field            | Type               | Description                                        |
+| ----------------------- | ------------------ | -------------------------------------------------- |
+| `title`                 | `string`           | Display title (truncated at 580px if needed)       |
+| `displayUrl`            | `string`           | Breadcrumb path (e.g. `example.com › blog › post`) |
+| `description`           | `string`           | Display description (truncated at 920px if needed) |
+| `titleTruncated`        | `boolean`          | Whether title was truncated                        |
+| `descriptionTruncated`  | `boolean`          | Whether description was truncated                  |
+| `titleValidation`       | `ValidationResult` | Title length/pixel validation result               |
+| `descriptionValidation` | `ValidationResult` | Description length/pixel validation result         |
 
 ---
 
@@ -303,32 +307,32 @@ function generateOgPreview(input: OgPreviewInput): OgPreviewData;
 
 #### `OgPreviewInput`
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | OG title |
-| `description` | `string` | ✅ | OG description |
-| `url` | `string` | ✅ | Canonical URL |
-| `image` | `{ url: string; width?: number; height?: number }` | — | OG image (recommended 1200×630) |
-| `siteName` | `string` | — | Site name displayed on the card |
+| Prop          | Type                                               | Required | Description                     |
+| ------------- | -------------------------------------------------- | -------- | ------------------------------- |
+| `title`       | `string`                                           | ✅       | OG title                        |
+| `description` | `string`                                           | ✅       | OG description                  |
+| `url`         | `string`                                           | ✅       | Canonical URL                   |
+| `image`       | `{ url: string; width?: number; height?: number }` | —        | OG image (recommended 1200×630) |
+| `siteName`    | `string`                                           | —        | Site name displayed on the card |
 
 #### `OgPreviewData`
 
-| Output Field | Type | Description |
-| --- | --- | --- |
-| `title` | `string` | OG title |
-| `description` | `string` | OG description |
-| `url` | `string` | Canonical URL |
-| `siteName` | `string \| undefined` | Site name |
-| `image` | `OgImageValidation \| undefined` | Image with validation result (see below) |
+| Output Field  | Type                             | Description                              |
+| ------------- | -------------------------------- | ---------------------------------------- |
+| `title`       | `string`                         | OG title                                 |
+| `description` | `string`                         | OG description                           |
+| `url`         | `string`                         | Canonical URL                            |
+| `siteName`    | `string \| undefined`            | Site name                                |
+| `image`       | `OgImageValidation \| undefined` | Image with validation result (see below) |
 
 #### `OgImageValidation`
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `url` | `string` | Image URL |
-| `width` | `number \| undefined` | Image width in pixels |
-| `height` | `number \| undefined` | Image height in pixels |
-| `valid` | `boolean` | Whether the image meets OG dimension requirements |
+| Field     | Type                  | Description                                               |
+| --------- | --------------------- | --------------------------------------------------------- |
+| `url`     | `string`              | Image URL                                                 |
+| `width`   | `number \| undefined` | Image width in pixels                                     |
+| `height`  | `number \| undefined` | Image height in pixels                                    |
+| `valid`   | `boolean`             | Whether the image meets OG dimension requirements         |
 | `message` | `string \| undefined` | Human-readable validation message when dimensions deviate |
 
 ---
@@ -341,23 +345,23 @@ function generateTwitterPreview(input: TwitterPreviewInput): TwitterPreviewData;
 
 #### `TwitterPreviewInput`
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `cardType` | `'summary' \| 'summary_large_image'` | ✅ | Twitter Card type |
-| `title` | `string` | ✅ | Card title |
-| `description` | `string` | ✅ | Card description |
-| `image` | `{ url: string; width?: number; height?: number }` | — | Card image |
-| `site` | `string` | — | Twitter @username of the site (e.g. `'@myblog'`) |
+| Prop          | Type                                               | Required | Description                                      |
+| ------------- | -------------------------------------------------- | -------- | ------------------------------------------------ |
+| `cardType`    | `'summary' \| 'summary_large_image'`               | ✅       | Twitter Card type                                |
+| `title`       | `string`                                           | ✅       | Card title                                       |
+| `description` | `string`                                           | ✅       | Card description                                 |
+| `image`       | `{ url: string; width?: number; height?: number }` | —        | Card image                                       |
+| `site`        | `string`                                           | —        | Twitter @username of the site (e.g. `'@myblog'`) |
 
 #### `TwitterPreviewData`
 
-| Output Field | Type | Description |
-| --- | --- | --- |
-| `cardType` | `TwitterCardType` | The card type (`'summary'` or `'summary_large_image'`) |
-| `title` | `string` | Card title |
-| `description` | `string` | Card description |
-| `image` | `TwitterImageValidation \| undefined` | Image with validation result |
-| `domain` | `string \| undefined` | Extracted domain from `site` handle |
+| Output Field  | Type                                  | Description                                            |
+| ------------- | ------------------------------------- | ------------------------------------------------------ |
+| `cardType`    | `TwitterCardType`                     | The card type (`'summary'` or `'summary_large_image'`) |
+| `title`       | `string`                              | Card title                                             |
+| `description` | `string`                              | Card description                                       |
+| `image`       | `TwitterImageValidation \| undefined` | Image with validation result                           |
+| `domain`      | `string \| undefined`                 | Extracted domain from `site` handle                    |
 
 ---
 
@@ -369,10 +373,10 @@ function truncateAtPixelWidth(text: string, maxPixels: number): TruncateResult;
 
 #### `TruncateResult`
 
-| Output Field | Type | Description |
-| --- | --- | --- |
-| `text` | `string` | Resulting (possibly truncated) string |
-| `truncated` | `boolean` | Whether truncation occurred |
+| Output Field | Type      | Description                           |
+| ------------ | --------- | ------------------------------------- |
+| `text`       | `string`  | Resulting (possibly truncated) string |
+| `truncated`  | `boolean` | Whether truncation occurred           |
 
 ---
 
@@ -388,69 +392,69 @@ import { SerpPreview, OgPreview, TwitterPreview, PreviewPanel } from '@power-seo
 
 Renders a Google-style SERP result card.
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | Page title |
-| `description` | `string` | ✅ | Meta description |
-| `url` | `string` | ✅ | Canonical URL |
-| `siteTitle` | `string` | — | Site name — appended to title as `"title - siteTitle"` |
+| Prop          | Type     | Required | Description                                            |
+| ------------- | -------- | -------- | ------------------------------------------------------ |
+| `title`       | `string` | ✅       | Page title                                             |
+| `description` | `string` | ✅       | Meta description                                       |
+| `url`         | `string` | ✅       | Canonical URL                                          |
+| `siteTitle`   | `string` | —        | Site name — appended to title as `"title - siteTitle"` |
 
 #### `OgPreview`
 
 Renders a Facebook/Open Graph card mockup.
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | OG title |
-| `description` | `string` | ✅ | OG description |
-| `url` | `string` | ✅ | Canonical URL |
-| `image` | `{ url: string; width?: number; height?: number }` | — | OG image |
-| `siteName` | `string` | — | Site name shown above the title |
+| Prop          | Type                                               | Required | Description                     |
+| ------------- | -------------------------------------------------- | -------- | ------------------------------- |
+| `title`       | `string`                                           | ✅       | OG title                        |
+| `description` | `string`                                           | ✅       | OG description                  |
+| `url`         | `string`                                           | ✅       | Canonical URL                   |
+| `image`       | `{ url: string; width?: number; height?: number }` | —        | OG image                        |
+| `siteName`    | `string`                                           | —        | Site name shown above the title |
 
 #### `TwitterPreview`
 
 Renders a Twitter/X card mockup for `summary` or `summary_large_image` card types.
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `cardType` | `TwitterCardType` | ✅ | `'summary'` or `'summary_large_image'` |
-| `title` | `string` | ✅ | Card title |
-| `description` | `string` | ✅ | Card description |
-| `image` | `{ url: string; width?: number; height?: number }` | — | Card image |
-| `site` | `string` | — | Twitter @username of the site |
+| Prop          | Type                                               | Required | Description                            |
+| ------------- | -------------------------------------------------- | -------- | -------------------------------------- |
+| `cardType`    | `TwitterCardType`                                  | ✅       | `'summary'` or `'summary_large_image'` |
+| `title`       | `string`                                           | ✅       | Card title                             |
+| `description` | `string`                                           | ✅       | Card description                       |
+| `image`       | `{ url: string; width?: number; height?: number }` | —        | Card image                             |
+| `site`        | `string`                                           | —        | Twitter @username of the site          |
 
 #### `PreviewPanel`
 
 Tabbed container with Google, Facebook, and Twitter/X preview cards in a single component.
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | Page title |
-| `description` | `string` | ✅ | Meta description |
-| `url` | `string` | ✅ | Canonical URL |
-| `image` | `{ url: string; width?: number; height?: number }` | — | Shared image for OG and Twitter cards |
-| `siteName` | `string` | — | OG site name |
-| `siteTitle` | `string` | — | SERP site name (appended to title) |
-| `twitterSite` | `string` | — | Twitter @username |
-| `twitterCardType` | `TwitterCardType` | — | Twitter Card type (default: `'summary_large_image'`) |
+| Prop              | Type                                               | Required | Description                                          |
+| ----------------- | -------------------------------------------------- | -------- | ---------------------------------------------------- |
+| `title`           | `string`                                           | ✅       | Page title                                           |
+| `description`     | `string`                                           | ✅       | Meta description                                     |
+| `url`             | `string`                                           | ✅       | Canonical URL                                        |
+| `image`           | `{ url: string; width?: number; height?: number }` | —        | Shared image for OG and Twitter cards                |
+| `siteName`        | `string`                                           | —        | OG site name                                         |
+| `siteTitle`       | `string`                                           | —        | SERP site name (appended to title)                   |
+| `twitterSite`     | `string`                                           | —        | Twitter @username                                    |
+| `twitterCardType` | `TwitterCardType`                                  | —        | Twitter Card type (default: `'summary_large_image'`) |
 
 ---
 
 ### Types
 
-| Type | Description |
-| --- | --- |
-| `SerpPreviewInput` | Input shape for `generateSerpPreview()` |
-| `SerpPreviewData` | Output shape from `generateSerpPreview()` |
-| `OgPreviewInput` | Input shape for `generateOgPreview()` |
-| `OgPreviewData` | Output shape from `generateOgPreview()` |
-| `OgImageValidation` | Image validation result on `OgPreviewData.image` |
-| `TwitterPreviewInput` | Input shape for `generateTwitterPreview()` |
-| `TwitterPreviewData` | Output shape from `generateTwitterPreview()` |
-| `TwitterImageValidation` | Image validation result on `TwitterPreviewData.image` |
-| `TruncateResult` | Output shape from `truncateAtPixelWidth()` |
-| `TwitterCardType` | `'summary' \| 'summary_large_image'` (from `@power-seo/core`) |
-| `ValidationResult` | Title/description validation result (from `@power-seo/core`) |
+| Type                     | Description                                                   |
+| ------------------------ | ------------------------------------------------------------- |
+| `SerpPreviewInput`       | Input shape for `generateSerpPreview()`                       |
+| `SerpPreviewData`        | Output shape from `generateSerpPreview()`                     |
+| `OgPreviewInput`         | Input shape for `generateOgPreview()`                         |
+| `OgPreviewData`          | Output shape from `generateOgPreview()`                       |
+| `OgImageValidation`      | Image validation result on `OgPreviewData.image`              |
+| `TwitterPreviewInput`    | Input shape for `generateTwitterPreview()`                    |
+| `TwitterPreviewData`     | Output shape from `generateTwitterPreview()`                  |
+| `TwitterImageValidation` | Image validation result on `TwitterPreviewData.image`         |
+| `TruncateResult`         | Output shape from `truncateAtPixelWidth()`                    |
+| `TwitterCardType`        | `'summary' \| 'summary_large_image'` (from `@power-seo/core`) |
+| `ValidationResult`       | Title/description validation result (from `@power-seo/core`)  |
 
 ---
 
@@ -497,25 +501,25 @@ Tabbed container with Google, Facebook, and Twitter/X preview cards in a single 
 
 All 17 packages are independently installable — use only what you need.
 
-| Package | Install | Description |
-| --- | --- | --- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 21 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 

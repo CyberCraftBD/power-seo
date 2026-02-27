@@ -8,49 +8,23 @@
 ## Table of Contents
 
 **Part 1 — Strategic Overview**
+
 1. [Executive Summary](#1-executive-summary)
 2. [Market Analysis](#2-market-analysis)
 3. [Project Vision & Goals](#3-project-vision--goals)
 4. [Strategic Principles](#4-strategic-principles)
 
-**Part 2 — Product Architecture**
-5. [Technical Architecture](#5-technical-architecture)
-6. [Package Reference](#6-package-reference)
-7. [Framework Integration](#7-framework-integration)
-8. [External API Integrations](#8-external-api-integrations)
+**Part 2 — Product Architecture** 5. [Technical Architecture](#5-technical-architecture) 6. [Package Reference](#6-package-reference) 7. [Framework Integration](#7-framework-integration) 8. [External API Integrations](#8-external-api-integrations)
 
-**Part 3 — Business Model**
-9. [Versioning Policy](#9-versioning-policy)
-10. [Pricing Plans](#10-pricing-plans)
-11. [AI Credit System](#11-ai-credit-system)
-12. [Package Feature Matrix](#12-package-feature-matrix)
-13. [Cost & Profitability](#13-cost--profitability)
+**Part 3 — Business Model** 9. [Versioning Policy](#9-versioning-policy) 10. [Pricing Plans](#10-pricing-plans) 11. [AI Credit System](#11-ai-credit-system) 12. [Package Feature Matrix](#12-package-feature-matrix) 13. [Cost & Profitability](#13-cost--profitability)
 
-**Part 4 — Development Roadmap**
-14. [Completed Milestones](#14-completed-milestones)
-15. [Phase 1 — Foundation & Trust](#15-phase-1--foundation--trust-v100--v12x)
-16. [Phase 2 — AI Launch + First Plans](#16-phase-2--ai-launch--first-plans-v13x)
-17. [Phase 3 — Business Plan + Image AI](#17-phase-3--business-plan--image-ai-v14x)
-18. [Phase 4 — Agency Plan + Advanced AI](#18-phase-4--agency-plan--advanced-ai-v15x)
-19. [Phase 5 — Bulk Operations & Automation](#19-phase-5--bulk-operations--automation-v16x)
-20. [Phase 6 — Cloud & SaaS](#20-phase-6--cloud--saas-v17x--v18x)
-21. [Phase 7 — Maturity](#21-phase-7--maturity-v2x)
-22. [Future Package Candidates](#22-future-package-candidates)
-23. [Strategic Opportunities](#23-strategic-opportunities)
+**Part 4 — Development Roadmap** 14. [Completed Milestones](#14-completed-milestones) 15. [Phase 1 — Foundation & Trust](#15-phase-1--foundation--trust-v100--v12x) 16. [Phase 2 — AI Launch + First Plans](#16-phase-2--ai-launch--first-plans-v13x) 17. [Phase 3 — Business Plan + Image AI](#17-phase-3--business-plan--image-ai-v14x) 18. [Phase 4 — Agency Plan + Advanced AI](#18-phase-4--agency-plan--advanced-ai-v15x) 19. [Phase 5 — Bulk Operations & Automation](#19-phase-5--bulk-operations--automation-v16x) 20. [Phase 6 — Cloud & SaaS](#20-phase-6--cloud--saas-v17x--v18x) 21. [Phase 7 — Maturity](#21-phase-7--maturity-v2x) 22. [Future Package Candidates](#22-future-package-candidates) 23. [Strategic Opportunities](#23-strategic-opportunities)
 
-**Part 5 — Engineering Standards**
-24. [Security & Compliance](#24-security--compliance)
-25. [Testing Strategy](#25-testing-strategy)
-26. [CI/CD Pipeline](#26-cicd-pipeline)
-27. [Publishing Workflow](#27-publishing-workflow)
+**Part 5 — Engineering Standards** 24. [Security & Compliance](#24-security--compliance) 25. [Testing Strategy](#25-testing-strategy) 26. [CI/CD Pipeline](#26-cicd-pipeline) 27. [Publishing Workflow](#27-publishing-workflow)
 
-**Part 6 — Risk & Governance**
-28. [Free vs Paid — Full Feature Summary](#28-free-vs-paid--full-feature-summary)
-29. [Risk Analysis](#29-risk-analysis)
-30. [Reputation Protection Rules](#30-reputation-protection-rules)
+**Part 6 — Risk & Governance** 28. [Free vs Paid — Full Feature Summary](#28-free-vs-paid--full-feature-summary) 29. [Risk Analysis](#29-risk-analysis) 30. [Reputation Protection Rules](#30-reputation-protection-rules)
 
-**Part 7 — Reference**
-31. [Instructions for Claude](#31-instructions-for-claude)
+**Part 7 — Reference** 31. [Instructions for Claude](#31-instructions-for-claude)
 
 ---
 
@@ -60,24 +34,24 @@
 
 ### Current State (v1.0.x)
 
-| Metric | Value |
-| --- | --- |
-| Published packages | 17 under `@power-seo` npm org |
-| Tests | 500+ across all packages (Vitest) |
-| Output formats | Dual ESM + CJS with TypeScript declarations |
-| Framework support | Next.js App Router, Remix v2, generic SSR, Astro |
-| Documentation | Starlight site (Astro) |
-| Examples | Next.js App Router + Remix v2 |
-| License | MIT |
+| Metric             | Value                                            |
+| ------------------ | ------------------------------------------------ |
+| Published packages | 17 under `@power-seo` npm org                    |
+| Tests              | 500+ across all packages (Vitest)                |
+| Output formats     | Dual ESM + CJS with TypeScript declarations      |
+| Framework support  | Next.js App Router, Remix v2, generic SSR, Astro |
+| Documentation      | Starlight site (Astro)                           |
+| Examples           | Next.js App Router + Remix v2                    |
+| License            | MIT                                              |
 
 ### Value Proposition
 
-| Audience | Value |
-| --- | --- |
-| **Solo developers** | Drop-in SEO components that work out of the box |
-| **Agencies** | Modular — install only the packages you need |
-| **Enterprises** | Type-safe, tree-shakeable, auditable SEO infrastructure |
-| **The ecosystem** | Free, open-source, MIT-licensed — no vendor lock-in |
+| Audience            | Value                                                   |
+| ------------------- | ------------------------------------------------------- |
+| **Solo developers** | Drop-in SEO components that work out of the box         |
+| **Agencies**        | Modular — install only the packages you need            |
+| **Enterprises**     | Type-safe, tree-shakeable, auditable SEO infrastructure |
+| **The ecosystem**   | Free, open-source, MIT-licensed — no vendor lock-in     |
 
 ### Market Position
 
@@ -89,59 +63,59 @@
 
 ### WordPress SEO Plugin Landscape
 
-| Feature | Yoast SEO ($99/yr) | Rank Math ($59/yr) | AIOSEO ($49/yr) | SEOPress ($49/yr) |
-| --- | --- | --- | --- | --- |
-| Content analysis | Real-time scoring | Real-time scoring | TruSEO scoring | Basic |
-| Readability | Flesch-Kincaid + custom | Basic | Score only | None |
-| Schema/JSON-LD | 14+ types (Pro) | 20+ types (free) | 17+ types | 18+ types |
-| XML Sitemaps | Yes | Yes | Yes | Yes |
-| Redirects | Premium only | Free (basic) | Pro only | Free |
-| Social previews | Yes | Yes | Yes | Yes |
-| Search Console | Yes | Yes | Yes | Yes |
-| Internal linking | Premium only | Free suggestions | Pro only | Pro |
+| Feature          | Yoast SEO ($99/yr)      | Rank Math ($59/yr) | AIOSEO ($49/yr) | SEOPress ($49/yr) |
+| ---------------- | ----------------------- | ------------------ | --------------- | ----------------- |
+| Content analysis | Real-time scoring       | Real-time scoring  | TruSEO scoring  | Basic             |
+| Readability      | Flesch-Kincaid + custom | Basic              | Score only      | None              |
+| Schema/JSON-LD   | 14+ types (Pro)         | 20+ types (free)   | 17+ types       | 18+ types         |
+| XML Sitemaps     | Yes                     | Yes                | Yes             | Yes               |
+| Redirects        | Premium only            | Free (basic)       | Pro only        | Free              |
+| Social previews  | Yes                     | Yes                | Yes             | Yes               |
+| Search Console   | Yes                     | Yes                | Yes             | Yes               |
+| Internal linking | Premium only            | Free suggestions   | Pro only        | Pro               |
 
 **Key insight:** WordPress developers have five mature, full-featured SEO suites. React developers have nothing comparable.
 
 ### React/JS Ecosystem Gaps (Before @power-seo)
 
-| Capability | WordPress | React/Next.js |
-| --- | --- | --- |
-| Real-time content analysis | Built-in editor panel | **Nothing** |
-| Readability scoring in UI | Live Flesch-Kincaid | **Zero** |
-| SERP preview components | Google/social previews | **Zero** |
-| Redirect manager | GUI-based 301/302/410 | **Zero** |
-| SEO audit/scoring dashboard | Built-in site health | **Zero** |
-| Internal link suggestions | Automated | **Zero** |
-| Keyword density tracking | Real-time | **Zero** |
-| Breadcrumb components | PHP template tags | **Zero** |
-| Search Console integration | Embedded dashboard | **Zero** |
-| Schema/JSON-LD validation | Auto-generated | Partial (next-seo basics) |
+| Capability                  | WordPress              | React/Next.js             |
+| --------------------------- | ---------------------- | ------------------------- |
+| Real-time content analysis  | Built-in editor panel  | **Nothing**               |
+| Readability scoring in UI   | Live Flesch-Kincaid    | **Zero**                  |
+| SERP preview components     | Google/social previews | **Zero**                  |
+| Redirect manager            | GUI-based 301/302/410  | **Zero**                  |
+| SEO audit/scoring dashboard | Built-in site health   | **Zero**                  |
+| Internal link suggestions   | Automated              | **Zero**                  |
+| Keyword density tracking    | Real-time              | **Zero**                  |
+| Breadcrumb components       | PHP template tags      | **Zero**                  |
+| Search Console integration  | Embedded dashboard     | **Zero**                  |
+| Schema/JSON-LD validation   | Auto-generated         | Partial (next-seo basics) |
 
 ### Existing React Libraries (Pre-@power-seo)
 
-| Category | Package | Weekly Downloads | Limitation |
-| --- | --- | --- | --- |
-| Meta tags | react-helmet-async | ~2.5M | Meta only, no analysis |
-| Sitemaps | next-sitemap | ~350K | Next.js specific |
-| JSON-LD | next-seo | ~200K | Next.js only |
-| Content analysis | yoastseo | ~15K | WordPress-coupled |
-| Readability | text-readability | ~3K | Single algorithm, no UI |
+| Category         | Package            | Weekly Downloads | Limitation              |
+| ---------------- | ------------------ | ---------------- | ----------------------- |
+| Meta tags        | react-helmet-async | ~2.5M            | Meta only, no analysis  |
+| Sitemaps         | next-sitemap       | ~350K            | Next.js specific        |
+| JSON-LD          | next-seo           | ~200K            | Next.js only            |
+| Content analysis | yoastseo           | ~15K             | WordPress-coupled       |
+| Readability      | text-readability   | ~3K              | Single algorithm, no UI |
 
 ### How @power-seo Fills Every Gap
 
-| Package | Gap Addressed | WordPress Equivalent |
-| --- | --- | --- |
-| `content-analysis` | Real-time content scoring, keyword density | Yoast content analysis panel |
-| `readability` | Flesch-Kincaid + 3 more algorithms + React components | Yoast readability tab |
-| `preview` | Google SERP, OG, Twitter Card preview components | Yoast/Rank Math social previews |
-| `redirects` | Programmatic redirect manager (301/302/307/410) | Rank Math redirect manager |
-| `schema` | Type-safe JSON-LD for 19 schema types | Rank Math schema builder |
-| `sitemap` | Framework-agnostic XML/HTML sitemap generation | Yoast XML sitemaps |
-| `audit` | Page-level and site-level SEO scoring | Yoast/AIOSEO site health |
-| `search-console` | Google Search Console API integration | Rank Math analytics |
-| `links` | Internal link analysis and suggestions | Yoast internal linking |
-| `meta` | Unified meta tag management with SSR support | Core meta tag handling |
-| `tracking` | Consent-aware analytics script management | Cookie plugins + GTM |
+| Package            | Gap Addressed                                         | WordPress Equivalent            |
+| ------------------ | ----------------------------------------------------- | ------------------------------- |
+| `content-analysis` | Real-time content scoring, keyword density            | Yoast content analysis panel    |
+| `readability`      | Flesch-Kincaid + 3 more algorithms + React components | Yoast readability tab           |
+| `preview`          | Google SERP, OG, Twitter Card preview components      | Yoast/Rank Math social previews |
+| `redirects`        | Programmatic redirect manager (301/302/307/410)       | Rank Math redirect manager      |
+| `schema`           | Type-safe JSON-LD for 19 schema types                 | Rank Math schema builder        |
+| `sitemap`          | Framework-agnostic XML/HTML sitemap generation        | Yoast XML sitemaps              |
+| `audit`            | Page-level and site-level SEO scoring                 | Yoast/AIOSEO site health        |
+| `search-console`   | Google Search Console API integration                 | Rank Math analytics             |
+| `links`            | Internal link analysis and suggestions                | Yoast internal linking          |
+| `meta`             | Unified meta tag management with SSR support          | Core meta tag handling          |
+| `tracking`         | Consent-aware analytics script management             | Cookie plugins + GTM            |
 
 ---
 
@@ -163,23 +137,23 @@
 
 ### Non-Functional Requirements
 
-| Requirement | Standard | Target |
-| --- | --- | --- |
-| Type safety | TypeScript strict mode | Zero `any` types in public API |
-| Bundle size | Tree-shakeable, `sideEffects: false` | Each package < 50KB minified |
-| Node.js support | LTS versions | Node 18, 20, 22 |
-| Module format | Dual ESM + CJS | All 17 packages |
-| Test coverage | Line coverage | > 90% per package |
-| Build time | Turborepo parallel | < 30s full build |
+| Requirement     | Standard                             | Target                         |
+| --------------- | ------------------------------------ | ------------------------------ |
+| Type safety     | TypeScript strict mode               | Zero `any` types in public API |
+| Bundle size     | Tree-shakeable, `sideEffects: false` | Each package < 50KB minified   |
+| Node.js support | LTS versions                         | Node 18, 20, 22                |
+| Module format   | Dual ESM + CJS                       | All 17 packages                |
+| Test coverage   | Line coverage                        | > 90% per package              |
+| Build time      | Turborepo parallel                   | < 30s full build               |
 
 ### Competitive Threats & Mitigations
 
-| Threat | Mitigation |
-| --- | --- |
-| Next.js ships native SEO features | @power-seo works alongside `next/metadata` — adds analysis, previews, auditing that Next.js never will |
-| Vercel ships an SEO utility | Focus on depth: 17 packages vs a single utility |
-| WordPress ecosystem extends to headless | @power-seo is React-native, not a WordPress bridge |
-| Another OSS project copies the approach | First-mover advantage, community trust, established npm presence |
+| Threat                                  | Mitigation                                                                                             |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Next.js ships native SEO features       | @power-seo works alongside `next/metadata` — adds analysis, previews, auditing that Next.js never will |
+| Vercel ships an SEO utility             | Focus on depth: 17 packages vs a single utility                                                        |
+| WordPress ecosystem extends to headless | @power-seo is React-native, not a WordPress bridge                                                     |
+| Another OSS project copies the approach | First-mover advantage, community trust, established npm presence                                       |
 
 ---
 
@@ -187,7 +161,7 @@
 
 ### A. Monetize Intelligence, Not Capabilities
 
-- Never charge for *having* a feature
+- Never charge for _having_ a feature
 - Charge for:
   - **Depth** — multiple keywords
   - **Scale** — bulk automation, dynamic image conversion
@@ -241,16 +215,16 @@ power-seo/
 
 ### Build Pipeline
 
-| Tool | Purpose | Version |
-| --- | --- | --- |
-| pnpm | Package manager + workspaces | 9.15+ |
-| Turborepo | Parallel builds + caching | 2.3+ |
-| tsup | ESM + CJS + `.d.ts` bundling | 8.3+ |
-| TypeScript | Strict type checking | 5.9+ |
-| Vitest | Test framework | 2.1+ |
-| ESLint | Linting (flat config v9) | 9.x |
-| Prettier | Code formatting | 3.4+ |
-| Changesets | Version management + npm publish | 2.27+ |
+| Tool       | Purpose                          | Version |
+| ---------- | -------------------------------- | ------- |
+| pnpm       | Package manager + workspaces     | 9.15+   |
+| Turborepo  | Parallel builds + caching        | 2.3+    |
+| tsup       | ESM + CJS + `.d.ts` bundling     | 8.3+    |
+| TypeScript | Strict type checking             | 5.9+    |
+| Vitest     | Test framework                   | 2.1+    |
+| ESLint     | Linting (flat config v9)         | 9.x     |
+| Prettier   | Code formatting                  | 3.4+    |
+| Changesets | Version management + npm publish | 2.27+   |
 
 ### Package Dependency Graph
 
@@ -270,8 +244,8 @@ Packages with React components export two entry points:
 ```json
 {
   "exports": {
-    ".":        { "import": "./dist/index.js",  "require": "./dist/index.cjs" },
-    "./react":  { "import": "./dist/react.js",  "require": "./dist/react.cjs" }
+    ".": { "import": "./dist/index.js", "require": "./dist/index.cjs" },
+    "./react": { "import": "./dist/react.js", "require": "./dist/react.cjs" }
   }
 }
 ```
@@ -284,51 +258,54 @@ Packages using this pattern: `schema` · `content-analysis` · `preview` · `tra
 
 All 17 packages, their current version, test count, and API surface:
 
-| Package | Version | Tests | Export | Description |
-| --- | --- | --- | --- | --- |
-| `core` | 1.0.x | — | Single | Types, constants, meta validators, URL utils, text stats, keyword density |
-| `react` | 1.0.x | — | Single | React SEO components: SEO, DefaultSEO, OpenGraph, TwitterCard, Canonical, Robots, Hreflang, Breadcrumb |
-| `schema` | 1.0.x | — | Dual | 19 JSON-LD builder functions + 19 React components + validation |
-| `content-analysis` | 1.0.x | 47 | Dual | 7 check functions + ScorePanel + CheckList + ContentAnalyzer components |
-| `preview` | 1.0.x | 36 | Dual | SERP/OG/Twitter generators + SerpPreview + OgPreview + TwitterPreview + PreviewPanel |
-| `readability` | 1.0.x | 28 | Single | Flesch, Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI algorithms |
-| `sitemap` | 1.0.x | 33 | Single | XML generation, streaming, index splitting, validation |
-| `redirects` | 1.0.x | 47 | Single | Exact/glob/regex matching + Next.js, Remix, Express adapters |
-| `links` | 1.0.x | 31 | Single | Link graph, orphan detection, link equity, keyword-based suggestions |
-| `audit` | 1.0.x | 44 | Single | Page + site auditing across meta/content/structure/performance rules |
-| `images` | 1.0.x | 40 | Single | Alt text audit, lazy loading, format detection, image sitemaps |
-| `ai` | 1.0.x | 40 | Single | LLM-agnostic prompt builders + response parsers + SERP eligibility |
-| `analytics` | 1.0.x | 33 | Single | GSC + audit merging, trend lines, anomaly detection, dashboard data |
-| `search-console` | 1.0.x | 26 | Single | Google Search Console API client (OAuth 2.0 + Service Account) |
-| `integrations` | 1.0.x | 19 | Single | Semrush + Ahrefs typed HTTP clients |
-| `tracking` | 1.0.x | 38 | Dual | GA4/Clarity/PostHog/Plausible/Fathom builders + API clients + consent manager |
-| `meta` | 1.0.x | 28 | Single | Next.js `createMetadata()`, Remix `createMetaDescriptors()`, generic SSR helpers |
+| Package            | Version | Tests | Export | Description                                                                                            |
+| ------------------ | ------- | ----- | ------ | ------------------------------------------------------------------------------------------------------ |
+| `core`             | 1.0.x   | —     | Single | Types, constants, meta validators, URL utils, text stats, keyword density                              |
+| `react`            | 1.0.x   | —     | Single | React SEO components: SEO, DefaultSEO, OpenGraph, TwitterCard, Canonical, Robots, Hreflang, Breadcrumb |
+| `schema`           | 1.0.x   | —     | Dual   | 19 JSON-LD builder functions + 19 React components + validation                                        |
+| `content-analysis` | 1.0.x   | 47    | Dual   | 7 check functions + ScorePanel + CheckList + ContentAnalyzer components                                |
+| `preview`          | 1.0.x   | 36    | Dual   | SERP/OG/Twitter generators + SerpPreview + OgPreview + TwitterPreview + PreviewPanel                   |
+| `readability`      | 1.0.x   | 28    | Single | Flesch, Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI algorithms                                      |
+| `sitemap`          | 1.0.x   | 33    | Single | XML generation, streaming, index splitting, validation                                                 |
+| `redirects`        | 1.0.x   | 47    | Single | Exact/glob/regex matching + Next.js, Remix, Express adapters                                           |
+| `links`            | 1.0.x   | 31    | Single | Link graph, orphan detection, link equity, keyword-based suggestions                                   |
+| `audit`            | 1.0.x   | 44    | Single | Page + site auditing across meta/content/structure/performance rules                                   |
+| `images`           | 1.0.x   | 40    | Single | Alt text audit, lazy loading, format detection, image sitemaps                                         |
+| `ai`               | 1.0.x   | 40    | Single | LLM-agnostic prompt builders + response parsers + SERP eligibility                                     |
+| `analytics`        | 1.0.x   | 33    | Single | GSC + audit merging, trend lines, anomaly detection, dashboard data                                    |
+| `search-console`   | 1.0.x   | 26    | Single | Google Search Console API client (OAuth 2.0 + Service Account)                                         |
+| `integrations`     | 1.0.x   | 19    | Single | Semrush + Ahrefs typed HTTP clients                                                                    |
+| `tracking`         | 1.0.x   | 38    | Dual   | GA4/Clarity/PostHog/Plausible/Fathom builders + API clients + consent manager                          |
+| `meta`             | 1.0.x   | 28    | Single | Next.js `createMetadata()`, Remix `createMetaDescriptors()`, generic SSR helpers                       |
 
 ### Key API Patterns
 
 **Content Analysis (single → multi-keyword, plan-gated):**
+
 ```ts
 // Current (free) — single keyphrase
-analyzeContent({ content, focusKeyphrase: 'react seo' })
+analyzeContent({ content, focusKeyphrase: 'react seo' });
 
 // v1.3.x+ — array, limit enforced by plan
-analyzeContent({ content, focusKeyphrases: ['react seo', 'next.js seo'] }, planContext)
+analyzeContent({ content, focusKeyphrases: ['react seo', 'next.js seo'] }, planContext);
 ```
 
 **AI Functions (credit-gated, all plans):**
+
 ```ts
 // All AI functions accept optional PlanContext
-const titles = await generateTitles({ title, content }, { apiKey: 'pseo_xxx' })
+const titles = await generateTitles({ title, content }, { apiKey: 'pseo_xxx' });
 ```
 
 **Plan Context (passed optionally, falls back to free tier):**
+
 ```ts
 interface PlanContext {
-  apiKey: string        // Validated server-side
-  tier: 'free' | 'starter' | 'pro' | 'business' | 'agency'
-  maxKeywords: number   // 1 / 3 / 5 / 10 / unlimited
-  imageQuota: number    // 0 / 50 / 200 / 1000 / 5000
-  credits: { text: number; image: number }
+  apiKey: string; // Validated server-side
+  tier: 'free' | 'starter' | 'pro' | 'business' | 'agency';
+  maxKeywords: number; // 1 / 3 / 5 / 10 / unlimited
+  imageQuota: number; // 0 / 50 / 200 / 1000 / 5000
+  credits: { text: number; image: number };
 }
 ```
 
@@ -385,20 +362,20 @@ Use framework-agnostic builder functions from `@power-seo/core` and `@power-seo/
 
 ### Google Search Console API
 
-| Detail | Value |
-| --- | --- |
-| Cost | Free |
-| Auth | OAuth 2.0 (user consent) or Service Account (server-to-server) |
-| Base URL | `https://searchconsole.googleapis.com/v1/` |
-| Integration priority | **P0 — Ship first** (free, broad adoption) |
+| Detail               | Value                                                          |
+| -------------------- | -------------------------------------------------------------- |
+| Cost                 | Free                                                           |
+| Auth                 | OAuth 2.0 (user consent) or Service Account (server-to-server) |
+| Base URL             | `https://searchconsole.googleapis.com/v1/`                     |
+| Integration priority | **P0 — Ship first** (free, broad adoption)                     |
 
 **Key endpoints:**
 
-| Endpoint | Purpose |
-| --- | --- |
-| `searchAnalytics.query` | Clicks, impressions, CTR, position (up to 16 months, 25,000 rows/request) |
-| `urlInspection.index.inspect` | Index status, crawl info, mobile usability |
-| `sitemaps.submit / delete` | Sitemap management |
+| Endpoint                      | Purpose                                                                   |
+| ----------------------------- | ------------------------------------------------------------------------- |
+| `searchAnalytics.query`       | Clicks, impressions, CTR, position (up to 16 months, 25,000 rows/request) |
+| `urlInspection.index.inspect` | Index status, crawl info, mobile usability                                |
+| `sitemaps.submit / delete`    | Sitemap management                                                        |
 
 **Rate limits:** 1,200 queries/min per site · 2,000 URL inspections/day
 
@@ -410,22 +387,22 @@ Use framework-agnostic builder functions from `@power-seo/core` and `@power-seo/
 
 ### Semrush API
 
-| Detail | Value |
-| --- | --- |
-| Cost | Business plan ($499.95/mo) — user's own subscription |
-| Auth | API key as query parameter |
-| Base URL | `https://api.semrush.com/` |
-| Integration priority | **P1 — Ship second** (most popular paid SEO tool) |
+| Detail               | Value                                                |
+| -------------------- | ---------------------------------------------------- |
+| Cost                 | Business plan ($499.95/mo) — user's own subscription |
+| Auth                 | API key as query parameter                           |
+| Base URL             | `https://api.semrush.com/`                           |
+| Integration priority | **P1 — Ship second** (most popular paid SEO tool)    |
 
 **Key report types:**
 
-| Report | Description | Units/Row |
-| --- | --- | --- |
-| `domain_organic` | Organic keyword positions | 10 |
-| `phrase_all` | Keyword volume, CPC, competition | 10 |
-| `phrase_related` | Related keyword suggestions | 40 |
-| `keyword_difficulty` | Keyword difficulty score | 50 |
-| `backlinks_overview` | Backlink profile summary | 20 |
+| Report               | Description                      | Units/Row |
+| -------------------- | -------------------------------- | --------- |
+| `domain_organic`     | Organic keyword positions        | 10        |
+| `phrase_all`         | Keyword volume, CPC, competition | 10        |
+| `phrase_related`     | Related keyword suggestions      | 40        |
+| `keyword_difficulty` | Keyword difficulty score         | 50        |
+| `backlinks_overview` | Backlink profile summary         | 20        |
 
 **Rate limits:** 10 req/sec · 50,000 API units/month (Business plan)
 
@@ -437,22 +414,22 @@ Use framework-agnostic builder functions from `@power-seo/core` and `@power-seo/
 
 ### Ahrefs API v3
 
-| Detail | Value |
-| --- | --- |
-| Cost | Enterprise plan ($1,499/mo) — user's own subscription |
-| Auth | `Authorization: Bearer YOUR_TOKEN` |
-| Base URL | `https://api.ahrefs.com/v3/` |
-| Integration priority | **P2 — Ship third** (high cost limits adoption) |
+| Detail               | Value                                                 |
+| -------------------- | ----------------------------------------------------- |
+| Cost                 | Enterprise plan ($1,499/mo) — user's own subscription |
+| Auth                 | `Authorization: Bearer YOUR_TOKEN`                    |
+| Base URL             | `https://api.ahrefs.com/v3/`                          |
+| Integration priority | **P2 — Ship third** (high cost limits adoption)       |
 
 **Key endpoints:**
 
-| Resource | Endpoint | Description |
-| --- | --- | --- |
-| Site Explorer | `GET /v3/site-explorer/overview` | DR, organic traffic, backlinks |
-| Site Explorer | `GET /v3/site-explorer/organic-keywords` | Ranking keywords |
-| Keywords Explorer | `GET /v3/keywords-explorer/overview` | Volume, KD, CPC |
-| Keywords Explorer | `GET /v3/keywords-explorer/keyword-ideas` | Related keyword suggestions |
-| Batch Analysis | `POST /v3/site-explorer/overview/batch` | Up to 200 targets |
+| Resource          | Endpoint                                  | Description                    |
+| ----------------- | ----------------------------------------- | ------------------------------ |
+| Site Explorer     | `GET /v3/site-explorer/overview`          | DR, organic traffic, backlinks |
+| Site Explorer     | `GET /v3/site-explorer/organic-keywords`  | Ranking keywords               |
+| Keywords Explorer | `GET /v3/keywords-explorer/overview`      | Volume, KD, CPC                |
+| Keywords Explorer | `GET /v3/keywords-explorer/keyword-ideas` | Related keyword suggestions    |
+| Batch Analysis    | `POST /v3/site-explorer/overview/batch`   | Up to 200 targets              |
 
 **Rate limits:** 500,000 rows/month (Enterprise) · throttled server-side
 
@@ -460,11 +437,11 @@ Use framework-agnostic builder functions from `@power-seo/core` and `@power-seo/
 
 ### Integration Summary
 
-| API | Plan Required | Our Role | Available In |
-| --- | --- | --- | --- |
-| Google Search Console | Free | Full integration | All plans |
-| Semrush | User's Business plan ($499/mo) | Thin proxy/wrapper | Business+ (user key) |
-| Ahrefs | User's Enterprise plan ($1,499/mo) | Thin proxy/wrapper | Agency (user key) |
+| API                   | Plan Required                      | Our Role           | Available In         |
+| --------------------- | ---------------------------------- | ------------------ | -------------------- |
+| Google Search Console | Free                               | Full integration   | All plans            |
+| Semrush               | User's Business plan ($499/mo)     | Thin proxy/wrapper | Business+ (user key) |
+| Ahrefs                | User's Enterprise plan ($1,499/mo) | Thin proxy/wrapper | Agency (user key)    |
 
 > **Policy:** power-seo never stores or proxies third-party API keys. Users provide their own keys at runtime. Graceful degradation when APIs fail.
 
@@ -472,15 +449,15 @@ Use framework-agnostic builder functions from `@power-seo/core` and `@power-seo/
 
 ## 9. Versioning Policy
 
-| Version Range | Policy |
-| --- | --- |
-| v1.0.0 – v1.2.x | 100% free, no paid features — foundation & trust |
-| v1.3.x | AI credit system launched; Free + Starter + Pro plans go live |
-| v1.4.x | Business plan; image AI; tracking & analytics AI |
-| v1.5.x | Agency plan; advanced AI; third-party data integrations |
-| v1.6.x | Bulk operations & automation |
-| v1.7.x – v1.8.x | Cloud & SaaS platform |
-| v2.x | Mature monetization, enterprise, white-label |
+| Version Range   | Policy                                                        |
+| --------------- | ------------------------------------------------------------- |
+| v1.0.0 – v1.2.x | 100% free, no paid features — foundation & trust              |
+| v1.3.x          | AI credit system launched; Free + Starter + Pro plans go live |
+| v1.4.x          | Business plan; image AI; tracking & analytics AI              |
+| v1.5.x          | Agency plan; advanced AI; third-party data integrations       |
+| v1.6.x          | Bulk operations & automation                                  |
+| v1.7.x – v1.8.x | Cloud & SaaS platform                                         |
+| v2.x            | Mature monetization, enterprise, white-label                  |
 
 **Locked rule:** No free feature is ever removed or degraded.
 
@@ -490,19 +467,19 @@ Use framework-agnostic builder functions from `@power-seo/core` and `@power-seo/
 
 Five tiers. All npm package core features remain free forever. Plans gate depth, scale, and AI usage.
 
-| | **Free** | **Starter** | **Pro** | **Business** | **Agency** |
-| --- | --- | --- | --- | --- | --- |
-| **Monthly price** | $0 | $9 | $24 | $49 | $99 |
-| **Annual price** | $0 | $84/yr ($7/mo) | $228/yr ($19/mo) | $468/yr ($39/mo) | $948/yr ($79/mo) |
-| **Annual saving** | — | Save $24 | Save $60 | Save $120 | Save $240 |
-| **Focus keywords** | 1 | 3 | 5 | 10 | Unlimited |
-| **Dynamic img convert/mo** | 0 (manual only) | 50 | 200 | 1,000 | 5,000 |
-| **AI text credits/mo** | 100 | 600 | 1,500 | 3,500 | 10,000 |
-| **AI image gen credits/mo** | 0 | 5 | 15 | 50 | 150 |
-| **Sites** | 1 | 1 | 3 | 10 | Unlimited |
-| **Credit rollover** | No | No | 1 month | 2 months | 3 months |
-| **AI provider** | CCBD only | CCBD + own key | All providers | All providers | All providers |
-| **Support** | Community | Email | Priority email | Email + chat | Dedicated |
+|                             | **Free**        | **Starter**    | **Pro**          | **Business**     | **Agency**       |
+| --------------------------- | --------------- | -------------- | ---------------- | ---------------- | ---------------- |
+| **Monthly price**           | $0              | $9             | $24              | $49              | $99              |
+| **Annual price**            | $0              | $84/yr ($7/mo) | $228/yr ($19/mo) | $468/yr ($39/mo) | $948/yr ($79/mo) |
+| **Annual saving**           | —               | Save $24       | Save $60         | Save $120        | Save $240        |
+| **Focus keywords**          | 1               | 3              | 5                | 10               | Unlimited        |
+| **Dynamic img convert/mo**  | 0 (manual only) | 50             | 200              | 1,000            | 5,000            |
+| **AI text credits/mo**      | 100             | 600            | 1,500            | 3,500            | 10,000           |
+| **AI image gen credits/mo** | 0               | 5              | 15               | 50               | 150              |
+| **Sites**                   | 1               | 1              | 3                | 10               | Unlimited        |
+| **Credit rollover**         | No              | No             | 1 month          | 2 months         | 3 months         |
+| **AI provider**             | CCBD only       | CCBD + own key | All providers    | All providers    | All providers    |
+| **Support**                 | Community       | Email          | Priority email   | Email + chat     | Dedicated        |
 
 ---
 
@@ -514,26 +491,26 @@ All AI text functions across all 17 packages draw from a **single unified credit
 
 **1 credit ≈ 1,000 AI tokens** (combined input + output, GPT‑4o‑mini default)
 
-| Operation | Package | Credits | User cost |
-| --- | --- | --- | --- |
-| Meta title generation (5 variants) | `meta` | 2 | $0.02 |
-| Meta description generation | `meta` | 3 | $0.03 |
-| Content analysis AI feedback | `content-analysis` | 8 | $0.08 |
-| Readability AI suggestions | `readability` | 6 | $0.06 |
-| AI link suggestions | `links` | 7 | $0.07 |
-| AI tracking insight | `tracking` | 10 | $0.10 |
-| AI analytics opportunity report | `analytics` | 12 | $0.12 |
-| Image alt text rewrite (per image) | `images` | 1 | $0.01 |
-| Content writing (per 500 words) | `ai` | 10 | $0.10 |
+| Operation                          | Package            | Credits | User cost |
+| ---------------------------------- | ------------------ | ------- | --------- |
+| Meta title generation (5 variants) | `meta`             | 2       | $0.02     |
+| Meta description generation        | `meta`             | 3       | $0.03     |
+| Content analysis AI feedback       | `content-analysis` | 8       | $0.08     |
+| Readability AI suggestions         | `readability`      | 6       | $0.06     |
+| AI link suggestions                | `links`            | 7       | $0.07     |
+| AI tracking insight                | `tracking`         | 10      | $0.10     |
+| AI analytics opportunity report    | `analytics`        | 12      | $0.12     |
+| Image alt text rewrite (per image) | `images`           | 1       | $0.01     |
+| Content writing (per 500 words)    | `ai`               | 10      | $0.10     |
 
 ### Text Credit Top-Up Packs (Any Plan, Any Time)
 
-| Pack | Credits | Price | Per 1K credits | Discount |
-| --- | --- | --- | --- | --- |
-| Mini | 500 | $5 | $10.00 | — |
-| Standard | 2,000 | $15 | $7.50 | 25% |
-| Pro | 5,000 | $30 | $6.00 | 40% |
-| Bulk | 20,000 | $100 | $5.00 | 50% |
+| Pack     | Credits | Price | Per 1K credits | Discount |
+| -------- | ------- | ----- | -------------- | -------- |
+| Mini     | 500     | $5    | $10.00         | —        |
+| Standard | 2,000   | $15   | $7.50          | 25%      |
+| Pro      | 5,000   | $30   | $6.00          | 40%      |
+| Bulk     | 20,000  | $100  | $5.00          | 50%      |
 
 > Top-up credits **never expire**. Monthly plan credits reset each billing cycle.
 
@@ -543,54 +520,54 @@ Image generation uses a distinct pool due to higher unit cost (DALL-E 3: $0.040/
 
 **1 image credit = 1 generated image (standard 1024×1024, DALL-E 3)**
 
-| Pack | Credits | Price | Per credit | Discount |
-| --- | --- | --- | --- | --- |
-| Basic | 10 | $3 | $0.30 | — |
-| Standard | 50 | $12 | $0.24 | 20% |
-| Pro | 200 | $40 | $0.20 | 33% |
+| Pack     | Credits | Price | Per credit | Discount |
+| -------- | ------- | ----- | ---------- | -------- |
+| Basic    | 10      | $3    | $0.30      | —        |
+| Standard | 50      | $12   | $0.24      | 20%      |
+| Pro      | 200     | $40   | $0.20      | 33%      |
 
 ### What 100 Free Credits Gets You
 
-| Use case | Operations |
-| --- | --- |
-| Meta titles only | ~50 title sets |
-| Meta descriptions only | ~33 descriptions |
-| Content AI analysis only | ~12 full analyses |
-| Mixed typical usage | ~15–20 AI operations |
+| Use case                 | Operations           |
+| ------------------------ | -------------------- |
+| Meta titles only         | ~50 title sets       |
+| Meta descriptions only   | ~33 descriptions     |
+| Content AI analysis only | ~12 full analyses    |
+| Mixed typical usage      | ~15–20 AI operations |
 
 ### AI Provider Routing
 
-| Provider | Plans | Notes |
-| --- | --- | --- |
-| CCBD AI (GPT-4o-mini) | All plans (default) | Cheapest, good quality for SEO |
-| User's OpenAI key | Starter+ | User pays their own API costs |
-| User's Anthropic key | Starter+ | User pays their own API costs |
-| User's Gemini key | Starter+ | User pays their own API costs |
-| DALL-E 3 (image gen) | Starter+ | Proxied via CCBD for image credits |
+| Provider              | Plans               | Notes                              |
+| --------------------- | ------------------- | ---------------------------------- |
+| CCBD AI (GPT-4o-mini) | All plans (default) | Cheapest, good quality for SEO     |
+| User's OpenAI key     | Starter+            | User pays their own API costs      |
+| User's Anthropic key  | Starter+            | User pays their own API costs      |
+| User's Gemini key     | Starter+            | User pays their own API costs      |
+| DALL-E 3 (image gen)  | Starter+            | Proxied via CCBD for image credits |
 
 ---
 
 ## 12. Package Feature Matrix
 
-| Package | Free | Starter | Pro | Business | Agency |
-| --- | --- | --- | --- | --- | --- |
-| `core` | All features | All | All | All | All |
-| `content-analysis` | 1 keyword, all 13 checks | 3 keywords | 5 keywords | 10 keywords | Unlimited |
-| `readability` | All checks + scores | + AI rewrite suggestions | + AI tone analysis | + AI tone analysis | + AI tone analysis |
-| `meta` | Validation & scoring | + AI title & description gen | + AI OG/Twitter card gen | + AI OG/Twitter card gen | + AI OG/Twitter card gen |
-| `schema` | All 19 schema builders | All | All | All | All |
-| `preview` | SERP & OG preview render | All | All | All | All |
-| `images` | Alt/format/lazy audit + manual convert | + 50 dynamic converts/mo | + 200 dynamic converts/mo | + 1,000 converts/mo + AI alt rewrite | + 5,000 converts/mo + AI image gen |
-| `audit` | Full deterministic audit | All | All | All | All |
-| `links` | Graph, equity, orphan, keyword suggestions | + AI contextual suggestions | + AI anchor text optimization | + AI anchor text optimization | + AI anchor text optimization |
-| `sitemap` | Full sitemap generation | All | All | All | All |
-| `redirects` | Full redirect management | All | All | All | All |
-| `analytics` | Dashboard, rankings, trends, GSC correlation | + AI opportunity report | + AI ROI prediction | + AI bulk recommendations | + AI bulk recommendations |
-| `tracking` | Consent, scripts, platform clients | + AI anomaly detection | + AI traffic insights | + AI conversion recommendations | + AI conversion recommendations |
-| `search-console` | Full GSC API client | All | All | All | All |
-| `integrations` | Framework integrations | All | All | + Semrush (user key) | + Semrush + Ahrefs (user key) |
-| `react` | All React components | All | All | All | All |
-| `ai` | SERP eligibility (rule-based), prompt builders | + Full AI text generation | + All providers | + Bulk AI generation | + Bulk AI generation |
+| Package            | Free                                           | Starter                      | Pro                           | Business                             | Agency                             |
+| ------------------ | ---------------------------------------------- | ---------------------------- | ----------------------------- | ------------------------------------ | ---------------------------------- |
+| `core`             | All features                                   | All                          | All                           | All                                  | All                                |
+| `content-analysis` | 1 keyword, all 13 checks                       | 3 keywords                   | 5 keywords                    | 10 keywords                          | Unlimited                          |
+| `readability`      | All checks + scores                            | + AI rewrite suggestions     | + AI tone analysis            | + AI tone analysis                   | + AI tone analysis                 |
+| `meta`             | Validation & scoring                           | + AI title & description gen | + AI OG/Twitter card gen      | + AI OG/Twitter card gen             | + AI OG/Twitter card gen           |
+| `schema`           | All 19 schema builders                         | All                          | All                           | All                                  | All                                |
+| `preview`          | SERP & OG preview render                       | All                          | All                           | All                                  | All                                |
+| `images`           | Alt/format/lazy audit + manual convert         | + 50 dynamic converts/mo     | + 200 dynamic converts/mo     | + 1,000 converts/mo + AI alt rewrite | + 5,000 converts/mo + AI image gen |
+| `audit`            | Full deterministic audit                       | All                          | All                           | All                                  | All                                |
+| `links`            | Graph, equity, orphan, keyword suggestions     | + AI contextual suggestions  | + AI anchor text optimization | + AI anchor text optimization        | + AI anchor text optimization      |
+| `sitemap`          | Full sitemap generation                        | All                          | All                           | All                                  | All                                |
+| `redirects`        | Full redirect management                       | All                          | All                           | All                                  | All                                |
+| `analytics`        | Dashboard, rankings, trends, GSC correlation   | + AI opportunity report      | + AI ROI prediction           | + AI bulk recommendations            | + AI bulk recommendations          |
+| `tracking`         | Consent, scripts, platform clients             | + AI anomaly detection       | + AI traffic insights         | + AI conversion recommendations      | + AI conversion recommendations    |
+| `search-console`   | Full GSC API client                            | All                          | All                           | All                                  | All                                |
+| `integrations`     | Framework integrations                         | All                          | All                           | + Semrush (user key)                 | + Semrush + Ahrefs (user key)      |
+| `react`            | All React components                           | All                          | All                           | All                                  | All                                |
+| `ai`               | SERP eligibility (rule-based), prompt builders | + Full AI text generation    | + All providers               | + Bulk AI generation                 | + Bulk AI generation               |
 
 ---
 
@@ -598,72 +575,72 @@ Image generation uses a distinct pool due to higher unit cost (DALL-E 3: $0.040/
 
 ### AI API Costs (What We Pay)
 
-| Provider | Input / 1M tokens | Output / 1M tokens |
-| --- | --- | --- |
-| GPT-4o-mini (default) | $0.15 | $0.60 |
-| Claude Haiku 4.5 | $1.00 | $5.00 |
-| DALL-E 3 (image gen) | $0.040 / image | — |
+| Provider              | Input / 1M tokens | Output / 1M tokens |
+| --------------------- | ----------------- | ------------------ |
+| GPT-4o-mini (default) | $0.15             | $0.60              |
+| Claude Haiku 4.5      | $1.00             | $5.00              |
+| DALL-E 3 (image gen)  | $0.040 / image    | —                  |
 
 ### Actual Cost Per Text Operation (GPT-4o-mini)
 
-| Operation | Tokens | Our AI cost |
-| --- | --- | --- |
-| Meta title generation | ~550 | $0.000165 |
-| Meta description | ~700 | $0.000195 |
-| Content analysis AI | ~2,100 | $0.000585 |
-| Readability AI | ~1,700 | $0.000465 |
-| Link suggestions | ~1,700 | $0.000465 |
-| Tracking insight | ~2,800 | $0.000720 |
-| Analytics report | ~3,300 | $0.000855 |
-| Image alt rewrite (per image) | ~400 | $0.000105 |
-| Content writing 500w | ~1,350 | $0.000405 |
-| **Weighted average** | | **~$0.0005** |
+| Operation                     | Tokens | Our AI cost  |
+| ----------------------------- | ------ | ------------ |
+| Meta title generation         | ~550   | $0.000165    |
+| Meta description              | ~700   | $0.000195    |
+| Content analysis AI           | ~2,100 | $0.000585    |
+| Readability AI                | ~1,700 | $0.000465    |
+| Link suggestions              | ~1,700 | $0.000465    |
+| Tracking insight              | ~2,800 | $0.000720    |
+| Analytics report              | ~3,300 | $0.000855    |
+| Image alt rewrite (per image) | ~400   | $0.000105    |
+| Content writing 500w          | ~1,350 | $0.000405    |
+| **Weighted average**          |        | **~$0.0005** |
 
 ### Infrastructure Monthly Costs
 
-| Item | Early (0–500 users) | Growth (500–2,000 users) |
-| --- | --- | --- |
-| Cloud hosting (API servers) | $150 | $600 |
-| Database (PostgreSQL) | $75 | $200 |
-| Redis (cache + rate limiting) | $40 | $100 |
-| CDN / bandwidth | $50 | $150 |
-| Error monitoring | $40 | $60 |
-| Email service | $20 | $40 |
-| Misc (domain, SSL, CI/CD) | $25 | $50 |
-| **Infrastructure subtotal** | **~$400/mo** | **~$1,200/mo** |
-| Dev & maintenance (time cost) | ~$2,300/mo | ~$4,200/mo |
-| **Total fixed cost** | **~$2,700/mo** | **~$5,400/mo** |
+| Item                          | Early (0–500 users) | Growth (500–2,000 users) |
+| ----------------------------- | ------------------- | ------------------------ |
+| Cloud hosting (API servers)   | $150                | $600                     |
+| Database (PostgreSQL)         | $75                 | $200                     |
+| Redis (cache + rate limiting) | $40                 | $100                     |
+| CDN / bandwidth               | $50                 | $150                     |
+| Error monitoring              | $40                 | $60                      |
+| Email service                 | $20                 | $40                      |
+| Misc (domain, SSL, CI/CD)     | $25                 | $50                      |
+| **Infrastructure subtotal**   | **~$400/mo**        | **~$1,200/mo**           |
+| Dev & maintenance (time cost) | ~$2,300/mo          | ~$4,200/mo               |
+| **Total fixed cost**          | **~$2,700/mo**      | **~$5,400/mo**           |
 
 ### Gross Margins
 
-| Revenue stream | Gross margin |
-| --- | --- |
-| Text credits (AI) | ~94% |
-| Image gen credits | ~82% |
-| Subscriptions | ~90%+ (fixed cost leverage) |
+| Revenue stream    | Gross margin                |
+| ----------------- | --------------------------- |
+| Text credits (AI) | ~94%                        |
+| Image gen credits | ~82%                        |
+| Subscriptions     | ~90%+ (fixed cost leverage) |
 
 ### Revenue Projections
 
-| Scenario | Paying users | MRR | Costs | Net Profit | Margin |
-| --- | --- | --- | --- | --- | --- |
-| Early | 300 | ~$9,150 | ~$2,950 | ~$6,200 | ~68% |
-| Growth | 1,000 | ~$32,000 | ~$6,200 | ~$25,800 | ~81% |
+| Scenario | Paying users | MRR      | Costs   | Net Profit | Margin |
+| -------- | ------------ | -------- | ------- | ---------- | ------ |
+| Early    | 300          | ~$9,150  | ~$2,950 | ~$6,200    | ~68%   |
+| Growth   | 1,000        | ~$32,000 | ~$6,200 | ~$25,800   | ~81%   |
 
 **Break-even:** ~350 paying users at early-stage cost base.
 
 ### Competitive Pricing Comparison
 
-| Tool | Entry price | AI included | Audience |
-| --- | --- | --- | --- |
-| Yoast Premium | $99/yr ($8.25/mo) | Limited | WordPress only |
-| Rank Math Pro | $59/yr ($5/mo) | Limited | WordPress only |
-| Surfer SEO | $99/mo | 5 AI articles | Content writers |
-| Clearscope | $170/mo | No | Enterprise content |
-| MarketMuse | $99/mo | 5 briefs | Content strategy |
-| **power-seo Starter** | **$9/mo** | 600 credits | React / JS developers |
-| **power-seo Pro** | **$24/mo** | 1,500 credits | React / JS developers |
-| **power-seo Business** | **$49/mo** | 3,500 credits | Multi-site developers |
-| **power-seo Agency** | **$99/mo** | 10,000 credits | Agencies + SaaS builders |
+| Tool                   | Entry price       | AI included    | Audience                 |
+| ---------------------- | ----------------- | -------------- | ------------------------ |
+| Yoast Premium          | $99/yr ($8.25/mo) | Limited        | WordPress only           |
+| Rank Math Pro          | $59/yr ($5/mo)    | Limited        | WordPress only           |
+| Surfer SEO             | $99/mo            | 5 AI articles  | Content writers          |
+| Clearscope             | $170/mo           | No             | Enterprise content       |
+| MarketMuse             | $99/mo            | 5 briefs       | Content strategy         |
+| **power-seo Starter**  | **$9/mo**         | 600 credits    | React / JS developers    |
+| **power-seo Pro**      | **$24/mo**        | 1,500 credits  | React / JS developers    |
+| **power-seo Business** | **$49/mo**        | 3,500 credits  | Multi-site developers    |
+| **power-seo Agency**   | **$99/mo**        | 10,000 credits | Agencies + SaaS builders |
 
 power-seo is **4–7× cheaper** than comparable AI SEO tools, is a library not a locked SaaS, and is the only solution built for the React/JS ecosystem.
 
@@ -714,7 +691,7 @@ Phase 6 → meta + docs site + examples + v1.0.0 release     ✅ Done
 
 - Builds credibility and npm adoption
 - Encourages community contribution
-- Positions power-seo as *infrastructure*, not a product
+- Positions power-seo as _infrastructure_, not a product
 
 ---
 
@@ -793,7 +770,7 @@ Phase 6 → meta + docs site + examples + v1.0.0 release     ✅ Done
 ### Trust safeguard
 
 - AI ROI output restricted to directional ranges only (e.g. +10–20% CTR)
-- Mandatory disclaimer on all AI predictions: *Estimates, not guarantees*
+- Mandatory disclaimer on all AI predictions: _Estimates, not guarantees_
 - Deterministic SEO logic always visible alongside AI suggestions
 
 ---
@@ -804,13 +781,13 @@ Phase 6 → meta + docs site + examples + v1.0.0 release     ✅ Done
 
 ### What ships
 
-| Feature | Monetization |
-| --- | --- |
-| Bulk AI content generation | Text credit-based |
-| Bulk image alt text rewriting | Image credit-based |
-| Bulk optimization suggestions | Subscription + credits |
-| Scheduled AI audits | Cloud-only (Phase 6 preview) |
-| Multi-site batch processing | Agency plan |
+| Feature                       | Monetization                 |
+| ----------------------------- | ---------------------------- |
+| Bulk AI content generation    | Text credit-based            |
+| Bulk image alt text rewriting | Image credit-based           |
+| Bulk optimization suggestions | Subscription + credits       |
+| Scheduled AI audits           | Cloud-only (Phase 6 preview) |
+| Multi-site batch processing   | Agency plan                  |
 
 ### Credit rollover improvements
 
@@ -869,23 +846,23 @@ Phase 6 → meta + docs site + examples + v1.0.0 release     ✅ Done
 
 ## 22. Future Package Candidates
 
-| Package | Purpose | Priority |
-| --- | --- | --- |
-| `@power-seo/local` | Local SEO — Google Business Profile schema, NAP consistency | Medium |
-| `@power-seo/ecommerce` | E-commerce SEO — Product enrichment, faceted navigation | Medium |
-| `@power-seo/i18n` | Multilingual SEO — Hreflang graph validation, locale-aware sitemaps | Low |
+| Package                | Purpose                                                             | Priority |
+| ---------------------- | ------------------------------------------------------------------- | -------- |
+| `@power-seo/local`     | Local SEO — Google Business Profile schema, NAP consistency         | Medium   |
+| `@power-seo/ecommerce` | E-commerce SEO — Product enrichment, faceted navigation             | Medium   |
+| `@power-seo/i18n`      | Multilingual SEO — Hreflang graph validation, locale-aware sitemaps | Low      |
 
 ---
 
 ## 23. Strategic Opportunities
 
-| Opportunity | Details |
-| --- | --- |
-| **"Tailwind of SEO"** | Utility-first, composable, developer-loved — same positioning as Tailwind CSS |
-| **Integration partnerships** | Official Vercel / Netlify marketplace listings |
-| **CMS partnerships** | Contentful, Sanity, Strapi integrations |
-| **Educational content** | SEO courses using @power-seo as the teaching toolkit |
-| **Enterprise consulting** | Custom SEO implementation for large React applications |
+| Opportunity                  | Details                                                                       |
+| ---------------------------- | ----------------------------------------------------------------------------- |
+| **"Tailwind of SEO"**        | Utility-first, composable, developer-loved — same positioning as Tailwind CSS |
+| **Integration partnerships** | Official Vercel / Netlify marketplace listings                                |
+| **CMS partnerships**         | Contentful, Sanity, Strapi integrations                                       |
+| **Educational content**      | SEO courses using @power-seo as the teaching toolkit                          |
+| **Enterprise consulting**    | Custom SEO implementation for large React applications                        |
 
 ### Market Sizing
 
@@ -899,12 +876,12 @@ Phase 6 → meta + docs site + examples + v1.0.0 release     ✅ Done
 
 ### OWASP Top 10
 
-| Risk | Mitigation |
-| --- | --- |
-| XSS | JSON-LD uses `JSON.stringify()` (auto-escaped); `dangerouslySetInnerHTML` only with sanitized builder output |
-| Injection | URL utilities use `globalThis.URL` parser — no string concatenation for URLs |
-| SSRF | API clients accept user-provided credentials at runtime; no default proxy |
-| Sensitive data exposure | No credentials stored; all API clients accept tokens at runtime only |
+| Risk                    | Mitigation                                                                                                   |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------ |
+| XSS                     | JSON-LD uses `JSON.stringify()` (auto-escaped); `dangerouslySetInnerHTML` only with sanitized builder output |
+| Injection               | URL utilities use `globalThis.URL` parser — no string concatenation for URLs                                 |
+| SSRF                    | API clients accept user-provided credentials at runtime; no default proxy                                    |
+| Sensitive data exposure | No credentials stored; all API clients accept tokens at runtime only                                         |
 
 ### GDPR Compliance
 
@@ -916,16 +893,16 @@ Phase 6 → meta + docs site + examples + v1.0.0 release     ✅ Done
 
 ### ISO 25010 Quality Attributes
 
-| Attribute | Implementation |
-| --- | --- |
-| Functional Suitability | 17 packages covering all SEO capabilities |
-| Performance Efficiency | Tree-shakeable, zero runtime dependencies in core |
-| Compatibility | Dual ESM/CJS, Node 18/20/22, React 18+ |
-| Usability | TypeScript IntelliSense, comprehensive docs, examples |
-| Reliability | 500+ tests, CI matrix on 3 Node versions |
-| Security | OWASP-aware, GDPR consent management |
-| Maintainability | Modular monorepo, consistent patterns |
-| Portability | Framework-agnostic core, framework adapters separate |
+| Attribute              | Implementation                                        |
+| ---------------------- | ----------------------------------------------------- |
+| Functional Suitability | 17 packages covering all SEO capabilities             |
+| Performance Efficiency | Tree-shakeable, zero runtime dependencies in core     |
+| Compatibility          | Dual ESM/CJS, Node 18/20/22, React 18+                |
+| Usability              | TypeScript IntelliSense, comprehensive docs, examples |
+| Reliability            | 500+ tests, CI matrix on 3 Node versions              |
+| Security               | OWASP-aware, GDPR consent management                  |
+| Maintainability        | Modular monorepo, consistent patterns                 |
+| Portability            | Framework-agnostic core, framework adapters separate  |
 
 ### Dependency Policy
 
@@ -946,23 +923,23 @@ Phase 6 → meta + docs site + examples + v1.0.0 release     ✅ Done
 
 ### Test Distribution
 
-| Package | Tests | Environment |
-| --- | --- | --- |
-| content-analysis | 47 | node + jsdom |
-| preview | 36 | node + jsdom |
-| readability | 28 | node |
-| sitemap | 33 | node |
-| redirects | 47 | node |
-| links | 31 | node |
-| audit | 44 | node |
-| images | 40 | node |
-| ai | 40 | node |
-| analytics | 33 | node |
-| search-console | 26 | node |
-| integrations | 19 | node |
-| tracking | 38 | node + jsdom |
-| meta | 28 | node |
-| **Total** | **500+** | |
+| Package          | Tests    | Environment  |
+| ---------------- | -------- | ------------ |
+| content-analysis | 47       | node + jsdom |
+| preview          | 36       | node + jsdom |
+| readability      | 28       | node         |
+| sitemap          | 33       | node         |
+| redirects        | 47       | node         |
+| links            | 31       | node         |
+| audit            | 44       | node         |
+| images           | 40       | node         |
+| ai               | 40       | node         |
+| analytics        | 33       | node         |
+| search-console   | 26       | node         |
+| integrations     | 19       | node         |
+| tracking         | 38       | node + jsdom |
+| meta             | 28       | node         |
+| **Total**        | **500+** |              |
 
 ### Testing Patterns
 
@@ -1014,13 +991,13 @@ steps:
 
 ### Quality Gates
 
-| Gate | Command | Requirement |
-| --- | --- | --- |
-| Build | `turbo run build` | Zero errors |
-| Lint | `turbo run lint` | Zero errors |
-| Types | `turbo run typecheck` | Zero errors |
-| Tests | `turbo run test` | All passing |
-| Format | `prettier --check` | No issues |
+| Gate   | Command               | Requirement |
+| ------ | --------------------- | ----------- |
+| Build  | `turbo run build`     | Zero errors |
+| Lint   | `turbo run lint`      | Zero errors |
+| Types  | `turbo run typecheck` | Zero errors |
+| Tests  | `turbo run test`      | All passing |
+| Format | `prettier --check`    | No issues   |
 
 ---
 
@@ -1068,17 +1045,17 @@ GitHub Actions: build → pnpm -r publish → GitHub release + tag
 
 ### Quick Reference
 
-| Task | Command |
-| --- | --- |
-| Login to npm | `npm login` |
-| Build all packages | `pnpm build` |
-| Create a changeset | `pnpm changeset` |
-| Version packages | `pnpm version-packages` |
-| Publish all packages | `pnpm -r publish --access public --no-git-checks` |
-| Publish single package | `cd packages/core && pnpm publish --access public --no-git-checks` |
-| Preview package contents | `npm pack --dry-run` |
-| Check package on npm | `npm view @power-seo/core` |
-| Deprecate a version | `npm deprecate @power-seo/core@1.0.0 "Use 1.0.1 instead"` |
+| Task                     | Command                                                            |
+| ------------------------ | ------------------------------------------------------------------ |
+| Login to npm             | `npm login`                                                        |
+| Build all packages       | `pnpm build`                                                       |
+| Create a changeset       | `pnpm changeset`                                                   |
+| Version packages         | `pnpm version-packages`                                            |
+| Publish all packages     | `pnpm -r publish --access public --no-git-checks`                  |
+| Publish single package   | `cd packages/core && pnpm publish --access public --no-git-checks` |
+| Preview package contents | `npm pack --dry-run`                                               |
+| Check package on npm     | `npm view @power-seo/core`                                         |
+| Deprecate a version      | `npm deprecate @power-seo/core@1.0.0 "Use 1.0.1 instead"`          |
 
 ### npm Organization Management
 
@@ -1096,46 +1073,46 @@ npm org ls power-seo                       # List members
 
 ## 28. Free vs Paid — Full Feature Summary
 
-| Feature | Free | Starter | Pro | Business | Agency |
-| --- | --- | --- | --- | --- | --- |
-| All deterministic SEO checks | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Readability analysis | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Schema builders (19 types) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SERP / OG preview | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Sitemap generation | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Redirect management | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Image audit & suggestions | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Image manual convert | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Link graph, equity, orphan detection | ✅ | ✅ | ✅ | ✅ | ✅ |
-| GSC data fetching | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Consent & tracking script management | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Dashboard & trend analytics | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 1 focus keyword | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Up to 3 focus keywords | ❌ | ✅ | ✅ | ✅ | ✅ |
-| Up to 5 focus keywords | ❌ | ❌ | ✅ | ✅ | ✅ |
-| Up to 10 focus keywords | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Unlimited focus keywords | ❌ | ❌ | ❌ | ❌ | ✅ |
-| Dynamic image conversion (50/mo) | ❌ | ✅ | ✅ | ✅ | ✅ |
-| Dynamic image conversion (200/mo) | ❌ | ❌ | ✅ | ✅ | ✅ |
-| Dynamic image conversion (1,000/mo) | ❌ | ❌ | ❌ | ✅ | ✅ |
-| Dynamic image conversion (5,000/mo) | ❌ | ❌ | ❌ | ❌ | ✅ |
-| AI text credits / mo | 100 | 600 | 1,500 | 3,500 | 10,000 |
-| AI image gen credits / mo | 0 | 5 | 15 | 50 | 150 |
-| Bring your own AI key | ❌ | ✅ | ✅ | ✅ | ✅ |
-| AI meta title & description | Credit | Credit | Credit | Credit | Credit |
-| AI content analysis feedback | Credit | Credit | Credit | Credit | Credit |
-| AI readability suggestions | Credit | Credit | Credit | Credit | Credit |
-| AI link suggestions | Credit | Credit | Credit | Credit | Credit |
-| AI tracking insights | Credit | Credit | Credit | Credit | Credit |
-| AI analytics reports | Credit | Credit | Credit | Credit | Credit |
-| AI image alt text rewriting | ❌ | Credit | Credit | Credit | Credit |
-| AI image generation | ❌ | Credit | Credit | Credit | Credit |
-| Full content writing | Credit | Credit | Credit | Credit | Credit |
-| Semrush integration | ❌ | ❌ | ❌ | User key | User key |
-| Ahrefs integration | ❌ | ❌ | ❌ | ❌ | User key |
-| Credit rollover | ❌ | ❌ | 1 month | 2 months | 3 months |
-| Sites | 1 | 1 | 3 | 10 | Unlimited |
-| Support | Community | Email | Priority email | Email + chat | Dedicated |
+| Feature                              | Free      | Starter | Pro            | Business     | Agency    |
+| ------------------------------------ | --------- | ------- | -------------- | ------------ | --------- |
+| All deterministic SEO checks         | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Readability analysis                 | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Schema builders (19 types)           | ✅        | ✅      | ✅             | ✅           | ✅        |
+| SERP / OG preview                    | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Sitemap generation                   | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Redirect management                  | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Image audit & suggestions            | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Image manual convert                 | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Link graph, equity, orphan detection | ✅        | ✅      | ✅             | ✅           | ✅        |
+| GSC data fetching                    | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Consent & tracking script management | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Dashboard & trend analytics          | ✅        | ✅      | ✅             | ✅           | ✅        |
+| 1 focus keyword                      | ✅        | ✅      | ✅             | ✅           | ✅        |
+| Up to 3 focus keywords               | ❌        | ✅      | ✅             | ✅           | ✅        |
+| Up to 5 focus keywords               | ❌        | ❌      | ✅             | ✅           | ✅        |
+| Up to 10 focus keywords              | ❌        | ❌      | ❌             | ✅           | ✅        |
+| Unlimited focus keywords             | ❌        | ❌      | ❌             | ❌           | ✅        |
+| Dynamic image conversion (50/mo)     | ❌        | ✅      | ✅             | ✅           | ✅        |
+| Dynamic image conversion (200/mo)    | ❌        | ❌      | ✅             | ✅           | ✅        |
+| Dynamic image conversion (1,000/mo)  | ❌        | ❌      | ❌             | ✅           | ✅        |
+| Dynamic image conversion (5,000/mo)  | ❌        | ❌      | ❌             | ❌           | ✅        |
+| AI text credits / mo                 | 100       | 600     | 1,500          | 3,500        | 10,000    |
+| AI image gen credits / mo            | 0         | 5       | 15             | 50           | 150       |
+| Bring your own AI key                | ❌        | ✅      | ✅             | ✅           | ✅        |
+| AI meta title & description          | Credit    | Credit  | Credit         | Credit       | Credit    |
+| AI content analysis feedback         | Credit    | Credit  | Credit         | Credit       | Credit    |
+| AI readability suggestions           | Credit    | Credit  | Credit         | Credit       | Credit    |
+| AI link suggestions                  | Credit    | Credit  | Credit         | Credit       | Credit    |
+| AI tracking insights                 | Credit    | Credit  | Credit         | Credit       | Credit    |
+| AI analytics reports                 | Credit    | Credit  | Credit         | Credit       | Credit    |
+| AI image alt text rewriting          | ❌        | Credit  | Credit         | Credit       | Credit    |
+| AI image generation                  | ❌        | Credit  | Credit         | Credit       | Credit    |
+| Full content writing                 | Credit    | Credit  | Credit         | Credit       | Credit    |
+| Semrush integration                  | ❌        | ❌      | ❌             | User key     | User key  |
+| Ahrefs integration                   | ❌        | ❌      | ❌             | ❌           | User key  |
+| Credit rollover                      | ❌        | ❌      | 1 month        | 2 months     | 3 months  |
+| Sites                                | 1         | 1       | 3              | 10           | Unlimited |
+| Support                              | Community | Email   | Priority email | Email + chat | Dedicated |
 
 ---
 
@@ -1146,17 +1123,19 @@ npm org ls power-seo                       # List members
 **Risk:** Community fears future paywalls or feature removal once paid features arrive.
 **Impact:** Loss of contributors, reduced npm adoption, public backlash.
 **Mitigation:**
+
 - Public guarantee: **All `@power-seo/*` packages remain free forever**
 - Never downgrade or limit existing features
-- Clear changelog showing only *additions*, never removals
+- Clear changelog showing only _additions_, never removals
 
 ### 2. AI Over-Claiming (SEO Accuracy Risk)
 
 **Risk:** AI predictions perceived as promises or guarantees.
 **Impact:** Legal exposure, loss of professional credibility, user distrust.
 **Mitigation:**
+
 - Restrict AI ROI output to directional ranges only (e.g. +10–20%)
-- Mandatory disclaimer: *Estimates, not guarantees*
+- Mandatory disclaimer: _Estimates, not guarantees_
 - Deterministic SEO logic always visible alongside AI suggestions
 
 ### 3. Aggressive Monetization Too Early
@@ -1164,6 +1143,7 @@ npm org ls power-seo                       # List members
 **Risk:** Introducing paid features before community trust is established.
 **Impact:** Poor conversion, negative sentiment, project abandonment.
 **Mitigation:**
+
 - Delay paid rollout until trust signals exist (1,000+ installs, 50+ issues)
 - Conservative rollout: 1–2 paid features per minor version
 
@@ -1172,6 +1152,7 @@ npm org ls power-seo                       # List members
 **Risk:** Uncontrolled AI usage causing infrastructure losses.
 **Impact:** Negative margins, forced price increases, service instability.
 **Mitigation:**
+
 - Credit-based AI usage — users consume what they buy
 - Hard per-request rate limits and daily caps enforced server-side
 - Credits refunded only on confirmed provider failure
@@ -1181,6 +1162,7 @@ npm org ls power-seo                       # List members
 **Risk:** Dependency on a single LLM provider (pricing or policy changes).
 **Impact:** Cost spikes, feature disruption.
 **Mitigation:**
+
 - Default: CCBD AI (GPT-4o-mini) — cheapest, good quality
 - Optional: User's own key for any provider (OpenAI, Anthropic, Gemini)
 - Abstracted AI adapter layer in `@power-seo/ai` — swap providers without API changes
@@ -1190,6 +1172,7 @@ npm org ls power-seo                       # List members
 **Risk:** Third-party API changes, pricing increases, or access limits.
 **Impact:** Feature outages, unexpected costs.
 **Mitigation:**
+
 - **User-provided API keys only** — power-seo never holds third-party keys
 - Graceful degradation when APIs fail
 - Feature documented as requiring user's own Semrush/Ahrefs subscription
@@ -1199,6 +1182,7 @@ npm org ls power-seo                       # List members
 **Risk:** Users confuse free npm libraries with paid cloud services.
 **Impact:** Support burden, reputation damage.
 **Mitigation:**
+
 - Clear separation in all documentation:
   - **npm packages = free forever**
   - **AI credits = pay per use**
@@ -1210,6 +1194,7 @@ npm org ls power-seo                       # List members
 **Risk:** Forks claiming to be "more open".
 **Impact:** Split ecosystem, reduced influence.
 **Mitigation:**
+
 - Transparent governance
 - Welcoming contribution model
 - No hostile licensing — core logic always open
@@ -1219,6 +1204,7 @@ npm org ls power-seo                       # List members
 **Risk:** Handling SEO, analytics, and AI data introduces privacy concerns.
 **Impact:** Legal exposure, loss of enterprise trust.
 **Mitigation:**
+
 - Minimal data retention — no content stored beyond the API request lifecycle
 - User data never used to train models
 - Opt-in analytics only
@@ -1228,6 +1214,7 @@ npm org ls power-seo                       # List members
 **Risk:** Users share API keys, exploit free credits, or abuse trial credits.
 **Impact:** Negative margins, unfair to paying users.
 **Mitigation:**
+
 - API keys scoped to a single account (server-validated)
 - Free tier: 100 credits/month with no rollover
 - Rate limiting per key: max 10 AI requests/minute
@@ -1267,4 +1254,4 @@ When implementing paid systems for this project:
 
 ---
 
-*Last updated: 2026-02-24 — Consolidates: Business Model Roadmap, Final Development Plan, API Research, SEO Plugin Analysis, Publishing Guide.*
+_Last updated: 2026-02-24 — Consolidates: Business Model Roadmap, Final Development Plan, API Research, SEO Plugin Analysis, Publishing Guide._

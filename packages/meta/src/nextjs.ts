@@ -1,6 +1,5 @@
 // @power-seo/meta — Next.js App Router Metadata
 
-
 import type { SEOConfig } from '@power-seo/core';
 import { resolveTitle } from '@power-seo/core';
 import type { NextMetadata, NextOGImage } from './types.js';
@@ -36,7 +35,11 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     if (r?.noimageindex !== undefined) metadata.robots.noimageindex = r.noimageindex;
     if (r?.notranslate !== undefined) metadata.robots.notranslate = r.notranslate;
     if (r?.unavailableAfter !== undefined) metadata.robots.unavailableAfter = r.unavailableAfter;
-    if (r?.maxSnippet !== undefined || r?.maxImagePreview !== undefined || r?.maxVideoPreview !== undefined) {
+    if (
+      r?.maxSnippet !== undefined ||
+      r?.maxImagePreview !== undefined ||
+      r?.maxVideoPreview !== undefined
+    ) {
       metadata.robots.googleBot = {
         ...(index !== undefined && { index }),
         ...(follow !== undefined && { follow }),
@@ -70,8 +73,10 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     }
     if (og.article) {
       metadata.openGraph.article = {};
-      if (og.article.publishedTime) metadata.openGraph.article.publishedTime = og.article.publishedTime;
-      if (og.article.modifiedTime) metadata.openGraph.article.modifiedTime = og.article.modifiedTime;
+      if (og.article.publishedTime)
+        metadata.openGraph.article.publishedTime = og.article.publishedTime;
+      if (og.article.modifiedTime)
+        metadata.openGraph.article.modifiedTime = og.article.modifiedTime;
       if (og.article.authors) metadata.openGraph.article.authors = og.article.authors;
       if (og.article.section) metadata.openGraph.article.section = og.article.section;
       if (og.article.tags) metadata.openGraph.article.tags = og.article.tags;

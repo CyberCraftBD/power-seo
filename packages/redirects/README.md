@@ -20,15 +20,15 @@ Define redirect rules once — apply them in Next.js, Remix, and Express with ty
 
 ## Why @power-seo/redirects?
 
-| | Without | With |
-|---|---|---|
-| Cross-framework rules | ❌ Duplicated in next.config.js, Remix loaders, Express middleware | ✅ One `RedirectRule[]` — all three from a single file |
-| Pattern matching | ❌ Ad-hoc regex scattered across route files | ✅ Exact, glob, and regex with typed API |
-| Named params | ❌ Manual capture group indexing | ✅ `:param` substitution in destination URLs |
-| Trailing slash | ❌ Inconsistent per route | ✅ Configurable `'strip'` / `'add'` / `'ignore'` |
-| TypeScript | ❌ `statusCode` typos detected at runtime | ✅ `RedirectStatusCode` union enforces `301 \| 302` at compile time |
-| Testing | ❌ Deploy to verify redirects work | ✅ `engine.match()` in unit tests — zero-cost synchronous check |
-| SEO | ❌ Missing 301s break link equity during migrations | ✅ Typed rules prevent status code mistakes |
+|                       | Without                                                            | With                                                                |
+| --------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| Cross-framework rules | ❌ Duplicated in next.config.js, Remix loaders, Express middleware | ✅ One `RedirectRule[]` — all three from a single file              |
+| Pattern matching      | ❌ Ad-hoc regex scattered across route files                       | ✅ Exact, glob, and regex with typed API                            |
+| Named params          | ❌ Manual capture group indexing                                   | ✅ `:param` substitution in destination URLs                        |
+| Trailing slash        | ❌ Inconsistent per route                                          | ✅ Configurable `'strip'` / `'add'` / `'ignore'`                    |
+| TypeScript            | ❌ `statusCode` typos detected at runtime                          | ✅ `RedirectStatusCode` union enforces `301 \| 302` at compile time |
+| Testing               | ❌ Deploy to verify redirects work                                 | ✅ `engine.match()` in unit tests — zero-cost synchronous check     |
+| SEO                   | ❌ Missing 301s break link equity during migrations                | ✅ Typed rules prevent status code mistakes                         |
 
 ![Redirects Comparison](../../image/redirects/comparison.svg)
 
@@ -57,19 +57,19 @@ Define redirect rules once — apply them in Next.js, Remix, and Express with ty
 
 ## Comparison
 
-| Feature | @power-seo/redirects | next/redirects (config) | vercel.json | nginx rewrite |
-| --- | :---: | :---: | :---: | :---: |
-| Works in Next.js | ✅ | ✅ | ✅ | ❌ |
-| Works in Remix | ✅ | ❌ | ❌ | ❌ |
-| Works in Express | ✅ | ❌ | ❌ | ✅ |
-| Typed TypeScript API | ✅ | ❌ | ❌ | ❌ |
-| Named `:param` substitution | ✅ | ✅ | ✅ | ✅ |
-| Regex pattern support | ✅ | ✅ | ✅ | ✅ |
-| Glob wildcard support | ✅ | ✅ | ✅ | ✅ |
-| Programmatic rule testing | ✅ | ❌ | ❌ | ❌ |
-| One rule set → multiple frameworks | ✅ | ❌ | ❌ | ❌ |
-| Zero runtime dependencies | ✅ | ✅ | ✅ | ✅ |
-| Tree-shakeable | ✅ | ❌ | ❌ | ❌ |
+| Feature                            | @power-seo/redirects | next/redirects (config) | vercel.json | nginx rewrite |
+| ---------------------------------- | :------------------: | :---------------------: | :---------: | :-----------: |
+| Works in Next.js                   |          ✅          |           ✅            |     ✅      |      ❌       |
+| Works in Remix                     |          ✅          |           ❌            |     ❌      |      ❌       |
+| Works in Express                   |          ✅          |           ❌            |     ❌      |      ✅       |
+| Typed TypeScript API               |          ✅          |           ❌            |     ❌      |      ❌       |
+| Named `:param` substitution        |          ✅          |           ✅            |     ✅      |      ✅       |
+| Regex pattern support              |          ✅          |           ✅            |     ✅      |      ✅       |
+| Glob wildcard support              |          ✅          |           ✅            |     ✅      |      ✅       |
+| Programmatic rule testing          |          ✅          |           ❌            |     ❌      |      ❌       |
+| One rule set → multiple frameworks |          ✅          |           ❌            |     ❌      |      ❌       |
+| Zero runtime dependencies          |          ✅          |           ✅            |     ✅      |      ✅       |
+| Tree-shakeable                     |          ✅          |           ❌            |     ❌      |      ❌       |
 
 ![Matching Accuracy](../../image/redirects/matching-accuracy.svg)
 
@@ -179,7 +179,7 @@ app.use(createExpressRedirectMiddleware(rules));
 ```ts
 const engine = createRedirectEngine({
   rules,
-  caseSensitive: false,   // match /About and /about equally
+  caseSensitive: false, // match /About and /about equally
   trailingSlash: 'strip', // /about/ → /about before matching
 });
 ```
@@ -202,7 +202,10 @@ import { rules } from './redirects.config';
 const engine = createRedirectEngine({ rules });
 
 expect(engine.match('/old-about')).toEqual({ destination: '/about', statusCode: 301 });
-expect(engine.match('/blog/my-post')).toEqual({ destination: '/articles/my-post', statusCode: 301 });
+expect(engine.match('/blog/my-post')).toEqual({
+  destination: '/articles/my-post',
+  statusCode: 301,
+});
 expect(engine.match('/no-match')).toBeNull();
 ```
 
@@ -216,11 +219,11 @@ expect(engine.match('/no-match')).toBeNull();
 function createRedirectEngine(config: RedirectEngineConfig): RedirectEngine;
 ```
 
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `config.rules` | `RedirectRule[]` | required | Ordered array of redirect rules |
-| `config.caseSensitive` | `boolean` | `true` | Case-sensitive URL matching |
-| `config.trailingSlash` | `'strip' \| 'add' \| 'ignore'` | `'ignore'` | Trailing slash normalization |
+| Parameter              | Type                           | Default    | Description                     |
+| ---------------------- | ------------------------------ | ---------- | ------------------------------- |
+| `config.rules`         | `RedirectRule[]`               | required   | Ordered array of redirect rules |
+| `config.caseSensitive` | `boolean`                      | `true`     | Case-sensitive URL matching     |
+| `config.trailingSlash` | `'strip' \| 'add' \| 'ignore'` | `'ignore'` | Trailing slash normalization    |
 
 Returns `RedirectEngine`: `{ match(url: string): RedirectMatch | null }`.
 
@@ -257,14 +260,14 @@ Returns an Express `RequestHandler` that calls `res.redirect()` on match or `nex
 
 ### Types
 
-| Type | Description |
-| --- | --- |
-| `RedirectStatusCode` | `301 \| 302` |
-| `RedirectRule` | `{ source: string; destination: string; statusCode: RedirectStatusCode; caseSensitive?: boolean }` |
-| `RedirectMatch` | `{ destination: string; statusCode: RedirectStatusCode }` |
+| Type                   | Description                                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| `RedirectStatusCode`   | `301 \| 302`                                                                                       |
+| `RedirectRule`         | `{ source: string; destination: string; statusCode: RedirectStatusCode; caseSensitive?: boolean }` |
+| `RedirectMatch`        | `{ destination: string; statusCode: RedirectStatusCode }`                                          |
 | `RedirectEngineConfig` | `{ rules: RedirectRule[]; caseSensitive?: boolean; trailingSlash?: 'strip' \| 'add' \| 'ignore' }` |
-| `RedirectEngine` | `{ match(url: string): RedirectMatch \| null }` |
-| `NextRedirect` | `{ source: string; destination: string; permanent: boolean }` |
+| `RedirectEngine`       | `{ match(url: string): RedirectMatch \| null }`                                                    |
+| `NextRedirect`         | `{ source: string; destination: string; permanent: boolean }`                                      |
 
 ---
 

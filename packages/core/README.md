@@ -20,17 +20,17 @@ Framework-agnostic SEO utilities, types, and engines — the shared foundation o
 
 ## Why @power-seo/core?
 
-| | Without | With |
-|---|---|---|
-| Meta tag building | ❌ Hand-written HTML strings | ✅ Type-safe `buildMetaTags()` with OG + Twitter |
-| Title validation | ❌ Character count only | ✅ Pixel-accurate SERP width via `validateTitle()` |
-| Keyword density | ❌ Manual regex counting | ✅ `calculateKeywordDensity()` with density % |
-| URL canonicalization | ❌ String manipulation | ✅ `resolveCanonical()` with full normalization |
-| Text statistics | ❌ Multiple separate packages | ✅ `getTextStatistics()` — words, sentences, syllables |
-| Robots directives | ❌ Concatenated strings | ✅ Type-safe `buildRobotsContent()` builder |
-| Title templates | ❌ Manual string interpolation | ✅ `createTitleTemplate()` with site-wide defaults |
-| Rate limiting | ❌ No built-in utility | ✅ Token bucket `createTokenBucket()` for API calls |
-| TypeScript types | ❌ Duplicated across packages | ✅ 25+ shared interfaces for the full ecosystem |
+|                      | Without                        | With                                                   |
+| -------------------- | ------------------------------ | ------------------------------------------------------ |
+| Meta tag building    | ❌ Hand-written HTML strings   | ✅ Type-safe `buildMetaTags()` with OG + Twitter       |
+| Title validation     | ❌ Character count only        | ✅ Pixel-accurate SERP width via `validateTitle()`     |
+| Keyword density      | ❌ Manual regex counting       | ✅ `calculateKeywordDensity()` with density %          |
+| URL canonicalization | ❌ String manipulation         | ✅ `resolveCanonical()` with full normalization        |
+| Text statistics      | ❌ Multiple separate packages  | ✅ `getTextStatistics()` — words, sentences, syllables |
+| Robots directives    | ❌ Concatenated strings        | ✅ Type-safe `buildRobotsContent()` builder            |
+| Title templates      | ❌ Manual string interpolation | ✅ `createTitleTemplate()` with site-wide defaults     |
+| Rate limiting        | ❌ No built-in utility         | ✅ Token bucket `createTokenBucket()` for API calls    |
+| TypeScript types     | ❌ Duplicated across packages  | ✅ 25+ shared interfaces for the full ecosystem        |
 
 ![SEO Utilities Dashboard](../../image/core/utilities-dashboard.svg)
 
@@ -62,21 +62,21 @@ Framework-agnostic SEO utilities, types, and engines — the shared foundation o
 
 | Feature                              | @power-seo/core | next-seo | seo-utils | keyword-density | text-statistics |
 | ------------------------------------ | :-------------: | :------: | :-------: | :-------------: | :-------------: |
-| Meta tag builder                     | ✅              | Partial  | ❌        | ❌              | ❌              |
-| Pixel-accurate title/meta validation | ✅              | ❌       | ❌        | ❌              | ❌              |
-| Open Graph builder                   | ✅              | Partial  | ❌        | ❌              | ❌              |
-| Twitter Card builder                 | ✅              | Partial  | ❌        | ❌              | ❌              |
-| Keyphrase density calculator         | ✅              | ❌       | ❌        | ✅              | ❌              |
-| Keyphrase occurrence analysis        | ✅              | ❌       | ❌        | ❌              | ❌              |
-| Robots directive builder             | ✅              | Partial  | ❌        | ❌              | ❌              |
-| URL normalization + slug             | ✅              | ❌       | Partial   | ❌              | ❌              |
-| Text statistics engine               | ✅              | ❌       | ❌        | ❌              | Partial         |
-| Title template engine                | ✅              | Partial  | ❌        | ❌              | ❌              |
-| Hreflang builder                     | ✅              | Partial  | ❌        | ❌              | ❌              |
-| Rate limiting utility                | ✅              | ❌       | ❌        | ❌              | ❌              |
-| 25+ shared SEO types                 | ✅              | Partial  | ❌        | ❌              | ❌              |
-| TypeScript-first                     | ✅              | Partial  | ❌        | ❌              | ❌              |
-| Zero runtime dependencies            | ✅              | ❌       | ❌        | ❌              | ❌              |
+| Meta tag builder                     |       ✅        | Partial  |    ❌     |       ❌        |       ❌        |
+| Pixel-accurate title/meta validation |       ✅        |    ❌    |    ❌     |       ❌        |       ❌        |
+| Open Graph builder                   |       ✅        | Partial  |    ❌     |       ❌        |       ❌        |
+| Twitter Card builder                 |       ✅        | Partial  |    ❌     |       ❌        |       ❌        |
+| Keyphrase density calculator         |       ✅        |    ❌    |    ❌     |       ✅        |       ❌        |
+| Keyphrase occurrence analysis        |       ✅        |    ❌    |    ❌     |       ❌        |       ❌        |
+| Robots directive builder             |       ✅        | Partial  |    ❌     |       ❌        |       ❌        |
+| URL normalization + slug             |       ✅        |    ❌    |  Partial  |       ❌        |       ❌        |
+| Text statistics engine               |       ✅        |    ❌    |    ❌     |       ❌        |     Partial     |
+| Title template engine                |       ✅        | Partial  |    ❌     |       ❌        |       ❌        |
+| Hreflang builder                     |       ✅        | Partial  |    ❌     |       ❌        |       ❌        |
+| Rate limiting utility                |       ✅        |    ❌    |    ❌     |       ❌        |       ❌        |
+| 25+ shared SEO types                 |       ✅        | Partial  |    ❌     |       ❌        |       ❌        |
+| TypeScript-first                     |       ✅        | Partial  |    ❌     |       ❌        |       ❌        |
+| Zero runtime dependencies            |       ✅        |    ❌    |    ❌     |       ❌        |       ❌        |
 
 ![Keyword Density Analysis](../../image/core/keyword-density.svg)
 
@@ -118,13 +118,14 @@ const links = buildLinkTags({
 });
 
 const titleCheck = validateTitle('Next.js SEO Best Practices Guide');
-console.log(titleCheck.valid);       // true
-console.log(titleCheck.pixelWidth);  // ~291 (well under 580px limit)
+console.log(titleCheck.valid); // true
+console.log(titleCheck.pixelWidth); // ~291 (well under 580px limit)
 ```
 
 ![Text Statistics Output](../../image/core/check-results.svg)
 
 **Validation severity levels:**
+
 - `error` — field is missing or critically invalid
 - `warning` — field exists but fails recommended limits
 - `info` — field passes all checks
@@ -254,8 +255,8 @@ parseRobotsContent('noindex, follow, max-snippet:150');
 import { createTitleTemplate, applyTitleTemplate } from '@power-seo/core';
 
 const makeTitle = createTitleTemplate({ siteName: 'My Site', separator: '—' });
-makeTitle('About Us');                       // => "About Us — My Site"
-makeTitle('Contact', { separator: '|' });    // => "Contact | My Site"
+makeTitle('About Us'); // => "About Us — My Site"
+makeTitle('Contact', { separator: '|' }); // => "Contact | My Site"
 
 applyTitleTemplate('%title% | %siteName% — Page %page%', {
   title: 'Blog',
@@ -308,138 +309,138 @@ if (density.density < 0.5 || density.density > 2.5) {
 
 ### Entry Points
 
-| Import | Description |
-| --- | --- |
+| Import            | Description                                               |
+| ----------------- | --------------------------------------------------------- |
 | `@power-seo/core` | All utilities, types, constants, builders, and validators |
 
 ### Meta Builder Functions
 
-| Function | Description |
-| --- | --- |
-| `buildMetaTags(config)` | Build `MetaTag[]` array from `SEOConfig` |
-| `buildLinkTags(config)` | Build `LinkTag[]` including canonical and hreflang |
-| `buildOpenGraphTags(og)` | Build Open Graph `MetaTag[]` from `OpenGraphConfig` |
-| `buildTwitterTags(twitter)` | Build Twitter Card `MetaTag[]` from `TwitterCardConfig` |
-| `buildHreflangTags(alternates)` | Build hreflang `LinkTag[]` from `HreflangConfig[]` |
-| `resolveTitle(config)` | Resolve final title applying template if set |
+| Function                        | Description                                             |
+| ------------------------------- | ------------------------------------------------------- |
+| `buildMetaTags(config)`         | Build `MetaTag[]` array from `SEOConfig`                |
+| `buildLinkTags(config)`         | Build `LinkTag[]` including canonical and hreflang      |
+| `buildOpenGraphTags(og)`        | Build Open Graph `MetaTag[]` from `OpenGraphConfig`     |
+| `buildTwitterTags(twitter)`     | Build Twitter Card `MetaTag[]` from `TwitterCardConfig` |
+| `buildHreflangTags(alternates)` | Build hreflang `LinkTag[]` from `HreflangConfig[]`      |
+| `resolveTitle(config)`          | Resolve final title applying template if set            |
 
 ### Meta Validator Functions
 
-| Function | Description |
-| --- | --- |
-| `validateTitle(title)` | Validate title — char count, pixel width, severity |
+| Function                        | Description                                                   |
+| ------------------------------- | ------------------------------------------------------------- |
+| `validateTitle(title)`          | Validate title — char count, pixel width, severity            |
 | `validateMetaDescription(desc)` | Validate meta description — char count, pixel width, severity |
-| `calculatePixelWidth(text)` | Calculate SERP pixel width using Arial font metrics |
+| `calculatePixelWidth(text)`     | Calculate SERP pixel width using Arial font metrics           |
 
 ### URL Utility Functions
 
-| Function | Description |
-| --- | --- |
-| `resolveCanonical(base, path?)` | Resolve and normalize a canonical URL |
-| `normalizeUrl(url)` | Remove default ports, double slashes, trailing slashes |
-| `ensureTrailingSlash(url)` | Add trailing slash to non-file URLs |
-| `removeTrailingSlash(url)` | Strip trailing slash from a URL |
-| `stripQueryParams(url, keep?)` | Remove all or selected query parameters |
-| `stripTrackingParams(url)` | Remove UTM, fbclid, gclid, and other tracking params |
-| `extractSlug(url)` | Extract the last path segment as a slug |
-| `isAbsoluteUrl(url)` | Check whether a URL is absolute |
-| `toSlug(text)` | Convert any string to a URL-safe slug |
+| Function                        | Description                                            |
+| ------------------------------- | ------------------------------------------------------ |
+| `resolveCanonical(base, path?)` | Resolve and normalize a canonical URL                  |
+| `normalizeUrl(url)`             | Remove default ports, double slashes, trailing slashes |
+| `ensureTrailingSlash(url)`      | Add trailing slash to non-file URLs                    |
+| `removeTrailingSlash(url)`      | Strip trailing slash from a URL                        |
+| `stripQueryParams(url, keep?)`  | Remove all or selected query parameters                |
+| `stripTrackingParams(url)`      | Remove UTM, fbclid, gclid, and other tracking params   |
+| `extractSlug(url)`              | Extract the last path segment as a slug                |
+| `isAbsoluteUrl(url)`            | Check whether a URL is absolute                        |
+| `toSlug(text)`                  | Convert any string to a URL-safe slug                  |
 
 ### Text Statistics Functions
 
-| Function | Description |
-| --- | --- |
+| Function                     | Description                                             |
+| ---------------------------- | ------------------------------------------------------- |
 | `getTextStatistics(content)` | Full stats — word, sentence, paragraph, syllable counts |
-| `stripHtml(html)` | Strip HTML tags, decode entities, return plain text |
-| `getWords(text)` | Split text into individual words |
-| `getSentences(text)` | Split text into sentences |
-| `getParagraphs(html)` | Extract paragraph blocks from HTML |
-| `countSyllables(word)` | Count syllables in a single word |
-| `countTotalSyllables(text)` | Count total syllables across all words in text |
+| `stripHtml(html)`            | Strip HTML tags, decode entities, return plain text     |
+| `getWords(text)`             | Split text into individual words                        |
+| `getSentences(text)`         | Split text into sentences                               |
+| `getParagraphs(html)`        | Extract paragraph blocks from HTML                      |
+| `countSyllables(word)`       | Count syllables in a single word                        |
+| `countTotalSyllables(text)`  | Count total syllables across all words in text          |
 
 ### Keyword Density Functions
 
-| Function | Description |
-| --- | --- |
-| `calculateKeywordDensity(keyword, content)` | Density %, occurrence count, word total |
-| `countKeywordOccurrences(text, keyword)` | Count keyword occurrences (case-insensitive, word-boundary) |
-| `analyzeKeyphraseOccurrences(config)` | Full occurrence map — title, H1, meta, slug, alt text |
+| Function                                    | Description                                                 |
+| ------------------------------------------- | ----------------------------------------------------------- |
+| `calculateKeywordDensity(keyword, content)` | Density %, occurrence count, word total                     |
+| `countKeywordOccurrences(text, keyword)`    | Count keyword occurrences (case-insensitive, word-boundary) |
+| `analyzeKeyphraseOccurrences(config)`       | Full occurrence map — title, H1, meta, slug, alt text       |
 
 ### Robots Builder Functions
 
-| Function | Description |
-| --- | --- |
+| Function                        | Description                                               |
+| ------------------------------- | --------------------------------------------------------- |
 | `buildRobotsContent(directive)` | Serialize `RobotsDirective` to robots meta content string |
-| `parseRobotsContent(content)` | Parse robots meta content string to `RobotsDirective` |
+| `parseRobotsContent(content)`   | Parse robots meta content string to `RobotsDirective`     |
 
 ### Title Template Functions
 
-| Function | Description |
-| --- | --- |
-| `applyTitleTemplate(template, vars)` | Apply `%variable%` substitution to a title template |
-| `createTitleTemplate(defaults)` | Create a reusable title factory with site-wide defaults |
+| Function                             | Description                                             |
+| ------------------------------------ | ------------------------------------------------------- |
+| `applyTitleTemplate(template, vars)` | Apply `%variable%` substitution to a title template     |
+| `createTitleTemplate(defaults)`      | Create a reusable title factory with site-wide defaults |
 
 ### Rate Limiting Functions
 
-| Function | Description |
-| --- | --- |
+| Function                               | Description                                         |
+| -------------------------------------- | --------------------------------------------------- |
 | `createTokenBucket(requestsPerMinute)` | Create a token bucket with capacity and refill rate |
-| `consumeToken(bucket)` | Consume one token; returns `true` if allowed |
-| `getWaitTime(bucket)` | Milliseconds to wait before next allowed request |
-| `sleep(ms)` | Promise-based sleep utility |
+| `consumeToken(bucket)`                 | Consume one token; returns `true` if allowed        |
+| `getWaitTime(bucket)`                  | Milliseconds to wait before next allowed request    |
+| `sleep(ms)`                            | Promise-based sleep utility                         |
 
 ### Constants
 
-| Constant | Value | Description |
-| --- | --- | --- |
-| `TITLE_MAX_PIXELS` | `580` | Google SERP max title display width (pixels) |
-| `TITLE_MAX_LENGTH` | `60` | Recommended max title character length |
-| `TITLE_MIN_LENGTH` | `50` | Recommended min title character length |
-| `META_DESCRIPTION_MAX_PIXELS` | `920` | Google SERP max meta description width (pixels) |
-| `META_DESCRIPTION_MAX_LENGTH` | `160` | Recommended max meta description length |
-| `META_DESCRIPTION_MIN_LENGTH` | `120` | Recommended min meta description length |
-| `MIN_WORD_COUNT` | `300` | Minimum word count to avoid thin content |
-| `RECOMMENDED_WORD_COUNT` | `1000` | Recommended word count for blog posts |
-| `MAX_URL_LENGTH` | `75` | Maximum recommended URL length for SEO |
-| `KEYWORD_DENSITY` | `{ MIN: 0.5, MAX: 2.5, OPTIMAL: 1.5 }` | Optimal keyword density range (%) |
-| `READABILITY` | `{ FLESCH_EASE_GOOD: 60, MAX_SENTENCE_LENGTH: 20, ... }` | Readability scoring thresholds |
-| `OG_IMAGE` | `{ WIDTH: 1200, HEIGHT: 630, ASPECT_RATIO: 1.91 }` | Open Graph recommended image dimensions |
-| `TWITTER_IMAGE` | `{ SUMMARY: { WIDTH: 144, HEIGHT: 144 }, SUMMARY_LARGE: { WIDTH: 800, HEIGHT: 418 } }` | Twitter Card recommended image dimensions |
-| `AI_CRAWLERS` | `['GPTBot', 'ClaudeBot', 'CCBot', ...]` | Common AI crawler user agents |
-| `SCHEMA_TYPES` | `['Article', 'Product', 'FAQPage', ...]` | Common Schema.org types used in SEO |
+| Constant                      | Value                                                                                  | Description                                     |
+| ----------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `TITLE_MAX_PIXELS`            | `580`                                                                                  | Google SERP max title display width (pixels)    |
+| `TITLE_MAX_LENGTH`            | `60`                                                                                   | Recommended max title character length          |
+| `TITLE_MIN_LENGTH`            | `50`                                                                                   | Recommended min title character length          |
+| `META_DESCRIPTION_MAX_PIXELS` | `920`                                                                                  | Google SERP max meta description width (pixels) |
+| `META_DESCRIPTION_MAX_LENGTH` | `160`                                                                                  | Recommended max meta description length         |
+| `META_DESCRIPTION_MIN_LENGTH` | `120`                                                                                  | Recommended min meta description length         |
+| `MIN_WORD_COUNT`              | `300`                                                                                  | Minimum word count to avoid thin content        |
+| `RECOMMENDED_WORD_COUNT`      | `1000`                                                                                 | Recommended word count for blog posts           |
+| `MAX_URL_LENGTH`              | `75`                                                                                   | Maximum recommended URL length for SEO          |
+| `KEYWORD_DENSITY`             | `{ MIN: 0.5, MAX: 2.5, OPTIMAL: 1.5 }`                                                 | Optimal keyword density range (%)               |
+| `READABILITY`                 | `{ FLESCH_EASE_GOOD: 60, MAX_SENTENCE_LENGTH: 20, ... }`                               | Readability scoring thresholds                  |
+| `OG_IMAGE`                    | `{ WIDTH: 1200, HEIGHT: 630, ASPECT_RATIO: 1.91 }`                                     | Open Graph recommended image dimensions         |
+| `TWITTER_IMAGE`               | `{ SUMMARY: { WIDTH: 144, HEIGHT: 144 }, SUMMARY_LARGE: { WIDTH: 800, HEIGHT: 418 } }` | Twitter Card recommended image dimensions       |
+| `AI_CRAWLERS`                 | `['GPTBot', 'ClaudeBot', 'CCBot', ...]`                                                | Common AI crawler user agents                   |
+| `SCHEMA_TYPES`                | `['Article', 'Product', 'FAQPage', ...]`                                               | Common Schema.org types used in SEO             |
 
 ### Types
 
-| Type | Description |
-| --- | --- |
-| `SEOConfig` | Full SEO configuration with title, meta, robots, OG, Twitter |
-| `MetaTag` | `{ name?, property?, httpEquiv?, content }` |
-| `LinkTag` | `{ rel, href, hreflang?, type?, sizes?, media? }` |
-| `OpenGraphConfig` | OG configuration with type, images, videos, article, profile |
-| `OpenGraphType` | `'website' \| 'article' \| 'book' \| 'profile' \| 'product' \| ...` |
-| `OpenGraphImage` | `{ url, secureUrl?, type?, width?, height?, alt? }` |
-| `TwitterCardConfig` | Twitter Card with card type, site, image, player, app |
-| `TwitterCardType` | `'summary' \| 'summary_large_image' \| 'app' \| 'player'` |
-| `RobotsDirective` | `{ index?, follow?, noarchive?, maxSnippet?, maxImagePreview?, ... }` |
-| `HreflangConfig` | `{ hrefLang, href }` |
-| `ContentAnalysisInput` | Input for content analysis — title, meta, content, keyphrase |
-| `ContentAnalysisOutput` | Output with score, maxScore, results, recommendations |
-| `AnalysisResult` | `{ id, title, description, status, score, maxScore }` |
-| `AnalysisStatus` | `'good' \| 'ok' \| 'poor'` |
-| `ReadabilityInput` | `{ content, locale? }` |
-| `ReadabilityOutput` | Flesch scores, passive voice %, transition word % |
-| `TextStatistics` | `{ wordCount, sentenceCount, paragraphCount, syllableCount, characterCount, ... }` |
-| `SitemapURL` | `{ loc, lastmod?, changefreq?, priority?, images?, videos?, news? }` |
-| `SitemapConfig` | `{ hostname, urls, maxUrlsPerSitemap?, outputDir? }` |
-| `RedirectRule` | `{ source, destination, statusCode, isRegex? }` |
-| `SchemaBase` | `{ '@context'?, '@type', '@id'?, [key]: unknown }` |
-| `SchemaGraphConfig` | `{ '@context': 'https://schema.org', '@graph': SchemaBase[] }` |
-| `KeywordDensityResult` | `{ keyword, count, density, totalWords }` |
-| `KeyphraseOccurrences` | Full occurrence map — title, H1, meta, slug, alt text, density |
-| `TokenBucket` | `{ tokens, lastRefill, maxTokens, refillRate }` |
-| `ValidationResult` | `{ valid, severity, message, charCount?, pixelWidth? }` |
-| `ValidationSeverity` | `'error' \| 'warning' \| 'info'` |
-| `TitleTemplateVars` | `{ title?, siteName?, separator?, tagline?, page?, [key]: string \| number }` |
+| Type                    | Description                                                                        |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| `SEOConfig`             | Full SEO configuration with title, meta, robots, OG, Twitter                       |
+| `MetaTag`               | `{ name?, property?, httpEquiv?, content }`                                        |
+| `LinkTag`               | `{ rel, href, hreflang?, type?, sizes?, media? }`                                  |
+| `OpenGraphConfig`       | OG configuration with type, images, videos, article, profile                       |
+| `OpenGraphType`         | `'website' \| 'article' \| 'book' \| 'profile' \| 'product' \| ...`                |
+| `OpenGraphImage`        | `{ url, secureUrl?, type?, width?, height?, alt? }`                                |
+| `TwitterCardConfig`     | Twitter Card with card type, site, image, player, app                              |
+| `TwitterCardType`       | `'summary' \| 'summary_large_image' \| 'app' \| 'player'`                          |
+| `RobotsDirective`       | `{ index?, follow?, noarchive?, maxSnippet?, maxImagePreview?, ... }`              |
+| `HreflangConfig`        | `{ hrefLang, href }`                                                               |
+| `ContentAnalysisInput`  | Input for content analysis — title, meta, content, keyphrase                       |
+| `ContentAnalysisOutput` | Output with score, maxScore, results, recommendations                              |
+| `AnalysisResult`        | `{ id, title, description, status, score, maxScore }`                              |
+| `AnalysisStatus`        | `'good' \| 'ok' \| 'poor'`                                                         |
+| `ReadabilityInput`      | `{ content, locale? }`                                                             |
+| `ReadabilityOutput`     | Flesch scores, passive voice %, transition word %                                  |
+| `TextStatistics`        | `{ wordCount, sentenceCount, paragraphCount, syllableCount, characterCount, ... }` |
+| `SitemapURL`            | `{ loc, lastmod?, changefreq?, priority?, images?, videos?, news? }`               |
+| `SitemapConfig`         | `{ hostname, urls, maxUrlsPerSitemap?, outputDir? }`                               |
+| `RedirectRule`          | `{ source, destination, statusCode, isRegex? }`                                    |
+| `SchemaBase`            | `{ '@context'?, '@type', '@id'?, [key]: unknown }`                                 |
+| `SchemaGraphConfig`     | `{ '@context': 'https://schema.org', '@graph': SchemaBase[] }`                     |
+| `KeywordDensityResult`  | `{ keyword, count, density, totalWords }`                                          |
+| `KeyphraseOccurrences`  | Full occurrence map — title, H1, meta, slug, alt text, density                     |
+| `TokenBucket`           | `{ tokens, lastRefill, maxTokens, refillRate }`                                    |
+| `ValidationResult`      | `{ valid, severity, message, charCount?, pixelWidth? }`                            |
+| `ValidationSeverity`    | `'error' \| 'warning' \| 'info'`                                                   |
+| `TitleTemplateVars`     | `{ title?, siteName?, separator?, tagline?, page?, [key]: string \| number }`      |
 
 ---
 

@@ -24,15 +24,15 @@ The `analyzeSerpEligibility` function is the exception: it is a fully determinis
 
 ## Why @power-seo/ai?
 
-| | Without | With |
-|---|---|---|
-| Meta descriptions | ❌ Write manually | ✅ LLM-generated, SEO-optimized candidates |
-| Title optimization | ❌ Guesswork | ✅ Keyphrase-focused, branded title variants |
-| Content gaps | ❌ Manually identified | ✅ Structured AI-powered improvement suggestions |
-| SERP eligibility | ❌ Unknown | ✅ Rule-based + LLM prediction with confidence scores |
-| Provider flexibility | ❌ Vendor-locked | ✅ Works with any LLM: OpenAI, Claude, Gemini... |
-| Structured output | ❌ Raw text parsing | ✅ Typed results with char count + pixel width |
-| CI integration | ❌ Manual review | ✅ Deterministic SERP eligibility in pipelines |
+|                      | Without                | With                                                  |
+| -------------------- | ---------------------- | ----------------------------------------------------- |
+| Meta descriptions    | ❌ Write manually      | ✅ LLM-generated, SEO-optimized candidates            |
+| Title optimization   | ❌ Guesswork           | ✅ Keyphrase-focused, branded title variants          |
+| Content gaps         | ❌ Manually identified | ✅ Structured AI-powered improvement suggestions      |
+| SERP eligibility     | ❌ Unknown             | ✅ Rule-based + LLM prediction with confidence scores |
+| Provider flexibility | ❌ Vendor-locked       | ✅ Works with any LLM: OpenAI, Claude, Gemini...      |
+| Structured output    | ❌ Raw text parsing    | ✅ Typed results with char count + pixel width        |
+| CI integration       | ❌ Manual review       | ✅ Deterministic SERP eligibility in pipelines        |
 
 ![LLM-Agnostic AI SEO](../../image/ai/comparison.svg)
 
@@ -60,17 +60,17 @@ The `analyzeSerpEligibility` function is the exception: it is a fully determinis
 
 ## Comparison
 
-| Feature | @power-seo/ai | LangChain | Vercel AI SDK | Custom prompts |
-| --- | :---: | :---: | :---: | :---: |
-| Provider-agnostic prompt builders | ✅ | Partial | ❌ | ❌ |
-| SEO-specific prompt templates | ✅ | ❌ | ❌ | Manual |
-| Structured response parsers | ✅ | Partial | Partial | Manual |
-| Rule-based SERP eligibility | ✅ | ❌ | ❌ | ❌ |
-| Char + pixel width metadata | ✅ | ❌ | ❌ | ❌ |
-| Zero SDK dependencies | ✅ | ❌ | ❌ | ✅ |
-| TypeScript-first | ✅ | Partial | ✅ | — |
-| Tree-shakeable | ✅ | ❌ | Partial | — |
-| CI / Node.js usage | ✅ | ✅ | ✅ | ✅ |
+| Feature                           | @power-seo/ai | LangChain | Vercel AI SDK | Custom prompts |
+| --------------------------------- | :-----------: | :-------: | :-----------: | :------------: |
+| Provider-agnostic prompt builders |      ✅       |  Partial  |      ❌       |       ❌       |
+| SEO-specific prompt templates     |      ✅       |    ❌     |      ❌       |     Manual     |
+| Structured response parsers       |      ✅       |  Partial  |    Partial    |     Manual     |
+| Rule-based SERP eligibility       |      ✅       |    ❌     |      ❌       |       ❌       |
+| Char + pixel width metadata       |      ✅       |    ❌     |      ❌       |       ❌       |
+| Zero SDK dependencies             |      ✅       |    ❌     |      ❌       |       ✅       |
+| TypeScript-first                  |      ✅       |  Partial  |      ✅       |       —        |
+| Tree-shakeable                    |      ✅       |    ❌     |    Partial    |       —        |
+| CI / Node.js usage                |      ✅       |    ✅     |      ✅       |       ✅       |
 
 ![AI Parsing Accuracy](../../image/ai/parsing-accuracy.svg)
 
