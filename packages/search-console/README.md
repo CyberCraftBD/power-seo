@@ -33,7 +33,11 @@ Typed Google Search Console API client for TypeScript — OAuth2 and service acc
 ![Search Console Comparison](../../image/search-console/comparison.svg)
 
 
-[![Buy me a coffee](https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/ccbd.dev)
+<p align="left">
+  <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
+    <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
+  </a>
+</p>
 
 ---
 
