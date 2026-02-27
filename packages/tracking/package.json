@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/tracking",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Analytics platform integration with script builders, consent management, and React components",
   "keywords": [
     "seo",

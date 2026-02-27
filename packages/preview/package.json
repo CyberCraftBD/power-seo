@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/preview",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "SERP, Open Graph, and Twitter Card preview generators with React components",
   "keywords": [
     "seo",

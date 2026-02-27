@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/analytics",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Analytics data processing: merge GSC data with audit results, trend analysis, ranking insights",
   "keywords": [
     "seo",

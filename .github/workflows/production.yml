@@ -61,38 +61,12 @@ jobs:
             git commit -m "style: auto-fix lint and formatting [skip ci]"
           fi
 
-      - name: Bump patch version for all packages
-        run: |
-          for dir in packages/*/; do
-            pkg="$dir/package.json"
-            if [ -f "$pkg" ] && [ "$(node -p "require('./$pkg').private")" != "true" ]; then
-              NAME=$(node -p "require('./$pkg').name")
-              NPM_VER=$(npm view "$NAME" version 2>/dev/null || echo "0.0.0")
-              cd "$dir"
-              node -e "
-                const fs = require('fs');
-                const p = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-                const cmp = (a, b) => {
-                  const x = a.split('.').map(Number), y = b.split('.').map(Number);
-                  for (let i = 0; i < 3; i++) { if (x[i] > y[i]) return 1; if (x[i] < y[i]) return -1; }
-                  return 0;
-                };
-                if (cmp('$NPM_VER', p.version) > 0) {
-                  p.version = '$NPM_VER';
-                  fs.writeFileSync('package.json', JSON.stringify(p, null, 2) + '\n');
-                }
-              "
-              npm version patch --no-git-tag-version
-              cd ../..
-            fi
-          done
-
-      - name: Get new version
+      - name: Get current version
         id: version
         run: |
           VERSION=$(node -p "require('./packages/core/package.json').version")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Publishing version: $VERSION"
+          echo "Version: $VERSION"
 
       - name: Authenticate with npm
         run: |
@@ -123,11 +97,6 @@ jobs:
             fi
           done
 
-      - name: Commit version bumps
-        run: |
-          git add -A -- ':!.npmrc'
-          git commit -m "chore: release v${{ steps.version.outputs.version }} [skip ci]"
-
       - name: Tag and push
         run: |
           TAG="v${{ steps.version.outputs.version }}"
@@ -135,7 +104,6 @@ jobs:
             echo "Tag $TAG already exists — skipping"
           else
             git tag "$TAG"
-            git push origin main
             git push origin "$TAG"
           fi
 
@@ -156,7 +124,7 @@ jobs:
         run: |
           echo "## Production Release" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ Published all packages at **v${{ steps.version.outputs.version }}**" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Version **v${{ steps.version.outputs.version }}**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Package | npm |" >> $GITHUB_STEP_SUMMARY
           echo "|---------|-----|" >> $GITHUB_STEP_SUMMARY
