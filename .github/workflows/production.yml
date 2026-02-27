@@ -16,11 +16,10 @@ jobs:
     permissions:
       contents: write
       id-token: write
-      administration: write
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -29,7 +28,7 @@ jobs:
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
@@ -67,7 +66,22 @@ jobs:
           for dir in packages/*/; do
             pkg="$dir/package.json"
             if [ -f "$pkg" ] && [ "$(node -p "require('./$pkg').private")" != "true" ]; then
+              NAME=$(node -p "require('./$pkg').name")
+              NPM_VER=$(npm view "$NAME" version 2>/dev/null || echo "0.0.0")
               cd "$dir"
+              node -e "
+                const fs = require('fs');
+                const p = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+                const cmp = (a, b) => {
+                  const x = a.split('.').map(Number), y = b.split('.').map(Number);
+                  for (let i = 0; i < 3; i++) { if (x[i] > y[i]) return 1; if (x[i] < y[i]) return -1; }
+                  return 0;
+                };
+                if (cmp('$NPM_VER', p.version) > 0) {
+                  p.version = '$NPM_VER';
+                  fs.writeFileSync('package.json', JSON.stringify(p, null, 2) + '\n');
+                }
+              "
               npm version patch --no-git-tag-version
               cd ../..
             fi
@@ -118,16 +132,12 @@ jobs:
         run: |
           TAG="v${{ steps.version.outputs.version }}"
           if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
-            echo "Tag $TAG already exists — skipping tag and push"
+            echo "Tag $TAG already exists — skipping"
           else
             git tag "$TAG"
-            gh api --method PUT repos/${{ github.repository }}/rulesets/13082283 --field enforcement=disabled
             git push origin main
             git push origin "$TAG"
-            gh api --method PUT repos/${{ github.repository }}/rulesets/13082283 --field enforcement=active
           fi
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create GitHub Release
         run: |
