@@ -1,0 +1,57 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">OAuth2 and Service Account — Both Supported</text>
+  <!-- Left: OAuth2 flow -->
+  <rect x="30" y="56" width="390" height="300" rx="8" fill="#161b22"/>
+  <rect x="30" y="56" width="390" height="34" rx="8" fill="#0a1628"/>
+  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#4285f4" text-anchor="middle">OAuth2 — User Authorization</text>
+  <!-- OAuth code -->
+  <text x="48" y="118" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// User logs in via Google</text>
+  <text x="48" y="140" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">const</text>
+  <text x="90" y="140" font-family="'Courier New', monospace" font-size="12" fill="#4285f4"> gsc</text>
+  <text x="114" y="140" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> = new </text>
+  <text x="162" y="140" font-family="'Courier New', monospace" font-size="12" fill="#4285f4">SearchConsoleClient</text>
+  <text x="318" y="140" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">(&#123;</text>
+  <text x="64" y="162" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  auth</text>
+  <text x="98" y="162" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123;</text>
+  <text x="64" y="184" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    type</text>
+  <text x="108" y="184" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="120" y="184" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'oauth2'</text>
+  <text x="64" y="206" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    clientId</text>
+  <text x="148" y="206" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: process.env.GOOGLE_CLIENT_ID</text>
+  <text x="64" y="228" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    accessToken</text>
+  <text x="172" y="228" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: userToken</text>
+  <text x="48" y="250" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">  &#125; &#125;)</text>
+  <!-- Good for badge -->
+  <rect x="48" y="272" width="344" height="30" rx="6" fill="#0a1628"/>
+  <text x="220" y="291" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4285f4" text-anchor="middle">✓ SaaS dashboards · multi-site user accounts</text>
+  <!-- Right: Service Account flow -->
+  <rect x="480" y="56" width="390" height="300" rx="8" fill="#161b22"/>
+  <rect x="480" y="56" width="390" height="34" rx="8" fill="#0a1628"/>
+  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#34a853" text-anchor="middle">Service Account — Server-to-Server</text>
+  <!-- Service account code -->
+  <text x="498" y="118" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// CI/CD, cron jobs, data pipelines</text>
+  <text x="498" y="140" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">const</text>
+  <text x="540" y="140" font-family="'Courier New', monospace" font-size="12" fill="#4285f4"> gsc</text>
+  <text x="564" y="140" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> = new </text>
+  <text x="612" y="140" font-family="'Courier New', monospace" font-size="12" fill="#4285f4">SearchConsoleClient</text>
+  <text x="768" y="140" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">(&#123;</text>
+  <text x="514" y="162" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  auth</text>
+  <text x="548" y="162" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123;</text>
+  <text x="514" y="184" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    type</text>
+  <text x="558" y="184" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
+  <text x="570" y="184" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'service_account'</text>
+  <text x="514" y="206" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    credentials</text>
+  <text x="622" y="206" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: serviceAccountJson</text>
+  <text x="498" y="228" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">  &#125; &#125;)</text>
+  <!-- Good for badge -->
+  <rect x="498" y="272" width="354" height="30" rx="6" fill="#0a1628"/>
+  <text x="675" y="291" font-family="'Segoe UI', sans-serif" font-size="12" fill="#34a853" text-anchor="middle">✓ CI/CD · automated reports · cron analytics</text>
+  <!-- Bottom: shared API surface -->
+  <rect x="30" y="378" width="840" height="76" rx="8" fill="#161b22"/>
+  <text x="450" y="404" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Same API regardless of auth method</text>
+  <text x="450" y="426" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e" text-anchor="middle">gsc.getSearchAnalytics()  ·  gsc.getSitemaps()  ·  gsc.submitSitemap()  ·  gsc.getIndexingStatus()</text>
+  <text x="450" y="448" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Automatic token refresh · retry on 429 · typed responses · full pagination</text>
+  <!-- Caption -->
+  <text x="450" y="480" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Switch auth method in one line. Same typed API either way.</text>
+</svg>

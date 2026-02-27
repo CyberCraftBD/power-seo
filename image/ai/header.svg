@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+      .font-ui { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d1117"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#161b22" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Left two-thirds content area -->
+  <!-- Main heading -->
+  <text x="80" y="200" class="font-mono" font-size="52" font-weight="700" fill="#a855f7" letter-spacing="-1">@power-seo/ai</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="260" class="font-ui" font-size="28" font-weight="400" fill="#ffffff">LLM-agnostic. Any provider.</text>
+
+  <!-- Decorative fuchsia underline under subtitle -->
+  <line x1="80" y1="273" x2="460" y2="273" stroke="#a855f7" stroke-width="2" opacity="0.5"/>
+
+  <!-- Provider badges row -->
+  <!-- OpenAI badge (green) -->
+  <rect x="80" y="300" width="100" height="32" rx="16" fill="#166534"/>
+  <text x="130" y="321" class="font-ui" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">OpenAI</text>
+
+  <!-- Claude badge (orange) -->
+  <rect x="192" y="300" width="100" height="32" rx="16" fill="#7c2d12"/>
+  <text x="242" y="321" class="font-ui" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Claude</text>
+
+  <!-- Gemini badge (blue) -->
+  <rect x="304" y="300" width="100" height="32" rx="16" fill="#1e3a5f"/>
+  <text x="354" y="321" class="font-ui" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Gemini</text>
+
+  <!-- Ollama badge (gray) -->
+  <rect x="416" y="300" width="100" height="32" rx="16" fill="#374151"/>
+  <text x="466" y="321" class="font-ui" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Ollama</text>
+
+  <!-- Feature highlights -->
+  <text x="80" y="390" class="font-ui" font-size="16" fill="#6b7280">✓ TypeScript native API</text>
+  <text x="80" y="418" class="font-ui" font-size="16" fill="#6b7280">✓ Typed output. Zero hallucination risk.</text>
+  <text x="80" y="446" class="font-ui" font-size="16" fill="#6b7280">✓ Batch process entire sites</text>
+  <text x="80" y="474" class="font-ui" font-size="16" fill="#6b7280">✓ Built-in keyphrase validation</text>
+
+  <!-- Package name watermark bottom-left -->
+  <text x="80" y="590" class="font-mono" font-size="13" fill="#a855f7" opacity="0.6">npm install @power-seo/ai</text>
+
+  <!-- Vertical fuchsia divider -->
+  <line x1="800" y1="40" x2="800" y2="590" stroke="#a855f7" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- RIGHT one-third: AI Suggestions sidebar panel -->
+  <rect x="820" y="40" width="360" height="550" rx="8" fill="#161b22" stroke="#a855f7" stroke-width="1.5"/>
+
+  <!-- Panel header -->
+  <rect x="820" y="40" width="360" height="48" rx="8" fill="#1a1025"/>
+  <rect x="820" y="72" width="360" height="16" fill="#1a1025"/>
+  <text x="844" y="70" class="font-ui" font-size="14" font-weight="700" fill="#a855f7">✦ AI Suggestions</text>
+  <!-- Header dots -->
+  <circle cx="1144" cy="64" r="4" fill="#374151"/>
+  <circle cx="1158" cy="64" r="4" fill="#374151"/>
+
+  <!-- Divider under header -->
+  <line x1="820" y1="88" x2="1180" y2="88" stroke="#a855f7" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Card 1 -->
+  <rect x="836" y="100" width="328" height="112" rx="8" fill="#1e2430"/>
+  <text x="852" y="122" class="font-ui" font-size="11" fill="#9ca3af">CANDIDATE 1</text>
+  <text x="852" y="142" class="font-ui" font-size="12" fill="#ffffff">Discover the best TypeScript SEO</text>
+  <text x="852" y="159" class="font-ui" font-size="12" fill="#ffffff">library for your Next.js project...</text>
+  <!-- Badge row -->
+  <rect x="852" y="170" width="72" height="20" rx="10" fill="#166534"/>
+  <text x="888" y="184" class="font-ui" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">142 chars</text>
+  <rect x="934" y="170" width="90" height="20" rx="10" fill="#a855f7"/>
+  <text x="979" y="184" class="font-ui" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">Keyphrase ✓</text>
+  <!-- Apply button filled -->
+  <rect x="1080" y="168" width="68" height="24" rx="6" fill="#a855f7"/>
+  <text x="1114" y="184" class="font-ui" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Apply</text>
+
+  <!-- Card 2 -->
+  <rect x="836" y="224" width="328" height="112" rx="8" fill="#1e2430"/>
+  <text x="852" y="246" class="font-ui" font-size="11" fill="#9ca3af">CANDIDATE 2</text>
+  <text x="852" y="266" class="font-ui" font-size="12" fill="#ffffff">Build production-ready SEO with</text>
+  <text x="852" y="283" class="font-ui" font-size="12" fill="#ffffff">zero configuration...</text>
+  <!-- Badge row -->
+  <rect x="852" y="294" width="72" height="20" rx="10" fill="#166534"/>
+  <text x="888" y="308" class="font-ui" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">138 chars</text>
+  <!-- Apply button outlined -->
+  <rect x="1080" y="292" width="68" height="24" rx="6" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="1114" y="308" class="font-ui" font-size="11" font-weight="600" fill="#a855f7" text-anchor="middle">Apply</text>
+
+  <!-- Card 3 -->
+  <rect x="836" y="348" width="328" height="112" rx="8" fill="#1e2430"/>
+  <text x="852" y="370" class="font-ui" font-size="11" fill="#9ca3af">CANDIDATE 3</text>
+  <text x="852" y="390" class="font-ui" font-size="12" fill="#ffffff">The complete TypeScript SEO toolkit</text>
+  <text x="852" y="407" class="font-ui" font-size="12" fill="#ffffff">for modern web applications...</text>
+  <!-- Badge row -->
+  <rect x="852" y="418" width="72" height="20" rx="10" fill="#92400e"/>
+  <text x="888" y="432" class="font-ui" font-size="10" font-weight="600" fill="#fbbf24" text-anchor="middle">151 chars</text>
+  <!-- Apply button outlined -->
+  <rect x="1080" y="416" width="68" height="24" rx="6" fill="none" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="1114" y="432" class="font-ui" font-size="11" font-weight="600" fill="#a855f7" text-anchor="middle">Apply</text>
+
+  <!-- Regenerate button at bottom of panel -->
+  <rect x="836" y="476" width="328" height="36" rx="6" fill="#0d1117" stroke="#374151" stroke-width="1"/>
+  <text x="1000" y="498" class="font-ui" font-size="12" fill="#6b7280" text-anchor="middle">↻ Regenerate suggestions</text>
+
+  <!-- Powered by caption -->
+  <text x="1000" y="550" class="font-ui" font-size="11" fill="#4b5563" text-anchor="middle">Powered by your LLM provider</text>
+</svg>

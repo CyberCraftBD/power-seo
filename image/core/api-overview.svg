@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="panelTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#1a1f2e" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="50" x2="900" y2="50"/>
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="150" x2="900" y2="150"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="250" x2="900" y2="250"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="350" x2="900" y2="350"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="0" y1="450" x2="900" y2="450"/>
+    <line x1="90" y1="0" x2="90" y2="500"/>
+    <line x1="180" y1="0" x2="180" y2="500"/>
+    <line x1="270" y1="0" x2="270" y2="500"/>
+    <line x1="360" y1="0" x2="360" y2="500"/>
+    <line x1="450" y1="0" x2="450" y2="500"/>
+    <line x1="540" y1="0" x2="540" y2="500"/>
+    <line x1="630" y1="0" x2="630" y2="500"/>
+    <line x1="720" y1="0" x2="720" y2="500"/>
+    <line x1="810" y1="0" x2="810" y2="500"/>
+  </g>
+
+  <!-- Code editor panel -->
+  <rect x="80" y="48" width="740" height="340" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- Editor top bar -->
+  <rect x="80" y="48" width="740" height="40" rx="10" fill="url(#panelTop)"/>
+  <rect x="80" y="68" width="740" height="20" fill="url(#panelTop)"/>
+
+  <!-- Window control dots -->
+  <circle cx="108" cy="68" r="7" fill="#ff5f56" opacity="0.9"/>
+  <circle cx="130" cy="68" r="7" fill="#ffbd2e" opacity="0.9"/>
+  <circle cx="152" cy="68" r="7" fill="#27c93f" opacity="0.9"/>
+
+  <!-- File tab label -->
+  <text x="450" y="73" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle" opacity="0.9">@power-seo/core — index.ts</text>
+
+  <!-- Line numbers column -->
+  <rect x="80" y="88" width="46" height="300" fill="#0d1117" opacity="0.5"/>
+  <g font-family="'JetBrains Mono', 'Courier New', monospace" font-size="12" fill="#4b5563" text-anchor="end">
+    <text x="118" y="118">1</text>
+    <text x="118" y="140">2</text>
+    <text x="118" y="162">3</text>
+    <text x="118" y="184">4</text>
+    <text x="118" y="206">5</text>
+    <text x="118" y="228">6</text>
+    <text x="118" y="250">7</text>
+    <text x="118" y="272">8</text>
+    <text x="118" y="294">9</text>
+    <text x="118" y="316">10</text>
+    <text x="118" y="338">11</text>
+    <text x="118" y="360">12</text>
+    <text x="118" y="382">13</text>
+  </g>
+
+  <!-- Code content -->
+  <!-- Line 1: import keyword -->
+  <text x="140" y="118" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#c792ea">import</text>
+  <text x="192" y="118" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0"> { </text>
+  <text x="218" y="118" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">SeoScore</text>
+  <text x="289" y="118" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="305" y="118" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">MetaConfig</text>
+  <text x="390" y="118" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="406" y="118" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">SchemaType</text>
+  <text x="495" y="118" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">,</text>
+
+  <!-- Line 2 -->
+  <text x="140" y="140" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">  </text>
+  <text x="156" y="140" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">SitemapURL</text>
+  <text x="245" y="140" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="261" y="140" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">RedirectRule</text>
+  <text x="362" y="140" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="378" y="140" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">RobotsDirective</text>
+  <text x="500" y="140" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">,</text>
+
+  <!-- Line 3 -->
+  <text x="156" y="162" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">AuditRule</text>
+  <text x="229" y="162" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="245" y="162" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">ContentScore</text>
+  <text x="354" y="162" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">, </text>
+  <text x="370" y="162" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">LinkGraph</text>
+  <text x="446" y="162" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">,</text>
+
+  <!-- Line 4 -->
+  <text x="140" y="184" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">} </text>
+  <text x="156" y="184" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#c792ea">from</text>
+  <text x="192" y="184" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#c3e88d">'@power-seo/core'</text>
+  <text x="354" y="184" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">;</text>
+
+  <!-- Blank line 5 -->
+
+  <!-- Line 6: type declarations -->
+  <text x="140" y="228" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#4b5563">// Type declarations</text>
+
+  <!-- Line 7 -->
+  <text x="140" y="250" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#6366f1">type</text>
+  <text x="176" y="250" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff"> Score</text>
+  <text x="223" y="250" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="248" y="250" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">SeoScore</text>
+  <text x="320" y="250" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">;</text>
+  <text x="350" y="250" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#4b5563">// 0–100</text>
+
+  <!-- Line 8 -->
+  <text x="140" y="272" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#6366f1">type</text>
+  <text x="176" y="272" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff"> Config</text>
+  <text x="230" y="272" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="255" y="272" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">MetaConfig</text>
+  <text x="341" y="272" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">;</text>
+  <text x="365" y="272" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#4b5563">// title, description, robots…</text>
+
+  <!-- Line 9 -->
+  <text x="140" y="294" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#6366f1">type</text>
+  <text x="176" y="294" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff"> Schema</text>
+  <text x="237" y="294" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="262" y="294" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">SchemaType</text>
+  <text x="348" y="294" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">;</text>
+  <text x="372" y="294" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#4b5563">// Article, Product, FAQ…</text>
+
+  <!-- Line 10 -->
+  <text x="140" y="316" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#6366f1">type</text>
+  <text x="176" y="316" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff"> Sitemap</text>
+  <text x="244" y="316" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="269" y="316" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">SitemapURL</text>
+  <text x="355" y="316" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">;</text>
+  <text x="379" y="316" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#4b5563">// loc, changefreq, priority…</text>
+
+  <!-- Line 11 -->
+  <text x="140" y="338" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#6366f1">type</text>
+  <text x="176" y="338" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff"> Redirect</text>
+  <text x="251" y="338" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="276" y="338" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">RedirectRule</text>
+  <text x="377" y="338" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">;</text>
+  <text x="401" y="338" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#4b5563">// from, to, status…</text>
+
+  <!-- Line 12 -->
+  <text x="140" y="360" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#6366f1">type</text>
+  <text x="176" y="360" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff"> Robots</text>
+  <text x="230" y="360" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0"> = </text>
+  <text x="255" y="360" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#82aaff">RobotsDirective</text>
+  <text x="394" y="360" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">;</text>
+  <text x="418" y="360" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#4b5563">// index, noindex, follow…</text>
+
+  <!-- Active line highlight -->
+  <rect x="126" y="178" width="688" height="18" rx="2" fill="#6366f1" opacity="0.08"/>
+
+  <!-- Cursor blink indicator -->
+  <rect x="368" y="181" width="2" height="14" fill="#6366f1" opacity="0.9"/>
+
+  <!-- Bottom caption bar -->
+  <rect x="80" y="388" width="740" height="1" fill="#30363d"/>
+
+  <!-- Caption: three pill stats -->
+  <text x="450" y="430" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">
+    <tspan fill="#6366f1">·</tspan>
+    <tspan>  Zero dependencies  </tspan>
+    <tspan fill="#6366f1">·</tspan>
+    <tspan>  Shared by 17 packages  </tspan>
+    <tspan fill="#6366f1">·</tspan>
+    <tspan>  TypeScript strict mode  </tspan>
+    <tspan fill="#6366f1">·</tspan>
+  </text>
+
+  <!-- Stats row -->
+  <g font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+    <text x="200" y="465" text-anchor="middle">17 types exported</text>
+    <text x="450" y="465" text-anchor="middle">100% type coverage</text>
+    <text x="700" y="465" text-anchor="middle">ESM + CJS dual build</text>
+  </g>
+  <g fill="#6366f1">
+    <circle cx="313" cy="461" r="3"/>
+    <circle cx="563" cy="461" r="3"/>
+  </g>
+
+</svg>

@@ -1,0 +1,76 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Full GSC Dashboard Built With One Package</text>
+  <!-- Main dashboard frame -->
+  <rect x="20" y="54" width="860" height="390" rx="8" fill="#161b22"/>
+  <!-- Sidebar -->
+  <rect x="20" y="54" width="160" height="390" rx="8" fill="#0d1117"/>
+  <text x="100" y="86" font-family="'Segoe UI', sans-serif" font-size="13" fill="#4285f4" text-anchor="middle" font-weight="700">GSC Dashboard</text>
+  <rect x="30" y="96" width="140" height="28" rx="4" fill="#0a1628"/>
+  <text x="40" y="114" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4285f4">▶ Performance</text>
+  <text x="40" y="142" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">  URL Inspection</text>
+  <text x="40" y="166" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">  Sitemaps</text>
+  <text x="40" y="190" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">  Core Web Vitals</text>
+  <text x="40" y="214" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">  Manual Actions</text>
+  <!-- KPI row -->
+  <rect x="192" y="66" width="152" height="60" rx="6" fill="#0d1117"/>
+  <text x="268" y="86" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4" text-anchor="middle">Total Clicks</text>
+  <text x="268" y="112" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">24,721</text>
+  <rect x="356" y="66" width="152" height="60" rx="6" fill="#0d1117"/>
+  <text x="432" y="86" font-family="'Segoe UI', sans-serif" font-size="11" fill="#34a853" text-anchor="middle">Impressions</text>
+  <text x="432" y="112" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">413K</text>
+  <rect x="520" y="66" width="152" height="60" rx="6" fill="#0d1117"/>
+  <text x="596" y="86" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbc04" text-anchor="middle">Avg CTR</text>
+  <text x="596" y="112" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">5.98%</text>
+  <rect x="684" y="66" width="152" height="60" rx="6" fill="#0d1117"/>
+  <text x="760" y="86" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ea4335" text-anchor="middle">Avg Position</text>
+  <text x="760" y="112" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">4.3</text>
+  <!-- Clicks chart -->
+  <rect x="192" y="138" width="470" height="140" rx="4" fill="#0d1117"/>
+  <text x="210" y="158" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Clicks over time</text>
+  <polyline points="210,250 260,235 310,220 360,200 410,185 460,168 510,172 560,155 610,148 660,140" stroke="#4285f4" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+  <text x="660" y="136" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4285f4">↑ +31%</text>
+  <!-- Top queries table -->
+  <rect x="192" y="288" width="470" height="140" rx="4" fill="#0d1117"/>
+  <rect x="192" y="288" width="470" height="26" rx="4" fill="#1e2430"/>
+  <text x="210" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Query</text>
+  <text x="440" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Clicks</text>
+  <text x="510" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Impr</text>
+  <text x="580" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">CTR</text>
+  <text x="630" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Pos</text>
+  <text x="210" y="328" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">typescript seo library</text>
+  <text x="440" y="328" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4">847</text>
+  <text x="510" y="328" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">12.4K</text>
+  <text x="580" y="328" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.8%</text>
+  <text x="630" y="328" font-family="'Segoe UI', sans-serif" font-size="11" fill="#34a853">3.2</text>
+  <text x="210" y="348" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">next.js seo package</text>
+  <text x="440" y="348" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4">612</text>
+  <text x="510" y="348" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">8.9K</text>
+  <text x="580" y="348" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.9%</text>
+  <text x="630" y="348" font-family="'Segoe UI', sans-serif" font-size="11" fill="#34a853">4.1</text>
+  <text x="210" y="368" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">react seo meta tags</text>
+  <text x="440" y="368" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4">388</text>
+  <text x="510" y="368" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.2K</text>
+  <text x="580" y="368" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.3%</text>
+  <text x="630" y="368" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbc04">5.7</text>
+  <text x="210" y="388" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">schema markup generator</text>
+  <text x="440" y="388" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4">294</text>
+  <text x="510" y="388" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">4.8K</text>
+  <text x="580" y="388" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.1%</text>
+  <text x="630" y="388" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbc04">6.2</text>
+  <!-- Right: Sitemaps panel -->
+  <rect x="674" y="138" width="196" height="290" rx="4" fill="#0d1117"/>
+  <text x="772" y="160" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Sitemaps</text>
+  <rect x="686" y="170" width="172" height="34" rx="4" fill="#161b22"/>
+  <text x="700" y="188" font-family="'Courier New', monospace" font-size="10" fill="#22c55e">/sitemap.xml</text>
+  <text x="700" y="202" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280">1,247 pages · OK</text>
+  <rect x="686" y="212" width="172" height="34" rx="4" fill="#161b22"/>
+  <text x="700" y="230" font-family="'Courier New', monospace" font-size="10" fill="#22c55e">/image-sitemap.xml</text>
+  <text x="700" y="244" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280">4,892 images · OK</text>
+  <rect x="686" y="254" width="172" height="34" rx="4" fill="#161b22"/>
+  <text x="700" y="272" font-family="'Courier New', monospace" font-size="10" fill="#fbbc04">/news-sitemap.xml</text>
+  <text x="700" y="286" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fbbc04">3 errors · check</text>
+  <!-- Caption -->
+  <text x="450" y="466" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Build full GSC integrations — queries, sitemaps, indexing — all typed.</text>
+  <text x="450" y="490" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">@power-seo/search-console — SearchAnalyticsRow · SitemapResult · IndexingStatus · auto-paginate</text>
+</svg>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+    </style>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- ===== INPUT BOX 1 (top-left, green border) ===== -->
+  <rect x="40" y="60" width="310" height="155" rx="10" fill="#161b22" stroke="#22c55e" stroke-width="1.5"/>
+  <!-- Header badge -->
+  <rect x="56" y="76" width="180" height="20" rx="4" fill="#0d2818"/>
+  <text x="146" y="90" fill="#22c55e" font-size="11" font-weight="600" text-anchor="middle">@power-seo/audit result</text>
+  <!-- URL -->
+  <text x="56" y="118" fill="#ffffff" font-size="13" font-family="'JetBrains Mono','Fira Code',monospace">/blog/seo-guide</text>
+  <!-- Divider -->
+  <line x1="56" y1="126" x2="334" y2="126" stroke="#21262d" stroke-width="1"/>
+  <!-- Label -->
+  <text x="56" y="148" fill="#8b949e" font-size="11">Audit Score</text>
+  <!-- Score value -->
+  <text x="56" y="186" fill="#f59e0b" font-size="38" font-weight="700">40/100</text>
+  <!-- Status -->
+  <rect x="56" y="196" width="80" height="16" rx="3" fill="#7c2d12"/>
+  <text x="96" y="208" fill="#fca5a5" font-size="10" font-weight="600" text-anchor="middle">Needs Work</text>
+
+  <!-- ===== INPUT BOX 2 (bottom-left, blue border) ===== -->
+  <rect x="40" y="280" width="310" height="155" rx="10" fill="#161b22" stroke="#3b82f6" stroke-width="1.5"/>
+  <!-- Header badge -->
+  <rect x="56" y="296" width="210" height="20" rx="4" fill="#0c1a3d"/>
+  <text x="161" y="310" fill="#60a5fa" font-size="11" font-weight="600" text-anchor="middle">@power-seo/search-console</text>
+  <!-- URL -->
+  <text x="56" y="338" fill="#ffffff" font-size="13" font-family="'JetBrains Mono','Fira Code',monospace">/blog/seo-guide</text>
+  <!-- Divider -->
+  <line x1="56" y1="346" x2="334" y2="346" stroke="#21262d" stroke-width="1"/>
+  <!-- Clicks -->
+  <text x="56" y="368" fill="#8b949e" font-size="11">Monthly Clicks</text>
+  <text x="56" y="400" fill="#22c55e" font-size="28" font-weight="700">1,847</text>
+  <!-- Additional info -->
+  <text x="56" y="424" fill="#22c55e" font-size="13" font-weight="600">8% of site traffic</text>
+
+  <!-- ===== ARROW ===== -->
+  <!-- Arrow shaft -->
+  <line x1="370" y1="250" x2="500" y2="250" stroke="#22c55e" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <!-- Merge label above arrow -->
+  <rect x="384" y="226" width="102" height="20" rx="4" fill="#0d2818"/>
+  <text x="435" y="240" fill="#22c55e" font-size="11" font-weight="600" text-anchor="middle">mergeAnalytics()</text>
+  <!-- Top input connector -->
+  <line x1="350" y1="137" x2="370" y2="137" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="370" y1="137" x2="370" y2="250" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
+  <!-- Bottom input connector -->
+  <line x1="350" y1="357" x2="370" y2="357" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="370" y1="357" x2="370" y2="250" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- ===== INSIGHT BOX (right) ===== -->
+  <rect x="510" y="80" width="350" height="310" rx="12" fill="#161b22" stroke="#22c55e" stroke-width="2.5"/>
+  <!-- Inner glow effect -->
+  <rect x="514" y="84" width="342" height="302" rx="10" fill="none" stroke="#22c55e" stroke-width="0.5" stroke-opacity="0.3"/>
+
+  <!-- Header -->
+  <rect x="528" y="96" width="180" height="24" rx="5" fill="#0d2818"/>
+  <text x="618" y="113" fill="#22c55e" font-size="13" font-weight="700" text-anchor="middle">mergeAnalytics() insight</text>
+
+  <!-- Divider -->
+  <line x1="528" y1="128" x2="842" y2="128" stroke="#22c55e" stroke-width="0.5" stroke-opacity="0.4"/>
+
+  <!-- Insight text -->
+  <text x="528" y="162" fill="#ffffff" font-size="16" font-weight="700">Fix /blog/seo-guide</text>
+  <text x="528" y="186" fill="#ffffff" font-size="16" font-weight="700">(score: 40) and recover</text>
+  <text x="528" y="210" fill="#22c55e" font-size="22" font-weight="700">~1,200 more clicks</text>
+  <text x="528" y="240" fill="#ffffff" font-size="16" font-weight="700">per month.</text>
+
+  <!-- Divider -->
+  <line x1="528" y1="258" x2="842" y2="258" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Stats row -->
+  <text x="528" y="282" fill="#8b949e" font-size="11">Current audit score</text>
+  <text x="528" y="300" fill="#f59e0b" font-size="18" font-weight="700">40/100</text>
+
+  <text x="686" y="282" fill="#8b949e" font-size="11">Recoverable traffic</text>
+  <text x="686" y="300" fill="#22c55e" font-size="18" font-weight="700">+1,200 clicks/mo</text>
+
+  <!-- Divider -->
+  <line x1="528" y1="314" x2="842" y2="314" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Priority badge -->
+  <rect x="528" y="326" width="120" height="24" rx="4" fill="#22c55e"/>
+  <text x="588" y="342" fill="#000000" font-size="12" font-weight="700" text-anchor="middle">HIGH PRIORITY</text>
+
+  <text x="660" y="342" fill="#8b949e" font-size="11">ROI rank: #1</text>
+
+  <!-- Caption -->
+  <text x="450" y="462" fill="#ffffff" font-size="15" text-anchor="middle">The insight you couldn't see with either tool alone.</text>
+
+  <!-- Decorative dots top-right corner -->
+  <circle cx="840" cy="100" r="3" fill="#22c55e" fill-opacity="0.4"/>
+  <circle cx="852" cy="100" r="3" fill="#22c55e" fill-opacity="0.4"/>
+  <circle cx="864" cy="100" r="3" fill="#22c55e" fill-opacity="0.4"/>
+</svg>

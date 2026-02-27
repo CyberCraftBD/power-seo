@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      .font-ui { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; }
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+    </style>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1520;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="rowShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e2430" stroke-width="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="500" fill="url(#grid)" opacity="0.4"/>
+
+  <!-- Top accent -->
+  <line x1="0" y1="3" x2="900" y2="3" stroke="#3b82f6" stroke-width="3" opacity="0.8"/>
+
+  <!-- Main panel -->
+  <rect x="28" y="28" width="844" height="444" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5" filter="url(#shadow)"/>
+
+  <!-- Panel header bar -->
+  <rect x="28" y="28" width="844" height="52" rx="12" fill="#1a2030"/>
+  <rect x="28" y="60" width="844" height="20" fill="#1a2030"/>
+
+  <!-- Window dots -->
+  <circle cx="56" cy="54" r="6" fill="#ff5f57"/>
+  <circle cx="78" cy="54" r="6" fill="#febc2e"/>
+  <circle cx="100" cy="54" r="6" fill="#28c840"/>
+
+  <!-- Panel title -->
+  <text x="128" y="59" class="font-ui" fill="#e6edf3" font-size="16" font-weight="600">Image Audit Report</text>
+  <text x="345" y="59" class="font-ui" fill="#6e7681" font-size="16" font-weight="400"> — 47 images analyzed</text>
+
+  <!-- Blue underline under title -->
+  <line x1="128" y1="63" x2="302" y2="63" stroke="#3b82f6" stroke-width="2"/>
+
+  <!-- Stats chips in header -->
+  <rect x="610" y="40" width="90" height="26" rx="13" fill="#14532d" stroke="#22c55e" stroke-width="1"/>
+  <text x="655" y="58" class="font-ui" fill="#4ade80" font-size="12" font-weight="600" text-anchor="middle">29 passing</text>
+
+  <rect x="710" y="40" width="80" height="26" rx="13" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="750" y="58" class="font-ui" fill="#fb923c" font-size="12" font-weight="600" text-anchor="middle">12 issues</text>
+
+  <rect x="800" y="40" width="56" height="26" rx="13" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+  <text x="828" y="58" class="font-ui" fill="#f87171" font-size="12" font-weight="600" text-anchor="middle">6 errors</text>
+
+  <!-- Table header -->
+  <rect x="44" y="90" width="812" height="36" rx="6" fill="#1e2430"/>
+
+  <!-- Column widths:
+    Image: 44–124 (80px)
+    Filename: 124–294 (170px)
+    Alt Quality: 294–454 (160px)
+    Format: 454–564 (110px)
+    Lazy Loading: 564–694 (130px)
+    Est. Savings: 694–856 (162px)
+  -->
+  <text x="84" y="113" class="font-ui" fill="#6e7681" font-size="12" font-weight="700" text-anchor="middle">Image</text>
+  <text x="210" y="113" class="font-ui" fill="#6e7681" font-size="12" font-weight="700">Filename</text>
+  <text x="374" y="113" class="font-ui" fill="#6e7681" font-size="12" font-weight="700" text-anchor="middle">Alt Quality</text>
+  <text x="509" y="113" class="font-ui" fill="#6e7681" font-size="12" font-weight="700" text-anchor="middle">Format</text>
+  <text x="629" y="113" class="font-ui" fill="#6e7681" font-size="12" font-weight="700" text-anchor="middle">Lazy Loading</text>
+  <text x="775" y="113" class="font-ui" fill="#6e7681" font-size="12" font-weight="700" text-anchor="middle">Est. Savings</text>
+
+  <!-- Vertical separators in header -->
+  <line x1="124" y1="90" x2="124" y2="126" stroke="#30363d" stroke-width="1"/>
+  <line x1="294" y1="90" x2="294" y2="126" stroke="#30363d" stroke-width="1"/>
+  <line x1="454" y1="90" x2="454" y2="126" stroke="#30363d" stroke-width="1"/>
+  <line x1="564" y1="90" x2="564" y2="126" stroke="#30363d" stroke-width="1"/>
+  <line x1="694" y1="90" x2="694" y2="126" stroke="#30363d" stroke-width="1"/>
+
+  <!-- ROW 1 — Good row -->
+  <rect x="44" y="130" width="812" height="52" rx="6" fill="#1a2030" filter="url(#rowShadow)"/>
+  <!-- Thumbnail -->
+  <rect x="52" y="137" width="60" height="38" rx="4" fill="#2d3748"/>
+  <polygon points="52,165 72,147 97,175 52,175" fill="#374151"/>
+  <polygon points="72,153 92,165 92,175 72,175" fill="#4b5563"/>
+  <circle cx="91" cy="143" r="5" fill="#6b7280"/>
+  <!-- Filename -->
+  <text x="132" y="161" class="font-mono" fill="#e6edf3" font-size="12">hero-banner.webp</text>
+  <!-- Alt Quality: Good -->
+  <rect x="306" y="141" width="96" height="24" rx="12" fill="#14532d" stroke="#22c55e" stroke-width="1"/>
+  <text x="354" y="158" class="font-ui" fill="#4ade80" font-size="12" font-weight="600" text-anchor="middle">Good 87/100</text>
+  <!-- Format: WebP -->
+  <rect x="464" y="141" width="48" height="24" rx="12" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="488" y="158" class="font-ui" fill="#60a5fa" font-size="12" font-weight="600" text-anchor="middle">WebP</text>
+  <!-- Lazy: ✓ -->
+  <circle cx="629" cy="156" r="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="629" y="161" class="font-ui" fill="#4ade80" font-size="14" font-weight="700" text-anchor="middle">✓</text>
+  <!-- Savings -->
+  <text x="775" y="161" class="font-ui" fill="#6e7681" font-size="14" font-weight="600" text-anchor="middle">0 KB</text>
+
+  <!-- Divider -->
+  <line x1="44" y1="182" x2="856" y2="182" stroke="#30363d" stroke-width="1" opacity="0.5"/>
+
+  <!-- ROW 2 — Error row (missing alt) -->
+  <rect x="44" y="186" width="812" height="52" rx="6" fill="#1e1414" filter="url(#rowShadow)"/>
+  <!-- Left error bar -->
+  <rect x="44" y="186" width="4" height="52" rx="2" fill="#ef4444"/>
+  <!-- Thumbnail -->
+  <rect x="52" y="193" width="60" height="38" rx="4" fill="#2d3748"/>
+  <polygon points="52,221 72,203 97,231 52,231" fill="#374151"/>
+  <polygon points="72,209 92,221 92,231 72,231" fill="#4b5563"/>
+  <circle cx="91" cy="199" r="5" fill="#6b7280"/>
+  <!-- Filename -->
+  <text x="132" y="217" class="font-mono" fill="#e6edf3" font-size="12">product-hero.png</text>
+  <!-- Alt Quality: Missing -->
+  <rect x="306" y="197" width="72" height="24" rx="12" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+  <text x="342" y="214" class="font-ui" fill="#f87171" font-size="12" font-weight="600" text-anchor="middle">Missing</text>
+  <!-- Format: PNG -->
+  <rect x="464" y="197" width="48" height="24" rx="12" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="488" y="214" class="font-ui" fill="#fb923c" font-size="12" font-weight="600" text-anchor="middle">PNG</text>
+  <!-- Lazy: ✗ -->
+  <circle cx="629" cy="212" r="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="629" y="217" class="font-ui" fill="#f87171" font-size="14" font-weight="700" text-anchor="middle">✗</text>
+  <!-- Savings -->
+  <rect x="716" y="199" width="120" height="24" rx="12" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="776" y="216" class="font-ui" fill="#60a5fa" font-size="12" font-weight="700" text-anchor="middle">284 KB save</text>
+
+  <!-- Divider -->
+  <line x1="44" y1="238" x2="856" y2="238" stroke="#30363d" stroke-width="1" opacity="0.5"/>
+
+  <!-- ROW 3 — Warning row (generic alt) -->
+  <rect x="44" y="242" width="812" height="52" rx="6" fill="#1a1900" filter="url(#rowShadow)"/>
+  <!-- Left warning bar -->
+  <rect x="44" y="242" width="4" height="52" rx="2" fill="#f59e0b"/>
+  <!-- Thumbnail -->
+  <rect x="52" y="249" width="60" height="38" rx="4" fill="#2d3748"/>
+  <polygon points="52,277 72,259 97,287 52,287" fill="#374151"/>
+  <polygon points="72,265 92,277 92,287 72,287" fill="#4b5563"/>
+  <circle cx="91" cy="255" r="5" fill="#6b7280"/>
+  <!-- Filename -->
+  <text x="132" y="273" class="font-mono" fill="#e6edf3" font-size="12">blog-thumbnail.jpg</text>
+  <!-- Alt Quality: Generic -->
+  <rect x="306" y="253" width="72" height="24" rx="12" fill="#431a00" stroke="#f59e0b" stroke-width="1"/>
+  <text x="342" y="270" class="font-ui" fill="#fbbf24" font-size="12" font-weight="600" text-anchor="middle">Generic</text>
+  <!-- Format: JPEG -->
+  <rect x="461" y="253" width="54" height="24" rx="12" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="488" y="270" class="font-ui" fill="#fb923c" font-size="12" font-weight="600" text-anchor="middle">JPEG</text>
+  <!-- Lazy: ✓ -->
+  <circle cx="629" cy="268" r="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="629" y="273" class="font-ui" fill="#4ade80" font-size="14" font-weight="700" text-anchor="middle">✓</text>
+  <!-- Savings -->
+  <rect x="716" y="255" width="120" height="24" rx="12" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="776" y="272" class="font-ui" fill="#60a5fa" font-size="12" font-weight="700" text-anchor="middle">156 KB save</text>
+
+  <!-- Divider -->
+  <line x1="44" y1="294" x2="856" y2="294" stroke="#30363d" stroke-width="1" opacity="0.5"/>
+
+  <!-- ROW 4 — Good row -->
+  <rect x="44" y="298" width="812" height="52" rx="6" fill="#1a2030" filter="url(#rowShadow)"/>
+  <!-- Thumbnail -->
+  <rect x="52" y="305" width="60" height="38" rx="4" fill="#2d3748"/>
+  <polygon points="52,333 72,315 97,343 52,343" fill="#374151"/>
+  <polygon points="72,321 92,333 92,343 72,343" fill="#4b5563"/>
+  <circle cx="91" cy="311" r="5" fill="#6b7280"/>
+  <!-- Filename -->
+  <text x="132" y="329" class="font-mono" fill="#e6edf3" font-size="12">feature-card.avif</text>
+  <!-- Alt Quality: Good -->
+  <rect x="298" y="309" width="104" height="24" rx="12" fill="#14532d" stroke="#22c55e" stroke-width="1"/>
+  <text x="350" y="326" class="font-ui" fill="#4ade80" font-size="12" font-weight="600" text-anchor="middle">Good 92/100</text>
+  <!-- Format: AVIF -->
+  <rect x="464" y="309" width="48" height="24" rx="12" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="488" y="326" class="font-ui" fill="#60a5fa" font-size="12" font-weight="600" text-anchor="middle">AVIF</text>
+  <!-- Lazy: ✓ -->
+  <circle cx="629" cy="324" r="10" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="629" y="329" class="font-ui" fill="#4ade80" font-size="14" font-weight="700" text-anchor="middle">✓</text>
+  <!-- Savings -->
+  <text x="775" y="329" class="font-ui" fill="#6e7681" font-size="14" font-weight="600" text-anchor="middle">0 KB</text>
+
+  <!-- Divider -->
+  <line x1="44" y1="350" x2="856" y2="350" stroke="#30363d" stroke-width="1" opacity="0.5"/>
+
+  <!-- ROW 5 — Error row (missing alt + no lazy) -->
+  <rect x="44" y="354" width="812" height="52" rx="6" fill="#1e1414" filter="url(#rowShadow)"/>
+  <!-- Left error bar -->
+  <rect x="44" y="354" width="4" height="52" rx="2" fill="#ef4444"/>
+  <!-- Thumbnail -->
+  <rect x="52" y="361" width="60" height="38" rx="4" fill="#2d3748"/>
+  <polygon points="52,389 72,371 97,399 52,399" fill="#374151"/>
+  <polygon points="72,377 92,389 92,399 72,399" fill="#4b5563"/>
+  <circle cx="91" cy="367" r="5" fill="#6b7280"/>
+  <!-- Filename -->
+  <text x="132" y="385" class="font-mono" fill="#e6edf3" font-size="12">banner-cta.png</text>
+  <!-- Alt Quality: Missing -->
+  <rect x="306" y="365" width="72" height="24" rx="12" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+  <text x="342" y="382" class="font-ui" fill="#f87171" font-size="12" font-weight="600" text-anchor="middle">Missing</text>
+  <!-- Format: PNG -->
+  <rect x="464" y="365" width="48" height="24" rx="12" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="488" y="382" class="font-ui" fill="#fb923c" font-size="12" font-weight="600" text-anchor="middle">PNG</text>
+  <!-- Lazy: ✗ -->
+  <circle cx="629" cy="380" r="10" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="629" y="385" class="font-ui" fill="#f87171" font-size="14" font-weight="700" text-anchor="middle">✗</text>
+  <!-- Savings -->
+  <rect x="716" y="367" width="120" height="24" rx="12" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="776" y="384" class="font-ui" fill="#60a5fa" font-size="12" font-weight="700" text-anchor="middle">412 KB save</text>
+
+  <!-- Bottom summary bar -->
+  <rect x="44" y="422" width="812" height="38" rx="6" fill="#0e1e3d" stroke="#3b82f6" stroke-width="1.5"/>
+  <!-- Savings icon -->
+  <text x="68" y="446" class="font-ui" fill="#3b82f6" font-size="16">&#128190;</text>
+  <text x="92" y="446" class="font-ui" fill="#60a5fa" font-size="15" font-weight="700">Total estimated savings: 1.2 MB</text>
+  <text x="620" y="446" class="font-ui" fill="#6e7681" font-size="13">47 images &#183; 6 errors &#183; 9 warnings</text>
+</svg>

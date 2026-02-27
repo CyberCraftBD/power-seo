@@ -1,0 +1,75 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <!-- Emerald glow behind panel -->
+  <ellipse cx="600" cy="280" rx="400" ry="200" fill="#10b981" opacity="0.05"/>
+  <!-- GSC Panel -->
+  <rect x="60" y="50" width="1080" height="400" rx="10" fill="#161b22"/>
+  <!-- GSC header bar -->
+  <rect x="60" y="50" width="1080" height="48" rx="10" fill="#1e2430"/>
+  <rect x="60" y="86" width="1080" height="12" fill="#1e2430"/>
+  <!-- Google logo colors -->
+  <text x="90" y="81" font-family="'Segoe UI', sans-serif" font-size="18" fill="#4285f4" font-weight="700">G</text>
+  <text x="104" y="81" font-family="'Segoe UI', sans-serif" font-size="18" fill="#ea4335" font-weight="700">o</text>
+  <text x="116" y="81" font-family="'Segoe UI', sans-serif" font-size="18" fill="#fbbc05" font-weight="700">o</text>
+  <text x="128" y="81" font-family="'Segoe UI', sans-serif" font-size="18" fill="#4285f4" font-weight="700">g</text>
+  <text x="140" y="81" font-family="'Segoe UI', sans-serif" font-size="18" fill="#34a853" font-weight="700">l</text>
+  <text x="148" y="81" font-family="'Segoe UI', sans-serif" font-size="18" fill="#ea4335" font-weight="700">e</text>
+  <text x="168" y="81" font-family="'Segoe UI', sans-serif" font-size="18" fill="#94a3b8">Search Console</text>
+  <!-- Nav -->
+  <text x="380" y="81" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8">Overview</text>
+  <text x="460" y="81" font-family="'Segoe UI', sans-serif" font-size="14" fill="#10b981" font-weight="600">Sitemaps</text>
+  <text x="548" y="81" font-family="'Segoe UI', sans-serif" font-size="14" fill="#94a3b8">Coverage</text>
+  <!-- Section header -->
+  <text x="90" y="130" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" font-weight="600">Submitted sitemaps</text>
+  <rect x="980" y="112" width="130" height="34" rx="6" fill="#10b981"/>
+  <text x="1045" y="134" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle">+ Add sitemap</text>
+  <!-- Table headers -->
+  <text x="90" y="162" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Sitemap</text>
+  <text x="370" y="162" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Type</text>
+  <text x="510" y="162" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Submitted</text>
+  <text x="650" y="162" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Last read</text>
+  <text x="790" y="162" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Status</text>
+  <text x="950" y="162" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Discovered URLs</text>
+  <line x1="80" y1="170" x2="1120" y2="170" stroke="#2d3748" stroke-width="1"/>
+  <!-- Row 1 -->
+  <rect x="60" y="175" width="1080" height="48" fill="#0f1621"/>
+  <text x="90" y="204" font-family="'Courier New', monospace" font-size="13" fill="#0ea5e9">https://example.com/sitemap.xml</text>
+  <text x="370" y="204" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Sitemap index</text>
+  <text x="510" y="204" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Feb 10, 2026</text>
+  <text x="650" y="204" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Feb 11, 2026</text>
+  <rect x="790" y="190" width="70" height="22" rx="11" fill="#166534"/>
+  <text x="825" y="205" font-family="'Segoe UI', sans-serif" font-size="11" fill="#10b981" text-anchor="middle">Success</text>
+  <text x="950" y="204" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" font-weight="600">54,231</text>
+  <!-- Row 2 -->
+  <rect x="60" y="223" width="1080" height="48" fill="#161b22"/>
+  <text x="90" y="252" font-family="'Courier New', monospace" font-size="13" fill="#0ea5e9">https://example.com/sitemap-0.xml</text>
+  <text x="370" y="252" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Sitemap</text>
+  <text x="510" y="252" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Feb 10, 2026</text>
+  <text x="650" y="252" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Feb 11, 2026</text>
+  <rect x="790" y="238" width="70" height="22" rx="11" fill="#166534"/>
+  <text x="825" y="253" font-family="'Segoe UI', sans-serif" font-size="11" fill="#10b981" text-anchor="middle">Success</text>
+  <text x="950" y="252" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" font-weight="600">25,000</text>
+  <!-- Row 3 -->
+  <rect x="60" y="271" width="1080" height="48" fill="#0f1621"/>
+  <text x="90" y="300" font-family="'Courier New', monospace" font-size="13" fill="#0ea5e9">https://example.com/sitemap-images.xml</text>
+  <text x="370" y="300" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Sitemap</text>
+  <text x="510" y="300" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Feb 10, 2026</text>
+  <text x="650" y="300" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Feb 10, 2026</text>
+  <rect x="790" y="285" width="70" height="22" rx="11" fill="#166534"/>
+  <text x="825" y="300" font-family="'Segoe UI', sans-serif" font-size="11" fill="#10b981" text-anchor="middle">Success</text>
+  <text x="950" y="300" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" font-weight="600">12,847</text>
+  <!-- Code snippet -->
+  <rect x="200" y="345" width="800" height="90" rx="6" fill="#0d1117" stroke="#10b981" stroke-width="1"/>
+  <text x="240" y="375" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">// Generate and stream sitemap</text>
+  <text x="240" y="400" font-family="'Courier New', monospace" font-size="13" fill="#10b981">generateSitemap</text>
+  <text x="380" y="400" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(urls)</text>
+  <text x="418" y="400" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">.</text>
+  <text x="424" y="400" font-family="'Courier New', monospace" font-size="13" fill="#10b981">pipe</text>
+  <text x="452" y="400" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(res)</text>
+  <text x="490" y="400" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">  // Node.js stream — never OOM</text>
+  <!-- Tags -->
+  <text x="90" y="478" font-family="'Segoe UI', sans-serif" font-size="14" fill="#10b981">@power-seo/sitemap</text>
+  <!-- Tagline -->
+  <text x="600" y="560" font-family="'Segoe UI', sans-serif" font-size="28" fill="white" text-anchor="middle" font-weight="700">Stream. Split. Submit.</text>
+  <text x="600" y="595" font-family="'Segoe UI', sans-serif" font-size="15" fill="#6b7280" text-anchor="middle">Production-grade XML sitemap generation for TypeScript applications</text>
+</svg>

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
+  <defs>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" fill="#e6edf3" font-size="17" font-weight="700">Content Analysis Tools — Feature Comparison</text>
+
+  <!-- Table background -->
+  <rect x="30" y="54" width="840" height="388" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- ── COLUMN HEADERS ── -->
+  <!-- Feature column header -->
+  <rect x="30" y="54" width="230" height="48" rx="0" fill="#161b22"/>
+  <rect x="30" y="54" width="230" height="48" rx="4" fill="#161b22"/>
+  <text x="145" y="83" text-anchor="middle" fill="#8b949e" font-size="13" font-weight="600">Feature</text>
+
+  <!-- @power-seo header: yellow bg, black text -->
+  <rect x="260" y="54" width="200" height="48" rx="4" fill="#eab308"/>
+  <text x="360" y="76" text-anchor="middle" fill="#000000" font-size="12" font-weight="800">@power-seo/</text>
+  <text x="360" y="93" text-anchor="middle" fill="#000000" font-size="12" font-weight="800">content-analysis</text>
+
+  <!-- Yoast SEO header -->
+  <rect x="480" y="54" width="180" height="48" rx="4" fill="#252d38"/>
+  <text x="570" y="83" text-anchor="middle" fill="#c9d1d9" font-size="13" font-weight="600">Yoast SEO</text>
+
+  <!-- RankMath header -->
+  <rect x="680" y="54" width="190" height="48" rx="4" fill="#252d38"/>
+  <text x="775" y="83" text-anchor="middle" fill="#c9d1d9" font-size="13" font-weight="600">RankMath</text>
+
+  <!-- ── ROWS ── -->
+  <!-- Row data: label, power-seo, yoast, rankmath -->
+  <!-- Row 1 -->
+  <rect x="30" y="102" width="840" height="34" rx="0" fill="#1a1f27"/>
+  <text x="48" y="123" fill="#e6edf3" font-size="13">TypeScript API</text>
+  <text x="360" y="123" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="570" y="123" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+  <text x="775" y="123" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+
+  <!-- Row 2 -->
+  <rect x="30" y="136" width="840" height="34" rx="0" fill="#161b22"/>
+  <text x="48" y="157" fill="#e6edf3" font-size="13">Any framework</text>
+  <text x="360" y="157" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="570" y="157" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+  <text x="775" y="157" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+
+  <!-- Row 3 -->
+  <rect x="30" y="170" width="840" height="34" rx="0" fill="#1a1f27"/>
+  <text x="48" y="191" fill="#e6edf3" font-size="13">Free / open source</text>
+  <text x="360" y="191" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="570" y="191" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="600">~ freemium</text>
+  <text x="775" y="191" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="600">~ freemium</text>
+
+  <!-- Row 4 -->
+  <rect x="30" y="204" width="840" height="34" rx="0" fill="#161b22"/>
+  <text x="48" y="225" fill="#e6edf3" font-size="13">Headless CMS support</text>
+  <text x="360" y="225" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="570" y="225" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+  <text x="775" y="225" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+
+  <!-- Row 5 -->
+  <rect x="30" y="238" width="840" height="34" rx="0" fill="#1a1f27"/>
+  <text x="48" y="259" fill="#e6edf3" font-size="13">Keyphrase density check</text>
+  <text x="360" y="259" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="570" y="259" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="775" y="259" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+
+  <!-- Row 6 -->
+  <rect x="30" y="272" width="840" height="34" rx="0" fill="#161b22"/>
+  <text x="48" y="293" fill="#e6edf3" font-size="13">Custom keyphrase</text>
+  <text x="360" y="293" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="570" y="293" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="775" y="293" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+
+  <!-- Row 7 -->
+  <rect x="30" y="306" width="840" height="34" rx="0" fill="#1a1f27"/>
+  <text x="48" y="327" fill="#e6edf3" font-size="13">Programmatic scoring</text>
+  <text x="360" y="327" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="570" y="327" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+  <text x="775" y="327" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+
+  <!-- Row 8 -->
+  <rect x="30" y="340" width="840" height="34" rx="0" fill="#161b22"/>
+  <rect x="30" y="340" width="840" height="34" rx="0" fill="#161b22"/>
+  <!-- Bottom border radius clip -->
+  <rect x="30" y="362" width="840" height="10" rx="0" fill="#161b22"/>
+  <rect x="30" y="368" width="840" height="6" rx="0" fill="#161b22"/>
+  <!-- Round bottom corners manually by overlaying white corners -->
+  <text x="48" y="361" fill="#e6edf3" font-size="13">No WordPress required</text>
+  <text x="360" y="361" text-anchor="middle" fill="#22c55e" font-size="16" font-weight="700">✓</text>
+  <text x="570" y="361" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+  <text x="775" y="361" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="700">✗</text>
+
+  <!-- Vertical column dividers -->
+  <line x1="258" y1="54" x2="258" y2="442" stroke="#30363d" stroke-width="1"/>
+  <line x1="462" y1="54" x2="462" y2="442" stroke="#30363d" stroke-width="1"/>
+  <line x1="662" y1="54" x2="662" y2="442" stroke="#30363d" stroke-width="1"/>
+
+  <!-- @power-seo column highlight left border -->
+  <rect x="260" y="102" width="3" height="272" fill="#eab308" opacity="0.5"/>
+
+  <!-- Summary row -->
+  <rect x="30" y="380" width="840" height="62" rx="0" fill="#0d1117"/>
+  <rect x="30" y="434" width="840" height="8" rx="0" fill="#161b22"/>
+
+  <!-- @power-seo score pills -->
+  <rect x="270" y="392" width="180" height="30" rx="15" fill="#1a1508" stroke="#eab308" stroke-width="1.5"/>
+  <text x="360" y="411" text-anchor="middle" fill="#eab308" font-size="12" font-weight="700">8 / 8 features</text>
+
+  <!-- Yoast score pills -->
+  <rect x="490" y="392" width="160" height="30" rx="15" fill="#1a1f27" stroke="#484f58" stroke-width="1"/>
+  <text x="570" y="411" text-anchor="middle" fill="#8b949e" font-size="12" font-weight="600">4 / 8 features</text>
+
+  <!-- RankMath score pills -->
+  <rect x="692" y="392" width="166" height="30" rx="15" fill="#1a1f27" stroke="#484f58" stroke-width="1"/>
+  <text x="775" y="411" text-anchor="middle" fill="#8b949e" font-size="12" font-weight="600">4 / 8 features</text>
+
+  <!-- Caption -->
+  <text x="450" y="462" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="600">Content analysis. No WordPress required.</text>
+  <text x="450" y="484" text-anchor="middle" fill="#8b949e" font-size="12">Use @power-seo/content-analysis in any JavaScript or TypeScript project.</text>
+</svg>

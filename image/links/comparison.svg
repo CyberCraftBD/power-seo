@@ -1,0 +1,57 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="42" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Internal Link Analysis — Tool Comparison</text>
+  <!-- Headers -->
+  <rect x="30" y="58" width="220" height="38" rx="6" fill="#f59e0b"/>
+  <text x="140" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">@power-seo/links</text>
+  <rect x="265" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
+  <text x="355" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Screaming Frog</text>
+  <rect x="460" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
+  <text x="550" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Semrush</text>
+  <rect x="655" y="58" width="215" height="38" rx="6" fill="#1e2430"/>
+  <text x="762" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Ahrefs</text>
+  <!-- Rows -->
+  <rect x="0" y="108" width="900" height="38" fill="#0f1621"/>
+  <text x="870" y="132" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">TypeScript API</text>
+  <text x="140" y="132" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="355" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="550" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="762" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <rect x="0" y="146" width="900" height="38" fill="#161b22"/>
+  <text x="870" y="170" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Free / open source</text>
+  <text x="140" y="170" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="355" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="550" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="762" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <rect x="0" y="184" width="900" height="38" fill="#0f1621"/>
+  <text x="870" y="208" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">PageRank algorithm</text>
+  <text x="140" y="208" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="355" y="208" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="550" y="208" font-size="16" fill="#94a3b8" text-anchor="middle">similar</text>
+  <text x="762" y="208" font-size="16" fill="#94a3b8" text-anchor="middle">similar</text>
+  <rect x="0" y="222" width="900" height="38" fill="#161b22"/>
+  <text x="870" y="246" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Orphan detection</text>
+  <text x="140" y="246" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="355" y="246" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="550" y="246" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="762" y="246" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <rect x="0" y="260" width="900" height="38" fill="#0f1621"/>
+  <text x="870" y="284" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Embed in your app</text>
+  <text x="140" y="284" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="355" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="550" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="762" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <rect x="0" y="298" width="900" height="38" fill="#161b22"/>
+  <text x="870" y="322" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">No subscription required</text>
+  <text x="140" y="322" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
+  <text x="355" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="550" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <text x="762" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
+  <!-- Dividers -->
+  <line x1="250" y1="58" x2="250" y2="348" stroke="#1e2430" stroke-width="1"/>
+  <line x1="445" y1="58" x2="445" y2="348" stroke="#1e2430" stroke-width="1"/>
+  <line x1="640" y1="58" x2="640" y2="348" stroke="#1e2430" stroke-width="1"/>
+  <line x1="870" y1="58" x2="870" y2="348" stroke="#1e2430" stroke-width="1"/>
+  <text x="450" y="386" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">The only internal link library that lives in your codebase.</text>
+  <text x="450" y="410" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">TypeScript API · Free · PageRank · Orphan detection · No subscription</text>
+</svg>

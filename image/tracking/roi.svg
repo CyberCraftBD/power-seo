@@ -1,0 +1,55 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Compliant Analytics — Higher Consent Rate = More Data</text>
+  <!-- Chart area -->
+  <rect x="60" y="56" width="780" height="290" rx="8" fill="#161b22"/>
+  <!-- Grid -->
+  <line x1="110" y1="80" x2="820" y2="80" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="120" x2="820" y2="120" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="160" x2="820" y2="160" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="200" x2="820" y2="200" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="240" x2="820" y2="240" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="280" x2="820" y2="280" stroke="#1e2430" stroke-width="1"/>
+  <line x1="110" y1="320" x2="820" y2="320" stroke="#1e2430" stroke-width="1"/>
+  <!-- Y labels -->
+  <text x="105" y="84" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">100%</text>
+  <text x="105" y="124" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">80%</text>
+  <text x="105" y="164" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">60%</text>
+  <text x="105" y="204" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">40%</text>
+  <text x="105" y="244" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">20%</text>
+  <text x="105" y="284" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">5%</text>
+  <text x="105" y="324" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">0%</text>
+  <!-- X months -->
+  <text x="165" y="340" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Before</text>
+  <text x="330" y="340" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Implement</text>
+  <text x="495" y="340" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Month 1</text>
+  <text x="660" y="340" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Month 3</text>
+  <text x="770" y="340" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Month 6</text>
+  <!-- Consent rate line (cyan, rising) -->
+  <polyline points="165,280 330,240 495,180 660,120 770,92" stroke="#06b6d4" stroke-width="3" fill="none" stroke-linejoin="round"/>
+  <circle cx="770" cy="92" r="5" fill="#06b6d4"/>
+  <rect x="690" y="76" width="140" height="18" rx="4" fill="#031a1a"/>
+  <text x="760" y="89" font-family="'Segoe UI', sans-serif" font-size="11" fill="#06b6d4" text-anchor="middle">Consent rate: 78%</text>
+  <!-- Data coverage line (green, rising) -->
+  <polyline points="165,290 330,260 495,200 660,140 770,100" stroke="#22c55e" stroke-width="2" fill="none" stroke-dasharray="6,3" stroke-linejoin="round"/>
+  <circle cx="770" cy="100" r="5" fill="#22c55e"/>
+  <!-- Implement marker -->
+  <line x1="330" y1="70" x2="330" y2="330" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="340" y="74" width="120" height="18" rx="4" fill="#031a1a"/>
+  <text x="400" y="87" font-family="'Segoe UI', sans-serif" font-size="11" fill="#06b6d4" text-anchor="middle">@power-seo/tracking</text>
+  <!-- Legend -->
+  <line x1="130" y1="96" x2="160" y2="96" stroke="#06b6d4" stroke-width="3"/>
+  <text x="170" y="100" font-family="'Segoe UI', sans-serif" font-size="11" fill="#06b6d4">Consent opt-in rate</text>
+  <line x1="130" y1="118" x2="160" y2="118" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="170" y="122" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Analytics data coverage (%)</text>
+  <!-- KPI cards -->
+  <rect x="80" y="370" width="210" height="68" rx="8" fill="#161b22"/>
+  <text x="185" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Consent opt-in rate</text>
+  <text x="185" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#06b6d4" text-anchor="middle" font-weight="700">78%</text>
+  <rect x="345" y="370" width="210" height="68" rx="8" fill="#161b22"/>
+  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Data coverage gain</text>
+  <text x="450" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#22c55e" text-anchor="middle" font-weight="700">+340%</text>
+  <rect x="610" y="370" width="210" height="68" rx="8" fill="#031a1a"/>
+  <text x="715" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">GDPR violations</text>
+  <text x="715" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#06b6d4" text-anchor="middle" font-weight="700">Zero</text>
+</svg>

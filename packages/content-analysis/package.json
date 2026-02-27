@@ -1,0 +1,97 @@
+{
+  "name": "@power-seo/content-analysis",
+  "version": "1.0.10",
+  "description": "Yoast-style SEO content analysis engine with scoring, checks, and React components",
+  "keywords": [
+    "seo-content-analysis",
+    "yoast-seo-alternative",
+    "keyword-density-checker",
+    "focus-keyphrase",
+    "react-seo",
+    "nextjs-seo",
+    "meta-description-validator",
+    "heading-seo-checker",
+    "content-quality-gate",
+    "headless-cms-seo",
+    "programmatic-seo",
+    "keyphrase-density",
+    "seo-audit",
+    "typescript-seo",
+    "content-seo-automation",
+    "react-editor-seo",
+    "ci-seo",
+    "edge-runtime-seo",
+    "seo-scoring",
+    "content-analysis"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "require": "./dist/react.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@power-seo/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^19.2.14",
+    "jsdom": "^25.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rimraf": "^6.1.3",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "sideEffects": false,
+  "author": "CyberCraft Bangladesh <info@ccbd.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyberCraftBD/power-seo.git",
+    "directory": "packages/content-analysis"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/CyberCraftBD/power-seo/issues"
+  },
+  "homepage": "https://github.com/CyberCraftBD/power-seo/tree/main/packages/content-analysis#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/cybercraftbd"
+  }
+}

@@ -1,0 +1,136 @@
+name: Production
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  production:
+    name: Build, Type-check, Fix & Publish
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm turbo run build --filter='./packages/*'
+
+      - name: Type-check all packages
+        run: pnpm turbo run typecheck --filter='./packages/*'
+
+      - name: Auto-fix lint issues
+        run: pnpm turbo run lint:fix --filter='./packages/*' || true
+
+      - name: Auto-fix formatting
+        run: pnpm format || true
+
+      - name: Configure git
+        run: |
+          git config --global user.email "info@ccbd.dev"
+          git config --global user.name "CyberCraft CI"
+
+      - name: Commit auto-fixes (if any)
+        run: |
+          if ! git diff --quiet; then
+            git add -A
+            git commit -m "style: auto-fix lint and formatting [skip ci]"
+          fi
+
+      - name: Get current version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./packages/core/package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
+      - name: Authenticate with npm
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "::error::NPM_TOKEN secret is not set. Add it under repo Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          npm config set "//registry.npmjs.org/:_authToken" "$NPM_TOKEN"
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
+
+      - name: Publish all packages to npm
+        run: |
+          for dir in packages/*/; do
+            pkg="$dir/package.json"
+            if [ -f "$pkg" ] && [ "$(node -p "require('./$pkg').private")" != "true" ]; then
+              NAME=$(node -p "require('./$pkg').name")
+              VERSION=$(node -p "require('./$pkg').version")
+              if npm view "$NAME@$VERSION" version 2>/dev/null | grep -q "$VERSION"; then
+                echo "Skipping $NAME@$VERSION — already published"
+              else
+                echo "Publishing $NAME@$VERSION..."
+                cd "$dir"
+                pnpm publish --access public --provenance --no-git-checks
+                cd ../..
+              fi
+            fi
+          done
+
+      - name: Tag and push
+        run: |
+          TAG="v${{ steps.version.outputs.version }}"
+          if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
+            echo "Tag $TAG already exists — skipping"
+          else
+            git tag "$TAG"
+            git push origin "$TAG"
+          fi
+
+      - name: Create GitHub Release
+        run: |
+          TAG="v${{ steps.version.outputs.version }}"
+          if gh release view "$TAG" &>/dev/null; then
+            echo "Release $TAG already exists — skipping"
+            exit 0
+          fi
+          gh release create "$TAG" \
+            --title "Release v${{ steps.version.outputs.version }}" \
+            --notes-file CHANGELOG.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "## Production Release" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Version **v${{ steps.version.outputs.version }}**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Package | npm |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|-----|" >> $GITHUB_STEP_SUMMARY
+          for dir in packages/*/; do
+            name=$(node -p "require('./$dir/package.json').name" 2>/dev/null || echo "")
+            if [ -n "$name" ] && [ "$name" != "undefined" ]; then
+              echo "| \`$name\` | [npm](https://www.npmjs.com/package/$name) |" >> $GITHUB_STEP_SUMMARY
+            fi
+          done

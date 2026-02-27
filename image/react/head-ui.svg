@@ -1,0 +1,114 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
+  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Every tag traced back to its prop.</text>
+  <!-- Left: JSX component -->
+  <rect x="30" y="56" width="380" height="320" rx="8" fill="#161b22"/>
+  <rect x="30" y="56" width="380" height="34" rx="8" fill="#0c2444"/>
+  <rect x="30" y="78" width="380" height="12" fill="#0c2444"/>
+  <circle cx="52" cy="74" r="6" fill="#ff5f56"/>
+  <circle cx="72" cy="74" r="6" fill="#ffbd2e"/>
+  <circle cx="92" cy="74" r="6" fill="#27c93f"/>
+  <text x="120" y="79" font-family="'Segoe UI', sans-serif" font-size="12" fill="#61dafb">SEO Component</text>
+  <!-- Code -->
+  <text x="48" y="116" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&lt;</text>
+  <text x="58" y="116" font-family="'Courier New', monospace" font-size="12" fill="#61dafb">SEO</text>
+  <!-- Props with color labels -->
+  <text x="48" y="140" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  title</text>
+  <rect x="116" y="130" width="2" height="16" fill="#61dafb"/>
+  <rect x="240" y="130" width="130" height="16" rx="3" fill="#0c2444"/>
+  <text x="268" y="141" font-family="'Segoe UI', sans-serif" font-size="9" fill="#61dafb">→ &lt;title&gt;</text>
+  <text x="48" y="164" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  description</text>
+  <rect x="200" y="154" width="2" height="16" fill="#7c3aed"/>
+  <rect x="240" y="154" width="130" height="16" rx="3" fill="#1a0a2e"/>
+  <text x="262" y="165" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a78bfa">→ meta[description]</text>
+  <text x="48" y="188" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  canonical</text>
+  <rect x="184" y="178" width="2" height="16" fill="#10b981"/>
+  <rect x="240" y="178" width="130" height="16" rx="3" fill="#042614"/>
+  <text x="264" y="189" font-family="'Segoe UI', sans-serif" font-size="9" fill="#34d399">→ link[canonical]</text>
+  <text x="48" y="212" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  og</text>
+  <rect x="86" y="202" width="2" height="16" fill="#f59e0b"/>
+  <rect x="240" y="202" width="130" height="16" rx="3" fill="#2d1a00"/>
+  <text x="256" y="213" font-family="'Segoe UI', sans-serif" font-size="9" fill="#fbbf24">→ meta[og:*] (6 tags)</text>
+  <text x="48" y="236" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  twitter</text>
+  <rect x="140" y="226" width="2" height="16" fill="#0ea5e9"/>
+  <rect x="240" y="226" width="130" height="16" rx="3" fill="#041626"/>
+  <text x="255" y="237" font-family="'Segoe UI', sans-serif" font-size="9" fill="#38bdf8">→ meta[twitter:*] (4 tags)</text>
+  <text x="48" y="260" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  schema</text>
+  <rect x="152" y="250" width="2" height="16" fill="#ec4899"/>
+  <rect x="240" y="250" width="130" height="16" rx="3" fill="#1f0d1a"/>
+  <text x="257" y="261" font-family="'Segoe UI', sans-serif" font-size="9" fill="#f472b6">→ script[ld+json]</text>
+  <text x="48" y="284" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">/&gt;</text>
+  <!-- Right: DevTools panel -->
+  <rect x="430" y="56" width="440" height="320" rx="8" fill="#1e1e1e"/>
+  <rect x="430" y="56" width="440" height="28" rx="8" fill="#252526"/>
+  <rect x="430" y="72" width="440" height="12" fill="#252526"/>
+  <text x="450" y="72" font-family="'Segoe UI', sans-serif" font-size="11" fill="#9cdcfe">Elements</text>
+  <text x="510" y="72" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Console  Network  Sources</text>
+  <!-- head tag -->
+  <text x="448" y="104" font-family="'Courier New', monospace" font-size="11" fill="#808080">▼ &lt;</text>
+  <text x="472" y="104" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">head</text>
+  <text x="506" y="104" font-family="'Courier New', monospace" font-size="11" fill="#808080">&gt;</text>
+  <!-- title -->
+  <text x="464" y="124" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
+  <text x="480" y="124" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">title</text>
+  <text x="512" y="124" font-family="'Courier New', monospace" font-size="11" fill="#808080">&gt;</text>
+  <text x="520" y="124" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">My Page</text>
+  <text x="570" y="124" font-family="'Courier New', monospace" font-size="11" fill="#808080">&lt;/title&gt;</text>
+  <rect x="630" y="114" width="80" height="14" rx="3" fill="#0c2444"/>
+  <text x="670" y="125" font-family="'Segoe UI', sans-serif" font-size="9" fill="#61dafb" text-anchor="middle">title prop</text>
+  <!-- meta description -->
+  <text x="464" y="144" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
+  <text x="480" y="144" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">meta</text>
+  <text x="510" y="144" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> name</text>
+  <text x="538" y="144" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
+  <text x="545" y="144" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"description"</text>
+  <rect x="625" y="134" width="100" height="14" rx="3" fill="#1a0a2e"/>
+  <text x="675" y="145" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a78bfa" text-anchor="middle">description prop</text>
+  <!-- canonical -->
+  <text x="464" y="164" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
+  <text x="480" y="164" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">link</text>
+  <text x="506" y="164" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> rel</text>
+  <text x="524" y="164" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
+  <text x="531" y="164" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"canonical"</text>
+  <rect x="625" y="154" width="90" height="14" rx="3" fill="#042614"/>
+  <text x="670" y="165" font-family="'Segoe UI', sans-serif" font-size="9" fill="#34d399" text-anchor="middle">canonical prop</text>
+  <!-- og:title -->
+  <text x="464" y="184" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
+  <text x="480" y="184" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">meta</text>
+  <text x="510" y="184" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> property</text>
+  <text x="557" y="184" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
+  <text x="564" y="184" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"og:title"</text>
+  <rect x="625" y="174" width="80" height="14" rx="3" fill="#2d1a00"/>
+  <text x="665" y="185" font-family="'Segoe UI', sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle">og.title</text>
+  <!-- og:image -->
+  <text x="464" y="204" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
+  <text x="480" y="204" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">meta</text>
+  <text x="510" y="204" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> property</text>
+  <text x="557" y="204" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
+  <text x="564" y="204" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"og:image"</text>
+  <rect x="625" y="194" width="80" height="14" rx="3" fill="#2d1a00"/>
+  <text x="665" y="205" font-family="'Segoe UI', sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle">og.image</text>
+  <!-- twitter:card -->
+  <text x="464" y="224" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
+  <text x="480" y="224" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">meta</text>
+  <text x="510" y="224" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> name</text>
+  <text x="538" y="224" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
+  <text x="545" y="224" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"twitter:card"</text>
+  <rect x="625" y="214" width="90" height="14" rx="3" fill="#041626"/>
+  <text x="670" y="225" font-family="'Segoe UI', sans-serif" font-size="9" fill="#38bdf8" text-anchor="middle">twitter.card</text>
+  <!-- ld+json -->
+  <text x="464" y="244" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
+  <text x="480" y="244" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">script</text>
+  <text x="516" y="244" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> type</text>
+  <text x="540" y="244" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
+  <text x="547" y="244" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"application/ld+json"</text>
+  <rect x="630" y="234" width="76" height="14" rx="3" fill="#1f0d1a"/>
+  <text x="668" y="245" font-family="'Segoe UI', sans-serif" font-size="9" fill="#f472b6" text-anchor="middle">schema prop</text>
+  <!-- /head -->
+  <text x="448" y="268" font-family="'Courier New', monospace" font-size="11" fill="#808080">&lt;/</text>
+  <text x="464" y="268" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">head</text>
+  <text x="498" y="268" font-family="'Courier New', monospace" font-size="11" fill="#808080">&gt;</text>
+  <!-- Caption -->
+  <text x="450" y="420" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Every generated tag traces back to its source prop.</text>
+  <text x="450" y="444" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/react — title · description · canonical · og · twitter · schema</text>
+</svg>

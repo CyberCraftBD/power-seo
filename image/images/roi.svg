@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <style>
+      .font-ui { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; }
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+    </style>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1520;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.20" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.02" />
+    </linearGradient>
+    <linearGradient id="greenAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.20" />
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.02" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="dotGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="calloutGlow">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#22c55e" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+
+  <!-- Grid background for chart area -->
+  <defs>
+    <pattern id="chartGrid" width="152" height="54" patternUnits="userSpaceOnUse" x="92" y="80">
+      <line x1="0" y1="0" x2="152" y2="0" stroke="#1e2430" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0" y2="54" stroke="#1e2430" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="92" y="80" width="608" height="270" fill="url(#chartGrid)"/>
+
+  <!-- Subtle outer grid -->
+  <defs>
+    <pattern id="outerGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e2430" stroke-width="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="500" fill="url(#outerGrid)" opacity="0.3"/>
+
+  <!-- Top accent -->
+  <line x1="0" y1="3" x2="900" y2="3" stroke="#3b82f6" stroke-width="3" opacity="0.8"/>
+
+  <!-- Title -->
+  <text x="450" y="44" class="font-ui" fill="#e6edf3" font-size="20" font-weight="700" text-anchor="middle">LCP Improvement vs Conversion Rate</text>
+
+  <!-- Chart panel background -->
+  <rect x="28" y="60" width="844" height="360" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5" filter="url(#shadow)"/>
+
+  <!--
+    CHART DIMENSIONS:
+    Plot area: x=92 to 700, y=80 to 350
+    Width = 608, Height = 270
+
+    X-axis: 4 phases, evenly spaced
+    x positions: Phase1=92+76=168, Phase2=168+152=320, Phase3=320+152=472, Phase4=472+152=624
+    Actually: let's use 5 points (start + 4 phases)
+    x: 168, 320, 472, 624  (segments of 152px each)
+
+    LEFT Y-AXIS (LCP seconds): 5.0 → 1.0 (range 4.0s over 270px = 67.5px/s)
+    y=80 → 5.0s, y=350 → 1.0s
+    y(t) = 80 + (5.0 - t) / 4.0 * 270
+
+    RIGHT Y-AXIS (Conversion %): 1.5% → 4.5% (range 3.0% over 270px = 90px/%)
+    y=80 → 4.5%, y=350 → 1.5%
+    y(p) = 80 + (4.5 - p) / 3.0 * 270
+
+    DATA POINTS:
+    LCP:
+      Phase1: 4.2s → y = 80 + (5.0-4.2)/4.0 * 270 = 80 + 0.8/4*270 = 80+54 = 134
+      Phase2: 3.1s → y = 80 + (5.0-3.1)/4.0 * 270 = 80 + 1.9/4*270 = 80+128 = 208
+      Phase3: 2.4s → y = 80 + (5.0-2.4)/4.0 * 270 = 80 + 2.6/4*270 = 80+175.5 = 256
+      Phase4: 1.8s → y = 80 + (5.0-1.8)/4.0 * 270 = 80 + 3.2/4*270 = 80+216 = 296
+
+    Conversion:
+      Phase1: 2.1% → y = 80 + (4.5-2.1)/3.0 * 270 = 80 + 2.4/3*270 = 80+216 = 296
+      Phase2: 2.4% → y = 80 + (4.5-2.4)/3.0 * 270 = 80 + 2.1/3*270 = 80+189 = 269
+      Phase3: 2.7% → y = 80 + (4.5-2.7)/3.0 * 270 = 80 + 1.8/3*270 = 80+162 = 242
+      Phase4: 3.9% → y = 80 + (4.5-3.9)/3.0 * 270 = 80 + 0.6/3*270 = 80+54 = 134
+  -->
+
+  <!-- Chart grid lines (horizontal) -->
+  <line x1="92" y1="80"  x2="700" y2="80"  stroke="#1e2430" stroke-width="1"/>
+  <line x1="92" y1="134" x2="700" y2="134" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="92" y1="188" x2="700" y2="188" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="92" y1="242" x2="700" y2="242" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="92" y1="296" x2="700" y2="296" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="92" y1="350" x2="700" y2="350" stroke="#1e2430" stroke-width="1"/>
+
+  <!-- Chart grid lines (vertical) -->
+  <line x1="92"  y1="80" x2="92"  y2="350" stroke="#30363d" stroke-width="1.5"/>
+  <line x1="168" y1="80" x2="168" y2="350" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="320" y1="80" x2="320" y2="350" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="472" y1="80" x2="472" y2="350" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="624" y1="80" x2="624" y2="350" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="700" y1="80" x2="700" y2="350" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- === BLUE LINE AREA (LCP — descending is good) === -->
+  <polygon
+    points="168,134 320,208 472,256 624,296 624,350 168,350"
+    fill="url(#blueAreaGrad)"/>
+
+  <!-- === GREEN LINE AREA (Conversion — ascending is good) === -->
+  <polygon
+    points="168,296 320,269 472,242 624,134 624,350 168,350"
+    fill="url(#greenAreaGrad)"/>
+
+  <!-- === BLUE LINE (LCP) === -->
+  <polyline
+    points="168,134 320,208 472,256 624,296"
+    fill="none" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- === GREEN LINE (Conversion) === -->
+  <polyline
+    points="168,296 320,269 472,242 624,134"
+    fill="none" stroke="#22c55e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- === BLUE DATA POINTS (LCP) === -->
+  <!-- Phase 1: 4.2s -->
+  <circle cx="168" cy="134" r="7" fill="#0d1117" stroke="#3b82f6" stroke-width="2.5" filter="url(#dotGlow)"/>
+  <!-- Phase 2: 3.1s -->
+  <circle cx="320" cy="208" r="7" fill="#0d1117" stroke="#3b82f6" stroke-width="2.5" filter="url(#dotGlow)"/>
+  <!-- Phase 3: 2.4s -->
+  <circle cx="472" cy="256" r="7" fill="#0d1117" stroke="#3b82f6" stroke-width="2.5" filter="url(#dotGlow)"/>
+  <!-- Phase 4: 1.8s -->
+  <circle cx="624" cy="296" r="7" fill="#0d1117" stroke="#3b82f6" stroke-width="2.5" filter="url(#dotGlow)"/>
+
+  <!-- === GREEN DATA POINTS (Conversion) === -->
+  <!-- Phase 1: 2.1% -->
+  <circle cx="168" cy="296" r="7" fill="#0d1117" stroke="#22c55e" stroke-width="2.5" filter="url(#dotGlow)"/>
+  <!-- Phase 2: 2.4% -->
+  <circle cx="320" cy="269" r="7" fill="#0d1117" stroke="#22c55e" stroke-width="2.5" filter="url(#dotGlow)"/>
+  <!-- Phase 3: 2.7% -->
+  <circle cx="472" cy="242" r="7" fill="#0d1117" stroke="#22c55e" stroke-width="2.5" filter="url(#dotGlow)"/>
+  <!-- Phase 4: 3.9% -->
+  <circle cx="624" cy="134" r="7" fill="#0d1117" stroke="#22c55e" stroke-width="2.5" filter="url(#dotGlow)"/>
+
+  <!-- === LCP VALUE LABELS === -->
+  <rect x="144" y="112" width="48" height="18" rx="4" fill="#0d1117" opacity="0.9"/>
+  <text x="168" y="126" class="font-mono" fill="#60a5fa" font-size="11" font-weight="600" text-anchor="middle">4.2s</text>
+
+  <rect x="296" y="186" width="48" height="18" rx="4" fill="#0d1117" opacity="0.9"/>
+  <text x="320" y="200" class="font-mono" fill="#60a5fa" font-size="11" font-weight="600" text-anchor="middle">3.1s</text>
+
+  <rect x="448" y="234" width="48" height="18" rx="4" fill="#0d1117" opacity="0.9"/>
+  <text x="472" y="248" class="font-mono" fill="#60a5fa" font-size="11" font-weight="600" text-anchor="middle">2.4s</text>
+
+  <rect x="600" y="274" width="48" height="18" rx="4" fill="#0d1117" opacity="0.9"/>
+  <text x="624" y="288" class="font-mono" fill="#60a5fa" font-size="11" font-weight="600" text-anchor="middle">1.8s</text>
+
+  <!-- === CONVERSION VALUE LABELS === -->
+  <rect x="144" y="302" width="48" height="18" rx="4" fill="#0d1117" opacity="0.9"/>
+  <text x="168" y="316" class="font-mono" fill="#4ade80" font-size="11" font-weight="600" text-anchor="middle">2.1%</text>
+
+  <rect x="296" y="250" width="48" height="18" rx="4" fill="#0d1117" opacity="0.9"/>
+  <text x="320" y="264" class="font-mono" fill="#4ade80" font-size="11" font-weight="600" text-anchor="middle">2.4%</text>
+
+  <rect x="448" y="220" width="48" height="18" rx="4" fill="#0d1117" opacity="0.9"/>
+  <text x="472" y="234" class="font-mono" fill="#4ade80" font-size="11" font-weight="600" text-anchor="middle">2.7%</text>
+
+  <rect x="600" y="112" width="48" height="18" rx="4" fill="#0d1117" opacity="0.9"/>
+  <text x="624" y="126" class="font-mono" fill="#4ade80" font-size="11" font-weight="600" text-anchor="middle">3.9%</text>
+
+  <!-- === LEFT Y-AXIS (LCP) === -->
+  <!-- Axis label -->
+  <text x="52" y="220" class="font-ui" fill="#60a5fa" font-size="12" font-weight="600" text-anchor="middle" transform="rotate(-90 52 215)">LCP (seconds)</text>
+
+  <!-- Y-axis tick labels (LCP) -->
+  <text x="82" y="84"  class="font-mono" fill="#6e7681" font-size="10" text-anchor="end">5.0s</text>
+  <text x="82" y="138" class="font-mono" fill="#6e7681" font-size="10" text-anchor="end">4.2s</text>
+  <text x="82" y="192" class="font-mono" fill="#6e7681" font-size="10" text-anchor="end">3.0s</text>
+  <text x="82" y="246" class="font-mono" fill="#6e7681" font-size="10" text-anchor="end">2.0s</text>
+  <text x="82" y="300" class="font-mono" fill="#6e7681" font-size="10" text-anchor="end">1.5s</text>
+  <text x="82" y="354" class="font-mono" fill="#6e7681" font-size="10" text-anchor="end">1.0s</text>
+
+  <!-- === RIGHT Y-AXIS (Conversion) === -->
+  <line x1="700" y1="80" x2="700" y2="350" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- Axis label -->
+  <text x="856" y="216" class="font-ui" fill="#4ade80" font-size="12" font-weight="600" text-anchor="middle" transform="rotate(90 856 216)">Conversion Rate (%)</text>
+
+  <!-- Y-axis tick labels (Conversion) -->
+  <text x="710" y="84"  class="font-mono" fill="#6e7681" font-size="10">4.5%</text>
+  <text x="710" y="138" class="font-mono" fill="#6e7681" font-size="10">3.9%</text>
+  <text x="710" y="192" class="font-mono" fill="#6e7681" font-size="10">3.0%</text>
+  <text x="710" y="246" class="font-mono" fill="#6e7681" font-size="10">2.5%</text>
+  <text x="710" y="300" class="font-mono" fill="#6e7681" font-size="10">2.0%</text>
+  <text x="710" y="354" class="font-mono" fill="#6e7681" font-size="10">1.5%</text>
+
+  <!-- === X-AXIS === -->
+  <line x1="92" y1="350" x2="700" y2="350" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- X-axis tick labels -->
+  <text x="168" y="370" class="font-ui" fill="#6e7681" font-size="12" text-anchor="middle">Phase 1</text>
+  <text x="320" y="370" class="font-ui" fill="#6e7681" font-size="12" text-anchor="middle">Phase 2</text>
+  <text x="472" y="370" class="font-ui" fill="#6e7681" font-size="12" text-anchor="middle">Phase 3</text>
+  <text x="624" y="370" class="font-ui" fill="#6e7681" font-size="12" text-anchor="middle">Phase 4</text>
+
+  <!-- === LEGEND (bottom-left) === -->
+  <rect x="44" y="385" width="220" height="26" rx="6" fill="#1e2430" stroke="#30363d" stroke-width="1"/>
+  <!-- Blue line -->
+  <line x1="58" y1="398" x2="86" y2="398" stroke="#3b82f6" stroke-width="2.5"/>
+  <circle cx="72" cy="398" r="4" fill="#0d1117" stroke="#3b82f6" stroke-width="2"/>
+  <text x="96" y="403" class="font-ui" fill="#e6edf3" font-size="11">LCP (lower = better)</text>
+  <!-- Green line -->
+  <rect x="44" y="413" width="220" height="26" rx="6" fill="#1e2430" stroke="#30363d" stroke-width="1"/>
+  <line x1="58" y1="426" x2="86" y2="426" stroke="#22c55e" stroke-width="2.5"/>
+  <circle cx="72" cy="426" r="4" fill="#0d1117" stroke="#22c55e" stroke-width="2"/>
+  <text x="96" y="431" class="font-ui" fill="#e6edf3" font-size="11">Conversion Rate (higher = better)</text>
+
+  <!-- === CALLOUT BADGE === -->
+  <rect x="480" y="382" width="364" height="50" rx="10" fill="#14532d" stroke="#22c55e" stroke-width="2" filter="url(#calloutGlow)"/>
+  <!-- Star icon -->
+  <text x="504" y="415" class="font-ui" fill="#4ade80" font-size="18">&#9733;</text>
+  <text x="526" y="404" class="font-ui" fill="#ffffff" font-size="13" font-weight="700">LCP 4.2s → 1.8s</text>
+  <text x="526" y="422" class="font-ui" fill="#4ade80" font-size="13" font-weight="700">= +1.8% conversion rate</text>
+
+  <!-- Caption -->
+  <text x="450" y="480" class="font-ui" fill="#6e7681" font-size="14" text-anchor="middle">Faster images. Higher conversions. Measurable ROI.</text>
+</svg>
