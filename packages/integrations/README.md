@@ -27,7 +27,7 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 | Ahrefs API | ❌ Manual SDK setup | ✅ Typed client with rate limiting |
 | Rate limiting | ❌ Manual throttle | ✅ Built-in configurable window rate limiter |
 | Pagination | ❌ Manual offset tracking | ✅ Automatic — receive a flat result array |
-| Error handling | ❌ Raw HTTP errors | ✅ `IntegrationApiError` with `statusCode` |
+| Error handling | ❌ Raw HTTP errors | ✅ `IntegrationApiError` with `status`, `provider`, `retryable` |
 | TypeScript types | ❌ `any` everywhere | ✅ Full type coverage for all endpoints |
 | Bundle size | ❌ Full SDK in bundle | ✅ Tree-shakeable — import only what you use |
 
@@ -49,7 +49,7 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 - **Shared HTTP client** — `createHttpClient()` provides configurable rate limiting (max requests per time window), automatic retry on 429, and JSON response parsing
 - **Auto-pagination** — both clients handle multi-page results automatically; callers receive a flat array without manual offset tracking
 - **Full TypeScript types** — every request parameter and response field is typed; no `any` in your code
-- **Consistent error handling** — `IntegrationApiError` with `statusCode`, `message`, and raw `response` payload from both APIs
+- **Consistent error handling** — `IntegrationApiError` with `status`, `provider`, `message`, and `retryable` flag from both APIs
 - **Tree-shakeable** — `createSemrushClient` and `createAhrefsClient` are separate exports; import only what you use
 
 ![SEO Research UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/seo-research-ui.svg)
@@ -224,7 +224,7 @@ try {
 ### Semrush
 
 ```ts
-function createSemrushClient(apiKey: string, config?: Partial<HttpClientConfig>): SemrushClient;
+function createSemrushClient(apiKey: string, config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>): SemrushClient;
 ```
 
 #### `SemrushClient` methods
@@ -240,7 +240,7 @@ function createSemrushClient(apiKey: string, config?: Partial<HttpClientConfig>)
 ### Ahrefs
 
 ```ts
-function createAhrefsClient(apiToken: string, config?: Partial<HttpClientConfig>): AhrefsClient;
+function createAhrefsClient(apiToken: string, config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>): AhrefsClient;
 ```
 
 #### `AhrefsClient` methods
