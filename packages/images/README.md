@@ -120,8 +120,8 @@ const images = [
 // Alt text issues
 const altResult = analyzeAltText({ images, keyphrase: 'blue widget' });
 console.log(altResult.issues);
-// [{ src: '/hero.jpg', type: 'missing-alt', severity: 'error', message: '...' },
-//  { src: '/IMG_1234.png', type: 'filename-as-alt', severity: 'warning', message: '...' }]
+// [{ id: 'alt-missing', title: 'Missing alt attribute', description: '...', severity: 'error', image: {...} },
+//  { id: 'filename-as-alt', title: 'Filename used as alt', description: '...', severity: 'warning', image: {...} }]
 
 // Lazy loading issues
 const lazyResult = auditLazyLoading({ images });
@@ -343,15 +343,16 @@ console.log(`Format optimizations needed: ${formatResult.recommendations.length}
 | `input.keyphrase`    | `string`      | `''`     | Focus keyphrase to check for in alt text                                            |
 | `input.minAltLength` | `number`      | `5`      | Minimum character length for meaningful alt text                                    |
 
-Returns `ImageAnalysisResult`:
+Returns `ImageAuditResult`:
 
-| Property         | Type           | Description                                             |
-| ---------------- | -------------- | ------------------------------------------------------- |
-| `score`          | `number`       | Alt text quality score 0–100                            |
-| `issues`         | `ImageIssue[]` | Array of detected alt text issues                       |
-| `totalImages`    | `number`       | Total number of images analyzed                         |
-| `issueCount`     | `number`       | Number of images with at least one issue                |
-| `keyphraseInAlt` | `boolean`      | Whether the keyphrase was found in any image's alt text |
+| Property          | Type                     | Description                                        |
+| ----------------- | ------------------------ | -------------------------------------------------- |
+| `totalImages`     | `number`                 | Total number of images analyzed                    |
+| `score`           | `number`                 | Alt text quality score 0–100                       |
+| `maxScore`        | `number`                 | Maximum possible score (for reference)             |
+| `issues`          | `ImageIssue[]`           | Array of detected alt text issues                  |
+| `perImage`        | `ImageAnalysisResult[]`  | Per-image analysis results                         |
+| `recommendations` | `string[]`               | Human-readable alt text improvement suggestions    |
 
 ---
 
@@ -363,10 +364,11 @@ Returns `ImageAnalysisResult`:
 
 Returns `LazyLoadingAuditResult`:
 
-| Property | Type           | Description                             |
-| -------- | -------------- | --------------------------------------- |
-| `score`  | `number`       | Lazy loading implementation score 0–100 |
-| `issues` | `ImageIssue[]` | Array of detected lazy loading issues   |
+| Property          | Type           | Description                                      |
+| ----------------- | -------------- | ------------------------------------------------ |
+| `totalImages`     | `number`       | Total number of images analyzed                  |
+| `issues`          | `ImageIssue[]` | Array of detected lazy loading issues            |
+| `recommendations` | `string[]`     | Human-readable lazy loading improvement tips     |
 
 ---
 
@@ -376,7 +378,7 @@ Returns `LazyLoadingAuditResult`:
 | --------- | -------- | -------- | -------------------------- |
 | `src`     | `string` | required | Image URL or filename path |
 
-Returns `ImageFormat` (`'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg' | 'unknown'`).
+Returns `ImageFormat` (`'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg' | 'bmp' | 'ico' | 'tiff' | 'unknown'`).
 
 ---
 
@@ -386,7 +388,7 @@ Returns `ImageFormat` (`'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg' | 'unkn
 | --------- | ------------- | -------- | ------------------------------- |
 | `format`  | `ImageFormat` | required | The current format of the image |
 
-Returns `FormatAnalysisResult`: `{ format, recommended: ImageFormat[], reason: string, priority: 'high' | 'medium' | 'low' | 'none' }`.
+Returns `string | undefined` — a human-readable recommendation for upgrading the image format, or undefined if no recommendation is available.
 
 ---
 
@@ -398,10 +400,13 @@ Returns `FormatAnalysisResult`: `{ format, recommended: ImageFormat[], reason: s
 
 Returns `FormatAuditResult`:
 
-| Property          | Type                                           | Description                              |
-| ----------------- | ---------------------------------------------- | ---------------------------------------- |
-| `score`           | `number`                                       | Format optimization score 0–100          |
-| `recommendations` | `Array<{ src, current, recommended, reason }>` | Per-image format upgrade recommendations |
+| Property             | Type                      | Description                                           |
+| -------------------- | ------------------------- | ----------------------------------------------------- |
+| `totalImages`        | `number`                  | Total number of images analyzed                       |
+| `modernFormatCount`  | `number`                  | Number of images using modern formats (webp, avif)    |
+| `legacyFormatCount`  | `number`                  | Number of images using legacy formats (jpeg, png, etc)|
+| `results`            | `FormatAnalysisResult[]`  | Per-image analysis with current format and recommendations |
+| `recommendations`    | `string[]`                | Human-readable format upgrade suggestions             |
 
 ---
 
@@ -432,14 +437,14 @@ Returns `string` — well-formed XML image sitemap with Google's `image:` namesp
 import type {
   ImageFormat, // 'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg' | 'unknown'
   ImageInfo, // { src, alt?, loading?, isAboveFold?, width?, height? }
-  ImageIssueSeverity, // 'error' | 'warning' | 'info'
-  ImageIssue, // { src, type, severity, message }
-  ImageAnalysisResult, // { score, issues, totalImages, issueCount, keyphraseInAlt }
+  ImageIssueSeverity, // 'error' | 'warning' | 'info' | 'pass'
+  ImageIssue, // { id, title, description, severity, image? }
+  ImageAnalysisResult, // { src, issues, score, maxScore }
   ImageAuditResult, // Combined result from multiple analyzers
   ImageSitemapPage, // { pageUrl: string; images: SitemapImage[] }
-  FormatAnalysisResult, // { format, recommended, reason, priority }
-  FormatAuditResult, // { score, recommendations }
-  LazyLoadingAuditResult, // { score, issues }
+  FormatAnalysisResult, // { src, currentFormat, isModern, recommendation? }
+  FormatAuditResult, // { totalImages, modernFormatCount, legacyFormatCount, results, recommendations }
+  LazyLoadingAuditResult, // { totalImages, issues, recommendations }
   SitemapImage, // { loc, title?, caption? }
 } from '@power-seo/images';
 ```
@@ -487,7 +492,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
