@@ -224,18 +224,12 @@ export function CookieBanner() {
 import { createGA4Client, createPlausibleClient } from '@power-seo/tracking';
 
 // Query GA4 reports
-const ga4 = createGA4Client({
-  measurementId: 'G-XXXXXXX',
-  apiSecret: process.env.GA4_API_SECRET!,
-});
+const ga4 = createGA4Client(process.env.GA4_ACCESS_TOKEN!);
 
 // Query Plausible stats
-const plausible = createPlausibleClient({
-  domain: 'example.com',
-  apiKey: process.env.PLAUSIBLE_API_KEY!,
-});
+const plausible = createPlausibleClient(process.env.PLAUSIBLE_API_KEY!);
 
-const stats = await plausible.getAggregate({ period: '7d' });
+const stats = await plausible.getAggregate('your-site-id', '7d');
 console.log(stats.visitors, stats.pageviews);
 ```
 
@@ -279,12 +273,16 @@ export function AnalyticsLoader() {
 
 ### `ScriptConfig`
 
-| Prop           | Type                                                          | Description                            |
-| -------------- | ------------------------------------------------------------- | -------------------------------------- |
-| `src`          | `string \| undefined`                                         | External script URL                    |
-| `inlineScript` | `string \| undefined`                                         | Inline JavaScript content              |
-| `strategy`     | `'beforeInteractive' \| 'afterInteractive' \| 'lazyOnload'`   | Loading strategy hint                  |
-| `shouldLoad`   | `(consent: ConsentState) => boolean`                          | Returns `true` if this script may load |
+| Prop            | Type                                     | Description                            |
+| --------------- | ---------------------------------------- | -------------------------------------- |
+| `id`            | `string`                                 | Unique script identifier               |
+| `src`           | `string \| undefined`                    | External script URL                    |
+| `innerHTML`     | `string \| undefined`                    | Inline JavaScript content              |
+| `async`         | `boolean \| undefined`                   | Load asynchronously                    |
+| `defer`         | `boolean \| undefined`                   | Defer execution                        |
+| `consentCategory` | `ConsentCategory`                       | Required consent category for loading  |
+| `attributes`    | `Record<string, string> \| undefined`    | Additional script attributes           |
+| `shouldLoad`    | `(consent: ConsentState) => boolean`     | Returns `true` if this script may load |
 
 ### `createConsentManager(initialState)`
 
@@ -299,13 +297,13 @@ export function AnalyticsLoader() {
 
 ### API Clients
 
-| Function                | Config Props                       | Returns          |
-| ----------------------- | ---------------------------------- | ---------------- |
-| `createGA4Client`       | `{ measurementId, apiSecret }`     | `GA4Client`      |
-| `createClarityClient`   | `{ projectId, apiKey }`            | `ClarityClient`  |
-| `createPostHogClient`   | `{ apiKey, apiHost? }`             | `PostHogClient`  |
-| `createPlausibleClient` | `{ domain, apiKey }`               | `PlausibleClient` |
-| `createFathomClient`    | `{ apiKey }`                       | `FathomClient`   |
+| Function                | Parameters                         | Returns          | Description                      |
+| ----------------------- | ---------------------------------- | ---------------- | -------------------------------- |
+| `createGA4Client`       | `(accessToken: string)`            | `GA4Client`      | Google Analytics 4 Data API      |
+| `createClarityClient`   | `(apiKey: string)`                 | `ClarityClient`  | Microsoft Clarity API            |
+| `createPostHogClient`   | `(apiKey: string, host?: string)`  | `PostHogClient`  | PostHog API                      |
+| `createPlausibleClient` | `(apiKey: string)`                 | `PlausibleClient` | Plausible Stats API             |
+| `createFathomClient`    | `(apiKey: string)`                 | `FathomClient`   | Fathom Analytics API             |
 
 ### React Components
 
@@ -316,23 +314,25 @@ export function AnalyticsLoader() {
 
 ### Types
 
-| Type                   | Description                                                              |
-| ---------------------- | ------------------------------------------------------------------------ |
-| `ConsentCategory`      | `'necessary' \| 'analytics' \| 'marketing' \| 'preferences'`             |
-| `ConsentState`         | `{ necessary: boolean, analytics: boolean, marketing: boolean, preferences: boolean }` |
-| `ConsentManager`       | Store with grant/revoke/grantAll/revokeAll/getState/onChange             |
+| Type                    | Description                                                              |
+| ----------------------- | ------------------------------------------------------------------------ |
+| `ConsentCategory`       | `'necessary' \| 'analytics' \| 'marketing' \| 'preferences'`             |
+| `ConsentState`          | `{ necessary, analytics, marketing, preferences }` all boolean            |
+| `ConsentManager`        | Store with grant/revoke/grantAll/revokeAll/getState/isGranted/onChange   |
 | `ConsentChangeCallback` | `(state: ConsentState) => void`                                         |
-| `ScriptConfig`         | `{ src?, inlineScript?, strategy, shouldLoad }`                          |
-| `GA4Config`            | `{ measurementId: string }`                                              |
-| `GA4Client`            | GA4 Data API client instance                                             |
-| `ClarityConfig`        | `{ projectId: string }`                                                  |
-| `ClarityClient`        | Clarity API client instance                                              |
-| `PostHogConfig`        | `{ apiKey: string, apiHost?: string }`                                   |
-| `PostHogClient`        | PostHog API client instance                                              |
-| `PlausibleConfig`      | `{ domain: string, customDomain?: string }`                              |
-| `PlausibleClient`      | Plausible Stats API client instance                                      |
-| `FathomConfig`         | `{ siteId: string }`                                                     |
-| `FathomClient`         | Fathom API client instance                                               |
+| `ScriptConfig`          | `{ id, src?, innerHTML?, async?, defer?, consentCategory, attributes?, shouldLoad }` |
+| `GA4Config`             | `{ measurementId, consentModeV2?, anonymizeIp?, sendPageView? }`        |
+| `GA4ReportRequest`      | `{ startDate, endDate, metrics, dimensions?, limit? }`                  |
+| `GA4ReportResponse`     | `{ rows, rowCount, metadata? }`                                         |
+| `GA4Client`             | Methods: queryReport, getRealtimeReport, getMetadata                     |
+| `ClarityConfig`         | `{ projectId: string }`                                                  |
+| `ClarityClient`         | Methods: getProjects, getInsights, getHeatmapData                        |
+| `PostHogConfig`         | `{ apiKey: string, host?: string }`                                     |
+| `PostHogClient`         | Methods: queryEvents, getTrends, getFunnels                             |
+| `PlausibleConfig`       | `{ domain: string, selfHostedUrl?: string }`                            |
+| `PlausibleClient`       | Methods: getTimeseries, getBreakdown, getAggregate                      |
+| `FathomConfig`          | `{ siteId: string }`                                                     |
+| `FathomClient`          | Methods: getSites, getPageviews, getReferrers                           |
 
 ---
 
@@ -381,7 +381,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
