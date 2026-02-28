@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+#### Core Functionality
+- **#115 @power-seo/sitemap**: Fixed XML string return incompatibility with Next.js app/sitemap.ts convention — now returns proper array structure for Next.js integration
+- **#114 @power-seo/meta**: Fixed silent dropping of advanced robots directives (maxSnippet, maxImagePreview, etc.) — now properly handles all directive types
+- **#113 @power-seo/react**: Fixed incompatibility with Next.js App Router Server Components — components now work correctly in server-side contexts
+
+#### Security & Performance
+- **Network Access**: Removed unnecessary network access from build/runtime context in @power-seo/integrations package
+- Fixed potential XSS vectors in schema markup handling
+- Improved input validation for URL normalization
+
+#### Minor Package Fixes
+- **@power-seo/core**: Enhanced URL normalization to handle edge cases with query parameters
+- **@power-seo/schema**: Fixed type inference for optional schema properties
+- **@power-seo/audit**: Corrected scoring calculation for edge cases with zero-length content
+
 #### Documentation
 - **@power-seo/preview**: Added TwitterImageValidation structure documentation
 - **@power-seo/sitemap**: Fixed lastmod conversion claim and clarified namespace detection scope
@@ -22,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **@power-seo/integrations**: Corrected error properties and config parameter types
 - **@power-seo/tracking**: Added missing isGranted method to API reference
 
-**Total: 18 documentation issues fixed across 11 packages**
+**Total: 18 documentation fixes + 3 critical bug fixes + network access fix across all packages**
 
 ---
 
