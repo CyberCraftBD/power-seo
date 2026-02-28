@@ -279,7 +279,7 @@ const tags = createHeadTagObjects({
 
 | Prop | Type | Description |
 | --- | --- | --- |
-| `type` | `'website' \| 'article' \| 'book' \| 'profile'` | OG object type |
+| `type` | `'website' \| 'article' \| 'book' \| 'profile' \| 'music.song' \| 'music.album' \| 'music.playlist' \| 'video.movie' \| 'video.episode' \| 'video.tv_show' \| 'video.other' \| 'product'` | OG object type |
 | `title` | `string` | og:title (falls back to `title`) |
 | `description` | `string` | og:description (falls back to `description`) |
 | `url` | `string` | og:url (falls back to `canonical`) |
