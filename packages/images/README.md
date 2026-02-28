@@ -118,21 +118,21 @@ const images = [
 ];
 
 // Alt text issues
-const altResult = analyzeAltText({ images, keyphrase: 'blue widget' });
+const altResult = analyzeAltText(images, 'blue widget');
 console.log(altResult.issues);
 // [{ id: 'alt-missing', title: 'Missing alt attribute', description: '...', severity: 'error', image: {...} },
 //  { id: 'filename-as-alt', title: 'Filename used as alt', description: '...', severity: 'warning', image: {...} }]
 
 // Lazy loading issues
-const lazyResult = auditLazyLoading({ images });
+const lazyResult = auditLazyLoading(images);
 console.log(lazyResult.issues);
 // [{ src: '/hero.jpg', type: 'lazy-above-fold', severity: 'error', message: '...' },
 //  { src: '/IMG_1234.png', type: 'missing-lazy', severity: 'warning', message: '...' }]
 
 // Format recommendations
-const formatResult = analyzeImageFormats({ images });
+const formatResult = analyzeImageFormats(images);
 console.log(formatResult.recommendations);
-// [{ src: '/hero.jpg', current: 'jpeg', recommended: 'webp', reason: '...' }, ...]
+// [{ src: '/hero.jpg', currentFormat: 'jpeg', isModern: false, recommendation: '...' }, ...]
 ```
 
 ![CWV Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/cwv-benefit.svg)
@@ -149,8 +149,8 @@ console.log(formatResult.recommendations);
 import { analyzeAltText } from '@power-seo/images';
 import type { ImageAnalysisResult, ImageIssue } from '@power-seo/images';
 
-const result: ImageAnalysisResult = analyzeAltText({
-  images: [
+const result: ImageAnalysisResult = analyzeAltText(
+  [
     { src: '/hero.jpg', alt: '' }, // missing alt
     { src: '/icon.png', alt: 'i' }, // too short
     { src: '/IMG_9821.jpg', alt: 'IMG_9821' }, // filename as alt
@@ -158,8 +158,8 @@ const result: ImageAnalysisResult = analyzeAltText({
     { src: '/product.webp', alt: 'Blue widget on white background' }, // good, has keyphrase
     { src: '/bg.jpg', alt: '' }, // decorative — ok if marked
   ],
-  keyphrase: 'blue widget',
-});
+  'blue widget',
+);
 
 result.issues.forEach((issue: ImageIssue) => {
   console.log(`[${issue.severity}] ${issue.src}: ${issue.message}`);
@@ -188,24 +188,21 @@ The following issue types are detected:
 import { auditLazyLoading } from '@power-seo/images';
 import type { LazyLoadingAuditResult } from '@power-seo/images';
 
-const result: LazyLoadingAuditResult = auditLazyLoading({
-  images: [
-    // Above fold — should NOT be lazy-loaded (LCP risk)
-    { src: '/hero.jpg', loading: 'lazy', isAboveFold: true, width: 1200, height: 630 },
-    // Below fold — SHOULD be lazy-loaded (bandwidth saving)
-    { src: '/section2.jpg', loading: undefined, isAboveFold: false, width: 800, height: 500 },
-    // Good: above fold, eagerly loaded
-    { src: '/logo.png', loading: 'eager', isAboveFold: true, width: 200, height: 60 },
-    // Good: below fold, lazy-loaded
-    { src: '/footer.jpg', loading: 'lazy', isAboveFold: false, width: 600, height: 400 },
-    // Missing dimensions — causes CLS
-    { src: '/promo.jpg', loading: 'lazy', isAboveFold: false },
-  ],
-});
+const result: LazyLoadingAuditResult = auditLazyLoading([
+  // Above fold — should NOT be lazy-loaded (LCP risk)
+  { src: '/hero.jpg', loading: 'lazy', isAboveFold: true, width: 1200, height: 630 },
+  // Below fold — SHOULD be lazy-loaded (bandwidth saving)
+  { src: '/section2.jpg', loading: undefined, isAboveFold: false, width: 800, height: 500 },
+  // Good: above fold, eagerly loaded
+  { src: '/logo.png', loading: 'eager', isAboveFold: true, width: 200, height: 60 },
+  // Good: below fold, lazy-loaded
+  { src: '/footer.jpg', loading: 'lazy', isAboveFold: false, width: 600, height: 400 },
+  // Missing dimensions — causes CLS
+  { src: '/promo.jpg', loading: 'lazy', isAboveFold: false },
+]);
 
-console.log(`Score: ${result.score}/100`);
 result.issues.forEach((issue) => {
-  console.log(`[${issue.severity}] ${issue.src}: ${issue.message}`);
+  console.log(`[${issue.severity}] ${issue.title}: ${issue.description}`);
 });
 ```
 
@@ -233,20 +230,10 @@ detectFormat('/logo.svg'); // 'svg'
 
 // Get a recommendation for the detected format
 const recommendation = getFormatRecommendation('jpeg');
-// {
-//   format: 'jpeg',
-//   recommended: ['webp', 'avif'],
-//   reason: 'WebP provides 25-35% smaller files than JPEG at equivalent quality. AVIF provides 50% reduction.',
-//   priority: 'high',
-// }
+// 'Convert to WebP or AVIF for 25-50% smaller file sizes with equivalent quality.'
 
 const gifRec = getFormatRecommendation('gif');
-// {
-//   format: 'gif',
-//   recommended: ['webp'],
-//   reason: 'Animated GIF files are very large. Use animated WebP or consider a video element instead.',
-//   priority: 'high',
-// }
+// 'Convert animated GIFs to WebP or MP4 video for dramatically smaller file sizes.'
 ```
 
 ### Batch Format Analysis
@@ -257,21 +244,22 @@ const gifRec = getFormatRecommendation('gif');
 import { analyzeImageFormats } from '@power-seo/images';
 import type { FormatAuditResult } from '@power-seo/images';
 
-const result: FormatAuditResult = analyzeImageFormats({
-  images: [
-    { src: '/hero.jpg' },
-    { src: '/thumbnail.png' },
-    { src: '/animation.gif' },
-    { src: '/logo.svg' },
-    { src: '/banner.webp' },
-  ],
-});
+const result: FormatAuditResult = analyzeImageFormats([
+  { src: '/hero.jpg' },
+  { src: '/thumbnail.png' },
+  { src: '/animation.gif' },
+  { src: '/logo.svg' },
+  { src: '/banner.webp' },
+]);
 
-console.log(`Format optimization score: ${result.score}/100`);
-console.log(`Images needing modernization: ${result.recommendations.length}`);
+console.log(`Total images: ${result.totalImages}`);
+console.log(`Modern formats: ${result.modernFormatCount}`);
+console.log(`Legacy formats: ${result.legacyFormatCount}`);
 
-result.recommendations.forEach((rec) => {
-  console.log(`${rec.src} (${rec.current}) → convert to ${rec.recommended.join(' or ')}`);
+result.results.forEach((item) => {
+  if (!item.isModern && item.recommendation) {
+    console.log(`${item.src}: ${item.recommendation}`);
+  }
 });
 ```
 
@@ -280,29 +268,27 @@ result.recommendations.forEach((rec) => {
 Generate a Google-compliant image sitemap with the `image:` XML namespace extension.
 
 ```ts
-import { extractImageEntries, generateImageSitemap } from '@power-seo/images';
-import type { ImageSitemapPage, SitemapImage } from '@power-seo/images';
+import { generateImageSitemap } from '@power-seo/images';
+import type { ImageSitemapPage } from '@power-seo/images';
 
-// Extract from HTML
-const htmlContent = `
-  <img src="/products/widget.jpg" alt="Blue widget" title="Premium blue widget" />
-  <img src="/products/widget-detail.webp" alt="Widget detail view" />
-`;
-const images: SitemapImage[] = extractImageEntries(htmlContent, 'https://example.com');
-
-// Generate image sitemap XML
-const sitemapXml = generateImageSitemap([
+const pages: ImageSitemapPage[] = [
   {
     pageUrl: 'https://example.com/products/widget',
     images: [
-      {
-        loc: 'https://example.com/products/widget.jpg',
-        title: 'Premium Blue Widget',
-        caption: 'Front view of our blue widget',
-      },
+      { src: '/products/widget.jpg', alt: 'Blue widget' },
+      { src: '/products/widget-detail.webp', alt: 'Widget detail view' },
     ],
   },
-]);
+  {
+    pageUrl: 'https://example.com/products/gadget',
+    images: [
+      { src: '/products/gadget.jpg', alt: 'Premium gadget' },
+    ],
+  },
+];
+
+// Generate image sitemap XML
+const sitemapXml = generateImageSitemap(pages);
 
 // Save to public/image-sitemap.xml
 console.log(sitemapXml);
@@ -315,31 +301,43 @@ Combine all analyzers for a complete image health report on a single page.
 ```ts
 import { analyzeAltText, auditLazyLoading, analyzeImageFormats } from '@power-seo/images';
 
-const images = await extractImagesFromPage('https://example.com/blog/my-post');
+const images: ImageInfo[] = [
+  { src: '/blog/hero.jpg', alt: 'Article hero image', loading: 'eager', isAboveFold: true, width: 1200, height: 630 },
+  { src: '/blog/section1.webp', alt: '', loading: undefined, isAboveFold: false, width: 800, height: 400 },
+  { src: '/blog/my-post-topic.jpg', alt: 'My post topic illustration', loading: 'lazy', isAboveFold: false, width: 600, height: 400 },
+];
 
-const [altResult, lazyResult, formatResult] = await Promise.all([
-  analyzeAltText({ images, keyphrase: 'my post topic' }),
-  auditLazyLoading({ images }),
-  analyzeImageFormats({ images }),
-]);
+const altResult = analyzeAltText(images, 'my post topic');
+const lazyResult = auditLazyLoading(images);
+const formatResult = analyzeImageFormats(images);
 
-const overallImageScore = Math.round((altResult.score + lazyResult.score + formatResult.score) / 3);
-
-console.log(`Image SEO score: ${overallImageScore}/100`);
-console.log(`Alt text issues: ${altResult.issueCount}`);
+console.log(`Alt text issues: ${altResult.issueCount}/${altResult.totalImages}`);
 console.log(`Lazy loading issues: ${lazyResult.issues.length}`);
-console.log(`Format optimizations needed: ${formatResult.recommendations.length}`);
+console.log(`Legacy formats: ${formatResult.legacyFormatCount}/${formatResult.totalImages}`);
 ```
 
 ---
 
 ## API Reference
 
-### `analyzeAltText(input)`
+### `analyzeAltText(images, focusKeyphrase?)`
 
-| Parameter            | Type          | Default  | Description                                                                         |
-| -------------------- | ------------- | -------- | ----------------------------------------------------------------------------------- |
-| `input.images`       | `ImageInfo[]` | required | Array of image objects with `src`, `alt`, and optional `loading`, `width`, `height` |
+```ts
+function analyzeAltText(images: ImageInfo[], focusKeyphrase?: string): ImageAuditResult;
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `images` | `ImageInfo[]` | required | Array of image objects with `src`, `alt`, and optional properties |
+| `focusKeyphrase` | `string` | — | Optional focus keyword to check for presence in alt text |
+
+Returns `ImageAuditResult`:
+- `totalImages: number` — Total images analyzed
+- `score: number` — Overall alt text quality score (0–100)
+- `maxScore: number` — Maximum possible score
+- `issues: ImageIssue[]` — Array of detected issues
+- `perImage: ImageAnalysisResult[]` — Per-image analysis results
+- `recommendations: string[]` — Actionable improvement recommendations
 | `input.keyphrase`    | `string`      | `''`     | Focus keyphrase to check for in alt text                                            |
 | `input.minAltLength` | `number`      | `5`      | Minimum character length for meaningful alt text                                    |
 
