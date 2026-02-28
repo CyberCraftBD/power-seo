@@ -108,11 +108,11 @@ const graph = buildLinkGraph([
 
 // 2. Find pages no other page links to
 const orphans = findOrphanPages(graph);
-// [{ url: 'https://example.com/orphan', inboundCount: 0 }]
+// [{ url: 'https://example.com/orphan', title: undefined, outboundCount: 0 }]
 
 // 3. Get link equity scores
-const equity = analyzeLinkEquity(graph);
-// { 'https://example.com/': 0.48, 'https://example.com/about': 0.18, ... }
+const equityScores = analyzeLinkEquity(graph);
+// [{ url: 'https://example.com/', score: 0.48, inboundCount: 2 }, { url: 'https://example.com/about', score: 0.18, inboundCount: 1 }, ...]
 ```
 
 ![Orphan Detection Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/orphan-benefit.svg)
@@ -163,14 +163,16 @@ const pages: PageData[] = [
 const graph: LinkGraph = buildLinkGraph(pages);
 
 // Inspect a node
-const blogNode = graph.get('https://example.com/blog');
-console.log(blogNode?.inboundLinks); // Set { 'https://example.com/' }
-console.log(blogNode?.outboundLinks); // Set { 'https://example.com/', ... }
+const blogNode = graph.nodes.get('https://example.com/blog');
+console.log(blogNode?.inbound); // ['https://example.com/']
+console.log(blogNode?.inboundCount); // 1
+console.log(blogNode?.outbound); // ['https://example.com/', ...]
+console.log(blogNode?.outboundCount); // ...
 ```
 
 ### Find Orphan Pages
 
-`findOrphanPages` iterates the graph and returns all nodes whose `inboundLinks` set is empty. These pages cannot be reached by following links from any other page — making them effectively invisible to Googlebot unless they appear in your sitemap.
+`findOrphanPages` iterates the graph and returns all nodes whose `inboundCount` is zero. These pages cannot be reached by following links from any other page — making them effectively invisible to Googlebot unless they appear in your sitemap.
 
 ```ts
 import { buildLinkGraph, findOrphanPages } from '@power-seo/links';
@@ -179,12 +181,12 @@ import type { OrphanPage } from '@power-seo/links';
 const graph = buildLinkGraph(pages);
 const orphans: OrphanPage[] = findOrphanPages(graph);
 
-orphans.forEach(({ url, inboundCount }) => {
-  console.log(`Orphan page: ${url} (${inboundCount} inbound links)`);
+orphans.forEach(({ url, outboundCount }) => {
+  console.log(`Orphan page: ${url} (${outboundCount} outbound links)`);
 });
 
 // Example output:
-// Orphan page: https://example.com/contact (0 inbound links)
+// Orphan page: https://example.com/contact (0 outbound links)
 ```
 
 **Tip:** Cross-reference orphan pages with your sitemap. Pages that appear in the sitemap but have no inbound links are priority candidates for internal linking improvements.
@@ -197,37 +199,37 @@ orphans.forEach(({ url, inboundCount }) => {
 import { suggestLinks } from '@power-seo/links';
 import type { LinkSuggestion, LinkSuggestionOptions } from '@power-seo/links';
 
+const pages = [
+  {
+    url: '/guide/react-seo',
+    title: 'React SEO Guide',
+    content:
+      'Learn how to optimize React applications for search engines using meta tags, structured data, and server-side rendering.',
+  },
+  {
+    url: '/guide/meta-tags',
+    title: 'HTML Meta Tags Explained',
+    content:
+      'Meta tags control how search engines index your pages. The title tag and meta description are the most important.',
+  },
+  {
+    url: '/guide/nextjs-setup',
+    title: 'Next.js Project Setup',
+    content:
+      'Set up a Next.js application with TypeScript, ESLint, and Prettier for a production-ready project.',
+  },
+];
+
 const options: LinkSuggestionOptions = {
-  pages: [
-    {
-      url: '/guide/react-seo',
-      title: 'React SEO Guide',
-      content:
-        'Learn how to optimize React applications for search engines using meta tags, structured data, and server-side rendering.',
-    },
-    {
-      url: '/guide/meta-tags',
-      title: 'HTML Meta Tags Explained',
-      content:
-        'Meta tags control how search engines index your pages. The title tag and meta description are the most important.',
-    },
-    {
-      url: '/guide/nextjs-setup',
-      title: 'Next.js Project Setup',
-      content:
-        'Set up a Next.js application with TypeScript, ESLint, and Prettier for a production-ready project.',
-    },
-  ],
-  minSimilarity: 0.15, // optional — minimum overlap score (0-1)
-  maxSuggestionsPerPage: 3, // optional — cap suggestions per page
-  bidirectional: true, // optional — suggest links in both directions
+  maxSuggestions: 3, // optional — cap suggestions per page (default: 20)
+  minRelevance: 0.15, // optional — minimum overlap score 0-1 (default: 0.1)
 };
 
-const suggestions: LinkSuggestion[] = suggestLinks(options);
+const suggestions: LinkSuggestion[] = suggestLinks(pages, options);
 
-suggestions.forEach(({ sourcePage, targetPage, anchorText, score }) => {
-  console.log(`Link from ${sourcePage} to ${targetPage}`);
-  console.log(`  Suggested anchor: "${anchorText}" (score: ${score.toFixed(2)})`);
+suggestions.forEach(({ from, to, anchorText, relevanceScore }) => {
+  console.log(`Link from ${from} to ${to}`);
+  console.log(`  Suggested anchor: "${anchorText}" (score: ${relevanceScore.toFixed(2)})`);
 });
 ```
 
@@ -242,18 +244,17 @@ import type { LinkEquityScore, LinkEquityOptions } from '@power-seo/links';
 const graph = buildLinkGraph(pages);
 
 const options: LinkEquityOptions = {
-  dampingFactor: 0.85, // optional — PageRank damping factor (default: 0.85)
-  iterations: 100, // optional — max iterations (default: 100)
-  convergenceThreshold: 1e-6, // optional — stop when delta < threshold
+  damping: 0.85, // optional — PageRank damping factor (default: 0.85)
+  iterations: 20, // optional — max iterations (default: 20)
 };
 
-const equity = analyzeLinkEquity(graph, options);
+const equityScores = analyzeLinkEquity(graph, options);
 
 // Sort pages by equity score (highest first)
-const ranked = [...equity.entries()].sort(([, a], [, b]) => b.score - a.score);
+const ranked = equityScores.sort((a, b) => b.score - a.score);
 
-ranked.forEach(([url, { score, inboundCount, outboundCount }]) => {
-  console.log(`${url}: equity=${score.toFixed(4)}, in=${inboundCount}, out=${outboundCount}`);
+ranked.forEach(({ url, score, inboundCount }) => {
+  console.log(`${url}: equity=${score.toFixed(4)}, inbound=${inboundCount}`);
 });
 ```
 
@@ -267,14 +268,15 @@ import { auditSite } from '@power-seo/audit';
 
 const graph = buildLinkGraph(sitePages);
 const orphans = findOrphanPages(graph);
-const equity = analyzeLinkEquity(graph);
+const equityScores = analyzeLinkEquity(graph);
+const equityMap = new Map(equityScores.map((eq) => [eq.url, eq]));
 
 const auditReport = auditSite({ pages: sitePages });
 
 // Enrich audit results with link equity data
 const enrichedPages = auditReport.pages.map((page) => ({
   ...page,
-  linkEquity: equity.get(page.url)?.score ?? 0,
+  linkEquity: equityMap.get(page.url)?.score ?? 0,
   isOrphan: orphans.some((o) => o.url === page.url),
 }));
 ```
@@ -289,43 +291,42 @@ const enrichedPages = auditReport.pages.map((page) => ({
 | --------- | ------------ | -------- | ------------------------------------------------------ |
 | `pages`   | `PageData[]` | required | Array of pages with their URL and outbound link arrays |
 
-Returns `LinkGraph` (`Map<string, LinkNode>`).
+Returns `LinkGraph` — object with `nodes: Map<string, LinkNode>`, `totalPages: number`, `totalLinks: number`.
 
 ---
 
-### `findOrphanPages(graph)`
+### `findOrphanPages(graph, entryPoints?)`
 
-| Parameter | Type        | Default  | Description                                     |
-| --------- | ----------- | -------- | ----------------------------------------------- |
-| `graph`   | `LinkGraph` | required | A directed link graph built by `buildLinkGraph` |
+| Parameter    | Type          | Default | Description                                                    |
+| ------------ | ------------- | ------- | -------------------------------------------------------------- |
+| `graph`      | `LinkGraph`   | required | A directed link graph built by `buildLinkGraph`                |
+| `entryPoints` | `string[]`   | `[]`    | URLs to exclude from orphan detection (e.g., homepage)         |
 
-Returns `OrphanPage[]` — array of `{ url: string; inboundCount: 0 }` objects.
+Returns `OrphanPage[]` — array of `{ url: string; title?: string; outboundCount: number }` objects.
 
 ---
 
-### `suggestLinks(options)`
+### `suggestLinks(pages, options?)`
 
-| Parameter                       | Type         | Default  | Description                                                       |
-| ------------------------------- | ------------ | -------- | ----------------------------------------------------------------- |
-| `options.pages`                 | `PageData[]` | required | Pages with `url`, `title`, and `content` for similarity analysis  |
-| `options.minSimilarity`         | `number`     | `0.1`    | Minimum keyword overlap score (0–1) to include a suggestion       |
-| `options.maxSuggestionsPerPage` | `number`     | `5`      | Maximum number of suggestions returned per source page            |
-| `options.bidirectional`         | `boolean`    | `false`  | Whether to suggest links in both directions between related pages |
+| Parameter              | Type         | Default | Description                                                    |
+| ---------------------- | ------------ | ------- | -------------------------------------------------------------- |
+| `pages`                | `PageData[]` | required | Pages with `url`, `title`, and `content` for analysis          |
+| `options.minRelevance` | `number`     | `0.1`   | Minimum keyword overlap score (0–1) to include a suggestion    |
+| `options.maxSuggestions` | `number`   | `20`    | Maximum number of suggestions returned per source page         |
 
-Returns `LinkSuggestion[]` — array of `{ sourcePage, targetPage, anchorText, score }` objects.
+Returns `LinkSuggestion[]` — array of `{ from, to, anchorText, relevanceScore }` objects.
 
 ---
 
 ### `analyzeLinkEquity(graph, options?)`
 
-| Parameter                      | Type        | Default  | Description                                                                    |
-| ------------------------------ | ----------- | -------- | ------------------------------------------------------------------------------ |
-| `graph`                        | `LinkGraph` | required | A directed link graph built by `buildLinkGraph`                                |
-| `options.dampingFactor`        | `number`    | `0.85`   | PageRank damping factor — probability of following a link vs. jumping randomly |
-| `options.iterations`           | `number`    | `100`    | Maximum number of power-iteration steps                                        |
-| `options.convergenceThreshold` | `number`    | `1e-6`   | Stop iterating when the largest score delta is below this threshold            |
+| Parameter             | Type        | Default | Description                                                                    |
+| --------------------- | ----------- | ------- | ------------------------------------------------------------------------------ |
+| `graph`               | `LinkGraph` | required | A directed link graph built by `buildLinkGraph`                                |
+| `options.damping`     | `number`    | `0.85`  | PageRank damping factor — probability of following a link vs. jumping randomly |
+| `options.iterations`  | `number`    | `20`    | Maximum number of power-iteration steps                                        |
 
-Returns `Map<string, LinkEquityScore>`.
+Returns `LinkEquityScore[]` — array sorted by score descending.
 
 ---
 
@@ -334,13 +335,13 @@ Returns `Map<string, LinkEquityScore>`.
 ```ts
 import type {
   PageData, // { url: string; links: string[]; title?: string; content?: string }
-  LinkNode, // { url: string; inboundLinks: Set<string>; outboundLinks: Set<string> }
-  LinkGraph, // Map<string, LinkNode>
-  OrphanPage, // { url: string; inboundCount: number }
-  LinkSuggestion, // { sourcePage: string; targetPage: string; anchorText: string; score: number }
-  LinkSuggestionOptions, // { pages, minSimilarity?, maxSuggestionsPerPage?, bidirectional? }
-  LinkEquityScore, // { score: number; inboundCount: number; outboundCount: number }
-  LinkEquityOptions, // { dampingFactor?, iterations?, convergenceThreshold? }
+  LinkNode, // { url: string; inbound: string[]; outbound: string[]; inboundCount: number; outboundCount: number }
+  LinkGraph, // { nodes: Map<string, LinkNode>; totalPages: number; totalLinks: number }
+  OrphanPage, // { url: string; title?: string; outboundCount: number }
+  LinkSuggestion, // { from: string; to: string; anchorText: string; relevanceScore: number }
+  LinkSuggestionOptions, // { maxSuggestions?: number; minRelevance?: number }
+  LinkEquityScore, // { url: string; score: number; inboundCount: number }
+  LinkEquityOptions, // { damping?: number; iterations?: number }
 } from '@power-seo/links';
 ```
 
@@ -387,7 +388,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
