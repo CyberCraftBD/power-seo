@@ -2,7 +2,7 @@
 
 ![schema banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/banner.svg)
 
-Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org builder functions, 21 React components, schema graph support, and field validation. Works in Next.js, Remix, Node.js, and Edge runtimes.
+Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org builder functions, 22 React components, schema graph support, and field validation. Works in Next.js, Remix, Node.js, and Edge runtimes.
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/schema)](https://www.npmjs.com/package/@power-seo/schema)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/schema)](https://www.npmjs.com/package/@power-seo/schema)
@@ -24,7 +24,7 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 | Field type safety | ❌ Hand-written JSON, no types | ✅ Typed builder functions catch missing fields at compile time |
 | Multiple schemas per page | ❌ Separate `<script>` tags, Google may miss some | ✅ `schemaGraph()` combines all into one `@graph` document |
 | Field validation | ❌ Silent failures in rich results | ✅ `validateSchema()` returns structured issues before deploy |
-| React rendering | ❌ Manual `dangerouslySetInnerHTML` boilerplate | ✅ `<ArticleJsonLd>` and 20 other components in one import |
+| React rendering | ❌ Manual `dangerouslySetInnerHTML` boilerplate | ✅ `<ArticleJsonLd>` and 21 other components in one import |
 | Schema coverage | ❌ Only Article/FAQ in most packages | ✅ 23 types: Article, Product, FAQ, LocalBusiness, Event, Recipe, and more |
 | Framework support | ❌ WordPress / next-seo only | ✅ Next.js, Remix, Node.js, Edge, static site generators |
 
@@ -42,12 +42,11 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 ## Features
 
 - **23 schema.org type builder functions** — Article, BlogPosting, NewsArticle, Product, FAQPage, BreadcrumbList, LocalBusiness, Organization, Person, Event, Recipe, HowTo, VideoObject, Course, JobPosting, SoftwareApplication, WebSite, ItemList, Review, Service, Brand, SiteNavigationElement, ImageObject
-- **21 pre-built React components** — `<ArticleJsonLd>`, `<FAQJsonLd>`, `<ProductJsonLd>`, `<BreadcrumbJsonLd>`, `<LocalBusinessJsonLd>`, `<OrganizationJsonLd>`, `<PersonJsonLd>`, `<EventJsonLd>`, `<RecipeJsonLd>`, `<HowToJsonLd>`, `<VideoJsonLd>`, `<CourseJsonLd>`, `<JobPostingJsonLd>`, `<SoftwareAppJsonLd>`, `<WebSiteJsonLd>`, `<ItemListJsonLd>`, `<ReviewJsonLd>`, `<ServiceJsonLd>`, `<BrandJsonLd>`, `<NewsArticleJsonLd>`, `<BlogPostingJsonLd>`
-- **Generic `<JsonLd>` component** — renders any custom schema object as a JSON-LD script tag
+- **22 pre-built React components** — `<ArticleJsonLd>`, `<BlogPostingJsonLd>`, `<NewsArticleJsonLd>`, `<ProductJsonLd>`, `<FAQJsonLd>`, `<BreadcrumbJsonLd>`, `<LocalBusinessJsonLd>`, `<OrganizationJsonLd>`, `<PersonJsonLd>`, `<EventJsonLd>`, `<RecipeJsonLd>`, `<HowToJsonLd>`, `<VideoJsonLd>`, `<CourseJsonLd>`, `<JobPostingJsonLd>`, `<SoftwareAppJsonLd>`, `<WebSiteJsonLd>`, `<ItemListJsonLd>`, `<ReviewJsonLd>`, `<ServiceJsonLd>`, `<BrandJsonLd>`, and `<JsonLd>` (generic, renders any schema)
 - **`schemaGraph()`** — combine multiple schemas into a single `@graph` document for optimal Google parsing
 - **`toJsonLdString()`** — serialize any schema object to a safe JSON-LD string for `dangerouslySetInnerHTML`
 - **`validateSchema()`** — validate required fields without throwing; returns `{ valid, issues }` with severity, field, and message per issue
-- **React optional** — all 23 builder functions work without React; components available via `/react` subpath export
+- **React optional** — all 23 builder functions work without React; 22 React components available via `/react` subpath export
 - **Type-safe API** — TypeScript-first with full typed interfaces for every schema type including nested objects
 - **Tree-shakeable** — import only the schema types you use; zero dead code in your bundle
 - **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
@@ -452,7 +451,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 21 React components |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 22 React components |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |

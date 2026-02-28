@@ -52,7 +52,7 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 - **Automatic index splitting** — `splitSitemap()` chunks at `MAX_URLS_PER_SITEMAP` (50,000) and returns both sitemaps and the index XML
 - **Sitemap index generation** — `generateSitemapIndex()` creates a `<sitemapindex>` pointing to child sitemaps
 - **URL validation** — `validateSitemapUrl()` returns `{ valid, errors, warnings }` without throwing
-- **Next.js App Router adapter** — `toNextSitemap()` (from `@power-seo/sitemap/next`) converts `SitemapURL[]` to the `MetadataRoute.Sitemap[]` format for `app/sitemap.ts`
+- **Next.js App Router adapter** — `toNextSitemap()` converts `SitemapURL[]` to the `MetadataRoute.Sitemap[]` format for `app/sitemap.ts`
 - **Constants exported** — `MAX_URLS_PER_SITEMAP` (50,000) and `MAX_SITEMAP_SIZE_BYTES` (52,428,800)
 - **Framework-agnostic** — works in Next.js API routes, Remix loaders, Express, Fastify, and edge runtimes
 - **Full TypeScript support** — typed `SitemapURL`, `SitemapImage`, `SitemapVideo`, `SitemapNews`, `SitemapConfig`
@@ -260,11 +260,11 @@ const result = validateSitemapUrl({
 
 ### Next.js App Router — `app/sitemap.ts` Convention
 
-Next.js App Router has a built-in `app/sitemap.ts` file convention that returns an array of URL objects (not XML). Use `toNextSitemap()` from the `/next` subpath to convert `SitemapURL[]` to the required format:
+Next.js App Router has a built-in `app/sitemap.ts` file convention that returns an array of URL objects (not XML). Use `toNextSitemap()` to convert `SitemapURL[]` to the required format:
 
 ```ts
 // app/sitemap.ts
-import { toNextSitemap } from '@power-seo/sitemap/next';
+import { toNextSitemap } from '@power-seo/sitemap';
 
 export default async function sitemap() {
   const urls = await fetchUrlsFromCms();
@@ -393,10 +393,10 @@ function validateSitemapUrl(url: SitemapURL): SitemapValidationResult;
 
 Returns `{ valid: boolean; errors: string[]; warnings: string[] }`. Never throws.
 
-### `toNextSitemap(urls)` — from `@power-seo/sitemap/next`
+### `toNextSitemap(urls)`
 
 ```ts
-import { toNextSitemap } from '@power-seo/sitemap/next';
+import { toNextSitemap } from '@power-seo/sitemap';
 
 function toNextSitemap(urls: SitemapURL[]): NextSitemapEntry[];
 ```
