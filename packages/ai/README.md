@@ -48,14 +48,14 @@ The `analyzeSerpEligibility` function is the exception: it is a fully determinis
 
 - **LLM-agnostic design** — no bundled SDK; prompt builders return `{ system, user, maxTokens }`, parsers accept raw text strings
 - **Works with any provider** — OpenAI GPT-4o, Anthropic Claude, Google Gemini, Mistral, Cohere, local Ollama models, or any HTTP-based LLM
-- **Meta description generation** — `buildMetaDescriptionPrompt` produces prompts targeting 120–158 character descriptions that include the focus keyphrase and a compelling call-to-action; `parseMetaDescriptionResponse` extracts multiple candidates with character count and estimated pixel width
-- **SEO title generation** — `buildTitlePrompt` produces prompts for optimized title tags with keyphrase placement and brand suffix guidance; `parseTitleResponse` returns ranked title candidates with character counts
-- **Content improvement suggestions** — `buildContentSuggestionsPrompt` analyzes existing content for gaps; `parseContentSuggestionsResponse` returns typed suggestions including missing sections, internal link opportunities, keyphrase density issues, and FAQ additions
-- **SERP feature prediction** — `buildSerpPredictionPrompt` and `parseSerpPredictionResponse` predict which SERP features (Featured Snippet, FAQ, HowTo, Knowledge Panel, Product) a page is likely to appear in, with confidence scores
-- **Rule-based SERP eligibility** — `analyzeSerpEligibility(input)` is fully deterministic: no LLM required, no cost, instant execution; checks FAQ schema presence, HowTo step structure, Product schema completeness, and Article metadata
+- **Meta description generation** — `buildMetaDescriptionPrompt` produces prompts targeting 120–158 character descriptions that include the focus keyphrase and a compelling call-to-action; `parseMetaDescriptionResponse` extracts a single optimized candidate with validation status, character count and estimated pixel width
+- **SEO title generation** — `buildTitlePrompt` produces prompts for 5 optimized title tag variants; `parseTitleResponse` returns title candidates with character counts
+- **Content improvement suggestions** — `buildContentSuggestionsPrompt` analyzes existing content for gaps; `parseContentSuggestionsResponse` returns typed suggestions for headings, paragraphs, keywords, and links with priority levels
+- **SERP feature prediction** — `buildSerpPredictionPrompt` and `parseSerpPredictionResponse` predict which SERP features (Featured Snippet, FAQ, HowTo, Product, Review, Video, etc.) a page is likely to appear in, with likelihood scores and requirements
+- **Rule-based SERP eligibility** — `analyzeSerpEligibility(input)` is fully deterministic: no LLM required, no cost, instant execution; checks FAQ schema presence, HowTo step structure, Product schema completeness, and more
 - **Structured output parsing** — all parsers handle common LLM output variations (markdown code blocks, numbered lists, JSON) robustly
-- **`ContentSuggestionType` union** — type-safe suggestion categories: `missing-section`, `internal-link`, `keyphrase-gap`, `faq-addition`, `schema-addition`, `readability`
-- **`SerpFeature` union** — type-safe SERP feature identifiers: `featured-snippet`, `faq`, `how-to`, `knowledge-panel`, `product`, `article`
+- **`ContentSuggestionType` union** — type-safe suggestion categories: `heading`, `paragraph`, `keyword`, `link`
+- **`SerpFeature` union** — type-safe SERP feature identifiers: `featured-snippet`, `faq-rich-result`, `how-to`, `product`, `review`, `video`, `image-pack`, `local-pack`, `sitelinks`
 - **Character and pixel width metadata** — response objects include `charCount` and `pixelWidth` for each generated variant
 - **Type-safe throughout** — comprehensive TypeScript types for all inputs, outputs, and intermediate structures
 - **Zero runtime dependencies** — no external packages required
@@ -107,8 +107,7 @@ import { buildMetaDescriptionPrompt, parseMetaDescriptionResponse } from '@power
 const prompt = buildMetaDescriptionPrompt({
   title: 'Best Coffee Shops in New York City',
   content: 'Explore the top 15 coffee shops in NYC, from specialty espresso bars in Brooklyn...',
-  keyphrase: 'coffee shops nyc',
-  count: 3,
+  focusKeyphrase: 'coffee shops nyc',
 });
 
 // 2. Send to your LLM of choice (example uses OpenAI)
@@ -126,9 +125,8 @@ const response = await openai.chat.completions.create({
 
 // 3. Parse the raw text response
 const result = parseMetaDescriptionResponse(response.choices[0].message.content ?? '');
-result.descriptions.forEach(({ text, charCount, pixelWidth }) => {
-  console.log(`"${text}" — ${charCount} chars, ~${pixelWidth}px`);
-});
+console.log(`"${result.description}" — ${result.charCount} chars, ~${result.pixelWidth}px`);
+console.log(`Valid: ${result.isValid}`);
 ```
 
 ![LLM-Agnostic Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/llm-agnostic-benefit.svg)
@@ -146,8 +144,7 @@ import type { MetaDescriptionInput, MetaDescriptionResult } from '@power-seo/ai'
 const input: MetaDescriptionInput = {
   title: 'How to Optimize React Apps for SEO',
   content: 'Full article HTML or plain text about React SEO strategies...',
-  keyphrase: 'react seo optimization',
-  count: 3,
+  focusKeyphrase: 'react seo optimization',
 };
 
 const prompt = buildMetaDescriptionPrompt(input);
@@ -156,12 +153,10 @@ const prompt = buildMetaDescriptionPrompt(input);
 const rawResponse = await yourLLM.complete(prompt.system, prompt.user, prompt.maxTokens);
 const result: MetaDescriptionResult = parseMetaDescriptionResponse(rawResponse);
 
-result.descriptions.forEach(({ text, charCount, pixelWidth }, i) => {
-  console.log(`Option ${i + 1}: "${text}"`);
-  console.log(`  ${charCount} characters, ~${pixelWidth}px`);
-  const status = charCount >= 120 && charCount <= 158 ? 'GOOD' : 'ADJUST';
-  console.log(`  Status: ${status}`);
-});
+console.log(`"${result.description}"`);
+console.log(`  ${result.charCount} characters, ~${result.pixelWidth}px`);
+console.log(`  Valid: ${result.isValid}`);
+if (result.validationMessage) console.log(`  Message: ${result.validationMessage}`);
 ```
 
 ### SEO Title Generation
@@ -172,18 +167,17 @@ import type { TitleInput, TitleResult } from '@power-seo/ai';
 
 const input: TitleInput = {
   content: 'Article about the best tools for keyword research in 2026...',
-  keyphrase: 'keyword research tools',
-  brand: 'PowerSEO',
-  count: 5,
+  focusKeyphrase: 'keyword research tools',
+  tone: 'informative',
 };
 
 const prompt = buildTitlePrompt(input);
 const rawResponse = await yourLLM.complete(prompt.system, prompt.user, prompt.maxTokens);
 
-const result: TitleResult = parseTitleResponse(rawResponse);
-result.titles.forEach(({ text, charCount, pixelWidth }, i) => {
+const results: TitleResult[] = parseTitleResponse(rawResponse);
+results.forEach(({ title, charCount, pixelWidth }, i) => {
   const status = charCount <= 60 ? 'OK' : 'TOO LONG';
-  console.log(`${i + 1}. "${text}" — ${charCount} chars [${status}]`);
+  console.log(`${i + 1}. "${title}" — ${charCount} chars [${status}]`);
 });
 ```
 
@@ -196,9 +190,8 @@ import type { ContentSuggestionInput, ContentSuggestion } from '@power-seo/ai';
 const input: ContentSuggestionInput = {
   title: 'React SEO Best Practices',
   content: '<h1>React SEO</h1><p>React is a JavaScript library...</p>',
-  keyphrase: 'react seo best practices',
-  wordCount: 450,
-  currentScore: 58,
+  focusKeyphrase: 'react seo best practices',
+  analysisResults: 'Current score: 58/100. Missing headings structure.',
 };
 
 const prompt = buildContentSuggestionsPrompt(input);
@@ -206,26 +199,24 @@ const rawResponse = await yourLLM.complete(prompt.system, prompt.user, prompt.ma
 
 const suggestions: ContentSuggestion[] = parseContentSuggestionsResponse(rawResponse);
 suggestions.forEach(({ type, suggestion, priority }) => {
-  console.log(`[${priority.toUpperCase()}] ${type}: ${suggestion}`);
+  console.log(`[Priority ${priority}] ${type}: ${suggestion}`);
 });
 
 // Example output:
-// [HIGH] missing-section: Add a section covering server-side rendering with Next.js
-// [HIGH] keyphrase-gap: 'react seo best practices' appears only once — aim for 2-3 uses
-// [MEDIUM] faq-addition: Add an FAQ section answering "Does React hurt SEO?"
-// [LOW] schema-addition: Add Article schema markup for rich result eligibility
+// [Priority 5] heading: Add h2 subheadings for "Server-Side Rendering" topic
+// [Priority 4] paragraph: Expand "React Hooks" section with more examples
+// [Priority 3] keyword: Increase usage of "react seo best practices" by 1-2 more mentions
+// [Priority 2] link: Link to related article on Next.js SSR optimization
 ```
 
 **Suggestion types:**
 
-| Type              | Description                                                      |
-| ----------------- | ---------------------------------------------------------------- |
-| `missing-section` | Topics or sections the content should cover but does not         |
-| `internal-link`   | Opportunities to link to related pages on the same site          |
-| `keyphrase-gap`   | Keyphrase density or placement issues                            |
-| `faq-addition`    | Questions to add as an FAQ section                               |
-| `schema-addition` | Structured data markup recommendations                           |
-| `readability`     | Sentence structure, paragraph length, or vocabulary improvements |
+| Type      | Description                                              |
+| --------- | -------------------------------------------------------- |
+| `heading` | Heading structure improvements and additions             |
+| `paragraph` | Paragraph content improvements and rewrites            |
+| `keyword` | Keyphrase density and placement optimization             |
+| `link`    | Internal linking opportunities and suggestions           |
 
 ### SERP Feature Prediction
 
@@ -238,17 +229,18 @@ import type { SerpFeatureInput, SerpFeaturePrediction } from '@power-seo/ai';
 const input: SerpFeatureInput = {
   title: 'How to Make Cold Brew Coffee at Home',
   content: '<h1>Cold Brew Coffee</h1><h2>Step 1: Grind the Coffee</h2><p>...</p>',
-  url: 'https://example.com/guides/cold-brew-coffee',
-  schema: { '@type': 'HowTo', name: 'How to Make Cold Brew Coffee' },
+  schema: ['HowTo', 'Recipe'],
+  contentType: 'guide',
 };
 
 const prompt = buildSerpPredictionPrompt(input);
 const rawResponse = await yourLLM.complete(prompt.system, prompt.user, prompt.maxTokens);
 
 const predictions: SerpFeaturePrediction[] = parseSerpPredictionResponse(rawResponse);
-predictions.forEach(({ feature, eligible, confidence, recommendation }) => {
-  console.log(`${feature}: eligible=${eligible}, confidence=${confidence}`);
-  if (recommendation) console.log(`  → ${recommendation}`);
+predictions.forEach(({ feature, likelihood, requirements, met }) => {
+  console.log(`${feature}: ${(likelihood * 100).toFixed(0)}% likelihood`);
+  console.log(`  Requirements: ${requirements.join(', ')}`);
+  console.log(`  Met: ${met.join(', ')}`);
 });
 ```
 
@@ -263,26 +255,19 @@ import { analyzeSerpEligibility } from '@power-seo/ai';
 const result = analyzeSerpEligibility({
   title: 'How to Install Node.js on Ubuntu',
   content: '<h2>Step 1: Update apt</h2><p>...</p><h2>Step 2: Install nvm</h2><p>...</p>',
-  schema: {
-    '@type': 'HowTo',
-    step: [{ '@type': 'HowToStep' }, { '@type': 'HowToStep' }],
-  },
+  schema: ['HowTo'],
 });
-// { 'how-to': { eligible: true, reason: 'HowTo schema present with 2 steps' }, ... }
+// Returns array with SerpFeaturePrediction objects, including:
+// { feature: 'how-to', likelihood: 0.8, requirements: [...], met: [...] }
 
 // FAQ — detected by FAQPage schema
 const faqResult = analyzeSerpEligibility({
   title: 'React SEO FAQ',
-  content: '...',
-  schema: {
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'Does React hurt SEO?' },
-      { '@type': 'Question', name: 'How do I add meta tags in React?' },
-    ],
-  },
+  content: '<h2>Does React hurt SEO?</h2><p>...</p><h2>How do I add meta tags?</h2><p>...</p>',
+  schema: ['FAQPage'],
 });
-// { 'faq': { eligible: true, reason: 'FAQPage schema with 2 questions detected' }, ... }
+// Returns array including:
+// { feature: 'faq-rich-result', likelihood: 0.9, requirements: [...], met: [...] }
 ```
 
 ### Provider Integration Examples
@@ -337,78 +322,74 @@ const result3 = parseMetaDescriptionResponse(geminiResponse.response.text());
 
 ### `buildMetaDescriptionPrompt(input)` / `parseMetaDescriptionResponse(text)`
 
-| Parameter         | Type     | Default          | Description                                  |
-| ----------------- | -------- | ---------------- | -------------------------------------------- |
-| `input.title`     | `string` | required         | Page title for context                       |
-| `input.content`   | `string` | required         | Page content (HTML or plain text)            |
-| `input.keyphrase` | `string` | `''`             | Focus keyphrase to include in descriptions   |
-| `input.count`     | `number` | `3`              | Number of description variations to generate |
-| `input.minLength` | `number` | `120`            | Minimum character length                     |
-| `input.maxLength` | `number` | `158`            | Maximum character length                     |
-| `input.tone`      | `string` | `'professional'` | Tone hint for the LLM                        |
+| Parameter         | Type     | Default  | Description                                |
+| ----------------- | -------- | -------- | ------------------------------------------ |
+| `input.title`     | `string` | required | Page title for context                     |
+| `input.content`   | `string` | required | Page content (HTML or plain text)          |
+| `input.focusKeyphrase` | `string` | — | Focus keyphrase to include in descriptions |
+| `input.maxLength` | `number` | `158`    | Maximum character length                   |
+| `input.tone`      | `string` | —        | Tone hint for the LLM                      |
 
 `buildMetaDescriptionPrompt` returns `PromptTemplate`: `{ system: string; user: string; maxTokens: number }`.
 
-`parseMetaDescriptionResponse(text: string)` returns `MetaDescriptionResult`: `{ descriptions: Array<{ text, charCount, pixelWidth }> }`.
+`parseMetaDescriptionResponse(text: string)` returns `MetaDescriptionResult`: `{ description: string; charCount: number; pixelWidth: number; isValid: boolean; validationMessage?: string }`.
 
 ---
 
 ### `buildTitlePrompt(input)` / `parseTitleResponse(text)`
 
-| Parameter         | Type     | Default  | Description                            |
-| ----------------- | -------- | -------- | -------------------------------------- |
-| `input.content`   | `string` | required | Page content for context               |
-| `input.keyphrase` | `string` | `''`     | Focus keyphrase for the title          |
-| `input.brand`     | `string` | `''`     | Brand name for suffix                  |
-| `input.count`     | `number` | `3`      | Number of title variations to generate |
-| `input.maxLength` | `number` | `60`     | Maximum title character length         |
+| Parameter         | Type     | Default  | Description                  |
+| ----------------- | -------- | -------- | ---------------------------- |
+| `input.content`   | `string` | required | Page content for context     |
+| `input.focusKeyphrase` | `string` | — | Focus keyphrase for the title |
+| `input.tone`      | `string` | —        | Tone hint for the LLM        |
 
 `buildTitlePrompt` returns `PromptTemplate`.
 
-`parseTitleResponse(text: string)` returns `TitleResult`: `{ titles: Array<{ text, charCount, pixelWidth }> }`.
+`parseTitleResponse(text: string)` returns `TitleResult[]`: `Array<{ title: string; charCount: number; pixelWidth: number }>`.
 
 ---
 
 ### `buildContentSuggestionsPrompt(input)` / `parseContentSuggestionsResponse(text)`
 
-| Parameter            | Type     | Default     | Description                                 |
-| -------------------- | -------- | ----------- | ------------------------------------------- |
-| `input.title`        | `string` | required    | Page title                                  |
-| `input.content`      | `string` | required    | Page HTML or plain text content             |
-| `input.keyphrase`    | `string` | `''`        | Focus keyphrase                             |
-| `input.wordCount`    | `number` | `0`         | Total word count for thin content detection |
-| `input.currentScore` | `number` | `undefined` | Current SEO score for context               |
+| Parameter            | Type     | Default | Description                     |
+| -------------------- | -------- | ------- | ------------------------------- |
+| `input.title`        | `string` | required | Page title                     |
+| `input.content`      | `string` | required | Page HTML or plain text content |
+| `input.focusKeyphrase` | `string` | — | Focus keyphrase                |
+| `input.analysisResults` | `string` | — | Current analysis results for context |
 
 `buildContentSuggestionsPrompt` returns `PromptTemplate`.
 
-`parseContentSuggestionsResponse(text: string)` returns `ContentSuggestion[]`: `Array<{ type: ContentSuggestionType; suggestion: string; priority: 'high' | 'medium' | 'low' }>`.
+`parseContentSuggestionsResponse(text: string)` returns `ContentSuggestion[]`: `Array<{ type: ContentSuggestionType; suggestion: string; priority: number }>`.
 
 ---
 
 ### `buildSerpPredictionPrompt(input)` / `parseSerpPredictionResponse(text)`
 
-| Parameter       | Type     | Default     | Description                               |
-| --------------- | -------- | ----------- | ----------------------------------------- |
-| `input.title`   | `string` | required    | Page title                                |
-| `input.content` | `string` | required    | Page content                              |
-| `input.url`     | `string` | `''`        | Page URL for additional context           |
-| `input.schema`  | `object` | `undefined` | JSON-LD schema object present on the page |
+| Parameter       | Type       | Default | Description                              |
+| --------------- | ---------- | ------- | ---------------------------------------- |
+| `input.title`   | `string`   | required | Page title                              |
+| `input.content` | `string`   | required | Page content                            |
+| `input.schema`  | `string[]` | —       | Schema types present on the page        |
+| `input.contentType` | `string` | —     | Content type hint (guide, article, etc) |
 
 `buildSerpPredictionPrompt` returns `PromptTemplate`.
 
-`parseSerpPredictionResponse(text: string)` returns `SerpFeaturePrediction[]`: `Array<{ feature: SerpFeature; eligible: boolean; confidence: number; recommendation?: string }>`.
+`parseSerpPredictionResponse(text: string)` returns `SerpFeaturePrediction[]`: `Array<{ feature: SerpFeature; likelihood: number; requirements: string[]; met: string[] }>`.
 
 ---
 
 ### `analyzeSerpEligibility(input)`
 
-| Parameter       | Type     | Default     | Description                      |
-| --------------- | -------- | ----------- | -------------------------------- |
-| `input.title`   | `string` | required    | Page title                       |
-| `input.content` | `string` | required    | Page HTML content                |
-| `input.schema`  | `object` | `undefined` | JSON-LD schema object to inspect |
+| Parameter       | Type       | Default | Description               |
+| --------------- | ---------- | ------- | ------------------------- |
+| `input.title`   | `string`   | required | Page title               |
+| `input.content` | `string`   | required | Page HTML content        |
+| `input.schema`  | `string[]` | —       | Schema types present     |
+| `input.contentType` | `string` | —     | Content type hint        |
 
-Returns `Record<SerpFeature, { eligible: boolean; reason: string }>`. Fully deterministic — no LLM required.
+Returns `SerpFeaturePrediction[]`. Fully deterministic — no LLM required. Analyzes page structure, headings, and schema to predict eligible SERP features.
 
 ---
 
@@ -416,17 +397,17 @@ Returns `Record<SerpFeature, { eligible: boolean; reason: string }>`. Fully dete
 
 ```ts
 import type {
-  PromptTemplate, // { system: string; user: string; maxTokens: number }
-  MetaDescriptionInput, // { title, content, keyphrase?, count?, minLength?, maxLength?, tone? }
-  MetaDescriptionResult, // { descriptions: Array<{ text, charCount, pixelWidth }> }
-  ContentSuggestionInput, // { title, content, keyphrase?, wordCount?, currentScore? }
-  ContentSuggestionType, // 'missing-section' | 'internal-link' | 'keyphrase-gap' | 'faq-addition' | 'schema-addition' | 'readability'
-  ContentSuggestion, // { type: ContentSuggestionType; suggestion: string; priority: 'high' | 'medium' | 'low' }
-  SerpFeature, // 'featured-snippet' | 'faq' | 'how-to' | 'knowledge-panel' | 'product' | 'article'
-  SerpFeatureInput, // { title, content, url?, schema? }
-  SerpFeaturePrediction, // { feature: SerpFeature; eligible: boolean; confidence: number; recommendation?: string }
-  TitleInput, // { content, keyphrase?, brand?, count?, maxLength? }
-  TitleResult, // { titles: Array<{ text, charCount, pixelWidth }> }
+  PromptTemplate, // { system: string; user: string; maxTokens?: number }
+  MetaDescriptionInput, // { title, content, focusKeyphrase?, maxLength?, tone? }
+  MetaDescriptionResult, // { description, charCount, pixelWidth, isValid, validationMessage? }
+  ContentSuggestionInput, // { title, content, focusKeyphrase?, analysisResults? }
+  ContentSuggestionType, // 'heading' | 'paragraph' | 'keyword' | 'link'
+  ContentSuggestion, // { type: ContentSuggestionType; suggestion: string; priority: number }
+  SerpFeature, // 'featured-snippet' | 'faq-rich-result' | 'how-to' | 'product' | 'review' | 'video' | 'image-pack' | 'local-pack' | 'sitelinks'
+  SerpFeatureInput, // { title, content, schema?, contentType? }
+  SerpFeaturePrediction, // { feature: SerpFeature; likelihood: number; requirements: string[]; met: string[] }
+  TitleInput, // { content, focusKeyphrase?, tone? }
+  TitleResult, // { title: string; charCount: number; pixelWidth: number }
 } from '@power-seo/ai';
 ```
 
@@ -474,7 +455,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
