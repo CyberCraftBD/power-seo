@@ -341,6 +341,7 @@ Returns `PageAuditResult`:
 | Parameter     | Type               | Required | Description                            |
 | ------------- | ------------------ | -------- | -------------------------------------- |
 | `input.pages` | `PageAuditInput[]` | ✅       | Array of page audit inputs to evaluate |
+| `input.hostname` | `string` | — | Optional domain for link analysis and context |
 
 Returns `SiteAuditResult`:
 
