@@ -103,17 +103,20 @@ import {
 } from '@power-seo/search-console';
 
 // 1. Create a token manager (OAuth2)
-const tokenManager = createTokenManager({
-  type: 'oauth',
-  clientId: process.env.GSC_CLIENT_ID!,
-  clientSecret: process.env.GSC_CLIENT_SECRET!,
-  refreshToken: process.env.GSC_REFRESH_TOKEN!,
-});
+import { exchangeRefreshToken } from '@power-seo/search-console';
+
+const tokenManager = createTokenManager(() =>
+  exchangeRefreshToken({
+    clientId: process.env.GSC_CLIENT_ID!,
+    clientSecret: process.env.GSC_CLIENT_SECRET!,
+    refreshToken: process.env.GSC_REFRESH_TOKEN!,
+  }),
+);
 
 // 2. Create a client scoped to your site
 const client = createGSCClient({
   siteUrl: 'https://example.com',
-  tokenManager,
+  auth: tokenManager,
 });
 
 // 3. Fetch all search analytics data (auto-paginated)
@@ -138,29 +141,40 @@ rows.forEach(({ keys, clicks, impressions, ctr, position }) => {
 ### OAuth2 Authentication
 
 ```ts
-import { createTokenManager } from '@power-seo/search-console';
+import { createTokenManager, exchangeRefreshToken } from '@power-seo/search-console';
 
-const tokenManager = createTokenManager({
-  type: 'oauth',
-  clientId: process.env.GSC_CLIENT_ID!,
-  clientSecret: process.env.GSC_CLIENT_SECRET!,
-  refreshToken: process.env.GSC_REFRESH_TOKEN!,
-});
+const tokenManager = createTokenManager(() =>
+  exchangeRefreshToken({
+    clientId: process.env.GSC_CLIENT_ID!,
+    clientSecret: process.env.GSC_CLIENT_SECRET!,
+    refreshToken: process.env.GSC_REFRESH_TOKEN!,
+  }),
+);
 
-const { accessToken } = await tokenManager.getAccessToken();
+const accessToken = await tokenManager.getToken();
 ```
 
 ### Service Account Authentication
 
 ```ts
-import { createTokenManager } from '@power-seo/search-console';
+import { createTokenManager, getServiceAccountToken } from '@power-seo/search-console';
+import { subtle } from 'node:crypto';
 
-const tokenManager = createTokenManager({
-  type: 'service-account',
-  clientEmail: process.env.GSC_SERVICE_ACCOUNT_EMAIL!,
-  privateKey: process.env.GSC_PRIVATE_KEY!,
-  scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
-});
+// Parse service account JSON and create signing function
+const serviceAccount = JSON.parse(process.env.GSC_SERVICE_ACCOUNT_JSON!);
+
+async function signJwt(payload: Record<string, unknown>): Promise<string> {
+  // Implement JWT signing using node:crypto or your preferred library
+  // Returns signed JWT assertion string
+}
+
+const tokenManager = createTokenManager(() =>
+  getServiceAccountToken({
+    clientEmail: serviceAccount.client_email,
+    privateKeyId: serviceAccount.private_key_id,
+    signJwt,
+  }),
+);
 ```
 
 ### Search Analytics Query
@@ -257,26 +271,23 @@ if (dropped.length > 0) {
 
 ## API Reference
 
-### `createTokenManager(config)`
+### `createTokenManager(fetchToken)`
 
-| Parameter             | Type                           | Description                                            |
-| --------------------- | ------------------------------ | ------------------------------------------------------ |
-| `config.type`         | `'oauth' \| 'service-account'` | Authentication method                                  |
-| `config.clientId`     | `string`                       | Google OAuth2 client ID (OAuth2 only)                  |
-| `config.clientSecret` | `string`                       | Google OAuth2 client secret (OAuth2 only)              |
-| `config.refreshToken` | `string`                       | OAuth2 refresh token (OAuth2 only)                     |
-| `config.clientEmail`  | `string`                       | Service account email (service account only)           |
-| `config.privateKey`   | `string`                       | Service account private key PEM (service account only) |
-| `config.scopes`       | `string[]`                     | OAuth2 scopes (service account only)                   |
+| Parameter     | Type                             | Description                                  |
+| ------------- | -------------------------------- | -------------------------------------------- |
+| `fetchToken`  | `() => Promise<TokenResult>`     | Function that returns token result           |
 
-Returns `TokenManager`: `{ getAccessToken(): Promise<TokenResult> }`.
+Returns `TokenManager`: `{ getToken(): Promise<string>; invalidate(): void }`. Token caching and refresh is handled automatically.
 
 ### `createGSCClient(config)`
 
-| Parameter             | Type           | Description                                                           |
-| --------------------- | -------------- | --------------------------------------------------------------------- |
-| `config.siteUrl`      | `string`       | Verified GSC property URL (`sc-domain:` prefix for domain properties) |
-| `config.tokenManager` | `TokenManager` | Token manager from `createTokenManager()`                             |
+| Parameter           | Type           | Description                                                           |
+| ------------------- | -------------- | --------------------------------------------------------------------- |
+| `config.siteUrl`    | `string`       | Verified GSC property URL (`sc-domain:` prefix for domain properties) |
+| `config.auth`       | `TokenManager` | Token manager from `createTokenManager()`                             |
+| `config.rateLimitPerMinute` | `number` | Rate limit (default: 1200)                                      |
+| `config.maxRetries` | `number`       | Max retries for failed requests (default: 3)                          |
+| `config.baseUrl`    | `string`       | Base URL for GSC API (default: official Google endpoint)              |
 
 Returns `GSCClient`.
 
@@ -287,9 +298,12 @@ Returns `GSCClient`.
 | `request.startDate`             | `string`      | required   | `YYYY-MM-DD`                                                                 |
 | `request.endDate`               | `string`      | required   | `YYYY-MM-DD`                                                                 |
 | `request.dimensions`            | `Dimension[]` | `[]`       | `'query'`, `'page'`, `'country'`, `'device'`, `'date'`, `'searchAppearance'` |
-| `request.searchType`            | `SearchType`  | `'web'`    | `'web'`, `'image'`, `'video'`, `'news'`                                      |
+| `request.searchType`            | `SearchType`  | `'web'`    | `'web'`, `'image'`, `'video'`, `'news'`, `'discover'`, `'googleNews'`         |
 | `request.rowLimit`              | `number`      | `1000`     | Rows per request (max 25,000)                                                |
+| `request.startRow`              | `number`      | `0`        | Row offset for pagination                                                    |
 | `request.dimensionFilterGroups` | `object[]`    | `[]`       | Filter groups to narrow results                                              |
+| `request.aggregationType`       | `string`      | `'auto'`   | Aggregation method: `'auto'`, `'byPage'`, `'byProperty'`                     |
+| `request.dataState`             | `string`      | `'all'`    | Include all or final data: `'all'`, `'final'`                                |
 
 ### `querySearchAnalyticsAll(client, request)`
 
