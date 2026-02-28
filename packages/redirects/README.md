@@ -111,7 +111,7 @@ const engine = createRedirectEngine({
 });
 
 const match = engine.match('/blog/my-seo-guide');
-// { destination: '/articles/my-seo-guide', statusCode: 301 }
+// { rule: {...}, resolvedDestination: '/articles/my-seo-guide', statusCode: 301 }
 
 const noMatch = engine.match('/no-redirect-here');
 // null
@@ -183,10 +183,9 @@ app.use(createExpressRedirectMiddleware(rules));
 ### Trailing Slash and Case Sensitivity
 
 ```ts
-const engine = createRedirectEngine({
-  rules,
+const engine = createRedirectEngine(rules, {
   caseSensitive: false,   // match /About and /about equally
-  trailingSlash: 'strip', // /about/ → /about before matching
+  trailingSlash: 'remove', // /about/ → /about before matching
 });
 ```
 
@@ -207,8 +206,14 @@ import { rules } from './redirects.config';
 
 const engine = createRedirectEngine({ rules });
 
-expect(engine.match('/old-about')).toEqual({ destination: '/about', statusCode: 301 });
-expect(engine.match('/blog/my-post')).toEqual({ destination: '/articles/my-post', statusCode: 301 });
+const match1 = engine.match('/old-about');
+expect(match1?.resolvedDestination).toBe('/about');
+expect(match1?.statusCode).toBe(301);
+
+const match2 = engine.match('/blog/my-post');
+expect(match2?.resolvedDestination).toBe('/articles/my-post');
+expect(match2?.statusCode).toBe(301);
+
 expect(engine.match('/no-match')).toBeNull();
 ```
 
@@ -216,19 +221,19 @@ expect(engine.match('/no-match')).toBeNull();
 
 ## API Reference
 
-### `createRedirectEngine(config)`
+### `createRedirectEngine(initialRules, config)`
 
 ```ts
-function createRedirectEngine(config: RedirectEngineConfig): RedirectEngine;
+function createRedirectEngine(initialRules?: RedirectRule[], config?: RedirectEngineConfig): RedirectEngine;
 ```
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| `config.rules` | `RedirectRule[]` | required | Ordered array of redirect rules |
-| `config.caseSensitive` | `boolean` | `true` | Case-sensitive URL matching |
-| `config.trailingSlash` | `'strip' \| 'add' \| 'ignore'` | `'ignore'` | Trailing slash normalization |
+| `initialRules` | `RedirectRule[]` | `[]` | Initial ordered array of redirect rules |
+| `config.caseSensitive` | `boolean` | `false` | Case-sensitive URL matching |
+| `config.trailingSlash` | `'keep' \| 'remove' \| 'add'` | `'remove'` | Trailing slash normalization |
 
-Returns `RedirectEngine`: `{ match(url: string): RedirectMatch | null }`.
+Returns `RedirectEngine`: `{ match(url: string): RedirectMatch | null; addRule(rule: RedirectRule): void; removeRule(source: string): boolean; getRules(): RedirectRule[] }`.
 
 ### `matchExact(pattern, url, caseSensitive?)`
 
@@ -238,9 +243,9 @@ Returns `boolean`. Byte-for-byte URL comparison.
 
 Returns `{ matched: boolean; params: Record<string, string> }`. Supports `:param` named segments and `*` wildcard.
 
-### `matchRegex(pattern, url)`
+### `matchRegex(url, pattern, destination, config)`
 
-Returns `{ matched: boolean; groups: string[] }`. Full regular expression matching with capture group extraction.
+Returns `{ matched: boolean; destination: string }`. Full regular expression matching with capture group substitution into the destination.
 
 ### `substituteParams(template, params)`
 
@@ -267,7 +272,7 @@ Returns an Express `RequestHandler` that calls `res.redirect()` on match or `nex
 | --- | --- |
 | `RedirectStatusCode` | `301 \| 302` |
 | `RedirectRule` | `{ source: string; destination: string; statusCode: RedirectStatusCode; caseSensitive?: boolean }` |
-| `RedirectMatch` | `{ destination: string; statusCode: RedirectStatusCode }` |
+| `RedirectMatch` | `{ rule: RedirectRule; resolvedDestination: string; statusCode: RedirectStatusCode }` |
 | `RedirectEngineConfig` | `{ rules: RedirectRule[]; caseSensitive?: boolean; trailingSlash?: 'strip' \| 'add' \| 'ignore' }` |
 | `RedirectEngine` | `{ match(url: string): RedirectMatch \| null }` |
 | `NextRedirect` | `{ source: string; destination: string; permanent: boolean }` |
@@ -318,7 +323,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
