@@ -281,7 +281,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const prompt = buildMetaDescriptionPrompt({
   title: 'My Article',
   content: '...',
-  keyphrase: 'my topic',
+  focusKeyphrase: 'my topic',
 });
 
 const openaiResponse = await openai.chat.completions.create({
