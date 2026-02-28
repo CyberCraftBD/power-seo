@@ -293,6 +293,7 @@ export function AnalyticsLoader() {
 | `grantAll`  | `() => void`                                | Grant all non-necessary categories        |
 | `revokeAll` | `() => void`                                | Revoke all non-necessary categories       |
 | `getState`  | `() => ConsentState`                        | Get the current consent snapshot          |
+| `isGranted` | `(category: ConsentCategory) => boolean`    | Check if a category is granted            |
 | `onChange`  | `(cb: ConsentChangeCallback) => () => void` | Subscribe to changes; returns unsubscribe |
 
 ### API Clients
