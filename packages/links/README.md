@@ -48,11 +48,11 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 
 - **Directed link graph construction** — `buildLinkGraph(pages)` builds an in-memory directed graph from page URL arrays, computing both outbound and inbound link sets for each node
 - **Orphan page detection** — `findOrphanPages(graph)` returns all pages that have zero inbound internal links, making them invisible to crawlers following links from the homepage
-- **Keyword-overlap link suggestions** — `suggestLinks(options)` compares page titles and content to find thematically related pages that should be linking to each other but are not
+- **Keyword-overlap link suggestions** — `suggestLinks(pages, options?)` compares page titles and content to find thematically related pages that should be linking to each other but are not
 - **PageRank-style link equity scoring** — `analyzeLinkEquity(graph, options?)` runs a damping-factor iterative algorithm to assign a relative equity score to every node in the graph
 - **Configurable suggestion options** — control minimum similarity threshold, maximum suggestions per page, and whether to include bidirectional suggestions
 - **Configurable equity options** — set the damping factor (default 0.85), number of iterations, and convergence threshold for the PageRank algorithm
-- **Inbound and outbound link counts** — every `LinkNode` in the graph exposes both `inboundLinks` and `outboundLinks` sets for direct inspection
+- **Inbound and outbound link counts** — every `LinkNode` in the graph exposes both `inbound` and `outbound` arrays plus `inboundCount` and `outboundCount` for direct inspection
 - **Normalized URL handling** — URLs are normalized before graph construction to prevent duplicate nodes from trailing slashes or case differences
 - **Zero dependencies** — no runtime dependencies; pure TypeScript computation
 
@@ -235,7 +235,7 @@ suggestions.forEach(({ from, to, anchorText, relevanceScore }) => {
 
 ### Analyze Link Equity
 
-`analyzeLinkEquity` runs a PageRank-style iterative algorithm over the graph and returns a `Map<string, LinkEquityScore>` assigning each page a normalized equity score. Pages with many high-quality inbound links receive higher scores.
+`analyzeLinkEquity` runs a PageRank-style iterative algorithm over the graph and returns a `LinkEquityScore[]` array assigning each page a normalized equity score, sorted by score in descending order. Pages with many high-quality inbound links receive higher scores.
 
 ```ts
 import { buildLinkGraph, analyzeLinkEquity } from '@power-seo/links';
