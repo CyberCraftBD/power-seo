@@ -204,7 +204,7 @@ substituteParams('/articles/:slug', { slug: 'react-seo-tips' });
 import { createRedirectEngine } from '@power-seo/redirects';
 import { rules } from './redirects.config';
 
-const engine = createRedirectEngine({ rules });
+const engine = createRedirectEngine(rules);
 
 const match1 = engine.match('/old-about');
 expect(match1?.resolvedDestination).toBe('/about');
@@ -235,15 +235,27 @@ function createRedirectEngine(initialRules?: RedirectRule[], config?: RedirectEn
 
 Returns `RedirectEngine`: `{ match(url: string): RedirectMatch | null; addRule(rule: RedirectRule): void; removeRule(source: string): boolean; getRules(): RedirectRule[] }`.
 
-### `matchExact(pattern, url, caseSensitive?)`
+### `matchExact(url, source, config?)`
 
-Returns `boolean`. Byte-for-byte URL comparison.
+```ts
+function matchExact(url: string, source: string, config?: RedirectEngineConfig): boolean;
+```
 
-### `matchGlob(pattern, url, caseSensitive?)`
+Returns `boolean`. Byte-for-byte URL comparison after normalization.
 
-Returns `{ matched: boolean; params: Record<string, string> }`. Supports `:param` named segments and `*` wildcard.
+### `matchGlob(url, pattern, config?)`
 
-### `matchRegex(url, pattern, destination, config)`
+```ts
+function matchGlob(url: string, pattern: string, config?: RedirectEngineConfig): { matched: boolean; params: Record<string, string> };
+```
+
+Returns `{ matched: boolean; params: Record<string, string> }`. Supports `:param` named segments and `*` wildcard matching.
+
+### `matchRegex(url, pattern, destination, config?)`
+
+```ts
+function matchRegex(url: string, pattern: string, destination: string, config?: RedirectEngineConfig): { matched: boolean; destination: string };
+```
 
 Returns `{ matched: boolean; destination: string }`. Full regular expression matching with capture group substitution into the destination.
 
@@ -270,11 +282,11 @@ Returns an Express `RequestHandler` that calls `res.redirect()` on match or `nex
 
 | Type | Description |
 | --- | --- |
-| `RedirectStatusCode` | `301 \| 302` |
-| `RedirectRule` | `{ source: string; destination: string; statusCode: RedirectStatusCode; caseSensitive?: boolean }` |
+| `RedirectStatusCode` | `301 \| 302 \| 308 \| 307 \| 410` (from `@power-seo/core`) |
+| `RedirectRule` | `{ source: string; destination: string; statusCode: RedirectStatusCode; isRegex?: boolean }` (from `@power-seo/core`) |
 | `RedirectMatch` | `{ rule: RedirectRule; resolvedDestination: string; statusCode: RedirectStatusCode }` |
-| `RedirectEngineConfig` | `{ rules: RedirectRule[]; caseSensitive?: boolean; trailingSlash?: 'strip' \| 'add' \| 'ignore' }` |
-| `RedirectEngine` | `{ match(url: string): RedirectMatch \| null }` |
+| `RedirectEngineConfig` | `{ caseSensitive?: boolean; trailingSlash?: 'keep' \| 'remove' \| 'add' }` |
+| `RedirectEngine` | `{ match(url: string): RedirectMatch \| null; addRule(rule: RedirectRule): void; removeRule(source: string): boolean; getRules(): RedirectRule[] }` |
 | `NextRedirect` | `{ source: string; destination: string; permanent: boolean }` |
 
 ---
