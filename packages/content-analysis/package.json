@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/content-analysis",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Yoast-style SEO content analysis engine with scoring, checks, and React components",
   "keywords": [
     "seo-content-analysis",

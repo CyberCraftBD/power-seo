@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.12] - 2026-03-03
+
+### Fixed
+
+#### Documentation
+- **@power-seo/preview**: Added TwitterImageValidation structure documentation
+- **@power-seo/sitemap**: Fixed lastmod conversion claim and clarified namespace detection scope
+- **@power-seo/redirects**: Corrected API function signatures, status codes, and config types (5 fixes)
+- **@power-seo/links**: Fixed function signatures and property names (3 fixes)
+- **@power-seo/audit**: Added missing hostname parameter to API reference
+- **@power-seo/images**: Corrected function signatures, return types, and examples (7 fixes)
+- **@power-seo/ai**: Fixed focusKeyphrase parameter name in OpenAI example
+- **@power-seo/analytics**: Corrected correlation return type, ranking tiers, and usage examples
+- **@power-seo/search-console**: Fixed TokenManager type definition and CI/CD example
+- **@power-seo/integrations**: Corrected error properties and config parameter types
+- **@power-seo/tracking**: Added missing isGranted method to API reference
+
+**Total: 18 documentation issues fixed across 11 packages**
+
+---
+
 ## [1.0.11] - 2026-03-01
 
 ### Added

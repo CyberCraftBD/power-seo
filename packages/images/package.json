@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/images",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Deep image SEO analysis: alt text quality, lazy loading, format optimization, image sitemaps",
   "keywords": [
     "seo",

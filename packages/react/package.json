@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/react",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Framework-agnostic React SEO components — meta tags, Open Graph, Twitter Card, breadcrumbs, and more",
   "keywords": [
     "seo",

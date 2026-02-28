@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/ai",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "LLM-agnostic prompt templates and response parsers for AI-assisted SEO",
   "keywords": [
     "seo",

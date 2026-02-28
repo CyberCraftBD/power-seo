@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/links",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Internal link graph analysis, orphan detection, link suggestions, and link equity scoring",
   "keywords": [
     "seo",

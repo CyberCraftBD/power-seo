@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/schema",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Type-safe JSON-LD structured data builder with 23 schema builders and React components",
   "keywords": [
     "seo",

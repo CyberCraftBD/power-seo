@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/sitemap",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "XML sitemap generation, streaming, and validation with image, video, and news support",
   "keywords": [
     "seo",

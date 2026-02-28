@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/integrations",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Third-party SEO tool API clients for Semrush and Ahrefs with shared HTTP client",
   "keywords": [
     "seo",
