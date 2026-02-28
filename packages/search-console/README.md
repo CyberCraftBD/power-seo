@@ -242,14 +242,25 @@ await deleteSitemap(client, 'https://example.com/old-sitemap.xml');
 ### CI/CD Keyword Position Check
 
 ```ts
-import { createTokenManager, createGSCClient, querySearchAnalyticsAll } from '@power-seo/search-console';
+import { createTokenManager, createGSCClient, querySearchAnalyticsAll, getServiceAccountToken } from '@power-seo/search-console';
+import { subtle } from 'node:crypto';
 
-const tokenManager = createTokenManager({
-  type: 'service-account',
-  clientEmail: process.env.GSC_SERVICE_ACCOUNT_EMAIL!,
-  privateKey: process.env.GSC_PRIVATE_KEY!,
-  scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
-});
+// Parse service account JSON from environment
+const serviceAccount = JSON.parse(process.env.GSC_SERVICE_ACCOUNT_JSON!);
+
+async function signJwt(payload: Record<string, unknown>): Promise<string> {
+  // Sign JWT assertion using node:crypto
+  // Implementation depends on your preferred JWT signing library
+  throw new Error('Implement JWT signing');
+}
+
+const tokenManager = createTokenManager(() =>
+  getServiceAccountToken({
+    clientEmail: serviceAccount.client_email,
+    privateKeyId: serviceAccount.private_key_id,
+    signJwt,
+  }),
+);
 
 const client = createGSCClient({ siteUrl: 'sc-domain:example.com', tokenManager });
 
@@ -324,7 +335,7 @@ Returns `Promise<InspectionResult>`: `{ verdict, indexingState, lastCrawlTime, m
 | `OAuthCredentials`      | `{ clientId, clientSecret, refreshToken }`                       |
 | `ServiceAccountCredentials` | `{ clientEmail, privateKey, scopes }`                        |
 | `TokenResult`           | `{ accessToken: string, expiresAt: number }`                     |
-| `TokenManager`          | `{ getAccessToken(): Promise<TokenResult> }`                     |
+| `TokenManager`          | `{ getToken(): Promise<string>, invalidate(): void }`            |
 | `GSCClientConfig`       | `{ siteUrl: string, tokenManager: TokenManager }`                |
 | `GSCClient`             | Scoped API client instance                                       |
 | `SearchType`            | `'web' \| 'image' \| 'video' \| 'news'`                          |
