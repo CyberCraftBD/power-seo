@@ -365,6 +365,16 @@ function generateTwitterPreview(input: TwitterPreviewInput): TwitterPreviewData;
 | `image` | `TwitterImageValidation \| undefined` | Image with validation result |
 | `domain` | `string \| undefined` | Extracted domain from `site` handle |
 
+#### `TwitterImageValidation`
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `url` | `string` | Image URL |
+| `width` | `number \| undefined` | Image width in pixels |
+| `height` | `number \| undefined` | Image height in pixels |
+| `valid` | `boolean` | Whether the image meets Twitter Card dimension requirements |
+| `message` | `string \| undefined` | Human-readable validation message when dimensions deviate from recommended sizes |
+
 ---
 
 ### `truncateAtPixelWidth()`
