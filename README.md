@@ -18,32 +18,28 @@
 
 ## Why @power-seo?
 
-| | Without | With |
-|---|---|---|
-| Meta tag management | ❌ Hand-written HTML or locked to Yoast/next-seo | ✅ Type-safe builders + Next.js App Router / Remix native |
-| Structured data | ❌ Manual JSON, no validation | ✅ 23 typed builders + `validateSchema()` + 21 React components |
-| Content scoring | ❌ WordPress-only Yoast SEO plugin | ✅ Standalone Yoast-style engine — works anywhere in TypeScript |
-| SERP previews | ❌ Browser tools and paid dashboards only | ✅ Pixel-accurate server-side truncation at 580px |
-| SEO auditing | ❌ Screaming Frog / paid SaaS tools | ✅ Programmatic `auditPage()` + `auditSite()` with 0–100 score |
-| Image SEO | ❌ Manual checklist, no automation | ✅ Alt text, CWV-aware lazy loading, WebP/AVIF format analysis |
-| Link graph | ❌ Unknown orphan pages, guessed equity | ✅ `findOrphanPages()` + PageRank-style equity scoring |
-| Redirect engine | ❌ Framework-specific config files per project | ✅ Unified engine — Next.js, Remix, Express adapters |
-| Sitemap | ❌ String-built XML, memory spikes on large sites | ✅ Stream 50,000+ URLs at constant memory usage |
-| AI integration | ❌ Custom LLM prompt logic per project | ✅ LLM-agnostic prompt builders + structured response parsers |
-| GSC API | ❌ Custom OAuth boilerplate every project | ✅ Typed client — OAuth2 + service account + URL inspection |
-| Analytics tracking | ❌ Copy-paste script tags, no consent management | ✅ GA4, Clarity, PostHog, Plausible, Fathom + GDPR consent |
-| TypeScript support | ❌ Scattered `@types/` packages or none | ✅ Full `.d.ts` across all 17 packages — zero extra installs |
-| Bundle impact | ❌ All-or-nothing monolithic imports | ✅ `"sideEffects": false` on every package — tree-shake anything |
-
-
+|                     | Without                                           | With                                                             |
+| ------------------- | ------------------------------------------------- | ---------------------------------------------------------------- |
+| Meta tag management | ❌ Hand-written HTML or locked to Yoast/next-seo  | ✅ Type-safe builders + Next.js App Router / Remix native        |
+| Structured data     | ❌ Manual JSON, no validation                     | ✅ 23 typed builders + `validateSchema()` + 21 React components  |
+| Content scoring     | ❌ WordPress-only Yoast SEO plugin                | ✅ Standalone Yoast-style engine — works anywhere in TypeScript  |
+| SERP previews       | ❌ Browser tools and paid dashboards only         | ✅ Pixel-accurate server-side truncation at 580px                |
+| SEO auditing        | ❌ Screaming Frog / paid SaaS tools               | ✅ Programmatic `auditPage()` + `auditSite()` with 0–100 score   |
+| Image SEO           | ❌ Manual checklist, no automation                | ✅ Alt text, CWV-aware lazy loading, WebP/AVIF format analysis   |
+| Link graph          | ❌ Unknown orphan pages, guessed equity           | ✅ `findOrphanPages()` + PageRank-style equity scoring           |
+| Redirect engine     | ❌ Framework-specific config files per project    | ✅ Unified engine — Next.js, Remix, Express adapters             |
+| Sitemap             | ❌ String-built XML, memory spikes on large sites | ✅ Stream 50,000+ URLs at constant memory usage                  |
+| AI integration      | ❌ Custom LLM prompt logic per project            | ✅ LLM-agnostic prompt builders + structured response parsers    |
+| GSC API             | ❌ Custom OAuth boilerplate every project         | ✅ Typed client — OAuth2 + service account + URL inspection      |
+| Analytics tracking  | ❌ Copy-paste script tags, no consent management  | ✅ GA4, Clarity, PostHog, Plausible, Fathom + GDPR consent       |
+| TypeScript support  | ❌ Scattered `@types/` packages or none           | ✅ Full `.d.ts` across all 17 packages — zero extra installs     |
+| Bundle impact       | ❌ All-or-nothing monolithic imports              | ✅ `"sideEffects": false` on every package — tree-shake anything |
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
     <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
   </a>
 </p>
-
-
 
 ![Power-SEO Ecosystem Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/comparison.svg)
 
@@ -82,17 +78,20 @@
 Complete guides, API reference, and 38+ wiki pages available on the [GitHub Wiki](https://github.com/CyberCraftBD/power-seo/wiki):
 
 ### Getting Started
+
 - **[Installation & Setup](https://github.com/CyberCraftBD/power-seo/wiki/Installation-&-Setup)** - Install power-seo for your framework
 - **[Quick Start](https://github.com/CyberCraftBD/power-seo/wiki/Quick-Start)** - Get running in 5 minutes
 - **[Package Selection](https://github.com/CyberCraftBD/power-seo/wiki/Package-Selection)** - Choose the right packages
 
 ### Learning
+
 - **[Architecture Overview](https://github.com/CyberCraftBD/power-seo/wiki/Architecture-Overview)** - Monorepo structure & design principles
 - **[API References](https://github.com/CyberCraftBD/power-seo/wiki)** - Detailed documentation for all 17 packages
 - **[Use Cases](https://github.com/CyberCraftBD/power-seo/wiki)** - Real-world implementation examples (CMS, eCommerce, SaaS, Multi-language, CI/CD)
 - **[Troubleshooting](https://github.com/CyberCraftBD/power-seo/wiki/Troubleshooting-Guide)** - Solutions to common issues
 
 ### Community & Support
+
 - **[GitHub Wiki Home](https://github.com/CyberCraftBD/power-seo/wiki/Home)** - Full wiki navigation and 38+ pages
 - **[GitHub Discussions](https://github.com/CyberCraftBD/power-seo/discussions)** - 17+ Q&A threads and best practices
 - **[GitHub Issues](https://github.com/CyberCraftBD/power-seo/issues)** - Report bugs and feature requests
@@ -104,25 +103,25 @@ Complete guides, API reference, and 38+ wiki pages available on the [GitHub Wiki
 
 All 17 packages are independently installable — use only what you need.
 
-| Package | Version | Description |
-| --- | --- | --- |
-| [`@power-seo/core`](./packages/core) | [![npm](https://img.shields.io/npm/v/@power-seo/core)](https://www.npmjs.com/package/@power-seo/core) | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](./packages/react) | [![npm](https://img.shields.io/npm/v/@power-seo/react)](https://www.npmjs.com/package/@power-seo/react) | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](./packages/meta) | [![npm](https://img.shields.io/npm/v/@power-seo/meta)](https://www.npmjs.com/package/@power-seo/meta) | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](./packages/schema) | [![npm](https://img.shields.io/npm/v/@power-seo/schema)](https://www.npmjs.com/package/@power-seo/schema) | Type-safe JSON-LD structured data — 23 builders + 21 React components |
-| [`@power-seo/content-analysis`](./packages/content-analysis) | [![npm](https://img.shields.io/npm/v/@power-seo/content-analysis)](https://www.npmjs.com/package/@power-seo/content-analysis) | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](./packages/readability) | [![npm](https://img.shields.io/npm/v/@power-seo/readability)](https://www.npmjs.com/package/@power-seo/readability) | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](./packages/preview) | [![npm](https://img.shields.io/npm/v/@power-seo/preview)](https://www.npmjs.com/package/@power-seo/preview) | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](./packages/sitemap) | [![npm](https://img.shields.io/npm/v/@power-seo/sitemap)](https://www.npmjs.com/package/@power-seo/sitemap) | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](./packages/redirects) | [![npm](https://img.shields.io/npm/v/@power-seo/redirects)](https://www.npmjs.com/package/@power-seo/redirects) | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](./packages/links) | [![npm](https://img.shields.io/npm/v/@power-seo/links)](https://www.npmjs.com/package/@power-seo/links) | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](./packages/audit) | [![npm](https://img.shields.io/npm/v/@power-seo/audit)](https://www.npmjs.com/package/@power-seo/audit) | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](./packages/images) | [![npm](https://img.shields.io/npm/v/@power-seo/images)](https://www.npmjs.com/package/@power-seo/images) | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](./packages/ai) | [![npm](https://img.shields.io/npm/v/@power-seo/ai)](https://www.npmjs.com/package/@power-seo/ai) | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](./packages/analytics) | [![npm](https://img.shields.io/npm/v/@power-seo/analytics)](https://www.npmjs.com/package/@power-seo/analytics) | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](./packages/search-console) | [![npm](https://img.shields.io/npm/v/@power-seo/search-console)](https://www.npmjs.com/package/@power-seo/search-console) | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](./packages/integrations) | [![npm](https://img.shields.io/npm/v/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations) | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](./packages/tracking) | [![npm](https://img.shields.io/npm/v/@power-seo/tracking)](https://www.npmjs.com/package/@power-seo/tracking) | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                      | Version                                                                                                                       | Description                                                             |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](./packages/core)                         | [![npm](https://img.shields.io/npm/v/@power-seo/core)](https://www.npmjs.com/package/@power-seo/core)                         | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](./packages/react)                       | [![npm](https://img.shields.io/npm/v/@power-seo/react)](https://www.npmjs.com/package/@power-seo/react)                       | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](./packages/meta)                         | [![npm](https://img.shields.io/npm/v/@power-seo/meta)](https://www.npmjs.com/package/@power-seo/meta)                         | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](./packages/schema)                     | [![npm](https://img.shields.io/npm/v/@power-seo/schema)](https://www.npmjs.com/package/@power-seo/schema)                     | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/content-analysis`](./packages/content-analysis) | [![npm](https://img.shields.io/npm/v/@power-seo/content-analysis)](https://www.npmjs.com/package/@power-seo/content-analysis) | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](./packages/readability)           | [![npm](https://img.shields.io/npm/v/@power-seo/readability)](https://www.npmjs.com/package/@power-seo/readability)           | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](./packages/preview)                   | [![npm](https://img.shields.io/npm/v/@power-seo/preview)](https://www.npmjs.com/package/@power-seo/preview)                   | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](./packages/sitemap)                   | [![npm](https://img.shields.io/npm/v/@power-seo/sitemap)](https://www.npmjs.com/package/@power-seo/sitemap)                   | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](./packages/redirects)               | [![npm](https://img.shields.io/npm/v/@power-seo/redirects)](https://www.npmjs.com/package/@power-seo/redirects)               | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](./packages/links)                       | [![npm](https://img.shields.io/npm/v/@power-seo/links)](https://www.npmjs.com/package/@power-seo/links)                       | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](./packages/audit)                       | [![npm](https://img.shields.io/npm/v/@power-seo/audit)](https://www.npmjs.com/package/@power-seo/audit)                       | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](./packages/images)                     | [![npm](https://img.shields.io/npm/v/@power-seo/images)](https://www.npmjs.com/package/@power-seo/images)                     | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](./packages/ai)                             | [![npm](https://img.shields.io/npm/v/@power-seo/ai)](https://www.npmjs.com/package/@power-seo/ai)                             | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](./packages/analytics)               | [![npm](https://img.shields.io/npm/v/@power-seo/analytics)](https://www.npmjs.com/package/@power-seo/analytics)               | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](./packages/search-console)     | [![npm](https://img.shields.io/npm/v/@power-seo/search-console)](https://www.npmjs.com/package/@power-seo/search-console)     | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](./packages/integrations)         | [![npm](https://img.shields.io/npm/v/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations)         | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](./packages/tracking)                 | [![npm](https://img.shields.io/npm/v/@power-seo/tracking)](https://www.npmjs.com/package/@power-seo/tracking)                 | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ![Power-SEO Monorepo Architecture](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/architecture.svg)
 
@@ -207,7 +206,9 @@ function App() {
       openGraph={{ type: 'website', siteName: 'My Site' }}
       twitter={{ site: '@mysite', cardType: 'summary_large_image' }}
     >
-      <Router><Routes /></Router>
+      <Router>
+        <Routes />
+      </Router>
     </DefaultSEO>
   );
 }
@@ -219,7 +220,10 @@ function BlogPage({ post }) {
         title={post.title}
         description={post.excerpt}
         canonical={`https://example.com/blog/${post.slug}`}
-        openGraph={{ type: 'article', images: [{ url: post.coverImage, width: 1200, height: 630 }] }}
+        openGraph={{
+          type: 'article',
+          images: [{ url: post.coverImage, width: 1200, height: 630 }],
+        }}
       />
       <Hreflang
         alternates={[
@@ -249,7 +253,14 @@ npm install @power-seo/schema
 ```
 
 ```ts
-import { article, faqPage, breadcrumbList, schemaGraph, toJsonLdString, validateSchema } from '@power-seo/schema';
+import {
+  article,
+  faqPage,
+  breadcrumbList,
+  schemaGraph,
+  toJsonLdString,
+  validateSchema,
+} from '@power-seo/schema';
 
 // Combine multiple schemas into a single @graph document
 const graph = schemaGraph([
@@ -309,9 +320,9 @@ const output = analyzeContent({
   externalLinks: ['https://maps.google.com'],
 });
 
-console.log(output.score);           // e.g. 38
-console.log(output.maxScore);        // e.g. 55
-console.log(output.results);         // AnalysisResult[] — per-check breakdown
+console.log(output.score); // e.g. 38
+console.log(output.maxScore); // e.g. 55
+console.log(output.results); // AnalysisResult[] — per-check breakdown
 console.log(output.recommendations); // string[] of actionable suggestions
 ```
 
@@ -319,7 +330,7 @@ console.log(output.recommendations); // string[] of actionable suggestions
 // Real-time editor feedback
 import { ContentAnalyzer } from '@power-seo/content-analysis/react';
 
-<ContentAnalyzer input={editorInput} />
+<ContentAnalyzer input={editorInput} />;
 ```
 
 ### Readability Analysis
@@ -335,11 +346,11 @@ const result = analyzeReadability({
   content: '<h1>My Article</h1><p>Your article HTML content here.</p>',
 });
 
-console.log(result.status);                      // 'good' | 'ok' | 'poor'
-console.log(result.scores.fleschReadingEase);    // 0–100 (higher = easier to read)
-console.log(result.scores.fleschKincaidGrade);   // US grade level (lower = simpler)
-console.log(result.scores.gunningFog);           // Years of education needed
-console.log(result.recommendations);             // ['Shorten long sentences...']
+console.log(result.status); // 'good' | 'ok' | 'poor'
+console.log(result.scores.fleschReadingEase); // 0–100 (higher = easier to read)
+console.log(result.scores.fleschKincaidGrade); // US grade level (lower = simpler)
+console.log(result.scores.gunningFog); // Years of education needed
+console.log(result.recommendations); // ['Shorten long sentences...']
 ```
 
 ![Readability Scoring in CMS](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/cms-ui.svg)
@@ -360,9 +371,9 @@ const serp = generateSerpPreview({
   siteTitle: 'My Blog',
 });
 
-console.log(serp.title);            // 'How to Add SEO to Next.js Apps - My Blog'
-console.log(serp.displayUrl);       // 'example.com › blog › nextjs-seo'
-console.log(serp.titleTruncated);   // false (under 580px)
+console.log(serp.title); // 'How to Add SEO to Next.js Apps - My Blog'
+console.log(serp.displayUrl); // 'example.com › blog › nextjs-seo'
+console.log(serp.titleTruncated); // false (under 580px)
 
 const og = generateOgPreview({
   title: 'Next.js SEO Guide',
@@ -371,8 +382,8 @@ const og = generateOgPreview({
   image: { url: 'https://example.com/og.jpg', width: 1200, height: 630 },
 });
 
-console.log(og.image?.valid);    // true
-console.log(og.image?.message);  // undefined (dimensions are correct)
+console.log(og.image?.valid); // true
+console.log(og.image?.message); // undefined (dimensions are correct)
 ```
 
 ```tsx
@@ -387,7 +398,7 @@ import { PreviewPanel } from '@power-seo/preview/react';
   image={{ url: 'https://example.com/og.jpg', width: 1200, height: 630 }}
   twitterSite="@myblog"
   twitterCardType="summary_large_image"
-/>
+/>;
 ```
 
 ![SERP Preview UI Panel](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/preview-ui.svg)
@@ -399,7 +410,12 @@ npm install @power-seo/sitemap
 ```
 
 ```ts
-import { generateSitemap, streamSitemap, splitSitemap, validateSitemapUrl } from '@power-seo/sitemap';
+import {
+  generateSitemap,
+  streamSitemap,
+  splitSitemap,
+  validateSitemapUrl,
+} from '@power-seo/sitemap';
 
 // Basic sitemap
 const xml = generateSitemap({
@@ -485,16 +501,16 @@ const result = auditPage({
   externalLinks: ['https://example.org'],
 });
 
-console.log(result.score);           // 0–100 weighted score
-console.log(result.categories);      // { meta, content, structure, performance }
-console.log(result.rules);           // AuditRule[] — pass/warning/error per rule
+console.log(result.score); // 0–100 weighted score
+console.log(result.categories); // { meta, content, structure, performance }
+console.log(result.rules); // AuditRule[] — pass/warning/error per rule
 console.log(result.recommendations); // string[] of actionable fixes
 
 // Whole-site audit
 const siteResult = auditSite([page1Input, page2Input, page3Input]);
-console.log(siteResult.score);       // aggregate score
-console.log(siteResult.topIssues);   // most common issues across all pages
-console.log(siteResult.summary);     // { totalPages, avgScore, ... }
+console.log(siteResult.score); // aggregate score
+console.log(siteResult.topIssues); // most common issues across all pages
+console.log(siteResult.summary); // { totalPages, avgScore, ... }
 ```
 
 ### Image SEO
@@ -513,7 +529,13 @@ import {
 
 const images = [
   { src: '/hero.jpg', alt: '', loading: 'eager', isAboveFold: true, size: 280_000 },
-  { src: '/product.jpg', alt: 'Wireless headphones', loading: 'lazy', isAboveFold: false, size: 520_000 },
+  {
+    src: '/product.jpg',
+    alt: 'Wireless headphones',
+    loading: 'lazy',
+    isAboveFold: false,
+    size: 520_000,
+  },
 ];
 
 const altResult = analyzeAltText({ images });
@@ -543,11 +565,11 @@ npm install @power-seo/links
 import { buildLinkGraph, findOrphanPages, suggestLinks, analyzeLinkEquity } from '@power-seo/links';
 
 const graph = buildLinkGraph([
-  { url: '/home',    links: ['/about', '/blog', '/products'] },
-  { url: '/about',   links: ['/home', '/contact'] },
-  { url: '/blog',    links: ['/home'] },
-  { url: '/hidden',  links: [] },    // orphan — no inbound links
-  { url: '/old-sdk', links: [] },    // orphan — unreachable
+  { url: '/home', links: ['/about', '/blog', '/products'] },
+  { url: '/about', links: ['/home', '/contact'] },
+  { url: '/blog', links: ['/home'] },
+  { url: '/hidden', links: [] }, // orphan — no inbound links
+  { url: '/old-sdk', links: [] }, // orphan — unreachable
 ]);
 
 const orphans = findOrphanPages(graph);
@@ -590,13 +612,13 @@ const response = await openai.chat.completions.create({
 });
 
 const result = parseMetaDescriptionResponse(response.choices[0].message.content);
-console.log(result.descriptions[0].text);    // 'Discover the best coffee shops in NYC...'
-console.log(result.descriptions[0].length);  // 142
+console.log(result.descriptions[0].text); // 'Discover the best coffee shops in NYC...'
+console.log(result.descriptions[0].length); // 142
 
 // Title generation
 const titlePrompt = buildTitlePrompt({ content: articleHtml, keyphrase: 'coffee shops nyc' });
 const titleResult = parseTitleResponse(await llm(titlePrompt));
-console.log(titleResult.titles[0].text);     // 'Best Coffee Shops in NYC: 2026 Guide'
+console.log(titleResult.titles[0].text); // 'Best Coffee Shops in NYC: 2026 Guide'
 ```
 
 ![AI SEO Suggestions UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/suggestions-ui.svg)
@@ -726,7 +748,7 @@ const manager = createConsentManager({ necessary: true, analytics: false, market
 manager.grant('analytics');
 
 // Conditional script loading — only fires when consent is granted
-const ga4Scripts   = buildGA4Script({ measurementId: 'G-XXXXXXXXXX' });
+const ga4Scripts = buildGA4Script({ measurementId: 'G-XXXXXXXXXX' });
 const clarityScripts = buildClarityScript({ projectId: 'abcde12345' });
 
 const toLoad = ga4Scripts.filter((s) => s.shouldLoad(manager.getState()));
@@ -777,7 +799,7 @@ const meta = validateMetaDescription('Discover expert-reviewed running shoes for
 // { valid: true, severity: 'warning', charCount: 52 } → suggest expanding to 120–160 chars
 
 // URL utilities
-toSlug('My Blog Post Title! — 2026');   // → 'my-blog-post-title-2026'
+toSlug('My Blog Post Title! — 2026'); // → 'my-blog-post-title-2026'
 resolveCanonical('https://example.com', '/blog/post'); // → 'https://example.com/blog/post'
 
 // Text statistics from HTML
@@ -794,8 +816,8 @@ buildRobotsContent({ index: false, follow: true, maxSnippet: 150 });
 
 // Site-wide title template
 const makeTitle = createTitleTemplate({ siteName: 'My Site', separator: '—' });
-makeTitle('About Us');   // → 'About Us — My Site'
-makeTitle('Blog');       // → 'Blog — My Site'
+makeTitle('About Us'); // → 'About Us — My Site'
+makeTitle('Blog'); // → 'Blog — My Site'
 ```
 
 ![SEO Metrics and Utilities](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/seo-metrics.svg)
@@ -869,11 +891,14 @@ const content = analyzeContent({ title, metaDescription, content, focusKeyphrase
 const readability = analyzeReadability({ content: bodyHtml });
 
 const errors: string[] = [];
-if (audit.score < 70)   errors.push(`Audit score too low: ${audit.score}/100`);
+if (audit.score < 70) errors.push(`Audit score too low: ${audit.score}/100`);
 if (content.score / content.maxScore < 0.6) errors.push('Content SEO score below 60%');
 if (readability.status === 'poor') errors.push('Readability is poor — simplify content');
 
-if (errors.length) { errors.forEach((e) => console.error('✗', e)); process.exit(1); }
+if (errors.length) {
+  errors.forEach((e) => console.error('✗', e));
+  process.exit(1);
+}
 console.log('✓ All SEO checks passed');
 ```
 
@@ -882,12 +907,16 @@ console.log('✓ All SEO checks passed');
 Install `@power-seo/search-console` + `@power-seo/analytics` + `@power-seo/integrations` to build a fully automated SEO reporting pipeline.
 
 ```ts
-import { createGSCClient, createTokenManager, querySearchAnalytics } from '@power-seo/search-console';
+import {
+  createGSCClient,
+  createTokenManager,
+  querySearchAnalytics,
+} from '@power-seo/search-console';
 import { mergeGscWithAudit, buildDashboardData, trackPositionChanges } from '@power-seo/analytics';
 import { createSemrushClient } from '@power-seo/integrations';
 
 const gscClient = createGSCClient({ siteUrl: 'https://example.com', tokenManager });
-const semrush   = createSemrushClient({ apiKey: process.env.SEMRUSH_API_KEY! });
+const semrush = createSemrushClient({ apiKey: process.env.SEMRUSH_API_KEY! });
 
 const [gscData, semrushData] = await Promise.all([
   querySearchAnalytics(gscClient, { startDate, endDate, dimensions: ['query', 'page'] }),
@@ -895,7 +924,7 @@ const [gscData, semrushData] = await Promise.all([
 ]);
 
 const dashboard = buildDashboardData({ gscPages: gscData, gscQueries: gscData, auditResults });
-const changes   = trackPositionChanges(lastWeekGsc, gscData);
+const changes = trackPositionChanges(lastWeekGsc, gscData);
 // Email or Slack the weekly SEO report
 ```
 
@@ -938,16 +967,16 @@ const frSitemap = generateSitemap({ hostname: 'https://example.com', urls: frUrl
 
 ## Framework Compatibility
 
-| Framework | Recommended Packages |
-| --- | --- |
-| **Next.js 14+ (App Router)** | All 17 packages |
-| **Next.js 13 (Pages Router)** | `@power-seo/react`, `@power-seo/schema`, `@power-seo/core` |
-| **Remix v2** | `@power-seo/meta`, `@power-seo/schema`, `@power-seo/redirects` |
-| **Vite + React (SPA)** | `@power-seo/react`, `@power-seo/schema`, `@power-seo/content-analysis` |
-| **Gatsby** | `@power-seo/react`, `@power-seo/schema`, `@power-seo/sitemap` |
-| **Node.js / Express / Fastify** | `@power-seo/core`, `@power-seo/sitemap`, `@power-seo/audit`, `@power-seo/redirects` |
-| **Cloudflare Workers / Vercel Edge** | `@power-seo/core`, `@power-seo/sitemap`, `@power-seo/redirects`, `@power-seo/schema` |
-| **Headless CMS (any)** | `@power-seo/content-analysis`, `@power-seo/readability`, `@power-seo/preview`, `@power-seo/schema` |
+| Framework                            | Recommended Packages                                                                               |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| **Next.js 14+ (App Router)**         | All 17 packages                                                                                    |
+| **Next.js 13 (Pages Router)**        | `@power-seo/react`, `@power-seo/schema`, `@power-seo/core`                                         |
+| **Remix v2**                         | `@power-seo/meta`, `@power-seo/schema`, `@power-seo/redirects`                                     |
+| **Vite + React (SPA)**               | `@power-seo/react`, `@power-seo/schema`, `@power-seo/content-analysis`                             |
+| **Gatsby**                           | `@power-seo/react`, `@power-seo/schema`, `@power-seo/sitemap`                                      |
+| **Node.js / Express / Fastify**      | `@power-seo/core`, `@power-seo/sitemap`, `@power-seo/audit`, `@power-seo/redirects`                |
+| **Cloudflare Workers / Vercel Edge** | `@power-seo/core`, `@power-seo/sitemap`, `@power-seo/redirects`, `@power-seo/schema`               |
+| **Headless CMS (any)**               | `@power-seo/content-analysis`, `@power-seo/readability`, `@power-seo/preview`, `@power-seo/schema` |
 
 ![React SSR Rendering Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/ssr-accuracy.svg)
 
@@ -979,6 +1008,7 @@ const frSitemap = generateSitemap({ hostname: 'https://example.com', urls: frUrl
 ```
 
 **Design principles:**
+
 - **Modular by design** — install only what you need; zero coupling between packages
 - **Framework-agnostic core** — `@power-seo/core` has zero runtime dependencies and runs in any JS environment
 - **Dual ESM + CJS** — all packages ship both formats via tsup for any bundler or `require()` usage
@@ -1024,15 +1054,15 @@ pnpm build
 
 ### Commands
 
-| Command | Description |
-| --- | --- |
-| `pnpm build` | Build all packages (Turborepo cached) |
-| `pnpm dev` | Watch mode for all packages |
-| `pnpm test` | Run all tests with Vitest |
-| `pnpm lint` | Lint all packages (ESLint v9) |
-| `pnpm typecheck` | Type-check all packages |
-| `pnpm format` | Format with Prettier |
-| `pnpm clean` | Remove all build artifacts |
+| Command          | Description                           |
+| ---------------- | ------------------------------------- |
+| `pnpm build`     | Build all packages (Turborepo cached) |
+| `pnpm dev`       | Watch mode for all packages           |
+| `pnpm test`      | Run all tests with Vitest             |
+| `pnpm lint`      | Lint all packages (ESLint v9)         |
+| `pnpm typecheck` | Type-check all packages               |
+| `pnpm format`    | Format with Prettier                  |
+| `pnpm clean`     | Remove all build artifacts            |
 
 ```bash
 # Scope any command to a single package
@@ -1043,6 +1073,7 @@ pnpm --filter @power-seo/schema typecheck
 # Add a dependency to a specific package
 pnpm --filter @power-seo/core add some-package
 ```
+
 ---
 
 ## About [CyberCraft Bangladesh](https://ccbd.dev)

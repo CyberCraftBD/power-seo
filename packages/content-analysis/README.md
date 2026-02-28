@@ -19,19 +19,18 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 
 ## Why @power-seo/content-analysis?
 
-| | Without | With |
-|---|---|---|
-| Keyphrase check | ❌ Manual grep | ✅ Density + distribution scoring |
-| Title validation | ❌ Eye-check only | ✅ Presence, length, keyphrase match |
-| Meta description | ❌ Unchecked | ✅ Length (120–160 chars) + keyphrase |
-| Heading structure | ❌ Missed H1s | ✅ H1 hierarchy + keyphrase in subheadings |
-| Image alt text | ❌ Skipped | ✅ Alt presence + keyphrase in alt |
-| Link analysis | ❌ Unknown | ✅ Internal + external link presence |
-| SEO score | ❌ Guesswork | ✅ Aggregate score with per-check breakdown |
-| Framework support | ❌ WordPress-only | ✅ Next.js, Remix, Vite, Node.js, Edge |
+|                   | Without           | With                                        |
+| ----------------- | ----------------- | ------------------------------------------- |
+| Keyphrase check   | ❌ Manual grep    | ✅ Density + distribution scoring           |
+| Title validation  | ❌ Eye-check only | ✅ Presence, length, keyphrase match        |
+| Meta description  | ❌ Unchecked      | ✅ Length (120–160 chars) + keyphrase       |
+| Heading structure | ❌ Missed H1s     | ✅ H1 hierarchy + keyphrase in subheadings  |
+| Image alt text    | ❌ Skipped        | ✅ Alt presence + keyphrase in alt          |
+| Link analysis     | ❌ Unknown        | ✅ Internal + external link presence        |
+| SEO score         | ❌ Guesswork      | ✅ Aggregate score with per-check breakdown |
+| Framework support | ❌ WordPress-only | ✅ Next.js, Remix, Vite, Node.js, Edge      |
 
 ![SEO Score Dashboard](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -66,20 +65,20 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 
 | Feature                        | @power-seo/content-analysis | Yoast SEO | next-seo | seo-analyzer | react-helmet |
 | ------------------------------ | :-------------------------: | :-------: | :------: | :----------: | :----------: |
-| Keyphrase density check        | ✅                          | ✅        | ❌       | Partial      | ❌           |
-| Keyphrase distribution         | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| Title + meta validation        | ✅                          | ✅        | ❌       | Partial      | ❌           |
-| Heading structure check        | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| Image alt + keyphrase check    | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| Internal / external link check | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| Aggregate SEO score            | ✅                          | ✅        | ❌       | Partial      | ❌           |
-| Per-check disable config       | ✅                          | ❌        | ❌       | ❌           | ❌           |
-| Works outside WordPress        | ✅                          | ❌        | ✅       | ✅           | ✅           |
-| TypeScript-first               | ✅                          | ❌        | Partial  | ❌           | ❌           |
-| Tree-shakeable                 | ✅                          | ❌        | Partial  | ❌           | ❌           |
-| React UI components            | ✅                          | ✅        | ❌       | ❌           | ❌           |
-| CI / Node.js usage             | ✅                          | ❌        | ❌       | ✅           | ❌           |
-| Zero runtime dependencies      | ✅                          | ❌        | ❌       | ❌           | ❌           |
+| Keyphrase density check        |             ✅              |    ✅     |    ❌    |   Partial    |      ❌      |
+| Keyphrase distribution         |             ✅              |    ✅     |    ❌    |      ❌      |      ❌      |
+| Title + meta validation        |             ✅              |    ✅     |    ❌    |   Partial    |      ❌      |
+| Heading structure check        |             ✅              |    ✅     |    ❌    |      ❌      |      ❌      |
+| Image alt + keyphrase check    |             ✅              |    ✅     |    ❌    |      ❌      |      ❌      |
+| Internal / external link check |             ✅              |    ✅     |    ❌    |      ❌      |      ❌      |
+| Aggregate SEO score            |             ✅              |    ✅     |    ❌    |   Partial    |      ❌      |
+| Per-check disable config       |             ✅              |    ❌     |    ❌    |      ❌      |      ❌      |
+| Works outside WordPress        |             ✅              |    ❌     |    ✅    |      ✅      |      ✅      |
+| TypeScript-first               |             ✅              |    ❌     | Partial  |      ❌      |      ❌      |
+| Tree-shakeable                 |             ✅              |    ❌     | Partial  |      ❌      |      ❌      |
+| React UI components            |             ✅              |    ✅     |    ❌    |      ❌      |      ❌      |
+| CI / Node.js usage             |             ✅              |    ❌     |    ❌    |      ✅      |      ❌      |
+| Zero runtime dependencies      |             ✅              |    ❌     |    ❌    |      ❌      |      ❌      |
 
 ![Checks Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/checks-accuracy.svg)
 
@@ -113,8 +112,8 @@ const result = analyzeContent({
   content: '<h1>Best Running Shoes</h1><p>Finding the right running shoes...</p>',
 });
 
-console.log(result.score);      // e.g. 38
-console.log(result.maxScore);   // e.g. 55
+console.log(result.score); // e.g. 38
+console.log(result.maxScore); // e.g. 55
 console.log(result.results);
 // [{ id: 'title-presence', status: 'good', description: '...', score: 5, maxScore: 5 }, ...]
 ```
@@ -122,6 +121,7 @@ console.log(result.results);
 ![Yoast Replacement Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/yoast-replacement-benefit.svg)
 
 **Status thresholds (per check):**
+
 - `good` — check fully passes
 - `ok` — check partially passes
 - `poor` — check fails
@@ -139,7 +139,8 @@ import { analyzeContent } from '@power-seo/content-analysis';
 
 const output = analyzeContent({
   title: 'Next.js SEO Best Practices',
-  metaDescription: 'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
+  metaDescription:
+    'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
   focusKeyphrase: 'next.js seo',
   content: htmlString,
   images: imageList,
@@ -243,10 +244,10 @@ if (failures.length > 0) {
 
 ### Entry Points
 
-| Import | Description |
-| --- | --- |
-| `@power-seo/content-analysis` | Core analyzer and individual check functions |
-| `@power-seo/content-analysis/react` | React components for analysis UI |
+| Import                              | Description                                  |
+| ----------------------------------- | -------------------------------------------- |
+| `@power-seo/content-analysis`       | Core analyzer and individual check functions |
+| `@power-seo/content-analysis/react` | React components for analysis UI             |
 
 ### `analyzeContent()`
 
@@ -259,36 +260,36 @@ function analyzeContent(
 
 #### `ContentAnalysisInput`
 
-| Prop              | Type                                   | Required | Description                                    |
-| ----------------- | -------------------------------------- | -------- | ---------------------------------------------- |
-| `content`         | `string`                               | ✅       | Body HTML string                               |
-| `title`           | `string`                               | —        | Page `<title>` content                         |
-| `metaDescription` | `string`                               | —        | Meta description content                       |
-| `focusKeyphrase`  | `string`                               | —        | Focus keyphrase to analyze against             |
-| `slug`            | `string`                               | —        | URL slug (used for keyphrase-in-slug check)    |
-| `images`          | `Array<{ src: string; alt?: string }>` | —        | Images found on the page                       |
-| `internalLinks`   | `string[]`                             | —        | Internal link URLs                             |
-| `externalLinks`   | `string[]`                             | —        | External link URLs                             |
+| Prop              | Type                                   | Required | Description                                 |
+| ----------------- | -------------------------------------- | -------- | ------------------------------------------- |
+| `content`         | `string`                               | ✅       | Body HTML string                            |
+| `title`           | `string`                               | —        | Page `<title>` content                      |
+| `metaDescription` | `string`                               | —        | Meta description content                    |
+| `focusKeyphrase`  | `string`                               | —        | Focus keyphrase to analyze against          |
+| `slug`            | `string`                               | —        | URL slug (used for keyphrase-in-slug check) |
+| `images`          | `Array<{ src: string; alt?: string }>` | —        | Images found on the page                    |
+| `internalLinks`   | `string[]`                             | —        | Internal link URLs                          |
+| `externalLinks`   | `string[]`                             | —        | External link URLs                          |
 
 #### `ContentAnalysisOutput`
 
-| Field             | Type               | Description                                           |
-| ----------------- | ------------------ | ----------------------------------------------------- |
-| `score`           | `number`           | Sum of all individual check scores                    |
-| `maxScore`        | `number`           | Maximum possible score (varies by enabled checks)     |
-| `results`         | `AnalysisResult[]` | Per-check results                                     |
-| `recommendations` | `string[]`         | Descriptions from all failed or partial checks        |
+| Field             | Type               | Description                                       |
+| ----------------- | ------------------ | ------------------------------------------------- |
+| `score`           | `number`           | Sum of all individual check scores                |
+| `maxScore`        | `number`           | Maximum possible score (varies by enabled checks) |
+| `results`         | `AnalysisResult[]` | Per-check results                                 |
+| `recommendations` | `string[]`         | Descriptions from all failed or partial checks    |
 
 #### `AnalysisResult`
 
-| Field         | Type             | Description                                               |
-| ------------- | ---------------- | --------------------------------------------------------- |
-| `id`          | `string`         | Unique check identifier (one of the `CheckId` values)     |
-| `title`       | `string`         | Short display label for the check (e.g. `"SEO title"`)    |
-| `description` | `string`         | Human-readable actionable feedback                        |
-| `status`      | `AnalysisStatus` | `'good'` \| `'ok'` \| `'poor'`                            |
-| `score`       | `number`         | Points earned for this check                              |
-| `maxScore`    | `number`         | Maximum points for this check                             |
+| Field         | Type             | Description                                            |
+| ------------- | ---------------- | ------------------------------------------------------ |
+| `id`          | `string`         | Unique check identifier (one of the `CheckId` values)  |
+| `title`       | `string`         | Short display label for the check (e.g. `"SEO title"`) |
+| `description` | `string`         | Human-readable actionable feedback                     |
+| `status`      | `AnalysisStatus` | `'good'` \| `'ok'` \| `'poor'`                         |
+| `score`       | `number`         | Points earned for this check                           |
+| `maxScore`    | `number`         | Maximum points for this check                          |
 
 #### `AnalysisConfig`
 
@@ -298,27 +299,27 @@ function analyzeContent(
 
 ### Individual Check Functions
 
-| Function                      | Check ID(s)                                                    | Checks For                                                                                  |
-| ----------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `checkTitle(input)`           | `title-presence`, `title-keyphrase`                            | Title presence **and** length (50–60 chars, validated inside `title-presence`), keyphrase    |
-| `checkMetaDescription(input)` | `meta-description-presence`, `meta-description-keyphrase`      | Description presence, length (120–160 chars), keyphrase                                     |
-| `checkKeyphraseUsage(input)`  | `keyphrase-density`, `keyphrase-distribution`                  | Density (0.5–2.5%) and occurrence in key areas                                              |
-| `checkHeadings(input)`        | `heading-structure`, `heading-keyphrase`                       | H1 presence, hierarchy, keyphrase in subheadings                                            |
-| `checkWordCount(input)`       | `word-count`                                                   | Min 300 words (good at 1,000+)                                                              |
-| `checkImages(input)`          | `image-alt`, `image-keyphrase`                                 | Alt text presence and keyphrase in alt                                                      |
-| `checkLinks(input)`           | `internal-links`, `external-links`                             | Internal and external link presence                                                         |
+| Function                      | Check ID(s)                                               | Checks For                                                                                |
+| ----------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `checkTitle(input)`           | `title-presence`, `title-keyphrase`                       | Title presence **and** length (50–60 chars, validated inside `title-presence`), keyphrase |
+| `checkMetaDescription(input)` | `meta-description-presence`, `meta-description-keyphrase` | Description presence, length (120–160 chars), keyphrase                                   |
+| `checkKeyphraseUsage(input)`  | `keyphrase-density`, `keyphrase-distribution`             | Density (0.5–2.5%) and occurrence in key areas                                            |
+| `checkHeadings(input)`        | `heading-structure`, `heading-keyphrase`                  | H1 presence, hierarchy, keyphrase in subheadings                                          |
+| `checkWordCount(input)`       | `word-count`                                              | Min 300 words (good at 1,000+)                                                            |
+| `checkImages(input)`          | `image-alt`, `image-keyphrase`                            | Alt text presence and keyphrase in alt                                                    |
+| `checkLinks(input)`           | `internal-links`, `external-links`                        | Internal and external link presence                                                       |
 
 > **Note:** There is no separate `title-length` check ID. Title length validation (50–60 chars) is evaluated inside the `title-presence` check — a title that exists but is outside the recommended range returns `status: 'ok'` rather than `'good'`.
 
 ### Types
 
-| Type                    | Description                                               |
-| ----------------------- | --------------------------------------------------------- |
-| `CheckId`               | Union of all 13 built-in check IDs                        |
-| `AnalysisConfig`        | `{ disabledChecks?: CheckId[] }`                          |
-| `AnalysisStatus`        | `'good' \| 'ok' \| 'poor'`                               |
-| `ContentAnalysisInput`  | Input shape for `analyzeContent()`                        |
-| `ContentAnalysisOutput` | Output shape from `analyzeContent()`                      |
+| Type                    | Description                                                              |
+| ----------------------- | ------------------------------------------------------------------------ |
+| `CheckId`               | Union of all 13 built-in check IDs                                       |
+| `AnalysisConfig`        | `{ disabledChecks?: CheckId[] }`                                         |
+| `AnalysisStatus`        | `'good' \| 'ok' \| 'poor'`                                               |
+| `ContentAnalysisInput`  | Input shape for `analyzeContent()`                                       |
+| `ContentAnalysisOutput` | Output shape from `analyzeContent()`                                     |
 | `AnalysisResult`        | Single check result with id, title, description, status, score, maxScore |
 
 ---

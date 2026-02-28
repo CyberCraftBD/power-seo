@@ -8,7 +8,7 @@ assignees: ''
 
 ## Is your feature request related to a problem?
 
-A clear and concise description of what the problem is. e.g. *I always have to...*
+A clear and concise description of what the problem is. e.g. _I always have to..._
 
 ## Describe the solution you'd like
 

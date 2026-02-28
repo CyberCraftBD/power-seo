@@ -1,6 +1,5 @@
 // @power-seo/audit — Structure Rules
 
-
 import { isAbsoluteUrl } from '@power-seo/core';
 import { validateSchema } from '@power-seo/schema';
 import type { SchemaObject } from '@power-seo/schema';

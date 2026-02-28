@@ -1,6 +1,5 @@
 // @power-seo/audit — Types
 
-
 import type { SchemaBase } from '@power-seo/core';
 
 export type AuditCategory = 'meta' | 'content' | 'structure' | 'performance';

@@ -100,16 +100,15 @@ export function analyzeKeyphraseOccurrences(config: {
 
   // Check first paragraph — use string-based extraction to avoid regex ReDoS
   const firstParaInner = extractFirstTagContent(content, 'p');
-  const firstParagraph = firstParaInner !== null
-    ? stripHtml(firstParaInner).toLowerCase()
-    : (plainContent.split(/\n\n/)[0]?.toLowerCase() ?? '');
+  const firstParagraph =
+    firstParaInner !== null
+      ? stripHtml(firstParaInner).toLowerCase()
+      : (plainContent.split(/\n\n/)[0]?.toLowerCase() ?? '');
   const inFirstParagraph = firstParagraph.includes(kp);
 
   // Check H1 — use string-based extraction to avoid regex ReDoS
   const h1Inner = extractFirstTagContent(content, 'h1');
-  const inH1 = h1Inner !== null
-    ? stripHtml(h1Inner).toLowerCase().includes(kp)
-    : false;
+  const inH1 = h1Inner !== null ? stripHtml(h1Inner).toLowerCase().includes(kp) : false;
 
   // Count in headings (h2-h6) — use string-based extraction to avoid regex ReDoS
   let inHeadings = 0;

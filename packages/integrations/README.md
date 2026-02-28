@@ -21,18 +21,17 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 
 ## Why @power-seo/integrations?
 
-| | Without | With |
-|---|---|---|
-| Semrush API | ❌ Write raw HTTP client | ✅ Typed client with auto-pagination |
-| Ahrefs API | ❌ Manual SDK setup | ✅ Typed client with rate limiting |
-| Rate limiting | ❌ Manual throttle | ✅ Built-in configurable window rate limiter |
-| Pagination | ❌ Manual offset tracking | ✅ Automatic — receive a flat result array |
-| Error handling | ❌ Raw HTTP errors | ✅ `IntegrationApiError` with `status`, `provider`, `retryable` |
-| TypeScript types | ❌ `any` everywhere | ✅ Full type coverage for all endpoints |
-| Bundle size | ❌ Full SDK in bundle | ✅ Tree-shakeable — import only what you use |
+|                  | Without                   | With                                                            |
+| ---------------- | ------------------------- | --------------------------------------------------------------- |
+| Semrush API      | ❌ Write raw HTTP client  | ✅ Typed client with auto-pagination                            |
+| Ahrefs API       | ❌ Manual SDK setup       | ✅ Typed client with rate limiting                              |
+| Rate limiting    | ❌ Manual throttle        | ✅ Built-in configurable window rate limiter                    |
+| Pagination       | ❌ Manual offset tracking | ✅ Automatic — receive a flat result array                      |
+| Error handling   | ❌ Raw HTTP errors        | ✅ `IntegrationApiError` with `status`, `provider`, `retryable` |
+| TypeScript types | ❌ `any` everywhere       | ✅ Full type coverage for all endpoints                         |
+| Bundle size      | ❌ Full SDK in bundle     | ✅ Tree-shakeable — import only what you use                    |
 
 ![Integrations Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -58,16 +57,16 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 
 ## Comparison
 
-| Feature | @power-seo/integrations | semrush-sdk | ahrefs-client | Custom fetch |
-| --- | :---: | :---: | :---: | :---: |
-| Semrush API client | ✅ | ✅ | ❌ | Manual |
-| Ahrefs API client | ✅ | ❌ | Partial | Manual |
-| Rate limiting | ✅ | Partial | ❌ | Manual |
-| Auto-pagination | ✅ | ❌ | ❌ | Manual |
-| Shared HTTP client | ✅ | ❌ | ❌ | — |
-| Consistent error handling | ✅ | Partial | ❌ | Manual |
-| TypeScript-first | ✅ | ❌ | ❌ | — |
-| Tree-shakeable | ✅ | ❌ | ❌ | — |
+| Feature                   | @power-seo/integrations | semrush-sdk | ahrefs-client | Custom fetch |
+| ------------------------- | :---------------------: | :---------: | :-----------: | :----------: |
+| Semrush API client        |           ✅            |     ✅      |      ❌       |    Manual    |
+| Ahrefs API client         |           ✅            |     ❌      |    Partial    |    Manual    |
+| Rate limiting             |           ✅            |   Partial   |      ❌       |    Manual    |
+| Auto-pagination           |           ✅            |     ❌      |      ❌       |    Manual    |
+| Shared HTTP client        |           ✅            |     ❌      |      ❌       |      —       |
+| Consistent error handling |           ✅            |   Partial   |      ❌       |    Manual    |
+| TypeScript-first          |           ✅            |     ❌      |      ❌       |      —       |
+| Tree-shakeable            |           ✅            |     ❌      |      ❌       |      —       |
 
 ![Rate Limit Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/rate-limit-accuracy.svg)
 
@@ -224,34 +223,40 @@ try {
 ### Semrush
 
 ```ts
-function createSemrushClient(apiKey: string, config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>): SemrushClient;
+function createSemrushClient(
+  apiKey: string,
+  config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>,
+): SemrushClient;
 ```
 
 #### `SemrushClient` methods
 
-| Method                 | Parameters                          | Returns                                    | Description                          |
-| ---------------------- | ----------------------------------- | ------------------------------------------ | ------------------------------------ |
-| `getDomainOverview`    | `(domain, database?)`               | `SemrushDomainOverview`                    | Traffic, keywords, backlinks summary |
-| `getOrganicKeywords`   | `(domain, options?)`                | `PaginatedResponse<SemrushKeywordData>`    | Keywords with rankings               |
-| `getBacklinks`         | `(domain, options?)`                | `PaginatedResponse<SemrushBacklinkData>`   | Backlinks with source/target URLs    |
-| `getKeywordDifficulty` | `(keywords[], database?)`           | `SemrushKeywordDifficulty[]`               | KD scores with volume/CPC            |
-| `getRelatedKeywords`   | `(keyword, database?)`              | `SemrushRelatedKeyword[]`                  | Related keyword suggestions          |
+| Method                 | Parameters                | Returns                                  | Description                          |
+| ---------------------- | ------------------------- | ---------------------------------------- | ------------------------------------ |
+| `getDomainOverview`    | `(domain, database?)`     | `SemrushDomainOverview`                  | Traffic, keywords, backlinks summary |
+| `getOrganicKeywords`   | `(domain, options?)`      | `PaginatedResponse<SemrushKeywordData>`  | Keywords with rankings               |
+| `getBacklinks`         | `(domain, options?)`      | `PaginatedResponse<SemrushBacklinkData>` | Backlinks with source/target URLs    |
+| `getKeywordDifficulty` | `(keywords[], database?)` | `SemrushKeywordDifficulty[]`             | KD scores with volume/CPC            |
+| `getRelatedKeywords`   | `(keyword, database?)`    | `SemrushRelatedKeyword[]`                | Related keyword suggestions          |
 
 ### Ahrefs
 
 ```ts
-function createAhrefsClient(apiToken: string, config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>): AhrefsClient;
+function createAhrefsClient(
+  apiToken: string,
+  config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>,
+): AhrefsClient;
 ```
 
 #### `AhrefsClient` methods
 
-| Method                 | Parameters                  | Returns                                    | Description                     |
-| ---------------------- | --------------------------- | ------------------------------------------ | ------------------------------- |
-| `getSiteOverview`      | `(domain)`                  | `AhrefsSiteOverview`                       | DR, organic traffic, backlinks  |
-| `getOrganicKeywords`   | `(domain, options?)`        | `PaginatedResponse<AhrefsOrganicKeyword>`  | Ranking keywords with positions |
-| `getBacklinks`         | `(domain, options?)`        | `PaginatedResponse<AhrefsBacklink>`        | Backlinks with anchor text      |
-| `getKeywordDifficulty` | `(keywords[])`              | `AhrefsKeywordDifficulty[]`                | KD scores with volume/CPC       |
-| `getReferringDomains`  | `(domain, options?)`        | `PaginatedResponse<AhrefsReferringDomain>` | Referring domains by DR         |
+| Method                 | Parameters           | Returns                                    | Description                     |
+| ---------------------- | -------------------- | ------------------------------------------ | ------------------------------- |
+| `getSiteOverview`      | `(domain)`           | `AhrefsSiteOverview`                       | DR, organic traffic, backlinks  |
+| `getOrganicKeywords`   | `(domain, options?)` | `PaginatedResponse<AhrefsOrganicKeyword>`  | Ranking keywords with positions |
+| `getBacklinks`         | `(domain, options?)` | `PaginatedResponse<AhrefsBacklink>`        | Backlinks with anchor text      |
+| `getKeywordDifficulty` | `(keywords[])`       | `AhrefsKeywordDifficulty[]`                | KD scores with volume/CPC       |
+| `getReferringDomains`  | `(domain, options?)` | `PaginatedResponse<AhrefsReferringDomain>` | Referring domains by DR         |
 
 ### Shared
 
@@ -261,15 +266,16 @@ function createHttpClient(config: HttpClientConfig): HttpClient;
 
 #### `HttpClientConfig`
 
-| Prop                 | Type               | Default | Description                              |
-| -------------------- | ------------------ | ------- | ---------------------------------------- |
-| `baseUrl`            | `string`           | —       | Base URL for all requests                |
-| `auth`               | `AuthStrategy`     | —       | Authentication: bearer token or query    |
-| `rateLimitPerMinute` | `number`           | —       | Optional: max requests per minute        |
-| `maxRetries`         | `number`           | —       | Optional: retry failed requests (default: 3) |
-| `timeoutMs`          | `number`           | —       | Optional: request timeout in milliseconds |
+| Prop                 | Type           | Default | Description                                  |
+| -------------------- | -------------- | ------- | -------------------------------------------- |
+| `baseUrl`            | `string`       | —       | Base URL for all requests                    |
+| `auth`               | `AuthStrategy` | —       | Authentication: bearer token or query        |
+| `rateLimitPerMinute` | `number`       | —       | Optional: max requests per minute            |
+| `maxRetries`         | `number`       | —       | Optional: retry failed requests (default: 3) |
+| `timeoutMs`          | `number`       | —       | Optional: request timeout in milliseconds    |
 
 **AuthStrategy** is one of:
+
 - `{ type: 'bearer', token: string }` — Authorization header
 - `{ type: 'query', paramName: string, value: string }` — Query parameter auth
 

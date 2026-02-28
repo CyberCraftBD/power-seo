@@ -1,6 +1,5 @@
 // @power-seo/meta — Next.js App Router Metadata
 
-
 import type { SEOConfig } from '@power-seo/core';
 import { resolveTitle, buildRobotsContent } from '@power-seo/core';
 import type { NextMetadata, NextOGImage } from './types.js';
@@ -38,7 +37,11 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     if (r?.unavailableAfter !== undefined) metadata.robots.unavailableAfter = r.unavailableAfter;
 
     // Handle advanced robots directives (maxSnippet, maxImagePreview, maxVideoPreview) via buildRobotsContent
-    if (r?.maxSnippet !== undefined || r?.maxImagePreview !== undefined || r?.maxVideoPreview !== undefined) {
+    if (
+      r?.maxSnippet !== undefined ||
+      r?.maxImagePreview !== undefined ||
+      r?.maxVideoPreview !== undefined
+    ) {
       const robotsContent = buildRobotsContent({
         index,
         follow,
@@ -79,8 +82,10 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     }
     if (og.article) {
       metadata.openGraph.article = {};
-      if (og.article.publishedTime) metadata.openGraph.article.publishedTime = og.article.publishedTime;
-      if (og.article.modifiedTime) metadata.openGraph.article.modifiedTime = og.article.modifiedTime;
+      if (og.article.publishedTime)
+        metadata.openGraph.article.publishedTime = og.article.publishedTime;
+      if (og.article.modifiedTime)
+        metadata.openGraph.article.modifiedTime = og.article.modifiedTime;
       if (og.article.authors) metadata.openGraph.article.authors = og.article.authors;
       if (og.article.section) metadata.openGraph.article.section = og.article.section;
       if (og.article.tags) metadata.openGraph.article.tags = og.article.tags;

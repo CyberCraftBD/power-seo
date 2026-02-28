@@ -23,18 +23,17 @@ The four rule sets can also be called independently — `runMetaRules`, `runCont
 
 ## Why @power-seo/audit?
 
-| | Without | With |
-|---|---|---|
-| Meta tag audit | ❌ Manual checking | ✅ 0–100 scored across 4 rule categories |
-| Site-wide audit | ❌ Page-by-page | ✅ `auditSite()` — aggregate + per-page results |
-| Rule granularity | ❌ Pass/fail only | ✅ `error` / `warning` / `info` / `pass` severity |
-| Content analysis | ❌ Eye-check | ✅ Word count, keyphrase density, readability |
-| CI integration | ❌ Manual review | ✅ Node.js script with configurable score threshold |
-| Framework support | ❌ WordPress-only | ✅ Framework-agnostic, runs anywhere |
-| TypeScript support | ❌ Untyped | ✅ Full type coverage for all inputs and results |
+|                    | Without            | With                                                |
+| ------------------ | ------------------ | --------------------------------------------------- |
+| Meta tag audit     | ❌ Manual checking | ✅ 0–100 scored across 4 rule categories            |
+| Site-wide audit    | ❌ Page-by-page    | ✅ `auditSite()` — aggregate + per-page results     |
+| Rule granularity   | ❌ Pass/fail only  | ✅ `error` / `warning` / `info` / `pass` severity   |
+| Content analysis   | ❌ Eye-check       | ✅ Word count, keyphrase density, readability       |
+| CI integration     | ❌ Manual review   | ✅ Node.js script with configurable score threshold |
+| Framework support  | ❌ WordPress-only  | ✅ Framework-agnostic, runs anywhere                |
+| TypeScript support | ❌ Untyped         | ✅ Full type coverage for all inputs and results    |
 
 ![Audit Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/audit/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -64,16 +63,16 @@ The four rule sets can also be called independently — `runMetaRules`, `runCont
 
 ## Comparison
 
-| Feature | @power-seo/audit | Screaming Frog | Lighthouse | next-seo | ahrefs site audit |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Programmatic API | ✅ | ❌ | Partial | ❌ | ❌ |
-| 4 rule categories | ✅ | Partial | Partial | ❌ | Partial |
-| 0–100 scored output | ✅ | ❌ | ✅ | ❌ | ✅ |
-| Site-wide aggregation | ✅ | ✅ | ❌ | ❌ | ✅ |
-| CI/CD integration | ✅ | ❌ | Partial | ❌ | ❌ |
-| Zero network calls | ✅ | ❌ | Partial | ✅ | ❌ |
-| TypeScript-first | ✅ | ❌ | ❌ | Partial | ❌ |
-| Tree-shakeable | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Feature               | @power-seo/audit | Screaming Frog | Lighthouse | next-seo | ahrefs site audit |
+| --------------------- | :--------------: | :------------: | :--------: | :------: | :---------------: |
+| Programmatic API      |        ✅        |       ❌       |  Partial   |    ❌    |        ❌         |
+| 4 rule categories     |        ✅        |    Partial     |  Partial   |    ❌    |      Partial      |
+| 0–100 scored output   |        ✅        |       ❌       |     ✅     |    ❌    |        ✅         |
+| Site-wide aggregation |        ✅        |       ✅       |     ❌     |    ❌    |        ✅         |
+| CI/CD integration     |        ✅        |       ❌       |  Partial   |    ❌    |        ❌         |
+| Zero network calls    |        ✅        |       ❌       |  Partial   |    ✅    |        ❌         |
+| TypeScript-first      |        ✅        |       ❌       |     ❌     | Partial  |        ❌         |
+| Tree-shakeable        |        ✅        |       ❌       |     ❌     |    ❌    |        ❌         |
 
 ![Audit Rules Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/audit/rules-accuracy.svg)
 
@@ -303,55 +302,55 @@ console.log(`SEO audit PASSED — average score: ${report.score}/100`);
 
 ### `auditPage(input)`
 
-| Parameter                | Type                                            | Required | Description                                                     |
-| ------------------------ | ----------------------------------------------- | -------- | --------------------------------------------------------------- |
-| `input.url`              | `string`                                        | ✅       | Canonical URL of the page being audited                         |
-| `input.title`            | `string`                                        | —        | Page `<title>` tag content                                      |
-| `input.metaDescription`  | `string`                                        | —        | Content of the `meta[name="description"]` tag                   |
-| `input.canonical`        | `string`                                        | —        | Canonical URL from `link[rel="canonical"]`                      |
-| `input.robots`           | `string`                                        | —        | Content of `meta[name="robots"]` tag (e.g. `'index, follow'`)  |
-| `input.openGraph`        | `{ title?, description?, image? }`              | —        | Open Graph tag values                                           |
-| `input.content`          | `string`                                        | —        | Full HTML/text content of the page body                         |
-| `input.headings`         | `string[]`                                      | —        | Headings as `'h1:text'` / `'h2:text'` strings                  |
-| `input.images`           | `Array<{ src: string; alt?: string; size?: number }>` | —   | Images extracted from the page                                  |
-| `input.internalLinks`    | `string[]`                                      | —        | Internal link href values found on the page                     |
-| `input.externalLinks`    | `string[]`                                      | —        | External link href values found on the page                     |
-| `input.schema`           | `SchemaBase[]`                                  | —        | JSON-LD schema objects present on the page                      |
-| `input.focusKeyphrase`   | `string`                                        | —        | Focus keyphrase for content analysis                            |
-| `input.wordCount`        | `number`                                        | —        | Word count proxy — used when `content` is not provided          |
-| `input.keywordDensity`   | `number`                                        | —        | Keyword density % proxy — used when `content` is not provided   |
-| `input.statusCode`       | `number`                                        | —        | HTTP status code of the page                                    |
-| `input.responseTime`     | `number`                                        | —        | Page response time in milliseconds                              |
-| `input.contentLength`    | `number`                                        | —        | Content length in bytes                                         |
+| Parameter               | Type                                                  | Required | Description                                                   |
+| ----------------------- | ----------------------------------------------------- | -------- | ------------------------------------------------------------- |
+| `input.url`             | `string`                                              | ✅       | Canonical URL of the page being audited                       |
+| `input.title`           | `string`                                              | —        | Page `<title>` tag content                                    |
+| `input.metaDescription` | `string`                                              | —        | Content of the `meta[name="description"]` tag                 |
+| `input.canonical`       | `string`                                              | —        | Canonical URL from `link[rel="canonical"]`                    |
+| `input.robots`          | `string`                                              | —        | Content of `meta[name="robots"]` tag (e.g. `'index, follow'`) |
+| `input.openGraph`       | `{ title?, description?, image? }`                    | —        | Open Graph tag values                                         |
+| `input.content`         | `string`                                              | —        | Full HTML/text content of the page body                       |
+| `input.headings`        | `string[]`                                            | —        | Headings as `'h1:text'` / `'h2:text'` strings                 |
+| `input.images`          | `Array<{ src: string; alt?: string; size?: number }>` | —        | Images extracted from the page                                |
+| `input.internalLinks`   | `string[]`                                            | —        | Internal link href values found on the page                   |
+| `input.externalLinks`   | `string[]`                                            | —        | External link href values found on the page                   |
+| `input.schema`          | `SchemaBase[]`                                        | —        | JSON-LD schema objects present on the page                    |
+| `input.focusKeyphrase`  | `string`                                              | —        | Focus keyphrase for content analysis                          |
+| `input.wordCount`       | `number`                                              | —        | Word count proxy — used when `content` is not provided        |
+| `input.keywordDensity`  | `number`                                              | —        | Keyword density % proxy — used when `content` is not provided |
+| `input.statusCode`      | `number`                                              | —        | HTTP status code of the page                                  |
+| `input.responseTime`    | `number`                                              | —        | Page response time in milliseconds                            |
+| `input.contentLength`   | `number`                                              | —        | Content length in bytes                                       |
 
 Returns `PageAuditResult`:
 
-| Property          | Type                                    | Description                                                    |
-| ----------------- | --------------------------------------- | -------------------------------------------------------------- |
-| `url`             | `string`                                | The audited page URL                                           |
-| `score`           | `number`                                | Overall weighted score 0–100                                   |
+| Property          | Type                                    | Description                                                      |
+| ----------------- | --------------------------------------- | ---------------------------------------------------------------- |
+| `url`             | `string`                                | The audited page URL                                             |
+| `score`           | `number`                                | Overall weighted score 0–100                                     |
 | `categories`      | `Record<AuditCategory, CategoryResult>` | Per-category scores with `score`, `passed`, `warnings`, `errors` |
-| `rules`           | `AuditRule[]`                           | Flat array of all rule results across all categories           |
-| `recommendations` | `string[]`                              | Human-readable descriptions of errors and warnings             |
+| `rules`           | `AuditRule[]`                           | Flat array of all rule results across all categories             |
+| `recommendations` | `string[]`                              | Human-readable descriptions of errors and warnings               |
 
 ---
 
 ### `auditSite(input)`
 
-| Parameter     | Type               | Required | Description                            |
-| ------------- | ------------------ | -------- | -------------------------------------- |
-| `input.pages` | `PageAuditInput[]` | ✅       | Array of page audit inputs to evaluate |
-| `input.hostname` | `string` | — | Optional domain for link analysis and context |
+| Parameter        | Type               | Required | Description                                   |
+| ---------------- | ------------------ | -------- | --------------------------------------------- |
+| `input.pages`    | `PageAuditInput[]` | ✅       | Array of page audit inputs to evaluate        |
+| `input.hostname` | `string`           | —        | Optional domain for link analysis and context |
 
 Returns `SiteAuditResult`:
 
-| Property      | Type                                    | Description                                         |
-| ------------- | --------------------------------------- | --------------------------------------------------- |
-| `score`       | `number`                                | Mean score across all pages (0–100)                 |
-| `totalPages`  | `number`                                | Total number of pages audited                       |
-| `pageResults` | `PageAuditResult[]`                     | Individual page audit results                       |
+| Property      | Type                                    | Description                                               |
+| ------------- | --------------------------------------- | --------------------------------------------------------- |
+| `score`       | `number`                                | Mean score across all pages (0–100)                       |
+| `totalPages`  | `number`                                | Total number of pages audited                             |
+| `pageResults` | `PageAuditResult[]`                     | Individual page audit results                             |
 | `topIssues`   | `AuditRule[]`                           | Most frequently occurring non-pass rules across all pages |
-| `summary`     | `Record<AuditCategory, CategoryResult>` | Aggregated category scores across all pages         |
+| `summary`     | `Record<AuditCategory, CategoryResult>` | Aggregated category scores across all pages               |
 
 ---
 
@@ -359,13 +358,13 @@ Returns `SiteAuditResult`:
 
 Each rule runner accepts a `PageAuditInput` and returns `AuditRule[]`:
 
-| Property      | Type            | Description                                                   |
-| ------------- | --------------- | ------------------------------------------------------------- |
-| `id`          | `string`        | Unique rule identifier (e.g. `'meta-title-length'`)           |
-| `category`    | `AuditCategory` | `'meta'` \| `'content'` \| `'structure'` \| `'performance'`  |
-| `title`       | `string`        | Short human-readable rule name                                |
-| `description` | `string`        | Detailed description of the finding                           |
-| `severity`    | `AuditSeverity` | `'error'` \| `'warning'` \| `'info'` \| `'pass'`             |
+| Property      | Type            | Description                                                 |
+| ------------- | --------------- | ----------------------------------------------------------- |
+| `id`          | `string`        | Unique rule identifier (e.g. `'meta-title-length'`)         |
+| `category`    | `AuditCategory` | `'meta'` \| `'content'` \| `'structure'` \| `'performance'` |
+| `title`       | `string`        | Short human-readable rule name                              |
+| `description` | `string`        | Detailed description of the finding                         |
+| `severity`    | `AuditSeverity` | `'error'` \| `'warning'` \| `'info'` \| `'pass'`            |
 
 ---
 
@@ -373,13 +372,13 @@ Each rule runner accepts a `PageAuditInput` and returns `AuditRule[]`:
 
 ```ts
 import type {
-  AuditCategory,   // 'meta' | 'content' | 'structure' | 'performance'
-  AuditSeverity,   // 'error' | 'warning' | 'info' | 'pass'
-  AuditRule,       // { id, category, title, description, severity }
-  PageAuditInput,  // Full page input object (see auditPage parameters above)
+  AuditCategory, // 'meta' | 'content' | 'structure' | 'performance'
+  AuditSeverity, // 'error' | 'warning' | 'info' | 'pass'
+  AuditRule, // { id, category, title, description, severity }
+  PageAuditInput, // Full page input object (see auditPage parameters above)
   PageAuditResult, // { url, score, categories, rules, recommendations }
-  CategoryResult,  // { score: number; passed: number; warnings: number; errors: number }
-  SiteAuditInput,  // { pages: PageAuditInput[] }
+  CategoryResult, // { score: number; passed: number; warnings: number; errors: number }
+  SiteAuditInput, // { pages: PageAuditInput[] }
   SiteAuditResult, // { score, totalPages, pageResults, topIssues, summary }
 } from '@power-seo/audit';
 ```

@@ -19,18 +19,17 @@ Consent-aware analytics script builders and GDPR consent management for TypeScri
 
 ## Why @power-seo/tracking?
 
-| | Without | With |
-|---|---|---|
-| GDPR consent | ❌ Scripts load unconditionally in `<head>` | ✅ `shouldLoad(consentState)` gates every script |
-| Consent manager | ❌ Custom UI state per project | ✅ `createConsentManager()` with typed categories |
-| Multi-provider | ❌ Different init code per analytics platform | ✅ One API for GA4, Clarity, PostHog, Plausible, Fathom |
-| React integration | ❌ Manual `<script>` injection in layout | ✅ `<AnalyticsScript>` and `<ConsentBanner>` drop-in |
-| API data access | ❌ Platform-specific SDK research per provider | ✅ Typed clients for all 5 providers |
-| Performance | ❌ Scripts block LCP before user interaction | ✅ Lazy loading strategy prevents render blocking |
-| TypeScript | ❌ Loose config objects with no type checking | ✅ Typed `ScriptConfig`, `ConsentState`, `ConsentManager` |
+|                   | Without                                        | With                                                      |
+| ----------------- | ---------------------------------------------- | --------------------------------------------------------- |
+| GDPR consent      | ❌ Scripts load unconditionally in `<head>`    | ✅ `shouldLoad(consentState)` gates every script          |
+| Consent manager   | ❌ Custom UI state per project                 | ✅ `createConsentManager()` with typed categories         |
+| Multi-provider    | ❌ Different init code per analytics platform  | ✅ One API for GA4, Clarity, PostHog, Plausible, Fathom   |
+| React integration | ❌ Manual `<script>` injection in layout       | ✅ `<AnalyticsScript>` and `<ConsentBanner>` drop-in      |
+| API data access   | ❌ Platform-specific SDK research per provider | ✅ Typed clients for all 5 providers                      |
+| Performance       | ❌ Scripts block LCP before user interaction   | ✅ Lazy loading strategy prevents render blocking         |
+| TypeScript        | ❌ Loose config objects with no type checking  | ✅ Typed `ScriptConfig`, `ConsentState`, `ConsentManager` |
 
 ![Tracking Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/tracking/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -62,16 +61,16 @@ Consent-aware analytics script builders and GDPR consent management for TypeScri
 
 ## Comparison
 
-| Feature | @next/third-parties | partytown | cookiebot | @power-seo/tracking |
-| -------------------------------- | :-----------------: | :-------: | :-------: | :-----------------: |
-| Typed script builders            | ❌ | ❌ | ❌ | ✅ |
-| Consent-aware `shouldLoad()`     | ❌ | ❌ | ✅ | ✅ |
-| Built-in consent manager         | ❌ | ❌ | ✅ (paid) | ✅ |
-| Analytics API clients            | ❌ | ❌ | ❌ | ✅ |
-| 5-provider support               | ⚠️ | ⚠️ | ✅ | ✅ |
-| Zero runtime dependencies        | ✅ | ✅ | ❌ | ✅ |
-| TypeScript-first                 | ❌ | ❌ | ❌ | ✅ |
-| React components                 | ⚠️ | ❌ | ✅ | ✅ |
+| Feature                      | @next/third-parties | partytown | cookiebot | @power-seo/tracking |
+| ---------------------------- | :-----------------: | :-------: | :-------: | :-----------------: |
+| Typed script builders        |         ❌          |    ❌     |    ❌     |         ✅          |
+| Consent-aware `shouldLoad()` |         ❌          |    ❌     |    ✅     |         ✅          |
+| Built-in consent manager     |         ❌          |    ❌     | ✅ (paid) |         ✅          |
+| Analytics API clients        |         ❌          |    ❌     |    ❌     |         ✅          |
+| 5-provider support           |         ⚠️          |    ⚠️     |    ✅     |         ✅          |
+| Zero runtime dependencies    |         ✅          |    ✅     |    ❌     |         ✅          |
+| TypeScript-first             |         ❌          |    ❌     |    ❌     |         ✅          |
+| React components             |         ⚠️          |    ❌     |    ✅     |         ✅          |
 
 ![Conditional Loading Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/tracking/conditional-accuracy.svg)
 
@@ -142,7 +141,7 @@ import {
 } from '@power-seo/tracking';
 
 const scripts = [
-  ...buildGA4Script({ measurementId: 'G-XXXXXXX' }),   // returns ScriptConfig[]
+  ...buildGA4Script({ measurementId: 'G-XXXXXXX' }), // returns ScriptConfig[]
   buildClarityScript({ projectId: 'abc123' }),
   buildPostHogScript({ apiKey: 'phc_xxx', apiHost: 'https://app.posthog.com' }),
   buildPlausibleScript({ domain: 'example.com' }),
@@ -209,12 +208,7 @@ import { createConsentManager } from '@power-seo/tracking';
 const consent = createConsentManager({ necessary: true, analytics: false });
 
 export function CookieBanner() {
-  return (
-    <ConsentBanner
-      manager={consent}
-      privacyPolicyUrl="/privacy-policy"
-    />
-  );
+  return <ConsentBanner manager={consent} privacyPolicyUrl="/privacy-policy" />;
 }
 ```
 
@@ -273,16 +267,16 @@ export function AnalyticsLoader() {
 
 ### `ScriptConfig`
 
-| Prop            | Type                                     | Description                            |
-| --------------- | ---------------------------------------- | -------------------------------------- |
-| `id`            | `string`                                 | Unique script identifier               |
-| `src`           | `string \| undefined`                    | External script URL                    |
-| `innerHTML`     | `string \| undefined`                    | Inline JavaScript content              |
-| `async`         | `boolean \| undefined`                   | Load asynchronously                    |
-| `defer`         | `boolean \| undefined`                   | Defer execution                        |
-| `consentCategory` | `ConsentCategory`                       | Required consent category for loading  |
-| `attributes`    | `Record<string, string> \| undefined`    | Additional script attributes           |
-| `shouldLoad`    | `(consent: ConsentState) => boolean`     | Returns `true` if this script may load |
+| Prop              | Type                                  | Description                            |
+| ----------------- | ------------------------------------- | -------------------------------------- |
+| `id`              | `string`                              | Unique script identifier               |
+| `src`             | `string \| undefined`                 | External script URL                    |
+| `innerHTML`       | `string \| undefined`                 | Inline JavaScript content              |
+| `async`           | `boolean \| undefined`                | Load asynchronously                    |
+| `defer`           | `boolean \| undefined`                | Defer execution                        |
+| `consentCategory` | `ConsentCategory`                     | Required consent category for loading  |
+| `attributes`      | `Record<string, string> \| undefined` | Additional script attributes           |
+| `shouldLoad`      | `(consent: ConsentState) => boolean`  | Returns `true` if this script may load |
 
 ### `createConsentManager(initialState)`
 
@@ -298,13 +292,13 @@ export function AnalyticsLoader() {
 
 ### API Clients
 
-| Function                | Parameters                         | Returns          | Description                      |
-| ----------------------- | ---------------------------------- | ---------------- | -------------------------------- |
-| `createGA4Client`       | `(accessToken: string)`            | `GA4Client`      | Google Analytics 4 Data API      |
-| `createClarityClient`   | `(apiKey: string)`                 | `ClarityClient`  | Microsoft Clarity API            |
-| `createPostHogClient`   | `(apiKey: string, host?: string)`  | `PostHogClient`  | PostHog API                      |
-| `createPlausibleClient` | `(apiKey: string)`                 | `PlausibleClient` | Plausible Stats API             |
-| `createFathomClient`    | `(apiKey: string)`                 | `FathomClient`   | Fathom Analytics API             |
+| Function                | Parameters                        | Returns           | Description                 |
+| ----------------------- | --------------------------------- | ----------------- | --------------------------- |
+| `createGA4Client`       | `(accessToken: string)`           | `GA4Client`       | Google Analytics 4 Data API |
+| `createClarityClient`   | `(apiKey: string)`                | `ClarityClient`   | Microsoft Clarity API       |
+| `createPostHogClient`   | `(apiKey: string, host?: string)` | `PostHogClient`   | PostHog API                 |
+| `createPlausibleClient` | `(apiKey: string)`                | `PlausibleClient` | Plausible Stats API         |
+| `createFathomClient`    | `(apiKey: string)`                | `FathomClient`    | Fathom Analytics API        |
 
 ### React Components
 
@@ -315,25 +309,25 @@ export function AnalyticsLoader() {
 
 ### Types
 
-| Type                    | Description                                                              |
-| ----------------------- | ------------------------------------------------------------------------ |
-| `ConsentCategory`       | `'necessary' \| 'analytics' \| 'marketing' \| 'preferences'`             |
-| `ConsentState`          | `{ necessary, analytics, marketing, preferences }` all boolean            |
-| `ConsentManager`        | Store with grant/revoke/grantAll/revokeAll/getState/isGranted/onChange   |
-| `ConsentChangeCallback` | `(state: ConsentState) => void`                                         |
+| Type                    | Description                                                                          |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| `ConsentCategory`       | `'necessary' \| 'analytics' \| 'marketing' \| 'preferences'`                         |
+| `ConsentState`          | `{ necessary, analytics, marketing, preferences }` all boolean                       |
+| `ConsentManager`        | Store with grant/revoke/grantAll/revokeAll/getState/isGranted/onChange               |
+| `ConsentChangeCallback` | `(state: ConsentState) => void`                                                      |
 | `ScriptConfig`          | `{ id, src?, innerHTML?, async?, defer?, consentCategory, attributes?, shouldLoad }` |
-| `GA4Config`             | `{ measurementId, consentModeV2?, anonymizeIp?, sendPageView? }`        |
-| `GA4ReportRequest`      | `{ startDate, endDate, metrics, dimensions?, limit? }`                  |
-| `GA4ReportResponse`     | `{ rows, rowCount, metadata? }`                                         |
-| `GA4Client`             | Methods: queryReport, getRealtimeReport, getMetadata                     |
-| `ClarityConfig`         | `{ projectId: string }`                                                  |
-| `ClarityClient`         | Methods: getProjects, getInsights, getHeatmapData                        |
-| `PostHogConfig`         | `{ apiKey: string, host?: string }`                                     |
-| `PostHogClient`         | Methods: queryEvents, getTrends, getFunnels                             |
-| `PlausibleConfig`       | `{ domain: string, selfHostedUrl?: string }`                            |
-| `PlausibleClient`       | Methods: getTimeseries, getBreakdown, getAggregate                      |
-| `FathomConfig`          | `{ siteId: string }`                                                     |
-| `FathomClient`          | Methods: getSites, getPageviews, getReferrers                           |
+| `GA4Config`             | `{ measurementId, consentModeV2?, anonymizeIp?, sendPageView? }`                     |
+| `GA4ReportRequest`      | `{ startDate, endDate, metrics, dimensions?, limit? }`                               |
+| `GA4ReportResponse`     | `{ rows, rowCount, metadata? }`                                                      |
+| `GA4Client`             | Methods: queryReport, getRealtimeReport, getMetadata                                 |
+| `ClarityConfig`         | `{ projectId: string }`                                                              |
+| `ClarityClient`         | Methods: getProjects, getInsights, getHeatmapData                                    |
+| `PostHogConfig`         | `{ apiKey: string, host?: string }`                                                  |
+| `PostHogClient`         | Methods: queryEvents, getTrends, getFunnels                                          |
+| `PlausibleConfig`       | `{ domain: string, selfHostedUrl?: string }`                                         |
+| `PlausibleClient`       | Methods: getTimeseries, getBreakdown, getAggregate                                   |
+| `FathomConfig`          | `{ siteId: string }`                                                                 |
+| `FathomClient`          | Methods: getSites, getPageviews, getReferrers                                        |
 
 ---
 

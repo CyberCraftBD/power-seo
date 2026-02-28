@@ -19,18 +19,17 @@ Define redirect rules once — apply them in Next.js, Remix, and Express with ty
 
 ## Why @power-seo/redirects?
 
-| | Without | With |
-|---|---|---|
-| Cross-framework rules | ❌ Duplicated in next.config.js, Remix loaders, Express middleware | ✅ One `RedirectRule[]` — all three from a single file |
-| Pattern matching | ❌ Ad-hoc regex scattered across route files | ✅ Exact, glob, and regex with typed API |
-| Named params | ❌ Manual capture group indexing | ✅ `:param` substitution in destination URLs |
-| Trailing slash | ❌ Inconsistent per route | ✅ Configurable `'strip'` / `'add'` / `'ignore'` |
-| TypeScript | ❌ `statusCode` typos detected at runtime | ✅ `RedirectStatusCode` union enforces `301 \| 302` at compile time |
-| Testing | ❌ Deploy to verify redirects work | ✅ `engine.match()` in unit tests — zero-cost synchronous check |
-| SEO | ❌ Missing 301s break link equity during migrations | ✅ Typed rules prevent status code mistakes |
+|                       | Without                                                            | With                                                                |
+| --------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| Cross-framework rules | ❌ Duplicated in next.config.js, Remix loaders, Express middleware | ✅ One `RedirectRule[]` — all three from a single file              |
+| Pattern matching      | ❌ Ad-hoc regex scattered across route files                       | ✅ Exact, glob, and regex with typed API                            |
+| Named params          | ❌ Manual capture group indexing                                   | ✅ `:param` substitution in destination URLs                        |
+| Trailing slash        | ❌ Inconsistent per route                                          | ✅ Configurable `'strip'` / `'add'` / `'ignore'`                    |
+| TypeScript            | ❌ `statusCode` typos detected at runtime                          | ✅ `RedirectStatusCode` union enforces `301 \| 302` at compile time |
+| Testing               | ❌ Deploy to verify redirects work                                 | ✅ `engine.match()` in unit tests — zero-cost synchronous check     |
+| SEO                   | ❌ Missing 301s break link equity during migrations                | ✅ Typed rules prevent status code mistakes                         |
 
 ![Redirects Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/redirects/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -63,19 +62,19 @@ Define redirect rules once — apply them in Next.js, Remix, and Express with ty
 
 ## Comparison
 
-| Feature | @power-seo/redirects | next/redirects (config) | vercel.json | nginx rewrite |
-| --- | :---: | :---: | :---: | :---: |
-| Works in Next.js | ✅ | ✅ | ✅ | ❌ |
-| Works in Remix | ✅ | ❌ | ❌ | ❌ |
-| Works in Express | ✅ | ❌ | ❌ | ✅ |
-| Typed TypeScript API | ✅ | ❌ | ❌ | ❌ |
-| Named `:param` substitution | ✅ | ✅ | ✅ | ✅ |
-| Regex pattern support | ✅ | ✅ | ✅ | ✅ |
-| Glob wildcard support | ✅ | ✅ | ✅ | ✅ |
-| Programmatic rule testing | ✅ | ❌ | ❌ | ❌ |
-| One rule set → multiple frameworks | ✅ | ❌ | ❌ | ❌ |
-| Zero runtime dependencies | ✅ | ✅ | ✅ | ✅ |
-| Tree-shakeable | ✅ | ❌ | ❌ | ❌ |
+| Feature                            | @power-seo/redirects | next/redirects (config) | vercel.json | nginx rewrite |
+| ---------------------------------- | :------------------: | :---------------------: | :---------: | :-----------: |
+| Works in Next.js                   |          ✅          |           ✅            |     ✅      |      ❌       |
+| Works in Remix                     |          ✅          |           ❌            |     ❌      |      ❌       |
+| Works in Express                   |          ✅          |           ❌            |     ❌      |      ✅       |
+| Typed TypeScript API               |          ✅          |           ❌            |     ❌      |      ❌       |
+| Named `:param` substitution        |          ✅          |           ✅            |     ✅      |      ✅       |
+| Regex pattern support              |          ✅          |           ✅            |     ✅      |      ✅       |
+| Glob wildcard support              |          ✅          |           ✅            |     ✅      |      ✅       |
+| Programmatic rule testing          |          ✅          |           ❌            |     ❌      |      ❌       |
+| One rule set → multiple frameworks |          ✅          |           ❌            |     ❌      |      ❌       |
+| Zero runtime dependencies          |          ✅          |           ✅            |     ✅      |      ✅       |
+| Tree-shakeable                     |          ✅          |           ❌            |     ❌      |      ❌       |
 
 ![Matching Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/redirects/matching-accuracy.svg)
 
@@ -184,7 +183,7 @@ app.use(createExpressRedirectMiddleware(rules));
 
 ```ts
 const engine = createRedirectEngine(rules, {
-  caseSensitive: false,   // match /About and /about equally
+  caseSensitive: false, // match /About and /about equally
   trailingSlash: 'remove', // /about/ → /about before matching
 });
 ```
@@ -224,14 +223,17 @@ expect(engine.match('/no-match')).toBeNull();
 ### `createRedirectEngine(initialRules, config)`
 
 ```ts
-function createRedirectEngine(initialRules?: RedirectRule[], config?: RedirectEngineConfig): RedirectEngine;
+function createRedirectEngine(
+  initialRules?: RedirectRule[],
+  config?: RedirectEngineConfig,
+): RedirectEngine;
 ```
 
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `initialRules` | `RedirectRule[]` | `[]` | Initial ordered array of redirect rules |
-| `config.caseSensitive` | `boolean` | `false` | Case-sensitive URL matching |
-| `config.trailingSlash` | `'keep' \| 'remove' \| 'add'` | `'remove'` | Trailing slash normalization |
+| Parameter              | Type                          | Default    | Description                             |
+| ---------------------- | ----------------------------- | ---------- | --------------------------------------- |
+| `initialRules`         | `RedirectRule[]`              | `[]`       | Initial ordered array of redirect rules |
+| `config.caseSensitive` | `boolean`                     | `false`    | Case-sensitive URL matching             |
+| `config.trailingSlash` | `'keep' \| 'remove' \| 'add'` | `'remove'` | Trailing slash normalization            |
 
 Returns `RedirectEngine`: `{ match(url: string): RedirectMatch | null; addRule(rule: RedirectRule): void; removeRule(source: string): boolean; getRules(): RedirectRule[] }`.
 
@@ -246,7 +248,11 @@ Returns `boolean`. Byte-for-byte URL comparison after normalization.
 ### `matchGlob(url, pattern, config?)`
 
 ```ts
-function matchGlob(url: string, pattern: string, config?: RedirectEngineConfig): { matched: boolean; params: Record<string, string> };
+function matchGlob(
+  url: string,
+  pattern: string,
+  config?: RedirectEngineConfig,
+): { matched: boolean; params: Record<string, string> };
 ```
 
 Returns `{ matched: boolean; params: Record<string, string> }`. Supports `:param` named segments and `*` wildcard matching.
@@ -254,7 +260,12 @@ Returns `{ matched: boolean; params: Record<string, string> }`. Supports `:param
 ### `matchRegex(url, pattern, destination, config?)`
 
 ```ts
-function matchRegex(url: string, pattern: string, destination: string, config?: RedirectEngineConfig): { matched: boolean; destination: string };
+function matchRegex(
+  url: string,
+  pattern: string,
+  destination: string,
+  config?: RedirectEngineConfig,
+): { matched: boolean; destination: string };
 ```
 
 Returns `{ matched: boolean; destination: string }`. Full regular expression matching with capture group substitution into the destination.
@@ -280,14 +291,14 @@ Returns an Express `RequestHandler` that calls `res.redirect()` on match or `nex
 
 ### Types
 
-| Type | Description |
-| --- | --- |
-| `RedirectStatusCode` | `301 \| 302 \| 308 \| 307 \| 410` (from `@power-seo/core`) |
-| `RedirectRule` | `{ source: string; destination: string; statusCode: RedirectStatusCode; isRegex?: boolean }` (from `@power-seo/core`) |
-| `RedirectMatch` | `{ rule: RedirectRule; resolvedDestination: string; statusCode: RedirectStatusCode }` |
-| `RedirectEngineConfig` | `{ caseSensitive?: boolean; trailingSlash?: 'keep' \| 'remove' \| 'add' }` |
-| `RedirectEngine` | `{ match(url: string): RedirectMatch \| null; addRule(rule: RedirectRule): void; removeRule(source: string): boolean; getRules(): RedirectRule[] }` |
-| `NextRedirect` | `{ source: string; destination: string; permanent: boolean }` |
+| Type                   | Description                                                                                                                                         |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RedirectStatusCode`   | `301 \| 302 \| 308 \| 307 \| 410` (from `@power-seo/core`)                                                                                          |
+| `RedirectRule`         | `{ source: string; destination: string; statusCode: RedirectStatusCode; isRegex?: boolean }` (from `@power-seo/core`)                               |
+| `RedirectMatch`        | `{ rule: RedirectRule; resolvedDestination: string; statusCode: RedirectStatusCode }`                                                               |
+| `RedirectEngineConfig` | `{ caseSensitive?: boolean; trailingSlash?: 'keep' \| 'remove' \| 'add' }`                                                                          |
+| `RedirectEngine`       | `{ match(url: string): RedirectMatch \| null; addRule(rule: RedirectRule): void; removeRule(source: string): boolean; getRules(): RedirectRule[] }` |
+| `NextRedirect`         | `{ source: string; destination: string; permanent: boolean }`                                                                                       |
 
 ---
 

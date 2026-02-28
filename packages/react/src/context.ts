@@ -1,7 +1,6 @@
 'use client';
 // @power-seo/react — SEO Context
 
-
 import { createContext, useContext } from 'react';
 import type { SEOConfig } from '@power-seo/core';
 

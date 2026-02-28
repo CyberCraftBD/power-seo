@@ -18,19 +18,18 @@ Declarative React components for SEO meta tag management — title templates, Op
 
 ## Why @power-seo/react?
 
-| | Without | With |
-|---|---|---|
-| Title management | ❌ Ad-hoc `<title>` tags per page | ✅ `<DefaultSEO>` enforces site-wide title template |
-| Open Graph | ❌ Missing or inconsistent `og:*` tags | ✅ Typed `<OpenGraph>` and `<SEO openGraph={...}>` |
-| Twitter Cards | ❌ Hand-coded `twitter:*` strings | ✅ Typed `<TwitterCard>` with all card types |
-| Robots directives | ❌ Raw content strings with typos | ✅ Boolean and enum props — no raw string errors |
-| Canonical URLs | ❌ Omitted or duplicated | ✅ `<Canonical>` and `<SEO canonical={...}>` |
-| Hreflang | ❌ Manual `<link>` tags per locale | ✅ `<Hreflang>` renders all alternates + x-default |
-| Breadcrumbs | ❌ HTML nav only, no structured data | ✅ `<Breadcrumb>` renders nav + BreadcrumbList JSON-LD |
-| Framework support | ❌ Locked to next-seo or react-helmet | ✅ Next.js Pages Router, Vite, Gatsby, React 18/19 |
+|                   | Without                                | With                                                   |
+| ----------------- | -------------------------------------- | ------------------------------------------------------ |
+| Title management  | ❌ Ad-hoc `<title>` tags per page      | ✅ `<DefaultSEO>` enforces site-wide title template    |
+| Open Graph        | ❌ Missing or inconsistent `og:*` tags | ✅ Typed `<OpenGraph>` and `<SEO openGraph={...}>`     |
+| Twitter Cards     | ❌ Hand-coded `twitter:*` strings      | ✅ Typed `<TwitterCard>` with all card types           |
+| Robots directives | ❌ Raw content strings with typos      | ✅ Boolean and enum props — no raw string errors       |
+| Canonical URLs    | ❌ Omitted or duplicated               | ✅ `<Canonical>` and `<SEO canonical={...}>`           |
+| Hreflang          | ❌ Manual `<link>` tags per locale     | ✅ `<Hreflang>` renders all alternates + x-default     |
+| Breadcrumbs       | ❌ HTML nav only, no structured data   | ✅ `<Breadcrumb>` renders nav + BreadcrumbList JSON-LD |
+| Framework support | ❌ Locked to next-seo or react-helmet  | ✅ Next.js Pages Router, Vite, Gatsby, React 18/19     |
 
 ![React SEO Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -61,19 +60,19 @@ Declarative React components for SEO meta tag management — title templates, Op
 
 ## Comparison
 
-| Feature                          | @power-seo/react | next-seo | react-helmet | react-helmet-async |
-| -------------------------------- | :--------------: | :------: | :----------: | :----------------: |
-| Typed robots directives          | ✅               | ✅       | ❌           | ❌                 |
-| DefaultSEO context pattern       | ✅               | ✅       | ❌           | ❌                 |
-| Hreflang support                 | ✅               | ✅       | ❌           | ❌                 |
-| Breadcrumb with JSON-LD          | ✅               | ✅       | ❌           | ❌                 |
-| `max-snippet` / `max-image-preview` | ✅            | ✅       | ❌           | ❌                 |
-| No third-party runtime deps      | ✅               | ❌       | ❌           | ❌                 |
-| React 19 native head hoisting    | ✅               | ❌       | ❌           | ❌                 |
-| TypeScript-first API             | ✅               | ✅       | ⚠️           | ⚠️                 |
-| Tree-shakeable                   | ✅               | Partial  | ❌           | ❌                 |
-| Works in Next.js Pages Router    | ✅               | ✅       | ✅           | ✅                 |
-| Works in Vite / Gatsby / CRA     | ✅               | ❌       | ✅           | ✅                 |
+| Feature                             | @power-seo/react | next-seo | react-helmet | react-helmet-async |
+| ----------------------------------- | :--------------: | :------: | :----------: | :----------------: |
+| Typed robots directives             |        ✅        |    ✅    |      ❌      |         ❌         |
+| DefaultSEO context pattern          |        ✅        |    ✅    |      ❌      |         ❌         |
+| Hreflang support                    |        ✅        |    ✅    |      ❌      |         ❌         |
+| Breadcrumb with JSON-LD             |        ✅        |    ✅    |      ❌      |         ❌         |
+| `max-snippet` / `max-image-preview` |        ✅        |    ✅    |      ❌      |         ❌         |
+| No third-party runtime deps         |        ✅        |    ❌    |      ❌      |         ❌         |
+| React 19 native head hoisting       |        ✅        |    ❌    |      ❌      |         ❌         |
+| TypeScript-first API                |        ✅        |    ✅    |      ⚠️      |         ⚠️         |
+| Tree-shakeable                      |        ✅        | Partial  |      ❌      |         ❌         |
+| Works in Next.js Pages Router       |        ✅        |    ✅    |      ✅      |         ✅         |
+| Works in Vite / Gatsby / CRA        |        ✅        |    ❌    |      ✅      |         ✅         |
 
 ![SSR Rendering Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/ssr-accuracy.svg)
 
@@ -239,13 +238,15 @@ import { OpenGraph } from '@power-seo/react';
   title="How to Build a React SEO Pipeline"
   description="A step-by-step guide to SEO in React applications."
   url="https://example.com/blog/react-seo"
-  images={[{ url: 'https://example.com/react-seo-og.jpg', width: 1200, height: 630, alt: 'React SEO' }]}
+  images={[
+    { url: 'https://example.com/react-seo-og.jpg', width: 1200, height: 630, alt: 'React SEO' },
+  ]}
   article={{
     publishedTime: '2026-01-15T00:00:00Z',
     authors: ['https://example.com/author/jane'],
     tags: ['react', 'seo', 'typescript'],
   }}
-/>
+/>;
 ```
 
 ### Twitter Cards
@@ -263,7 +264,7 @@ import { TwitterCard } from '@power-seo/react';
   description="A step-by-step guide to SEO in React applications."
   image="https://example.com/twitter-card.jpg"
   imageAlt="React SEO guide"
-/>
+/>;
 ```
 
 ### Canonical URL
@@ -290,7 +291,7 @@ import { Hreflang } from '@power-seo/react';
     { hrefLang: 'de', href: 'https://example.com/de/page' },
   ]}
   xDefault="https://example.com/en/page"
-/>
+/>;
 ```
 
 ### Breadcrumb Navigation with JSON-LD
@@ -301,12 +302,8 @@ import { Hreflang } from '@power-seo/react';
 import { Breadcrumb } from '@power-seo/react';
 
 <Breadcrumb
-  items={[
-    { name: 'Home', url: '/' },
-    { name: 'Blog', url: '/blog' },
-    { name: 'React SEO Guide' },
-  ]}
-/>
+  items={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: 'React SEO Guide' }]}
+/>;
 ```
 
 Customize the separator and styling:
@@ -360,41 +357,41 @@ return (
 
 ### Components
 
-| Component       | Description                                                                             |
-| --------------- | --------------------------------------------------------------------------------------- |
+| Component       | Description                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------------------------- |
 | `<DefaultSEO>`  | App-root defaults — title template, global OG, global Twitter, global robots; wraps children with SEO context |
-| `<SEO>`         | All-in-one per-page SEO component — title, description, canonical, robots, OG, Twitter  |
-| `<Robots>`      | Renders `<meta name="robots">` with all supported directives                            |
-| `<OpenGraph>`   | Renders Open Graph `og:*` meta tags                                                     |
-| `<TwitterCard>` | Renders Twitter Card `twitter:*` meta tags                                              |
-| `<Canonical>`   | Renders `<link rel="canonical">`                                                        |
-| `<Hreflang>`    | Renders `<link rel="alternate" hreflang="...">` tags                                    |
-| `<Breadcrumb>`  | Renders breadcrumb nav + embedded BreadcrumbList JSON-LD                                |
+| `<SEO>`         | All-in-one per-page SEO component — title, description, canonical, robots, OG, Twitter                        |
+| `<Robots>`      | Renders `<meta name="robots">` with all supported directives                                                  |
+| `<OpenGraph>`   | Renders Open Graph `og:*` meta tags                                                                           |
+| `<TwitterCard>` | Renders Twitter Card `twitter:*` meta tags                                                                    |
+| `<Canonical>`   | Renders `<link rel="canonical">`                                                                              |
+| `<Hreflang>`    | Renders `<link rel="alternate" hreflang="...">` tags                                                          |
+| `<Breadcrumb>`  | Renders breadcrumb nav + embedded BreadcrumbList JSON-LD                                                      |
 
 ### SEO Props
 
-| Prop                 | Type                  | Default | Description                                                      |
-| -------------------- | --------------------- | ------- | ---------------------------------------------------------------- |
-| `title`              | `string`              | —       | Page title (applied to title template if `DefaultSEO` is present) |
-| `defaultTitle`       | `string`              | —       | Fallback title when no `title` prop is provided                  |
-| `titleTemplate`      | `string`              | —       | Template string; `%s` is replaced by `title` (e.g. `"%s \| Site"`) |
-| `description`        | `string`              | —       | Meta description                                                 |
-| `canonical`          | `string`              | —       | Canonical URL                                                    |
-| `robots`             | `RobotsDirective`     | —       | Robots directive config object                                   |
-| `openGraph`          | `OpenGraphConfig`     | —       | Open Graph configuration                                         |
-| `twitter`            | `TwitterCardConfig`   | —       | Twitter Card configuration                                       |
-| `noindex`            | `boolean`             | `false` | Shorthand for `robots.index = false`                             |
-| `nofollow`           | `boolean`             | `false` | Shorthand for `robots.follow = false`                            |
-| `languageAlternates` | `HreflangEntry[]`     | —       | Hreflang entries for i18n                                        |
-| `additionalMetaTags` | `MetaTag[]`           | —       | Additional custom meta tags                                      |
-| `additionalLinkTags` | `LinkTag[]`           | —       | Additional custom link tags                                      |
+| Prop                 | Type                | Default | Description                                                        |
+| -------------------- | ------------------- | ------- | ------------------------------------------------------------------ |
+| `title`              | `string`            | —       | Page title (applied to title template if `DefaultSEO` is present)  |
+| `defaultTitle`       | `string`            | —       | Fallback title when no `title` prop is provided                    |
+| `titleTemplate`      | `string`            | —       | Template string; `%s` is replaced by `title` (e.g. `"%s \| Site"`) |
+| `description`        | `string`            | —       | Meta description                                                   |
+| `canonical`          | `string`            | —       | Canonical URL                                                      |
+| `robots`             | `RobotsDirective`   | —       | Robots directive config object                                     |
+| `openGraph`          | `OpenGraphConfig`   | —       | Open Graph configuration                                           |
+| `twitter`            | `TwitterCardConfig` | —       | Twitter Card configuration                                         |
+| `noindex`            | `boolean`           | `false` | Shorthand for `robots.index = false`                               |
+| `nofollow`           | `boolean`           | `false` | Shorthand for `robots.follow = false`                              |
+| `languageAlternates` | `HreflangEntry[]`   | —       | Hreflang entries for i18n                                          |
+| `additionalMetaTags` | `MetaTag[]`         | —       | Additional custom meta tags                                        |
+| `additionalLinkTags` | `LinkTag[]`         | —       | Additional custom link tags                                        |
 
 ### DefaultSEO Props
 
 `<DefaultSEO>` accepts all `SEO` props plus:
 
-| Prop       | Type        | Default | Description                                     |
-| ---------- | ----------- | ------- | ----------------------------------------------- |
+| Prop       | Type        | Default | Description                                        |
+| ---------- | ----------- | ------- | -------------------------------------------------- |
 | `children` | `ReactNode` | —       | App subtree that inherits the SEO context defaults |
 
 ### Robots Props
@@ -414,58 +411,58 @@ return (
 
 ### Canonical Props
 
-| Prop            | Type      | Default | Description                                       |
-| --------------- | --------- | ------- | ------------------------------------------------- |
-| `url`           | `string`  | —       | **Required.** The canonical URL                   |
-| `baseUrl`       | `string`  | —       | Base URL for resolving relative `url` values      |
-| `trailingSlash` | `boolean` | `false` | Append trailing slash to the resolved URL         |
+| Prop            | Type      | Default | Description                                  |
+| --------------- | --------- | ------- | -------------------------------------------- |
+| `url`           | `string`  | —       | **Required.** The canonical URL              |
+| `baseUrl`       | `string`  | —       | Base URL for resolving relative `url` values |
+| `trailingSlash` | `boolean` | `false` | Append trailing slash to the resolved URL    |
 
 ### Hreflang Props
 
-| Prop         | Type               | Default | Description                                                   |
-| ------------ | ------------------ | ------- | ------------------------------------------------------------- |
+| Prop         | Type               | Default | Description                                                         |
+| ------------ | ------------------ | ------- | ------------------------------------------------------------------- |
 | `alternates` | `HreflangConfig[]` | —       | **Required.** Array of `{ hrefLang: string; href: string }` objects |
-| `xDefault`   | `string`           | —       | URL for the `x-default` alternate link tag                    |
+| `xDefault`   | `string`           | —       | URL for the `x-default` alternate link tag                          |
 
 ### Breadcrumb Props
 
-| Prop              | Type               | Default  | Description                                                     |
-| ----------------- | ------------------ | -------- | --------------------------------------------------------------- |
-| `items`           | `BreadcrumbItem[]` | —        | **Required.** Array of `{ name: string; url?: string }` objects |
-| `separator`       | `string`           | `' / '`  | Visual separator between breadcrumb items                       |
-| `className`       | `string`           | —        | CSS class for the outer `<nav>` element                         |
-| `linkClassName`   | `string`           | —        | CSS class for each `<a>` link element                           |
-| `activeClassName` | `string`           | —        | CSS class for the last (current) item `<span>`                  |
-| `includeJsonLd`   | `boolean`          | `true`   | Whether to render the BreadcrumbList JSON-LD script             |
+| Prop              | Type               | Default | Description                                                     |
+| ----------------- | ------------------ | ------- | --------------------------------------------------------------- |
+| `items`           | `BreadcrumbItem[]` | —       | **Required.** Array of `{ name: string; url?: string }` objects |
+| `separator`       | `string`           | `' / '` | Visual separator between breadcrumb items                       |
+| `className`       | `string`           | —       | CSS class for the outer `<nav>` element                         |
+| `linkClassName`   | `string`           | —       | CSS class for each `<a>` link element                           |
+| `activeClassName` | `string`           | —       | CSS class for the last (current) item `<span>`                  |
+| `includeJsonLd`   | `boolean`          | `true`  | Whether to render the BreadcrumbList JSON-LD script             |
 
 ### Utility Functions
 
-| Function          | Signature                              | Description                                            |
-| ----------------- | -------------------------------------- | ------------------------------------------------------ |
-| `renderMetaTags`  | `(tags: MetaTag[]) => ReactElement`    | Converts `@power-seo/core` MetaTag array to React elements |
-| `renderLinkTags`  | `(tags: LinkTag[]) => ReactElement`    | Converts `@power-seo/core` LinkTag array to React elements |
+| Function         | Signature                           | Description                                                |
+| ---------------- | ----------------------------------- | ---------------------------------------------------------- |
+| `renderMetaTags` | `(tags: MetaTag[]) => ReactElement` | Converts `@power-seo/core` MetaTag array to React elements |
+| `renderLinkTags` | `(tags: LinkTag[]) => ReactElement` | Converts `@power-seo/core` LinkTag array to React elements |
 
 ### Hooks
 
-| Hook            | Signature                          | Description                                                             |
-| --------------- | ---------------------------------- | ----------------------------------------------------------------------- |
-| `useDefaultSEO` | `() => SEOConfig \| null`          | Returns the current `DefaultSEO` config from React context              |
+| Hook            | Signature                 | Description                                                |
+| --------------- | ------------------------- | ---------------------------------------------------------- |
+| `useDefaultSEO` | `() => SEOConfig \| null` | Returns the current `DefaultSEO` config from React context |
 
 ---
 
 ## Types
 
-| Type                | Description                                                              |
-| ------------------- | ------------------------------------------------------------------------ |
-| `SEOProps`          | Alias of `SEOConfig` from `@power-seo/core`                              |
-| `DefaultSEOProps`   | `SEOConfig & { children?: ReactNode }`                                   |
-| `RobotsProps`       | Alias of `RobotsDirective` from `@power-seo/core`                        |
-| `OpenGraphProps`    | Alias of `OpenGraphConfig` from `@power-seo/core`                        |
-| `TwitterCardProps`  | Alias of `TwitterCardConfig` from `@power-seo/core`                      |
-| `CanonicalProps`    | `{ url: string; baseUrl?: string; trailingSlash?: boolean }`             |
-| `HreflangProps`     | `{ alternates: HreflangConfig[]; xDefault?: string }`                    |
-| `BreadcrumbProps`   | See Breadcrumb Props table above                                          |
-| `BreadcrumbItem`    | `{ name: string; url?: string }`                                         |
+| Type               | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `SEOProps`         | Alias of `SEOConfig` from `@power-seo/core`                  |
+| `DefaultSEOProps`  | `SEOConfig & { children?: ReactNode }`                       |
+| `RobotsProps`      | Alias of `RobotsDirective` from `@power-seo/core`            |
+| `OpenGraphProps`   | Alias of `OpenGraphConfig` from `@power-seo/core`            |
+| `TwitterCardProps` | Alias of `TwitterCardConfig` from `@power-seo/core`          |
+| `CanonicalProps`   | `{ url: string; baseUrl?: string; trailingSlash?: boolean }` |
+| `HreflangProps`    | `{ alternates: HreflangConfig[]; xDefault?: string }`        |
+| `BreadcrumbProps`  | See Breadcrumb Props table above                             |
+| `BreadcrumbItem`   | `{ name: string; url?: string }`                             |
 
 ---
 
