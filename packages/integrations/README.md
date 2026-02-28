@@ -119,39 +119,30 @@ console.log(site.organicTraffic); // 9_800
 import { createSemrushClient } from '@power-seo/integrations';
 import type { SemrushDomainOverview, SemrushKeywordData } from '@power-seo/integrations';
 
-const semrush = createSemrushClient({
-  apiKey: process.env.SEMRUSH_API_KEY!,
-  database: 'us', // default: 'us'
-  rateLimiting: { maxRequests: 10, windowMs: 60_000 }, // optional
-});
+const semrush = createSemrushClient(
+  process.env.SEMRUSH_API_KEY!,
+  { rateLimitPerMinute: 10, maxRetries: 3 }, // optional
+);
 
 // Domain overview — traffic, keywords, backlinks
-const overview: SemrushDomainOverview = await semrush.getDomainOverview({
-  domain: 'example.com',
-});
-// { organicTraffic, paidTraffic, organicKeywords, paidKeywords, backlinks, referringDomains }
+const overview: SemrushDomainOverview = await semrush.getDomainOverview('example.com', 'us');
+// { domain, organicTraffic, paidTraffic, organicKeywords, paidKeywords, backlinks, authorityScore }
 
-// Keyword data — volume, CPC, competition, SERP features
-const keyword: SemrushKeywordData = await semrush.getKeywordData({
-  keyword: 'react seo',
-  database: 'us',
-});
-// { keyword, volume, cpc, competition, results, trend, serpFeatures }
+// Organic keywords
+const keywords = await semrush.getOrganicKeywords('example.com', { limit: 100, offset: 0 });
+// { data: SemrushKeywordData[], total, offset, limit, hasMore }
 
 // Backlinks
-const backlinks = await semrush.getBacklinks({
-  domain: 'example.com',
-  limit: 100,
-});
-// [{ sourcePage, targetPage, type, anchorText, firstSeen, lastSeen }]
+const backlinks = await semrush.getBacklinks('example.com', { limit: 100, offset: 0 });
+// { data: SemrushBacklinkData[], total, offset, limit, hasMore }
 
 // Keyword difficulty
-const difficulty = await semrush.getKeywordDifficulty({ keyword: 'react seo' });
-// { keyword, difficulty }   // difficulty 0–100
+const difficulty = await semrush.getKeywordDifficulty(['react seo'], 'us');
+// [{ keyword, difficulty, searchVolume, cpc, competition, results }]
 
 // Related keywords
-const related = await semrush.getRelatedKeywords({ keyword: 'react seo', limit: 20 });
-// [{ keyword, volume, cpc, competition, relatedRelevance }]
+const related = await semrush.getRelatedKeywords('react seo', 'us');
+// [{ keyword, searchVolume, cpc, competition, results, relatedTo }]
 ```
 
 ### Ahrefs Client
@@ -160,45 +151,30 @@ const related = await semrush.getRelatedKeywords({ keyword: 'react seo', limit: 
 import { createAhrefsClient } from '@power-seo/integrations';
 import type { AhrefsSiteOverview, AhrefsOrganicKeyword } from '@power-seo/integrations';
 
-const ahrefs = createAhrefsClient({
-  apiKey: process.env.AHREFS_API_KEY!,
-  rateLimiting: { maxRequests: 5, windowMs: 60_000 }, // optional
-});
+const ahrefs = createAhrefsClient(
+  process.env.AHREFS_API_TOKEN!,
+  { rateLimitPerMinute: 5, maxRetries: 3 }, // optional
+);
 
 // Site overview — DR, organic traffic, backlinks
-const overview: AhrefsSiteOverview = await ahrefs.getSiteOverview({
-  target: 'example.com',
-  mode: 'domain', // 'domain' | 'subdomains' | 'exact'
-});
-// { domainRating, urlRating, organicTraffic, organicKeywords, backlinks, referringDomains }
+const overview: AhrefsSiteOverview = await ahrefs.getSiteOverview('example.com');
+// { domain, domainRating, urlRating, organicTraffic, organicKeywords, backlinks, referringDomains, trafficValue }
 
 // Organic keywords with positions
-const keywords: AhrefsOrganicKeyword[] = await ahrefs.getOrganicKeywords({
-  target: 'example.com',
-  limit: 200,
-  orderBy: 'traffic:desc',
-});
-// [{ keyword, position, volume, traffic, url, cpc }]
+const keywords = await ahrefs.getOrganicKeywords('example.com', { limit: 200, offset: 0 });
+// { data: AhrefsOrganicKeyword[], total, offset, limit, hasMore }
 
 // Backlinks with anchor text
-const backlinks = await ahrefs.getBacklinks({
-  target: 'example.com',
-  limit: 100,
-  mode: 'domain',
-});
-// [{ anchorText, domainRating, urlFrom, urlTo, firstSeen, linkType }]
+const backlinks = await ahrefs.getBacklinks('example.com', { limit: 100, offset: 0 });
+// { data: AhrefsBacklink[], total, offset, limit, hasMore }
 
 // Keyword difficulty
-const kd = await ahrefs.getKeywordDifficulty({ keyword: 'react seo' });
-// { keyword, difficulty }   // difficulty 0–100
+const kd = await ahrefs.getKeywordDifficulty(['react seo']);
+// [{ keyword, difficulty, searchVolume, cpc, clicks, globalVolume }]
 
 // Referring domains
-const domains = await ahrefs.getReferringDomains({
-  target: 'example.com',
-  limit: 50,
-  orderBy: 'domain_rating:desc',
-});
-// [{ domain, domainRating, backlinks, linkedDomains }]
+const domains = await ahrefs.getReferringDomains('example.com', { limit: 50, offset: 0 });
+// { data: AhrefsReferringDomain[], total, offset, limit, hasMore }
 ```
 
 ### Shared HTTP Client
@@ -210,15 +186,13 @@ import { createHttpClient } from '@power-seo/integrations';
 
 const http = createHttpClient({
   baseUrl: 'https://api.example.com',
-  headers: { Authorization: `Bearer ${token}` },
-  rateLimiting: {
-    maxRequests: 10, // max requests allowed
-    windowMs: 60_000, // per this window in ms
-  },
+  auth: { type: 'bearer', token },
+  rateLimitPerMinute: 60, // max requests per minute
+  maxRetries: 3,
+  timeoutMs: 30_000,
 });
 
 const data = await http.get<MyResponseType>('/endpoint', { query: 'param' });
-const list = await http.getPaginated<MyItem>('/items', { page: 1, limit: 100 });
 ```
 
 ### Error Handling
@@ -231,11 +205,12 @@ import { createSemrushClient, IntegrationApiError } from '@power-seo/integration
 const semrush = createSemrushClient({ apiKey: 'your-key' });
 
 try {
-  const data = await semrush.getDomainOverview({ domain: 'example.com' });
+  const data = await semrush.getDomainOverview('example.com');
 } catch (err) {
   if (err instanceof IntegrationApiError) {
-    console.error(`API error ${err.statusCode}: ${err.message}`);
-    console.error('Raw response:', err.response);
+    console.error(`API error ${err.status}: ${err.message}`);
+    console.error('Provider:', err.provider);
+    console.error('Retryable:', err.retryable);
   } else {
     throw err;
   }
@@ -249,34 +224,34 @@ try {
 ### Semrush
 
 ```ts
-function createSemrushClient(config: SemrushConfig): SemrushClient;
+function createSemrushClient(apiKey: string, config?: Partial<HttpClientConfig>): SemrushClient;
 ```
 
 #### `SemrushClient` methods
 
-| Method                 | Parameters               | Returns                   | Description                          |
-| ---------------------- | ------------------------ | ------------------------- | ------------------------------------ |
-| `getDomainOverview`    | `{ domain }`             | `SemrushDomainOverview`   | Traffic, keywords, backlinks summary |
-| `getKeywordData`       | `{ keyword, database? }` | `SemrushKeywordData`      | Volume, CPC, competition, trend      |
-| `getBacklinks`         | `{ domain, limit? }`     | `SemrushBacklinkData[]`   | Backlink list with follow/nofollow   |
-| `getKeywordDifficulty` | `{ keyword }`            | `{ keyword, difficulty }` | KD score 0–100                       |
-| `getRelatedKeywords`   | `{ keyword, limit? }`    | `SemrushRelatedKeyword[]` | Related keyword suggestions          |
+| Method                 | Parameters                          | Returns                                    | Description                          |
+| ---------------------- | ----------------------------------- | ------------------------------------------ | ------------------------------------ |
+| `getDomainOverview`    | `(domain, database?)`               | `SemrushDomainOverview`                    | Traffic, keywords, backlinks summary |
+| `getOrganicKeywords`   | `(domain, options?)`                | `PaginatedResponse<SemrushKeywordData>`    | Keywords with rankings               |
+| `getBacklinks`         | `(domain, options?)`                | `PaginatedResponse<SemrushBacklinkData>`   | Backlinks with source/target URLs    |
+| `getKeywordDifficulty` | `(keywords[], database?)`           | `SemrushKeywordDifficulty[]`               | KD scores with volume/CPC            |
+| `getRelatedKeywords`   | `(keyword, database?)`              | `SemrushRelatedKeyword[]`                  | Related keyword suggestions          |
 
 ### Ahrefs
 
 ```ts
-function createAhrefsClient(config: AhrefsConfig): AhrefsClient;
+function createAhrefsClient(apiToken: string, config?: Partial<HttpClientConfig>): AhrefsClient;
 ```
 
 #### `AhrefsClient` methods
 
-| Method                 | Parameters                     | Returns                   | Description                     |
-| ---------------------- | ------------------------------ | ------------------------- | ------------------------------- |
-| `getSiteOverview`      | `{ target, mode? }`            | `AhrefsSiteOverview`      | DR, organic traffic, backlinks  |
-| `getOrganicKeywords`   | `{ target, limit?, orderBy? }` | `AhrefsOrganicKeyword[]`  | Ranking keywords with positions |
-| `getBacklinks`         | `{ target, limit?, mode? }`    | `AhrefsBacklink[]`        | Backlinks with anchor text      |
-| `getKeywordDifficulty` | `{ keyword }`                  | `{ keyword, difficulty }` | KD score 0–100                  |
-| `getReferringDomains`  | `{ target, limit?, orderBy? }` | `AhrefsReferringDomain[]` | Referring domains by DR         |
+| Method                 | Parameters                  | Returns                                    | Description                     |
+| ---------------------- | --------------------------- | ------------------------------------------ | ------------------------------- |
+| `getSiteOverview`      | `(domain)`                  | `AhrefsSiteOverview`                       | DR, organic traffic, backlinks  |
+| `getOrganicKeywords`   | `(domain, options?)`        | `PaginatedResponse<AhrefsOrganicKeyword>`  | Ranking keywords with positions |
+| `getBacklinks`         | `(domain, options?)`        | `PaginatedResponse<AhrefsBacklink>`        | Backlinks with anchor text      |
+| `getKeywordDifficulty` | `(keywords[])`              | `AhrefsKeywordDifficulty[]`                | KD scores with volume/CPC       |
+| `getReferringDomains`  | `(domain, options?)`        | `PaginatedResponse<AhrefsReferringDomain>` | Referring domains by DR         |
 
 ### Shared
 
@@ -286,11 +261,17 @@ function createHttpClient(config: HttpClientConfig): HttpClient;
 
 #### `HttpClientConfig`
 
-| Prop           | Type                        | Default | Description                   |
-| -------------- | --------------------------- | ------- | ----------------------------- |
-| `baseUrl`      | `string`                    | —       | Base URL for all requests     |
-| `headers`      | `Record<string, string>`    | `{}`    | Default request headers       |
-| `rateLimiting` | `{ maxRequests, windowMs }` | —       | Optional rate limiting config |
+| Prop                 | Type               | Default | Description                              |
+| -------------------- | ------------------ | ------- | ---------------------------------------- |
+| `baseUrl`            | `string`           | —       | Base URL for all requests                |
+| `auth`               | `AuthStrategy`     | —       | Authentication: bearer token or query    |
+| `rateLimitPerMinute` | `number`           | —       | Optional: max requests per minute        |
+| `maxRetries`         | `number`           | —       | Optional: retry failed requests (default: 3) |
+| `timeoutMs`          | `number`           | —       | Optional: request timeout in milliseconds |
+
+**AuthStrategy** is one of:
+- `{ type: 'bearer', token: string }` — Authorization header
+- `{ type: 'query', paramName: string, value: string }` — Query parameter auth
 
 ### Types
 
@@ -357,7 +338,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
