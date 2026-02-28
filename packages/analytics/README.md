@@ -49,7 +49,7 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 - **Trend direction analysis** — `analyzeTrend` detects whether a time series is trending up, down, or stable, with a rate-of-change value and a confidence score based on the linearity of the data
 - **Chart-ready trend lines** — `buildTrendLines` converts raw data points into smoothed time-series arrays suitable for direct consumption by Recharts, Chart.js, or any other charting library
 - **Anomaly detection** — `detectAnomalies` flags statistically significant spikes and drops in a time series using a configurable standard deviation threshold, returning annotated anomaly objects with timestamps and delta values
-- **Position bucket analysis** — `analyzeQueryRankings` groups queries into five standard SERP ranking tiers: 1–3 (top spots), 4–10 (first page), 11–20 (second page), 21–50 (deep pages), 50+ (not ranking meaningfully)
+- **Position bucket analysis** — `analyzeQueryRankings` groups queries into four standard SERP ranking tiers: 1–3 (top spots), 4–10 (first page), 11–20 (second page), 21–100 (deep pages)
 - **Position change tracking** — `trackPositionChanges` compares two ranking snapshots and produces a list of `PositionChange` objects showing which queries improved, declined, or are new/dropped
 - **Dashboard aggregation** — `buildDashboardData` accepts raw GSC pages, GSC queries, and audit results and returns a structured `DashboardData` object containing: overview metrics, top pages by traffic, top queries by clicks, trend lines, and a prioritized issue list
 - **Normalized URL matching** — URL normalization handles trailing slashes, protocol differences, and query string variations so that GSC URLs and audit URLs match correctly even when they are not identical strings
@@ -177,17 +177,18 @@ insights.forEach(({ url, clicks, position, auditScore }) => {
 ```ts
 import { mergeGscWithAudit, correlateScoreAndTraffic } from '@power-seo/analytics';
 
-const insights = mergeGscWithAudit({ gscPages, auditResults });
-const correlation = correlateScoreAndTraffic(insights);
+const insights = mergeGscWithAudit(gscPages, auditResults);
+const result = correlateScoreAndTraffic(insights);
 
-console.log(`Pearson r: ${correlation.coefficient.toFixed(3)}`);
+console.log(`Pearson r: ${result.correlation.toFixed(3)}`);
 // e.g. 0.741 — strong positive correlation
 
-console.log(`Statistically significant: ${correlation.significant}`);
-
-if (correlation.coefficient > 0.5) {
+if (result.correlation > 0.5) {
   console.log('Strong positive relationship: improving audit scores tends to increase traffic');
 }
+
+// Top pages with high traffic but low scores
+console.log('Quick wins:', result.topOpportunities.map((p) => p.url));
 ```
 
 ### Trend Analysis
@@ -402,7 +403,7 @@ Returns `TrendPoint[]` — data points that exceed the threshold (standard devia
 | --------- | ---------------- | -------- | ----------------------------------- |
 | `queries` | `GscQueryData[]` | required | GSC query data with position values |
 
-Returns `RankingAnalysis`: `{ totalQueries: number; buckets: RankingBucket[]; strikingDistance: GscQueryData[] }`. Buckets are: 1–3, 4–10, 11–20, 21–100. Striking distance identifies 4–20 ranked queries with highest impressions for quick-win targeting.
+Returns `RankingAnalysis`: `{ totalQueries: number; buckets: RankingBucket[]; strikingDistance: GscQueryData[] }`. Buckets are: 1–3, 4–10, 11–20, 21–100 (positions). Striking distance identifies 4–20 ranked queries with highest impressions for quick-win targeting.
 
 ---
 
