@@ -11,7 +11,7 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/sitemap)
 
-`@power-seo/sitemap` produces standards-compliant `<urlset>` and `<sitemapindex>` XML from typed URL arrays. Provide a hostname and URL list — get back a valid XML string ready to serve as `Content-Type: application/xml`. For large catalogs, stream chunks with constant memory usage or auto-split at the 50,000-URL spec limit with a generated index file. All five functions are independently importable and tree-shakeable.
+`@power-seo/sitemap` produces standards-compliant `<urlset>` and `<sitemapindex>` XML from typed URL arrays. Provide a hostname and URL list — get back a valid XML string ready to serve as `Content-Type: application/xml`. For large catalogs, stream chunks with constant memory usage or auto-split at the 50,000-URL spec limit with a generated index file. All six functions are independently importable and tree-shakeable.
 
 > **Zero runtime dependencies** — only `@power-seo/core` as a peer.
 
@@ -274,7 +274,7 @@ export default async function sitemap() {
 }
 ```
 
-`toNextSitemap()` filters out invalid URLs, converts `lastmod` strings to `Date` objects, and maps `changefreq` to `changeFrequency` as required by Next.js.
+`toNextSitemap()` filters out invalid URLs and maps `changefreq` to `changeFrequency` as required by Next.js. The `lastmod` field is passed through as-is (string or Date).
 
 ### Next.js App Router — Route Handler (XML)
 
@@ -492,7 +492,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 21 React components |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 22 React components |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
