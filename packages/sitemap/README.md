@@ -51,6 +51,7 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 - **Streaming generation** — `streamSitemap()` is a synchronous generator yielding XML string chunks; no memory spike on large lists
 - **Automatic index splitting** — `splitSitemap()` chunks at `MAX_URLS_PER_SITEMAP` (50,000) and returns both sitemaps and the index XML
 - **Sitemap index generation** — `generateSitemapIndex()` creates a `<sitemapindex>` pointing to child sitemaps
+- **Smart namespace detection** — `generateSitemap()` only declares XML namespaces for extensions (image, video, news) that are actually used
 - **URL validation** — `validateSitemapUrl()` returns `{ valid, errors, warnings }` without throwing
 - **Next.js App Router adapter** — `toNextSitemap()` converts `SitemapURL[]` to the `MetadataRoute.Sitemap[]` format for `app/sitemap.ts`
 - **Constants exported** — `MAX_URLS_PER_SITEMAP` (50,000) and `MAX_SITEMAP_SIZE_BYTES` (52,428,800)
@@ -401,12 +402,12 @@ import { toNextSitemap } from '@power-seo/sitemap';
 function toNextSitemap(urls: SitemapURL[]): NextSitemapEntry[];
 ```
 
-Converts a `SitemapURL[]` to the array format expected by Next.js App Router's `app/sitemap.ts` file convention. Invalid URLs (per `validateSitemapUrl`) are filtered out automatically. `lastmod` strings are converted to `Date` objects; `changefreq` is mapped to `changeFrequency`.
+Converts a `SitemapURL[]` to the array format expected by Next.js App Router's `app/sitemap.ts` file convention. Invalid URLs (per `validateSitemapUrl`) are filtered out automatically. `changefreq` is mapped to `changeFrequency`.
 
 | Field             | Type                   | Description                              |
 | ----------------- | ---------------------- | ---------------------------------------- |
 | `url`             | `string`               | Absolute URL (`loc`)                     |
-| `lastModified`    | `Date \| string`       | From `lastmod` (converted to `Date`)     |
+| `lastModified`    | `Date \| string`       | From `lastmod` (passed through as-is)    |
 | `changeFrequency` | `string`               | From `changefreq`                        |
 | `priority`        | `number`               | From `priority`                          |
 
@@ -467,7 +468,7 @@ Converts a `SitemapURL[]` to the array format expected by Next.js App Router's `
 - **SSR compatible** — safe to run in Next.js Server Components, Remix loaders, or Express handlers
 - **Edge runtime safe** — no `fs`, no `path`, no Node.js-specific APIs; runs in Cloudflare Workers, Vercel Edge, Deno
 - **Synchronous generator streaming** — `streamSitemap()` uses `function*` — no async overhead, no backpressure complexity
-- **Auto namespace detection** — `generateSitemap()` only adds `xmlns:image`, `xmlns:video`, `xmlns:news` declarations when the URL set actually uses those extensions
+- **Smart namespace detection** — `generateSitemap()` only declares image/video/news namespaces when actually used; `streamSitemap()` always includes all namespaces for simplicity
 - **Tree-shakeable** — `"sideEffects": false` with named exports per function
 - **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
 
