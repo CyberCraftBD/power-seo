@@ -153,16 +153,17 @@ const gscPages: GscPageData[] = [
   },
 ];
 
-const auditResults: AuditSnapshot[] = [
-  { url: '/blog/post-1', score: 91, issues: [] },
+const auditResults = [
+  { url: '/blog/post-1', score: 91, categories: { performance: 88, seo: 91 }, recommendations: [] },
   {
     url: '/blog/post-2',
     score: 63,
-    issues: [{ rule: 'meta-description', severity: 'error', message: '...' }],
+    categories: { performance: 55, seo: 63 },
+    recommendations: ['Improve meta description', 'Add more internal links'],
   },
 ];
 
-const insights: PageInsight[] = mergeGscWithAudit({ gscPages, auditResults });
+const insights: PageInsight[] = mergeGscWithAudit(gscPages, auditResults);
 
 insights.forEach(({ url, clicks, position, auditScore }) => {
   console.log(`${url}: ${clicks} clicks @ pos ${position}, score=${auditScore ?? 'N/A'}`);
@@ -205,13 +206,17 @@ const weeklyClicks: TrendPoint[] = [
 ];
 
 const trend: TrendAnalysis = analyzeTrend(weeklyClicks);
-console.log(trend.direction); // 'up' | 'down' | 'stable'
-console.log(trend.rate); // % change per period, e.g. 5.8
-console.log(trend.confidence); // 0-1, linearity confidence, e.g. 0.87
+console.log(trend.trend); // 'improving' | 'declining' | 'stable'
+console.log(trend.change); // % change from first to last, e.g. 32.5
+console.log(trend.metric); // name of metric, e.g. 'value'
 
-// Build chart-ready trend line data
-const trendLines = buildTrendLines(weeklyClicks);
-// [{ date: '2026-01-05', actual: 1200, trend: 1195 }, ...]
+// Build chart-ready trend line data from audit history
+const auditSnapshots: AuditSnapshot[] = [
+  { date: '2026-01-01', url: '/page', score: 75, categories: { performance: 85, seo: 72 } },
+  // more snapshots...
+];
+const trendLines = buildTrendLines(auditSnapshots);
+// { overall: TrendAnalysis, performance: TrendAnalysis, seo: TrendAnalysis }
 ```
 
 ### Anomaly Detection
@@ -230,8 +235,11 @@ const dailyImpressions: TrendPoint[] = [
   { date: '2026-02-08', value: 8800 },
 ];
 
-const anomalies = detectAnomalies(dailyImpressions, { threshold: 2.0 });
-anomalies.forEach(({ date, value, type, delta }) => {
+const anomalies = detectAnomalies(dailyImpressions, 2.0);
+anomalies.forEach(({ date, value }) => {
+  const mean = dailyImpressions.reduce((s, p) => s + p.value, 0) / dailyImpressions.length;
+  const delta = value - mean;
+  const type = delta > 0 ? 'spike' : 'drop';
   console.log(`${date}: ${type} anomaly — value=${value}, delta=${delta.toFixed(0)} from baseline`);
 });
 // 2026-02-05: spike anomaly — value=24800, delta=16156 from baseline
@@ -254,14 +262,12 @@ const queries: GscQueryData[] = [
 
 const analysis: RankingAnalysis = analyzeQueryRankings(queries);
 
-console.log('Position 1-3:', analysis.buckets['1-3'].length, 'queries');
-console.log('Position 4-10:', analysis.buckets['4-10'].length, 'queries');
-console.log('Position 11-20:', analysis.buckets['11-20'].length, 'queries');
-console.log('Position 21-50:', analysis.buckets['21-50'].length, 'queries');
-console.log('Position 50+:', analysis.buckets['50+'].length, 'queries');
+analysis.buckets.forEach((bucket) => {
+  console.log(`Position ${bucket.range}: ${bucket.count} queries`);
+});
 
-// Quick-win opportunities: ranked 11-20 with good impressions
-const quickWins = analysis.buckets['11-20'].filter((q) => q.impressions > 2000);
+// Quick-win opportunities: ranked 4-20 with good impressions (strikingDistance)
+const quickWins = analysis.strikingDistance.filter((q) => q.impressions > 2000);
 console.log(
   'Quick-win queries:',
   quickWins.map((q) => q.query),
@@ -274,25 +280,24 @@ console.log(
 import { trackPositionChanges } from '@power-seo/analytics';
 import type { PositionChange } from '@power-seo/analytics';
 
-const snapshot1: GscQueryData[] = [
+const previousSnapshot: GscQueryData[] = [
   { query: 'react seo guide', clicks: 320, impressions: 8200, ctr: 0.039, position: 8.4 },
   { query: 'seo audit', clicks: 45, impressions: 1900, ctr: 0.024, position: 22.0 },
 ];
 
-const snapshot2: GscQueryData[] = [
+const currentSnapshot: GscQueryData[] = [
   { query: 'react seo guide', clicks: 580, impressions: 9800, ctr: 0.059, position: 5.1 },
   { query: 'seo audit', clicks: 88, impressions: 2200, ctr: 0.04, position: 14.3 },
   { query: 'seo typescript', clicks: 12, impressions: 800, ctr: 0.015, position: 31.0 },
 ];
 
-const changes: PositionChange[] = trackPositionChanges(snapshot1, snapshot2);
-changes.forEach(({ query, before, after, delta, direction }) => {
-  const arrow = direction === 'improved' ? '↑' : direction === 'declined' ? '↓' : '→';
-  console.log(`${arrow} "${query}": ${before ?? 'new'} → ${after ?? 'dropped'}`);
+const changes: PositionChange[] = trackPositionChanges(currentSnapshot, previousSnapshot);
+changes.forEach(({ query, previousPosition, currentPosition, change }) => {
+  const direction = change > 0 ? '↑' : change < 0 ? '↓' : '→';
+  console.log(`${direction} "${query}": ${previousPosition} → ${currentPosition}`);
 });
 // ↑ "react seo guide": 8.4 → 5.1
 // ↑ "seo audit": 22.0 → 14.3
-// → "seo typescript": new → 31.0
 ```
 
 ### Dashboard Data
@@ -305,7 +310,7 @@ const dashboard: DashboardData = buildDashboardData({
   gscPages: allGscPages,
   gscQueries: allGscQueries,
   auditResults: allAuditResults,
-  topN: 10,
+  auditHistory: allAuditSnapshots,
 });
 
 // Overview metrics
@@ -328,9 +333,9 @@ dashboard.topQueries.forEach(({ query, clicks, position }) =>
 // Trend lines ready for Recharts / Chart.js
 dashboard.trendLines; // TrendPoint[]
 
-// Prioritized issues — high-traffic pages with low audit scores
-dashboard.issues.forEach(({ rule, severity, affectedPages }) =>
-  console.log(`[${severity}] ${rule}: affects ${affectedPages} pages`),
+// Recommended issues — deduplicated and prioritized
+dashboard.issues.forEach((issue) =>
+  console.log(`Issue: ${issue}`),
 );
 ```
 
@@ -338,14 +343,14 @@ dashboard.issues.forEach(({ rule, severity, affectedPages }) =>
 
 ## API Reference
 
-### `mergeGscWithAudit(input)`
+### `mergeGscWithAudit(gscData, auditResults)`
 
-| Parameter            | Type              | Default  | Description                                 |
-| -------------------- | ----------------- | -------- | ------------------------------------------- |
-| `input.gscPages`     | `GscPageData[]`   | required | Google Search Console page performance data |
-| `input.auditResults` | `AuditSnapshot[]` | required | Audit results with URL, score, and issues   |
+| Parameter        | Type              | Default  | Description                                         |
+| ---------------- | ----------------- | -------- | --------------------------------------------------- |
+| `gscData`        | `GscPageData[]`   | required | Google Search Console page performance data         |
+| `auditResults`   | `AuditData[]`     | required | Audit results with URL, score, categories, recommendations |
 
-Returns `PageInsight[]` — merged records keyed by normalized URL.
+Returns `PageInsight[]` — merged records keyed by normalized URL with opportunities identified.
 
 ---
 
@@ -355,38 +360,39 @@ Returns `PageInsight[]` — merged records keyed by normalized URL.
 | ---------- | --------------- | -------- | --------------------------------------------------------- |
 | `insights` | `PageInsight[]` | required | Merged page insights with both audit score and click data |
 
-Returns `{ coefficient: number; significant: boolean; sampleSize: number }`.
+Returns `{ correlation: number; topOpportunities: PageInsight[] }` — Pearson correlation coefficient and highest-opportunity pages (high traffic, low score).
 
 ---
 
-### `analyzeTrend(points)`
+### `analyzeTrend(points, metric?)`
 
 | Parameter | Type           | Default  | Description                                          |
 | --------- | -------------- | -------- | ---------------------------------------------------- |
 | `points`  | `TrendPoint[]` | required | Time-ordered `{ date: string; value: number }` array |
+| `metric`  | `string`       | 'value'  | Name of the metric being analyzed                    |
 
-Returns `TrendAnalysis`: `{ direction: TrendDirection; rate: number; confidence: number }`.
-
----
-
-### `buildTrendLines(points)`
-
-| Parameter | Type           | Default  | Description              |
-| --------- | -------------- | -------- | ------------------------ |
-| `points`  | `TrendPoint[]` | required | Time-ordered data points |
-
-Returns `Array<{ date: string; actual: number; trend: number }>`.
+Returns `TrendAnalysis`: `{ metric: string; trend: TrendDirection; change: number; points: TrendPoint[] }`. Trend is determined by linear regression slope; change is percentage difference from first to last value.
 
 ---
 
-### `detectAnomalies(points, options?)`
+### `buildTrendLines(snapshots)`
 
-| Parameter           | Type           | Default  | Description                                         |
-| ------------------- | -------------- | -------- | --------------------------------------------------- |
-| `points`            | `TrendPoint[]` | required | Time-ordered data points                            |
-| `options.threshold` | `number`       | `2.0`    | Standard deviation multiplier for anomaly detection |
+| Parameter    | Type              | Default  | Description                                          |
+| ------------ | ----------------- | -------- | ---------------------------------------------------- |
+| `snapshots`  | `AuditSnapshot[]` | required | Audit snapshots with date, score, and category data |
 
-Returns `Array<{ date: string; value: number; type: 'spike' | 'drop'; delta: number }>`.
+Returns `Record<string, TrendAnalysis>` — includes 'overall' trend plus per-category trends (e.g., 'performance', 'seo').
+
+---
+
+### `detectAnomalies(points, threshold?)`
+
+| Parameter   | Type           | Default  | Description                                         |
+| ----------- | -------------- | -------- | --------------------------------------------------- |
+| `points`    | `TrendPoint[]` | required | Time-ordered data points                            |
+| `threshold` | `number`       | `2.0`    | Standard deviation multiplier for anomaly detection |
+
+Returns `TrendPoint[]` — data points that exceed the threshold (standard deviation multiple of the mean). Caller can determine if spike or drop based on mean.
 
 ---
 
@@ -396,32 +402,31 @@ Returns `Array<{ date: string; value: number; type: 'spike' | 'drop'; delta: num
 | --------- | ---------------- | -------- | ----------------------------------- |
 | `queries` | `GscQueryData[]` | required | GSC query data with position values |
 
-Returns `RankingAnalysis`: `{ buckets: Record<RankingBucket, GscQueryData[]>; totalQueries: number }`.
+Returns `RankingAnalysis`: `{ totalQueries: number; buckets: RankingBucket[]; strikingDistance: GscQueryData[] }`. Buckets are: 1–3, 4–10, 11–20, 21–100. Striking distance identifies 4–20 ranked queries with highest impressions for quick-win targeting.
 
 ---
 
-### `trackPositionChanges(before, after)`
+### `trackPositionChanges(current, previous)`
 
-| Parameter | Type             | Default  | Description                              |
-| --------- | ---------------- | -------- | ---------------------------------------- |
-| `before`  | `GscQueryData[]` | required | Ranking snapshot from the earlier period |
-| `after`   | `GscQueryData[]` | required | Ranking snapshot from the later period   |
+| Parameter  | Type             | Default  | Description                              |
+| ---------- | ---------------- | -------- | ---------------------------------------- |
+| `current`  | `GscQueryData[]` | required | Ranking snapshot from the later period   |
+| `previous` | `GscQueryData[]` | required | Ranking snapshot from the earlier period |
 
-Returns `PositionChange[]`.
+Returns `PositionChange[]`: `{ query: string; previousPosition: number; currentPosition: number; change: number; impressionChange: number }`. Positive `change` indicates improvement (lower position number).
 
 ---
 
 ### `buildDashboardData(input)`
 
-| Parameter            | Type              | Default  | Description                                         |
-| -------------------- | ----------------- | -------- | --------------------------------------------------- |
-| `input.gscPages`     | `GscPageData[]`   | required | GSC page performance data                           |
-| `input.gscQueries`   | `GscQueryData[]`  | required | GSC query performance data                          |
-| `input.auditResults` | `AuditSnapshot[]` | required | Audit results for correlation and issue aggregation |
-| `input.trendData`    | `TrendPoint[]`    | `[]`     | Optional time-series data for trend charts          |
-| `input.topN`         | `number`          | `10`     | Number of top pages/queries to include              |
+| Parameter            | Type              | Default | Description                                         |
+| -------------------- | ----------------- | ------- | --------------------------------------------------- |
+| `input.gscPages`     | `GscPageData[]`   | `[]`    | GSC page performance data                           |
+| `input.gscQueries`   | `GscQueryData[]`  | `[]`    | GSC query performance data                          |
+| `input.auditResults` | `AuditData[]`     | `[]`    | Audit results for correlation and issue aggregation |
+| `input.auditHistory` | `AuditSnapshot[]` | `[]`    | Audit history for trend analysis                    |
 
-Returns `DashboardData`.
+Returns `DashboardData`: aggregated overview, top pages/queries, trend lines per category, and recommended issues.
 
 ---
 
@@ -429,19 +434,19 @@ Returns `DashboardData`.
 
 ```ts
 import type {
-  GscPageData, // { url, clicks, impressions, ctr, position }
-  GscQueryData, // { query, clicks, impressions, ctr, position }
-  AuditSnapshot, // { url, score, issues }
+  GscPageData, // { url, clicks, impressions, ctr, position, date? }
+  GscQueryData, // { query, clicks, impressions, ctr, position, date? }
+  AuditSnapshot, // { date, url, score, categories }
   TrendPoint, // { date: string; value: number }
-  TrendDirection, // 'up' | 'down' | 'stable'
-  TrendAnalysis, // { direction, rate, confidence }
-  PageInsight, // Merged GscPageData + AuditSnapshot
-  RankingBucket, // '1-3' | '4-10' | '11-20' | '21-50' | '50+'
-  RankingAnalysis, // { buckets: Record<RankingBucket, GscQueryData[]>; totalQueries }
-  PositionChange, // { query, before?, after?, delta?, direction }
-  DashboardInput, // { gscPages, gscQueries, auditResults, trendData?, topN? }
-  DashboardOverview, // { totalClicks, totalImpressions, averageCtr, averagePosition, averageAuditScore, pagesWithErrors }
-  DashboardData, // { overview, topPages, topQueries, trendLines, issues }
+  TrendDirection, // 'improving' | 'declining' | 'stable'
+  TrendAnalysis, // { metric, trend, change, points }
+  PageInsight, // { url, gscMetrics?, auditScore?, auditCategories?, opportunities }
+  RankingBucket, // { range: string; count: number; queries: GscQueryData[] }
+  RankingAnalysis, // { totalQueries, buckets: RankingBucket[], strikingDistance }
+  PositionChange, // { query, previousPosition, currentPosition, change, impressionChange }
+  DashboardInput, // { gscPages?, gscQueries?, auditResults?, auditHistory? }
+  DashboardOverview, // { totalClicks, totalImpressions, averageCtr, averagePosition, averageAuditScore, totalPages }
+  DashboardData, // { overview, topPages, topQueries, trendLines: Record<string, TrendAnalysis>, issues: string[] }
 } from '@power-seo/analytics';
 ```
 
@@ -488,7 +493,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
 | [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
 | [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 21 React components   |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
 | [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
 | [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
 | [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
