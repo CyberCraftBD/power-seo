@@ -52,7 +52,7 @@ The four rule sets can also be called independently — `runMetaRules`, `runCont
 - **Content rules** — word count thresholds (thin content detection), focus keyphrase presence in title/description/first paragraph/headings, keyphrase density analysis, readability score integration
 - **Structure rules** — single H1 validation, heading hierarchy (no skipped levels), image alt text completeness, internal link count, external link presence, JSON-LD schema validation
 - **Performance rules** — image format optimization recommendations (JPEG vs WebP/AVIF), missing width/height attributes on images, absence of resource hints (`preconnect`, `preload`), unoptimized third-party script patterns
-- **Three severity levels** — `error` (critical issues that directly hurt rankings), `warning` (sub-optimal practices), `info` (improvement opportunities)
+- **Four severity levels** — `error` (critical issues that directly hurt rankings), `warning` (sub-optimal practices), `info` (improvement opportunities), `pass` (checks that passed)
 - **Category-level scores** — each of the four categories produces its own 0–100 score so you can prioritize by weakest category
 - **Composable rule sets** — call individual rule runners (`runMetaRules`, `runContentRules`, `runStructureRules`, `runPerformanceRules`) for selective auditing
 - **Type-safe throughout** — complete TypeScript types for inputs, results, issues, categories, and severities
