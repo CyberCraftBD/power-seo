@@ -91,7 +91,7 @@ jobs:
               else
                 echo "Publishing $NAME@$VERSION..."
                 cd "$dir"
-                pnpm publish --access public --provenance --no-git-checks
+                pnpm publish --access public --no-git-checks
                 cd ../..
               fi
             fi

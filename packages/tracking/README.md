@@ -7,7 +7,6 @@ Consent-aware analytics script builders and GDPR consent management for TypeScri
 [![npm version](https://img.shields.io/npm/v/@power-seo/tracking)](https://www.npmjs.com/package/@power-seo/tracking)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/tracking)](https://www.npmjs.com/package/@power-seo/tracking)
 [![Socket](https://socket.dev/api/badge/npm/package/@power-seo/tracking)](https://socket.dev/npm/package/@power-seo/tracking)
-[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/tracking)
@@ -368,7 +367,6 @@ export function AnalyticsLoader() {
 - No install scripts (`postinstall`, `preinstall`)
 - No runtime network access outside of analytics API calls
 - No `eval` or dynamic code execution
-- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
 - CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
 - Safe for SSR, Edge, and browser environments
 

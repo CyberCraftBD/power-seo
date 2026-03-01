@@ -997,7 +997,6 @@ const frSitemap = generateSitemap({ hostname: 'https://example.com', urls: frUrl
 - No install scripts (`postinstall`, `preinstall`) across any of the 17 packages
 - No runtime network access — all packages are pure computation; no telemetry, no beacons
 - No `eval` or dynamic code execution anywhere in the codebase
-- npm provenance enabled — every release is cryptographically signed via Sigstore through GitHub Actions
 - CI-signed builds — all releases published via the verified `github.com/CyberCraftBD/power-seo` workflow
 - Socket.dev security monitoring on every package — supply chain attack detection
 - Automated Dependabot security updates on every dependency

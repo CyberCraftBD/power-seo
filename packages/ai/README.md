@@ -7,7 +7,6 @@ LLM-agnostic SEO prompt builders and structured response parsers — works with 
 [![npm version](https://img.shields.io/npm/v/@power-seo/ai)](https://www.npmjs.com/package/@power-seo/ai)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/ai)](https://www.npmjs.com/package/@power-seo/ai)
 [![Socket](https://socket.dev/api/badge/npm/package/@power-seo/ai)](https://socket.dev/npm/package/@power-seo/ai)
-[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/ai)
@@ -461,7 +460,6 @@ import type {
 - No install scripts (`postinstall`, `preinstall`)
 - No runtime network access
 - No `eval` or dynamic code execution
-- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
 - CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
 - Safe for SSR, Edge, and server environments
 

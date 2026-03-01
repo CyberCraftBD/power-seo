@@ -7,7 +7,6 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 [![npm version](https://img.shields.io/npm/v/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations)
 [![Socket](https://socket.dev/api/badge/npm/package/@power-seo/integrations)](https://socket.dev/npm/package/@power-seo/integrations)
-[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/integrations)
@@ -342,7 +341,6 @@ import type {
 - No install scripts (`postinstall`, `preinstall`)
 - No runtime network access beyond explicit API calls you initiate
 - No `eval` or dynamic code execution
-- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
 - CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
 - Safe for SSR, Edge, and server environments
 

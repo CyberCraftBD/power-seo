@@ -7,7 +7,6 @@ Alt text auditing, CWV-aware lazy loading checks, WebP/AVIF format recommendatio
 [![npm version](https://img.shields.io/npm/v/@power-seo/images)](https://www.npmjs.com/package/@power-seo/images)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/images)](https://www.npmjs.com/package/@power-seo/images)
 [![Socket](https://socket.dev/api/badge/npm/package/@power-seo/images)](https://socket.dev/npm/package/@power-seo/images)
-[![npm provenance](https://img.shields.io/badge/npm-provenance-enabled-blue)](https://github.com/CyberCraftBD/power-seo/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/images)
@@ -474,7 +473,6 @@ import type {
 - No install scripts (`postinstall`, `preinstall`)
 - No runtime network access
 - No `eval` or dynamic code execution
-- npm provenance enabled — every release is signed via Sigstore through GitHub Actions
 - CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
 - Safe for SSR, Edge, and server environments
 
