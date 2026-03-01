@@ -489,7 +489,7 @@ return (
 - **Zero runtime dependencies** — only `react` and `@power-seo/core` as peer dependencies
 - **React 19 native hoisting** — `<title>`, `<meta>`, and `<link>` elements hoist to `<head>` automatically in React 19; wrap with a framework Head component in React 18
 - **Context-based defaults** — `<DefaultSEO>` uses `React.createContext` so defaults flow through the tree without prop drilling
-- **DOM-targeting** — renders directly to the browser DOM; for Next.js App Router use `@power-seo/meta` instead
+- **DOM-targeting** — renders directly to the browser DOM (does NOT require `react-helmet` or `react-helmet-async`); for Next.js App Router use `@power-seo/meta` instead
 - **Tree-shakeable** — `"sideEffects": false` with named exports per component
 - **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
 - **Full TypeScript** — all component props, config types, and utility function signatures are exported

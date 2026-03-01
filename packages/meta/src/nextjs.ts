@@ -2,7 +2,7 @@
 
 
 import type { SEOConfig } from '@power-seo/core';
-import { resolveTitle } from '@power-seo/core';
+import { resolveTitle, buildRobotsContent } from '@power-seo/core';
 import type { NextMetadata, NextOGImage } from './types.js';
 
 /** Convert an SEOConfig to a Next.js App Router Metadata object. */
@@ -36,14 +36,23 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     if (r?.noimageindex !== undefined) metadata.robots.noimageindex = r.noimageindex;
     if (r?.notranslate !== undefined) metadata.robots.notranslate = r.notranslate;
     if (r?.unavailableAfter !== undefined) metadata.robots.unavailableAfter = r.unavailableAfter;
+
+    // Handle advanced robots directives (maxSnippet, maxImagePreview, maxVideoPreview) via buildRobotsContent
     if (r?.maxSnippet !== undefined || r?.maxImagePreview !== undefined || r?.maxVideoPreview !== undefined) {
-      metadata.robots.googleBot = {
-        ...(index !== undefined && { index }),
-        ...(follow !== undefined && { follow }),
-        ...(r?.maxSnippet !== undefined && { 'max-snippet': r.maxSnippet }),
-        ...(r?.maxImagePreview !== undefined && { 'max-image-preview': r.maxImagePreview }),
-        ...(r?.maxVideoPreview !== undefined && { 'max-video-preview': r.maxVideoPreview }),
-      };
+      const robotsContent = buildRobotsContent({
+        index,
+        follow,
+        noarchive: r?.noarchive,
+        nosnippet: r?.nosnippet,
+        noimageindex: r?.noimageindex,
+        notranslate: r?.notranslate,
+        unavailableAfter: r?.unavailableAfter,
+        maxSnippet: r?.maxSnippet,
+        maxImagePreview: r?.maxImagePreview,
+        maxVideoPreview: r?.maxVideoPreview,
+      });
+      if (!metadata.other) metadata.other = {};
+      metadata.other['robots'] = robotsContent;
     }
   }
 

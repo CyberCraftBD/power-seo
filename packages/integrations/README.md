@@ -14,6 +14,8 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 `@power-seo/integrations` wraps the Semrush and Ahrefs REST APIs with a consistent TypeScript interface. Both clients are built on a shared `createHttpClient()` base that enforces configurable rate limits (requests per window), handles pagination automatically, and normalizes errors into `IntegrationApiError` with status codes and messages. Import only the client you need — tree-shaking ensures unused API code never ends up in your bundle.
 
 > **Zero runtime dependencies beyond `fetch`** — runs in Node.js 18+, Deno, Bun, and modern edge runtimes.
+>
+> ⚠️ **Network Access** — This package makes HTTPS requests to Semrush and Ahrefs APIs. Network access is functionally required and intentional. All requests use your API credentials and are sent only to the configured service endpoints.
 
 ---
 
