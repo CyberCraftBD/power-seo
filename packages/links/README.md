@@ -1,6 +1,6 @@
 # @power-seo/links
 
-![links banner](../../image/links/banner.svg)
+![links banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/banner.svg)
 
 Build a directed link graph from your site's pages, detect orphan pages with zero inbound links, generate keyword-overlap-based link suggestions, and score link equity with a PageRank-style algorithm.
 
@@ -33,7 +33,7 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 | TypeScript support | ❌ Untyped | ✅ Full type coverage for all graph structures |
 | Zero dependencies | ❌ External libs | ✅ Pure TypeScript, no runtime dependencies |
 
-![Links Comparison](../../image/links/comparison.svg)
+![Links Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/comparison.svg)
 
 
 <p align="left">
@@ -56,7 +56,7 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 - **Normalized URL handling** — URLs are normalized before graph construction to prevent duplicate nodes from trailing slashes or case differences
 - **Zero dependencies** — no runtime dependencies; pure TypeScript computation
 
-![Link Dashboard UI](../../image/links/dashboard-ui.svg)
+![Link Dashboard UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/dashboard-ui.svg)
 
 ---
 
@@ -73,7 +73,7 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 | TypeScript-first | ✅ | ❌ | ❌ | — |
 | Tree-shakeable | ✅ | ❌ | ❌ | — |
 
-![Link Equity Accuracy](../../image/links/equity-accuracy.svg)
+![Link Equity Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/equity-accuracy.svg)
 
 ---
 
@@ -115,7 +115,7 @@ const equity = analyzeLinkEquity(graph);
 // { 'https://example.com/': 0.48, 'https://example.com/about': 0.18, ... }
 ```
 
-![Orphan Detection Benefit](../../image/links/orphan-benefit.svg)
+![Orphan Detection Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/orphan-benefit.svg)
 
 ---
 

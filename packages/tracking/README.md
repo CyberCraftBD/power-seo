@@ -1,6 +1,6 @@
 # @power-seo/tracking
 
-![tracking banner](../../image/tracking/banner.svg)
+![tracking banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/tracking/banner.svg)
 
 Consent-aware analytics script builders and GDPR consent management for TypeScript — GA4, Microsoft Clarity, PostHog, Plausible, and Fathom with a unified `shouldLoad(consentState)` API and React components.
 
@@ -29,7 +29,7 @@ Consent-aware analytics script builders and GDPR consent management for TypeScri
 | Performance | ❌ Scripts block LCP before user interaction | ✅ Lazy loading strategy prevents render blocking |
 | TypeScript | ❌ Loose config objects with no type checking | ✅ Typed `ScriptConfig`, `ConsentState`, `ConsentManager` |
 
-![Tracking Comparison](../../image/tracking/comparison.svg)
+![Tracking Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/tracking/comparison.svg)
 
 
 <p align="left">
@@ -56,7 +56,7 @@ Consent-aware analytics script builders and GDPR consent management for TypeScri
 - **Full TypeScript support** — typed config interfaces, consent state, and response shapes for every provider
 - **Tree-shakeable** — import only the providers you use; zero dead code in your bundle
 
-![Consent Banner UI](../../image/tracking/consent-ui.svg)
+![Consent Banner UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/tracking/consent-ui.svg)
 
 ---
 
@@ -73,7 +73,7 @@ Consent-aware analytics script builders and GDPR consent management for TypeScri
 | TypeScript-first                 | ❌ | ❌ | ❌ | ✅ |
 | React components                 | ⚠️ | ❌ | ✅ | ✅ |
 
-![Conditional Loading Accuracy](../../image/tracking/conditional-accuracy.svg)
+![Conditional Loading Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/tracking/conditional-accuracy.svg)
 
 ---
 
@@ -124,7 +124,7 @@ const nowToLoad = scripts.filter((s) => s.shouldLoad(consent.getState()));
 // nowToLoad → [GA4Script1, GA4Script2, PlausibleScript]
 ```
 
-![Consent Benefit](../../image/tracking/consent-benefit.svg)
+![Consent Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/tracking/consent-benefit.svg)
 
 ---
 

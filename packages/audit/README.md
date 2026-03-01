@@ -1,6 +1,6 @@
 # @power-seo/audit
 
-![audit banner](../../image/audit/banner.svg)
+![audit banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/audit/banner.svg)
 
 Comprehensive SEO auditing with 0–100 scoring across four rule categories: meta tags, content quality, structural correctness, and performance optimization.
 
@@ -33,7 +33,7 @@ The four rule sets can also be called independently — `runMetaRules`, `runCont
 | Framework support | ❌ WordPress-only | ✅ Framework-agnostic, runs anywhere |
 | TypeScript support | ❌ Untyped | ✅ Full type coverage for all inputs and results |
 
-![Audit Comparison](../../image/audit/comparison.svg)
+![Audit Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/audit/comparison.svg)
 
 
 <p align="left">
@@ -58,7 +58,7 @@ The four rule sets can also be called independently — `runMetaRules`, `runCont
 - **Type-safe throughout** — complete TypeScript types for inputs, results, issues, categories, and severities
 - **Zero network calls** — entirely local, synchronous computation; no external API required
 
-![Audit Report UI](../../image/audit/report-ui.svg)
+![Audit Report UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/audit/report-ui.svg)
 
 ---
 
@@ -75,7 +75,7 @@ The four rule sets can also be called independently — `runMetaRules`, `runCont
 | TypeScript-first | ✅ | ❌ | ❌ | Partial | ❌ |
 | Tree-shakeable | ✅ | ❌ | ❌ | ❌ | ❌ |
 
-![Audit Rules Accuracy](../../image/audit/rules-accuracy.svg)
+![Audit Rules Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/audit/rules-accuracy.svg)
 
 ---
 
@@ -126,7 +126,7 @@ console.log(result.rules);
 // ]
 ```
 
-![Site Audit Benefit](../../image/audit/site-audit-benefit.svg)
+![Site Audit Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/audit/site-audit-benefit.svg)
 
 ---
 

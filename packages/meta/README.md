@@ -1,6 +1,6 @@
 # @power-seo/meta
 
-![meta banner](../../image/meta/banner.svg)
+![meta banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/meta/banner.svg)
 
 Generate perfectly structured SSR meta tags from one unified config — native `Metadata` for Next.js App Router, native `MetaDescriptor[]` for Remix v2, and HTML strings for any other SSR framework.
 
@@ -29,7 +29,7 @@ Generate perfectly structured SSR meta tags from one unified config — native `
 | Hreflang | ❌ Manual `<link>` tag per locale | ✅ `languageAlternates` renders all alternates |
 | TypeScript | ❌ Return type is `any`, no autocomplete | ✅ Fully typed return per framework — no casting |
 
-![Meta Comparison](../../image/meta/comparison.svg)
+![Meta Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/meta/comparison.svg)
 
 
 <p align="left">
@@ -55,7 +55,7 @@ Generate perfectly structured SSR meta tags from one unified config — native `
 - **Type-safe API** — TypeScript-first with full typed return types per framework
 - **Zero runtime dependencies** — edge runtime compatible
 
-![Meta UI Output](../../image/meta/ui-output.svg)
+![Meta UI Output](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/meta/ui-output.svg)
 
 ---
 
@@ -73,7 +73,7 @@ Generate perfectly structured SSR meta tags from one unified config — native `
 | TypeScript-first with typed returns | ✅ | ✅ | ✅ | ❌ |
 | Tree-shakeable | ✅ | ❌ | Partial | ❌ |
 
-![Robots Precision](../../image/meta/robots-precision.svg)
+![Robots Precision](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/meta/robots-precision.svg)
 
 ---
 
@@ -120,7 +120,7 @@ export const meta = () =>
   });
 ```
 
-![Meta Benefits](../../image/meta/benefits.svg)
+![Meta Benefits](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/meta/benefits.svg)
 
 ---
 

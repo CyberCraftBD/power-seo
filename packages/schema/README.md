@@ -1,6 +1,6 @@
 # @power-seo/schema
 
-![schema banner](../../image/schema/banner.svg)
+![schema banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/banner.svg)
 
 Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org builder functions, 21 React components, schema graph support, and field validation. Works in Next.js, Remix, Node.js, and Edge runtimes.
 
@@ -28,7 +28,7 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 | Schema coverage | ❌ Only Article/FAQ in most packages | ✅ 23 types: Article, Product, FAQ, LocalBusiness, Event, Recipe, and more |
 | Framework support | ❌ WordPress / next-seo only | ✅ Next.js, Remix, Node.js, Edge, static site generators |
 
-![Schema Builder Comparison](../../image/schema/comparison.svg)
+![Schema Builder Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/comparison.svg)
 
 
 <p align="left">
@@ -52,7 +52,7 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 - **Tree-shakeable** — import only the schema types you use; zero dead code in your bundle
 - **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
 
-![Schema React Component UI](../../image/schema/react-ui.svg)
+![Schema React Component UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/react-ui.svg)
 
 ---
 
@@ -71,7 +71,7 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 | TypeScript-first               | ✅                | Partial  | ✅         | ❌         | ❌              |
 | Tree-shakeable                 | ✅                | ❌       | ✅         | ❌         | ❌              |
 
-![Schema Validation Accuracy](../../image/schema/validation-accuracy.svg)
+![Schema Validation Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/validation-accuracy.svg)
 
 ---
 
@@ -124,7 +124,7 @@ import { ArticleJsonLd } from '@power-seo/schema/react';
 // Renders: <script type="application/ld+json">{"@context":"https://schema.org",...}</script>
 ```
 
-![Schema Rich Results](../../image/schema/rich-results.svg)
+![Schema Rich Results](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/rich-results.svg)
 
 ---
 

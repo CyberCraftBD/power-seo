@@ -1,6 +1,6 @@
 # @power-seo/react
 
-![react banner](../../image/react/banner.svg)
+![react banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/banner.svg)
 
 Declarative React components for SEO meta tag management — title templates, Open Graph, Twitter Cards, canonical URLs, robots directives, hreflang, and breadcrumbs with JSON-LD, all from a single composable API that renders directly to the DOM.
 
@@ -29,7 +29,7 @@ Declarative React components for SEO meta tag management — title templates, Op
 | Breadcrumbs | ❌ HTML nav only, no structured data | ✅ `<Breadcrumb>` renders nav + BreadcrumbList JSON-LD |
 | Framework support | ❌ Locked to next-seo or react-helmet | ✅ Next.js Pages Router, Vite, Gatsby, React 18/19 |
 
-![React SEO Comparison](../../image/react/comparison.svg)
+![React SEO Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/comparison.svg)
 
 
 <p align="left">
@@ -55,7 +55,7 @@ Declarative React components for SEO meta tag management — title templates, Op
 - **TypeScript-first** — full `.d.ts` declarations, all props fully typed
 - **Tree-shakeable** — import only the components you use
 
-![React Head Component UI](../../image/react/head-ui.svg)
+![React Head Component UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/head-ui.svg)
 
 ---
 
@@ -75,7 +75,7 @@ Declarative React components for SEO meta tag management — title templates, Op
 | Works in Next.js Pages Router    | ✅               | ✅       | ✅           | ✅                 |
 | Works in Vite / Gatsby / CRA     | ✅               | ❌       | ✅           | ✅                 |
 
-![SSR Rendering Accuracy](../../image/react/ssr-accuracy.svg)
+![SSR Rendering Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/ssr-accuracy.svg)
 
 ---
 
@@ -139,7 +139,7 @@ function BlogPage({ post }) {
 - `<title>My Post Title | My Site</title>`
 - Correct `og:image`, `twitter:card`, and `link rel="canonical"` tags on every page
 
-![React SEO Components Benefit](../../image/react/components-benefit.svg)
+![React SEO Components Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/components-benefit.svg)
 
 ---
 

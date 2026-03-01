@@ -1,6 +1,6 @@
 # @power-seo/content-analysis
 
-![content-analysis banner](../../image/content-analysis/banner.svg)
+![content-analysis banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/banner.svg)
 
 Keyword-focused content analysis with real-time scoring, readability checks, and actionable feedback — like Yoast SEO, but as a standalone TypeScript library that works anywhere.
 
@@ -30,7 +30,7 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 | SEO score | ❌ Guesswork | ✅ Aggregate score with per-check breakdown |
 | Framework support | ❌ WordPress-only | ✅ Next.js, Remix, Vite, Node.js, Edge |
 
-![SEO Score Dashboard](../../image/content-analysis/comparison.svg)
+![SEO Score Dashboard](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/comparison.svg)
 
 
 <p align="left">
@@ -58,7 +58,7 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 - **Full TypeScript support** — complete type definitions for all inputs, outputs, and check IDs
 - **Tree-shakeable** — import only the checks you use; zero dead code in your bundle
 
-![Content Analyzer Editor UI](../../image/content-analysis/editor-ui.svg)
+![Content Analyzer Editor UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/editor-ui.svg)
 
 ---
 
@@ -81,7 +81,7 @@ Keyword-focused content analysis with real-time scoring, readability checks, and
 | CI / Node.js usage             | ✅                          | ❌        | ❌       | ✅           | ❌           |
 | Zero runtime dependencies      | ✅                          | ❌        | ❌       | ❌           | ❌           |
 
-![Checks Accuracy](../../image/content-analysis/checks-accuracy.svg)
+![Checks Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/checks-accuracy.svg)
 
 ---
 
@@ -119,7 +119,7 @@ console.log(result.results);
 // [{ id: 'title-presence', status: 'good', description: '...', score: 5, maxScore: 5 }, ...]
 ```
 
-![Yoast Replacement Benefit](../../image/content-analysis/yoast-replacement-benefit.svg)
+![Yoast Replacement Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/yoast-replacement-benefit.svg)
 
 **Status thresholds (per check):**
 - `good` — check fully passes

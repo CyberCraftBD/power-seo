@@ -1,6 +1,6 @@
 # @power-seo/readability
 
-![readability banner](../../image/readability/banner.svg)
+![readability banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/banner.svg)
 
 Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Flesch-Kincaid, Gunning Fog, Coleman-Liau, and ARI in one unified API with actionable status labels.
 
@@ -29,7 +29,7 @@ Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Fles
 | CI integration | ❌ Manual threshold checks | ✅ `overall.status === 'error'` fails builds |
 | Framework support | ❌ Browser-only or Node-only tools | ✅ Works in Next.js, Remix, Gatsby, Vite, Edge, browser |
 
-![Readability Comparison](../../image/readability/comparison.svg)
+![Readability Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/comparison.svg)
 
 
 <p align="left">
@@ -56,7 +56,7 @@ Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Fles
 - **Type-safe API** — TypeScript-first with full type inference for all inputs and outputs
 - **Framework-agnostic** — works in Node.js, browser, Next.js, Remix, Gatsby, Vite, Edge
 
-![Readability CMS UI](../../image/readability/cms-ui.svg)
+![Readability CMS UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/cms-ui.svg)
 
 ---
 
@@ -77,7 +77,7 @@ Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Fles
 | Zero runtime dependencies | ✅ | ✅ | ✅ | ✅ |
 | Tree-shakeable individual functions | ✅ | ❌ | ❌ | ✅ |
 
-![Scoring Accuracy](../../image/readability/scoring-accuracy.svg)
+![Scoring Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/scoring-accuracy.svg)
 
 ---
 
@@ -117,7 +117,7 @@ console.log(result.overall.message);          // 'Content may be difficult for s
 - `improvement` — score is outside the ideal range; consider simplifying
 - `error` — score indicates content is too complex for most web readers
 
-![Algorithms Benefit](../../image/readability/algorithms-benefit.svg)
+![Algorithms Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/algorithms-benefit.svg)
 
 ---
 

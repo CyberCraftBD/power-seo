@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./image/banner.svg" alt="@power-seo — Production-Grade SEO Toolkit for TypeScript, React & Node.js" width="100%" />
+  <img src="https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/banner.svg" alt="@power-seo — Production-Grade SEO Toolkit for TypeScript, React & Node.js" width="100%" />
 </div>
 
 [![CI](https://github.com/CyberCraftBD/power-seo/actions/workflows/production.yml/badge.svg)](https://github.com/CyberCraftBD/power-seo/actions/workflows/production.yml)
@@ -45,7 +45,7 @@
 
 
 
-![Power-SEO Ecosystem Comparison](./image/core/comparison.svg)
+![Power-SEO Ecosystem Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/comparison.svg)
 
 ---
 
@@ -73,7 +73,7 @@
 - **Dual ESM + CJS** — every package ships both formats via tsup for any bundler or `require()` usage
 - **Edge runtime safe** — no Node.js-specific APIs in core packages; runs in Cloudflare Workers, Vercel Edge, Deno
 
-![Power-SEO SEO Audit Report](./image/audit/report-ui.svg)
+![Power-SEO SEO Audit Report](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/audit/report-ui.svg)
 
 ---
 
@@ -124,7 +124,7 @@ All 17 packages are independently installable — use only what you need.
 | [`@power-seo/integrations`](./packages/integrations) | [![npm](https://img.shields.io/npm/v/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations) | Semrush and Ahrefs API clients with rate limiting and pagination |
 | [`@power-seo/tracking`](./packages/tracking) | [![npm](https://img.shields.io/npm/v/@power-seo/tracking)](https://www.npmjs.com/package/@power-seo/tracking) | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
-![Power-SEO Monorepo Architecture](./image/core/architecture.svg)
+![Power-SEO Monorepo Architecture](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/architecture.svg)
 
 ---
 
@@ -188,7 +188,7 @@ export const meta = () =>
   });
 ```
 
-![SSR Meta Tag Output](./image/meta/ui-output.svg)
+![SSR Meta Tag Output](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/meta/ui-output.svg)
 
 ### React SPA / Vite / Gatsby
 
@@ -240,7 +240,7 @@ function BlogPage({ post }) {
 }
 ```
 
-![React SEO Head Components](./image/react/head-ui.svg)
+![React SEO Head Components](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/head-ui.svg)
 
 ### JSON-LD Structured Data
 
@@ -288,7 +288,7 @@ import { ArticleJsonLd, FAQJsonLd, BreadcrumbJsonLd } from '@power-seo/schema/re
 <FAQJsonLd questions={[{ question: 'What is SEO?', answer: 'Search engine optimization.' }]} />
 ```
 
-![Schema Rich Results Output](./image/schema/react-ui.svg)
+![Schema Rich Results Output](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/react-ui.svg)
 
 ### Content Analysis (Yoast-style)
 
@@ -342,7 +342,7 @@ console.log(result.scores.gunningFog);           // Years of education needed
 console.log(result.recommendations);             // ['Shorten long sentences...']
 ```
 
-![Readability Scoring in CMS](./image/readability/cms-ui.svg)
+![Readability Scoring in CMS](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/cms-ui.svg)
 
 ### SERP & Social Previews
 
@@ -390,7 +390,7 @@ import { PreviewPanel } from '@power-seo/preview/react';
 />
 ```
 
-![SERP Preview UI Panel](./image/preview/preview-ui.svg)
+![SERP Preview UI Panel](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/preview-ui.svg)
 
 ### Sitemap Generation
 
@@ -462,7 +462,7 @@ async redirects() {
 }
 ```
 
-![Sitemap + Redirects Network UI](./image/redirects/network-ui.svg)
+![Sitemap + Redirects Network UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/redirects/network-ui.svg)
 
 ### SEO Audit
 
@@ -531,7 +531,7 @@ const sitemapXml = generateImageSitemap({
 });
 ```
 
-![Image SEO Audit UI](./image/images/audit-ui.svg)
+![Image SEO Audit UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/audit-ui.svg)
 
 ### Link Graph Analysis
 
@@ -560,7 +560,7 @@ const equity = analyzeLinkEquity(graph);
 // [{ url: '/home', score: 1.0 }, { url: '/about', score: 0.45 }, ...]
 ```
 
-![Link Graph Dashboard](./image/links/dashboard-ui.svg)
+![Link Graph Dashboard](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/dashboard-ui.svg)
 
 ### AI-Assisted SEO
 
@@ -599,7 +599,7 @@ const titleResult = parseTitleResponse(await llm(titlePrompt));
 console.log(titleResult.titles[0].text);     // 'Best Coffee Shops in NYC: 2026 Guide'
 ```
 
-![AI SEO Suggestions UI](./image/ai/suggestions-ui.svg)
+![AI SEO Suggestions UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/suggestions-ui.svg)
 
 ### Google Search Console
 
@@ -640,7 +640,7 @@ console.log(inspection.indexStatusResult.coverageState); // 'Submitted and index
 const sitemaps = await listSitemaps(client);
 ```
 
-![Search Console Dashboard](./image/search-console/dashboard-ui.svg)
+![Search Console Dashboard](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/search-console/dashboard-ui.svg)
 
 ### Analytics — GSC + Audit Data Merge
 
@@ -675,7 +675,7 @@ const dashboard = buildDashboardData({
 });
 ```
 
-![Analytics Dashboard UI](./image/analytics/dashboard-ui.svg)
+![Analytics Dashboard UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/analytics/dashboard-ui.svg)
 
 ### Third-Party Integrations — Semrush & Ahrefs
 
@@ -704,7 +704,7 @@ const siteOverview = await ahrefs.getSiteOverview({ target: 'example.com' });
 const backlinks = await ahrefs.getBacklinks({ target: 'example.com', limit: 100 });
 ```
 
-![SEO Research Integrations UI](./image/integrations/seo-research-ui.svg)
+![SEO Research Integrations UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/seo-research-ui.svg)
 
 ### Analytics Tracking & GDPR Consent
 
@@ -746,7 +746,7 @@ function App() {
 }
 ```
 
-![Consent Management UI](./image/tracking/consent-ui.svg)
+![Consent Management UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/tracking/consent-ui.svg)
 
 ### Core Utilities
 
@@ -798,7 +798,7 @@ makeTitle('About Us');   // → 'About Us — My Site'
 makeTitle('Blog');       // → 'Blog — My Site'
 ```
 
-![SEO Metrics and Utilities](./image/core/seo-metrics.svg)
+![SEO Metrics and Utilities](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/seo-metrics.svg)
 
 ---
 
@@ -932,7 +932,7 @@ const enSitemap = generateSitemap({ hostname: 'https://example.com', urls: enUrl
 const frSitemap = generateSitemap({ hostname: 'https://example.com', urls: frUrls });
 ```
 
-![Content Analysis + Readability Yoast Replacement](./image/content-analysis/yoast-replacement-benefit.svg)
+![Content Analysis + Readability Yoast Replacement](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/content-analysis/yoast-replacement-benefit.svg)
 
 ---
 
@@ -949,7 +949,7 @@ const frSitemap = generateSitemap({ hostname: 'https://example.com', urls: frUrl
 | **Cloudflare Workers / Vercel Edge** | `@power-seo/core`, `@power-seo/sitemap`, `@power-seo/redirects`, `@power-seo/schema` |
 | **Headless CMS (any)** | `@power-seo/content-analysis`, `@power-seo/readability`, `@power-seo/preview`, `@power-seo/schema` |
 
-![React SSR Rendering Accuracy](./image/react/ssr-accuracy.svg)
+![React SSR Rendering Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/react/ssr-accuracy.svg)
 
 ---
 
@@ -988,7 +988,7 @@ const frSitemap = generateSitemap({ hostname: 'https://example.com', urls: frUrl
 - **Edge runtime safe** — no Node.js-specific APIs (`fs`, `path`, `crypto`) in any core package
 - **Provenance-signed releases** — every npm publish is signed via Sigstore/GitHub Actions
 
-![Core API Overview](./image/core/api-overview.svg)
+![Core API Overview](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/api-overview.svg)
 
 ---
 
@@ -1002,7 +1002,7 @@ const frSitemap = generateSitemap({ hostname: 'https://example.com', urls: frUrl
 - Automated Dependabot security updates on every dependency
 - CodeQL static analysis scanning on every pull request
 
-![TypeScript Type Safety](./image/core/type-safety.svg)
+![TypeScript Type Safety](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/type-safety.svg)
 
 ---
 

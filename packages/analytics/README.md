@@ -1,6 +1,6 @@
 # @power-seo/analytics
 
-![analytics banner](../../image/analytics/banner.svg)
+![analytics banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/analytics/banner.svg)
 
 Merge Google Search Console data with audit results, compute Pearson correlations, analyze trends, detect anomalies, and build dashboard-ready aggregated outputs.
 
@@ -31,7 +31,7 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 | Dashboard output | ❌ Build from scratch | ✅ Structured `DashboardData` ready for any chart library |
 | TypeScript support | ❌ Untyped data | ✅ Full type coverage for all data structures |
 
-![Analytics Comparison](../../image/analytics/comparison.svg)
+![Analytics Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/analytics/comparison.svg)
 
 
 <p align="left">
@@ -56,7 +56,7 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 - **Zero runtime dependencies** — pure TypeScript computation
 - **Type-safe throughout** — complete TypeScript types for all data structures
 
-![Analytics Dashboard UI](../../image/analytics/dashboard-ui.svg)
+![Analytics Dashboard UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/analytics/dashboard-ui.svg)
 
 ---
 
@@ -74,7 +74,7 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 | Zero external dependencies | ✅ | ❌ | ❌ | — |
 | TypeScript-first | ✅ | ❌ | ❌ | — |
 
-![Analytics Trend Accuracy](../../image/analytics/trend-accuracy.svg)
+![Analytics Trend Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/analytics/trend-accuracy.svg)
 
 ---
 
@@ -122,7 +122,7 @@ console.log(dashboard.overview.averageAuditScore); // 67.7
 console.log(dashboard.topPages[0].url); // '/blog/react-seo'
 ```
 
-![Analytics Merge Benefit](../../image/analytics/merge-benefit.svg)
+![Analytics Merge Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/analytics/merge-benefit.svg)
 
 ---
 

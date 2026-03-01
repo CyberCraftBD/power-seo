@@ -1,6 +1,6 @@
 # @power-seo/integrations
 
-![integrations banner](../../image/integrations/banner.svg)
+![integrations banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/banner.svg)
 
 Query keyword data, domain overviews, backlinks, and keyword difficulty from Semrush and Ahrefs APIs with a shared HTTP client that handles rate limiting and pagination automatically.
 
@@ -31,7 +31,7 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 | TypeScript types | ❌ `any` everywhere | ✅ Full type coverage for all endpoints |
 | Bundle size | ❌ Full SDK in bundle | ✅ Tree-shakeable — import only what you use |
 
-![Integrations Comparison](../../image/integrations/comparison.svg)
+![Integrations Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/comparison.svg)
 
 
 <p align="left">
@@ -52,7 +52,7 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 - **Consistent error handling** — `IntegrationApiError` with `statusCode`, `message`, and raw `response` payload from both APIs
 - **Tree-shakeable** — `createSemrushClient` and `createAhrefsClient` are separate exports; import only what you use
 
-![SEO Research UI](../../image/integrations/seo-research-ui.svg)
+![SEO Research UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/seo-research-ui.svg)
 
 ---
 
@@ -69,7 +69,7 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 | TypeScript-first | ✅ | ❌ | ❌ | — |
 | Tree-shakeable | ✅ | ❌ | ❌ | — |
 
-![Rate Limit Accuracy](../../image/integrations/rate-limit-accuracy.svg)
+![Rate Limit Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/rate-limit-accuracy.svg)
 
 ---
 
@@ -107,7 +107,7 @@ console.log(site.domainRating); // 47
 console.log(site.organicTraffic); // 9_800
 ```
 
-![Unification Benefit](../../image/integrations/unification-benefit.svg)
+![Unification Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/unification-benefit.svg)
 
 ---
 

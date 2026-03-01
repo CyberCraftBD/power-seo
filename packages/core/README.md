@@ -1,6 +1,6 @@
 # @power-seo/core
 
-![core banner](../../image/core/banner.svg)
+![core banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/banner.svg)
 
 Framework-agnostic SEO utilities, types, and engines — the shared foundation of the entire @power-seo ecosystem, usable as a standalone TypeScript library that works anywhere.
 
@@ -31,7 +31,7 @@ Framework-agnostic SEO utilities, types, and engines — the shared foundation o
 | Rate limiting | ❌ No built-in utility | ✅ Token bucket `createTokenBucket()` for API calls |
 | TypeScript types | ❌ Duplicated across packages | ✅ 25+ shared interfaces for the full ecosystem |
 
-![SEO Utilities Dashboard](../../image/core/utilities-dashboard.svg)
+![SEO Utilities Dashboard](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/utilities-dashboard.svg)
 
 
 <p align="left">
@@ -60,7 +60,7 @@ Framework-agnostic SEO utilities, types, and engines — the shared foundation o
 - **Framework-agnostic** — works in Next.js, Remix, Gatsby, Vite, vanilla Node.js, Edge
 - **Tree-shakeable** — `"sideEffects": false` with named exports per module; import only what you use
 
-![Meta Validator SERP Preview](../../image/core/meta-validator.svg)
+![Meta Validator SERP Preview](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/meta-validator.svg)
 
 ---
 
@@ -84,7 +84,7 @@ Framework-agnostic SEO utilities, types, and engines — the shared foundation o
 | TypeScript-first                     | ✅              | Partial  | ❌        | ❌              | ❌              |
 | Zero runtime dependencies            | ✅              | ❌       | ❌        | ❌              | ❌              |
 
-![Keyword Density Analysis](../../image/core/keyword-density.svg)
+![Keyword Density Analysis](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/keyword-density.svg)
 
 ---
 
@@ -128,7 +128,7 @@ console.log(titleCheck.valid);       // true
 console.log(titleCheck.pixelWidth);  // ~291 (well under 580px limit)
 ```
 
-![Text Statistics Output](../../image/core/check-results.svg)
+![Text Statistics Output](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/core/check-results.svg)
 
 **Validation severity levels:**
 - `error` — field is missing or critically invalid

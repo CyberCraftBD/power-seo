@@ -1,6 +1,6 @@
 # @power-seo/redirects
 
-![redirects banner](../../image/redirects/banner.svg)
+![redirects banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/redirects/banner.svg)
 
 Define redirect rules once — apply them in Next.js, Remix, and Express with typed exact, glob, and regex URL matching.
 
@@ -29,7 +29,7 @@ Define redirect rules once — apply them in Next.js, Remix, and Express with ty
 | Testing | ❌ Deploy to verify redirects work | ✅ `engine.match()` in unit tests — zero-cost synchronous check |
 | SEO | ❌ Missing 301s break link equity during migrations | ✅ Typed rules prevent status code mistakes |
 
-![Redirects Comparison](../../image/redirects/comparison.svg)
+![Redirects Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/redirects/comparison.svg)
 
 
 <p align="left">
@@ -57,7 +57,7 @@ Define redirect rules once — apply them in Next.js, Remix, and Express with ty
 - **Full TypeScript types** — typed `RedirectRule`, `RedirectMatch`, `RedirectEngine`, `RedirectEngineConfig`
 - **Tree-shakeable** — import only the adapters you use; `"sideEffects": false`
 
-![Redirects Network UI](../../image/redirects/network-ui.svg)
+![Redirects Network UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/redirects/network-ui.svg)
 
 ---
 
@@ -77,7 +77,7 @@ Define redirect rules once — apply them in Next.js, Remix, and Express with ty
 | Zero runtime dependencies | ✅ | ✅ | ✅ | ✅ |
 | Tree-shakeable | ✅ | ❌ | ❌ | ❌ |
 
-![Matching Accuracy](../../image/redirects/matching-accuracy.svg)
+![Matching Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/redirects/matching-accuracy.svg)
 
 ---
 
@@ -117,7 +117,7 @@ const noMatch = engine.match('/no-redirect-here');
 // null
 ```
 
-![Unification Benefit](../../image/redirects/unification-benefit.svg)
+![Unification Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/redirects/unification-benefit.svg)
 
 ---
 

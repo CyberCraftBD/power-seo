@@ -1,6 +1,6 @@
 # @power-seo/images
 
-![images banner](../../image/images/banner.svg)
+![images banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/banner.svg)
 
 Alt text auditing, CWV-aware lazy loading checks, WebP/AVIF format recommendations, and image sitemap XML generation with the `<image:image>` extension.
 
@@ -31,7 +31,7 @@ The alt text auditor catches not just empty alt attributes but the subtler issue
 | LCP protection | ❌ Unknown | ✅ Flags hero images incorrectly marked lazy |
 | TypeScript support | ❌ Untyped | ✅ Full type coverage for all inputs and results |
 
-![Images Comparison](../../image/images/comparison.svg)
+![Images Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/comparison.svg)
 
 
 <p align="left">
@@ -55,7 +55,7 @@ The alt text auditor catches not just empty alt attributes but the subtler issue
 - **Type-safe throughout** — complete TypeScript types covering all inputs, outputs, formats, and issue structures
 - **Zero dependencies** — pure TypeScript, no external runtime libraries
 
-![Image Audit UI](../../image/images/audit-ui.svg)
+![Image Audit UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/audit-ui.svg)
 
 ---
 
@@ -72,7 +72,7 @@ The alt text auditor catches not just empty alt attributes but the subtler issue
 | Zero dependencies | ✅ | ❌ | ❌ | ❌ | ❌ |
 | TypeScript-first | ✅ | Partial | ❌ | ✅ | ❌ |
 
-![Image Format Accuracy](../../image/images/format-accuracy.svg)
+![Image Format Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/format-accuracy.svg)
 
 ---
 
@@ -135,7 +135,7 @@ console.log(formatResult.recommendations);
 // [{ src: '/hero.jpg', current: 'jpeg', recommended: 'webp', reason: '...' }, ...]
 ```
 
-![CWV Benefit](../../image/images/cwv-benefit.svg)
+![CWV Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/cwv-benefit.svg)
 
 ---
 

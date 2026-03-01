@@ -1,6 +1,6 @@
 # @power-seo/ai
 
-![ai banner](../../image/ai/banner.svg)
+![ai banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/banner.svg)
 
 LLM-agnostic SEO prompt builders and structured response parsers — works with OpenAI, Anthropic Claude, Google Gemini, Mistral, and any other provider.
 
@@ -33,7 +33,7 @@ The `analyzeSerpEligibility` function is the exception: it is a fully determinis
 | Structured output | ❌ Raw text parsing | ✅ Typed results with char count + pixel width |
 | CI integration | ❌ Manual review | ✅ Deterministic SERP eligibility in pipelines |
 
-![LLM-Agnostic AI SEO](../../image/ai/comparison.svg)
+![LLM-Agnostic AI SEO](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/comparison.svg)
 
 
 <p align="left">
@@ -60,7 +60,7 @@ The `analyzeSerpEligibility` function is the exception: it is a fully determinis
 - **Type-safe throughout** — comprehensive TypeScript types for all inputs, outputs, and intermediate structures
 - **Zero runtime dependencies** — no external packages required
 
-![AI Content Suggestions UI](../../image/ai/suggestions-ui.svg)
+![AI Content Suggestions UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/suggestions-ui.svg)
 
 ---
 
@@ -78,7 +78,7 @@ The `analyzeSerpEligibility` function is the exception: it is a fully determinis
 | Tree-shakeable | ✅ | ❌ | Partial | — |
 | CI / Node.js usage | ✅ | ✅ | ✅ | ✅ |
 
-![AI Parsing Accuracy](../../image/ai/parsing-accuracy.svg)
+![AI Parsing Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/parsing-accuracy.svg)
 
 ---
 
@@ -131,7 +131,7 @@ result.descriptions.forEach(({ text, charCount, pixelWidth }) => {
 });
 ```
 
-![LLM-Agnostic Benefit](../../image/ai/llm-agnostic-benefit.svg)
+![LLM-Agnostic Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/llm-agnostic-benefit.svg)
 
 ---
 

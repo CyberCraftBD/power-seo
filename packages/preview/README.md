@@ -1,6 +1,6 @@
 # @power-seo/preview
 
-![preview banner](../../image/preview/banner.svg)
+![preview banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/banner.svg)
 
 Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeScript — compute exactly how a page appears in Google search results and social shares without a headless browser or canvas.
 
@@ -29,7 +29,7 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 | React preview components | ❌ Build from scratch | ✅ Drop-in `SerpPreview`, `OgPreview`, `TwitterPreview`, `PreviewPanel` |
 | Framework support | ❌ Browser tools only | ✅ Next.js, Remix, Node.js, Edge, any JS environment |
 
-![SERP Preview Comparison](../../image/preview/comparison.svg)
+![SERP Preview Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/comparison.svg)
 
 
 <p align="left">
@@ -55,7 +55,7 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 - **Tree-shakeable** — import only the generators you use; `"sideEffects": false`
 - **Zero runtime dependencies** — pure computation, no canvas, no browser, no external libraries
 
-![Preview UI Components](../../image/preview/preview-ui.svg)
+![Preview UI Components](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/preview-ui.svg)
 
 ---
 
@@ -77,7 +77,7 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 | CI / Node.js usage | ✅ | ❌ | ❌ | ❌ | ✅ |
 | Zero runtime dependencies | ✅ | ❌ | ❌ | ❌ | ❌ |
 
-![Pixel Truncation Accuracy](../../image/preview/truncation-accuracy.svg)
+![Pixel Truncation Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/truncation-accuracy.svg)
 
 ---
 
@@ -124,7 +124,7 @@ console.log(og.image?.valid);    // true
 console.log(og.image?.message);  // undefined (dimensions are correct)
 ```
 
-![CMS Preview Benefit](../../image/preview/cms-benefit.svg)
+![CMS Preview Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/cms-benefit.svg)
 
 ---
 

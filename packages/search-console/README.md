@@ -1,6 +1,6 @@
 # @power-seo/search-console
 
-![search-console banner](../../image/search-console/banner.svg)
+![search-console banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/search-console/banner.svg)
 
 Typed Google Search Console API client for TypeScript — OAuth2 and service account auth, auto-paginated search analytics, URL inspection, and sitemap management with zero boilerplate.
 
@@ -29,7 +29,7 @@ Typed Google Search Console API client for TypeScript — OAuth2 and service acc
 | Sitemap management | ❌ Manual GSC UI operations | ✅ `submitSitemap()`, `listSitemaps()`, `deleteSitemap()` |
 | Framework support | ❌ Tied to googleapis setup | ✅ Works in Next.js, Remix, Node.js, CI/CD |
 
-![Search Console Comparison](../../image/search-console/comparison.svg)
+![Search Console Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/search-console/comparison.svg)
 
 
 <p align="left">
@@ -56,7 +56,7 @@ Typed Google Search Console API client for TypeScript — OAuth2 and service acc
 - **Typed error handling** — `GSCApiError` class with `status`, `code`, and `message`
 - **Full TypeScript support** — complete type definitions for all request and response shapes
 
-![Search Console Dashboard UI](../../image/search-console/dashboard-ui.svg)
+![Search Console Dashboard UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/search-console/dashboard-ui.svg)
 
 ---
 
@@ -73,7 +73,7 @@ Typed Google Search Console API client for TypeScript — OAuth2 and service acc
 | Zero runtime dependencies          | ❌ | ❌ | ✅ | ✅ |
 | TypeScript-first                   | ❌ | ⚠️ | ❌ | ✅ |
 
-![Pagination Accuracy](../../image/search-console/pagination-accuracy.svg)
+![Pagination Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/search-console/pagination-accuracy.svg)
 
 ---
 
@@ -129,7 +129,7 @@ rows.forEach(({ keys, clicks, impressions, ctr, position }) => {
 });
 ```
 
-![Auth Benefit](../../image/search-console/auth-benefit.svg)
+![Auth Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/search-console/auth-benefit.svg)
 
 ---
 

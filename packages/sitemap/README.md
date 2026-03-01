@@ -1,6 +1,6 @@
 # @power-seo/sitemap
 
-![sitemap banner](../../image/sitemap/banner.svg)
+![sitemap banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/banner.svg)
 
 XML sitemap generation for TypeScript — streaming output, automatic index splitting, image/video/news extensions, and URL validation — works in Next.js, Remix, Express, and edge runtimes with zero runtime dependencies.
 
@@ -30,7 +30,7 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 | Hostname handling | ❌ Hardcode absolute URLs everywhere | ✅ Pass `hostname` once; use relative `loc` paths |
 | Validation | ❌ Silent bad data reaches Google | ✅ `validateSitemapUrl()` returns errors + warnings |
 
-![Sitemap Generator Comparison](../../image/sitemap/comparison.svg)
+![Sitemap Generator Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/comparison.svg)
 
 
 <p align="left">
@@ -59,7 +59,7 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 - **Zero runtime dependencies** — pure TypeScript, no external XML libraries
 - **Tree-shakeable** — import only the functions you use
 
-![Google Search Console Sitemap UI](../../image/sitemap/gsc-ui.svg)
+![Google Search Console Sitemap UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/gsc-ui.svg)
 
 ---
 
@@ -80,7 +80,7 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 | Tree-shakeable                 | ✅                 | ❌           | ❌            | ❌          |
 | Next.js `app/sitemap.ts` adapter | ✅               | ✅           | ❌            | ❌          |
 
-![Sitemap Extensions Accuracy](../../image/sitemap/extensions-accuracy.svg)
+![Sitemap Extensions Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/extensions-accuracy.svg)
 
 ---
 
@@ -122,7 +122,7 @@ const xml = generateSitemap({
 
 `hostname` is required — it is prepended to any `loc` value that is a relative path. Absolute `loc` values (starting with `http`) are used as-is.
 
-![Sitemap Streaming Benefit](../../image/sitemap/streaming-benefit.svg)
+![Sitemap Streaming Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/streaming-benefit.svg)
 
 ---
 
