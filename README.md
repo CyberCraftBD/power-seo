@@ -9,7 +9,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
-[![pnpm workspace](https://img.shields.io/badge/pnpm-workspace-orange)](https://pnpm.io/)
 
 `@power-seo` is a monorepo of **17 modular, TypeScript-first SEO packages** for React and its frameworks. Each package is independently installable — use only what your project needs, from a single utility to the full toolkit. Dual ESM + CJS output, fully tree-shakeable, zero compromise on type safety.
 
@@ -976,8 +975,7 @@ const frSitemap = generateSitemap({ hostname: 'https://example.com', urls: frUrl
 │   ├── search-console/           # Google Search Console API client
 │   ├── integrations/             # Semrush + Ahrefs API clients
 │   └── tracking/                 # Analytics script builders + consent management
-├── turbo.json                    # Turborepo pipeline config
-└── pnpm-workspace.yaml           # pnpm workspace definition
+└── turbo.json                    # Turborepo pipeline config
 ```
 
 **Design principles:**
