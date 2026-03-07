@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/banner.svg" alt="@power-seo — Production-Grade SEO Toolkit for TypeScript, React & Node.js" width="100%" />
-</div>
+</div>       
 
 [![CI](https://github.com/CyberCraftBD/power-seo/actions/workflows/production.yml/badge.svg)](https://github.com/CyberCraftBD/power-seo/actions/workflows/production.yml)
 [![npm version](https://img.shields.io/npm/v/@power-seo/core?label=version)](https://www.npmjs.com/org/power-seo)
