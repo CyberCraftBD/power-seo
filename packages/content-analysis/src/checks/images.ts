@@ -11,9 +11,9 @@ export function checkImages(input: ContentAnalysisInput): AnalysisResult[] {
     results.push({
       id: 'image-alt',
       title: 'Image alt attributes',
-      description: 'No images found. Consider adding images to make your content more engaging.',
-      status: 'ok',
-      score: 3,
+      description: 'No images found. Add images to make your content more engaging and improve SEO.',
+      status: 'poor',
+      score: 0,
       maxScore: 5,
     });
     return results;
@@ -53,7 +53,16 @@ export function checkImages(input: ContentAnalysisInput): AnalysisResult[] {
   }
 
   // --- Keyphrase in alt text check ---
-  if (focusKeyphrase && focusKeyphrase.trim().length > 0) {
+  if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
+    results.push({
+      id: 'image-keyphrase',
+      title: 'Keyphrase in image alt',
+      description: 'No focus keyphrase set. Set one to check keyphrase usage in image alt text.',
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    });
+  } else {
     const kp = focusKeyphrase.toLowerCase().trim();
     const hasKeyphraseInAlt = images.some((img) => img.alt && img.alt.toLowerCase().includes(kp));
 

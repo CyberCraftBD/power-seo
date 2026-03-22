@@ -54,7 +54,16 @@ export function checkMetaDescription(input: ContentAnalysisInput): AnalysisResul
   }
 
   // --- Keyphrase in meta description check ---
-  if (focusKeyphrase && focusKeyphrase.trim().length > 0) {
+  if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
+    results.push({
+      id: 'meta-description-keyphrase',
+      title: 'Keyphrase in meta description',
+      description: 'No focus keyphrase set. Set one to check keyphrase usage in the meta description.',
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    });
+  } else {
     const kp = focusKeyphrase.toLowerCase().trim();
     const descLower = metaDescription.toLowerCase();
 

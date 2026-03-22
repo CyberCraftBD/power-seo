@@ -173,7 +173,7 @@ export interface ContentAnalysisInput {
   images?: Array<{ src: string; alt?: string }>;
 }
 
-export type AnalysisStatus = 'good' | 'ok' | 'poor';
+export type AnalysisStatus = 'good' | 'ok' | 'poor' | 'na';
 
 export interface AnalysisResult {
   id: string;

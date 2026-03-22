@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/core",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Framework-agnostic SEO analysis engines, types, and utilities",
   "keywords": [
     "seo",

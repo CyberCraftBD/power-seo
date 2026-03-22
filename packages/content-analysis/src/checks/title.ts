@@ -53,7 +53,16 @@ export function checkTitle(input: ContentAnalysisInput): AnalysisResult[] {
   }
 
   // --- Keyphrase in title check ---
-  if (focusKeyphrase && focusKeyphrase.trim().length > 0) {
+  if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
+    results.push({
+      id: 'title-keyphrase',
+      title: 'Keyphrase in title',
+      description: 'No focus keyphrase set. Set one to check keyphrase usage in the title.',
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    });
+  } else {
     const kp = focusKeyphrase.toLowerCase().trim();
     const titleLower = title.toLowerCase();
 

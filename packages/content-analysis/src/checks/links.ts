@@ -16,8 +16,8 @@ export function checkLinks(input: ContentAnalysisInput): AnalysisResult[] {
       title: 'Internal links',
       description:
         'No internal links found. Add links to other pages on your site to improve crawlability and distribute link equity.',
-      status: 'ok',
-      score: 2,
+      status: 'poor',
+      score: 0,
       maxScore: 5,
     });
   } else {
@@ -37,8 +37,8 @@ export function checkLinks(input: ContentAnalysisInput): AnalysisResult[] {
       title: 'External links',
       description:
         'No external links found. Consider adding outbound links to authoritative sources to strengthen your content.',
-      status: 'ok',
-      score: 2,
+      status: 'poor',
+      score: 0,
       maxScore: 5,
     });
   } else {

@@ -112,7 +112,16 @@ export function checkHeadings(input: ContentAnalysisInput): AnalysisResult[] {
   }
 
   // --- Keyphrase in headings check ---
-  if (focusKeyphrase && focusKeyphrase.trim().length > 0) {
+  if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
+    results.push({
+      id: 'heading-keyphrase',
+      title: 'Keyphrase in subheadings',
+      description: 'No focus keyphrase set. Set one to check keyphrase usage in subheadings.',
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    });
+  } else {
     const kp = focusKeyphrase.toLowerCase().trim();
     const subheadings = headings.filter((h) => h.level >= 2);
     const hasKeyphraseInSubheading = subheadings.some((h) => h.text.toLowerCase().includes(kp));

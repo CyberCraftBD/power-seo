@@ -17,8 +17,16 @@ export function checkKeyphraseUsage(input: ContentAnalysisInput): AnalysisResult
       id: 'keyphrase-density',
       title: 'Keyphrase density',
       description: 'No focus keyphrase set. Set one to get keyphrase analysis.',
-      status: 'good',
-      score: 5,
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    });
+    results.push({
+      id: 'keyphrase-distribution',
+      title: 'Keyphrase distribution',
+      description: 'No focus keyphrase set. Set one to analyze keyphrase distribution.',
+      status: 'na',
+      score: 0,
       maxScore: 5,
     });
     return results;
