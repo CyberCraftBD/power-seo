@@ -10,6 +10,7 @@ import { checkParagraphLength } from '../checks/paragraph-length.js';
 import { checkSentenceLength } from '../checks/sentence-length.js';
 import { checkSubheadingDistribution } from '../checks/subheading-distribution.js';
 import { checkTransitionWords } from '../checks/transition-words.js';
+import { checkCanonicalUrl } from '../checks/canonical-url.js';
 import type { ContentAnalysisInput } from '@power-seo/core';
 
 function makeInput(overrides: Partial<ContentAnalysisInput> = {}): ContentAnalysisInput {
@@ -180,13 +181,29 @@ describe('checkKeyphraseUsage', () => {
 // ============================================================================
 
 describe('checkHeadings', () => {
-  it('returns poor when no H1 found', () => {
+  it('returns poor when no H1 found and no title', () => {
     const results = checkHeadings(makeInput({ content: '<p>No headings here.</p>' }));
     const structure = results.find((r) => r.id === 'heading-structure');
     expect(structure!.status).toBe('poor');
   });
 
-  it('returns ok when multiple H1s found', () => {
+  it('treats title as implicit H1', () => {
+    const results = checkHeadings(
+      makeInput({ title: 'My Blog Post', content: '<h2>Section</h2><p>Content</p>' }),
+    );
+    const structure = results.find((r) => r.id === 'heading-structure');
+    expect(structure!.status).toBe('good');
+  });
+
+  it('returns ok when title + content H1 creates duplicate H1s', () => {
+    const results = checkHeadings(
+      makeInput({ title: 'My Title', content: '<h1>Another H1</h1>' }),
+    );
+    const structure = results.find((r) => r.id === 'heading-structure');
+    expect(structure!.status).toBe('ok');
+  });
+
+  it('returns ok when multiple H1s found in content', () => {
     const results = checkHeadings(makeInput({ content: '<h1>First</h1><h1>Second</h1>' }));
     const structure = results.find((r) => r.id === 'heading-structure');
     expect(structure!.status).toBe('ok');
@@ -364,6 +381,67 @@ describe('checkLinks', () => {
     expect(results.find((r) => r.id === 'internal-links')!.status).toBe('poor');
     expect(results.find((r) => r.id === 'internal-links')!.score).toBe(0);
     expect(results.find((r) => r.id === 'external-links')!.status).toBe('good');
+  });
+
+  it('parses links from HTML content when arrays not provided', () => {
+    const results = checkLinks(
+      makeInput({
+        content:
+          '<p>Visit <a href="/about">our about page</a> and <a href="https://google.com">Google</a>.</p>',
+      }),
+    );
+    expect(results.find((r) => r.id === 'internal-links')!.status).toBe('good');
+    expect(results.find((r) => r.id === 'external-links')!.status).toBe('good');
+  });
+
+  it('classifies relative links as internal', () => {
+    const results = checkLinks(
+      makeInput({
+        content: '<p><a href="/blog/post">Read more</a> and <a href="./page">here</a></p>',
+      }),
+    );
+    expect(results.find((r) => r.id === 'internal-links')!.status).toBe('good');
+  });
+});
+
+// ============================================================================
+// Canonical URL checks
+// ============================================================================
+
+describe('checkCanonicalUrl', () => {
+  it('returns poor when no canonical URL set', () => {
+    const result = checkCanonicalUrl(makeInput());
+    expect(result.id).toBe('canonical-url');
+    expect(result.status).toBe('poor');
+    expect(result.score).toBe(0);
+  });
+
+  it('returns poor for bare slugs', () => {
+    const result = checkCanonicalUrl(makeInput({ canonicalUrl: 'my-blog-post' }));
+    expect(result.status).toBe('poor');
+    expect(result.score).toBe(0);
+  });
+
+  it('returns poor for relative paths', () => {
+    const result = checkCanonicalUrl(makeInput({ canonicalUrl: '/blog/my-post' }));
+    expect(result.status).toBe('poor');
+    expect(result.score).toBe(1);
+  });
+
+  it('returns ok for HTTP URLs', () => {
+    const result = checkCanonicalUrl(
+      makeInput({ canonicalUrl: 'http://example.com/blog/my-post' }),
+    );
+    expect(result.status).toBe('ok');
+    expect(result.score).toBe(3);
+  });
+
+  it('returns good for HTTPS URLs', () => {
+    const result = checkCanonicalUrl(
+      makeInput({ canonicalUrl: 'https://example.com/blog/my-post' }),
+    );
+    expect(result.status).toBe('good');
+    expect(result.score).toBe(5);
   });
 });
 

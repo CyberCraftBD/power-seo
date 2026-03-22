@@ -13,6 +13,7 @@ export { checkParagraphLength } from './checks/paragraph-length.js';
 export { checkSentenceLength } from './checks/sentence-length.js';
 export { checkSubheadingDistribution } from './checks/subheading-distribution.js';
 export { checkTransitionWords } from './checks/transition-words.js';
+export { checkCanonicalUrl } from './checks/canonical-url.js';
 
 export type {
   CheckId,

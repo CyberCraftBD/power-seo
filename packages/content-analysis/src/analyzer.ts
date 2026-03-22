@@ -14,6 +14,7 @@ import { checkParagraphLength } from './checks/paragraph-length.js';
 import { checkSentenceLength } from './checks/sentence-length.js';
 import { checkSubheadingDistribution } from './checks/subheading-distribution.js';
 import { checkTransitionWords } from './checks/transition-words.js';
+import { checkCanonicalUrl } from './checks/canonical-url.js';
 
 /**
  * Run all SEO content analysis checks and return aggregated results.
@@ -49,6 +50,7 @@ export function analyzeContent(
   const sentenceResult = checkSentenceLength(input);
   const subheadingResult = checkSubheadingDistribution(input);
   const transitionResult = checkTransitionWords(input);
+  const canonicalResult = checkCanonicalUrl(input);
 
   // Flatten all results
   const candidateResults = [
@@ -63,6 +65,7 @@ export function analyzeContent(
     sentenceResult,
     subheadingResult,
     transitionResult,
+    canonicalResult,
   ];
 
   // Filter out disabled checks

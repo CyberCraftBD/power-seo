@@ -168,6 +168,8 @@ export interface ContentAnalysisInput {
   focusKeyphrase?: string;
   slug?: string;
   locale?: string;
+  canonicalUrl?: string;
+  siteUrl?: string;
   internalLinks?: string[];
   externalLinks?: string[];
   images?: Array<{ src: string; alt?: string }>;

@@ -53,8 +53,14 @@ function parseHeadings(html: string): HeadingInfo[] {
 
 export function checkHeadings(input: ContentAnalysisInput): AnalysisResult[] {
   const results: AnalysisResult[] = [];
-  const { content, focusKeyphrase } = input;
+  const { content, title, focusKeyphrase } = input;
   const headings = parseHeadings(content);
+
+  // Treat the page title as an implicit H1 (most CMS render title as <h1>)
+  const hasTitle = title && title.trim().length > 0;
+  if (hasTitle) {
+    headings.unshift({ level: 1, text: title.trim() });
+  }
 
   // --- H1 & structure check ---
   const h1s = headings.filter((h) => h.level === 1);

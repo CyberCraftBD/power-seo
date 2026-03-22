@@ -26,7 +26,8 @@ export type CheckId =
   | 'paragraph-length'
   | 'sentence-length'
   | 'subheading-distribution'
-  | 'transition-words';
+  | 'transition-words'
+  | 'canonical-url';
 
 /** Optional configuration to enable/disable individual checks. */
 export interface AnalysisConfig {
