@@ -97,6 +97,37 @@ function countTransitionSentences(sentences: string[]): number {
   return count;
 }
 
+// --- Consecutive Sentence Detection ---
+
+function getFirstWord(sentence: string): string {
+  const words = sentence.trim().split(/\s+/);
+  return (words[0] ?? '').toLowerCase();
+}
+
+function checkConsecutiveSentences(sentences: string[]): number {
+  let groups = 0;
+  let i = 0;
+  while (i < sentences.length) {
+    const firstWord = getFirstWord(sentences[i] ?? '');
+    if (!firstWord) {
+      i++;
+      continue;
+    }
+    let streak = 1;
+    while (
+      i + streak < sentences.length &&
+      getFirstWord(sentences[i + streak] ?? '') === firstWord
+    ) {
+      streak++;
+    }
+    if (streak >= 3) {
+      groups++;
+    }
+    i += streak;
+  }
+  return groups;
+}
+
 /**
  * Analyze the readability of content using multiple algorithms.
  *
@@ -144,6 +175,9 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
   const transitionCount = countTransitionSentences(sentences);
   const transitionWordPercentage =
     sentences.length > 0 ? Math.round((transitionCount / sentences.length) * 1000) / 10 : 0;
+
+  // Consecutive sentence analysis
+  const consecutiveSentenceGroups = checkConsecutiveSentences(sentences);
 
   // Normalized overall score: 0-100 based on Flesch Reading Ease
   const score = Math.round(fre);
@@ -320,6 +354,43 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
     );
   }
 
+  // Consecutive sentences result
+  if (consecutiveSentenceGroups === 0) {
+    results.push({
+      id: 'consecutive-sentences',
+      title: 'Consecutive sentences',
+      description: 'No consecutive sentences start with the same word. Good variety!',
+      status: 'good',
+      score: 5,
+      maxScore: 5,
+    });
+  } else if (consecutiveSentenceGroups === 1) {
+    results.push({
+      id: 'consecutive-sentences',
+      title: 'Consecutive sentences',
+      description:
+        '1 group of consecutive sentences starts with the same word. Try varying your sentence beginnings.',
+      status: 'ok',
+      score: 3,
+      maxScore: 5,
+    });
+    recommendations.push(
+      '1 group of consecutive sentences starts with the same word. Vary your sentence beginnings to improve readability.',
+    );
+  } else {
+    results.push({
+      id: 'consecutive-sentences',
+      title: 'Consecutive sentences',
+      description: `${consecutiveSentenceGroups} groups of consecutive sentences start with the same word. Vary your sentence beginnings to improve readability.`,
+      status: 'poor',
+      score: 1,
+      maxScore: 5,
+    });
+    recommendations.push(
+      `${consecutiveSentenceGroups} groups of consecutive sentences start with the same word. Vary your sentence beginnings to improve readability.`,
+    );
+  }
+
   return {
     score,
     fleschReadingEase: fre,
@@ -330,6 +401,7 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
     longSentencePercentage,
     longParagraphCount,
     transitionWordPercentage,
+    consecutiveSentenceGroups,
     results,
     recommendations,
   };

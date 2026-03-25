@@ -159,6 +159,57 @@ export interface SEOConfig {
   languageAlternates?: HreflangConfig[];
 }
 
+// --- E-E-A-T Author Info ---
+
+export interface AuthorSocialProfile {
+  platform: string;
+  url: string;
+}
+
+export interface AuthorCredential {
+  name: string;
+  issuer?: string;
+  dateObtained?: string;
+}
+
+export interface AuthorEducation {
+  institution: string;
+  degree?: string;
+}
+
+export interface AuthorPublication {
+  title: string;
+  url?: string;
+}
+
+export interface AuthorInfo {
+  name?: string;
+  bio?: string;
+  url?: string;
+  image?: string;
+  jobTitle?: string;
+  worksFor?: { name?: string; url?: string; logo?: string };
+  knowsAbout?: string[];
+  credentials?: AuthorCredential[];
+  education?: AuthorEducation[];
+  socialProfiles?: AuthorSocialProfile[];
+  yearsOfExperience?: number;
+  publications?: AuthorPublication[];
+  awards?: string[];
+}
+
+export interface EditorialReviewer {
+  name: string;
+  credentials?: string;
+  url?: string;
+}
+
+export interface PreviouslyUsedKeyphrase {
+  keyphrase: string;
+  postTitle: string;
+  postUrl?: string;
+}
+
 // --- Content Analysis ---
 
 export interface ContentAnalysisInput {
@@ -166,6 +217,7 @@ export interface ContentAnalysisInput {
   metaDescription?: string;
   content: string;
   focusKeyphrase?: string;
+  secondaryKeyphrases?: string[];
   slug?: string;
   locale?: string;
   canonicalUrl?: string;
@@ -173,6 +225,20 @@ export interface ContentAnalysisInput {
   internalLinks?: string[];
   externalLinks?: string[];
   images?: Array<{ src: string; alt?: string }>;
+  // E-E-A-T fields
+  author?: AuthorInfo;
+  publishDate?: string | Date;
+  modifiedDate?: string | Date;
+  contentCategory?: string;
+  isSponsored?: boolean;
+  hasAffiliateLinks?: boolean;
+  editorialReviewer?: EditorialReviewer;
+  correctionPolicyUrl?: string;
+  privacyPolicyUrl?: string;
+  // Non-E-E-A-T fields
+  previouslyUsedKeyphrases?: PreviouslyUsedKeyphrase[];
+  inboundInternalLinkCount?: number;
+  isPillarContent?: boolean;
 }
 
 export type AnalysisStatus = 'good' | 'ok' | 'poor' | 'na';
@@ -210,6 +276,7 @@ export interface ReadabilityOutput {
   longSentencePercentage: number;
   longParagraphCount: number;
   transitionWordPercentage: number;
+  consecutiveSentenceGroups: number;
   results: AnalysisResult[];
   recommendations: string[];
 }
