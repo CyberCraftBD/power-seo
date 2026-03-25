@@ -14,6 +14,8 @@ function statusToSeverity(status: AnalysisStatus): AuditSeverity {
       return 'warning';
     case 'poor':
       return 'error';
+    case 'na':
+      return 'pass';
   }
 }
 

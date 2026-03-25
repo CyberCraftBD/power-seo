@@ -32,7 +32,7 @@ describe('analyzeContent', () => {
       expect(result.id).toBeTruthy();
       expect(result.title).toBeTruthy();
       expect(result.description).toBeTruthy();
-      expect(['good', 'ok', 'poor']).toContain(result.status);
+      expect(['good', 'ok', 'poor', 'na']).toContain(result.status);
       expect(result.score).toBeGreaterThanOrEqual(0);
       expect(result.maxScore).toBeGreaterThan(0);
     }
@@ -69,16 +69,25 @@ describe('analyzeContent', () => {
     expect(output.recommendations.length).toBeGreaterThan(0);
   });
 
-  it('calculates score as sum of individual results', () => {
+  it('calculates score as sum of applicable (non-na) results', () => {
     const output = analyzeContent({
       content: '<p>Test content.</p>',
       title: 'Test Title for This Page',
     });
 
-    const expectedScore = output.results.reduce((sum, r) => sum + r.score, 0);
-    const expectedMaxScore = output.results.reduce((sum, r) => sum + r.maxScore, 0);
+    // na results should be excluded from score totals
+    const applicable = output.results.filter((r) => r.status !== 'na');
+    const expectedScore = applicable.reduce((sum, r) => sum + r.score, 0);
+    const expectedMaxScore = applicable.reduce((sum, r) => sum + r.maxScore, 0);
 
     expect(output.score).toBe(expectedScore);
     expect(output.maxScore).toBe(expectedMaxScore);
+
+    // Verify na results exist but don't contribute to scores
+    const naResults = output.results.filter((r) => r.status === 'na');
+    expect(naResults.length).toBeGreaterThan(0);
+    for (const na of naResults) {
+      expect(na.score).toBe(0);
+    }
   });
 });

@@ -6,6 +6,11 @@ import { checkHeadings } from '../checks/headings.js';
 import { checkWordCount } from '../checks/word-count.js';
 import { checkImages } from '../checks/images.js';
 import { checkLinks } from '../checks/links.js';
+import { checkParagraphLength } from '../checks/paragraph-length.js';
+import { checkSentenceLength } from '../checks/sentence-length.js';
+import { checkSubheadingDistribution } from '../checks/subheading-distribution.js';
+import { checkTransitionWords } from '../checks/transition-words.js';
+import { checkCanonicalUrl } from '../checks/canonical-url.js';
 import type { ContentAnalysisInput } from '@power-seo/core';
 
 function makeInput(overrides: Partial<ContentAnalysisInput> = {}): ContentAnalysisInput {
@@ -28,7 +33,9 @@ describe('checkTitle', () => {
   });
 
   it('returns good for a valid title', () => {
-    const results = checkTitle(makeInput({ title: 'A Good SEO Title for Testing Purposes' }));
+    const results = checkTitle(
+      makeInput({ title: 'A Good SEO Title for Testing Purposes in Web Development Today' }),
+    );
     const presence = results.find((r) => r.id === 'title-presence');
     expect(presence).toBeDefined();
     expect(presence!.status).toBe('good');
@@ -63,10 +70,12 @@ describe('checkTitle', () => {
     expect(kpCheck!.status).toBe('ok');
   });
 
-  it('does not add keyphrase check when no keyphrase', () => {
+  it('returns na for keyphrase check when no keyphrase set', () => {
     const results = checkTitle(makeInput({ title: 'A Good Title for Testing' }));
     const kpCheck = results.find((r) => r.id === 'title-keyphrase');
-    expect(kpCheck).toBeUndefined();
+    expect(kpCheck).toBeDefined();
+    expect(kpCheck!.status).toBe('na');
+    expect(kpCheck!.score).toBe(0);
   });
 });
 
@@ -123,11 +132,15 @@ describe('checkMetaDescription', () => {
 // ============================================================================
 
 describe('checkKeyphraseUsage', () => {
-  it('returns good with message when no keyphrase set', () => {
+  it('returns na for both checks when no keyphrase set', () => {
     const results = checkKeyphraseUsage(makeInput());
-    expect(results).toHaveLength(1);
+    expect(results).toHaveLength(2);
     expect(results[0]!.id).toBe('keyphrase-density');
-    expect(results[0]!.status).toBe('good');
+    expect(results[0]!.status).toBe('na');
+    expect(results[0]!.score).toBe(0);
+    expect(results[1]!.id).toBe('keyphrase-distribution');
+    expect(results[1]!.status).toBe('na');
+    expect(results[1]!.score).toBe(0);
   });
 
   it('checks density and distribution with keyphrase', () => {
@@ -168,13 +181,29 @@ describe('checkKeyphraseUsage', () => {
 // ============================================================================
 
 describe('checkHeadings', () => {
-  it('returns poor when no H1 found', () => {
+  it('returns poor when no H1 found and no title', () => {
     const results = checkHeadings(makeInput({ content: '<p>No headings here.</p>' }));
     const structure = results.find((r) => r.id === 'heading-structure');
     expect(structure!.status).toBe('poor');
   });
 
-  it('returns ok when multiple H1s found', () => {
+  it('treats title as implicit H1', () => {
+    const results = checkHeadings(
+      makeInput({ title: 'My Blog Post', content: '<h2>Section</h2><p>Content</p>' }),
+    );
+    const structure = results.find((r) => r.id === 'heading-structure');
+    expect(structure!.status).toBe('good');
+  });
+
+  it('returns ok when title + content H1 creates duplicate H1s', () => {
+    const results = checkHeadings(
+      makeInput({ title: 'My Title', content: '<h1>Another H1</h1>' }),
+    );
+    const structure = results.find((r) => r.id === 'heading-structure');
+    expect(structure!.status).toBe('ok');
+  });
+
+  it('returns ok when multiple H1s found in content', () => {
     const results = checkHeadings(makeInput({ content: '<h1>First</h1><h1>Second</h1>' }));
     const structure = results.find((r) => r.id === 'heading-structure');
     expect(structure!.status).toBe('ok');
@@ -253,11 +282,12 @@ describe('checkWordCount', () => {
 // ============================================================================
 
 describe('checkImages', () => {
-  it('returns ok when no images', () => {
+  it('returns poor when no images', () => {
     const results = checkImages(makeInput());
     expect(results).toHaveLength(1);
     expect(results[0]!.id).toBe('image-alt');
-    expect(results[0]!.status).toBe('ok');
+    expect(results[0]!.status).toBe('poor');
+    expect(results[0]!.score).toBe(0);
   });
 
   it('returns good when all images have alt text', () => {
@@ -322,11 +352,13 @@ describe('checkImages', () => {
 // ============================================================================
 
 describe('checkLinks', () => {
-  it('returns ok for no internal and external links', () => {
+  it('returns poor for no internal and external links', () => {
     const results = checkLinks(makeInput());
     expect(results).toHaveLength(2);
-    expect(results.find((r) => r.id === 'internal-links')!.status).toBe('ok');
-    expect(results.find((r) => r.id === 'external-links')!.status).toBe('ok');
+    expect(results.find((r) => r.id === 'internal-links')!.status).toBe('poor');
+    expect(results.find((r) => r.id === 'internal-links')!.score).toBe(0);
+    expect(results.find((r) => r.id === 'external-links')!.status).toBe('poor');
+    expect(results.find((r) => r.id === 'external-links')!.score).toBe(0);
   });
 
   it('returns good when both link types present', () => {
@@ -340,13 +372,182 @@ describe('checkLinks', () => {
     expect(results.find((r) => r.id === 'external-links')!.status).toBe('good');
   });
 
-  it('returns ok for missing internal links only', () => {
+  it('returns poor for missing internal links only', () => {
     const results = checkLinks(
       makeInput({
         externalLinks: ['https://example.com'],
       }),
     );
-    expect(results.find((r) => r.id === 'internal-links')!.status).toBe('ok');
+    expect(results.find((r) => r.id === 'internal-links')!.status).toBe('poor');
+    expect(results.find((r) => r.id === 'internal-links')!.score).toBe(0);
     expect(results.find((r) => r.id === 'external-links')!.status).toBe('good');
+  });
+
+  it('parses links from HTML content when arrays not provided', () => {
+    const results = checkLinks(
+      makeInput({
+        content:
+          '<p>Visit <a href="/about">our about page</a> and <a href="https://google.com">Google</a>.</p>',
+      }),
+    );
+    expect(results.find((r) => r.id === 'internal-links')!.status).toBe('good');
+    expect(results.find((r) => r.id === 'external-links')!.status).toBe('good');
+  });
+
+  it('classifies relative links as internal', () => {
+    const results = checkLinks(
+      makeInput({
+        content: '<p><a href="/blog/post">Read more</a> and <a href="./page">here</a></p>',
+      }),
+    );
+    expect(results.find((r) => r.id === 'internal-links')!.status).toBe('good');
+  });
+});
+
+// ============================================================================
+// Canonical URL checks
+// ============================================================================
+
+describe('checkCanonicalUrl', () => {
+  it('returns poor when no canonical URL set', () => {
+    const result = checkCanonicalUrl(makeInput());
+    expect(result.id).toBe('canonical-url');
+    expect(result.status).toBe('poor');
+    expect(result.score).toBe(0);
+  });
+
+  it('returns poor for bare slugs', () => {
+    const result = checkCanonicalUrl(makeInput({ canonicalUrl: 'my-blog-post' }));
+    expect(result.status).toBe('poor');
+    expect(result.score).toBe(0);
+  });
+
+  it('returns poor for relative paths', () => {
+    const result = checkCanonicalUrl(makeInput({ canonicalUrl: '/blog/my-post' }));
+    expect(result.status).toBe('poor');
+    expect(result.score).toBe(1);
+  });
+
+  it('returns ok for HTTP URLs', () => {
+    const result = checkCanonicalUrl(
+      makeInput({ canonicalUrl: 'http://example.com/blog/my-post' }),
+    );
+    expect(result.status).toBe('ok');
+    expect(result.score).toBe(3);
+  });
+
+  it('returns good for HTTPS URLs', () => {
+    const result = checkCanonicalUrl(
+      makeInput({ canonicalUrl: 'https://example.com/blog/my-post' }),
+    );
+    expect(result.status).toBe('good');
+    expect(result.score).toBe(5);
+  });
+});
+
+// ============================================================================
+// Paragraph length checks
+// ============================================================================
+
+describe('checkParagraphLength', () => {
+  it('returns poor when no paragraphs', () => {
+    const result = checkParagraphLength(makeInput({ content: '' }));
+    expect(result.id).toBe('paragraph-length');
+    expect(result.status).toBe('poor');
+  });
+
+  it('returns good for well-sized paragraphs', () => {
+    const shortParagraph = Array(50).fill('word').join(' ');
+    const result = checkParagraphLength(
+      makeInput({ content: `<p>${shortParagraph}</p><p>${shortParagraph}</p>` }),
+    );
+    expect(result.status).toBe('good');
+  });
+
+  it('returns poor for very long paragraphs', () => {
+    const longParagraph = Array(200).fill('word').join(' ');
+    const result = checkParagraphLength(makeInput({ content: `<p>${longParagraph}</p>` }));
+    expect(result.status).toBe('poor');
+  });
+});
+
+// ============================================================================
+// Sentence length checks
+// ============================================================================
+
+describe('checkSentenceLength', () => {
+  it('returns na for empty content', () => {
+    const result = checkSentenceLength(makeInput({ content: '' }));
+    expect(result.id).toBe('sentence-length');
+    expect(result.status).toBe('na');
+  });
+
+  it('returns good for short sentences', () => {
+    const content = 'This is short. Another short one. And one more here. Plus this one too.';
+    const result = checkSentenceLength(makeInput({ content: `<p>${content}</p>` }));
+    expect(result.status).toBe('good');
+  });
+
+  it('returns poor when too many long sentences', () => {
+    const longSentence = Array(25).fill('word').join(' ');
+    const content = Array(5).fill(longSentence).join('. ') + '.';
+    const result = checkSentenceLength(makeInput({ content: `<p>${content}</p>` }));
+    expect(['poor', 'ok']).toContain(result.status);
+  });
+});
+
+// ============================================================================
+// Subheading distribution checks
+// ============================================================================
+
+describe('checkSubheadingDistribution', () => {
+  it('returns na for short content', () => {
+    const result = checkSubheadingDistribution(makeInput({ content: '<p>Short text here.</p>' }));
+    expect(result.id).toBe('subheading-distribution');
+    expect(result.status).toBe('na');
+  });
+
+  it('returns poor for long content without subheadings', () => {
+    const longContent = Array(400).fill('word').join(' ');
+    const result = checkSubheadingDistribution(makeInput({ content: `<p>${longContent}</p>` }));
+    expect(result.status).toBe('poor');
+  });
+
+  it('returns good for well-distributed subheadings', () => {
+    const section = Array(100).fill('word').join(' ');
+    const content = `<h2>Section 1</h2><p>${section}</p><h2>Section 2</h2><p>${section}</p><h2>Section 3</h2><p>${section}</p><h2>Section 4</h2><p>${section}</p>`;
+    const result = checkSubheadingDistribution(makeInput({ content }));
+    expect(result.status).toBe('good');
+  });
+});
+
+// ============================================================================
+// Transition words checks
+// ============================================================================
+
+describe('checkTransitionWords', () => {
+  it('returns na for empty content', () => {
+    const result = checkTransitionWords(makeInput({ content: '' }));
+    expect(result.id).toBe('transition-words');
+    expect(result.status).toBe('na');
+  });
+
+  it('returns good when many sentences use transition words', () => {
+    const content =
+      'However, this is important. Furthermore, we should consider this. Therefore, the conclusion is clear. ' +
+      'Additionally, there are benefits. Moreover, the results speak for themselves. ' +
+      'In conclusion, everything works well. For example, this sentence has one. ' +
+      'Consequently, we move forward. Nevertheless, challenges remain. Indeed, progress is being made.';
+    const result = checkTransitionWords(makeInput({ content: `<p>${content}</p>` }));
+    expect(result.status).toBe('good');
+  });
+
+  it('returns poor when few sentences use transition words', () => {
+    const content =
+      'The sky is blue. Water flows downhill. Trees grow tall. Birds fly south. ' +
+      'Cats chase mice. Dogs bark loudly. Fish swim fast. Rocks are hard. ' +
+      'Snow is cold. Fire is hot.';
+    const result = checkTransitionWords(makeInput({ content: `<p>${content}</p>` }));
+    expect(result.status).toBe('poor');
   });
 });

@@ -15,15 +15,40 @@ const REDUNDANT_PREFIXES = [
 
 const FILENAME_PATTERN = /^(IMG|DSC|DSCN|DCIM|Screenshot|Screen Shot|image|photo|pic)[_\-\s]?\d+/i;
 
-function analyzeImageAlt(image: ImageInfo, allAlts: string[]): ImageIssue[] {
+/**
+ * Get a human-readable label for an image source URL.
+ * Handles blob URLs, data URIs, and long URLs gracefully.
+ */
+function getImageLabel(src: string, index?: number): string {
+  if (!src) return 'Image';
+  if (src.startsWith('blob:')) return `Image ${(index ?? 0) + 1}`;
+  if (src.startsWith('data:')) return 'Inline image';
+
+  try {
+    const url = new URL(src);
+    const filename = url.pathname.split('/').pop();
+    if (filename && filename.includes('.')) return filename;
+  } catch {
+    // Not a valid URL, try to extract filename from path
+    const parts = src.split('/');
+    const last = parts[parts.length - 1];
+    if (last && last.includes('.')) return last;
+  }
+
+  return src.length > 50 ? src.substring(0, 47) + '...' : src;
+}
+
+function analyzeImageAlt(image: ImageInfo, allAlts: string[], index: number): ImageIssue[] {
   const issues: ImageIssue[] = [];
+
+  const label = getImageLabel(image.src, index);
 
   // Missing alt attribute entirely
   if (image.alt === undefined || image.alt === null) {
     issues.push({
       id: 'alt-missing',
       title: 'Missing alt attribute',
-      description: `Image "${image.src}" has no alt attribute. Add alt text for accessibility and SEO.`,
+      description: `"${label}" has no alt attribute. Add alt text for accessibility and SEO.`,
       severity: 'error',
       image,
     });
@@ -35,7 +60,7 @@ function analyzeImageAlt(image: ImageInfo, allAlts: string[]): ImageIssue[] {
     issues.push({
       id: 'alt-decorative',
       title: 'Decorative image',
-      description: `Image "${image.src}" has empty alt (decorative). This is valid if the image is purely decorative.`,
+      description: `"${label}" has empty alt (decorative). This is valid if the image is purely decorative.`,
       severity: 'pass',
       image,
     });
@@ -108,7 +133,7 @@ function analyzeImageAlt(image: ImageInfo, allAlts: string[]): ImageIssue[] {
     issues.push({
       id: 'alt-good',
       title: 'Good alt text',
-      description: `Alt text for "${image.src}" is well-formed.`,
+      description: `Alt text for "${label}" is well-formed.`,
       severity: 'pass',
       image,
     });
@@ -135,8 +160,9 @@ export function analyzeAltText(images: ImageInfo[], focusKeyphrase?: string): Im
   const perImage: ImageAnalysisResult[] = [];
   const allIssues: ImageIssue[] = [];
 
-  for (const image of images) {
-    const issues = analyzeImageAlt(image, allAlts);
+  for (let i = 0; i < images.length; i++) {
+    const image = images[i]!;
+    const issues = analyzeImageAlt(image, allAlts, i);
     const maxScore = 10;
     const errorCount = issues.filter((i) => i.severity === 'error').length;
     const warningCount = issues.filter((i) => i.severity === 'warning').length;

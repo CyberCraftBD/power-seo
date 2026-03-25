@@ -22,7 +22,12 @@ export type CheckId =
   | 'image-alt'
   | 'image-keyphrase'
   | 'internal-links'
-  | 'external-links';
+  | 'external-links'
+  | 'paragraph-length'
+  | 'sentence-length'
+  | 'subheading-distribution'
+  | 'transition-words'
+  | 'canonical-url';
 
 /** Optional configuration to enable/disable individual checks. */
 export interface AnalysisConfig {

@@ -168,12 +168,14 @@ export interface ContentAnalysisInput {
   focusKeyphrase?: string;
   slug?: string;
   locale?: string;
+  canonicalUrl?: string;
+  siteUrl?: string;
   internalLinks?: string[];
   externalLinks?: string[];
   images?: Array<{ src: string; alt?: string }>;
 }
 
-export type AnalysisStatus = 'good' | 'ok' | 'poor';
+export type AnalysisStatus = 'good' | 'ok' | 'poor' | 'na';
 
 export interface AnalysisResult {
   id: string;

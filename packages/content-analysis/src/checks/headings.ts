@@ -53,8 +53,14 @@ function parseHeadings(html: string): HeadingInfo[] {
 
 export function checkHeadings(input: ContentAnalysisInput): AnalysisResult[] {
   const results: AnalysisResult[] = [];
-  const { content, focusKeyphrase } = input;
+  const { content, title, focusKeyphrase } = input;
   const headings = parseHeadings(content);
+
+  // Treat the page title as an implicit H1 (most CMS render title as <h1>)
+  const hasTitle = title && title.trim().length > 0;
+  if (hasTitle) {
+    headings.unshift({ level: 1, text: title.trim() });
+  }
 
   // --- H1 & structure check ---
   const h1s = headings.filter((h) => h.level === 1);
@@ -112,7 +118,16 @@ export function checkHeadings(input: ContentAnalysisInput): AnalysisResult[] {
   }
 
   // --- Keyphrase in headings check ---
-  if (focusKeyphrase && focusKeyphrase.trim().length > 0) {
+  if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
+    results.push({
+      id: 'heading-keyphrase',
+      title: 'Keyphrase in subheadings',
+      description: 'No focus keyphrase set. Set one to check keyphrase usage in subheadings.',
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    });
+  } else {
     const kp = focusKeyphrase.toLowerCase().trim();
     const subheadings = headings.filter((h) => h.level >= 2);
     const hasKeyphraseInSubheading = subheadings.some((h) => h.text.toLowerCase().includes(kp));

@@ -10,6 +10,11 @@ import { checkHeadings } from './checks/headings.js';
 import { checkWordCount } from './checks/word-count.js';
 import { checkImages } from './checks/images.js';
 import { checkLinks } from './checks/links.js';
+import { checkParagraphLength } from './checks/paragraph-length.js';
+import { checkSentenceLength } from './checks/sentence-length.js';
+import { checkSubheadingDistribution } from './checks/subheading-distribution.js';
+import { checkTransitionWords } from './checks/transition-words.js';
+import { checkCanonicalUrl } from './checks/canonical-url.js';
 
 /**
  * Run all SEO content analysis checks and return aggregated results.
@@ -41,6 +46,11 @@ export function analyzeContent(
   const wordCountResult = checkWordCount(input);
   const imageResults = checkImages(input);
   const linkResults = checkLinks(input);
+  const paragraphResult = checkParagraphLength(input);
+  const sentenceResult = checkSentenceLength(input);
+  const subheadingResult = checkSubheadingDistribution(input);
+  const transitionResult = checkTransitionWords(input);
+  const canonicalResult = checkCanonicalUrl(input);
 
   // Flatten all results
   const candidateResults = [
@@ -51,6 +61,11 @@ export function analyzeContent(
     wordCountResult,
     ...imageResults,
     ...linkResults,
+    paragraphResult,
+    sentenceResult,
+    subheadingResult,
+    transitionResult,
+    canonicalResult,
   ];
 
   // Filter out disabled checks
@@ -60,12 +75,13 @@ export function analyzeContent(
     }
   }
 
-  // Sum scores
-  const score = allResults.reduce((sum, r) => sum + r.score, 0);
-  const maxScore = allResults.reduce((sum, r) => sum + r.maxScore, 0);
+  // Sum scores — exclude 'na' (not applicable) checks from both score and maxScore
+  const applicableResults = allResults.filter((r) => r.status !== 'na');
+  const score = applicableResults.reduce((sum, r) => sum + r.score, 0);
+  const maxScore = applicableResults.reduce((sum, r) => sum + r.maxScore, 0);
 
-  // Generate recommendations from poor/ok results
-  const recommendations = allResults
+  // Generate recommendations from poor/ok results (exclude 'na')
+  const recommendations = applicableResults
     .filter((r) => r.status === 'poor' || r.status === 'ok')
     .map((r) => r.description);
 
