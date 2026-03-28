@@ -35,7 +35,7 @@ export function validateSitemapUrl(url: SitemapURL): SitemapValidationResult {
 
   // lastmod validation
   if (url.lastmod) {
-    const dateRegex = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z)?)?$/;
+    const dateRegex = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d{1,3})?)?([+-]\d{2}:\d{2}|Z)?)?$/;
     if (!dateRegex.test(url.lastmod)) {
       errors.push(
         `"lastmod" value "${url.lastmod}" is not a valid W3C datetime format (YYYY-MM-DD or ISO 8601).`,
