@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/audit",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "SEO site health auditing with meta, content, structure, and performance rules",
   "keywords": [
     "seo",
