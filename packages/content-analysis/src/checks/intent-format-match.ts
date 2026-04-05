@@ -143,7 +143,7 @@ export function checkIntentFormatMatch(
 
   // No keyphrase — cannot determine intent
   if (!input.focusKeyphrase || input.focusKeyphrase.trim().length === 0) {
-    return { id, title, description: 'No focus keyphrase set.', status: 'na', score: 0, maxScore: 5 };
+    return { id, title, description: 'No focus keyphrase set.', status: 'na', score: 0, maxScore: 8 };
   }
 
   const intent = detectIntent(input.focusKeyphrase);
@@ -205,7 +205,7 @@ export function checkIntentFormatMatch(
       description: 'Unable to determine expected format for this intent type.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -227,7 +227,7 @@ export function checkIntentFormatMatch(
       description: `No specific format requirements identified for ${expectedFormat} content.`,
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -264,5 +264,5 @@ export function checkIntentFormatMatch(
     description = `Content format does not match ${expectedFormat}${subTypeLabel} expectations (0/${totalSignals} signals). Missing: ${missingList}. Restructure content to match the expected format.`;
   }
 
-  return { id, title, description, status, score, maxScore: 5 };
+  return { id, title, description, status, score, maxScore: 8 };
 }

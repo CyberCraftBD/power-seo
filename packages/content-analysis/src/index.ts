@@ -110,6 +110,16 @@ export { checkIntentFunnelPosition } from './checks/intent-funnel-position.js';
 export { checkIntentRelatedCoverage } from './checks/intent-related-coverage.js';
 export { checkIntentEngagementSignals } from './checks/intent-engagement-signals.js';
 
+// AEO: Answer Engine Optimization
+export { checkAeoDirectAnswer } from './checks/aeo-direct-answer.js';
+export { checkAeoFaqSection } from './checks/aeo-faq-section.js';
+export { checkAeoFactDensity } from './checks/aeo-fact-density.js';
+export { checkAeoTldrSummary } from './checks/aeo-tldr-summary.js';
+export { checkAeoConciseAnswers } from './checks/aeo-concise-answers.js';
+export { checkAeoStructuredDataHints } from './checks/aeo-structured-data-hints.js';
+export { checkAeoCitationReadiness } from './checks/aeo-citation-readiness.js';
+export { checkAeoEntityCoverage } from './checks/aeo-entity-coverage.js';
+
 export type {
   CheckId,
   AnalysisConfig,

@@ -112,7 +112,16 @@ export type CheckId =
   | 'intent-satisfaction-score'
   | 'intent-funnel-position'
   | 'intent-related-coverage'
-  | 'intent-engagement-signals';
+  | 'intent-engagement-signals'
+  // AEO: Answer Engine Optimization
+  | 'aeo-direct-answer'
+  | 'aeo-faq-section'
+  | 'aeo-fact-density'
+  | 'aeo-tldr-summary'
+  | 'aeo-concise-answers'
+  | 'aeo-structured-data-hints'
+  | 'aeo-citation-readiness'
+  | 'aeo-entity-coverage';
 
 /** Optional configuration to enable/disable individual checks. */
 export interface AnalysisConfig {

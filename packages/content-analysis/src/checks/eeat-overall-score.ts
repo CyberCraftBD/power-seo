@@ -184,7 +184,7 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
       description: 'Content is too short to assess E-E-A-T signals.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -206,7 +206,7 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
       description: `Strong E-E-A-T profile with ${strongCount}/4 pillars solid. ${pillarSummary}. Content demonstrates real experience, author expertise, authoritative backing, and trustworthiness.`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -218,7 +218,7 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
       description: `Moderate E-E-A-T profile with ${strongCount}/4 pillars solid. ${pillarSummary}. Strengthen ${weakPillars.join(' and ')} to improve overall quality signals.`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -229,6 +229,6 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
     description: `Weak E-E-A-T profile with only ${strongCount}/4 pillars solid. ${pillarSummary}. ${weakPillars.join(', ')} need improvement. Add first-person experience, author credentials, social profiles, publications, and trust signals (HTTPS, publish date, privacy policy).`,
     status: 'poor',
     score: 0,
-    maxScore: 5,
+    maxScore: 8,
   };
 }

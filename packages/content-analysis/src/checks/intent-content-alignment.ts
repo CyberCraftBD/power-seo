@@ -132,7 +132,7 @@ export function checkIntentContentAlignment(input: ContentAnalysisInput): Analys
       description: 'No focus keyphrase set. Set one to evaluate content-intent alignment.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -152,7 +152,7 @@ export function checkIntentContentAlignment(input: ContentAnalysisInput): Analys
       description: `Content aligns well with ${intentLabel} intent. Found ${result.totalSignals} intent signals spread across ${result.sectionsWithSignals} section${result.sectionsWithSignals === 1 ? '' : 's'} (intro: ${result.introSignals}, body: ${result.bodySignals}, conclusion: ${result.conclusionSignals}).`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -169,7 +169,7 @@ export function checkIntentContentAlignment(input: ContentAnalysisInput): Analys
       description: `Partial ${intentLabel} intent alignment. Found ${result.totalSignals} intent signal${result.totalSignals === 1 ? '' : 's'} in ${result.sectionsWithSignals} section${result.sectionsWithSignals === 1 ? '' : 's'}. ${detail}.`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -180,6 +180,6 @@ export function checkIntentContentAlignment(input: ContentAnalysisInput): Analys
     description: `Content does not match ${intentLabel} intent. Found only ${result.totalSignals} intent signal${result.totalSignals === 1 ? '' : 's'}. Add ${intentLabel} language throughout the content to align with the keyphrase intent.`,
     status: 'poor',
     score: 0,
-    maxScore: 5,
+    maxScore: 10,
   };
 }

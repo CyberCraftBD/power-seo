@@ -18,7 +18,7 @@ export function checkAuthorSchema(input: ContentAnalysisInput): AnalysisResult {
       description: 'No author information provided. Add author data (name, bio, credentials, social profiles) to build E-E-A-T trust signals.',
       status: 'poor',
       score: 0,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -64,7 +64,7 @@ export function checkAuthorSchema(input: ContentAnalysisInput): AnalysisResult {
       description: `Author schema is ${Math.round(completeness * 100)}% complete (${filledFields.length}/${fields.length} fields). Schema properties: ${filledFields.join(', ')}.${bioQuality}`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -75,7 +75,7 @@ export function checkAuthorSchema(input: ContentAnalysisInput): AnalysisResult {
       description: `Author schema is ${Math.round(completeness * 100)}% complete. Missing: ${missingFields.join(', ')}. Add these Person schema properties to strengthen expertise signals.${bioQuality}`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -85,6 +85,6 @@ export function checkAuthorSchema(input: ContentAnalysisInput): AnalysisResult {
     description: `Author schema is only ${Math.round(completeness * 100)}% complete. Missing: ${missingFields.join(', ')}. A complete author schema (name, jobTitle, worksFor, credentials, knowsAbout, sameAs) is critical for E-E-A-T.`,
     status: 'poor',
     score: 1,
-    maxScore: 5,
+    maxScore: 10,
   };
 }

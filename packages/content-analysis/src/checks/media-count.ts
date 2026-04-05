@@ -26,7 +26,7 @@ export function checkMediaCount(input: ContentAnalysisInput): AnalysisResult {
       description: 'No images or videos found. Add visual media to improve engagement.',
       status: 'poor',
       score: 0,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -45,7 +45,7 @@ export function checkMediaCount(input: ContentAnalysisInput): AnalysisResult {
       description: `Good use of visual media (${imageCount} image${imageCount === 1 ? '' : 's'}, ${videoCount} video${videoCount === 1 ? '' : 's'}). Media improves engagement and time on page.`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -55,6 +55,6 @@ export function checkMediaCount(input: ContentAnalysisInput): AnalysisResult {
     description: `Found ${imageCount} image${imageCount === 1 ? '' : 's'} and ${videoCount} video${videoCount === 1 ? '' : 's'}. Consider adding more visual media for better engagement.`,
     status: 'ok',
     score: 3,
-    maxScore: 5,
+    maxScore: 8,
   };
 }

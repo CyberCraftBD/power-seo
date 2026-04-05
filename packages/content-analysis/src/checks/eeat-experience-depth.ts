@@ -96,7 +96,7 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
       description: 'Content is too short to analyze experience depth.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 9,
     };
   }
 
@@ -127,7 +127,7 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
       description: `Strong first-hand experience signals detected (${totalMatches} markers). Phrases like "${matchedPhrases.slice(0, 3).join('", "')}" demonstrate real experience.`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 9,
     };
   }
 
@@ -138,7 +138,7 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
       description: `Some experience signals found (${totalMatches} markers). Add more first-person experience phrases like "I tested", "in my experience", or outcome reporting to strengthen E-E-A-T.`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 9,
     };
   }
 
@@ -148,6 +148,6 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
     description: 'No first-hand experience signals detected. Add personal experience, testing outcomes, temporal markers ("after 6 months of using..."), and process narration to demonstrate real experience with the topic.',
     status: 'poor',
     score: 0,
-    maxScore: 5,
+    maxScore: 9,
   };
 }

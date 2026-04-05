@@ -54,7 +54,7 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
       description: 'Set both author information and content category to assess topical authority alignment. This check verifies the author has relevant expertise for the content topic.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -138,7 +138,7 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
       description: `Strong topical authority: ${authoritySignals.join('; ')}.${ymylNote}`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -149,7 +149,7 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
       description: `Moderate topical authority (${authoritySignals.join('; ')}). Gaps: ${gaps.join('; ')}.${ymylNote}`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -159,6 +159,6 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
     description: `Weak topical authority for "${contentCategory}" content. ${gaps.join('; ')}. Ensure the author has demonstrable expertise in this topic area.${ymylNote}`,
     status: 'poor',
     score: 1,
-    maxScore: 5,
+    maxScore: 8,
   };
 }

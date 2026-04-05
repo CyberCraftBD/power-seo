@@ -97,7 +97,7 @@ export function checkContentFreshness(input: ContentAnalysisInput): AnalysisResu
       description: 'No publish or modified date available. Set dates to evaluate content freshness.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -140,7 +140,7 @@ export function checkContentFreshness(input: ContentAnalysisInput): AnalysisResu
       description: `${parts.join('. ')}. Content is fresh${staleRefs.length > 0 ? ', but consider updating the stale references' : ''}.`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -152,7 +152,7 @@ export function checkContentFreshness(input: ContentAnalysisInput): AnalysisResu
       description: `${parts.join('. ')}. Content is aging — consider reviewing and updating it to maintain relevance.`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -163,6 +163,6 @@ export function checkContentFreshness(input: ContentAnalysisInput): AnalysisResu
     description: `${parts.join('. ')}. Content is over 12 months old without a recent update. Refresh it to improve rankings and accuracy.`,
     status: 'poor',
     score: 1,
-    maxScore: 5,
+    maxScore: 10,
   };
 }

@@ -187,7 +187,7 @@ export function checkIntentSnippetReadiness(input: ContentAnalysisInput): Analys
       description: `Content has ${count} snippet-ready patterns: ${foundNames}. Well-structured for position zero.${keyphraseNote}`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 6,
     };
   }
 
@@ -201,7 +201,7 @@ export function checkIntentSnippetReadiness(input: ContentAnalysisInput): Analys
       description: `Found ${count} snippet pattern${count === 1 ? '' : 's'}: ${foundNames}. Consider adding: ${missingNames}.${keyphraseNote}`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 6,
     };
   }
 
@@ -213,6 +213,6 @@ export function checkIntentSnippetReadiness(input: ContentAnalysisInput): Analys
     description: `No snippet-ready patterns found. Add at least one of: ${missingNames}. These structures help win Google's featured snippet (position zero).${keyphraseNote}`,
     status: 'poor',
     score: 0,
-    maxScore: 5,
+    maxScore: 6,
   };
 }

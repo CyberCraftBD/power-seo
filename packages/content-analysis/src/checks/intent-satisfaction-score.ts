@@ -187,7 +187,7 @@ export function checkIntentSatisfactionScore(
       description: 'No focus keyphrase set. Set one to evaluate search satisfaction.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -236,7 +236,7 @@ export function checkIntentSatisfactionScore(
         (missingSignals.length > 0 ? ` Consider adding: ${missingList}.` : ''),
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -250,7 +250,7 @@ export function checkIntentSatisfactionScore(
         `Present: ${presentList}. Missing: ${missingList}.`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -265,7 +265,7 @@ export function checkIntentSatisfactionScore(
         `Content may not fully resolve the searcher's query.`,
       status: 'poor',
       score: 1,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -278,6 +278,6 @@ export function checkIntentSatisfactionScore(
       `Missing: ${missingList}. Content is unlikely to resolve the searcher's query.`,
     status: 'poor',
     score: 0,
-    maxScore: 5,
+    maxScore: 10,
   };
 }
