@@ -196,9 +196,7 @@ describe('checkHeadings', () => {
   });
 
   it('returns ok when title + content H1 creates duplicate H1s', () => {
-    const results = checkHeadings(
-      makeInput({ title: 'My Title', content: '<h1>Another H1</h1>' }),
-    );
+    const results = checkHeadings(makeInput({ title: 'My Title', content: '<h1>Another H1</h1>' }));
     const structure = results.find((r) => r.id === 'heading-structure');
     expect(structure!.status).toBe('ok');
   });

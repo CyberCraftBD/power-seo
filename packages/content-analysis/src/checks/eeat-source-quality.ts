@@ -28,23 +28,11 @@ const SOURCE_CATEGORIES: Array<{ category: string; patterns: RegExp[] }> = [
   },
   {
     category: 'government',
-    patterns: [
-      /\.gov\b/i,
-      /\.gov\.\w{2}\b/i,
-      /who\.int/i,
-      /europa\.eu/i,
-      /un\.org/i,
-    ],
+    patterns: [/\.gov\b/i, /\.gov\.\w{2}\b/i, /who\.int/i, /europa\.eu/i, /un\.org/i],
   },
   {
     category: 'authoritative',
-    patterns: [
-      /\.org\b/i,
-      /wikipedia\.org/i,
-      /mozilla\.org/i,
-      /w3\.org/i,
-      /ietf\.org/i,
-    ],
+    patterns: [/\.org\b/i, /wikipedia\.org/i, /mozilla\.org/i, /w3\.org/i, /ietf\.org/i],
   },
   {
     category: 'news',
@@ -126,7 +114,8 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
     return {
       id: 'eeat-source-quality',
       title: 'Source quality',
-      description: 'No external sources cited. Add links to authoritative sources (academic papers, government data, industry documentation) to back up claims and build trust.',
+      description:
+        'No external sources cited. Add links to authoritative sources (academic papers, government data, industry documentation) to back up claims and build trust.',
       status: 'poor',
       score: 0,
       maxScore: 10,
@@ -140,7 +129,7 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
   for (const link of links) {
     let categorized = false;
     for (const { category, patterns } of SOURCE_CATEGORIES) {
-      if (patterns.some(p => p.test(link))) {
+      if (patterns.some((p) => p.test(link))) {
         categoryCounts[category] = (categoryCounts[category] || 0) + 1;
         if (!categorizedLinks[category]) categorizedLinks[category] = [];
         categorizedLinks[category].push(link);
@@ -155,12 +144,12 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
 
   // Check for references section in content
   const headings = content.match(/<h[2-6]\b[^>]*>[\s\S]*?<\/h[2-6]>/gi) || [];
-  const hasReferencesSection = headings.some(h => {
+  const hasReferencesSection = headings.some((h) => {
     const headingText = stripHtml(h).toLowerCase();
-    return REFERENCES_SECTION_PATTERNS.some(p => p.test(headingText));
+    return REFERENCES_SECTION_PATTERNS.some((p) => p.test(headingText));
   });
 
-  const categories = Object.keys(categoryCounts).filter(c => c !== 'other');
+  const categories = Object.keys(categoryCounts).filter((c) => c !== 'other');
   const highQualityCount = (categoryCounts['academic'] || 0) + (categoryCounts['government'] || 0);
   const diversity = categories.length;
 
@@ -174,7 +163,7 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
   if (sourceDensity >= 1) score += 1;
   if (hasReferencesSection) score += 1;
 
-  const categoryDetails = categories.map(c => `${c}: ${categoryCounts[c]}`).join(', ');
+  const categoryDetails = categories.map((c) => `${c}: ${categoryCounts[c]}`).join(', ');
 
   if (score >= 4) {
     return {
@@ -189,7 +178,8 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
 
   if (score >= 2) {
     const suggestions: string[] = [];
-    if (highQualityCount === 0) suggestions.push('add academic (.edu) or government (.gov) sources');
+    if (highQualityCount === 0)
+      suggestions.push('add academic (.edu) or government (.gov) sources');
     if (diversity < 2) suggestions.push('diversify source types (academic, government, industry)');
     if (!hasReferencesSection) suggestions.push('add a "References" or "Sources" section');
     if (links.length < 3) suggestions.push('cite at least 3 external sources');

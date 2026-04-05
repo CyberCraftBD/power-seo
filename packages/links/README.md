@@ -23,18 +23,17 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 
 ## Why @power-seo/links?
 
-| | Without | With |
-|---|---|---|
-| Orphan detection | ❌ Manual crawl | ✅ `findOrphanPages()` in-memory graph |
-| Link suggestions | ❌ Guesswork | ✅ Keyword-overlap-based contextual suggestions |
-| Link equity | ❌ Third-party tools | ✅ PageRank-style scoring built-in |
+|                    | Without               | With                                               |
+| ------------------ | --------------------- | -------------------------------------------------- |
+| Orphan detection   | ❌ Manual crawl       | ✅ `findOrphanPages()` in-memory graph             |
+| Link suggestions   | ❌ Guesswork          | ✅ Keyword-overlap-based contextual suggestions    |
+| Link equity        | ❌ Third-party tools  | ✅ PageRank-style scoring built-in                 |
 | Graph construction | ❌ Build from scratch | ✅ `buildLinkGraph()` — directed graph in one call |
-| Audit integration | ❌ Separate toolchain | ✅ Designed to integrate with `@power-seo/audit` |
-| TypeScript support | ❌ Untyped | ✅ Full type coverage for all graph structures |
-| Zero dependencies | ❌ External libs | ✅ Pure TypeScript, no runtime dependencies |
+| Audit integration  | ❌ Separate toolchain | ✅ Designed to integrate with `@power-seo/audit`   |
+| TypeScript support | ❌ Untyped            | ✅ Full type coverage for all graph structures     |
+| Zero dependencies  | ❌ External libs      | ✅ Pure TypeScript, no runtime dependencies        |
 
 ![Links Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -62,16 +61,16 @@ The package is designed to integrate directly with `@power-seo/audit` for site-w
 
 ## Comparison
 
-| Feature | @power-seo/links | Screaming Frog | Ahrefs | Custom scripts |
-| --- | :---: | :---: | :---: | :---: |
-| Programmatic link graph | ✅ | ❌ | ❌ | Manual |
-| Orphan page detection | ✅ | ✅ | ✅ | Manual |
-| Keyword-based suggestions | ✅ | ❌ | ❌ | Manual |
-| PageRank-style equity | ✅ | ❌ | ✅ | Manual |
-| Audit integration | ✅ | ❌ | ❌ | — |
-| Zero dependencies | ✅ | ❌ | ❌ | — |
-| TypeScript-first | ✅ | ❌ | ❌ | — |
-| Tree-shakeable | ✅ | ❌ | ❌ | — |
+| Feature                   | @power-seo/links | Screaming Frog | Ahrefs | Custom scripts |
+| ------------------------- | :--------------: | :------------: | :----: | :------------: |
+| Programmatic link graph   |        ✅        |       ❌       |   ❌   |     Manual     |
+| Orphan page detection     |        ✅        |       ✅       |   ✅   |     Manual     |
+| Keyword-based suggestions |        ✅        |       ❌       |   ❌   |     Manual     |
+| PageRank-style equity     |        ✅        |       ❌       |   ✅   |     Manual     |
+| Audit integration         |        ✅        |       ❌       |   ❌   |       —        |
+| Zero dependencies         |        ✅        |       ❌       |   ❌   |       —        |
+| TypeScript-first          |        ✅        |       ❌       |   ❌   |       —        |
+| Tree-shakeable            |        ✅        |       ❌       |   ❌   |       —        |
 
 ![Link Equity Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/links/equity-accuracy.svg)
 
@@ -297,10 +296,10 @@ Returns `LinkGraph` — object with `nodes: Map<string, LinkNode>`, `totalPages:
 
 ### `findOrphanPages(graph, entryPoints?)`
 
-| Parameter    | Type          | Default | Description                                                    |
-| ------------ | ------------- | ------- | -------------------------------------------------------------- |
-| `graph`      | `LinkGraph`   | required | A directed link graph built by `buildLinkGraph`                |
-| `entryPoints` | `string[]`   | `[]`    | URLs to exclude from orphan detection (e.g., homepage)         |
+| Parameter     | Type        | Default  | Description                                            |
+| ------------- | ----------- | -------- | ------------------------------------------------------ |
+| `graph`       | `LinkGraph` | required | A directed link graph built by `buildLinkGraph`        |
+| `entryPoints` | `string[]`  | `[]`     | URLs to exclude from orphan detection (e.g., homepage) |
 
 Returns `OrphanPage[]` — array of `{ url: string; title?: string; outboundCount: number }` objects.
 
@@ -308,11 +307,11 @@ Returns `OrphanPage[]` — array of `{ url: string; title?: string; outboundCoun
 
 ### `suggestLinks(pages, options?)`
 
-| Parameter              | Type         | Default | Description                                                    |
-| ---------------------- | ------------ | ------- | -------------------------------------------------------------- |
-| `pages`                | `PageData[]` | required | Pages with `url`, `title`, and `content` for analysis          |
-| `options.minRelevance` | `number`     | `0.1`   | Minimum keyword overlap score (0–1) to include a suggestion    |
-| `options.maxSuggestions` | `number`   | `20`    | Maximum number of suggestions returned per source page         |
+| Parameter                | Type         | Default  | Description                                                 |
+| ------------------------ | ------------ | -------- | ----------------------------------------------------------- |
+| `pages`                  | `PageData[]` | required | Pages with `url`, `title`, and `content` for analysis       |
+| `options.minRelevance`   | `number`     | `0.1`    | Minimum keyword overlap score (0–1) to include a suggestion |
+| `options.maxSuggestions` | `number`     | `20`     | Maximum number of suggestions returned per source page      |
 
 Returns `LinkSuggestion[]` — array of `{ from, to, anchorText, relevanceScore }` objects.
 
@@ -320,11 +319,11 @@ Returns `LinkSuggestion[]` — array of `{ from, to, anchorText, relevanceScore 
 
 ### `analyzeLinkEquity(graph, options?)`
 
-| Parameter             | Type        | Default | Description                                                                    |
-| --------------------- | ----------- | ------- | ------------------------------------------------------------------------------ |
-| `graph`               | `LinkGraph` | required | A directed link graph built by `buildLinkGraph`                                |
-| `options.damping`     | `number`    | `0.85`  | PageRank damping factor — probability of following a link vs. jumping randomly |
-| `options.iterations`  | `number`    | `20`    | Maximum number of power-iteration steps                                        |
+| Parameter            | Type        | Default  | Description                                                                    |
+| -------------------- | ----------- | -------- | ------------------------------------------------------------------------------ |
+| `graph`              | `LinkGraph` | required | A directed link graph built by `buildLinkGraph`                                |
+| `options.damping`    | `number`    | `0.85`   | PageRank damping factor — probability of following a link vs. jumping randomly |
+| `options.iterations` | `number`    | `20`     | Maximum number of power-iteration steps                                        |
 
 Returns `LinkEquityScore[]` — array sorted by score descending.
 

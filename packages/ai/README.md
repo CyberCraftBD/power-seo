@@ -23,18 +23,17 @@ The `analyzeSerpEligibility` function is the exception: it is a fully determinis
 
 ## Why @power-seo/ai?
 
-| | Without | With |
-|---|---|---|
-| Meta descriptions | ❌ Write manually | ✅ LLM-generated, SEO-optimized candidates |
-| Title optimization | ❌ Guesswork | ✅ Keyphrase-focused, branded title variants |
-| Content gaps | ❌ Manually identified | ✅ Structured AI-powered improvement suggestions |
-| SERP eligibility | ❌ Unknown | ✅ Rule-based + LLM prediction with confidence scores |
-| Provider flexibility | ❌ Vendor-locked | ✅ Works with any LLM: OpenAI, Claude, Gemini... |
-| Structured output | ❌ Raw text parsing | ✅ Typed results with char count + pixel width |
-| CI integration | ❌ Manual review | ✅ Deterministic SERP eligibility in pipelines |
+|                      | Without                | With                                                  |
+| -------------------- | ---------------------- | ----------------------------------------------------- |
+| Meta descriptions    | ❌ Write manually      | ✅ LLM-generated, SEO-optimized candidates            |
+| Title optimization   | ❌ Guesswork           | ✅ Keyphrase-focused, branded title variants          |
+| Content gaps         | ❌ Manually identified | ✅ Structured AI-powered improvement suggestions      |
+| SERP eligibility     | ❌ Unknown             | ✅ Rule-based + LLM prediction with confidence scores |
+| Provider flexibility | ❌ Vendor-locked       | ✅ Works with any LLM: OpenAI, Claude, Gemini...      |
+| Structured output    | ❌ Raw text parsing    | ✅ Typed results with char count + pixel width        |
+| CI integration       | ❌ Manual review       | ✅ Deterministic SERP eligibility in pipelines        |
 
 ![LLM-Agnostic AI SEO](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -66,17 +65,17 @@ The `analyzeSerpEligibility` function is the exception: it is a fully determinis
 
 ## Comparison
 
-| Feature | @power-seo/ai | LangChain | Vercel AI SDK | Custom prompts |
-| --- | :---: | :---: | :---: | :---: |
-| Provider-agnostic prompt builders | ✅ | Partial | ❌ | ❌ |
-| SEO-specific prompt templates | ✅ | ❌ | ❌ | Manual |
-| Structured response parsers | ✅ | Partial | Partial | Manual |
-| Rule-based SERP eligibility | ✅ | ❌ | ❌ | ❌ |
-| Char + pixel width metadata | ✅ | ❌ | ❌ | ❌ |
-| Zero SDK dependencies | ✅ | ❌ | ❌ | ✅ |
-| TypeScript-first | ✅ | Partial | ✅ | — |
-| Tree-shakeable | ✅ | ❌ | Partial | — |
-| CI / Node.js usage | ✅ | ✅ | ✅ | ✅ |
+| Feature                           | @power-seo/ai | LangChain | Vercel AI SDK | Custom prompts |
+| --------------------------------- | :-----------: | :-------: | :-----------: | :------------: |
+| Provider-agnostic prompt builders |      ✅       |  Partial  |      ❌       |       ❌       |
+| SEO-specific prompt templates     |      ✅       |    ❌     |      ❌       |     Manual     |
+| Structured response parsers       |      ✅       |  Partial  |    Partial    |     Manual     |
+| Rule-based SERP eligibility       |      ✅       |    ❌     |      ❌       |       ❌       |
+| Char + pixel width metadata       |      ✅       |    ❌     |      ❌       |       ❌       |
+| Zero SDK dependencies             |      ✅       |    ❌     |      ❌       |       ✅       |
+| TypeScript-first                  |      ✅       |  Partial  |      ✅       |       —        |
+| Tree-shakeable                    |      ✅       |    ❌     |    Partial    |       —        |
+| CI / Node.js usage                |      ✅       |    ✅     |      ✅       |       ✅       |
 
 ![AI Parsing Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/ai/parsing-accuracy.svg)
 
@@ -211,12 +210,12 @@ suggestions.forEach(({ type, suggestion, priority }) => {
 
 **Suggestion types:**
 
-| Type      | Description                                              |
-| --------- | -------------------------------------------------------- |
-| `heading` | Heading structure improvements and additions             |
-| `paragraph` | Paragraph content improvements and rewrites            |
-| `keyword` | Keyphrase density and placement optimization             |
-| `link`    | Internal linking opportunities and suggestions           |
+| Type        | Description                                    |
+| ----------- | ---------------------------------------------- |
+| `heading`   | Heading structure improvements and additions   |
+| `paragraph` | Paragraph content improvements and rewrites    |
+| `keyword`   | Keyphrase density and placement optimization   |
+| `link`      | Internal linking opportunities and suggestions |
 
 ### SERP Feature Prediction
 
@@ -322,13 +321,13 @@ const result3 = parseMetaDescriptionResponse(geminiResponse.response.text());
 
 ### `buildMetaDescriptionPrompt(input)` / `parseMetaDescriptionResponse(text)`
 
-| Parameter         | Type     | Default  | Description                                |
-| ----------------- | -------- | -------- | ------------------------------------------ |
-| `input.title`     | `string` | required | Page title for context                     |
-| `input.content`   | `string` | required | Page content (HTML or plain text)          |
-| `input.focusKeyphrase` | `string` | — | Focus keyphrase to include in descriptions |
-| `input.maxLength` | `number` | `158`    | Maximum character length                   |
-| `input.tone`      | `string` | —        | Tone hint for the LLM                      |
+| Parameter              | Type     | Default  | Description                                |
+| ---------------------- | -------- | -------- | ------------------------------------------ |
+| `input.title`          | `string` | required | Page title for context                     |
+| `input.content`        | `string` | required | Page content (HTML or plain text)          |
+| `input.focusKeyphrase` | `string` | —        | Focus keyphrase to include in descriptions |
+| `input.maxLength`      | `number` | `158`    | Maximum character length                   |
+| `input.tone`           | `string` | —        | Tone hint for the LLM                      |
 
 `buildMetaDescriptionPrompt` returns `PromptTemplate`: `{ system: string; user: string; maxTokens: number }`.
 
@@ -338,11 +337,11 @@ const result3 = parseMetaDescriptionResponse(geminiResponse.response.text());
 
 ### `buildTitlePrompt(input)` / `parseTitleResponse(text)`
 
-| Parameter         | Type     | Default  | Description                  |
-| ----------------- | -------- | -------- | ---------------------------- |
-| `input.content`   | `string` | required | Page content for context     |
-| `input.focusKeyphrase` | `string` | — | Focus keyphrase for the title |
-| `input.tone`      | `string` | —        | Tone hint for the LLM        |
+| Parameter              | Type     | Default  | Description                   |
+| ---------------------- | -------- | -------- | ----------------------------- |
+| `input.content`        | `string` | required | Page content for context      |
+| `input.focusKeyphrase` | `string` | —        | Focus keyphrase for the title |
+| `input.tone`           | `string` | —        | Tone hint for the LLM         |
 
 `buildTitlePrompt` returns `PromptTemplate`.
 
@@ -352,12 +351,12 @@ const result3 = parseMetaDescriptionResponse(geminiResponse.response.text());
 
 ### `buildContentSuggestionsPrompt(input)` / `parseContentSuggestionsResponse(text)`
 
-| Parameter            | Type     | Default | Description                     |
-| -------------------- | -------- | ------- | ------------------------------- |
-| `input.title`        | `string` | required | Page title                     |
-| `input.content`      | `string` | required | Page HTML or plain text content |
-| `input.focusKeyphrase` | `string` | — | Focus keyphrase                |
-| `input.analysisResults` | `string` | — | Current analysis results for context |
+| Parameter               | Type     | Default  | Description                          |
+| ----------------------- | -------- | -------- | ------------------------------------ |
+| `input.title`           | `string` | required | Page title                           |
+| `input.content`         | `string` | required | Page HTML or plain text content      |
+| `input.focusKeyphrase`  | `string` | —        | Focus keyphrase                      |
+| `input.analysisResults` | `string` | —        | Current analysis results for context |
 
 `buildContentSuggestionsPrompt` returns `PromptTemplate`.
 
@@ -367,12 +366,12 @@ const result3 = parseMetaDescriptionResponse(geminiResponse.response.text());
 
 ### `buildSerpPredictionPrompt(input)` / `parseSerpPredictionResponse(text)`
 
-| Parameter       | Type       | Default | Description                              |
-| --------------- | ---------- | ------- | ---------------------------------------- |
-| `input.title`   | `string`   | required | Page title                              |
-| `input.content` | `string`   | required | Page content                            |
-| `input.schema`  | `string[]` | —       | Schema types present on the page        |
-| `input.contentType` | `string` | —     | Content type hint (guide, article, etc) |
+| Parameter           | Type       | Default  | Description                             |
+| ------------------- | ---------- | -------- | --------------------------------------- |
+| `input.title`       | `string`   | required | Page title                              |
+| `input.content`     | `string`   | required | Page content                            |
+| `input.schema`      | `string[]` | —        | Schema types present on the page        |
+| `input.contentType` | `string`   | —        | Content type hint (guide, article, etc) |
 
 `buildSerpPredictionPrompt` returns `PromptTemplate`.
 
@@ -382,12 +381,12 @@ const result3 = parseMetaDescriptionResponse(geminiResponse.response.text());
 
 ### `analyzeSerpEligibility(input)`
 
-| Parameter       | Type       | Default | Description               |
-| --------------- | ---------- | ------- | ------------------------- |
-| `input.title`   | `string`   | required | Page title               |
-| `input.content` | `string`   | required | Page HTML content        |
-| `input.schema`  | `string[]` | —       | Schema types present     |
-| `input.contentType` | `string` | —     | Content type hint        |
+| Parameter           | Type       | Default  | Description          |
+| ------------------- | ---------- | -------- | -------------------- |
+| `input.title`       | `string`   | required | Page title           |
+| `input.content`     | `string`   | required | Page HTML content    |
+| `input.schema`      | `string[]` | —        | Schema types present |
+| `input.contentType` | `string`   | —        | Content type hint    |
 
 Returns `SerpFeaturePrediction[]`. Fully deterministic — no LLM required. Analyzes page structure, headings, and schema to predict eligible SERP features.
 

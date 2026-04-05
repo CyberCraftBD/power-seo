@@ -54,7 +54,8 @@ const SUB_INTENT_MAPPINGS: readonly SubIntentMapping[] = [
     relatedIntents: [
       {
         name: '"how to choose"',
-        pattern: /\b(?:how to choose|how to pick|what to look for|factors to consider|buying guide)\b/i,
+        pattern:
+          /\b(?:how to choose|how to pick|what to look for|factors to consider|buying guide)\b/i,
       },
       {
         name: '"what to look for"',
@@ -66,7 +67,8 @@ const SUB_INTENT_MAPPINGS: readonly SubIntentMapping[] = [
       },
       {
         name: 'use-case recommendations',
-        pattern: /\b(?:for beginners?|for professionals?|for small business|for enterprise|use case)\b/i,
+        pattern:
+          /\b(?:for beginners?|for professionals?|for small business|for enterprise|use case)\b/i,
       },
     ],
   },
@@ -142,9 +144,7 @@ const SUB_INTENT_MAPPINGS: readonly SubIntentMapping[] = [
 // Check
 // ---------------------------------------------------------------------------
 
-export function checkIntentRelatedCoverage(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentRelatedCoverage(input: ContentAnalysisInput): AnalysisResult {
   const id = 'intent-related-coverage';
   const title = 'Related intent coverage';
 
@@ -176,9 +176,7 @@ export function checkIntentRelatedCoverage(
     // Fallback: use detected intent to give a generic assessment
     const detected = detectIntent(keyphrase);
     const intentLabel =
-      detected.primary === 'commercial-investigation'
-        ? 'commercial'
-        : detected.primary;
+      detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
     return {
       id,
       title,

@@ -76,7 +76,7 @@ export function checkSingleH1(input: ContentAnalysisInput): AnalysisResult {
   if (emptyH1s.length > 0) {
     issues.push(
       `Found ${emptyH1s.length} empty H1 tag${emptyH1s.length > 1 ? 's' : ''}. ` +
-        'H1 tags should contain meaningful text.'
+        'H1 tags should contain meaningful text.',
     );
     if (severity !== 'poor') severity = 'poor';
   }
@@ -94,7 +94,7 @@ export function checkSingleH1(input: ContentAnalysisInput): AnalysisResult {
     }
     if (duplicates.size > 0) {
       issues.push(
-        `Duplicate H1 text found: "${[...duplicates].join('", "')}". Each H1 should be unique.`
+        `Duplicate H1 text found: "${[...duplicates].join('", "')}". Each H1 should be unique.`,
       );
     }
   }
@@ -106,9 +106,7 @@ export function checkSingleH1(input: ContentAnalysisInput): AnalysisResult {
 
     // Check if content starts with a non-H1 heading when there are no H1s
     if (h1s.length === 0 && headings.length > 0 && headings[0]!.level > 1) {
-      hierarchyIssues.push(
-        `Content starts with an H${headings[0]!.level} instead of an H1.`
-      );
+      hierarchyIssues.push(`Content starts with an H${headings[0]!.level} instead of an H1.`);
     }
 
     // Check for skipped levels (e.g., H1 -> H3, skipping H2)
@@ -116,17 +114,16 @@ export function checkSingleH1(input: ContentAnalysisInput): AnalysisResult {
       const prev = headings[i - 1]!;
       const curr = headings[i]!;
       if (curr.level > prev.level + 1) {
-        hierarchyIssues.push(
-          `H${curr.level} follows H${prev.level}, skipping H${prev.level + 1}.`
-        );
+        hierarchyIssues.push(`H${curr.level} follows H${prev.level}, skipping H${prev.level + 1}.`);
         break; // Report only the first skip to avoid noise
       }
     }
 
     if (hierarchyIssues.length > 0) {
       issues.push(
-        'Heading hierarchy issue: ' + hierarchyIssues.join(' ') +
-          ' Use sequential heading levels (H1, H2, H3...) for better accessibility and SEO.'
+        'Heading hierarchy issue: ' +
+          hierarchyIssues.join(' ') +
+          ' Use sequential heading levels (H1, H2, H3...) for better accessibility and SEO.',
       );
       if (severity === 'good') severity = 'ok';
     }
@@ -134,9 +131,10 @@ export function checkSingleH1(input: ContentAnalysisInput): AnalysisResult {
 
   // --- Build result ---
   if (severity === 'good') {
-    const h1Note = h1s.length === 0
-      ? 'No H1 tag found in the content body, which is fine if the page title serves as the H1.'
-      : 'The page has a single H1 with proper heading hierarchy.';
+    const h1Note =
+      h1s.length === 0
+        ? 'No H1 tag found in the content body, which is fine if the page title serves as the H1.'
+        : 'The page has a single H1 with proper heading hierarchy.';
     return {
       id: 'single-h1',
       title: 'Single H1',

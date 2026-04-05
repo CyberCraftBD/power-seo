@@ -144,7 +144,8 @@ export function checkTechnicalVocabulary(input: ContentAnalysisInput): AnalysisR
 
   const suggestions: string[] = [];
   if (technicalTermCount < 3) suggestions.push('add more domain-specific terminology');
-  if (explanationCount < 2) suggestions.push('explain technical concepts with "which means", "in other words"');
+  if (explanationCount < 2)
+    suggestions.push('explain technical concepts with "which means", "in other words"');
   if (unnecessaryComplexCount > 2) suggestions.push(`simplify: ${unnecessaryExamples.join(', ')}`);
 
   return {

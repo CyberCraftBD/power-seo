@@ -68,7 +68,9 @@ export function checkPrivacySafety(input: ContentAnalysisInput): AnalysisResult 
 
   if (privacyMentionCount > 0) {
     score += 1;
-    signals.push(`${privacyMentionCount} privacy/security reference${privacyMentionCount > 1 ? 's' : ''} in content`);
+    signals.push(
+      `${privacyMentionCount} privacy/security reference${privacyMentionCount > 1 ? 's' : ''} in content`,
+    );
   }
 
   // Check for privacy-related links in HTML

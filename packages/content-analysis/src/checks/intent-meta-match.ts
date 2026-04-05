@@ -11,45 +11,111 @@ import { detectIntent } from './intent-utils.js';
 
 const META_SIGNALS: Record<string, readonly string[]> = {
   informational: [
-    'how to', 'what is', 'learn', 'guide', 'discover', 'understand',
-    'explained', 'tutorial', 'tips', 'steps', 'find out', 'introduction',
-    'overview', 'basics', 'everything you need to know',
+    'how to',
+    'what is',
+    'learn',
+    'guide',
+    'discover',
+    'understand',
+    'explained',
+    'tutorial',
+    'tips',
+    'steps',
+    'find out',
+    'introduction',
+    'overview',
+    'basics',
+    'everything you need to know',
   ],
   transactional: [
-    'buy', 'purchase', 'order', 'shop', 'deal', 'discount', 'price',
-    'pricing', 'free shipping', 'subscribe', 'sign up', 'get started',
-    'try free', 'limited time', 'in stock', 'available now', 'save',
-    'offer', '$',
+    'buy',
+    'purchase',
+    'order',
+    'shop',
+    'deal',
+    'discount',
+    'price',
+    'pricing',
+    'free shipping',
+    'subscribe',
+    'sign up',
+    'get started',
+    'try free',
+    'limited time',
+    'in stock',
+    'available now',
+    'save',
+    'offer',
+    '$',
   ],
   'commercial-investigation': [
-    'best', 'top', 'review', 'compared', 'comparison', 'vs', 'versus',
-    'pros and cons', 'advantages', 'disadvantages', 'rating', 'rated',
-    'recommend', 'our pick', 'alternative', 'winner',
+    'best',
+    'top',
+    'review',
+    'compared',
+    'comparison',
+    'vs',
+    'versus',
+    'pros and cons',
+    'advantages',
+    'disadvantages',
+    'rating',
+    'rated',
+    'recommend',
+    'our pick',
+    'alternative',
+    'winner',
   ],
   navigational: [
-    'official', 'login', 'sign in', 'dashboard', 'my account', 'support',
-    'contact us', 'help center', 'visit', 'go to', 'homepage', 'access',
+    'official',
+    'login',
+    'sign in',
+    'dashboard',
+    'my account',
+    'support',
+    'contact us',
+    'help center',
+    'visit',
+    'go to',
+    'homepage',
+    'access',
   ],
 };
 
 // Intent-appropriate CTAs
 const CTA_SIGNALS: Record<string, readonly string[]> = {
   informational: [
-    'learn', 'discover', 'find out', 'explore', 'read more', 'see how',
-    'get the guide', 'start learning',
+    'learn',
+    'discover',
+    'find out',
+    'explore',
+    'read more',
+    'see how',
+    'get the guide',
+    'start learning',
   ],
   transactional: [
-    'shop now', 'order today', 'get', 'buy now', 'subscribe today',
-    'sign up now', 'start your free', 'claim your', 'grab your',
-    'don\'t miss',
+    'shop now',
+    'order today',
+    'get',
+    'buy now',
+    'subscribe today',
+    'sign up now',
+    'start your free',
+    'claim your',
+    'grab your',
+    "don't miss",
   ],
   'commercial-investigation': [
-    'compare', 'see our picks', 'read our review', 'find the best',
-    'see the results', 'view comparison', 'check out our',
+    'compare',
+    'see our picks',
+    'read our review',
+    'find the best',
+    'see the results',
+    'view comparison',
+    'check out our',
   ],
-  navigational: [
-    'visit', 'access', 'go to', 'log in to', 'sign in to', 'get to',
-  ],
+  navigational: ['visit', 'access', 'go to', 'log in to', 'sign in to', 'get to'],
 };
 
 // ---------------------------------------------------------------------------
@@ -109,7 +175,8 @@ export function checkIntentMetaMatch(input: ContentAnalysisInput): AnalysisResul
   }
 
   const detected = detectIntent(focusKeyphrase);
-  const intentLabel = detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
+  const intentLabel =
+    detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
 
   const signals = META_SIGNALS[detected.primary] ?? META_SIGNALS['informational']!;
   const ctas = CTA_SIGNALS[detected.primary] ?? CTA_SIGNALS['informational']!;
@@ -132,9 +199,10 @@ export function checkIntentMetaMatch(input: ContentAnalysisInput): AnalysisResul
 
   // ok (3): partial alignment (signals but no CTA, or CTA but weak signals)
   if (signalCount >= 1 || hasCta) {
-    const missing = signalCount >= 1
-      ? 'Add an intent-appropriate CTA to improve click-through rate'
-      : `Add ${intentLabel} intent language to the meta description`;
+    const missing =
+      signalCount >= 1
+        ? 'Add an intent-appropriate CTA to improve click-through rate'
+        : `Add ${intentLabel} intent language to the meta description`;
 
     return {
       id: 'intent-meta-match',

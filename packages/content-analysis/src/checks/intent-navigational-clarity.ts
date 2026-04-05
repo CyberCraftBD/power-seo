@@ -12,15 +12,20 @@ interface NavigationalElement {
   present: boolean;
 }
 
-export function checkIntentNavigationalClarity(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentNavigationalClarity(input: ContentAnalysisInput): AnalysisResult {
   const id = 'intent-navigational-clarity';
   const title = 'Navigational content clarity';
 
   // No keyphrase — cannot determine intent
   if (!input.focusKeyphrase || input.focusKeyphrase.trim().length === 0) {
-    return { id, title, description: 'No focus keyphrase set.', status: 'na', score: 0, maxScore: 5 };
+    return {
+      id,
+      title,
+      description: 'No focus keyphrase set.',
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    };
   }
 
   // Only applies to navigational intent
@@ -53,10 +58,11 @@ export function checkIntentNavigationalClarity(
   const titleLower = (input.title ?? '').toLowerCase();
   const first100Words = words.slice(0, 100).join(' ').toLowerCase();
 
-  const keyphraseInTitle = titleLower.includes(keyphrase)
-    || (firstWord !== undefined && titleLower.includes(firstWord));
-  const keyphraseInIntro = first100Words.includes(keyphrase)
-    || (firstWord !== undefined && first100Words.includes(firstWord));
+  const keyphraseInTitle =
+    titleLower.includes(keyphrase) || (firstWord !== undefined && titleLower.includes(firstWord));
+  const keyphraseInIntro =
+    first100Words.includes(keyphrase) ||
+    (firstWord !== undefined && first100Words.includes(firstWord));
 
   elements.push({
     name: 'Brand/target prominence',
@@ -69,8 +75,8 @@ export function checkIntentNavigationalClarity(
   elements.push({ name: 'Direct links', present: linkCount >= 1 });
 
   // 3. Contact info
-  const hasContact = /\b(?:email|phone|address|contact)\b/i.test(plainText)
-    || /\S+@\S+\.\S+/.test(plainText);
+  const hasContact =
+    /\b(?:email|phone|address|contact)\b/i.test(plainText) || /\S+@\S+\.\S+/.test(plainText);
   elements.push({ name: 'Contact information', present: hasContact });
 
   // 4. Conciseness: word count <= 800 (navigational pages should be direct)

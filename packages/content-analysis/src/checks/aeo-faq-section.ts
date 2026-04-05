@@ -9,7 +9,8 @@ import { stripHtml, getWords, extractTagContents } from '@power-seo/core';
  * FAQPage schema + FAQ section = 2.7–3.2× higher AI Overview citation rate (Relixir, 50-site study).
  */
 function countQaPairs(html: string): number {
-  const questionWordPattern = /\b(?:what|how|why|when|where|who|which|can|does|is|are|will|should)\b/i;
+  const questionWordPattern =
+    /\b(?:what|how|why|when|where|who|which|can|does|is|are|will|should)\b/i;
   const headingRegex = /<h[23][^>]*>([\s\S]*?)<\/h[23]>/gi;
 
   let pairCount = 0;
@@ -20,9 +21,7 @@ function countQaPairs(html: string): number {
     if (headingContent === undefined) continue;
 
     const headingText = stripHtml(headingContent);
-    const isQuestion =
-      questionWordPattern.test(headingText) ||
-      headingText.trim().endsWith('?');
+    const isQuestion = questionWordPattern.test(headingText) || headingText.trim().endsWith('?');
 
     if (!isQuestion) continue;
 
@@ -85,7 +84,8 @@ export function checkAeoFaqSection(input: ContentAnalysisInput): AnalysisResult 
   return {
     id: 'aeo-faq-section',
     title: 'FAQ section (AEO)',
-    description: 'No FAQ-style Q&A structure found. Add a "Frequently Asked Questions" section with 5–8 question headings (H2/H3 ending in "?") each answered in 40–80 words. This is the single highest-impact AEO signal for citation in AI answers.',
+    description:
+      'No FAQ-style Q&A structure found. Add a "Frequently Asked Questions" section with 5–8 question headings (H2/H3 ending in "?") each answered in 40–80 words. This is the single highest-impact AEO signal for citation in AI answers.',
     status: 'poor',
     score: 0,
     maxScore: 10,

@@ -31,7 +31,7 @@ export function checkIntentMultiDetection(input: ContentAnalysisInput): Analysis
   const signals = result.signals;
 
   // Count how many distinct intent types have meaningful confidence (> 0)
-  const meaningfulSignals = signals.filter(s => s.confidence > 0 && s.type !== 'unknown');
+  const meaningfulSignals = signals.filter((s) => s.confidence > 0 && s.type !== 'unknown');
   const count = meaningfulSignals.length;
 
   if (count <= 1) {
@@ -44,7 +44,11 @@ export function checkIntentMultiDetection(input: ContentAnalysisInput): Analysis
       id: 'intent-multi-detection',
       title: 'Multi-intent detection',
       description:
-        'Single clear intent detected: ' + label + ' (' + pct + '% confidence). ' +
+        'Single clear intent detected: ' +
+        label +
+        ' (' +
+        pct +
+        '% confidence). ' +
         'No ambiguity found. Search engines can confidently match this keyphrase to the right content type.',
       status: 'good',
       score: 5,
@@ -53,7 +57,7 @@ export function checkIntentMultiDetection(input: ContentAnalysisInput): Analysis
   }
 
   // Build descriptions of each signal
-  const signalDescriptions = meaningfulSignals.map(s => {
+  const signalDescriptions = meaningfulSignals.map((s) => {
     const label: string = INTENT_LABELS[s.type] ?? s.type;
     return label + ' (' + Math.round(s.confidence * 100) + '%)';
   });
@@ -82,11 +86,19 @@ export function checkIntentMultiDetection(input: ContentAnalysisInput): Analysis
         id: 'intent-multi-detection',
         title: 'Multi-intent detection',
         description:
-          'Mild ambiguity: primary intent is ' + primaryLabel +
-          ' (' + Math.round(primary.confidence * 100) + '%) with a weak secondary signal for ' +
-          secondaryLabel + ' (' + Math.round(secondary.confidence * 100) +
-          '%). Your content can address both by leading with ' + primaryLabel +
-          ' content and including a brief ' + secondaryLabel + ' section.',
+          'Mild ambiguity: primary intent is ' +
+          primaryLabel +
+          ' (' +
+          Math.round(primary.confidence * 100) +
+          '%) with a weak secondary signal for ' +
+          secondaryLabel +
+          ' (' +
+          Math.round(secondary.confidence * 100) +
+          '%). Your content can address both by leading with ' +
+          primaryLabel +
+          ' content and including a brief ' +
+          secondaryLabel +
+          ' section.',
         status: 'ok',
         score: 3,
         maxScore: 5,
@@ -101,8 +113,12 @@ export function checkIntentMultiDetection(input: ContentAnalysisInput): Analysis
       id: 'intent-multi-detection',
       title: 'Multi-intent detection',
       description:
-        'Competing intents detected: ' + signalDescriptions.join(' vs. ') +
-        '. The keyphrase signals both ' + primaryLabel + ' and ' + secondaryLabel +
+        'Competing intents detected: ' +
+        signalDescriptions.join(' vs. ') +
+        '. The keyphrase signals both ' +
+        primaryLabel +
+        ' and ' +
+        secondaryLabel +
         ' intent nearly equally. Consider splitting into two pages or narrowing the keyphrase ' +
         'to target one intent. For example, add "how to" for informational or "buy" for transactional.',
       status: 'poor',
@@ -116,7 +132,9 @@ export function checkIntentMultiDetection(input: ContentAnalysisInput): Analysis
     id: 'intent-multi-detection',
     title: 'Multi-intent detection',
     description:
-      'Heavily ambiguous keyphrase with ' + count + ' conflicting intent signals: ' +
+      'Heavily ambiguous keyphrase with ' +
+      count +
+      ' conflicting intent signals: ' +
       signalDescriptions.join(', ') +
       '. Search engines will struggle to determine what content to serve. ' +
       'Narrow your keyphrase by removing ambiguous words or adding a clear intent modifier ' +

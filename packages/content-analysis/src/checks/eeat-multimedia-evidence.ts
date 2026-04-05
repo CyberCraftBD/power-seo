@@ -80,11 +80,11 @@ export function checkMultimediaEvidence(input: ContentAnalysisInput): AnalysisRe
   // Check img tags in content
   for (const imgTag of imgTags) {
     const altMatch = imgTag.match(/alt\s*=\s*["']([^"']+)["']/i);
-    const alt = (altMatch && altMatch[1]) ? altMatch[1] : '';
+    const alt = altMatch && altMatch[1] ? altMatch[1] : '';
 
-    if (GENERIC_ALT_PATTERNS.some(p => p.test(alt)) || alt.length < 5) {
+    if (GENERIC_ALT_PATTERNS.some((p) => p.test(alt)) || alt.length < 5) {
       genericImages++;
-    } else if (EVIDENCE_ALT_PATTERNS.some(p => p.test(alt))) {
+    } else if (EVIDENCE_ALT_PATTERNS.some((p) => p.test(alt))) {
       evidenceImages++;
     }
   }
@@ -92,9 +92,9 @@ export function checkMultimediaEvidence(input: ContentAnalysisInput): AnalysisRe
   // Check input.images
   for (const img of inputImages) {
     const alt = img.alt || '';
-    if (GENERIC_ALT_PATTERNS.some(p => p.test(alt)) || alt.length < 5) {
+    if (GENERIC_ALT_PATTERNS.some((p) => p.test(alt)) || alt.length < 5) {
       genericImages++;
-    } else if (EVIDENCE_ALT_PATTERNS.some(p => p.test(alt))) {
+    } else if (EVIDENCE_ALT_PATTERNS.some((p) => p.test(alt))) {
       evidenceImages++;
     }
   }
@@ -119,17 +119,18 @@ export function checkMultimediaEvidence(input: ContentAnalysisInput): AnalysisRe
   // Score calculation
   const totalMedia = imgTags.length + inputImages.length + videoCount;
   const qualityScore =
-    (evidenceImages * 3) +
-    (captionedImages * 2) +
-    (videoCount * 2) +
+    evidenceImages * 3 +
+    captionedImages * 2 +
+    videoCount * 2 +
     (beforeAfterCount > 0 ? 3 : 0) -
-    (genericImages * 1);
+    genericImages * 1;
 
   if (totalMedia === 0) {
     return {
       id: 'eeat-multimedia-evidence',
       title: 'Multimedia evidence',
-      description: 'No images or videos found. Add screenshots, original photos, or videos that demonstrate first-hand experience with the topic.',
+      description:
+        'No images or videos found. Add screenshots, original photos, or videos that demonstrate first-hand experience with the topic.',
       status: 'poor',
       score: 0,
       maxScore: 5,
@@ -154,10 +155,13 @@ export function checkMultimediaEvidence(input: ContentAnalysisInput): AnalysisRe
 
   if (qualityScore >= 2) {
     const suggestions: string[] = [];
-    if (genericImages > 0) suggestions.push(`${genericImages} images have generic alt text — add descriptive captions`);
-    if (captionedImages === 0) suggestions.push('wrap images in <figure> with <figcaption> for context');
+    if (genericImages > 0)
+      suggestions.push(`${genericImages} images have generic alt text — add descriptive captions`);
+    if (captionedImages === 0)
+      suggestions.push('wrap images in <figure> with <figcaption> for context');
     if (videoCount === 0) suggestions.push('consider adding a video walkthrough');
-    if (evidenceImages === 0) suggestions.push('add screenshots or original photos showing your experience');
+    if (evidenceImages === 0)
+      suggestions.push('add screenshots or original photos showing your experience');
     return {
       id: 'eeat-multimedia-evidence',
       title: 'Multimedia evidence',

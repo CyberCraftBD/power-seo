@@ -106,8 +106,10 @@ export function checkExpertSourcing(input: ContentAnalysisInput): AnalysisResult
 
   if (expertMentions >= 1) {
     const suggestions: string[] = [];
-    if (blockquotes.length === 0) suggestions.push('use <blockquote> with <cite> for attributed quotes');
-    if (types.length < 2) suggestions.push('diversify sources: add interviews, expert quotes, or contributor insights');
+    if (blockquotes.length === 0)
+      suggestions.push('use <blockquote> with <cite> for attributed quotes');
+    if (types.length < 2)
+      suggestions.push('diversify sources: add interviews, expert quotes, or contributor insights');
     if (expertMentions < 3) suggestions.push('cite at least 3 expert sources');
     return {
       id: 'eeat-expert-sourcing',
@@ -122,7 +124,8 @@ export function checkExpertSourcing(input: ContentAnalysisInput): AnalysisResult
   return {
     id: 'eeat-expert-sourcing',
     title: 'Expert sourcing',
-    description: 'No expert sourcing detected. Add expert quotes ("According to Dr. Smith..."), attributed insights, interview data, or expert contributor sections. Use <blockquote> with <cite> for proper attribution.',
+    description:
+      'No expert sourcing detected. Add expert quotes ("According to Dr. Smith..."), attributed insights, interview data, or expert contributor sections. Use <blockquote> with <cite> for proper attribution.',
     status: 'poor',
     score: 0,
     maxScore: 5,

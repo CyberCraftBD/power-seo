@@ -1,6 +1,5 @@
 // @power-seo/audit — Performance Rules
 
-
 import type { PageAuditInput, AuditRule } from '../types.js';
 
 export function runPerformanceRules(input: PageAuditInput): AuditRule[] {
@@ -17,7 +16,8 @@ export function runPerformanceRules(input: PageAuditInput): AuditRule[] {
           : input.responseTime > 1000
             ? `Response time is ${input.responseTime}ms (> 1000ms). Consider optimizing for faster load times.`
             : `Response time is ${input.responseTime}ms. Good performance.`,
-      severity: input.responseTime > 3000 ? 'error' : input.responseTime > 1000 ? 'warning' : 'pass',
+      severity:
+        input.responseTime > 3000 ? 'error' : input.responseTime > 1000 ? 'warning' : 'pass',
     });
   }
 

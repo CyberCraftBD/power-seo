@@ -7,27 +7,125 @@ import { getWords } from '@power-seo/core';
 // --- Word Categories ---
 
 const COMMON_WORDS = new Set([
-  'the', 'is', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
-  'of', 'with', 'by', 'from', 'as', 'it', 'that', 'this', 'was', 'are', 'be',
-  'has', 'had', 'have', 'will', 'would', 'could', 'should', 'can', 'may', 'its',
-  'not', 'no', 'up', 'out', 'if', 'how', 'what', 'when', 'where', 'why', 'who',
-  'which', 'all', 'each', 'every', 'do', 'does', 'so', 'than', 'then', 'into',
-  'over', 'after', 'your', 'our', 'my', 'you', 'we', 'they', 'he', 'she',
+  'the',
+  'is',
+  'a',
+  'an',
+  'and',
+  'or',
+  'but',
+  'in',
+  'on',
+  'at',
+  'to',
+  'for',
+  'of',
+  'with',
+  'by',
+  'from',
+  'as',
+  'it',
+  'that',
+  'this',
+  'was',
+  'are',
+  'be',
+  'has',
+  'had',
+  'have',
+  'will',
+  'would',
+  'could',
+  'should',
+  'can',
+  'may',
+  'its',
+  'not',
+  'no',
+  'up',
+  'out',
+  'if',
+  'how',
+  'what',
+  'when',
+  'where',
+  'why',
+  'who',
+  'which',
+  'all',
+  'each',
+  'every',
+  'do',
+  'does',
+  'so',
+  'than',
+  'then',
+  'into',
+  'over',
+  'after',
+  'your',
+  'our',
+  'my',
+  'you',
+  'we',
+  'they',
+  'he',
+  'she',
 ]);
 
 const EMOTIONAL_WORDS = new Set([
-  'amazing', 'devastating', 'thrilling', 'heartbreaking', 'incredible', 'shocking',
-  'terrifying', 'inspiring', 'hilarious', 'painful', 'beautiful', 'horrible',
-  'brilliant', 'awful', 'spectacular', 'tragic', 'magnificent', 'alarming',
-  'delightful', 'frustrating', 'extraordinary', 'overwhelming', 'captivating',
-  'disturbing', 'remarkable',
+  'amazing',
+  'devastating',
+  'thrilling',
+  'heartbreaking',
+  'incredible',
+  'shocking',
+  'terrifying',
+  'inspiring',
+  'hilarious',
+  'painful',
+  'beautiful',
+  'horrible',
+  'brilliant',
+  'awful',
+  'spectacular',
+  'tragic',
+  'magnificent',
+  'alarming',
+  'delightful',
+  'frustrating',
+  'extraordinary',
+  'overwhelming',
+  'captivating',
+  'disturbing',
+  'remarkable',
 ]);
 
 const POWER_WORDS = new Set([
-  'ultimate', 'essential', 'proven', 'powerful', 'effective', 'guaranteed',
-  'instantly', 'revolutionary', 'breakthrough', 'exclusive', 'limited', 'urgent',
-  'secret', 'free', 'new', 'discover', 'master', 'unleash', 'dominate', 'epic',
-  'insane', 'jaw-dropping', 'life-changing', 'mind-blowing',
+  'ultimate',
+  'essential',
+  'proven',
+  'powerful',
+  'effective',
+  'guaranteed',
+  'instantly',
+  'revolutionary',
+  'breakthrough',
+  'exclusive',
+  'limited',
+  'urgent',
+  'secret',
+  'free',
+  'new',
+  'discover',
+  'master',
+  'unleash',
+  'dominate',
+  'epic',
+  'insane',
+  'jaw-dropping',
+  'life-changing',
+  'mind-blowing',
 ]);
 
 /**
@@ -75,10 +173,18 @@ function analyzeHeadline(title: string): {
   for (const word of words) {
     const cat = categorizeWord(word);
     switch (cat) {
-      case 'common': commonCount++; break;
-      case 'uncommon': uncommonCount++; break;
-      case 'emotional': emotionalCount++; break;
-      case 'power': powerWordCount++; break;
+      case 'common':
+        commonCount++;
+        break;
+      case 'uncommon':
+        uncommonCount++;
+        break;
+      case 'emotional':
+        emotionalCount++;
+        break;
+      case 'power':
+        powerWordCount++;
+        break;
     }
   }
 
@@ -133,7 +239,9 @@ function analyzeHeadline(title: string): {
 
   if (emotionalPct > 0) {
     score += 5;
-    details.push(`Contains ${emotionalCount} emotional word${emotionalCount === 1 ? '' : 's'} (${emotionalPct}%)`);
+    details.push(
+      `Contains ${emotionalCount} emotional word${emotionalCount === 1 ? '' : 's'} (${emotionalPct}%)`,
+    );
   } else {
     details.push('No emotional words — adding one can improve CTR');
   }
@@ -210,7 +318,16 @@ export function checkHeadlineAnalyzer(input: ContentAnalysisInput): AnalysisResu
   }
 
   const analysis = analyzeHeadline(title.trim());
-  const { score, wordCount, charCount, commonPct, uncommonPct, emotionalPct, powerWordCount, details } = analysis;
+  const {
+    score,
+    wordCount,
+    charCount,
+    commonPct,
+    uncommonPct,
+    emotionalPct,
+    powerWordCount,
+    details,
+  } = analysis;
 
   const summary = [
     `Headline score: ${score}/100`,

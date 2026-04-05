@@ -75,7 +75,9 @@ function checkComparisonFormat(content: string, plainText: string): FormatSignal
   const hasTable = contentLower.includes('<table');
   signals.push({ name: 'Comparison table', present: hasTable });
 
-  const hasComparisonPhrases = /\b(?:compared to|side by side|head to head|vs\.?)\b/i.test(plainText);
+  const hasComparisonPhrases = /\b(?:compared to|side by side|head to head|vs\.?)\b/i.test(
+    plainText,
+  );
   signals.push({ name: 'Comparison phrases', present: hasComparisonPhrases });
 
   return signals;
@@ -88,13 +90,16 @@ function checkComparisonFormat(content: string, plainText: string): FormatSignal
 function checkReviewFormat(plainText: string): FormatSignal[] {
   const signals: FormatSignal[] = [];
 
-  const hasRating = /\b(?:rating|score|stars)\b/i.test(plainText)
-    || /\/5\b/.test(plainText)
-    || /\/10\b/.test(plainText)
-    || /\bout of 10\b/i.test(plainText);
+  const hasRating =
+    /\b(?:rating|score|stars)\b/i.test(plainText) ||
+    /\/5\b/.test(plainText) ||
+    /\/10\b/.test(plainText) ||
+    /\bout of 10\b/i.test(plainText);
   signals.push({ name: 'Rating patterns', present: hasRating });
 
-  const hasProsCons = /\b(?:pros|cons|advantages|disadvantages|benefits|drawbacks)\b/i.test(plainText);
+  const hasProsCons = /\b(?:pros|cons|advantages|disadvantages|benefits|drawbacks)\b/i.test(
+    plainText,
+  );
   signals.push({ name: 'Pros/cons sections', present: hasProsCons });
 
   return signals;
@@ -113,7 +118,9 @@ function checkTransactionalFormat(plainText: string): FormatSignal[] {
   const hasPrice = /\$\d/.test(plainText) || /\b(?:price|cost|pricing)\b/i.test(plainText);
   signals.push({ name: 'Price information', present: hasPrice });
 
-  const hasCTA = /\b(?:buy now|add to cart|order|get started|try free|start trial)\b/i.test(plainText);
+  const hasCTA = /\b(?:buy now|add to cart|order|get started|try free|start trial)\b/i.test(
+    plainText,
+  );
   signals.push({ name: 'Call-to-action', present: hasCTA });
 
   return signals;
@@ -135,15 +142,20 @@ function checkNavigationalFormat(content: string, wordCount: number): FormatSign
   return signals;
 }
 
-export function checkIntentFormatMatch(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentFormatMatch(input: ContentAnalysisInput): AnalysisResult {
   const id = 'intent-format-match';
   const title = 'Content format-intent match';
 
   // No keyphrase — cannot determine intent
   if (!input.focusKeyphrase || input.focusKeyphrase.trim().length === 0) {
-    return { id, title, description: 'No focus keyphrase set.', status: 'na', score: 0, maxScore: 8 };
+    return {
+      id,
+      title,
+      description: 'No focus keyphrase set.',
+      status: 'na',
+      score: 0,
+      maxScore: 8,
+    };
   }
 
   const intent = detectIntent(input.focusKeyphrase);

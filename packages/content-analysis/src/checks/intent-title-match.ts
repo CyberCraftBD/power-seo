@@ -15,9 +15,11 @@ function hasInformationalTitleSignals(title: string): { strong: boolean; weak: b
   // Strong: question words, "How to", "Guide", "Tutorial", "Tips"
   const questionPattern = /^(?:how|what|why|when|where|who|which)\b/i;
   const strongPattern = /\b(?:how to|guide|tutorial|tips|explained|walkthrough)\b/i;
-  const numberListPattern = /\b\d+\s+(?:ways|steps|tips|tricks|methods|reasons|things|examples|ideas)\b/i;
+  const numberListPattern =
+    /\b\d+\s+(?:ways|steps|tips|tricks|methods|reasons|things|examples|ideas)\b/i;
 
-  const hasStrong = questionPattern.test(lower) || strongPattern.test(lower) || numberListPattern.test(lower);
+  const hasStrong =
+    questionPattern.test(lower) || strongPattern.test(lower) || numberListPattern.test(lower);
 
   // Weak: "learn", "understand", "introduction", "basics", "overview"
   const weakPattern = /\b(?:learn|understand|introduction|basics|overview|101|beginners?|faq)\b/i;
@@ -52,21 +54,24 @@ function hasCommercialTitleSignals(title: string): { strong: boolean; weak: bool
   const hasStrong = strongPattern.test(lower) || yearPattern.test(lower);
 
   // Weak: "pros and cons", "alternatives", "rated", "rating"
-  const weakPattern = /\b(?:pros and cons|alternatives?|rated|rating|recommend|pick|choice|winner)\b/i;
+  const weakPattern =
+    /\b(?:pros and cons|alternatives?|rated|rating|recommend|pick|choice|winner)\b/i;
   const hasWeak = weakPattern.test(lower);
 
   return { strong: hasStrong, weak: hasWeak };
 }
 
-function hasNavigationalTitleSignals(title: string, keyphrase: string): { strong: boolean; weak: boolean } {
+function hasNavigationalTitleSignals(
+  title: string,
+  keyphrase: string,
+): { strong: boolean; weak: boolean } {
   const lower = title.toLowerCase();
 
   // Strong: "Official", "Login", brand name (from keyphrase)
   const strongPattern = /\b(?:official|login|log in|sign in)\b/i;
   const keyphraseWords = getWords(stripHtml(keyphrase.toLowerCase()));
   // Brand presence: check if keyphrase words appear in the title
-  const brandPresent = keyphraseWords.length > 0 &&
-    keyphraseWords.every((w) => lower.includes(w));
+  const brandPresent = keyphraseWords.length > 0 && keyphraseWords.every((w) => lower.includes(w));
 
   const hasStrong = strongPattern.test(lower) || brandPresent;
 
@@ -107,7 +112,8 @@ export function checkIntentTitleMatch(input: ContentAnalysisInput): AnalysisResu
   }
 
   const detected = detectIntent(focusKeyphrase);
-  const intentLabel = detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
+  const intentLabel =
+    detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
 
   let signals: { strong: boolean; weak: boolean };
 

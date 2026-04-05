@@ -115,15 +115,15 @@ export function checkCaseStudyPatterns(input: ContentAnalysisInput): AnalysisRes
     }
   }
 
-  const foundElements = elements.filter(e => e.found);
-  const missingElements = elements.filter(e => !e.found);
+  const foundElements = elements.filter((e) => e.found);
+  const missingElements = elements.filter((e) => !e.found);
   const totalMarkers = elements.reduce((sum, e) => sum + e.count, 0);
 
   if (foundElements.length >= 4 && totalMarkers >= 8) {
     return {
       id: 'eeat-case-study-patterns',
       title: 'Case studies & examples',
-      description: `Excellent case study structure with ${foundElements.length}/5 elements: ${foundElements.map(e => e.name).join(', ')}. Content demonstrates real-world application and experience.`,
+      description: `Excellent case study structure with ${foundElements.length}/5 elements: ${foundElements.map((e) => e.name).join(', ')}. Content demonstrates real-world application and experience.`,
       status: 'good',
       score: 5,
       maxScore: 5,
@@ -134,7 +134,10 @@ export function checkCaseStudyPatterns(input: ContentAnalysisInput): AnalysisRes
     return {
       id: 'eeat-case-study-patterns',
       title: 'Case studies & examples',
-      description: `Partial case study elements found (${foundElements.map(e => e.name).join(', ')}). Add ${missingElements.slice(0, 2).map(e => e.name).join(' and ')} to complete the narrative.`,
+      description: `Partial case study elements found (${foundElements.map((e) => e.name).join(', ')}). Add ${missingElements
+        .slice(0, 2)
+        .map((e) => e.name)
+        .join(' and ')} to complete the narrative.`,
       status: 'ok',
       score: 3,
       maxScore: 5,
@@ -144,7 +147,8 @@ export function checkCaseStudyPatterns(input: ContentAnalysisInput): AnalysisRes
   return {
     id: 'eeat-case-study-patterns',
     title: 'Case studies & examples',
-    description: 'No case study or real-world example patterns detected. Structure content with: problem statement → approach/solution → measurable results → lessons learned. Use named examples and specific scenarios.',
+    description:
+      'No case study or real-world example patterns detected. Structure content with: problem statement → approach/solution → measurable results → lessons learned. Use named examples and specific scenarios.',
     status: 'poor',
     score: 0,
     maxScore: 5,

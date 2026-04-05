@@ -1,6 +1,5 @@
 // @power-seo/audit — Site Audit
 
-
 import type {
   SiteAuditInput,
   SiteAuditResult,

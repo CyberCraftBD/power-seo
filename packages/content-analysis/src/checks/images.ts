@@ -11,7 +11,8 @@ export function checkImages(input: ContentAnalysisInput): AnalysisResult[] {
     results.push({
       id: 'image-alt',
       title: 'Image alt attributes',
-      description: 'No images found. Add images to make your content more engaging and improve SEO.',
+      description:
+        'No images found. Add images to make your content more engaging and improve SEO.',
       status: 'poor',
       score: 0,
       maxScore: 5,

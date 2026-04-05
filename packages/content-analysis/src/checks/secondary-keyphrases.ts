@@ -7,7 +7,10 @@ import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
  * Strip HTML tags from a string.
  */
 function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  return html
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 /**
@@ -24,7 +27,8 @@ export function checkSecondaryKeyphrases(input: ContentAnalysisInput): AnalysisR
     results.push({
       id: 'secondary-keyphrases',
       title: 'Secondary keyphrases',
-      description: 'No secondary keyphrases (seed keywords) set. Add related keywords to broaden your topic coverage.',
+      description:
+        'No secondary keyphrases (seed keywords) set. Add related keywords to broaden your topic coverage.',
       status: 'ok',
       score: 2,
       maxScore: 5,
@@ -55,7 +59,8 @@ export function checkSecondaryKeyphrases(input: ContentAnalysisInput): AnalysisR
     results.push({
       id: 'secondary-keyphrases',
       title: 'Secondary keyphrases',
-      description: 'No valid secondary keyphrases provided. Add related keywords to broaden your topic coverage.',
+      description:
+        'No valid secondary keyphrases provided. Add related keywords to broaden your topic coverage.',
       status: 'ok',
       score: 2,
       maxScore: 5,

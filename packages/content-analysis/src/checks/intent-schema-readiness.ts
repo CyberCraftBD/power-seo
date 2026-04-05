@@ -51,9 +51,10 @@ function checkFAQPage(html: string): SchemaCandidate {
   return {
     type: 'FAQPage',
     applicable: questionHeadingCount >= 2,
-    reason: questionHeadingCount >= 2
-      ? `${questionHeadingCount} question-answer pairs detected in headings`
-      : 'Needs 2+ headings phrased as questions with answer paragraphs',
+    reason:
+      questionHeadingCount >= 2
+        ? `${questionHeadingCount} question-answer pairs detected in headings`
+        : 'Needs 2+ headings phrased as questions with answer paragraphs',
     implementation: 'Add FAQPage schema with @type Question/Answer for each pair',
   };
 }
@@ -90,9 +91,10 @@ function checkHowTo(html: string): SchemaCandidate {
   return {
     type: 'HowTo',
     applicable: stepCount >= 3,
-    reason: stepCount >= 3
-      ? `${stepCount}-step structure detected`
-      : 'Needs ordered list or "Step N:" headings with 3+ steps',
+    reason:
+      stepCount >= 3
+        ? `${stepCount}-step structure detected`
+        : 'Needs ordered list or "Step N:" headings with 3+ steps',
     implementation: 'Add HowTo schema with @type HowToStep for each step',
   };
 }
@@ -104,9 +106,7 @@ function checkHowTo(html: string): SchemaCandidate {
 function checkProduct(html: string, input: ContentAnalysisInput): SchemaCandidate {
   const plainText = stripHtml(html);
   const lower = plainText.toLowerCase();
-  const detected = input.focusKeyphrase
-    ? detectIntent(input.focusKeyphrase)
-    : null;
+  const detected = input.focusKeyphrase ? detectIntent(input.focusKeyphrase) : null;
 
   let signals = 0;
   const details: string[] = [];
@@ -118,7 +118,10 @@ function checkProduct(html: string, input: ContentAnalysisInput): SchemaCandidat
   }
 
   // Transactional intent
-  if (detected && (detected.primary === 'transactional' || detected.primary === 'commercial-investigation')) {
+  if (
+    detected &&
+    (detected.primary === 'transactional' || detected.primary === 'commercial-investigation')
+  ) {
     signals++;
     details.push('transactional/commercial intent');
   }
@@ -134,9 +137,7 @@ function checkProduct(html: string, input: ContentAnalysisInput): SchemaCandidat
   }
 
   // Specs/features sections
-  if (
-    /\b(?:specifications|specs|features|dimensions|weight|compatibility)\b/i.test(lower)
-  ) {
+  if (/\b(?:specifications|specs|features|dimensions|weight|compatibility)\b/i.test(lower)) {
     signals++;
     details.push('specs/features section');
   }
@@ -270,12 +271,8 @@ export function checkIntentSchemaReadiness(input: ContentAnalysisInput): Analysi
 
   // good (5): 2+ applicable schemas
   if (count >= 2) {
-    const schemaList = applicable
-      .map((c) => `${c.type} (${c.reason})`)
-      .join('; ');
-    const implList = applicable
-      .map((c) => `${c.type}: ${c.implementation}`)
-      .join('. ');
+    const schemaList = applicable.map((c) => `${c.type} (${c.reason})`).join('; ');
+    const implList = applicable.map((c) => `${c.type}: ${c.implementation}`).join('. ');
     return {
       id: 'intent-schema-readiness',
       title: 'Rich result schema readiness',
@@ -302,9 +299,10 @@ export function checkIntentSchemaReadiness(input: ContentAnalysisInput): Analysi
     }
 
     const closestMiss = notApplicable[0];
-    const suggestion = closestMiss !== undefined
-      ? ` Consider restructuring for ${closestMiss.type}: ${closestMiss.reason}.`
-      : '';
+    const suggestion =
+      closestMiss !== undefined
+        ? ` Consider restructuring for ${closestMiss.type}: ${closestMiss.reason}.`
+        : '';
 
     return {
       id: 'intent-schema-readiness',

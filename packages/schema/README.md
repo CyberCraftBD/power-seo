@@ -19,17 +19,16 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 
 ## Why @power-seo/schema?
 
-| | Without | With |
-|---|---|---|
-| Field type safety | ❌ Hand-written JSON, no types | ✅ Typed builder functions catch missing fields at compile time |
-| Multiple schemas per page | ❌ Separate `<script>` tags, Google may miss some | ✅ `schemaGraph()` combines all into one `@graph` document |
-| Field validation | ❌ Silent failures in rich results | ✅ `validateSchema()` returns structured issues before deploy |
-| React rendering | ❌ Manual `dangerouslySetInnerHTML` boilerplate | ✅ `<ArticleJsonLd>` and 21 other components in one import |
-| Schema coverage | ❌ Only Article/FAQ in most packages | ✅ 23 types: Article, Product, FAQ, LocalBusiness, Event, Recipe, and more |
-| Framework support | ❌ WordPress / next-seo only | ✅ Next.js, Remix, Node.js, Edge, static site generators |
+|                           | Without                                           | With                                                                       |
+| ------------------------- | ------------------------------------------------- | -------------------------------------------------------------------------- |
+| Field type safety         | ❌ Hand-written JSON, no types                    | ✅ Typed builder functions catch missing fields at compile time            |
+| Multiple schemas per page | ❌ Separate `<script>` tags, Google may miss some | ✅ `schemaGraph()` combines all into one `@graph` document                 |
+| Field validation          | ❌ Silent failures in rich results                | ✅ `validateSchema()` returns structured issues before deploy              |
+| React rendering           | ❌ Manual `dangerouslySetInnerHTML` boilerplate   | ✅ `<ArticleJsonLd>` and 21 other components in one import                 |
+| Schema coverage           | ❌ Only Article/FAQ in most packages              | ✅ 23 types: Article, Product, FAQ, LocalBusiness, Event, Recipe, and more |
+| Framework support         | ❌ WordPress / next-seo only                      | ✅ Next.js, Remix, Node.js, Edge, static site generators                   |
 
 ![Schema Builder Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -57,18 +56,18 @@ Type-safe JSON-LD structured data for TypeScript and React — 23 schema.org bui
 
 ## Comparison
 
-| Feature                        | @power-seo/schema | next-seo | schema-dts | json-ld.js | react-schemaorg |
-| ------------------------------ | :---------------: | :------: | :--------: | :--------: | :-------------: |
-| Typed builder functions        | ✅                | Partial  | ❌         | ❌         | ❌              |
-| Ready-to-use React components  | ✅                | ✅       | ❌         | ❌         | Partial         |
-| `@graph` support               | ✅                | ❌       | ❌         | ✅         | ❌              |
-| Built-in field validation      | ✅                | ❌       | ❌         | ❌         | ❌              |
-| Works without React            | ✅                | ❌       | ✅         | ✅         | ❌              |
-| 23 schema types                | ✅                | Partial  | ✅         | ✅         | ❌              |
-| CI / Node.js usage             | ✅                | ❌       | ✅         | ✅         | ❌              |
-| Zero runtime dependencies      | ✅                | ❌       | ✅         | ❌         | ❌              |
-| TypeScript-first               | ✅                | Partial  | ✅         | ❌         | ❌              |
-| Tree-shakeable                 | ✅                | ❌       | ✅         | ❌         | ❌              |
+| Feature                       | @power-seo/schema | next-seo | schema-dts | json-ld.js | react-schemaorg |
+| ----------------------------- | :---------------: | :------: | :--------: | :--------: | :-------------: |
+| Typed builder functions       |        ✅         | Partial  |     ❌     |     ❌     |       ❌        |
+| Ready-to-use React components |        ✅         |    ✅    |     ❌     |     ❌     |     Partial     |
+| `@graph` support              |        ✅         |    ❌    |     ❌     |     ✅     |       ❌        |
+| Built-in field validation     |        ✅         |    ❌    |     ❌     |     ❌     |       ❌        |
+| Works without React           |        ✅         |    ❌    |     ✅     |     ✅     |       ❌        |
+| 23 schema types               |        ✅         | Partial  |     ✅     |     ✅     |       ❌        |
+| CI / Node.js usage            |        ✅         |    ❌    |     ✅     |     ✅     |       ❌        |
+| Zero runtime dependencies     |        ✅         |    ❌    |     ✅     |     ❌     |       ❌        |
+| TypeScript-first              |        ✅         | Partial  |     ✅     |     ❌     |       ❌        |
+| Tree-shakeable                |        ✅         |    ❌    |     ✅     |     ❌     |       ❌        |
 
 ![Schema Validation Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/schema/validation-accuracy.svg)
 
@@ -119,7 +118,7 @@ import { ArticleJsonLd } from '@power-seo/schema/react';
   datePublished="2026-01-15"
   author={{ name: 'Jane Doe', url: 'https://example.com/authors/jane-doe' }}
   image={{ url: 'https://example.com/cover.jpg', width: 1200, height: 630 }}
-/>
+/>;
 // Renders: <script type="application/ld+json">{"@context":"https://schema.org",...}</script>
 ```
 
@@ -187,7 +186,13 @@ function PageHead() {
 Use `schemaGraph()` to combine multiple schema objects into a single `@graph` document. This ensures Google parses all schemas on the page, not just the first `<script>` tag it finds.
 
 ```ts
-import { article, breadcrumbList, organization, schemaGraph, toJsonLdString } from '@power-seo/schema';
+import {
+  article,
+  breadcrumbList,
+  organization,
+  schemaGraph,
+  toJsonLdString,
+} from '@power-seo/schema';
 
 const graph = schemaGraph([
   article({ headline: 'My Post', datePublished: '2026-01-01', author: { name: 'Jane Doe' } }),
@@ -279,7 +284,6 @@ export default function BlogPost({ post }: { post: Post }) {
 
 > **Security note:** `toJsonLdString()` escapes `<`, `>`, and `&` to their Unicode escape sequences (`\u003c`, `\u003e`, `\u0026`) so a schema string value such as `"</script>"` cannot break out of the surrounding `<script>` tag. This protection is applied automatically — you do not need to sanitize schema field values yourself when using `toJsonLdString()` or the React components. If you write schema JSON manually and inject it with `dangerouslySetInnerHTML`, apply the same escaping or use `toJsonLdString()`.
 
-
 ### CI Validation Gate
 
 Block deploys when schema validation fails:
@@ -307,100 +311,100 @@ for (const schema of allPageSchemas) {
 
 ### Entry Points
 
-| Import | Description |
-| --- | --- |
-| `@power-seo/schema` | Builder functions, utilities, and TypeScript types |
+| Import                    | Description                                        |
+| ------------------------- | -------------------------------------------------- |
+| `@power-seo/schema`       | Builder functions, utilities, and TypeScript types |
 | `@power-seo/schema/react` | React components for rendering JSON-LD script tags |
 
 ### Builder Functions
 
-| Function | Schema `@type` | Rich Result Eligible |
-| --- | --- | --- |
-| `article(props)` | `Article` | Yes — Article rich results |
-| `blogPosting(props)` | `BlogPosting` | Yes — Article rich results |
-| `newsArticle(props)` | `NewsArticle` | Yes — Top Stories |
-| `product(props)` | `Product` | Yes — Product rich results |
-| `faqPage(questions)` | `FAQPage` | Yes — FAQ rich results |
-| `breadcrumbList(items)` | `BreadcrumbList` | Yes — Breadcrumbs in SERP |
-| `localBusiness(props)` | `LocalBusiness` | Yes — Local Business panel |
-| `organization(props)` | `Organization` | Yes — Knowledge Panel |
-| `person(props)` | `Person` | Yes — Knowledge Panel |
-| `event(props)` | `Event` | Yes — Event rich results |
-| `recipe(props)` | `Recipe` | Yes — Recipe rich results |
-| `howTo(props)` | `HowTo` | Yes — How-to rich results |
-| `videoObject(props)` | `VideoObject` | Yes — Video rich results |
-| `course(props)` | `Course` | Yes — Course rich results |
-| `jobPosting(props)` | `JobPosting` | Yes — Job Posting results |
-| `softwareApp(props)` | `SoftwareApplication` | Yes — App rich results |
-| `webSite(props)` | `WebSite` | Yes — Sitelinks Searchbox |
-| `itemList(props)` | `ItemList` | Yes — Carousel results |
-| `review(props)` | `Review` | Yes — Review snippet |
-| `service(props)` | `Service` | Partial |
-| `brand(props)` | `Brand` | Partial |
-| `siteNavigationElement(props)` | `SiteNavigationElement` | Partial |
-| `imageObject(props)` | `ImageObject` | Yes — Image rich results |
+| Function                       | Schema `@type`          | Rich Result Eligible       |
+| ------------------------------ | ----------------------- | -------------------------- |
+| `article(props)`               | `Article`               | Yes — Article rich results |
+| `blogPosting(props)`           | `BlogPosting`           | Yes — Article rich results |
+| `newsArticle(props)`           | `NewsArticle`           | Yes — Top Stories          |
+| `product(props)`               | `Product`               | Yes — Product rich results |
+| `faqPage(questions)`           | `FAQPage`               | Yes — FAQ rich results     |
+| `breadcrumbList(items)`        | `BreadcrumbList`        | Yes — Breadcrumbs in SERP  |
+| `localBusiness(props)`         | `LocalBusiness`         | Yes — Local Business panel |
+| `organization(props)`          | `Organization`          | Yes — Knowledge Panel      |
+| `person(props)`                | `Person`                | Yes — Knowledge Panel      |
+| `event(props)`                 | `Event`                 | Yes — Event rich results   |
+| `recipe(props)`                | `Recipe`                | Yes — Recipe rich results  |
+| `howTo(props)`                 | `HowTo`                 | Yes — How-to rich results  |
+| `videoObject(props)`           | `VideoObject`           | Yes — Video rich results   |
+| `course(props)`                | `Course`                | Yes — Course rich results  |
+| `jobPosting(props)`            | `JobPosting`            | Yes — Job Posting results  |
+| `softwareApp(props)`           | `SoftwareApplication`   | Yes — App rich results     |
+| `webSite(props)`               | `WebSite`               | Yes — Sitelinks Searchbox  |
+| `itemList(props)`              | `ItemList`              | Yes — Carousel results     |
+| `review(props)`                | `Review`                | Yes — Review snippet       |
+| `service(props)`               | `Service`               | Partial                    |
+| `brand(props)`                 | `Brand`                 | Partial                    |
+| `siteNavigationElement(props)` | `SiteNavigationElement` | Partial                    |
+| `imageObject(props)`           | `ImageObject`           | Yes — Image rich results   |
 
 ### Utility Functions
 
-| Function | Signature | Description |
-| --- | --- | --- |
-| `toJsonLdString` | `(schema: object, pretty?: boolean) => string` | Serialize schema to safe JSON-LD string |
-| `schemaGraph` | `(schemas: object[]) => object` | Combine schemas into a single `@graph` document |
+| Function         | Signature                                                           | Description                                         |
+| ---------------- | ------------------------------------------------------------------- | --------------------------------------------------- |
+| `toJsonLdString` | `(schema: object, pretty?: boolean) => string`                      | Serialize schema to safe JSON-LD string             |
+| `schemaGraph`    | `(schemas: object[]) => object`                                     | Combine schemas into a single `@graph` document     |
 | `validateSchema` | `(schema: object) => { valid: boolean; issues: ValidationIssue[] }` | Validate required fields; returns structured issues |
 
 ### React Components
 
 Import all components from `@power-seo/schema/react`.
 
-| Component | Props | Description |
-| --- | --- | --- |
-| `<ArticleJsonLd>` | `Omit<ArticleSchema, '@type' \| '@context'>` | Article schema |
-| `<BlogPostingJsonLd>` | `Omit<ArticleSchema, '@type' \| '@context'>` | BlogPosting schema |
-| `<NewsArticleJsonLd>` | `Omit<ArticleSchema, '@type' \| '@context'>` | NewsArticle schema for Top Stories |
-| `<ProductJsonLd>` | `Omit<ProductSchema, '@type' \| '@context'>` | Product with offers and ratings |
-| `<FAQJsonLd>` | `{ questions: Array<{ question: string; answer: string }> }` | FAQPage schema |
-| `<BreadcrumbJsonLd>` | `{ items: Array<{ name: string; url?: string }> }` | BreadcrumbList schema |
-| `<LocalBusinessJsonLd>` | `Omit<LocalBusinessSchema, '@type' \| '@context'>` | LocalBusiness schema |
-| `<OrganizationJsonLd>` | `Omit<OrganizationSchema, '@type' \| '@context'>` | Organization schema |
-| `<PersonJsonLd>` | `Omit<PersonSchema, '@type' \| '@context'>` | Person schema |
-| `<EventJsonLd>` | `Omit<EventSchema, '@type' \| '@context'>` | Event schema |
-| `<RecipeJsonLd>` | `Omit<RecipeSchema, '@type' \| '@context'>` | Recipe schema |
-| `<HowToJsonLd>` | `Omit<HowToSchema, '@type' \| '@context'>` | HowTo schema |
-| `<VideoJsonLd>` | `Omit<VideoObjectSchema, '@type' \| '@context'>` | VideoObject schema |
-| `<CourseJsonLd>` | `Omit<CourseSchema, '@type' \| '@context'>` | Course schema |
-| `<JobPostingJsonLd>` | `Omit<JobPostingSchema, '@type' \| '@context'>` | JobPosting schema |
-| `<SoftwareAppJsonLd>` | `Omit<SoftwareAppSchema, '@type' \| '@context'>` | SoftwareApplication schema |
-| `<WebSiteJsonLd>` | `Omit<WebSiteSchema, '@type' \| '@context'>` | WebSite with SearchAction |
-| `<ItemListJsonLd>` | `Omit<ItemListSchema, '@type' \| '@context'>` | ItemList schema |
-| `<ReviewJsonLd>` | `Omit<ReviewSchema, '@type' \| '@context'>` | Review schema |
-| `<ServiceJsonLd>` | `Omit<ServiceSchema, '@type' \| '@context'>` | Service schema |
-| `<BrandJsonLd>` | `Omit<BrandSchema, '@type' \| '@context'>` | Brand schema |
-| `<JsonLd>` | `{ schema: object }` | Generic — any schema object |
+| Component               | Props                                                        | Description                        |
+| ----------------------- | ------------------------------------------------------------ | ---------------------------------- |
+| `<ArticleJsonLd>`       | `Omit<ArticleSchema, '@type' \| '@context'>`                 | Article schema                     |
+| `<BlogPostingJsonLd>`   | `Omit<ArticleSchema, '@type' \| '@context'>`                 | BlogPosting schema                 |
+| `<NewsArticleJsonLd>`   | `Omit<ArticleSchema, '@type' \| '@context'>`                 | NewsArticle schema for Top Stories |
+| `<ProductJsonLd>`       | `Omit<ProductSchema, '@type' \| '@context'>`                 | Product with offers and ratings    |
+| `<FAQJsonLd>`           | `{ questions: Array<{ question: string; answer: string }> }` | FAQPage schema                     |
+| `<BreadcrumbJsonLd>`    | `{ items: Array<{ name: string; url?: string }> }`           | BreadcrumbList schema              |
+| `<LocalBusinessJsonLd>` | `Omit<LocalBusinessSchema, '@type' \| '@context'>`           | LocalBusiness schema               |
+| `<OrganizationJsonLd>`  | `Omit<OrganizationSchema, '@type' \| '@context'>`            | Organization schema                |
+| `<PersonJsonLd>`        | `Omit<PersonSchema, '@type' \| '@context'>`                  | Person schema                      |
+| `<EventJsonLd>`         | `Omit<EventSchema, '@type' \| '@context'>`                   | Event schema                       |
+| `<RecipeJsonLd>`        | `Omit<RecipeSchema, '@type' \| '@context'>`                  | Recipe schema                      |
+| `<HowToJsonLd>`         | `Omit<HowToSchema, '@type' \| '@context'>`                   | HowTo schema                       |
+| `<VideoJsonLd>`         | `Omit<VideoObjectSchema, '@type' \| '@context'>`             | VideoObject schema                 |
+| `<CourseJsonLd>`        | `Omit<CourseSchema, '@type' \| '@context'>`                  | Course schema                      |
+| `<JobPostingJsonLd>`    | `Omit<JobPostingSchema, '@type' \| '@context'>`              | JobPosting schema                  |
+| `<SoftwareAppJsonLd>`   | `Omit<SoftwareAppSchema, '@type' \| '@context'>`             | SoftwareApplication schema         |
+| `<WebSiteJsonLd>`       | `Omit<WebSiteSchema, '@type' \| '@context'>`                 | WebSite with SearchAction          |
+| `<ItemListJsonLd>`      | `Omit<ItemListSchema, '@type' \| '@context'>`                | ItemList schema                    |
+| `<ReviewJsonLd>`        | `Omit<ReviewSchema, '@type' \| '@context'>`                  | Review schema                      |
+| `<ServiceJsonLd>`       | `Omit<ServiceSchema, '@type' \| '@context'>`                 | Service schema                     |
+| `<BrandJsonLd>`         | `Omit<BrandSchema, '@type' \| '@context'>`                   | Brand schema                       |
+| `<JsonLd>`              | `{ schema: object }`                                         | Generic — any schema object        |
 
 ### Types
 
-| Type | Description |
-| --- | --- |
-| `ArticleSchema` | Props for Article, BlogPosting, and NewsArticle builder functions |
-| `ProductSchema` | Props for `product()` builder |
-| `FAQPageSchema` | Output type of `faqPage()` |
-| `BreadcrumbListSchema` | Output type of `breadcrumbList()` |
-| `LocalBusinessSchema` | Props for `localBusiness()` builder |
-| `OrganizationSchema` | Props for `organization()` builder |
-| `PersonSchema` | Props for `person()` builder |
-| `EventSchema` | Props for `event()` builder |
-| `RecipeSchema` | Props for `recipe()` builder |
-| `HowToSchema` | Props for `howTo()` builder |
-| `VideoObjectSchema` | Props for `videoObject()` builder |
-| `CourseSchema` | Props for `course()` builder |
-| `JobPostingSchema` | Props for `jobPosting()` builder |
-| `SoftwareAppSchema` | Props for `softwareApp()` builder |
-| `WebSiteSchema` | Props for `webSite()` builder |
-| `ItemListSchema` | Props for `itemList()` builder |
-| `ReviewSchema` | Props for `review()` builder |
-| `ServiceSchema` | Props for `service()` builder |
-| `BrandSchema` | Props for `brand()` builder |
-| `ValidationIssue` | `{ severity: 'error' \| 'warning'; field: string; message: string }` |
+| Type                   | Description                                                          |
+| ---------------------- | -------------------------------------------------------------------- |
+| `ArticleSchema`        | Props for Article, BlogPosting, and NewsArticle builder functions    |
+| `ProductSchema`        | Props for `product()` builder                                        |
+| `FAQPageSchema`        | Output type of `faqPage()`                                           |
+| `BreadcrumbListSchema` | Output type of `breadcrumbList()`                                    |
+| `LocalBusinessSchema`  | Props for `localBusiness()` builder                                  |
+| `OrganizationSchema`   | Props for `organization()` builder                                   |
+| `PersonSchema`         | Props for `person()` builder                                         |
+| `EventSchema`          | Props for `event()` builder                                          |
+| `RecipeSchema`         | Props for `recipe()` builder                                         |
+| `HowToSchema`          | Props for `howTo()` builder                                          |
+| `VideoObjectSchema`    | Props for `videoObject()` builder                                    |
+| `CourseSchema`         | Props for `course()` builder                                         |
+| `JobPostingSchema`     | Props for `jobPosting()` builder                                     |
+| `SoftwareAppSchema`    | Props for `softwareApp()` builder                                    |
+| `WebSiteSchema`        | Props for `webSite()` builder                                        |
+| `ItemListSchema`       | Props for `itemList()` builder                                       |
+| `ReviewSchema`         | Props for `review()` builder                                         |
+| `ServiceSchema`        | Props for `service()` builder                                        |
+| `BrandSchema`          | Props for `brand()` builder                                          |
+| `ValidationIssue`      | `{ severity: 'error' \| 'warning'; field: string; message: string }` |
 
 ---
 
@@ -446,25 +450,25 @@ Import all components from `@power-seo/schema/react`.
 
 All 17 packages are independently installable — use only what you need.
 
-| Package | Install | Description |
-| --- | --- | --- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 22 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                             |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
 
 ---
 

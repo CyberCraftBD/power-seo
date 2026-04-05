@@ -18,7 +18,12 @@ function parseLinksFromContent(
   while ((match = hrefRegex.exec(html)) !== null) {
     const url = match[1]!.trim();
     // Skip anchors, mailto, tel, javascript
-    if (!url || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('javascript:'))
+    if (
+      !url ||
+      url.startsWith('mailto:') ||
+      url.startsWith('tel:') ||
+      url.startsWith('javascript:')
+    )
       continue;
 
     if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) {

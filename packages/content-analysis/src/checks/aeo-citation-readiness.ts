@@ -9,7 +9,10 @@ import { stripHtml, getWords } from '@power-seo/core';
  * attribution phrases, footnotes, and a sources section.
  * BrightEdge 2025: cited pages have 3.1× more external references than non-cited pages.
  */
-function measureCitationSignals(html: string, plain: string): {
+function measureCitationSignals(
+  html: string,
+  plain: string,
+): {
   externalLinks: number;
   hasSourcesSection: boolean;
   attributionPhrases: number;
@@ -21,10 +24,12 @@ function measureCitationSignals(html: string, plain: string): {
   const externalLinks = externalLinkMatches?.length ?? 0;
 
   // Sources/references section heading
-  const hasSourcesSection = /\b(?:sources?|references?|bibliography|further\s+reading|citations?)\b/i.test(plain);
+  const hasSourcesSection =
+    /\b(?:sources?|references?|bibliography|further\s+reading|citations?)\b/i.test(plain);
 
   // Attribution phrases
-  const attributionPattern = /\baccording\s+to\b|\bcited\s+by\b|\bsource[d]?\s*:\b|\bvia\b|\bper\b\s+[A-Z]|\bas\s+reported\s+by\b/gi;
+  const attributionPattern =
+    /\baccording\s+to\b|\bcited\s+by\b|\bsource[d]?\s*:\b|\bvia\b|\bper\b\s+[A-Z]|\bas\s+reported\s+by\b/gi;
   const attributionMatches = plain.match(attributionPattern);
   const attributionPhrases = attributionMatches?.length ?? 0;
 
@@ -32,7 +37,8 @@ function measureCitationSignals(html: string, plain: string): {
   const footnotePattern = /\[\d+\]|<sup>\d+<\/sup>/g;
   const hasFootnotes = footnotePattern.test(html);
 
-  const totalSignals = externalLinks + (hasSourcesSection ? 3 : 0) + attributionPhrases + (hasFootnotes ? 2 : 0);
+  const totalSignals =
+    externalLinks + (hasSourcesSection ? 3 : 0) + attributionPhrases + (hasFootnotes ? 2 : 0);
 
   return { externalLinks, hasSourcesSection, attributionPhrases, hasFootnotes, totalSignals };
 }
@@ -53,7 +59,8 @@ export function checkAeoCitationReadiness(input: ContentAnalysisInput): Analysis
     };
   }
 
-  const { externalLinks, hasSourcesSection, attributionPhrases, hasFootnotes, totalSignals } = measureCitationSignals(content, plain);
+  const { externalLinks, hasSourcesSection, attributionPhrases, hasFootnotes, totalSignals } =
+    measureCitationSignals(content, plain);
 
   if (totalSignals >= 5 && (hasSourcesSection || externalLinks >= 3)) {
     return {
@@ -80,7 +87,8 @@ export function checkAeoCitationReadiness(input: ContentAnalysisInput): Analysis
   return {
     id: 'aeo-citation-readiness',
     title: 'Citation readiness (AEO)',
-    description: 'No citation signals detected. AI engines (Perplexity, ChatGPT, Gemini) strongly prefer citing content that itself cites authoritative sources. Add: (1) 3–5 external links to authoritative sources, (2) "According to [source]…" attribution phrases, (3) a "Sources" section at the bottom. BrightEdge 2025: cited pages have 3.1× more external references.',
+    description:
+      'No citation signals detected. AI engines (Perplexity, ChatGPT, Gemini) strongly prefer citing content that itself cites authoritative sources. Add: (1) 3–5 external links to authoritative sources, (2) "According to [source]…" attribution phrases, (3) a "Sources" section at the bottom. BrightEdge 2025: cited pages have 3.1× more external references.',
     status: 'poor',
     score: 0,
     maxScore: 8,

@@ -28,13 +28,13 @@ What actually happened, including any error messages or stack traces.
 
 ## Environment
 
-| | Version |
-|---|---|
-| Package | `@power-seo/` <!-- e.g. @power-seo/meta --> |
-| Package version | <!-- e.g. 1.0.4 --> |
-| Framework | <!-- e.g. Next.js 14, Remix v2, Vite --> |
-| Node.js | <!-- e.g. 20.11.0 --> |
-| TypeScript | <!-- e.g. 5.3.3 --> |
+|                 | Version                                     |
+| --------------- | ------------------------------------------- |
+| Package         | `@power-seo/` <!-- e.g. @power-seo/meta --> |
+| Package version | <!-- e.g. 1.0.4 -->                         |
+| Framework       | <!-- e.g. Next.js 14, Remix v2, Vite -->    |
+| Node.js         | <!-- e.g. 20.11.0 -->                       |
+| TypeScript      | <!-- e.g. 5.3.3 -->                         |
 
 ## Additional context
 

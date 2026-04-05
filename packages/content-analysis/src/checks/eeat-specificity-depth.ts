@@ -81,9 +81,12 @@ export function checkSpecificityDepth(input: ContentAnalysisInput): AnalysisResu
   }
 
   const specificDensity = (specificCount / wordCount) * 500;
-  const specificityRatio = specificCount > 0 && vagueCount > 0
-    ? specificCount / (specificCount + vagueCount)
-    : specificCount > 0 ? 1 : 0;
+  const specificityRatio =
+    specificCount > 0 && vagueCount > 0
+      ? specificCount / (specificCount + vagueCount)
+      : specificCount > 0
+        ? 1
+        : 0;
 
   if (specificDensity >= 5 && specificityRatio >= 0.7) {
     return {

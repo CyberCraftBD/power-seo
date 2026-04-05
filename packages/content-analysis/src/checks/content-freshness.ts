@@ -94,7 +94,8 @@ export function checkContentFreshness(input: ContentAnalysisInput): AnalysisResu
     return {
       id: 'content-freshness',
       title: 'Content freshness',
-      description: 'No publish or modified date available. Set dates to evaluate content freshness.',
+      description:
+        'No publish or modified date available. Set dates to evaluate content freshness.',
       status: 'na',
       score: 0,
       maxScore: 10,
@@ -118,7 +119,9 @@ export function checkContentFreshness(input: ContentAnalysisInput): AnalysisResu
   const parts: string[] = [];
 
   if (publishDate) {
-    parts.push(`Published ${Math.round(ageMonths)} month${Math.round(ageMonths) === 1 ? '' : 's'} ago`);
+    parts.push(
+      `Published ${Math.round(ageMonths)} month${Math.round(ageMonths) === 1 ? '' : 's'} ago`,
+    );
   }
   if (modifiedDate && updateDays !== null) {
     const updateMonths = Math.round(updateDays / 30.44);

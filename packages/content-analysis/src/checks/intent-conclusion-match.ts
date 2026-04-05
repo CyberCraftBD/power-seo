@@ -94,7 +94,8 @@ export function checkIntentConclusionMatch(input: ContentAnalysisInput): Analysi
   }
 
   const detected = detectIntent(focusKeyphrase);
-  const intentLabel = detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
+  const intentLabel =
+    detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
 
   const plainText = stripHtml(content);
   const allWords = getWords(plainText);

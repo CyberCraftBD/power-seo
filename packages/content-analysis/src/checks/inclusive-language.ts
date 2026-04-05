@@ -148,9 +148,7 @@ function findMatches(text: string): TermMatch[] {
       // Word boundary checks to avoid partial matches
       const charBefore = idx > 0 ? lowerText[idx - 1]! : ' ';
       const charAfter =
-        idx + termLower.length < lowerText.length
-          ? lowerText[idx + termLower.length]!
-          : ' ';
+        idx + termLower.length < lowerText.length ? lowerText[idx + termLower.length]! : ' ';
 
       const isWordBoundaryBefore = /[\s.,;:!?'"()-/]/.test(charBefore) || idx === 0;
       const isWordBoundaryAfter =
@@ -208,11 +206,7 @@ export function checkInclusiveLanguage(input: ContentAnalysisInput): AnalysisRes
   }
 
   // Also check the title and meta description
-  const fullText = [
-    input.title || '',
-    input.metaDescription || '',
-    plainText,
-  ].join(' ');
+  const fullText = [input.title || '', input.metaDescription || '', plainText].join(' ');
 
   const matches = findMatches(fullText);
 
@@ -220,8 +214,7 @@ export function checkInclusiveLanguage(input: ContentAnalysisInput): AnalysisRes
     return {
       id: 'inclusive-language',
       title: 'Inclusive language',
-      description:
-        'No non-inclusive language detected. Your content uses inclusive terminology.',
+      description: 'No non-inclusive language detected. Your content uses inclusive terminology.',
       status: 'good',
       score: 5,
       maxScore: 5,
@@ -233,9 +226,7 @@ export function checkInclusiveLanguage(input: ContentAnalysisInput): AnalysisRes
   const reportParts: string[] = [];
 
   for (const [category, categoryMatches] of grouped) {
-    const items = categoryMatches
-      .map((m) => `"${m.term}" -> "${m.replacement}"`)
-      .join(', ');
+    const items = categoryMatches.map((m) => `"${m.term}" -> "${m.replacement}"`).join(', ');
     reportParts.push(`${category}: ${items}`);
   }
 

@@ -34,7 +34,11 @@ const DEPTH_RANGES: Record<string, DepthRange> = {
  * - 500-999 = ok
  * - 1000+ = good
  */
-function evaluateInformational(wordCount: number): { status: 'good' | 'ok' | 'poor'; score: number; note: string } {
+function evaluateInformational(wordCount: number): {
+  status: 'good' | 'ok' | 'poor';
+  score: number;
+  note: string;
+} {
   if (wordCount < 500) {
     return {
       status: 'poor',
@@ -63,7 +67,11 @@ function evaluateInformational(wordCount: number): { status: 'good' | 'ok' | 'po
  * - 300-1500 = good
  * - > 2000 = ok (over-length for transactional)
  */
-function evaluateTransactional(wordCount: number): { status: 'good' | 'ok' | 'poor'; score: number; note: string } {
+function evaluateTransactional(wordCount: number): {
+  status: 'good' | 'ok' | 'poor';
+  score: number;
+  note: string;
+} {
   if (wordCount < 200) {
     return {
       status: 'poor',
@@ -106,7 +114,11 @@ function evaluateTransactional(wordCount: number): { status: 'good' | 'ok' | 'po
  * - 800-1499 = ok
  * - 1500+ = good
  */
-function evaluateCommercial(wordCount: number): { status: 'good' | 'ok' | 'poor'; score: number; note: string } {
+function evaluateCommercial(wordCount: number): {
+  status: 'good' | 'ok' | 'poor';
+  score: number;
+  note: string;
+} {
   if (wordCount < 800) {
     return {
       status: 'poor',
@@ -136,7 +148,11 @@ function evaluateCommercial(wordCount: number): { status: 'good' | 'ok' | 'poor'
  * - 50-99 = ok (slightly short)
  * - 801-1000 = ok (slightly long)
  */
-function evaluateNavigational(wordCount: number): { status: 'good' | 'ok' | 'poor'; score: number; note: string } {
+function evaluateNavigational(wordCount: number): {
+  status: 'good' | 'ok' | 'poor';
+  score: number;
+  note: string;
+} {
   if (wordCount < 50) {
     return {
       status: 'poor',
@@ -183,17 +199,14 @@ function evaluateNavigational(wordCount: number): { status: 'good' | 'ok' | 'poo
  * - Commercial: 1,500–5,000 words
  * - Navigational: 100–800 words
  */
-export function checkIntentDepthMatch(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentDepthMatch(input: ContentAnalysisInput): AnalysisResult {
   const { focusKeyphrase, content } = input;
 
   if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
     return {
       id: 'intent-depth-match',
       title: 'Content depth-intent match',
-      description:
-        'No focus keyphrase set. Set one to analyze content depth relative to intent.',
+      description: 'No focus keyphrase set. Set one to analyze content depth relative to intent.',
       status: 'na',
       score: 0,
       maxScore: 8,
@@ -244,8 +257,7 @@ export function checkIntentDepthMatch(
   return {
     id: 'intent-depth-match',
     title: 'Content depth-intent match',
-    description:
-      `${evaluation.note} Expected range for ${intentKey} intent: ${range.label} words.`,
+    description: `${evaluation.note} Expected range for ${intentKey} intent: ${range.label} words.`,
     status: evaluation.status,
     score: evaluation.score,
     maxScore: 8,

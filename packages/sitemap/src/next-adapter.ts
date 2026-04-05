@@ -1,6 +1,5 @@
 // @power-seo/sitemap — Next.js App Router Adapter
 
-
 import type { SitemapURL } from '@power-seo/core';
 import { validateSitemapUrl } from './validate.js';
 
@@ -31,7 +30,8 @@ export function toNextSitemap(urls: SitemapURL[]): NextSitemapEntry[] {
     if (!valid) continue;
     const entry: NextSitemapEntry = { url: url.loc };
     if (url.lastmod) entry.lastModified = url.lastmod;
-    if (url.changefreq) entry.changeFrequency = url.changefreq as NextSitemapEntry['changeFrequency'];
+    if (url.changefreq)
+      entry.changeFrequency = url.changefreq as NextSitemapEntry['changeFrequency'];
     if (url.priority !== undefined) entry.priority = url.priority;
     entries.push(entry);
   }

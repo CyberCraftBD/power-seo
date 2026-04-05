@@ -7,7 +7,10 @@ export function checkTextPresence(input: ContentAnalysisInput): AnalysisResult {
   const { content } = input;
 
   // Strip HTML tags and count words
-  const textOnly = content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  const textOnly = content
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
   const words = textOnly.length > 0 ? textOnly.split(/\s+/) : [];
   const wordCount = words.length;
 

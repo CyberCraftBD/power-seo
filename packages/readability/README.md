@@ -19,18 +19,17 @@ Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Fles
 
 ## Why @power-seo/readability?
 
-| | Without | With |
-|---|---|---|
-| Algorithm coverage | ❌ One-off Flesch score, no other algorithms | ✅ Five algorithms in one call — Flesch, Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| Status labels | ❌ Raw numbers only — interpret thresholds manually | ✅ `'good'` / `'improvement'` / `'error'` per score with a human message |
-| HTML input | ❌ Must strip HTML before calling | ✅ HTML tags stripped automatically |
-| Composite status | ❌ No aggregate result | ✅ `overall.status` combines all five algorithms |
-| TypeScript | ❌ Untyped result objects | ✅ Full type inference for all inputs and outputs |
-| CI integration | ❌ Manual threshold checks | ✅ `overall.status === 'error'` fails builds |
-| Framework support | ❌ Browser-only or Node-only tools | ✅ Works in Next.js, Remix, Gatsby, Vite, Edge, browser |
+|                    | Without                                             | With                                                                                    |
+| ------------------ | --------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Algorithm coverage | ❌ One-off Flesch score, no other algorithms        | ✅ Five algorithms in one call — Flesch, Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
+| Status labels      | ❌ Raw numbers only — interpret thresholds manually | ✅ `'good'` / `'improvement'` / `'error'` per score with a human message                |
+| HTML input         | ❌ Must strip HTML before calling                   | ✅ HTML tags stripped automatically                                                     |
+| Composite status   | ❌ No aggregate result                              | ✅ `overall.status` combines all five algorithms                                        |
+| TypeScript         | ❌ Untyped result objects                           | ✅ Full type inference for all inputs and outputs                                       |
+| CI integration     | ❌ Manual threshold checks                          | ✅ `overall.status === 'error'` fails builds                                            |
+| Framework support  | ❌ Browser-only or Node-only tools                  | ✅ Works in Next.js, Remix, Gatsby, Vite, Edge, browser                                 |
 
 ![Readability Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -62,20 +61,20 @@ Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Fles
 
 ## Comparison
 
-| Feature | @power-seo/readability | text-readability | readability-scores | flesch |
-| --- | :---: | :---: | :---: | :---: |
-| Flesch Reading Ease | ✅ | ✅ | ✅ | ✅ |
-| Flesch-Kincaid Grade | ✅ | ✅ | ✅ | ❌ |
-| Gunning Fog Index | ✅ | ✅ | ✅ | ❌ |
-| Coleman-Liau Index | ✅ | ✅ | ✅ | ❌ |
-| Automated Readability Index | ✅ | ✅ | ✅ | ❌ |
-| Status labels (good/improvement/error) | ✅ | ❌ | ❌ | ❌ |
-| Unified multi-algorithm API | ✅ | ❌ | ❌ | ❌ |
-| Composite overall status | ✅ | ❌ | ❌ | ❌ |
-| HTML auto-stripping | ✅ | ❌ | ❌ | ❌ |
-| TypeScript-first with full types | ✅ | ❌ | ❌ | ❌ |
-| Zero runtime dependencies | ✅ | ✅ | ✅ | ✅ |
-| Tree-shakeable individual functions | ✅ | ❌ | ❌ | ✅ |
+| Feature                                | @power-seo/readability | text-readability | readability-scores | flesch |
+| -------------------------------------- | :--------------------: | :--------------: | :----------------: | :----: |
+| Flesch Reading Ease                    |           ✅           |        ✅        |         ✅         |   ✅   |
+| Flesch-Kincaid Grade                   |           ✅           |        ✅        |         ✅         |   ❌   |
+| Gunning Fog Index                      |           ✅           |        ✅        |         ✅         |   ❌   |
+| Coleman-Liau Index                     |           ✅           |        ✅        |         ✅         |   ❌   |
+| Automated Readability Index            |           ✅           |        ✅        |         ✅         |   ❌   |
+| Status labels (good/improvement/error) |           ✅           |        ❌        |         ❌         |   ❌   |
+| Unified multi-algorithm API            |           ✅           |        ❌        |         ❌         |   ❌   |
+| Composite overall status               |           ✅           |        ❌        |         ❌         |   ❌   |
+| HTML auto-stripping                    |           ✅           |        ❌        |         ❌         |   ❌   |
+| TypeScript-first with full types       |           ✅           |        ❌        |         ❌         |   ❌   |
+| Zero runtime dependencies              |           ✅           |        ✅        |         ✅         |   ✅   |
+| Tree-shakeable individual functions    |           ✅           |        ❌        |         ❌         |   ✅   |
 
 ![Scoring Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/scoring-accuracy.svg)
 
@@ -106,13 +105,14 @@ const result = analyzeReadability({
   text: 'Search engine optimization is the practice of improving web pages to rank higher in search results. Good content uses clear sentences and relevant keywords.',
 });
 
-console.log(result.fleschReadingEase.score);  // e.g. 58.4
+console.log(result.fleschReadingEase.score); // e.g. 58.4
 console.log(result.fleschKincaidGrade.score); // e.g. 10.2
-console.log(result.overall.status);           // 'improvement'
-console.log(result.overall.message);          // 'Content may be difficult for some readers...'
+console.log(result.overall.status); // 'improvement'
+console.log(result.overall.message); // 'Content may be difficult for some readers...'
 ```
 
 **Status thresholds (per score):**
+
 - `good` — score is within the optimal range for web content
 - `improvement` — score is outside the ideal range; consider simplifying
 - `error` — score indicates content is too complex for most web readers
@@ -155,9 +155,9 @@ const stats = getTextStatistics('Your plain text here.');
 const ease = fleschReadingEase(stats);
 const fog = gunningFog(stats);
 
-console.log(ease.score);   // 0–100 (higher = easier)
-console.log(fog.score);    // grade level
-console.log(ease.status);  // 'good' | 'improvement' | 'error'
+console.log(ease.score); // 0–100 (higher = easier)
+console.log(fog.score); // grade level
+console.log(ease.status); // 'good' | 'improvement' | 'error'
 ```
 
 ### Inside a CI Content Quality Gate
@@ -179,20 +179,20 @@ if (result.overall.status === 'error') {
 
 ### Score Interpretation
 
-| Flesch Reading Ease | Difficulty | Typical Audience |
-| --- | --- | --- |
-| 90–100 | Very Easy | 5th grade |
-| 70–90 | Easy | 6th grade |
-| 60–70 | Standard | 7th–8th grade — **ideal for most web content** |
-| 50–60 | Fairly Difficult | High school |
-| 30–50 | Difficult | College |
-| 0–30 | Very Difficult | Academic / professional |
+| Flesch Reading Ease | Difficulty       | Typical Audience                               |
+| ------------------- | ---------------- | ---------------------------------------------- |
+| 90–100              | Very Easy        | 5th grade                                      |
+| 70–90               | Easy             | 6th grade                                      |
+| 60–70               | Standard         | 7th–8th grade — **ideal for most web content** |
+| 50–60               | Fairly Difficult | High school                                    |
+| 30–50               | Difficult        | College                                        |
+| 0–30                | Very Difficult   | Academic / professional                        |
 
-| Grade Level Score | Status |
-| --- | --- |
-| ≤ 8 | `'good'` — accessible to general audiences |
-| 9–12 | `'improvement'` — consider simplifying |
-| > 12 | `'error'` — too complex for most web readers |
+| Grade Level Score | Status                                       |
+| ----------------- | -------------------------------------------- |
+| ≤ 8               | `'good'` — accessible to general audiences   |
+| 9–12              | `'improvement'` — consider simplifying       |
+| > 12              | `'error'` — too complex for most web readers |
 
 ---
 
@@ -206,21 +206,21 @@ function analyzeReadability(input: ReadabilityInput): ReadabilityOutput;
 
 #### `ReadabilityInput`
 
-| Prop | Type | Description |
-| --- | --- | --- |
+| Prop   | Type     | Description                                                  |
+| ------ | -------- | ------------------------------------------------------------ |
 | `text` | `string` | Plain text or HTML string (HTML tags stripped automatically) |
 
 #### `ReadabilityOutput`
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `fleschReadingEase` | `AlgorithmScore` | Flesch Reading Ease result |
-| `fleschKincaidGrade` | `AlgorithmScore` | Flesch-Kincaid Grade Level result |
-| `gunningFog` | `AlgorithmScore` | Gunning Fog Index result |
-| `colemanLiau` | `AlgorithmScore` | Coleman-Liau Index result |
+| Field                  | Type             | Description                        |
+| ---------------------- | ---------------- | ---------------------------------- |
+| `fleschReadingEase`    | `AlgorithmScore` | Flesch Reading Ease result         |
+| `fleschKincaidGrade`   | `AlgorithmScore` | Flesch-Kincaid Grade Level result  |
+| `gunningFog`           | `AlgorithmScore` | Gunning Fog Index result           |
+| `colemanLiau`          | `AlgorithmScore` | Coleman-Liau Index result          |
 | `automatedReadability` | `AlgorithmScore` | Automated Readability Index result |
-| `stats` | `TextStatistics` | Underlying text statistics |
-| `overall` | `AnalysisResult` | Composite status and message |
+| `stats`                | `TextStatistics` | Underlying text statistics         |
+| `overall`              | `AnalysisResult` | Composite status and message       |
 
 ### Individual Algorithm Functions
 
@@ -248,14 +248,14 @@ Returns raw statistics used by all algorithm functions. Input can be plain text 
 
 ### Types
 
-| Type | Description |
-| --- | --- |
-| `ReadabilityInput` | `{ text: string }` |
-| `ReadabilityOutput` | Full result with all five algorithm scores + stats + overall |
-| `TextStatistics` | `{ sentences: number; words: number; syllables: number; characters: number; avgWordsPerSentence: number }` |
-| `AlgorithmScore` | `{ score: number; status: AnalysisStatus; message: string }` |
-| `AnalysisStatus` | `'good' \| 'improvement' \| 'error'` |
-| `AnalysisResult` | `{ status: AnalysisStatus; message: string }` |
+| Type                | Description                                                                                                |
+| ------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ReadabilityInput`  | `{ text: string }`                                                                                         |
+| `ReadabilityOutput` | Full result with all five algorithm scores + stats + overall                                               |
+| `TextStatistics`    | `{ sentences: number; words: number; syllables: number; characters: number; avgWordsPerSentence: number }` |
+| `AlgorithmScore`    | `{ score: number; status: AnalysisStatus; message: string }`                                               |
+| `AnalysisStatus`    | `'good' \| 'improvement' \| 'error'`                                                                       |
+| `AnalysisResult`    | `{ status: AnalysisStatus; message: string }`                                                              |
 
 ---
 

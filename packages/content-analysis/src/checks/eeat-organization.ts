@@ -10,7 +10,8 @@ export function checkOrganization(input: ContentAnalysisInput): AnalysisResult {
     return {
       id: 'eeat-organization',
       title: 'Organization affiliation',
-      description: 'No author information provided. Add organization/affiliation data to strengthen authoritativeness signals.',
+      description:
+        'No author information provided. Add organization/affiliation data to strengthen authoritativeness signals.',
       status: 'poor',
       score: 0,
       maxScore: 5,
@@ -49,10 +50,10 @@ export function checkOrganization(input: ContentAnalysisInput): AnalysisResult {
 
   // Check professional credentials (imply institutional backing)
   if (author.credentials && author.credentials.length > 0) {
-    const withIssuers = author.credentials.filter(c => c.issuer);
+    const withIssuers = author.credentials.filter((c) => c.issuer);
     if (withIssuers.length > 0) {
       orgScore += 2;
-      signals.push(`credentials from: ${withIssuers.map(c => c.issuer).join(', ')}`);
+      signals.push(`credentials from: ${withIssuers.map((c) => c.issuer).join(', ')}`);
     } else {
       orgScore += 1;
       signals.push(`${author.credentials.length} credential(s) without issuer details`);
@@ -63,7 +64,7 @@ export function checkOrganization(input: ContentAnalysisInput): AnalysisResult {
   // Check education (institutional affiliation)
   if (author.education && author.education.length > 0) {
     orgScore += 1;
-    signals.push(`education: ${author.education.map(e => e.institution).join(', ')}`);
+    signals.push(`education: ${author.education.map((e) => e.institution).join(', ')}`);
   }
 
   if (orgScore >= 5) {

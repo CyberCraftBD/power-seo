@@ -145,7 +145,8 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
   return {
     id: 'eeat-experience-depth',
     title: 'Experience signals',
-    description: 'No first-hand experience signals detected. Add personal experience, testing outcomes, temporal markers ("after 6 months of using..."), and process narration to demonstrate real experience with the topic.',
+    description:
+      'No first-hand experience signals detected. Add personal experience, testing outcomes, temporal markers ("after 6 months of using..."), and process narration to demonstrate real experience with the topic.',
     status: 'poor',
     score: 0,
     maxScore: 9,

@@ -34,11 +34,15 @@ function countFactSignals(text: string): number {
   count += multipliers?.length ?? 0;
 
   // "According to" and attribution phrases
-  const attributions = text.match(/\baccording\s+to\b|\bstudy\s+(?:found|shows|revealed)\b|\bresearch\s+(?:found|shows|suggests)\b/gi);
+  const attributions = text.match(
+    /\baccording\s+to\b|\bstudy\s+(?:found|shows|revealed)\b|\bresearch\s+(?:found|shows|suggests)\b/gi,
+  );
   count += attributions?.length ?? 0;
 
   // Numeric measurements with units: 42ms, 3.2GB, 150km, 42dB
-  const measurements = text.match(/\d+(?:\.\d+)?\s*(?:ms|gb|mb|kb|km|cm|mm|kg|lbs?|db|fps|mph|rpm)\b/gi);
+  const measurements = text.match(
+    /\d+(?:\.\d+)?\s*(?:ms|gb|mb|kb|km|cm|mm|kg|lbs?|db|fps|mph|rpm)\b/gi,
+  );
   count += measurements?.length ?? 0;
 
   return count;

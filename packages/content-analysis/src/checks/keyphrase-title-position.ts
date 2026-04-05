@@ -43,8 +43,7 @@ export function checkKeyphraseTitlePosition(input: ContentAnalysisInput): Analys
     return {
       id: 'keyphrase-title-position',
       title: 'Keyphrase position in title',
-      description:
-        'Focus keyphrase appears near the beginning of the title. Well done!',
+      description: 'Focus keyphrase appears near the beginning of the title. Well done!',
       status: 'good',
       score: 5,
       maxScore: 5,

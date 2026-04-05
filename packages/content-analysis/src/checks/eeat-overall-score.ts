@@ -194,10 +194,8 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
   const trust = assessTrustWorthiness(input);
 
   const pillars = [experience, expertise, authority, trust];
-  const strongCount = pillars.filter(p => p.strong).length;
-  const pillarSummary = pillars
-    .map(p => `${p.name} ${p.score}/${p.maxScore}`)
-    .join(', ');
+  const strongCount = pillars.filter((p) => p.strong).length;
+  const pillarSummary = pillars.map((p) => `${p.name} ${p.score}/${p.maxScore}`).join(', ');
 
   if (strongCount >= 3) {
     return {
@@ -211,7 +209,7 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
   }
 
   if (strongCount >= 2) {
-    const weakPillars = pillars.filter(p => !p.strong).map(p => p.name);
+    const weakPillars = pillars.filter((p) => !p.strong).map((p) => p.name);
     return {
       id: 'eeat-overall-score',
       title: 'E-E-A-T overall score',
@@ -222,7 +220,7 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
     };
   }
 
-  const weakPillars = pillars.filter(p => !p.strong).map(p => p.name);
+  const weakPillars = pillars.filter((p) => !p.strong).map((p) => p.name);
   return {
     id: 'eeat-overall-score',
     title: 'E-E-A-T overall score',

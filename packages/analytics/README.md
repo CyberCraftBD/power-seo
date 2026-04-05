@@ -21,18 +21,17 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 
 ## Why @power-seo/analytics?
 
-| | Without | With |
-|---|---|---|
-| GSC + audit correlation | ❌ Two separate tools | ✅ Merged by URL with Pearson correlation |
-| Trend analysis | ❌ Manual spreadsheet | ✅ Direction, rate, confidence in one call |
-| Anomaly detection | ❌ Manual review | ✅ Statistical spike/drop flagging |
-| Ranking tiers | ❌ Raw position data | ✅ Bucket groups (1–3, 4–10, 11–20...) |
-| Position tracking | ❌ Manual comparison | ✅ Before/after diff with `trackPositionChanges` |
-| Dashboard output | ❌ Build from scratch | ✅ Structured `DashboardData` ready for any chart library |
-| TypeScript support | ❌ Untyped data | ✅ Full type coverage for all data structures |
+|                         | Without               | With                                                      |
+| ----------------------- | --------------------- | --------------------------------------------------------- |
+| GSC + audit correlation | ❌ Two separate tools | ✅ Merged by URL with Pearson correlation                 |
+| Trend analysis          | ❌ Manual spreadsheet | ✅ Direction, rate, confidence in one call                |
+| Anomaly detection       | ❌ Manual review      | ✅ Statistical spike/drop flagging                        |
+| Ranking tiers           | ❌ Raw position data  | ✅ Bucket groups (1–3, 4–10, 11–20...)                    |
+| Position tracking       | ❌ Manual comparison  | ✅ Before/after diff with `trackPositionChanges`          |
+| Dashboard output        | ❌ Build from scratch | ✅ Structured `DashboardData` ready for any chart library |
+| TypeScript support      | ❌ Untyped data       | ✅ Full type coverage for all data structures             |
 
 ![Analytics Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/analytics/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -62,17 +61,17 @@ Beyond correlation, the package provides a full trend analysis pipeline: time-se
 
 ## Comparison
 
-| Feature | @power-seo/analytics | Looker Studio | GA4 | Custom scripts |
-| --- | :---: | :---: | :---: | :---: |
-| GSC + audit data merge | ✅ | ❌ | ❌ | Manual |
-| Pearson correlation | ✅ | ❌ | ❌ | Manual |
-| Trend direction analysis | ✅ | Partial | Partial | Manual |
-| Anomaly detection | ✅ | ❌ | Partial | Manual |
-| Position change tracking | ✅ | ❌ | ❌ | Manual |
-| Ranking bucket grouping | ✅ | ❌ | ❌ | Manual |
-| Dashboard-ready output | ✅ | ✅ | Partial | Manual |
-| Zero external dependencies | ✅ | ❌ | ❌ | — |
-| TypeScript-first | ✅ | ❌ | ❌ | — |
+| Feature                    | @power-seo/analytics | Looker Studio |   GA4   | Custom scripts |
+| -------------------------- | :------------------: | :-----------: | :-----: | :------------: |
+| GSC + audit data merge     |          ✅          |      ❌       |   ❌    |     Manual     |
+| Pearson correlation        |          ✅          |      ❌       |   ❌    |     Manual     |
+| Trend direction analysis   |          ✅          |    Partial    | Partial |     Manual     |
+| Anomaly detection          |          ✅          |      ❌       | Partial |     Manual     |
+| Position change tracking   |          ✅          |      ❌       |   ❌    |     Manual     |
+| Ranking bucket grouping    |          ✅          |      ❌       |   ❌    |     Manual     |
+| Dashboard-ready output     |          ✅          |      ✅       | Partial |     Manual     |
+| Zero external dependencies |          ✅          |      ❌       |   ❌    |       —        |
+| TypeScript-first           |          ✅          |      ❌       |   ❌    |       —        |
 
 ![Analytics Trend Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/analytics/trend-accuracy.svg)
 
@@ -188,7 +187,10 @@ if (result.correlation > 0.5) {
 }
 
 // Top pages with high traffic but low scores
-console.log('Quick wins:', result.topOpportunities.map((p) => p.url));
+console.log(
+  'Quick wins:',
+  result.topOpportunities.map((p) => p.url),
+);
 ```
 
 ### Trend Analysis
@@ -335,9 +337,7 @@ dashboard.topQueries.forEach(({ query, clicks, position }) =>
 dashboard.trendLines; // TrendPoint[]
 
 // Recommended issues — deduplicated and prioritized
-dashboard.issues.forEach((issue) =>
-  console.log(`Issue: ${issue}`),
-);
+dashboard.issues.forEach((issue) => console.log(`Issue: ${issue}`));
 ```
 
 ---
@@ -346,10 +346,10 @@ dashboard.issues.forEach((issue) =>
 
 ### `mergeGscWithAudit(gscData, auditResults)`
 
-| Parameter        | Type              | Default  | Description                                         |
-| ---------------- | ----------------- | -------- | --------------------------------------------------- |
-| `gscData`        | `GscPageData[]`   | required | Google Search Console page performance data         |
-| `auditResults`   | `AuditData[]`     | required | Audit results with URL, score, categories, recommendations |
+| Parameter      | Type            | Default  | Description                                                |
+| -------------- | --------------- | -------- | ---------------------------------------------------------- |
+| `gscData`      | `GscPageData[]` | required | Google Search Console page performance data                |
+| `auditResults` | `AuditData[]`   | required | Audit results with URL, score, categories, recommendations |
 
 Returns `PageInsight[]` — merged records keyed by normalized URL with opportunities identified.
 
@@ -378,9 +378,9 @@ Returns `TrendAnalysis`: `{ metric: string; trend: TrendDirection; change: numbe
 
 ### `buildTrendLines(snapshots)`
 
-| Parameter    | Type              | Default  | Description                                          |
-| ------------ | ----------------- | -------- | ---------------------------------------------------- |
-| `snapshots`  | `AuditSnapshot[]` | required | Audit snapshots with date, score, and category data |
+| Parameter   | Type              | Default  | Description                                         |
+| ----------- | ----------------- | -------- | --------------------------------------------------- |
+| `snapshots` | `AuditSnapshot[]` | required | Audit snapshots with date, score, and category data |
 
 Returns `Record<string, TrendAnalysis>` — includes 'overall' trend plus per-category trends (e.g., 'performance', 'seo').
 

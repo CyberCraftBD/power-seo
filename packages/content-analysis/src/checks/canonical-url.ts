@@ -51,8 +51,7 @@ export function checkCanonicalUrl(input: ContentAnalysisInput): AnalysisResult {
     return {
       id: 'canonical-url',
       title: 'Canonical URL',
-      description:
-        'Canonical URL uses HTTP. Consider using HTTPS for better security and SEO.',
+      description: 'Canonical URL uses HTTP. Consider using HTTPS for better security and SEO.',
       status: 'ok',
       score: 3,
       maxScore: 5,
@@ -64,7 +63,8 @@ export function checkCanonicalUrl(input: ContentAnalysisInput): AnalysisResult {
     return {
       id: 'canonical-url',
       title: 'Canonical URL',
-      description: 'Canonical URL is set and uses HTTPS. Good for SEO and duplicate content prevention.',
+      description:
+        'Canonical URL is set and uses HTTPS. Good for SEO and duplicate content prevention.',
       status: 'good',
       score: 5,
       maxScore: 5,

@@ -72,7 +72,9 @@ export function checkEditorialReview(input: ContentAnalysisInput): AnalysisResul
 
   if (patternMatches > 0) {
     score += Math.min(3, patternMatches);
-    signals.push(`${patternMatches} editorial indicator${patternMatches > 1 ? 's' : ''} in content`);
+    signals.push(
+      `${patternMatches} editorial indicator${patternMatches > 1 ? 's' : ''} in content`,
+    );
   }
 
   if (score >= 4) {
@@ -87,8 +89,10 @@ export function checkEditorialReview(input: ContentAnalysisInput): AnalysisResul
   }
 
   if (score >= 2) {
-    if (!editorialReviewer) gaps.push('add structured editorialReviewer data (name, credentials, URL)');
-    if (patternMatches === 0) gaps.push('add "Reviewed by" or "Fact-checked by" disclosure in content');
+    if (!editorialReviewer)
+      gaps.push('add structured editorialReviewer data (name, credentials, URL)');
+    if (patternMatches === 0)
+      gaps.push('add "Reviewed by" or "Fact-checked by" disclosure in content');
     return {
       id: 'eeat-editorial-review',
       title: 'Editorial review',
@@ -102,7 +106,8 @@ export function checkEditorialReview(input: ContentAnalysisInput): AnalysisResul
   return {
     id: 'eeat-editorial-review',
     title: 'Editorial review',
-    description: 'No editorial review indicators found. Add: reviewer name & credentials (editorialReviewer), "Reviewed by [Name]" in content, review date, and editorial policy link. This is critical for YMYL topics.',
+    description:
+      'No editorial review indicators found. Add: reviewer name & credentials (editorialReviewer), "Reviewed by [Name]" in content, review date, and editorial policy link. This is critical for YMYL topics.',
     status: 'poor',
     score: 0,
     maxScore: 5,

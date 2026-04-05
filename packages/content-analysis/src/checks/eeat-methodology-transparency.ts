@@ -84,12 +84,17 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
       totalMatches += matches.length;
       const src = pattern.source.toLowerCase();
       if (src.includes('test')) categories.add('testing process');
-      else if (src.includes('evaluat') || src.includes('criteria') || src.includes('scor')) categories.add('evaluation criteria');
-      else if (src.includes('sample') || src.includes('data') || src.includes('control')) categories.add('research process');
-      else if (src.includes('scope') || src.includes('limitation') || src.includes('disclaimer')) categories.add('scope & limitations');
+      else if (src.includes('evaluat') || src.includes('criteria') || src.includes('scor'))
+        categories.add('evaluation criteria');
+      else if (src.includes('sample') || src.includes('data') || src.includes('control'))
+        categories.add('research process');
+      else if (src.includes('scope') || src.includes('limitation') || src.includes('disclaimer'))
+        categories.add('scope & limitations');
       else if (src.includes('assum')) categories.add('assumptions');
-      else if (src.includes('replic') || src.includes('reproduc') || src.includes('repeat')) categories.add('reproducibility');
-      else if (src.includes('tool') || src.includes('software') || src.includes('environment')) categories.add('tools & environment');
+      else if (src.includes('replic') || src.includes('reproduc') || src.includes('repeat'))
+        categories.add('reproducibility');
+      else if (src.includes('tool') || src.includes('software') || src.includes('environment'))
+        categories.add('tools & environment');
     }
   }
 
@@ -108,7 +113,8 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
 
   if (totalMatches >= 2 && categoryList.length >= 1) {
     const missing: string[] = [];
-    if (!categories.has('testing process') && !categories.has('evaluation criteria')) missing.push('evaluation criteria');
+    if (!categories.has('testing process') && !categories.has('evaluation criteria'))
+      missing.push('evaluation criteria');
     if (!categories.has('scope & limitations')) missing.push('scope & limitations');
     if (!categories.has('tools & environment')) missing.push('tools used');
     return {
@@ -124,7 +130,8 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
   return {
     id: 'eeat-methodology-transparency',
     title: 'Methodology transparency',
-    description: 'No methodology transparency detected. Add: how you tested/evaluated, tools used, evaluation criteria, scope & limitations, and assumptions. Transparent processes are a strong expertise signal.',
+    description:
+      'No methodology transparency detected. Add: how you tested/evaluated, tools used, evaluation criteria, scope & limitations, and assumptions. Transparent processes are a strong expertise signal.',
     status: 'poor',
     score: 0,
     maxScore: 5,

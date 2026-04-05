@@ -21,18 +21,17 @@ The alt text auditor catches not just empty alt attributes but the subtler issue
 
 ## Why @power-seo/images?
 
-| | Without | With |
-|---|---|---|
-| Alt text quality | ❌ Spot-check | ✅ 6 issue types: missing, short, filename, duplicate... |
-| CWV-aware loading | ❌ Generic advice | ✅ Above/below-fold-aware lazy loading audit |
-| Format detection | ❌ Manual | ✅ JPEG/PNG/GIF → WebP/AVIF recommendations |
-| Image sitemap | ❌ Write XML manually | ✅ Standards-compliant `image:` namespace XML |
-| Scoring | ❌ None | ✅ Per-analyzer 0–100 scores |
-| LCP protection | ❌ Unknown | ✅ Flags hero images incorrectly marked lazy |
-| TypeScript support | ❌ Untyped | ✅ Full type coverage for all inputs and results |
+|                    | Without               | With                                                     |
+| ------------------ | --------------------- | -------------------------------------------------------- |
+| Alt text quality   | ❌ Spot-check         | ✅ 6 issue types: missing, short, filename, duplicate... |
+| CWV-aware loading  | ❌ Generic advice     | ✅ Above/below-fold-aware lazy loading audit             |
+| Format detection   | ❌ Manual             | ✅ JPEG/PNG/GIF → WebP/AVIF recommendations              |
+| Image sitemap      | ❌ Write XML manually | ✅ Standards-compliant `image:` namespace XML            |
+| Scoring            | ❌ None               | ✅ Per-analyzer 0–100 scores                             |
+| LCP protection     | ❌ Unknown            | ✅ Flags hero images incorrectly marked lazy             |
+| TypeScript support | ❌ Untyped            | ✅ Full type coverage for all inputs and results         |
 
 ![Images Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/comparison.svg)
-
 
 <p align="left">
   <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
@@ -61,16 +60,16 @@ The alt text auditor catches not just empty alt attributes but the subtler issue
 
 ## Comparison
 
-| Feature | @power-seo/images | sharp | Lighthouse | next/image | imagemin |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Alt text quality audit | ✅ | ❌ | Partial | ❌ | ❌ |
-| CWV-aware lazy loading audit | ✅ | ❌ | Partial | ❌ | ❌ |
-| Format recommendations | ✅ | ❌ | Partial | ✅ | Partial |
-| Image sitemap generation | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Severity-leveled issues | ✅ | ❌ | ✅ | ❌ | ❌ |
-| Programmatic API | ✅ | ✅ | Partial | ✅ | ✅ |
-| Zero dependencies | ✅ | ❌ | ❌ | ❌ | ❌ |
-| TypeScript-first | ✅ | Partial | ❌ | ✅ | ❌ |
+| Feature                      | @power-seo/images |  sharp  | Lighthouse | next/image | imagemin |
+| ---------------------------- | :---------------: | :-----: | :--------: | :--------: | :------: |
+| Alt text quality audit       |        ✅         |   ❌    |  Partial   |     ❌     |    ❌    |
+| CWV-aware lazy loading audit |        ✅         |   ❌    |  Partial   |     ❌     |    ❌    |
+| Format recommendations       |        ✅         |   ❌    |  Partial   |     ✅     | Partial  |
+| Image sitemap generation     |        ✅         |   ❌    |     ❌     |     ❌     |    ❌    |
+| Severity-leveled issues      |        ✅         |   ❌    |     ✅     |     ❌     |    ❌    |
+| Programmatic API             |        ✅         |   ✅    |  Partial   |     ✅     |    ✅    |
+| Zero dependencies            |        ✅         |   ❌    |     ❌     |     ❌     |    ❌    |
+| TypeScript-first             |        ✅         | Partial |     ❌     |     ✅     |    ❌    |
 
 ![Image Format Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/images/format-accuracy.svg)
 
@@ -281,9 +280,7 @@ const pages: ImageSitemapPage[] = [
   },
   {
     pageUrl: 'https://example.com/products/gadget',
-    images: [
-      { src: '/products/gadget.jpg', alt: 'Premium gadget' },
-    ],
+    images: [{ src: '/products/gadget.jpg', alt: 'Premium gadget' }],
   },
 ];
 
@@ -302,9 +299,30 @@ Combine all analyzers for a complete image health report on a single page.
 import { analyzeAltText, auditLazyLoading, analyzeImageFormats } from '@power-seo/images';
 
 const images: ImageInfo[] = [
-  { src: '/blog/hero.jpg', alt: 'Article hero image', loading: 'eager', isAboveFold: true, width: 1200, height: 630 },
-  { src: '/blog/section1.webp', alt: '', loading: undefined, isAboveFold: false, width: 800, height: 400 },
-  { src: '/blog/my-post-topic.jpg', alt: 'My post topic illustration', loading: 'lazy', isAboveFold: false, width: 600, height: 400 },
+  {
+    src: '/blog/hero.jpg',
+    alt: 'Article hero image',
+    loading: 'eager',
+    isAboveFold: true,
+    width: 1200,
+    height: 630,
+  },
+  {
+    src: '/blog/section1.webp',
+    alt: '',
+    loading: undefined,
+    isAboveFold: false,
+    width: 800,
+    height: 400,
+  },
+  {
+    src: '/blog/my-post-topic.jpg',
+    alt: 'My post topic illustration',
+    loading: 'lazy',
+    isAboveFold: false,
+    width: 600,
+    height: 400,
+  },
 ];
 
 const altResult = analyzeAltText(images, 'my post topic');
@@ -326,31 +344,32 @@ console.log(`Legacy formats: ${formatResult.legacyFormatCount}/${formatResult.to
 function analyzeAltText(images: ImageInfo[], focusKeyphrase?: string): ImageAuditResult;
 ```
 
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `images` | `ImageInfo[]` | required | Array of image objects with `src`, `alt`, and optional properties |
-| `focusKeyphrase` | `string` | — | Optional focus keyword to check for presence in alt text |
+| Parameter        | Type          | Default  | Description                                                       |
+| ---------------- | ------------- | -------- | ----------------------------------------------------------------- |
+| `images`         | `ImageInfo[]` | required | Array of image objects with `src`, `alt`, and optional properties |
+| `focusKeyphrase` | `string`      | —        | Optional focus keyword to check for presence in alt text          |
 
 Returns `ImageAuditResult`:
+
 - `totalImages: number` — Total images analyzed
 - `score: number` — Overall alt text quality score (0–100)
 - `maxScore: number` — Maximum possible score
 - `issues: ImageIssue[]` — Array of detected issues
 - `perImage: ImageAnalysisResult[]` — Per-image analysis results
 - `recommendations: string[]` — Actionable improvement recommendations
-| `input.keyphrase`    | `string`      | `''`     | Focus keyphrase to check for in alt text                                            |
-| `input.minAltLength` | `number`      | `5`      | Minimum character length for meaningful alt text                                    |
+  | `input.keyphrase` | `string` | `''` | Focus keyphrase to check for in alt text |
+  | `input.minAltLength` | `number` | `5` | Minimum character length for meaningful alt text |
 
 Returns `ImageAuditResult`:
 
-| Property          | Type                     | Description                                        |
-| ----------------- | ------------------------ | -------------------------------------------------- |
-| `totalImages`     | `number`                 | Total number of images analyzed                    |
-| `score`           | `number`                 | Alt text quality score 0–100                       |
-| `maxScore`        | `number`                 | Maximum possible score (for reference)             |
-| `issues`          | `ImageIssue[]`           | Array of detected alt text issues                  |
-| `perImage`        | `ImageAnalysisResult[]`  | Per-image analysis results                         |
-| `recommendations` | `string[]`               | Human-readable alt text improvement suggestions    |
+| Property          | Type                    | Description                                     |
+| ----------------- | ----------------------- | ----------------------------------------------- |
+| `totalImages`     | `number`                | Total number of images analyzed                 |
+| `score`           | `number`                | Alt text quality score 0–100                    |
+| `maxScore`        | `number`                | Maximum possible score (for reference)          |
+| `issues`          | `ImageIssue[]`          | Array of detected alt text issues               |
+| `perImage`        | `ImageAnalysisResult[]` | Per-image analysis results                      |
+| `recommendations` | `string[]`              | Human-readable alt text improvement suggestions |
 
 ---
 
@@ -362,11 +381,11 @@ Returns `ImageAuditResult`:
 
 Returns `LazyLoadingAuditResult`:
 
-| Property          | Type           | Description                                      |
-| ----------------- | -------------- | ------------------------------------------------ |
-| `totalImages`     | `number`       | Total number of images analyzed                  |
-| `issues`          | `ImageIssue[]` | Array of detected lazy loading issues            |
-| `recommendations` | `string[]`     | Human-readable lazy loading improvement tips     |
+| Property          | Type           | Description                                  |
+| ----------------- | -------------- | -------------------------------------------- |
+| `totalImages`     | `number`       | Total number of images analyzed              |
+| `issues`          | `ImageIssue[]` | Array of detected lazy loading issues        |
+| `recommendations` | `string[]`     | Human-readable lazy loading improvement tips |
 
 ---
 
@@ -398,13 +417,13 @@ Returns `string | undefined` — a human-readable recommendation for upgrading t
 
 Returns `FormatAuditResult`:
 
-| Property             | Type                      | Description                                           |
-| -------------------- | ------------------------- | ----------------------------------------------------- |
-| `totalImages`        | `number`                  | Total number of images analyzed                       |
-| `modernFormatCount`  | `number`                  | Number of images using modern formats (webp, avif)    |
-| `legacyFormatCount`  | `number`                  | Number of images using legacy formats (jpeg, png, etc)|
-| `results`            | `FormatAnalysisResult[]`  | Per-image analysis with current format and recommendations |
-| `recommendations`    | `string[]`                | Human-readable format upgrade suggestions             |
+| Property            | Type                     | Description                                                |
+| ------------------- | ------------------------ | ---------------------------------------------------------- |
+| `totalImages`       | `number`                 | Total number of images analyzed                            |
+| `modernFormatCount` | `number`                 | Number of images using modern formats (webp, avif)         |
+| `legacyFormatCount` | `number`                 | Number of images using legacy formats (jpeg, png, etc)     |
+| `results`           | `FormatAnalysisResult[]` | Per-image analysis with current format and recommendations |
+| `recommendations`   | `string[]`               | Human-readable format upgrade suggestions                  |
 
 ---
 

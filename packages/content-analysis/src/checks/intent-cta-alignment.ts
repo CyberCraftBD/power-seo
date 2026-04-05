@@ -65,14 +65,7 @@ const CTA_CATEGORIES: CtaCategory[] = [
   {
     key: 'navigational',
     label: 'Navigational',
-    phrases: [
-      'visit site',
-      'go to',
-      'access',
-      'log in',
-      'open',
-      'launch',
-    ],
+    phrases: ['visit site', 'go to', 'access', 'log in', 'open', 'launch'],
   },
 ];
 
@@ -99,17 +92,14 @@ function findCtaMatches(text: string, phrases: readonly string[]): string[] {
  * - ok   (3): some CTAs align, some don't, or no CTAs found
  * - poor (1): CTAs contradict intent (e.g., "buy now" in informational content)
  */
-export function checkIntentCtaAlignment(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentCtaAlignment(input: ContentAnalysisInput): AnalysisResult {
   const { focusKeyphrase, content } = input;
 
   if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
     return {
       id: 'intent-cta-alignment',
       title: 'CTA-intent alignment',
-      description:
-        'No focus keyphrase set. Set one to analyze CTA-intent alignment.',
+      description: 'No focus keyphrase set. Set one to analyze CTA-intent alignment.',
       status: 'na',
       score: 0,
       maxScore: 5,
@@ -150,8 +140,7 @@ export function checkIntentCtaAlignment(
 
   // Get the keyphrase intent label
   const intentLabel =
-    CTA_CATEGORIES.find((c) => c.key === keyphraseIntent)?.label ??
-    keyphraseIntent;
+    CTA_CATEGORIES.find((c) => c.key === keyphraseIntent)?.label ?? keyphraseIntent;
 
   // No CTAs found at all
   if (totalCtasFound === 0) {
@@ -160,7 +149,13 @@ export function checkIntentCtaAlignment(
       title: 'CTA-intent alignment',
       description:
         `No CTA phrases found in the content. For ${intentLabel.toLowerCase()} intent, ` +
-        `consider adding relevant CTAs such as: ${alignedCategory?.matches.length === 0 ? CTA_CATEGORIES.find((c) => c.key === keyphraseIntent)?.phrases.slice(0, 3).join(', ') ?? 'appropriate calls to action' : alignedCtas.join(', ')}.`,
+        `consider adding relevant CTAs such as: ${
+          alignedCategory?.matches.length === 0
+            ? (CTA_CATEGORIES.find((c) => c.key === keyphraseIntent)
+                ?.phrases.slice(0, 3)
+                .join(', ') ?? 'appropriate calls to action')
+            : alignedCtas.join(', ')
+        }.`,
       status: 'ok',
       score: 3,
       maxScore: 5,

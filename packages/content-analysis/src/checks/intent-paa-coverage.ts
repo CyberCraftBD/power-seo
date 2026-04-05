@@ -8,7 +8,8 @@ import { stripHtml, extractTagContents } from '@power-seo/core';
 // Question detection
 // ---------------------------------------------------------------------------
 
-const QUESTION_STARTERS = /\b(?:what|how|why|when|where|who|can|does|do|is|are|should|will|which)\b/i;
+const QUESTION_STARTERS =
+  /\b(?:what|how|why|when|where|who|can|does|do|is|are|should|will|which)\b/i;
 
 /**
  * Determine whether a heading text is a question pattern.
@@ -54,7 +55,8 @@ export function checkIntentPaaCoverage(input: ContentAnalysisInput): AnalysisRes
     return {
       id: 'intent-paa-coverage',
       title: 'People Also Ask coverage',
-      description: 'No H2 or H3 headings found in the content. Add headings — especially question-phrased headings — to target "People Also Ask" boxes in Google.',
+      description:
+        'No H2 or H3 headings found in the content. Add headings — especially question-phrased headings — to target "People Also Ask" boxes in Google.',
       status: 'na',
       score: 0,
       maxScore: 5,

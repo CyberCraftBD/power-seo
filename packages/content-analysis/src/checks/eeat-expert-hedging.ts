@@ -121,8 +121,11 @@ export function checkExpertHedging(input: ContentAnalysisInput): AnalysisResult 
 
   if (hedgingCount >= 1 && absoluteCount <= 3) {
     const suggestions: string[] = [];
-    if (absoluteCount > 0) suggestions.push(`soften ${absoluteCount} absolute claims: ${absoluteExamples.join(', ')}`);
-    suggestions.push('add hedging phrases: "research suggests", "in most cases", "evidence indicates"');
+    if (absoluteCount > 0)
+      suggestions.push(`soften ${absoluteCount} absolute claims: ${absoluteExamples.join(', ')}`);
+    suggestions.push(
+      'add hedging phrases: "research suggests", "in most cases", "evidence indicates"',
+    );
     return {
       id: 'eeat-expert-hedging',
       title: 'Expert precision',
@@ -147,7 +150,8 @@ export function checkExpertHedging(input: ContentAnalysisInput): AnalysisResult 
   return {
     id: 'eeat-expert-hedging',
     title: 'Expert precision',
-    description: 'No hedging or precision language detected. Experts qualify claims with "research suggests", "evidence indicates", "in most cases". Add calibrated confidence language to demonstrate expertise.',
+    description:
+      'No hedging or precision language detected. Experts qualify claims with "research suggests", "evidence indicates", "in most cases". Add calibrated confidence language to demonstrate expertise.',
     status: 'poor',
     score: 1,
     maxScore: 5,

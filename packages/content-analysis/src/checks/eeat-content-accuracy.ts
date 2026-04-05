@@ -18,14 +18,27 @@ const MISLEADING_PATTERNS: Array<{ pattern: RegExp; type: string }> = [
 
   // Unsubstantiated superlatives
   { pattern: /\bthe\s+(?:absolute|very|single)\s+best\b/gi, type: 'unsubstantiated superlative' },
-  { pattern: /\b(?:best|greatest|most\s+\w+)\s+(?:ever|in\s+the\s+world|of\s+all\s+time)\b/gi, type: 'unsubstantiated superlative' },
-  { pattern: /\bnothing\s+(?:else\s+)?(?:compares?|comes?\s+close|beats?)\b/gi, type: 'unsubstantiated superlative' },
-  { pattern: /\bthe\s+only\s+(?:solution|answer|way|product|tool)\s+you['']?ll?\s+(?:ever\s+)?need\b/gi, type: 'unsubstantiated superlative' },
+  {
+    pattern: /\b(?:best|greatest|most\s+\w+)\s+(?:ever|in\s+the\s+world|of\s+all\s+time)\b/gi,
+    type: 'unsubstantiated superlative',
+  },
+  {
+    pattern: /\bnothing\s+(?:else\s+)?(?:compares?|comes?\s+close|beats?)\b/gi,
+    type: 'unsubstantiated superlative',
+  },
+  {
+    pattern:
+      /\bthe\s+only\s+(?:solution|answer|way|product|tool)\s+you['']?ll?\s+(?:ever\s+)?need\b/gi,
+    type: 'unsubstantiated superlative',
+  },
 
   // Clickbait exaggeration
   { pattern: /\byou\s+won['']t\s+believe\b/gi, type: 'clickbait' },
   { pattern: /\bshocking\s+(?:truth|reason|secret|fact)\b/gi, type: 'clickbait' },
-  { pattern: /\bwhat\s+(?:they|nobody|no\s+one)\s+(?:don['']t|won['']t)\s+tell\s+you\b/gi, type: 'clickbait' },
+  {
+    pattern: /\bwhat\s+(?:they|nobody|no\s+one)\s+(?:don['']t|won['']t)\s+tell\s+you\b/gi,
+    type: 'clickbait',
+  },
   { pattern: /\bsecret\s+(?:that|they|nobody)\b/gi, type: 'clickbait' },
   { pattern: /\bdoctors?\s+(?:hate|don['']t\s+want)\b/gi, type: 'clickbait' },
   { pattern: /\bone\s+weird\s+trick\b/gi, type: 'clickbait' },
@@ -33,10 +46,19 @@ const MISLEADING_PATTERNS: Array<{ pattern: RegExp; type: string }> = [
 
   // Deceptive framing
   { pattern: /\bguaranteed\s+(?:results?|success|income|returns?)\b/gi, type: 'deceptive claim' },
-  { pattern: /\b100\s*%\s+(?:guaranteed|proven|risk[\s-]?free|safe|effective|success)\b/gi, type: 'deceptive claim' },
+  {
+    pattern: /\b100\s*%\s+(?:guaranteed|proven|risk[\s-]?free|safe|effective|success)\b/gi,
+    type: 'deceptive claim',
+  },
   { pattern: /\bget\s+rich\s+(?:quick|fast)\b/gi, type: 'deceptive claim' },
-  { pattern: /\bmake\s+(?:\$[\d,]+|money)\s+(?:fast|easily|overnight|while\s+you\s+sleep)\b/gi, type: 'deceptive claim' },
-  { pattern: /\bno\s+(?:risk|effort|experience)\s+(?:required|needed|necessary)\b/gi, type: 'deceptive claim' },
+  {
+    pattern: /\bmake\s+(?:\$[\d,]+|money)\s+(?:fast|easily|overnight|while\s+you\s+sleep)\b/gi,
+    type: 'deceptive claim',
+  },
+  {
+    pattern: /\bno\s+(?:risk|effort|experience)\s+(?:required|needed|necessary)\b/gi,
+    type: 'deceptive claim',
+  },
   { pattern: /\binstant\s+(?:results?|success|cure|fix)\b/gi, type: 'deceptive claim' },
   { pattern: /\bmiracle\s+(?:cure|solution|product|formula)\b/gi, type: 'deceptive claim' },
 ];
@@ -108,7 +130,8 @@ export function checkContentAccuracy(input: ContentAnalysisInput): AnalysisResul
     return {
       id: 'eeat-content-accuracy',
       title: 'Content accuracy',
-      description: 'No misleading language detected. Consider adding more evidence-backed claims ("research shows", "according to studies") to strengthen trustworthiness.',
+      description:
+        'No misleading language detected. Consider adding more evidence-backed claims ("research shows", "according to studies") to strengthen trustworthiness.',
       status: 'good',
       score: 5,
       maxScore: 10,
@@ -116,7 +139,7 @@ export function checkContentAccuracy(input: ContentAnalysisInput): AnalysisResul
   }
 
   if (issueCount <= 2 && evidenceCount >= 1) {
-    const examples = foundIssues.slice(0, 2).map(i => `"${i.text}" (${i.type})`);
+    const examples = foundIssues.slice(0, 2).map((i) => `"${i.text}" (${i.type})`);
     return {
       id: 'eeat-content-accuracy',
       title: 'Content accuracy',
@@ -128,7 +151,7 @@ export function checkContentAccuracy(input: ContentAnalysisInput): AnalysisResul
   }
 
   const typeList = Array.from(issueTypes).join(', ');
-  const examples = foundIssues.slice(0, 3).map(i => `"${i.text}"`);
+  const examples = foundIssues.slice(0, 3).map((i) => `"${i.text}"`);
   return {
     id: 'eeat-content-accuracy',
     title: 'Content accuracy',

@@ -46,7 +46,7 @@ export function checkConflictDisclosure(input: ContentAnalysisInput): AnalysisRe
   while ((match = linkPattern.exec(content)) !== null) {
     const href = match[1] || '';
     allLinks.push(href);
-    if (AFFILIATE_LINK_PATTERNS.some(p => p.test(href))) {
+    if (AFFILIATE_LINK_PATTERNS.some((p) => p.test(href))) {
       affiliateLinkCount++;
     }
   }
@@ -71,7 +71,8 @@ export function checkConflictDisclosure(input: ContentAnalysisInput): AnalysisRe
       return {
         id: 'eeat-conflict-disclosure',
         title: 'Conflict disclosure',
-        description: 'Disclosure present even without commercial interests. Proactive transparency builds reader trust.',
+        description:
+          'Disclosure present even without commercial interests. Proactive transparency builds reader trust.',
         status: 'good',
         score: 5,
         maxScore: 5,
@@ -80,7 +81,8 @@ export function checkConflictDisclosure(input: ContentAnalysisInput): AnalysisRe
     return {
       id: 'eeat-conflict-disclosure',
       title: 'Conflict disclosure',
-      description: 'No commercial interests detected (no affiliate links, not sponsored). No disclosure needed.',
+      description:
+        'No commercial interests detected (no affiliate links, not sponsored). No disclosure needed.',
       status: 'na',
       score: 0,
       maxScore: 5,
@@ -101,7 +103,9 @@ export function checkConflictDisclosure(input: ContentAnalysisInput): AnalysisRe
     if (affiliateRatio > 0.5) {
       issues.push(`${Math.round(affiliateRatio * 100)}% of links are affiliate — excessive`);
     } else {
-      positives.push(`${affiliateLinkCount} affiliate link${affiliateLinkCount > 1 ? 's' : ''} (${Math.round(affiliateRatio * 100)}% of total)`);
+      positives.push(
+        `${affiliateLinkCount} affiliate link${affiliateLinkCount > 1 ? 's' : ''} (${Math.round(affiliateRatio * 100)}% of total)`,
+      );
     }
   }
 

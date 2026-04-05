@@ -47,20 +47,20 @@ const DISCLAIMER_PATTERNS: Record<string, RegExp[]> = {
     /\bseek\s+(?:immediate\s+)?medical\s+(?:attention|help|advice)\b/gi,
     /\bmedical\s+disclaimer\b/gi,
   ],
-  'finance': [
+  finance: [
     /\bnot\s+(?:a\s+substitute\s+for\s+)?financial\s+advice\b/gi,
     /\bconsult\s+(?:a|your)\s+(?:financial|tax)\s+(?:advisor|professional|consultant)\b/gi,
     /\bfor\s+informational\s+purposes?\s+only\b/gi,
     /\bfinancial\s+disclaimer\b/gi,
     /\bpast\s+performance\s+(?:is|does)\s+not\b/gi,
   ],
-  'legal': [
+  legal: [
     /\bnot\s+(?:a\s+substitute\s+for\s+)?legal\s+advice\b/gi,
     /\bconsult\s+(?:a|your)\s+(?:attorney|lawyer|legal\s+professional)\b/gi,
     /\bfor\s+informational\s+purposes?\s+only\b/gi,
     /\blegal\s+disclaimer\b/gi,
   ],
-  'safety': [
+  safety: [
     /\b(?:call|contact|dial)\s+(?:911|emergency|poison\s+control)\b/gi,
     /\bseek\s+(?:immediate|emergency)\s+(?:help|assistance|medical)\b/gi,
     /\bin\s+case\s+of\s+emergency\b/gi,
@@ -85,9 +85,9 @@ function detectYmylCategories(plainText: string, contentCategory?: string): stri
   if (contentCategory) {
     const cat = contentCategory.toLowerCase();
     const isYMYL = YMYL_CATEGORIES.some(({ category }) =>
-      cat.includes(category.split('/')[0] || '')
+      cat.includes(category.split('/')[0] || ''),
     );
-    if (isYMYL && !detected.some(d => d.includes(cat.split('/')[0] || ''))) {
+    if (isYMYL && !detected.some((d) => d.includes(cat.split('/')[0] || ''))) {
       detected.push(contentCategory);
     }
   }
@@ -106,7 +106,8 @@ export function checkYmylMultiplier(input: ContentAnalysisInput): AnalysisResult
     return {
       id: 'eeat-ymyl-multiplier',
       title: 'YMYL multiplier',
-      description: 'Content is not YMYL (Your Money or Your Life). Standard E-E-A-T requirements apply; no stricter multiplier needed.',
+      description:
+        'Content is not YMYL (Your Money or Your Life). Standard E-E-A-T requirements apply; no stricter multiplier needed.',
       status: 'na',
       score: 0,
       maxScore: 5,
@@ -123,7 +124,7 @@ export function checkYmylMultiplier(input: ContentAnalysisInput): AnalysisResult
   // 1. Author credentials (critical for YMYL)
   if (input.author?.credentials && input.author.credentials.length > 0) {
     eeatScore += 2;
-    const credNames = input.author.credentials.map(c => c.name);
+    const credNames = input.author.credentials.map((c) => c.name);
     signals.push(`author credentials: ${credNames.slice(0, 3).join(', ')}`);
   } else {
     gaps.push('YMYL content requires author with verifiable credentials');
@@ -145,7 +146,9 @@ export function checkYmylMultiplier(input: ContentAnalysisInput): AnalysisResult
   // 3. Category-appropriate disclaimers
   let hasDisclaimer = false;
   for (const category of ymylCategories) {
-    const catKey = Object.keys(DISCLAIMER_PATTERNS).find(k => category.includes(k.split('/')[0] || ''));
+    const catKey = Object.keys(DISCLAIMER_PATTERNS).find((k) =>
+      category.includes(k.split('/')[0] || ''),
+    );
     if (catKey && DISCLAIMER_PATTERNS[catKey]) {
       for (const pattern of DISCLAIMER_PATTERNS[catKey]) {
         if (pattern.test(plainText)) {
@@ -161,7 +164,9 @@ export function checkYmylMultiplier(input: ContentAnalysisInput): AnalysisResult
     eeatScore += 1;
     signals.push('appropriate disclaimers present');
   } else {
-    gaps.push('add category-appropriate disclaimers (e.g., "consult a professional", "for informational purposes only")');
+    gaps.push(
+      'add category-appropriate disclaimers (e.g., "consult a professional", "for informational purposes only")',
+    );
   }
 
   // 4. HTTPS (baseline trust for YMYL)
@@ -182,7 +187,12 @@ export function checkYmylMultiplier(input: ContentAnalysisInput): AnalysisResult
   }
 
   // 6. Author bio and expertise areas
-  if (input.author?.bio && input.author.bio.trim().length >= 20 && input.author.knowsAbout && input.author.knowsAbout.length > 0) {
+  if (
+    input.author?.bio &&
+    input.author.bio.trim().length >= 20 &&
+    input.author.knowsAbout &&
+    input.author.knowsAbout.length > 0
+  ) {
     eeatScore += 1;
     signals.push('author bio with expertise areas');
   }

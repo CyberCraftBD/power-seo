@@ -47,20 +47,20 @@ const DISCLAIMER_PATTERNS: Record<string, RegExp[]> = {
     /\bseek\s+(?:immediate\s+)?medical\s+(?:attention|help|advice)\b/gi,
     /\bmedical\s+disclaimer\b/gi,
   ],
-  'finance': [
+  finance: [
     /\bnot\s+(?:a\s+substitute\s+for\s+)?financial\s+advice\b/gi,
     /\bconsult\s+(?:a|your)\s+(?:financial|tax)\s+(?:advisor|professional|consultant)\b/gi,
     /\bfor\s+informational\s+purposes?\s+only\b/gi,
     /\bfinancial\s+disclaimer\b/gi,
     /\bpast\s+performance\s+(?:is|does)\s+not\b/gi,
   ],
-  'legal': [
+  legal: [
     /\bnot\s+(?:a\s+substitute\s+for\s+)?legal\s+advice\b/gi,
     /\bconsult\s+(?:a|your)\s+(?:attorney|lawyer|legal\s+professional)\b/gi,
     /\bfor\s+informational\s+purposes?\s+only\b/gi,
     /\blegal\s+disclaimer\b/gi,
   ],
-  'safety': [
+  safety: [
     /\b(?:call|contact|dial)\s+(?:911|emergency|poison\s+control)\b/gi,
     /\bseek\s+(?:immediate|emergency)\s+(?:help|assistance|medical)\b/gi,
     /\bin\s+case\s+of\s+emergency\b/gi,
@@ -80,7 +80,8 @@ export function checkYmylCompliance(input: ContentAnalysisInput): AnalysisResult
       const matches = plainText.match(pattern);
       if (matches) matchCount += matches.length;
     }
-    if (matchCount >= 3) { // Threshold: at least 3 keyword matches to classify
+    if (matchCount >= 3) {
+      // Threshold: at least 3 keyword matches to classify
       detectedCategories.push({ category, matchCount });
     }
   }
@@ -89,9 +90,9 @@ export function checkYmylCompliance(input: ContentAnalysisInput): AnalysisResult
   if (input.contentCategory) {
     const cat = input.contentCategory.toLowerCase();
     const isYMYL = YMYL_CATEGORIES.some(({ category }) =>
-      cat.includes(category.split('/')[0] || '')
+      cat.includes(category.split('/')[0] || ''),
     );
-    if (isYMYL && !detectedCategories.some(d => d.category.includes(cat))) {
+    if (isYMYL && !detectedCategories.some((d) => d.category.includes(cat))) {
       detectedCategories.push({ category: input.contentCategory, matchCount: 0 });
     }
   }
@@ -100,7 +101,8 @@ export function checkYmylCompliance(input: ContentAnalysisInput): AnalysisResult
     return {
       id: 'eeat-ymyl-compliance',
       title: 'YMYL compliance',
-      description: 'Content does not appear to be YMYL (Your Money or Your Life). Standard E-E-A-T requirements apply.',
+      description:
+        'Content does not appear to be YMYL (Your Money or Your Life). Standard E-E-A-T requirements apply.',
       status: 'na',
       score: 0,
       maxScore: 5,
@@ -108,12 +110,14 @@ export function checkYmylCompliance(input: ContentAnalysisInput): AnalysisResult
   }
 
   // Check for required disclaimers
-  const categories = detectedCategories.map(d => d.category);
+  const categories = detectedCategories.map((d) => d.category);
   const disclaimersFound: string[] = [];
   const disclaimersMissing: string[] = [];
 
   for (const category of categories) {
-    const catKey = Object.keys(DISCLAIMER_PATTERNS).find(k => category.includes(k.split('/')[0] || ''));
+    const catKey = Object.keys(DISCLAIMER_PATTERNS).find((k) =>
+      category.includes(k.split('/')[0] || ''),
+    );
     if (catKey && DISCLAIMER_PATTERNS[catKey]) {
       let found = false;
       for (const pattern of DISCLAIMER_PATTERNS[catKey]) {
