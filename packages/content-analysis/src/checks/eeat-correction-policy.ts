@@ -6,10 +6,10 @@ import { stripHtml } from '@power-seo/core';
 
 // Update/correction indicators in content
 const UPDATE_PATTERNS: RegExp[] = [
-  /\b(?:last\s+)?updated?\s*(?:on|:)\s*(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[\-\/]\d{2}[\-\/]\d{2})/gi,
-  /\b(?:originally\s+)?published\s*(?:on|:)\s*(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[\-\/]\d{2}[\-\/]\d{2})/gi,
+  /\b(?:last\s+)?updated?\s*(?:on|:)\s*(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[-/]\d{2}[-/]\d{2})/gi,
+  /\b(?:originally\s+)?published\s*(?:on|:)\s*(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[-/]\d{2}[-/]\d{2})/gi,
   /\beditor['']?s?\s+note\b/gi,
-  /\bupdate\s*(?:\d{4}[\-\/]\d{2}|\w+\s+\d{4})\s*:/gi,
+  /\bupdate\s*(?:\d{4}[-/]\d{2}|\w+\s+\d{4})\s*:/gi,
   /\bcorrection\s*:/gi,
   /\berrata\b/gi,
   /\b\[updated?\]/gi,
