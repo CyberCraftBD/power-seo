@@ -193,8 +193,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Flesch Reading Ease',
       description: `Score: ${fre}. The text is easy to read.`,
       status: 'good',
-      score: 5,
-      maxScore: 5,
+      score: 4,
+      maxScore: 4,
     });
   } else if (fre >= READABILITY.FLESCH_EASE_FAIR) {
     results.push({
@@ -203,7 +203,7 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       description: `Score: ${fre}. The text is fairly difficult to read. Try shorter sentences and simpler words.`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 4,
     });
     recommendations.push(
       'Simplify your writing — use shorter sentences and common words to improve readability.',
@@ -215,7 +215,7 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       description: `Score: ${fre}. The text is very difficult to read. Significantly simplify your writing.`,
       status: 'poor',
       score: 1,
-      maxScore: 5,
+      maxScore: 4,
     });
     recommendations.push(
       'Your content is very hard to read. Break up long sentences and replace complex words with simpler alternatives.',
@@ -229,8 +229,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Sentence length',
       description: `${longSentencePercentage}% of sentences are longer than ${READABILITY.MAX_SENTENCE_LENGTH} words. Good variety.`,
       status: 'good',
-      score: 5,
-      maxScore: 5,
+      score: 8,
+      maxScore: 8,
     });
   } else if (longSentencePercentage <= 40) {
     results.push({
@@ -238,8 +238,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Sentence length',
       description: `${longSentencePercentage}% of sentences are longer than ${READABILITY.MAX_SENTENCE_LENGTH} words. Try to shorten some.`,
       status: 'ok',
-      score: 3,
-      maxScore: 5,
+      score: 5,
+      maxScore: 8,
     });
     recommendations.push(
       `${longSentencePercentage}% of your sentences are long. Try to keep most sentences under ${READABILITY.MAX_SENTENCE_LENGTH} words.`,
@@ -251,7 +251,7 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       description: `${longSentencePercentage}% of sentences are longer than ${READABILITY.MAX_SENTENCE_LENGTH} words. Many sentences need to be shortened.`,
       status: 'poor',
       score: 1,
-      maxScore: 5,
+      maxScore: 8,
     });
     recommendations.push(
       `${longSentencePercentage}% of your sentences exceed ${READABILITY.MAX_SENTENCE_LENGTH} words. Break them into shorter, more digestible sentences.`,
@@ -265,8 +265,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Passive voice',
       description: `${passiveVoicePercentage}% of sentences use passive voice. This is within the recommended limit.`,
       status: 'good',
-      score: 5,
-      maxScore: 5,
+      score: 6,
+      maxScore: 6,
     });
   } else if (passiveVoicePercentage <= READABILITY.MAX_PASSIVE_VOICE_PERCENT * 2) {
     results.push({
@@ -274,8 +274,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Passive voice',
       description: `${passiveVoicePercentage}% of sentences use passive voice. Try to use more active voice.`,
       status: 'ok',
-      score: 3,
-      maxScore: 5,
+      score: 4,
+      maxScore: 6,
     });
     recommendations.push(
       `Reduce passive voice usage (${passiveVoicePercentage}%). Active voice makes your writing more direct and engaging.`,
@@ -287,7 +287,7 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       description: `${passiveVoicePercentage}% of sentences use passive voice. Rewrite using active voice.`,
       status: 'poor',
       score: 1,
-      maxScore: 5,
+      maxScore: 6,
     });
     recommendations.push(
       `${passiveVoicePercentage}% of your sentences use passive voice. Rewrite them in active voice for clearer, more engaging content.`,
@@ -301,8 +301,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Transition words',
       description: `${transitionWordPercentage}% of sentences contain transition words. Good flow.`,
       status: 'good',
-      score: 5,
-      maxScore: 5,
+      score: 3,
+      maxScore: 3,
     });
   } else if (transitionWordPercentage >= READABILITY.MIN_TRANSITION_WORD_PERCENT / 2) {
     results.push({
@@ -310,8 +310,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Transition words',
       description: `${transitionWordPercentage}% of sentences contain transition words. Use more to improve flow.`,
       status: 'ok',
-      score: 3,
-      maxScore: 5,
+      score: 2,
+      maxScore: 3,
     });
     recommendations.push(
       `Use more transition words (currently ${transitionWordPercentage}%). Words like "however", "therefore", and "for example" improve readability.`,
@@ -323,7 +323,7 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       description: `${transitionWordPercentage}% of sentences contain transition words. Add more to connect your ideas.`,
       status: 'poor',
       score: 1,
-      maxScore: 5,
+      maxScore: 3,
     });
     recommendations.push(
       `Only ${transitionWordPercentage}% of sentences use transition words. Add connectors like "however", "in addition", and "therefore" to guide readers.`,
@@ -337,8 +337,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Paragraph length',
       description: 'All paragraphs are a reasonable length.',
       status: 'good',
-      score: 5,
-      maxScore: 5,
+      score: 8,
+      maxScore: 8,
     });
   } else {
     results.push({
@@ -346,8 +346,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Paragraph length',
       description: `${longParagraphCount} paragraph${longParagraphCount === 1 ? '' : 's'} exceed${longParagraphCount === 1 ? 's' : ''} ${READABILITY.MAX_PARAGRAPH_WORDS} words. Break them up for better readability.`,
       status: longParagraphCount <= 2 ? 'ok' : 'poor',
-      score: longParagraphCount <= 2 ? 3 : 1,
-      maxScore: 5,
+      score: longParagraphCount <= 2 ? 5 : 1,
+      maxScore: 8,
     });
     recommendations.push(
       `${longParagraphCount} paragraph${longParagraphCount === 1 ? ' is' : 's are'} too long. Keep paragraphs under ${READABILITY.MAX_PARAGRAPH_WORDS} words.`,
@@ -361,8 +361,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       title: 'Consecutive sentences',
       description: 'No consecutive sentences start with the same word. Good variety!',
       status: 'good',
-      score: 5,
-      maxScore: 5,
+      score: 3,
+      maxScore: 3,
     });
   } else if (consecutiveSentenceGroups === 1) {
     results.push({
@@ -371,8 +371,8 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       description:
         '1 group of consecutive sentences starts with the same word. Try varying your sentence beginnings.',
       status: 'ok',
-      score: 3,
-      maxScore: 5,
+      score: 2,
+      maxScore: 3,
     });
     recommendations.push(
       '1 group of consecutive sentences starts with the same word. Vary your sentence beginnings to improve readability.',
@@ -384,7 +384,7 @@ export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
       description: `${consecutiveSentenceGroups} groups of consecutive sentences start with the same word. Vary your sentence beginnings to improve readability.`,
       status: 'poor',
       score: 1,
-      maxScore: 5,
+      maxScore: 3,
     });
     recommendations.push(
       `${consecutiveSentenceGroups} groups of consecutive sentences start with the same word. Vary your sentence beginnings to improve readability.`,

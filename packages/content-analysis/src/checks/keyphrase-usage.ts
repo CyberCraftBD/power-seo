@@ -19,7 +19,7 @@ export function checkKeyphraseUsage(input: ContentAnalysisInput): AnalysisResult
       description: 'No focus keyphrase set. Set one to get keyphrase analysis.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 1,
     });
     results.push({
       id: 'keyphrase-distribution',
@@ -50,8 +50,8 @@ export function checkKeyphraseUsage(input: ContentAnalysisInput): AnalysisResult
       title: 'Keyphrase density',
       description: `Keyphrase density is ${densityResult.density}%, which is below the recommended minimum of ${KEYWORD_DENSITY.MIN}%. Use the keyphrase more often.`,
       status: 'poor',
-      score: 1,
-      maxScore: 5,
+      score: 0,
+      maxScore: 1,
     });
   } else if (densityResult.density > KEYWORD_DENSITY.MAX) {
     results.push({
@@ -59,8 +59,8 @@ export function checkKeyphraseUsage(input: ContentAnalysisInput): AnalysisResult
       title: 'Keyphrase density',
       description: `Keyphrase density is ${densityResult.density}%, which exceeds the recommended maximum of ${KEYWORD_DENSITY.MAX}%. Reduce usage to avoid keyword stuffing.`,
       status: 'poor',
-      score: 1,
-      maxScore: 5,
+      score: 0,
+      maxScore: 1,
     });
   } else if (
     densityResult.density >= KEYWORD_DENSITY.MIN &&
@@ -72,8 +72,8 @@ export function checkKeyphraseUsage(input: ContentAnalysisInput): AnalysisResult
       title: 'Keyphrase density',
       description: `Keyphrase density is ${densityResult.density}%.${isOptimal ? ' Great — this is close to the optimal density.' : ' This is within the recommended range.'}`,
       status: 'good',
-      score: 5,
-      maxScore: 5,
+      score: 1,
+      maxScore: 1,
     });
   }
 

@@ -196,7 +196,7 @@ export function checkIntentDepthMatch(
         'No focus keyphrase set. Set one to analyze content depth relative to intent.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -211,7 +211,7 @@ export function checkIntentDepthMatch(
       description: `Unable to determine depth range for intent "${intentKey}".`,
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 8,
     };
   }
 
@@ -248,6 +248,6 @@ export function checkIntentDepthMatch(
       `${evaluation.note} Expected range for ${intentKey} intent: ${range.label} words.`,
     status: evaluation.status,
     score: evaluation.score,
-    maxScore: 5,
+    maxScore: 8,
   };
 }

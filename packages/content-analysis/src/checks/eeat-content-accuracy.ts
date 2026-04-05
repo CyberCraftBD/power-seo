@@ -64,7 +64,7 @@ export function checkContentAccuracy(input: ContentAnalysisInput): AnalysisResul
       description: 'Content is too short to assess accuracy patterns.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -100,7 +100,7 @@ export function checkContentAccuracy(input: ContentAnalysisInput): AnalysisResul
       description: `No misleading language detected. ${evidenceCount} evidence-backed claims found. Content maintains factual, trustworthy tone.`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -111,7 +111,7 @@ export function checkContentAccuracy(input: ContentAnalysisInput): AnalysisResul
       description: 'No misleading language detected. Consider adding more evidence-backed claims ("research shows", "according to studies") to strengthen trustworthiness.',
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -123,7 +123,7 @@ export function checkContentAccuracy(input: ContentAnalysisInput): AnalysisResul
       description: `Minor accuracy concerns: ${examples.join('; ')}. Consider softening or removing these phrases. ${evidenceCount} evidence-backed claims help balance credibility.`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -135,6 +135,6 @@ export function checkContentAccuracy(input: ContentAnalysisInput): AnalysisResul
     description: `${issueCount} accuracy issues detected (${typeList}): ${examples.join(', ')}. Remove misleading language, unsubstantiated claims, and clickbait. Back claims with evidence and use calibrated language.`,
     status: 'poor',
     score: 0,
-    maxScore: 5,
+    maxScore: 10,
   };
 }

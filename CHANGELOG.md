@@ -5,6 +5,175 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.15] - 2026-04-06
+
+### Added
+
+#### AEO: Answer Engine Optimization — 8 New Checks (`@power-seo/content-analysis`)
+
+Answer Engine Optimization (AEO) is now a first-class scoring category. With AI Overviews appearing in 48% of all queries (Feb 2026) and Perplexity/ChatGPT routing 4.4× more converting traffic than organic search, AEO signals are critical for content discoverability in AI-driven environments.
+
+- **`aeo-direct-answer`** (maxScore: 10) — Detects definition-first openings ("X is/refers to/means…"). Definition-first openings generate up to 34× more daily AI citations vs. narrative openings.
+- **`aeo-faq-section`** (maxScore: 10) — Counts Q&A pairs: question-phrased H2/H3 headings followed by 30–200 word answer paragraphs. FAQPage schema + FAQ section yields 2.7–3.2× higher AI Overview citation rate.
+- **`aeo-fact-density`** (maxScore: 8) — Measures verifiable fact signals (percentages, currencies, years, study attributions, measurements) per 100 words. Princeton GEO study: adding statistics increases AI visibility by 40%.
+- **`aeo-tldr-summary`** (maxScore: 7) — Detects TL;DR / Key Takeaways / summary sections with structured bullet lists. Summary blocks receive 2.1× more AI citations (Moz AI Content Study, 2025).
+- **`aeo-concise-answers`** (maxScore: 7) — Checks that question headings are followed by concise 40–120 word answer paragraphs. Perplexity AI study: 40–60 word answers under question headings generate 220% more citations.
+- **`aeo-structured-data-hints`** (maxScore: 7) — Detects structured content patterns: tables, numbered step-by-step processes, comparison sections, how-to ordered lists. AI engines extract structured content 3.8× more often than prose (SurferSEO, Q4 2025).
+- **`aeo-citation-readiness`** (maxScore: 8) — Measures citation signals: external source links, attribution phrases ("according to…"), footnotes, and a Sources/References section. BrightEdge 2025: cited pages have 3.1× more external references.
+- **`aeo-entity-coverage`** (maxScore: 9) — Estimates named entity density (proper nouns, brands, technologies, people, standards). Target: 15–25 entities per 1,000 words. Kalicube AEO study: 15+ entities/1,000 words = 4.8× higher AI engine selection rate.
+
+#### New `CheckId` Union Types
+- Added 8 new AEO check IDs to the `CheckId` union type in `types.ts`
+- Full TypeScript type safety and `disabledChecks` config support for all AEO checks
+
+### Changed
+
+#### SEO Score Weight Rebalancing (`@power-seo/content-analysis`)
+
+Weights revised based on 2026 ranking factor research: Google Content Warehouse API Leak (2024), NavBoost signals confirmed in DOJ antitrust trial, First Page Sage Q1 2025 correlation study, and Ahrefs/Portent readability research.
+
+| Category | Old Weight | New Weight | Rationale |
+|---|---|---|---|
+| E-E-A-T | 35% | 30% | Adjusted to accommodate AEO |
+| Intent | 27% | 24% | Adjusted to accommodate AEO |
+| **AEO** | **0%** | **20%** | New category — AI engine citation signals |
+| SEO Analysis | 26% | 18% | Keyword density confirmed NOT a ranking factor (Mueller) |
+| SERP/CTR | 2% | 5% | NavBoost click signals confirmed critical by DOJ trial |
+| Readability | 9% | 2% | Zero correlation with rankings (Ahrefs, Portent studies) |
+| Social | 1% | 1% | Unchanged |
+
+#### maxScore Calibration — content-analysis Checks
+
+All check `maxScore` values recalibrated to reflect 2026 research-backed importance weighting. Previously all checks had `maxScore: 5`; now checks are weighted by their actual impact on search rankings:
+
+| Check | Old maxScore | New maxScore | Reason |
+|---|---|---|---|
+| `word-count` | 5 | 10 | First Page Sage: satisfying content = 23% of ranking weight |
+| `content-freshness` | 5 | 10 | First Page Sage: freshness = 6%; critical for AI grounding |
+| `media-count` | 5 | 8 | Visual content improves dwell time (NavBoost signal) |
+| `eeat-content-accuracy` | 5 | 10 | Core trust signal; YMYL pages penalised heavily for inaccuracy |
+| `eeat-source-quality` | 5 | 10 | External citations = primary E-E-A-T trust signal |
+| `eeat-author-schema` | 5 | 10 | Author markup directly consumed by Google E-E-A-T evaluators |
+| `eeat-experience-depth` | 5 | 9 | First-hand experience confirmed as ranking differentiator (HCU) |
+| `eeat-topical-authority` | 5 | 8 | Content Warehouse API: `siteFocusScore` is a core ranking signal |
+| `eeat-overall-score` | 5 | 8 | Aggregated E-E-A-T pillar summary |
+| `intent-keyword-classification` | 5 | 10 | Intent mismatch = primary cause of ranking failure |
+| `intent-content-alignment` | 5 | 10 | Google's primary satisfaction signal |
+| `intent-satisfaction-score` | 5 | 10 | NavBoost: satisfying intent → good clicks → ranking boost |
+| `intent-format-match` | 5 | 8 | Format mismatch reduces dwell time (NavBoost bad click signal) |
+| `intent-depth-match` | 5 | 8 | Thin content for intent = high bounce = NavBoost penalty |
+| `intent-snippet-readiness` | 5 | 6 | Featured snippet still present in non-AI-Overview results |
+| `keyphrase-density` | 5 | 1 | Confirmed NOT a ranking factor (John Mueller, multiple statements) |
+
+#### maxScore Calibration — readability Checks (`@power-seo/readability`)
+
+| Check | Old maxScore | New maxScore | Reason |
+|---|---|---|---|
+| `sentence-length` | 5 | 8 | Affects scanability and dwell time |
+| `paragraph-length` | 5 | 8 | Mobile UX signal; affects bounce rate |
+| `passive-voice` | 5 | 6 | Clarity signal; affects comprehension |
+| `flesch-reading-ease` | 5 | 4 | Zero correlation with rankings (Ahrefs 2024 study, 1.9M pages) |
+| `transition-words` | 5 | 3 | Minor UX signal only |
+| `consecutive-sentences` | 5 | 3 | Minor stylistic signal only |
+
+### Fixed
+
+- `word-count` good-result `maxScore` was 5 (not updated with other returns) — corrected to 10
+- All "poor" status returns in modified check files now have consistent `maxScore` matching "good"/"ok" returns
+- `intent-format-match` "na" early-return `maxScore` corrected from 5 to 8
+
+---
+
+## [1.0.14] - 2026-03-25
+
+### Added
+
+#### E-E-A-T Checks — 25 New Checks (`@power-seo/content-analysis`)
+
+Comprehensive Google E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signal detection:
+
+**Experience (5 checks)**
+- `eeat-experience-depth` — First-hand experience signals (personal pronouns, temporal markers, testing outcomes, process narration)
+- `eeat-original-research` — Original data, surveys, experiments, and unique findings
+- `eeat-specificity-depth` — Specific details, product versions, measurements that demonstrate hands-on knowledge
+- `eeat-multimedia-evidence` — Screenshots, diagrams, original photos, embedded video evidence
+- `eeat-case-study-patterns` — Case study and real-world example patterns
+
+**Expertise (5 checks)**
+- `eeat-author-schema` — Author JSON-LD schema completeness (name, jobTitle, worksFor, credentials, knowsAbout, sameAs)
+- `eeat-topical-authority` — Topical focus and niche expertise signals
+- `eeat-technical-vocabulary` — Domain-specific technical terminology usage
+- `eeat-expert-hedging` — Calibrated language ("research suggests", "in most cases") vs. overconfident claims
+- `eeat-methodology-transparency` — Research methods, data sources, and process transparency
+
+**Authoritativeness (5 checks)**
+- `eeat-author-social` — Social profile links (LinkedIn, Twitter/X, GitHub)
+- `eeat-organization` — Organization schema and brand signals
+- `eeat-published-works` — References to publications, research papers, books
+- `eeat-expert-sourcing` — Citations from named experts and authoritative sources
+- `eeat-editorial-review` — Editorial process signals (reviewed by, fact-checked, updated by)
+
+**Trustworthiness (6 checks)**
+- `eeat-source-quality` — External link quality and diversity (academic, government, industry)
+- `eeat-ymyl-compliance` — YMYL (Your Money or Your Life) content risk level assessment
+- `eeat-conflict-disclosure` — Conflict of interest and sponsorship disclosure
+- `eeat-content-accuracy` — Misleading language, unsubstantiated claims, clickbait detection
+- `eeat-correction-policy` — Correction notices, update transparency
+- `eeat-privacy-safety` — Privacy policy, terms, and safety signal detection
+
+**Meta Scores (2 checks)**
+- `eeat-overall-score` — Aggregated E-E-A-T pillar health summary
+- `eeat-ymyl-multiplier` — Score multiplier for YMYL categories (medical, legal, financial)
+
+#### Search Intent Analysis — 30 New Checks (`@power-seo/content-analysis`)
+
+Full search intent lifecycle coverage:
+
+**Intent Detection (4)**: `intent-keyword-classification`, `intent-sub-type`, `intent-modifier-analysis`, `intent-multi-detection`
+
+**Content Alignment (6)**: `intent-content-alignment`, `intent-title-match`, `intent-meta-match`, `intent-heading-match`, `intent-opening-match`, `intent-conclusion-match`
+
+**Specific Requirements (5)**: `intent-informational-completeness`, `intent-transactional-elements`, `intent-commercial-elements`, `intent-navigational-clarity`, `intent-format-match`
+
+**Signal Quality (5)**: `intent-signal-density`, `intent-signal-distribution`, `intent-depth-match`, `intent-mixed-warning`, `intent-cta-alignment`
+
+**SERP Features (3)**: `intent-snippet-readiness`, `intent-schema-readiness`, `intent-paa-coverage`
+
+**User Journey (4)**: `intent-satisfaction-score`, `intent-funnel-position`, `intent-related-coverage`, `intent-engagement-signals`
+
+#### Extended Content Checks — 10 New Checks (`@power-seo/content-analysis`)
+- `competing-links` — Detects links that may redirect users away from conversion paths
+- `content-freshness` — Evaluates last-modified date and freshness signals
+- `headline-analyzer` — Power word analysis, sentiment, and title effectiveness scoring
+- `inclusive-language` — Flags potentially non-inclusive terminology
+- `keyphrase-even-distribution` — Checks keyphrases are distributed throughout, not front-loaded
+- `keyphrase-introduction` — Validates keyphrase appears in the opening paragraph
+- `keyphrase-markup` — Checks keyphrase is emphasised with `<strong>` or `<em>` tags
+- `media-count` — Image and video count relative to content length
+- `table-of-contents` — Detects structured navigation for long-form content
+- `word-complexity` — Identifies unnecessarily complex vocabulary
+
+---
+
+## [1.0.13] - 2026-03-20
+
+### Fixed
+
+#### Score Inflation and Check Accuracy (`@power-seo/content-analysis`) — #116
+
+- **Score inflation**: Corrected inflated scores caused by checks returning `score > maxScore` in edge cases — scores are now always clamped to `[0, maxScore]`
+- **H1 recognition**: Fixed H1 title detection not matching when content starts with whitespace or BOM characters (#117)
+- **Link parsing**: Fixed external/internal link counting failing when content uses protocol-relative URLs (`//example.com`) (#118)
+- **Canonical URL check**: Fixed false positive "missing canonical" when canonical is set to the page URL itself (#119)
+- **Blob URL labels**: Fixed image alt-text check incorrectly flagging blob: URLs as missing alt text (#120)
+
+#### Reliability
+- Hardened `getWords()` utility to handle null/undefined content without throwing
+- Fixed `checkHeadings()` returning wrong H-level counts when headings contain nested inline elements
+- Corrected `keyphrase-slug` false positives when canonical URL contains query parameters
+
+---
+
 ## [1.0.12] - 2026-03-03
 
 ### Fixed

@@ -28,7 +28,7 @@ export function checkIntentKeywordClassification(input: ContentAnalysisInput): A
       description: 'No focus keyphrase set. Set one to analyze keyword intent.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -44,7 +44,7 @@ export function checkIntentKeywordClassification(input: ContentAnalysisInput): A
       description: `Clear ${result.primary} intent detected (${pct}% confidence). ${explanation}`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -57,7 +57,7 @@ export function checkIntentKeywordClassification(input: ContentAnalysisInput): A
         ' Consider adding clearer intent modifiers to strengthen the signal.',
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -69,6 +69,6 @@ export function checkIntentKeywordClassification(input: ContentAnalysisInput): A
       ' Add modifier words like "how to", "best", "buy", or "review" to clarify intent.',
     status: 'poor',
     score: 1,
-    maxScore: 5,
+    maxScore: 10,
   };
 }

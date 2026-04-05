@@ -111,6 +111,16 @@ import { checkIntentFunnelPosition } from './checks/intent-funnel-position.js';
 import { checkIntentRelatedCoverage } from './checks/intent-related-coverage.js';
 import { checkIntentEngagementSignals } from './checks/intent-engagement-signals.js';
 
+// AEO: Answer Engine Optimization
+import { checkAeoDirectAnswer } from './checks/aeo-direct-answer.js';
+import { checkAeoFaqSection } from './checks/aeo-faq-section.js';
+import { checkAeoFactDensity } from './checks/aeo-fact-density.js';
+import { checkAeoTldrSummary } from './checks/aeo-tldr-summary.js';
+import { checkAeoConciseAnswers } from './checks/aeo-concise-answers.js';
+import { checkAeoStructuredDataHints } from './checks/aeo-structured-data-hints.js';
+import { checkAeoCitationReadiness } from './checks/aeo-citation-readiness.js';
+import { checkAeoEntityCoverage } from './checks/aeo-entity-coverage.js';
+
 /**
  * Run all SEO content analysis checks and return aggregated results.
  *
@@ -242,6 +252,16 @@ export function analyzeContent(
   const intentRelatedCoverageResult = checkIntentRelatedCoverage(input);
   const intentEngagementSignalsResult = checkIntentEngagementSignals(input);
 
+  // AEO: Answer Engine Optimization
+  const aeoDirectAnswerResult = checkAeoDirectAnswer(input);
+  const aeoFaqSectionResult = checkAeoFaqSection(input);
+  const aeoFactDensityResult = checkAeoFactDensity(input);
+  const aeoTldrSummaryResult = checkAeoTldrSummary(input);
+  const aeoConciseAnswersResult = checkAeoConciseAnswers(input);
+  const aeoStructuredDataResult = checkAeoStructuredDataHints(input);
+  const aeoCitationResult = checkAeoCitationReadiness(input);
+  const aeoEntityResult = checkAeoEntityCoverage(input);
+
   // Flatten all results
   const candidateResults = [
     ...titleResults,
@@ -339,6 +359,15 @@ export function analyzeContent(
     intentFunnelPositionResult,
     intentRelatedCoverageResult,
     intentEngagementSignalsResult,
+    // AEO: Answer Engine Optimization
+    aeoDirectAnswerResult,
+    aeoFaqSectionResult,
+    aeoFactDensityResult,
+    aeoTldrSummaryResult,
+    aeoConciseAnswersResult,
+    aeoStructuredDataResult,
+    aeoCitationResult,
+    aeoEntityResult,
   ];
 
   // Filter out disabled checks

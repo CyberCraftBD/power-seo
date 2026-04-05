@@ -100,7 +100,7 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
       description: 'Content is too short to assess source quality.',
       status: 'na',
       score: 0,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -129,7 +129,7 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
       description: 'No external sources cited. Add links to authoritative sources (academic papers, government data, industry documentation) to back up claims and build trust.',
       status: 'poor',
       score: 0,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -183,7 +183,7 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
       description: `Strong source quality: ${links.length} external sources across ${diversity} categories (${categoryDetails}).${hasReferencesSection ? ' References section present.' : ''} Diverse, authoritative sourcing builds trust.`,
       status: 'good',
       score: 5,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -199,7 +199,7 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
       description: `Moderate source quality (${links.length} sources, ${categoryDetails}). ${suggestions.join('; ')}.`,
       status: 'ok',
       score: 3,
-      maxScore: 5,
+      maxScore: 10,
     };
   }
 
@@ -209,6 +209,6 @@ export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult 
     description: `Weak source quality (${links.length} source${links.length > 1 ? 's' : ''}, mostly uncategorized). Add diverse, authoritative sources: academic (.edu, PubMed), government (.gov), industry documentation, and reputable news outlets. Include a "References" section.`,
     status: 'poor',
     score: 1,
-    maxScore: 5,
+    maxScore: 10,
   };
 }
