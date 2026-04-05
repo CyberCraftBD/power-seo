@@ -30,7 +30,7 @@ export function checkTitleReadability(input: ContentAnalysisInput): AnalysisResu
 
   const titleText = title && title.trim().length > 0 ? title.trim() : '';
   const titleLower = titleText.toLowerCase();
-  const titleWords = titleLower.split(/[\s\-]+/);
+  const titleWords = titleLower.split(/[\s-]+/);
 
   // --- Check 1: Title contains a number ---
   if (/\d/.test(titleText)) {

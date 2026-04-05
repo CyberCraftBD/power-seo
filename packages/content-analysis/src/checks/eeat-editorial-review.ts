@@ -19,7 +19,7 @@ const EDITORIAL_PATTERNS: RegExp[] = [
   /\beditorial\s+(?:team|board|review|oversight|standards?|guidelines?|policy|process)\b/gi,
   /\bcontent\s+review\s+(?:process|policy|team)\b/gi,
   /\bquality\s+(?:assurance|review|control)\b/gi,
-  /\blast\s+(?:reviewed|updated|verified|checked)\s+(?:on\s+)?(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[\-\/]\d{2}[\-\/]\d{2})\b/gi,
+  /\blast\s+(?:reviewed|updated|verified|checked)\s+(?:on\s+)?(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[-/]\d{2}[-/]\d{2})\b/gi,
   /\breview\s+date\b/gi,
 ];
 

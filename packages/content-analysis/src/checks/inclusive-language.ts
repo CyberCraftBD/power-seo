@@ -152,9 +152,9 @@ function findMatches(text: string): TermMatch[] {
           ? lowerText[idx + termLower.length]!
           : ' ';
 
-      const isWordBoundaryBefore = /[\s.,;:!?'"()\-\/]/.test(charBefore) || idx === 0;
+      const isWordBoundaryBefore = /[\s.,;:!?'"()-/]/.test(charBefore) || idx === 0;
       const isWordBoundaryAfter =
-        /[\s.,;:!?'"()\-\/]/.test(charAfter) || idx + termLower.length === lowerText.length;
+        /[\s.,;:!?'"()-/]/.test(charAfter) || idx + termLower.length === lowerText.length;
 
       if (isWordBoundaryBefore && isWordBoundaryAfter) {
         seen.add(entry.term);

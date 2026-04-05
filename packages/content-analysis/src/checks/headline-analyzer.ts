@@ -171,7 +171,7 @@ function analyzeHeadline(title: string): {
     details.push('Question format — questions engage reader curiosity');
   }
 
-  const hasBrackets = /[\[\(].*[\]\)]/.test(title);
+  const hasBrackets = /[[(].*[\])]/.test(title);
   if (hasBrackets) {
     score += 9;
     details.push('Contains brackets/parentheses — these increase CTR by ~38%');
