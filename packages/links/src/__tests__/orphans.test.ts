@@ -66,6 +66,19 @@ describe('findOrphanPages', () => {
     expect(orphans).toEqual([]);
   });
 
+  it('includes the page title on orphan results (issue #142)', () => {
+    const pages: PageData[] = [
+      // /a has no inbound links → orphan, and carries a title.
+      { url: 'https://example.com/a', title: 'About Us', links: ['https://example.com/b'] },
+      { url: 'https://example.com/b', title: 'Contact', links: [] },
+    ];
+    const graph = buildLinkGraph(pages);
+    const orphans = findOrphanPages(graph);
+    const orphanA = orphans.find((o) => o.url === 'https://example.com/a');
+    expect(orphanA).toBeDefined();
+    expect(orphanA!.title).toBe('About Us');
+  });
+
   it('considers all pages with no inbound as orphans', () => {
     const pages: PageData[] = [
       { url: 'https://example.com/a', links: [] },

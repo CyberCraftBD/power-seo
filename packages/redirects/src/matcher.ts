@@ -10,10 +10,12 @@ import type { RedirectEngineConfig } from './types.js';
 function normalizePath(url: string, config?: RedirectEngineConfig): string {
   let path = url;
 
-  // Extract path from full URLs
+  // Extract path from full URLs — match on the pathname only. Query strings
+  // (UTM tags, `?ref=`, etc.) must not affect matching; the engine re-appends
+  // the original query to the resolved destination.
   try {
     const parsed = new globalThis.URL(url, 'http://localhost');
-    path = parsed.pathname + parsed.search;
+    path = parsed.pathname;
   } catch {
     // keep as-is
   }
@@ -137,10 +139,12 @@ export function matchRegex(
     return { matched: false, destination };
   }
 
-  // Substitute capture groups ($1, $2, etc.) in destination
+  // Substitute capture groups ($1, $2, etc.) in destination — every
+  // occurrence of each `$n`, not just the first. Iterate high-to-low so `$1`
+  // does not partially consume `$10`+ tokens.
   let resolved = destination;
-  for (let i = 1; i < match.length; i++) {
-    resolved = resolved.replace(`$${i}`, match[i] ?? '');
+  for (let i = match.length - 1; i >= 1; i--) {
+    resolved = resolved.split(`$${i}`).join(match[i] ?? '');
   }
 
   return { matched: true, destination: resolved };
@@ -152,14 +156,33 @@ export function matchRegex(
  */
 export function substituteParams(destination: string, params: Record<string, string>): string {
   let result = destination;
-  for (const [key, value] of Object.entries(params)) {
-    if (key === '*') {
-      result = result.replace('*', value);
-    } else {
-      result = result.replace(`:${key}`, value);
-    }
+
+  // Replace all `*` wildcards.
+  if ('*' in params) {
+    result = result.split('*').join(params['*']!);
   }
+
+  // Replace `:param` tokens. Sort keys longest-first so a longer key (`:idx`)
+  // is substituted before a shorter one that is a prefix of it (`:id`), and use
+  // a boundary-aware global regex so `:id` does not match inside `:idx`.
+  const keys = Object.keys(params)
+    .filter((k) => k !== '*')
+    .sort((a, b) => b.length - a.length);
+
+  for (const key of keys) {
+    const value = params[key]!;
+    // Match `:key` only when not immediately followed by another identifier
+    // character (so `:id` won't match the `:id` prefix inside `:idx`).
+    const token = new RegExp(`:${escapeRegExp(key)}(?![A-Za-z0-9_])`, 'g');
+    result = result.replace(token, () => value);
+  }
+
   return result;
+}
+
+/** Escape a string for safe use inside a RegExp. */
+function escapeRegExp(str: string): string {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 // Dangerous URL schemes that must never be used as a redirect destination.

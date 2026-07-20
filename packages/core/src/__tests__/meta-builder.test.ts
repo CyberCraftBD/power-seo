@@ -14,6 +14,22 @@ describe('buildMetaTags', () => {
     expect(robotsTag?.content).toContain('noindex');
   });
 
+  it('should not let robots overrides clobber noindex/nofollow (#135)', () => {
+    // config.robots.index === true must NOT re-enable indexing when noindex is set
+    const tags = buildMetaTags({ noindex: true, robots: { index: true } });
+    const robotsTag = tags.find((t) => t.name === 'robots');
+    expect(robotsTag?.content).toContain('noindex');
+    expect(robotsTag?.content).not.toMatch(/(^|,\s*)index(\s*,|$)/);
+  });
+
+  it('should still honor additional robots directives alongside overrides (#135)', () => {
+    const tags = buildMetaTags({ nofollow: true, robots: { index: true, maxSnippet: 150 } });
+    const robotsTag = tags.find((t) => t.name === 'robots');
+    expect(robotsTag?.content).toContain('index');
+    expect(robotsTag?.content).toContain('nofollow');
+    expect(robotsTag?.content).toContain('max-snippet:150');
+  });
+
   it('should build Open Graph tags', () => {
     const tags = buildMetaTags({
       openGraph: {
@@ -128,6 +144,12 @@ describe('resolveTitle', () => {
 
   it('should return title when no template', () => {
     expect(resolveTitle({ title: 'About' })).toBe('About');
+  });
+
+  it('should not mangle titles containing $-replacement patterns (#135)', () => {
+    expect(resolveTitle({ title: 'A $& B', titleTemplate: '%s | Site' })).toBe('A $& B | Site');
+    expect(resolveTitle({ title: "A $' B", titleTemplate: '%s | Site' })).toBe("A $' B | Site");
+    expect(resolveTitle({ title: 'A $1 B', titleTemplate: '%s | Site' })).toBe('A $1 B | Site');
   });
 
   it('should fall back to defaultTitle', () => {

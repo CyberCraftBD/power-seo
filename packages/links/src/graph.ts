@@ -5,6 +5,26 @@ import { normalizeUrl, isAbsoluteUrl } from '@power-seo/core';
 import type { PageData, LinkGraph, LinkNode } from './types.js';
 
 /**
+ * Strip the URL fragment (`#section`) and reject non-http(s) schemes
+ * (`mailto:`, `tel:`, `javascript:`, …).
+ *
+ * Returns the fragment-free URL, or `null` if the link should not be
+ * treated as a page node (bare fragments like `#top`, or non-http schemes).
+ */
+function canonicalizeTarget(url: string): string | null {
+  try {
+    const parsed = new globalThis.URL(url);
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+      return null; // skip mailto:, tel:, javascript:, etc.
+    }
+    parsed.hash = '';
+    return normalizeUrl(parsed.toString());
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Build a directed link graph from an array of pages.
  *
  * - Normalizes all URLs
@@ -19,14 +39,18 @@ export function buildLinkGraph(pages: PageData[]): LinkGraph {
   // Initialize all page nodes
   for (const page of pages) {
     const normalized = normalizeUrl(page.url);
-    if (!nodes.has(normalized)) {
+    const existing = nodes.get(normalized);
+    if (!existing) {
       nodes.set(normalized, {
         url: normalized,
+        title: page.title,
         inbound: [],
         outbound: [],
         inboundCount: 0,
         outboundCount: 0,
       });
+    } else if (existing.title === undefined && page.title !== undefined) {
+      existing.title = page.title;
     }
   }
 
@@ -39,16 +63,25 @@ export function buildLinkGraph(pages: PageData[]): LinkGraph {
     const seenTargets = new Set<string>();
 
     for (const link of page.links) {
-      // Resolve relative links
-      let targetUrl: string;
-      if (isAbsoluteUrl(link)) {
-        targetUrl = normalizeUrl(link);
-      } else {
-        try {
-          targetUrl = normalizeUrl(new globalThis.URL(link, page.url).toString());
-        } catch {
-          continue; // skip invalid URLs
-        }
+      // Resolve relative links against the page URL, strip fragments, and
+      // reject non-http(s) schemes (mailto:, tel:, #fragments, …) so they
+      // do not become phantom nodes that inflate counts / skew PageRank.
+      const resolved = isAbsoluteUrl(link)
+        ? link
+        : (() => {
+            try {
+              return new globalThis.URL(link, page.url).toString();
+            } catch {
+              return null;
+            }
+          })();
+      if (resolved === null) {
+        continue; // skip invalid URLs
+      }
+
+      const targetUrl = canonicalizeTarget(resolved);
+      if (targetUrl === null) {
+        continue; // skip non-http(s) schemes and bare fragments
       }
 
       // Skip self-links and duplicates

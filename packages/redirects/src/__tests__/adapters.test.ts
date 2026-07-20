@@ -39,13 +39,43 @@ describe('toNextRedirects', () => {
     expect(result[0]!.source).toBe('/kept');
   });
 
-  it('handles regex patterns', () => {
+  it('converts regex catch-all patterns to Next.js named segments', () => {
     const rules: RedirectRule[] = [
       { source: '/old/(.*)', destination: '/new/$1', statusCode: 301, isRegex: true },
     ];
     const result = toNextRedirects(rules);
-    expect(result[0]!.source).toBe('/old/(.*)');
-    expect(result[0]!.destination).toBe('/new/$1');
+    expect(result[0]!.source).toBe('/old/:p1*');
+    expect(result[0]!.destination).toBe('/new/:p1');
+  });
+
+  it('converts multi-group regex patterns to distinct named segments', () => {
+    const rules: RedirectRule[] = [
+      {
+        source: '/blog/(\\d+)/(.*)',
+        destination: '/archive/$1/$2',
+        statusCode: 301,
+        isRegex: true,
+      },
+    ];
+    const result = toNextRedirects(rules);
+    expect(result[0]!.source).toBe('/blog/:p1(\\d+)/:p2*');
+    expect(result[0]!.destination).toBe('/archive/:p1/:p2');
+  });
+
+  it('converts bare glob wildcards to Next.js catch-all segments', () => {
+    const rules: RedirectRule[] = [{ source: '/docs/*', destination: '/guides/*', statusCode: 301 }];
+    const result = toNextRedirects(rules);
+    expect(result[0]!.source).toBe('/docs/:splat*');
+    expect(result[0]!.destination).toBe('/guides/:splat*');
+  });
+
+  it('passes through :param glob segments unchanged', () => {
+    const rules: RedirectRule[] = [
+      { source: '/users/:id', destination: '/members/:id', statusCode: 301 },
+    ];
+    const result = toNextRedirects(rules);
+    expect(result[0]!.source).toBe('/users/:id');
+    expect(result[0]!.destination).toBe('/members/:id');
   });
 });
 

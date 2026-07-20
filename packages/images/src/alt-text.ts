@@ -13,7 +13,18 @@ const REDUNDANT_PREFIXES = [
   'thumbnail of',
 ];
 
-const FILENAME_PATTERN = /^(IMG|DSC|DSCN|DCIM|Screenshot|Screen Shot|image|photo|pic)[_\-\s]?\d+/i;
+// Camera-style filename prefixes (e.g. "IMG_2024", "DSC-0001", "Screenshot 2024").
+// These are unambiguous filenames, so a whitespace/underscore/dash separator is allowed.
+const CAMERA_FILENAME_PATTERN = /^(IMG|DSC|DSCN|DCIM|Screenshot|Screen Shot)[_\-\s]?\d+/i;
+
+// Generic words (image/photo/pic) only look like a filename when the digits follow
+// directly (e.g. "photo1", "image_02") and end the string. A whitespace separator
+// (e.g. "Photo 2 dogs playing") is natural prose and must NOT be flagged.
+const GENERIC_FILENAME_PATTERN = /^(image|photo|pic)[_-]?\d+$/i;
+
+function looksLikeFilename(alt: string): boolean {
+  return CAMERA_FILENAME_PATTERN.test(alt) || GENERIC_FILENAME_PATTERN.test(alt);
+}
 
 /**
  * Get a human-readable label for an image source URL.
@@ -107,7 +118,7 @@ function analyzeImageAlt(image: ImageInfo, allAlts: string[], index: number): Im
   }
 
   // Filename pattern in alt
-  if (FILENAME_PATTERN.test(alt)) {
+  if (looksLikeFilename(alt)) {
     issues.push({
       id: 'alt-filename',
       title: 'Filename used as alt text',

@@ -55,6 +55,25 @@ describe('splitSitemap', () => {
     }
   });
 
+  it('does not produce double slashes when hostname has a trailing slash (issue #137)', () => {
+    const urls = Array.from({ length: 2 }, (_, i) => ({ loc: `/page-${i}` }));
+    const result = splitSitemap({ hostname: 'https://example.com/', urls });
+
+    expect(result.index).toContain('<loc>https://example.com/sitemap-0.xml</loc>');
+    expect(result.index).not.toContain('//sitemap-0.xml');
+  });
+
+  it('does not produce double slashes across multiple split sitemaps (issue #137)', () => {
+    const urls = Array.from({ length: 4 }, (_, i) => ({ loc: `/page-${i}` }));
+    const result = splitSitemap(
+      { hostname: 'https://example.com/', urls, maxUrlsPerSitemap: 2 },
+    );
+
+    expect(result.index).toContain('<loc>https://example.com/sitemap-0.xml</loc>');
+    expect(result.index).toContain('<loc>https://example.com/sitemap-1.xml</loc>');
+    expect(result.index).not.toContain('//sitemap-');
+  });
+
   it('uses custom URL pattern', () => {
     const urls = Array.from({ length: 3 }, (_, i) => ({ loc: `/p${i}` }));
     const result = splitSitemap(

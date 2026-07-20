@@ -9,7 +9,9 @@
  * The HTML-significant characters `<`, `>` and `&` are escaped to their JSON
  * unicode escape sequences so that a string value such as `"</script>"` cannot
  * prematurely terminate the surrounding `<script>` tag — a stored-XSS vector.
- * The escaped output is still valid JSON and parses identically.
+ * The line/paragraph separators U+2028/U+2029 are also escaped, since they are
+ * legal in JSON but can break inline script parsing in some contexts. The
+ * escaped output is still valid JSON and parses identically.
  *
  * @example
  * ```ts
@@ -21,5 +23,7 @@ export function serializeJsonLd(value: unknown, pretty = false): string {
   return JSON.stringify(value, null, pretty ? 2 : undefined)
     .replace(/</g, '\\u003c')
     .replace(/>/g, '\\u003e')
-    .replace(/&/g, '\\u0026');
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
 }

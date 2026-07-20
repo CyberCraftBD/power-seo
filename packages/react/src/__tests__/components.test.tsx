@@ -112,6 +112,26 @@ describe('Breadcrumb component', () => {
     expect(data.itemListElement[1].name).toBe('</script><img src=x onerror=alert(1)>');
   });
 
+  it('escapes U+2028/U+2029 line separators in item labels', () => {
+    // Line separator (U+2028) and paragraph separator (U+2029) are legal in
+    // JSON but can break inline script parsing; they must be escaped.
+    const LS = String.fromCharCode(0x2028);
+    const PS = String.fromCharCode(0x2029);
+    const label = `A${LS}B${PS}C`;
+    const { container } = render(
+      <Breadcrumb items={[{ name: 'Home', url: '/' }, { name: label }]} />,
+    );
+    const script = container.querySelector('script[type="application/ld+json"]');
+    const raw = script?.innerHTML ?? '';
+    expect(raw).not.toContain(LS);
+    expect(raw).not.toContain(PS);
+    expect(raw).toContain('\\u2028');
+    expect(raw).toContain('\\u2029');
+    // JSON still parses back to the original label
+    const data = JSON.parse(script?.textContent ?? '{}');
+    expect(data.itemListElement[1].name).toBe(label);
+  });
+
   it('should optionally exclude JSON-LD', () => {
     const { container } = render(
       <Breadcrumb items={[{ name: 'Home', url: '/' }]} includeJsonLd={false} />,

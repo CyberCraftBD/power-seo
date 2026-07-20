@@ -115,6 +115,26 @@ describe('createTokenManager', () => {
     expect(fetchToken).toHaveBeenCalledTimes(2);
   });
 
+  it('should recover after a rejected token fetch instead of caching it forever (issue #144)', async () => {
+    const fetchToken = vi
+      .fn()
+      .mockRejectedValueOnce(new Error('transient network error'))
+      .mockResolvedValue({
+        accessToken: 'recovered-token',
+        expiresAt: Date.now() + 3_600_000,
+      });
+
+    const manager = createTokenManager(fetchToken);
+
+    // First call fails.
+    await expect(manager.getToken()).rejects.toThrow('transient network error');
+
+    // A subsequent call must retry (pending must have been cleared) and succeed.
+    const token = await manager.getToken();
+    expect(token).toBe('recovered-token');
+    expect(fetchToken).toHaveBeenCalledTimes(2);
+  });
+
   it('should invalidate cache', async () => {
     const fetchToken = vi.fn().mockResolvedValue({
       accessToken: 'token',

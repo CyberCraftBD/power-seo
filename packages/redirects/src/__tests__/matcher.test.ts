@@ -77,6 +77,18 @@ describe('matchGlob', () => {
     const result = matchGlob('/users/123/extra', '/users/:id');
     expect(result.matched).toBe(false);
   });
+
+  it('does not capture the query string into a named param (issue #138)', () => {
+    const result = matchGlob('/p/1?x=2', '/p/:id');
+    expect(result.matched).toBe(true);
+    expect(result.params['id']).toBe('1');
+  });
+
+  it('matches wildcard patterns even when the url carries a query (issue #138)', () => {
+    const result = matchGlob('/blog/my-post?utm=x', '/blog/*');
+    expect(result.matched).toBe(true);
+    expect(result.params['*']).toBe('my-post');
+  });
 });
 
 describe('matchRegex', () => {
@@ -101,6 +113,12 @@ describe('matchRegex', () => {
     const result = matchRegex('/test', '[invalid', '/dest');
     expect(result.matched).toBe(false);
   });
+
+  it('substitutes every occurrence of a capture group (issue #138)', () => {
+    const result = matchRegex('/old/hi', '/old/(.*)', '/new/$1/again/$1');
+    expect(result.matched).toBe(true);
+    expect(result.destination).toBe('/new/hi/again/hi');
+  });
 });
 
 describe('substituteParams', () => {
@@ -110,6 +128,18 @@ describe('substituteParams', () => {
 
   it('substitutes wildcard', () => {
     expect(substituteParams('/new/*', { '*': 'path/to/page' })).toBe('/new/path/to/page');
+  });
+
+  it('does not collide on shared key prefixes (issue #138)', () => {
+    expect(substituteParams('/x/:idx/:id', { id: 'AAA', idx: 'BBB' })).toBe('/x/BBB/AAA');
+  });
+
+  it('substitutes a token used more than once (issue #138)', () => {
+    expect(substituteParams('/x/:id/:id', { id: 'AAA' })).toBe('/x/AAA/AAA');
+  });
+
+  it('substitutes every occurrence of the wildcard', () => {
+    expect(substituteParams('/a/*/b/*', { '*': 'X' })).toBe('/a/X/b/X');
   });
 });
 

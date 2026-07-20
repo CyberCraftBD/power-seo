@@ -53,6 +53,11 @@ describe('stripQueryParams', () => {
     expect(result).toContain('id=123');
     expect(result).not.toContain('utm_source');
   });
+
+  it('should preserve repeated kept params (#135)', () => {
+    const result = stripQueryParams('https://example.com/page?tag=a&tag=b', ['tag']);
+    expect(result).toBe('https://example.com/page?tag=a&tag=b');
+  });
 });
 
 describe('stripTrackingParams', () => {

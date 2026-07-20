@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { SitemapConfig } from '@power-seo/core';
-import { escapeXml } from '@power-seo/core';
+import { escapeXml, normalizeUrl } from '@power-seo/core';
 import type { SitemapIndexConfig, SitemapIndexEntry } from './types.js';
 import { MAX_URLS_PER_SITEMAP } from './types.js';
 import { generateSitemap } from './generator.js';
@@ -64,7 +64,7 @@ export function splitSitemap(
   if (urls.length <= maxPerSitemap) {
     const xml = generateSitemap(config);
     const filename = sitemapUrlPattern.replace('{index}', '0');
-    const indexEntries: SitemapIndexEntry[] = [{ loc: `${hostname}${filename}` }];
+    const indexEntries: SitemapIndexEntry[] = [{ loc: normalizeUrl(`${hostname}${filename}`) }];
     return {
       index: generateSitemapIndex({ sitemaps: indexEntries }),
       sitemaps: [{ filename, xml }],
@@ -81,7 +81,7 @@ export function splitSitemap(
     const xml = generateSitemap({ hostname, urls: chunk });
 
     sitemaps.push({ filename, xml });
-    indexEntries.push({ loc: `${hostname}${filename}` });
+    indexEntries.push({ loc: normalizeUrl(`${hostname}${filename}`) });
   }
 
   return {

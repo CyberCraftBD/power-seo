@@ -46,6 +46,7 @@ export interface GSCClientConfig {
 export interface GSCClient {
   request: <T>(path: string, options?: RequestOptions) => Promise<T>;
   siteUrl: string;
+  auth: TokenManager;
 }
 
 export interface RequestOptions {

@@ -129,6 +129,51 @@ describe('auditPage', () => {
     expect(infoRules.length).toBeGreaterThan(0);
   });
 
+  // Issue #143 [Medium]: an empty category (no pass/warning/error rules) must NOT
+  // return a synthetic score of 100; it should score 0 and stay out of the weighted total.
+  it('scores an unpopulated category 0, not a synthetic 100', () => {
+    const input: PageAuditInput = {
+      url: 'https://example.com',
+      title: 'A Reasonable Page Title for SEO Testing',
+      // No responseTime / contentLength / images / statusCode => performance produces no rules.
+    };
+    const result = auditPage(input);
+    const perf = result.categories.performance;
+    expect(perf.passed + perf.warnings + perf.errors).toBe(0);
+    expect(perf.score).toBe(0);
+  });
+
+  // Issue #143 [Low]: fixed category weights must renormalize over populated categories only.
+  // A page with no performance signals must not receive a phantom 100 boost from the 0.15 weight.
+  it('does not inflate the overall score via an empty performance category', () => {
+    // Bare HTTP url with nothing else: meta/content/structure emit failing rules,
+    // performance emits nothing. The old code weighted a synthetic performance=100
+    // at 0.15, guaranteeing score >= 15 even with everything else failing.
+    const input: PageAuditInput = { url: 'http://example.com' };
+    const result = auditPage(input);
+
+    // Recompute the expected score from the populated categories only.
+    const weights = { meta: 0.3, content: 0.3, structure: 0.25, performance: 0.15 } as const;
+    let weighted = 0;
+    let totalWeight = 0;
+    for (const cat of ['meta', 'content', 'structure', 'performance'] as const) {
+      const c = result.categories[cat];
+      const scored = c.passed + c.warnings + c.errors > 0;
+      if (!scored) continue;
+      weighted += c.score * weights[cat];
+      totalWeight += weights[cat];
+    }
+    const expected = totalWeight > 0 ? Math.round(weighted / totalWeight) : 0;
+    expect(result.score).toBe(expected);
+
+    // Performance contributed nothing, so it must be excluded (score 0, no rules).
+    expect(result.categories.performance.passed).toBe(0);
+    expect(result.categories.performance.warnings).toBe(0);
+    expect(result.categories.performance.errors).toBe(0);
+    // The empty performance category must not have added a floor of ~15 to a failing page.
+    expect(result.score).toBeLessThan(15);
+  });
+
   it('category scores are between 0 and 100', () => {
     const input: PageAuditInput = {
       url: 'https://example.com',

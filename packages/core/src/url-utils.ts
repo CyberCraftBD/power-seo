@@ -109,9 +109,9 @@ export function stripQueryParams(url: string, keepParams?: string[]): string {
 
     const newParams = new globalThis.URLSearchParams();
     for (const param of keepParams) {
-      const value = parsed.searchParams.get(param);
-      if (value !== null) {
-        newParams.set(param, value);
+      // Preserve every value for repeated params (e.g. ?tag=a&tag=b)
+      for (const value of parsed.searchParams.getAll(param)) {
+        newParams.append(param, value);
       }
     }
 

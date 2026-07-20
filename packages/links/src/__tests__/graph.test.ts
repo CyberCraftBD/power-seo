@@ -103,4 +103,46 @@ describe('buildLinkGraph', () => {
     // Should not crash; the invalid link is skipped
     expect(graph.totalLinks).toBe(0);
   });
+
+  it('stores page title on the node (issue #142)', () => {
+    const pages: PageData[] = [
+      { url: 'https://example.com/a', title: 'Page A', links: [] },
+      { url: 'https://example.com/b', links: [] },
+    ];
+    const graph = buildLinkGraph(pages);
+    expect(graph.nodes.get('https://example.com/a')!.title).toBe('Page A');
+    expect(graph.nodes.get('https://example.com/b')!.title).toBeUndefined();
+  });
+
+  it('ignores #fragment-only and non-http links so they do not become phantom nodes (issue #142)', () => {
+    const pages: PageData[] = [
+      {
+        url: 'https://example.com/a',
+        // '#section' → self-link (dropped); mailto:/tel:/javascript: filtered.
+        links: ['#section', 'mailto:x@y.com', 'tel:+1', 'javascript:void(0)'],
+      },
+    ];
+    const graph = buildLinkGraph(pages);
+    // None of these should create an outbound edge or a phantom target node.
+    expect(graph.totalLinks).toBe(0);
+    expect(graph.nodes.get('https://example.com/a')!.outboundCount).toBe(0);
+    expect(graph.nodes.size).toBe(1);
+    expect(graph.nodes.has('mailto:x@y.com')).toBe(false);
+    expect(graph.nodes.has('tel:+1')).toBe(false);
+    expect(graph.nodes.has('javascript:void(0)')).toBe(false);
+    expect(graph.nodes.has('https://example.com/a#section')).toBe(false);
+  });
+
+  it('strips #fragments so links to the same page differing only by hash are one edge (issue #142)', () => {
+    const pages: PageData[] = [
+      { url: 'https://example.com/a', links: ['https://example.com/b#top', 'https://example.com/b#foot'] },
+      { url: 'https://example.com/b', links: [] },
+    ];
+    const graph = buildLinkGraph(pages);
+    const nodeB = graph.nodes.get('https://example.com/b')!;
+    expect(nodeB.inboundCount).toBe(1);
+    expect(graph.totalLinks).toBe(1);
+    // No fragment-suffixed phantom nodes were created.
+    expect(graph.nodes.has('https://example.com/b#top')).toBe(false);
+  });
 });

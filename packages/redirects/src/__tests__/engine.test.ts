@@ -126,6 +126,31 @@ describe('createRedirectEngine', () => {
     expect(engine.getRules()).toEqual([]);
   });
 
+  it('matches an exact rule when the inbound url carries a query (issue #138)', () => {
+    const engine = createRedirectEngine([{ source: '/old', destination: '/new', statusCode: 301 }]);
+    const result = engine.match('/old?utm=x&ref=y');
+    expect(result).not.toBeNull();
+    // Original query is preserved onto the resolved destination.
+    expect(result!.resolvedDestination).toBe('/new?utm=x&ref=y');
+  });
+
+  it('does not fold the query into a glob param (issue #138)', () => {
+    const engine = createRedirectEngine([
+      { source: '/p/:id', destination: '/users/:id', statusCode: 301 },
+    ]);
+    const result = engine.match('/p/1?x=2');
+    expect(result).not.toBeNull();
+    expect(result!.resolvedDestination).toBe('/users/1?x=2');
+  });
+
+  it('does not append the inbound query when the destination has its own', () => {
+    const engine = createRedirectEngine([
+      { source: '/old', destination: '/new?keep=1', statusCode: 301 },
+    ]);
+    const result = engine.match('/old?utm=x');
+    expect(result!.resolvedDestination).toBe('/new?keep=1');
+  });
+
   it('blocks open redirects injected through wildcard substitution', () => {
     const engine = createRedirectEngine([{ source: '/go/*', destination: '*', statusCode: 302 }]);
     expect(engine.match('/go/docs')).not.toBeNull();

@@ -38,7 +38,7 @@ export function auditSite(input: SiteAuditInput): SiteAuditResult {
 
     const total = passed + warnings + errors;
     summary[cat] = {
-      score: total > 0 ? Math.round((passed / total) * 100) : 100,
+      score: total > 0 ? Math.round((passed / total) * 100) : 0,
       passed,
       warnings,
       errors,

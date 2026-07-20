@@ -69,8 +69,79 @@ describe('buildPostHogScript', () => {
   });
 
   it('should use custom host', () => {
-    const script = buildPostHogScript({ apiKey: 'key', host: 'https://ph.example.com' });
+    const script = buildPostHogScript({ apiKey: 'phc_key', host: 'https://ph.example.com' });
     expect(script.innerHTML).toContain('https://ph.example.com');
+  });
+});
+
+describe('script builder XSS hardening (issue #139)', () => {
+  it('should reject a GA4 measurementId that breaks out of the inline script', () => {
+    expect(() =>
+      buildGA4Script({ measurementId: "G-1234'});document.location='//evil'//" }),
+    ).toThrow(/Invalid GA4 measurementId/);
+  });
+
+  it('should accept a valid GA4 measurementId', () => {
+    expect(() => buildGA4Script({ measurementId: 'G-ABC123' })).not.toThrow();
+  });
+
+  it('should reject a Clarity projectId that breaks out of the inline script', () => {
+    expect(() => buildClarityScript({ projectId: 'abc");evil();//' })).toThrow(
+      /Invalid Clarity projectId/,
+    );
+  });
+
+  it('should accept a valid Clarity projectId', () => {
+    expect(() => buildClarityScript({ projectId: 'abc123' })).not.toThrow();
+  });
+
+  it('should reject a PostHog apiKey that breaks out of the inline script', () => {
+    expect(() => buildPostHogScript({ apiKey: "phc_x'});document.location='//evil'//" })).toThrow(
+      /Invalid PostHog apiKey/,
+    );
+  });
+
+  it('should reject a PostHog host that breaks out of the inline script', () => {
+    expect(() => buildPostHogScript({ apiKey: 'phc_key', host: "https://x'});evil();//" })).toThrow(
+      /Invalid PostHog host/,
+    );
+  });
+
+  it('should reject a valid-URL PostHog host that carries a </script> breakout in its path', () => {
+    expect(() =>
+      buildPostHogScript({
+        apiKey: 'phc_key',
+        host: 'https://x.com/</script><script>alert(1)</script>',
+      }),
+    ).toThrow(/Invalid PostHog host/);
+  });
+
+  it('should reject a PostHog host with a path, query, or credentials', () => {
+    expect(() => buildPostHogScript({ apiKey: 'phc_key', host: 'https://x.com/path' })).toThrow(
+      /Invalid PostHog host/,
+    );
+    expect(() => buildPostHogScript({ apiKey: 'phc_key', host: 'https://x.com/?a=b' })).toThrow(
+      /Invalid PostHog host/,
+    );
+    expect(() => buildPostHogScript({ apiKey: 'phc_key', host: 'https://u:p@x.com' })).toThrow(
+      /Invalid PostHog host/,
+    );
+  });
+
+  it('should accept a bare-origin PostHog host with or without a trailing slash', () => {
+    expect(() =>
+      buildPostHogScript({ apiKey: 'phc_key', host: 'https://ph.example.com' }),
+    ).not.toThrow();
+    expect(() =>
+      buildPostHogScript({ apiKey: 'phc_key', host: 'https://ph.example.com/' }),
+    ).not.toThrow();
+    expect(() =>
+      buildPostHogScript({ apiKey: 'phc_key', host: 'https://ph.example.com:8000' }),
+    ).not.toThrow();
+  });
+
+  it('should accept a valid PostHog apiKey', () => {
+    expect(() => buildPostHogScript({ apiKey: 'phc_abc123' })).not.toThrow();
   });
 });
 

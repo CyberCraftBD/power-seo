@@ -72,6 +72,34 @@ describe('analyzeAltText', () => {
     expect(filename!.severity).toBe('warning');
   });
 
+  it('should NOT flag descriptive prose that starts with a generic word + number (issue #140)', () => {
+    const images: ImageInfo[] = [
+      { src: '/dogs.jpg', alt: 'Photo 2 dogs playing' },
+      { src: '/team.jpg', alt: 'Photo 1 of the team' },
+    ];
+    const result = analyzeAltText(images);
+    const filenameIssues = result.issues.filter((i) => i.id === 'alt-filename');
+    expect(filenameIssues).toHaveLength(0);
+  });
+
+  it('should still flag generic-word filenames with no whitespace separator', () => {
+    const images: ImageInfo[] = [
+      { src: '/a.jpg', alt: 'photo1' },
+      { src: '/b.jpg', alt: 'image_02' },
+    ];
+    const result = analyzeAltText(images);
+    const filenameIssues = result.issues.filter((i) => i.id === 'alt-filename');
+    expect(filenameIssues).toHaveLength(2);
+  });
+
+  it('should still flag camera-style filenames like "Screenshot 2024"', () => {
+    const images: ImageInfo[] = [{ src: '/s.png', alt: 'Screenshot 2024 05 01' }];
+    const result = analyzeAltText(images);
+    const filename = result.issues.find((i) => i.id === 'alt-filename');
+    expect(filename).toBeDefined();
+    expect(filename!.severity).toBe('warning');
+  });
+
   it('should warn for duplicate alt text across images', () => {
     const images: ImageInfo[] = [
       { src: '/img1.jpg', alt: 'Product photo showing the widget' },

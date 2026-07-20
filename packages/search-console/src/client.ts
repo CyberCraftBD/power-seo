@@ -51,5 +51,6 @@ export function createGSCClient(config: GSCClientConfig): GSCClient {
   return {
     request,
     siteUrl: config.siteUrl,
+    auth: config.auth,
   };
 }

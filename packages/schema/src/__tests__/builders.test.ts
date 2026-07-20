@@ -277,4 +277,41 @@ describe('toJsonLdString', () => {
     const str = toJsonLdString(schema, true);
     expect(str).toContain('\n');
   });
+
+  // Issue #136 [High/SECURITY]: line-separator (U+2028) and paragraph-separator
+  // (U+2029) are valid inside JSON strings but must be escaped so they cannot
+  // break a script context. serializeJsonLd only handles <, >, & — toJsonLdString
+  // must additionally neutralize these code points.
+  it('escapes U+2028 and U+2029 line/paragraph separators', () => {
+    const ls = String.fromCharCode(0x2028);
+    const ps = String.fromCharCode(0x2029);
+    const schema = person({ name: `line${ls}sep${ps}end` });
+    const str = toJsonLdString(schema);
+
+    expect(str).not.toContain(ls);
+    expect(str).not.toContain(ps);
+    expect(str).toContain('\\u2028');
+    expect(str).toContain('\\u2029');
+    // Output still parses back to the original value.
+    expect(JSON.parse(str).name).toBe(`line${ls}sep${ps}end`);
+  });
+});
+
+describe('clean (deep undefined stripping)', () => {
+  // Issue #136 [Low]: clean must strip nested undefined, not just top-level.
+  it('removes nested undefined values from object properties', () => {
+    const schema = product({
+      name: 'Widget',
+      offers: {
+        '@type': 'Offer',
+        price: 10,
+        priceCurrency: undefined,
+      } as never,
+    });
+
+    expect(schema.offers).not.toHaveProperty('priceCurrency');
+    expect('priceCurrency' in (schema.offers as Record<string, unknown>)).toBe(false);
+    // Defined nested values are preserved.
+    expect((schema.offers as Record<string, unknown>).price).toBe(10);
+  });
 });

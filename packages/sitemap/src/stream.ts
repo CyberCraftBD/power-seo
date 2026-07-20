@@ -38,7 +38,7 @@ export function* streamSitemap(
 
     if (url.lastmod) yield `    <lastmod>${escapeXml(url.lastmod)}</lastmod>\n`;
     if (url.changefreq) yield `    <changefreq>${url.changefreq}</changefreq>\n`;
-    if (url.priority !== undefined) yield `    <priority>${url.priority.toFixed(1)}</priority>\n`;
+    if (url.priority !== undefined) yield `    <priority>${String(url.priority)}</priority>\n`;
 
     // Images
     if (url.images) {

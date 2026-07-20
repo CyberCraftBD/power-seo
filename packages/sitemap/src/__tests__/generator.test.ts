@@ -16,8 +16,28 @@ describe('generateSitemap', () => {
     expect(xml).toContain('<loc>https://example.com/</loc>');
     expect(xml).toContain('<loc>https://example.com/about</loc>');
     expect(xml).toContain('<changefreq>daily</changefreq>');
-    expect(xml).toContain('<priority>1.0</priority>');
+    expect(xml).toContain('<priority>1</priority>');
+    expect(xml).toContain('<priority>0.8</priority>');
     expect(xml).toContain('</urlset>');
+  });
+
+  it('preserves multi-decimal priority values without rounding (issue #137)', () => {
+    const xml = generateSitemap({
+      hostname: 'https://example.com',
+      urls: [
+        { loc: '/a', priority: 0.85 },
+        { loc: '/b', priority: 0.95 },
+        { loc: '/c', priority: 0.05 },
+      ],
+    });
+
+    expect(xml).toContain('<priority>0.85</priority>');
+    expect(xml).toContain('<priority>0.95</priority>');
+    expect(xml).toContain('<priority>0.05</priority>');
+    // Must NOT round to a single decimal
+    expect(xml).not.toContain('<priority>0.9</priority>');
+    expect(xml).not.toContain('<priority>1</priority>');
+    expect(xml).not.toContain('<priority>0.1</priority>');
   });
 
   it('handles absolute URLs in loc', () => {

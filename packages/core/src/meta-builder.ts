@@ -26,9 +26,9 @@ export function buildMetaTags(config: SEOConfig): MetaTag[] {
   // Robots
   if (config.noindex || config.nofollow || config.robots) {
     const robotsContent = buildRobotsContent({
+      ...config.robots,
       index: config.noindex ? false : config.robots?.index,
       follow: config.nofollow ? false : config.robots?.follow,
-      ...config.robots,
     });
     if (robotsContent) {
       tags.push({ name: 'robots', content: robotsContent });
@@ -227,7 +227,7 @@ export function buildHreflangTags(alternates: HreflangConfig[]): LinkTag[] {
  */
 export function resolveTitle(config: SEOConfig): string | undefined {
   if (config.title && config.titleTemplate) {
-    return config.titleTemplate.replace(/%s/g, config.title);
+    return config.titleTemplate.replace(/%s/g, () => config.title as string);
   }
 
   return config.title ?? config.defaultTitle;

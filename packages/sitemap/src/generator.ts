@@ -91,7 +91,7 @@ function buildUrlXml(url: SitemapURL, hostname: string): string {
   xml += `    <loc>${escapeXml(loc)}</loc>\n`;
   if (url.lastmod) xml += `    <lastmod>${escapeXml(url.lastmod)}</lastmod>\n`;
   if (url.changefreq) xml += `    <changefreq>${url.changefreq}</changefreq>\n`;
-  if (url.priority !== undefined) xml += `    <priority>${url.priority.toFixed(1)}</priority>\n`;
+  if (url.priority !== undefined) xml += `    <priority>${String(url.priority)}</priority>\n`;
   if (url.images && url.images.length > 0) xml += buildImageXml(url.images);
   if (url.videos && url.videos.length > 0) xml += buildVideoXml(url.videos);
   if (url.news) xml += buildNewsXml(url.news);

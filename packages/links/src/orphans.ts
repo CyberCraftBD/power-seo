@@ -21,6 +21,7 @@ export function findOrphanPages(graph: LinkGraph, entryPoints: string[] = []): O
     if (node.inboundCount === 0) {
       orphans.push({
         url: node.url,
+        title: node.title,
         outboundCount: node.outboundCount,
       });
     }

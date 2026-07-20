@@ -3,8 +3,19 @@
 
 import type { ScriptConfig, GA4Config, ConsentState } from '../types.js';
 
+// GA4 measurement IDs look like `G-XXXXXXXXXX` (an uppercase-alphanumeric token).
+// Validating against a strict allow-list prevents the ID from breaking out of the
+// inline script string and injecting arbitrary JS (XSS).
+const GA4_MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]+$/;
+
 export function buildGA4Script(config: GA4Config): ScriptConfig[] {
   const { measurementId, consentModeV2 = true, anonymizeIp = true, sendPageView = true } = config;
+
+  if (!GA4_MEASUREMENT_ID_PATTERN.test(measurementId)) {
+    throw new Error(
+      `Invalid GA4 measurementId: "${measurementId}". Expected format "G-XXXXXXXXXX".`,
+    );
+  }
 
   const scripts: ScriptConfig[] = [];
 

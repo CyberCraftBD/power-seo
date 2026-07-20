@@ -3,8 +3,39 @@
 
 import type { ScriptConfig, PostHogConfig, ConsentState } from '../types.js';
 
+// PostHog project API keys look like `phc_` followed by an alphanumeric token.
+// The host is embedded into the same inline script, so it must be a plain http(s)
+// URL. Validating both prevents breaking out of the inline script string and
+// injecting arbitrary JS (XSS).
+const POSTHOG_API_KEY_PATTERN = /^phc_[A-Za-z0-9]+$/;
+
+function isValidPostHogHost(host: string): boolean {
+  try {
+    const parsed = new URL(host);
+    if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') return false;
+    // Only a bare origin is allowed — no path, query, fragment, or credentials.
+    // A valid https URL can otherwise carry `</script>` or a quote in its path and
+    // break out of the inline script string (XSS). Requiring the input to equal the
+    // parsed origin (optionally with a trailing slash) guarantees no injected
+    // characters survived.
+    if (parsed.pathname !== '/' && parsed.pathname !== '') return false;
+    if (parsed.search || parsed.hash || parsed.username || parsed.password) return false;
+    return host === parsed.origin || host === `${parsed.origin}/`;
+  } catch {
+    return false;
+  }
+}
+
 export function buildPostHogScript(config: PostHogConfig): ScriptConfig {
   const { apiKey, host = 'https://us.i.posthog.com' } = config;
+
+  if (!POSTHOG_API_KEY_PATTERN.test(apiKey)) {
+    throw new Error(`Invalid PostHog apiKey: "${apiKey}". Expected format "phc_...".`);
+  }
+
+  if (!isValidPostHogHost(host)) {
+    throw new Error(`Invalid PostHog host: "${host}". Expected an http(s) URL.`);
+  }
 
   return {
     id: `posthog-${apiKey}`,

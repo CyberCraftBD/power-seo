@@ -10,6 +10,7 @@ export interface PageData {
 
 export interface LinkNode {
   url: string;
+  title?: string;
   inbound: string[];
   outbound: string[];
   inboundCount: number;

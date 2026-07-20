@@ -39,15 +39,26 @@ function withContext<T extends { '@type': string }>(
   return { '@context': CONTEXT, ...schema };
 }
 
-/** Remove undefined values from an object */
-function clean<T extends Record<string, unknown>>(obj: T): T {
-  const result = {} as Record<string, unknown>;
-  for (const [key, value] of Object.entries(obj)) {
-    if (value !== undefined) {
-      result[key] = value;
-    }
+/** Recursively strip `undefined` values from an object or array */
+function cleanValue(value: unknown): unknown {
+  if (Array.isArray(value)) {
+    return value.map((item) => cleanValue(item));
   }
-  return result as T;
+  if (value !== null && typeof value === 'object') {
+    const result: Record<string, unknown> = {};
+    for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
+      if (val !== undefined) {
+        result[key] = cleanValue(val);
+      }
+    }
+    return result;
+  }
+  return value;
+}
+
+/** Remove undefined values from an object (deep) */
+function clean<T extends Record<string, unknown>>(obj: T): T {
+  return cleanValue(obj) as T;
 }
 
 // --- Builder Functions ---
@@ -213,11 +224,16 @@ export function schemaGraph(schemas: SchemaObject[]): SchemaGraph {
  *
  * HTML special characters (`<`, `>`, `&`) are escaped to their Unicode
  * escape sequences so that a string value like `"</script>"` cannot
- * prematurely close the script tag (XSS vector).
+ * prematurely close the script tag (XSS vector). The line-separator
+ * (U+2028) and paragraph-separator (U+2029) code points are also escaped,
+ * since they are valid inside JSON strings but are invalid raw in a script
+ * context and can break parsers that treat the content as JavaScript.
  */
 export function toJsonLdString(
   schema: WithContext<SchemaObject> | SchemaGraph,
   pretty = false,
 ): string {
-  return serializeJsonLd(schema, pretty);
+  return serializeJsonLd(schema, pretty)
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
 }

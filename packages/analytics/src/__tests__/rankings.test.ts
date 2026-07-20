@@ -43,6 +43,30 @@ describe('analyzeQueryRankings', () => {
     expect(result.buckets).toHaveLength(4);
     expect(result.strikingDistance).toHaveLength(0);
   });
+
+  // Issue #145: fractional GSC positions (and <1 / >100) must land in exactly one
+  // bucket. Previously 3.5, 10.4, 20.7 fell through the inclusive integer edges and
+  // <1 / >100 were dropped, so the bucket counts did not sum to totalQueries.
+  it('should bucket fractional and out-of-range positions with no gaps', () => {
+    const queries: GscQueryData[] = [
+      { query: 'sub-one', clicks: 10, impressions: 100, ctr: 0.1, position: 0.4 },
+      { query: 'edge 3.5', clicks: 10, impressions: 100, ctr: 0.1, position: 3.5 },
+      { query: 'edge 15.6', clicks: 10, impressions: 100, ctr: 0.1, position: 15.6 },
+      { query: 'edge 20.7', clicks: 10, impressions: 100, ctr: 0.1, position: 20.7 },
+      { query: 'beyond 100', clicks: 10, impressions: 100, ctr: 0.1, position: 150 },
+    ];
+    const result = analyzeQueryRankings(queries);
+    expect(result.totalQueries).toBe(5);
+    // Every query must appear in exactly one bucket: counts sum to totalQueries.
+    const bucketed = result.buckets.reduce((sum, b) => sum + b.count, 0);
+    expect(bucketed).toBe(result.totalQueries);
+
+    // 0.4 -> "1-3", 3.5 -> "4-10", 15.6 -> "11-20", 20.7 & 150 -> "21-100" (open-ended top)
+    expect(result.buckets[0].count).toBe(1); // 1-3   (0.4)
+    expect(result.buckets[1].count).toBe(1); // 4-10  (3.5)
+    expect(result.buckets[2].count).toBe(1); // 11-20 (15.6)
+    expect(result.buckets[3].count).toBe(2); // 21-100 (20.7, 150)
+  });
 });
 
 describe('trackPositionChanges', () => {

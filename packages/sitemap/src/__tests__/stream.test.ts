@@ -23,6 +23,18 @@ describe('streamSitemap', () => {
     expect(xml).toContain('</urlset>');
   });
 
+  it('preserves multi-decimal priority values without rounding (issue #137)', () => {
+    const urls = [{ loc: '/a', priority: 0.85 }];
+    const chunks: string[] = [];
+    for (const chunk of streamSitemap('https://example.com', urls)) {
+      chunks.push(chunk);
+    }
+
+    const xml = chunks.join('');
+    expect(xml).toContain('<priority>0.85</priority>');
+    expect(xml).not.toContain('<priority>0.9</priority>');
+  });
+
   it('streams an empty sitemap', () => {
     const chunks: string[] = [];
     for (const chunk of streamSitemap('https://example.com', [])) {

@@ -49,6 +49,17 @@ describe('calculateKeywordDensity', () => {
     );
     expect(result.count).toBe(2);
   });
+
+  it('should match the documented density example (#135)', () => {
+    // 2 occurrences of the 'react seo' phrase in a 10-word body => 20.0%
+    const result = calculateKeywordDensity(
+      'react seo',
+      'Learn React SEO for your React application. React SEO matters.',
+    );
+    expect(result.count).toBe(2);
+    expect(result.totalWords).toBe(10);
+    expect(result.density).toBe(20);
+  });
 });
 
 describe('analyzeKeyphraseOccurrences', () => {

@@ -10,24 +10,16 @@ export async function inspectUrl(
   client: GSCClient,
   request: InspectionRequest,
 ): Promise<InspectionResult> {
-  const body = {
-    inspectionUrl: request.inspectionUrl,
-    siteUrl: client.siteUrl,
-    languageCode: request.languageCode ?? 'en',
-  };
-
-  const token = await client.request<{ inspectionResult: InspectionResult }>('', {
-    method: 'POST',
-    body,
-  });
-
-  // The URL Inspection API has a different base URL, so we use a direct fetch.
-  // However, since the client handles auth and retries, we override for the standard path approach.
-  // The API endpoint doesn't follow the webmasters/v3 pattern.
-  // We'll use the client's request method with a custom approach.
-
-  // Actually, let's do a direct fetch since the base URL differs:
-  return token.inspectionResult;
+  // The URL Inspection API lives at a different base URL (`INSPECTION_BASE`,
+  // the `v1/urlInspection` endpoint) than the webmasters/v3 client base, so we
+  // cannot route it through `client.request`. Delegate to `inspectUrlDirect`,
+  // reusing the client's token manager for auth.
+  return inspectUrlDirect(
+    () => client.auth.getToken(),
+    client.siteUrl,
+    request.inspectionUrl,
+    request.languageCode,
+  );
 }
 
 export async function inspectUrlDirect(

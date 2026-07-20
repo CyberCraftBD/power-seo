@@ -3,8 +3,19 @@
 
 import type { ScriptConfig, ClarityConfig, ConsentState } from '../types.js';
 
+// Clarity project IDs are short lowercase-alphanumeric tokens. Validating against a
+// strict allow-list prevents the ID from breaking out of the inline script string
+// and injecting arbitrary JS (XSS).
+const CLARITY_PROJECT_ID_PATTERN = /^[a-z0-9]+$/;
+
 export function buildClarityScript(config: ClarityConfig): ScriptConfig {
   const { projectId } = config;
+
+  if (!CLARITY_PROJECT_ID_PATTERN.test(projectId)) {
+    throw new Error(
+      `Invalid Clarity projectId: "${projectId}". Expected a lowercase-alphanumeric token.`,
+    );
+  }
 
   return {
     id: `clarity-${projectId}`,

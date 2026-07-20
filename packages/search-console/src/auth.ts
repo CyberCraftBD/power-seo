@@ -98,11 +98,16 @@ export function createTokenManager(fetchToken: () => Promise<TokenResult>): Toke
         return pending;
       }
 
-      pending = fetchToken().then((result) => {
-        cached = result;
-        pending = null;
-        return result.accessToken;
-      });
+      pending = fetchToken()
+        .then((result) => {
+          cached = result;
+          return result.accessToken;
+        })
+        .finally(() => {
+          // Always clear the in-flight promise so a rejected fetch (transient
+          // network/5xx) is not cached forever; the next call retries cleanly.
+          pending = null;
+        });
 
       return pending;
     },

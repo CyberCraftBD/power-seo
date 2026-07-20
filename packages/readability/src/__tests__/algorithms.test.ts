@@ -99,6 +99,34 @@ describe('colemanLiau', () => {
     const complexGrade = colemanLiau(complexStats);
     expect(complexGrade).toBeGreaterThan(simpleGrade);
   });
+
+  // Issue #141 [Medium]: letter count must exclude punctuation and digits,
+  // otherwise the grade is biased upward on number-heavy text.
+  it('excludes digits and punctuation from the letter count when content is provided', () => {
+    // Digit- and punctuation-heavy sentence: characterCount is inflated by all
+    // the numbers and commas, so the characterCount-based approximation reports
+    // far more "letters" than actually exist.
+    const content =
+      'The quarterly report covers 2020, 2021, 2022, 2023, 2024, 2025 and includes ' +
+      '1234 5678 90 items totaling 999999 units across 42 regions with 7 teams.';
+    const stats = getTextStatistics(content);
+
+    const gradeWithContent = colemanLiau(stats, content);
+    const gradeApprox = colemanLiau(stats);
+
+    // The content-aware grade must be meaningfully lower (not inflated by digits).
+    expect(gradeWithContent).toBeLessThan(gradeApprox);
+    expect(gradeApprox - gradeWithContent).toBeGreaterThan(5);
+  });
+
+  // Issue #141 [Medium]: punctuation must not count as letters either.
+  it('does not count commas and periods as letters', () => {
+    const content =
+      'Well, yes, indeed, of course, naturally, certainly, absolutely, and, finally, done.';
+    const stats = getTextStatistics(content);
+    // Many commas: the approximation over-counts letters vs. the true count.
+    expect(colemanLiau(stats, content)).toBeLessThan(colemanLiau(stats));
+  });
 });
 
 describe('automatedReadability', () => {

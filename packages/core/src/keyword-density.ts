@@ -44,11 +44,10 @@ export function calculateKeywordDensity(keyword: string, content: string): Keywo
   // Count occurrences of the keyphrase
   const count = countKeywordOccurrences(plainText, normalizedKeyword);
 
-  // Density = (keyword occurrences / total words) * 100
-  // For multi-word keyphrases, we count phrase occurrences
-  const keywordWordCount = normalizedKeyword.split(/\s+/).length;
-  const density =
-    words.length > 0 ? Math.round(((count * keywordWordCount) / words.length) * 1000) / 10 : 0;
+  // Density = (keyphrase occurrences / total words) * 100.
+  // A multi-word keyphrase counts as a single occurrence (matching the
+  // documented example: 2 occurrences of 'react seo' in 10 words => 20.0).
+  const density = words.length > 0 ? Math.round((count / words.length) * 1000) / 10 : 0;
 
   return {
     keyword,

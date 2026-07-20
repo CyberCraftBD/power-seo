@@ -39,6 +39,25 @@ describe('applyTitleTemplate', () => {
     });
     expect(result).toBe('About — My Site');
   });
+
+  it('should preserve legitimate leading/trailing separators in resolved values (#135)', () => {
+    // A title that legitimately starts with an em-dash must keep it.
+    const result = applyTitleTemplate('%title% | %siteName%', {
+      title: '—Rock Band',
+      siteName: 'My Site',
+    });
+    expect(result).toBe('—Rock Band | My Site');
+  });
+
+  it('should preserve a trailing separator character in a resolved value (#135)', () => {
+    const result = applyTitleTemplate('%title%', { title: 'Rock Band—' });
+    expect(result).toBe('Rock Band—');
+  });
+
+  it('should still drop the separator when a placeholder resolves to empty (#135)', () => {
+    const result = applyTitleTemplate('%title% | %siteName%', { title: 'About' });
+    expect(result).toBe('About');
+  });
 });
 
 describe('createTitleTemplate', () => {
