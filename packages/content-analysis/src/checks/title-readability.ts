@@ -4,24 +4,82 @@
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 
 const POSITIVE_WORDS = [
-  'best', 'top', 'great', 'amazing', 'ultimate', 'essential', 'proven',
-  'powerful', 'effective', 'easy', 'simple', 'free', 'new', 'guide',
-  'tips', 'secrets', 'complete', 'perfect', 'incredible',
+  'best',
+  'top',
+  'great',
+  'amazing',
+  'ultimate',
+  'essential',
+  'proven',
+  'powerful',
+  'effective',
+  'easy',
+  'simple',
+  'free',
+  'new',
+  'guide',
+  'tips',
+  'secrets',
+  'complete',
+  'perfect',
+  'incredible',
 ];
 
 const NEGATIVE_WORDS = [
-  'worst', 'avoid', 'never', 'stop', 'mistake', 'wrong', 'bad', 'fail',
-  'warning', 'danger', 'risk', 'problem', 'error', 'crisis', 'scam',
+  'worst',
+  'avoid',
+  'never',
+  'stop',
+  'mistake',
+  'wrong',
+  'bad',
+  'fail',
+  'warning',
+  'danger',
+  'risk',
+  'problem',
+  'error',
+  'crisis',
+  'scam',
 ];
 
 const POWER_WORDS = [
-  'ultimate', 'essential', 'proven', 'powerful', 'effective', 'incredible',
-  'complete', 'perfect', 'best', 'top', 'amazing', 'great',
-  'unleash', 'exclusive', 'guaranteed', 'instantly', 'revolutionary',
-  'breakthrough', 'limited', 'urgent', 'remarkable', 'extraordinary',
-  'unbelievable', 'insider', 'confidential', 'shocking', 'little-known',
-  'behind-the-scenes', 'bizarre', 'free', 'new', 'guide', 'tips',
-  'secrets', 'simple', 'easy',
+  'ultimate',
+  'essential',
+  'proven',
+  'powerful',
+  'effective',
+  'incredible',
+  'complete',
+  'perfect',
+  'best',
+  'top',
+  'amazing',
+  'great',
+  'unleash',
+  'exclusive',
+  'guaranteed',
+  'instantly',
+  'revolutionary',
+  'breakthrough',
+  'limited',
+  'urgent',
+  'remarkable',
+  'extraordinary',
+  'unbelievable',
+  'insider',
+  'confidential',
+  'shocking',
+  'little-known',
+  'behind-the-scenes',
+  'bizarre',
+  'free',
+  'new',
+  'guide',
+  'tips',
+  'secrets',
+  'simple',
+  'easy',
 ];
 
 export function checkTitleReadability(input: ContentAnalysisInput): AnalysisResult[] {
@@ -30,7 +88,7 @@ export function checkTitleReadability(input: ContentAnalysisInput): AnalysisResu
 
   const titleText = title && title.trim().length > 0 ? title.trim() : '';
   const titleLower = titleText.toLowerCase();
-  const titleWords = titleLower.split(/[\s\-]+/);
+  const titleWords = titleLower.split(/[\s-]+/);
 
   // --- Check 1: Title contains a number ---
   if (/\d/.test(titleText)) {

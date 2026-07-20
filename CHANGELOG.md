@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.16] - 2026-07-20
+
+### Security
+
+- **`@power-seo/redirects`** — Open-redirect guard (#129). Resolved destinations are now validated before use: `javascript:`, `data:`, `vbscript:`, and `file:` schemes are always rejected; destinations that become off-origin through wildcard/param/regex substitution (`//host`, `\\host`, any `scheme:` prefix — including single-slash forms like `https:/host` that browsers normalize to absolute URLs) are rejected unless the rule's own destination template is external or `allowExternalRedirects` is enabled.
+- **`@power-seo/schema`** + **`@power-seo/react`** — JSON-LD XSS hardening (#124, #125). All JSON-LD React components and the `Breadcrumb` component now serialize through the shared escaping serializer (`<`, `>`, `&` escaped as Unicode sequences), closing `</script>`-injection vectors.
+- **`@power-seo/integrations`** + **`@power-seo/search-console`** — Upstream API response bodies are sanitized (secrets redacted, truncated to 200 chars) before appearing in thrown error messages (#130).
+
+### Fixed
+
+- **`@power-seo/meta`** — `createMetadata()` no longer clobbers `metadata.other` when both advanced robots directives and `additionalMetaTags` are used; entries are merged (#133).
+- **`@power-seo/meta`** + **`@power-seo/core`** — `createMetadata()` and `buildMetaTags()` now derive `og:title`/`og:description`/`og:url` and `twitter:title`/`twitter:description` from top-level `title`/`description`/`canonical` when not explicitly set, so social cards are complete by default (#134). Explicit `openGraph`/`twitter` values still take precedence.
+- **`@power-seo/content-analysis`** — Content freshness no longer uses a hardcoded "now"; the current date is injected (overridable via `options.now`) (#127).
+- **`@power-seo/content-analysis`** — Media count no longer double-counts video iframes and no longer counts raw video URLs in text as embeds (#121).
+- **`@power-seo/content-analysis`** — Transition-word thresholds now come from shared `READABILITY` constants, matching `@power-seo/readability` (#122).
+- **`@power-seo/audit`** — Keyphrase density thresholds now use the shared `KEYWORD_DENSITY` constants (0.5–2.5%) instead of a hardcoded 3.0% bound (#126).
+- **`@power-seo/content-analysis`** — Overlapping regex patterns no longer inflate marker counts in E-E-A-T case-study detection; distinct match spans are merged via the new `countDistinctMatches` utility (#128).
+- **`@power-seo/core`** — Removed dead identical-branch ternary in `countSyllables` suffix handling (#132).
+
+### Changed
+
+- **`@power-seo/core`** — Consolidated shared utilities: `escapeXml` (`xml-utils`), HTTP retry/backoff (`http-retry`), JSON-LD serialization (`json-ld`), and pattern matching (`pattern-utils`) are now single-sourced in core and reused by sitemap, redirects, integrations, and search-console (#131). Word counting and sentence splitting are unified across content-analysis checks (#123).
+
 ## [1.0.15] - 2026-04-06
 
 ### Added

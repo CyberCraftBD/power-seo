@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
 
 // Good epistemic language — calibrated confidence (experts use these)
 const HEDGING_PATTERNS: RegExp[] = [
@@ -24,8 +24,8 @@ const HEDGING_PATTERNS: RegExp[] = [
   /\bwhile\s+more\s+research\s+is\s+needed\b/gi,
   /\bfurther\s+(research|study|investigation)\s+is\s+needed\b/gi,
   /\blimitations?\s+(include|of\s+this|to\s+consider)\b/gi,
-  /\bit['']?s?\s+worth\s+noting\s+that\b/gi,
-  /\bhowever,?\s+it['']?s?\s+important\s+to\b/gi,
+  /\bit['’]?s?\s+worth\s+noting\s+that\b/gi,
+  /\bhowever,?\s+it['’]?s?\s+important\s+to\b/gi,
   /\bthat\s+said\b/gi,
   /\bon\s+the\s+other\s+hand\b/gi,
   /\bwith\s+the\s+caveat\s+that\b/gi,
@@ -57,7 +57,7 @@ const ABSOLUTE_PATTERNS: RegExp[] = [
   /\byou\s+must\s+(buy|try|use|get)\b/gi,
   /\bact\s+now\b/gi,
   /\blimited\s+time\s+only\b/gi,
-  /\bbefore\s+it['']?s?\s+too\s+late\b/gi,
+  /\bbefore\s+it['’]?s?\s+too\s+late\b/gi,
 ];
 
 export function checkExpertHedging(input: ContentAnalysisInput): AnalysisResult {
@@ -76,18 +76,15 @@ export function checkExpertHedging(input: ContentAnalysisInput): AnalysisResult 
     };
   }
 
-  let hedgingCount = 0;
-  for (const pattern of HEDGING_PATTERNS) {
-    const matches = plainText.match(pattern);
-    if (matches) hedgingCount += matches.length;
-  }
+  // Overlapping hits across patterns count once
+  const hedgingCount = countDistinctMatches(plainText, HEDGING_PATTERNS);
 
-  let absoluteCount = 0;
+  const absoluteCount = countDistinctMatches(plainText, ABSOLUTE_PATTERNS);
   const absoluteExamples: string[] = [];
   for (const pattern of ABSOLUTE_PATTERNS) {
+    if (absoluteExamples.length >= 3) break;
     const matches = plainText.match(pattern);
     if (matches) {
-      absoluteCount += matches.length;
       for (const m of matches) {
         if (absoluteExamples.length < 3) {
           absoluteExamples.push(`"${m.trim()}"`);
@@ -121,8 +118,11 @@ export function checkExpertHedging(input: ContentAnalysisInput): AnalysisResult 
 
   if (hedgingCount >= 1 && absoluteCount <= 3) {
     const suggestions: string[] = [];
-    if (absoluteCount > 0) suggestions.push(`soften ${absoluteCount} absolute claims: ${absoluteExamples.join(', ')}`);
-    suggestions.push('add hedging phrases: "research suggests", "in most cases", "evidence indicates"');
+    if (absoluteCount > 0)
+      suggestions.push(`soften ${absoluteCount} absolute claims: ${absoluteExamples.join(', ')}`);
+    suggestions.push(
+      'add hedging phrases: "research suggests", "in most cases", "evidence indicates"',
+    );
     return {
       id: 'eeat-expert-hedging',
       title: 'Expert precision',
@@ -147,7 +147,8 @@ export function checkExpertHedging(input: ContentAnalysisInput): AnalysisResult 
   return {
     id: 'eeat-expert-hedging',
     title: 'Expert precision',
-    description: 'No hedging or precision language detected. Experts qualify claims with "research suggests", "evidence indicates", "in most cases". Add calibrated confidence language to demonstrate expertise.',
+    description:
+      'No hedging or precision language detected. Experts qualify claims with "research suggests", "evidence indicates", "in most cases". Add calibrated confidence language to demonstrate expertise.',
     status: 'poor',
     score: 1,
     maxScore: 5,

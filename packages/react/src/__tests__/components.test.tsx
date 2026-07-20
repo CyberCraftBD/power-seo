@@ -96,6 +96,22 @@ describe('Breadcrumb component', () => {
     expect(data.itemListElement).toHaveLength(2);
   });
 
+  it('escapes </script> in item labels to prevent XSS', () => {
+    const { container } = render(
+      <Breadcrumb
+        items={[{ name: 'Home', url: '/' }, { name: '</script><img src=x onerror=alert(1)>' }]}
+      />,
+    );
+    const script = container.querySelector('script[type="application/ld+json"]');
+    const raw = script?.innerHTML ?? '';
+    // The raw closing-script sequence must not appear unescaped in the markup
+    expect(raw).not.toContain('</script>');
+    expect(raw).toContain('\\u003c');
+    // ...but the JSON must still parse and preserve the original label
+    const data = JSON.parse(script?.textContent ?? '{}');
+    expect(data.itemListElement[1].name).toBe('</script><img src=x onerror=alert(1)>');
+  });
+
   it('should optionally exclude JSON-LD', () => {
     const { container } = render(
       <Breadcrumb items={[{ name: 'Home', url: '/' }]} includeJsonLd={false} />,

@@ -125,4 +125,32 @@ describe('createRedirectEngine', () => {
     expect(engine.match('/anything')).toBeNull();
     expect(engine.getRules()).toEqual([]);
   });
+
+  it('blocks open redirects injected through wildcard substitution', () => {
+    const engine = createRedirectEngine([{ source: '/go/*', destination: '*', statusCode: 302 }]);
+    expect(engine.match('/go/docs')).not.toBeNull();
+    // Captured value becomes 'https:/evil.com/phish' after slash collapsing —
+    // browsers parse that as an absolute https://evil.com/phish URL.
+    expect(engine.match('/go/https://evil.com/phish')).toBeNull();
+  });
+
+  it('blocks javascript: destinations injected through substitution', () => {
+    const engine = createRedirectEngine([{ source: '/go/*', destination: '*', statusCode: 302 }]);
+    expect(engine.match('/go/javascript:alert(1)')).toBeNull();
+  });
+
+  it('preserves intentionally external redirect rules', () => {
+    const engine = createRedirectEngine([
+      { source: '/twitter', destination: 'https://twitter.com/example', statusCode: 301 },
+    ]);
+    const result = engine.match('/twitter');
+    expect(result!.resolvedDestination).toBe('https://twitter.com/example');
+  });
+
+  it('allows substituted external destinations when allowExternalRedirects is set', () => {
+    const engine = createRedirectEngine([{ source: '/out/*', destination: '*', statusCode: 302 }], {
+      allowExternalRedirects: true,
+    });
+    expect(engine.match('/out/https://partner.example/page')).not.toBeNull();
+  });
 });

@@ -186,7 +186,7 @@ export function checkIntentSnippetReadiness(input: ContentAnalysisInput): Analys
       title: 'Featured snippet readiness',
       description: `Content has ${count} snippet-ready patterns: ${foundNames}. Well-structured for position zero.${keyphraseNote}`,
       status: 'good',
-      score: 5,
+      score: 6,
       maxScore: 6,
     };
   }
@@ -200,7 +200,7 @@ export function checkIntentSnippetReadiness(input: ContentAnalysisInput): Analys
       title: 'Featured snippet readiness',
       description: `Found ${count} snippet pattern${count === 1 ? '' : 's'}: ${foundNames}. Consider adding: ${missingNames}.${keyphraseNote}`,
       status: 'ok',
-      score: 3,
+      score: 4,
       maxScore: 6,
     };
   }

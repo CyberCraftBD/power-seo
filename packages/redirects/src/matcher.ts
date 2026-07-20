@@ -161,3 +161,48 @@ export function substituteParams(destination: string, params: Record<string, str
   }
   return result;
 }
+
+// Dangerous URL schemes that must never be used as a redirect destination.
+// Leading control/whitespace characters are tolerated (browsers strip them).
+// eslint-disable-next-line no-control-regex -- control chars are the attack vector being matched
+const DANGEROUS_SCHEME = /^[\x00-\x20]*(?:javascript|data|vbscript|file):/i;
+
+/**
+ * True when a destination points off the current origin — an absolute
+ * scheme-prefixed URL, or a protocol-relative reference (`//host`, `/\host`,
+ * `\\host`; browsers treat `\` like `/`). Any scheme prefix counts, not just
+ * `scheme://`: browsers parse `https:/host` and `https:host` as `https://host`
+ * (WHATWG URL special-scheme normalization).
+ */
+function isExternalDestination(dest: string): boolean {
+  // eslint-disable-next-line no-control-regex -- strip the control chars browsers ignore
+  const s = dest.replace(/^[\x00-\x20]+/, '');
+  if (/^[/\\]{2}/.test(s)) return true; // //host or \\host or /\host
+  if (/^[a-z][a-z0-9+.-]*:/i.test(s)) return true; // scheme: absolute URL
+  return false;
+}
+
+/**
+ * Guard against open-redirect injection. A resolved destination is unsafe when:
+ *  - it uses a dangerous scheme (`javascript:`, `data:`, `vbscript:`, `file:`), or
+ *  - it became off-origin/protocol-relative through capture-group substitution
+ *    (the raw rule template was NOT external but the resolved value is) and
+ *    external redirects are not explicitly allowed via config.
+ *
+ * Intentional external redirects — where the author's destination template is
+ * itself external — are always preserved.
+ */
+export function isDestinationSafe(
+  rawDestination: string,
+  resolvedDestination: string,
+  config?: RedirectEngineConfig,
+): boolean {
+  if (DANGEROUS_SCHEME.test(resolvedDestination)) return false;
+
+  if (isExternalDestination(resolvedDestination)) {
+    if (config?.allowExternalRedirects) return true;
+    return isExternalDestination(rawDestination);
+  }
+
+  return true;
+}

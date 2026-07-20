@@ -14,6 +14,16 @@ export interface RedirectMatch {
 export interface RedirectEngineConfig {
   trailingSlash?: 'keep' | 'remove' | 'add';
   caseSensitive?: boolean;
+  /**
+   * Allow a rule's destination to resolve to an off-origin (absolute or
+   * protocol-relative) URL even when the raw destination template was a
+   * same-origin path. Defaults to `false` — this prevents open-redirect
+   * injection where a user-controlled capture group turns a relative
+   * destination into an external one. Rules whose destination template is
+   * itself external are always allowed regardless of this flag. Dangerous
+   * schemes (`javascript:`, `data:`, `vbscript:`, `file:`) are always blocked.
+   */
+  allowExternalRedirects?: boolean;
 }
 
 export interface RedirectEngine {

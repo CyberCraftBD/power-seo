@@ -2,6 +2,7 @@
 // ----------------------------------------------------------------------------
 
 export { analyzeContent } from './analyzer.js';
+export type { AnalyzeOptions } from './analyzer.js';
 export { checkTitle } from './checks/title.js';
 export { checkMetaDescription } from './checks/meta-description.js';
 export { checkKeyphraseUsage } from './checks/keyphrase-usage.js';

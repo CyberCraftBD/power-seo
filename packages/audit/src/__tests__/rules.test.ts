@@ -120,6 +120,29 @@ describe('runContentRules', () => {
     const readabilityRule = rules.find((r) => r.id.startsWith('readability-'));
     expect(readabilityRule).toBeDefined();
   });
+
+  it('passes keyphrase density within the core-defined range', () => {
+    const input: PageAuditInput = { url: 'https://example.com', keywordDensity: 1.5 };
+    const rules = runContentRules(input);
+    const density = rules.find((r) => r.id === 'content-keyphrase-density');
+    expect(density!.severity).toBe('pass');
+  });
+
+  it('warns on keyphrase density above the core 2.5% maximum (not a hardcoded 3.0%)', () => {
+    const input: PageAuditInput = { url: 'https://example.com', keywordDensity: 2.8 };
+    const rules = runContentRules(input);
+    const density = rules.find((r) => r.id === 'content-keyphrase-density');
+    expect(density!.severity).toBe('warning');
+    expect(density!.description).toContain('2.5');
+  });
+
+  it('warns on keyphrase density below the core 0.5% minimum', () => {
+    const input: PageAuditInput = { url: 'https://example.com', keywordDensity: 0.3 };
+    const rules = runContentRules(input);
+    const density = rules.find((r) => r.id === 'content-keyphrase-density');
+    expect(density!.severity).toBe('warning');
+    expect(density!.description).toContain('0.5');
+  });
 });
 
 describe('runStructureRules', () => {

@@ -2,6 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import { createElement, Fragment } from 'react';
+import { serializeJsonLd } from '@power-seo/core';
 
 export interface BreadcrumbItem {
   name: string;
@@ -119,7 +120,9 @@ export function Breadcrumb({
       createElement('script', {
         key: 'breadcrumb-jsonld',
         type: 'application/ld+json',
-        dangerouslySetInnerHTML: { __html: JSON.stringify(jsonLdData) },
+        // Escape <, >, & so a breadcrumb label like "</script>" cannot
+        // terminate the script tag (XSS).
+        dangerouslySetInnerHTML: { __html: serializeJsonLd(jsonLdData) },
       }),
     );
   }

@@ -80,8 +80,13 @@ describe('createMetaDescriptors', () => {
       },
     };
     const result = createMetaDescriptors(config);
-    // title + description + robots + og:type + og:title + twitter:card + canonical link
-    expect(result.length).toBe(7);
+    // title + description + robots + og:type + og:title + og:description (fallback)
+    // + og:url (fallback) + twitter:card + twitter:title (fallback)
+    // + twitter:description (fallback) + canonical link
+    expect(result.length).toBe(11);
+    expect(result).toContainEqual({ property: 'og:description', content: 'Full description' });
+    expect(result).toContainEqual({ property: 'og:url', content: 'https://example.com/full' });
+    expect(result).toContainEqual({ name: 'twitter:title', content: 'Full Page' });
   });
 
   it('should include robots meta descriptor', () => {

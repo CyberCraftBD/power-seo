@@ -2,7 +2,13 @@
 // ----------------------------------------------------------------------------
 
 export { createRedirectEngine } from './engine.js';
-export { matchExact, matchGlob, matchRegex, substituteParams } from './matcher.js';
+export {
+  matchExact,
+  matchGlob,
+  matchRegex,
+  substituteParams,
+  isDestinationSafe,
+} from './matcher.js';
 export { toNextRedirects } from './adapters/nextjs.js';
 export { createRemixRedirectHandler } from './adapters/remix.js';
 export { createExpressRedirectMiddleware } from './adapters/express.js';

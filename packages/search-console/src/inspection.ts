@@ -2,6 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { GSCClient, InspectionRequest, InspectionResult } from './types.js';
+import { sanitizeErrorSnippet } from '@power-seo/core';
 
 const INSPECTION_BASE = 'https://searchconsole.googleapis.com/v1/urlInspection/index:inspect';
 
@@ -52,7 +53,7 @@ export async function inspectUrlDirect(
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`URL Inspection API error: ${response.status} ${text}`);
+    throw new Error(`URL Inspection API error: ${response.status} ${sanitizeErrorSnippet(text)}`);
   }
 
   const data = (await response.json()) as { inspectionResult: InspectionResult };

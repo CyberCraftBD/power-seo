@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { matchExact, matchGlob, matchRegex, substituteParams } from '../matcher.js';
+import {
+  matchExact,
+  matchGlob,
+  matchRegex,
+  substituteParams,
+  isDestinationSafe,
+} from '../matcher.js';
 
 describe('matchExact', () => {
   it('matches identical paths', () => {
@@ -104,5 +110,55 @@ describe('substituteParams', () => {
 
   it('substitutes wildcard', () => {
     expect(substituteParams('/new/*', { '*': 'path/to/page' })).toBe('/new/path/to/page');
+  });
+});
+
+describe('isDestinationSafe', () => {
+  it('allows normal internal destinations', () => {
+    expect(isDestinationSafe('/new/:id', '/new/123')).toBe(true);
+  });
+
+  it('blocks javascript: destinations', () => {
+    expect(isDestinationSafe('*', 'javascript:alert(1)')).toBe(false);
+  });
+
+  it('blocks dangerous schemes case-insensitively and with leading whitespace', () => {
+    expect(isDestinationSafe('*', '  JaVaScRiPt:alert(1)')).toBe(false);
+    expect(isDestinationSafe('*', 'data:text/html,<script>x</script>')).toBe(false);
+    expect(isDestinationSafe('*', 'vbscript:msgbox(1)')).toBe(false);
+    expect(isDestinationSafe('*', 'file:///etc/passwd')).toBe(false);
+  });
+
+  it('blocks substitution-induced protocol-relative destinations', () => {
+    expect(isDestinationSafe('/*', '//evil.com/phish')).toBe(false);
+    expect(isDestinationSafe('/*', '\\\\evil.com/phish')).toBe(false);
+    expect(isDestinationSafe('/*', '/\\evil.com/phish')).toBe(false);
+  });
+
+  it('blocks substitution-induced absolute external destinations', () => {
+    expect(isDestinationSafe('/go/:target', 'https://evil.com/phish')).toBe(false);
+  });
+
+  it('blocks scheme-prefixed destinations without double slashes (WHATWG normalization)', () => {
+    expect(isDestinationSafe('/*', 'https:/evil.com/phish')).toBe(false);
+    expect(isDestinationSafe('/*', 'https:evil.com')).toBe(false);
+  });
+
+  it('preserves intentionally external destination templates', () => {
+    expect(isDestinationSafe('https://example.org/*', 'https://example.org/page')).toBe(true);
+  });
+
+  it('honors allowExternalRedirects config', () => {
+    expect(
+      isDestinationSafe('/*', 'https://partner.example/landing', {
+        allowExternalRedirects: true,
+      }),
+    ).toBe(true);
+  });
+
+  it('never allows dangerous schemes even with allowExternalRedirects', () => {
+    expect(isDestinationSafe('*', 'javascript:alert(1)', { allowExternalRedirects: true })).toBe(
+      false,
+    );
   });
 });

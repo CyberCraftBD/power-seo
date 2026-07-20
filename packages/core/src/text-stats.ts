@@ -86,10 +86,21 @@ export function extractTagContents(html: string, tag: string): string[] {
   return results;
 }
 
+// Single-entry memo for stripHtml. Content analysis runs ~58 checks that each
+// strip the same document, so caching the last input/output avoids re-stripping
+// identical HTML dozens of times per analyzeContent() call. Only inputs longer
+// than MEMO_MIN_LENGTH are memoized — short strings are cheap to re-strip and
+// not worth retaining a reference to.
+const MEMO_MIN_LENGTH = 500;
+let memoInput: string | null = null;
+let memoOutput = '';
+
 /**
  * Strip HTML tags from content, returning plain text.
  */
 export function stripHtml(html: string): string {
+  if (html === memoInput) return memoOutput;
+
   // Remove script and style blocks without regex to avoid ReDoS.
   let result = removeBlockTag(html, 'script');
   result = removeBlockTag(result, 'style');
@@ -97,7 +108,7 @@ export function stripHtml(html: string): string {
   // Remove remaining tags with a character scanner (no regex) to avoid ReDoS.
   result = removeHtmlTags(result);
 
-  return result
+  const output = result
     .replace(/&nbsp;/g, ' ')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
@@ -106,6 +117,13 @@ export function stripHtml(html: string): string {
     .replace(/&amp;/g, '&') // decode & last to prevent double-unescaping (&amp;lt; → &lt; → <)
     .replace(/\s+/g, ' ')
     .trim();
+
+  if (html.length > MEMO_MIN_LENGTH) {
+    memoInput = html;
+    memoOutput = output;
+  }
+
+  return output;
 }
 
 /**
@@ -115,6 +133,17 @@ export function getWords(text: string): string[] {
   const cleaned = stripHtml(text);
   if (!cleaned) return [];
   return cleaned.split(/\s+/).filter((w) => w.length > 0);
+}
+
+/**
+ * Split plain text into sentences on ending punctuation, keeping only
+ * sentences with at least 3 words.
+ */
+export function splitSentences(text: string): string[] {
+  return text
+    .split(/[.!?]+/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0 && s.split(/\s+/).length >= 3); // At least 3 words to count as a sentence
 }
 
 /**
@@ -180,15 +209,6 @@ export function countSyllables(word: string): number {
   // Handle silent 'e' at end
   if (w.endsWith('e') && !w.endsWith('le') && count > 1) {
     count--;
-  }
-
-  // Handle common suffixes
-  if (w.endsWith('es') || w.endsWith('ed')) {
-    // Don't count 'es' or 'ed' as extra unless preceded by 't' or 'd'
-    const beforeSuffix = w[w.length - (w.endsWith('es') ? 3 : 3)];
-    if (beforeSuffix !== 't' && beforeSuffix !== 'd') {
-      // Already handled by vowel counting
-    }
   }
 
   return Math.max(1, count);

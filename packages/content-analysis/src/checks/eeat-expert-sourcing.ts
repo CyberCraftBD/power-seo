@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
 
 // Expert attribution patterns
 const EXPERT_QUOTE_PATTERNS: RegExp[] = [
@@ -53,14 +53,14 @@ export function checkExpertSourcing(input: ContentAnalysisInput): AnalysisResult
     };
   }
 
-  let expertMentions = 0;
+  // Overlapping hits across patterns count once
+  let expertMentions = countDistinctMatches(plainText, EXPERT_QUOTE_PATTERNS);
   const sourceTypes: Set<string> = new Set();
 
-  // Check text patterns
+  // Classify source types per pattern
   for (const pattern of EXPERT_QUOTE_PATTERNS) {
     const matches = plainText.match(pattern);
     if (matches) {
-      expertMentions += matches.length;
       const src = pattern.source.toLowerCase();
       if (src.includes('interview') || src.includes('spoke') || src.includes('told')) {
         sourceTypes.add('interviews');
@@ -106,8 +106,10 @@ export function checkExpertSourcing(input: ContentAnalysisInput): AnalysisResult
 
   if (expertMentions >= 1) {
     const suggestions: string[] = [];
-    if (blockquotes.length === 0) suggestions.push('use <blockquote> with <cite> for attributed quotes');
-    if (types.length < 2) suggestions.push('diversify sources: add interviews, expert quotes, or contributor insights');
+    if (blockquotes.length === 0)
+      suggestions.push('use <blockquote> with <cite> for attributed quotes');
+    if (types.length < 2)
+      suggestions.push('diversify sources: add interviews, expert quotes, or contributor insights');
     if (expertMentions < 3) suggestions.push('cite at least 3 expert sources');
     return {
       id: 'eeat-expert-sourcing',
@@ -122,7 +124,8 @@ export function checkExpertSourcing(input: ContentAnalysisInput): AnalysisResult
   return {
     id: 'eeat-expert-sourcing',
     title: 'Expert sourcing',
-    description: 'No expert sourcing detected. Add expert quotes ("According to Dr. Smith..."), attributed insights, interview data, or expert contributor sections. Use <blockquote> with <cite> for proper attribution.',
+    description:
+      'No expert sourcing detected. Add expert quotes ("According to Dr. Smith..."), attributed insights, interview data, or expert contributor sections. Use <blockquote> with <cite> for proper attribution.',
     status: 'poor',
     score: 0,
     maxScore: 5,

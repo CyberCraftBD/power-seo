@@ -2,7 +2,8 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
+import { TEMPORAL_EXPERIENCE_PATTERNS } from './shared-patterns.js';
 
 // First-person experience phrases (regex patterns)
 const EXPERIENCE_PATTERNS: RegExp[] = [
@@ -42,15 +43,8 @@ const EXPERIENCE_PATTERNS: RegExp[] = [
   /\bfrom\s+my\s+testing\b/gi,
   /\bwhat\s+i\s+found\b/gi,
 
-  // Temporal experience markers
-  /\bafter\s+\d+\s+(months?|years?|weeks?|days?)\s+of\s+using\b/gi,
-  /\bover\s+the\s+past\s+\d+\s+(months?|years?|weeks?)\b/gi,
-  /\bfor\s+the\s+last\s+\d+\s+(months?|years?|weeks?)\b/gi,
-  /\bi['']ve\s+been\s+using\b/gi,
-  /\bi['']ve\s+spent\b/gi,
-  /\bi['']ve\s+worked\s+with\b/gi,
-  /\bfor\s+over\s+\d+\s+years?\b/gi,
-  /\bsince\s+\d{4}\b/gi,
+  // Temporal experience markers (shared with eeat-overall-score)
+  ...TEMPORAL_EXPERIENCE_PATTERNS,
 
   // Outcome reporting
   /\bthe\s+results?\s+showed\b/gi,
@@ -71,10 +65,10 @@ const EXPERIENCE_PATTERNS: RegExp[] = [
   /\bside.by.side\s+comparison\b/gi,
 
   // Process narration
-  /\bhere['']?s?\s+what\s+happened\b/gi,
+  /\bhere['’]?s?\s+what\s+happened\b/gi,
   /\bstep\s+by\s+step\b/gi,
   /\bthe\s+process\s+involved\b/gi,
-  /\bhere['']?s?\s+how\s+i\b/gi,
+  /\bhere['’]?s?\s+how\s+i\b/gi,
   /\bmy\s+approach\s+was\b/gi,
   /\bwhat\s+worked\s+for\s+me\b/gi,
   /\bi\s+walked\s+through\b/gi,
@@ -100,13 +94,13 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
     };
   }
 
-  let totalMatches = 0;
+  // Overlapping hits across patterns count once
+  const totalMatches = countDistinctMatches(plainText, EXPERIENCE_PATTERNS);
   const matchedPhrases: string[] = [];
 
   for (const pattern of EXPERIENCE_PATTERNS) {
     const matches = plainText.match(pattern);
     if (matches) {
-      totalMatches += matches.length;
       // Collect unique phrase examples (max 3)
       for (const m of matches) {
         const normalized = m.trim().toLowerCase();
@@ -126,7 +120,7 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
       title: 'Experience signals',
       description: `Strong first-hand experience signals detected (${totalMatches} markers). Phrases like "${matchedPhrases.slice(0, 3).join('", "')}" demonstrate real experience.`,
       status: 'good',
-      score: 5,
+      score: 9,
       maxScore: 9,
     };
   }
@@ -137,7 +131,7 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
       title: 'Experience signals',
       description: `Some experience signals found (${totalMatches} markers). Add more first-person experience phrases like "I tested", "in my experience", or outcome reporting to strengthen E-E-A-T.`,
       status: 'ok',
-      score: 3,
+      score: 5,
       maxScore: 9,
     };
   }
@@ -145,7 +139,8 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
   return {
     id: 'eeat-experience-depth',
     title: 'Experience signals',
-    description: 'No first-hand experience signals detected. Add personal experience, testing outcomes, temporal markers ("after 6 months of using..."), and process narration to demonstrate real experience with the topic.',
+    description:
+      'No first-hand experience signals detected. Add personal experience, testing outcomes, temporal markers ("after 6 months of using..."), and process narration to demonstrate real experience with the topic.',
     status: 'poor',
     score: 0,
     maxScore: 9,

@@ -2,17 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { SitemapURL } from '@power-seo/core';
-import { normalizeUrl } from '@power-seo/core';
-
-/** Escape special XML characters. */
-function escapeXml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
+import { normalizeUrl, escapeXml } from '@power-seo/core';
 
 /**
  * A streaming sitemap generator that yields XML chunks.

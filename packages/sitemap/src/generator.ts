@@ -8,17 +8,7 @@ import type {
   SitemapVideo,
   SitemapNews,
 } from '@power-seo/core';
-import { normalizeUrl } from '@power-seo/core';
-
-/** Escape special XML characters. */
-function escapeXml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
+import { normalizeUrl, escapeXml } from '@power-seo/core';
 
 /** Determine which namespace extensions are needed. */
 function detectNamespaces(urls: SitemapURL[]): { image: boolean; video: boolean; news: boolean } {

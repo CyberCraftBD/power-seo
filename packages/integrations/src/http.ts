@@ -3,7 +3,13 @@
 
 import type { HttpClientConfig, HttpClient, AuthStrategy } from './types.js';
 import { IntegrationApiError } from './types.js';
-import { createTokenBucket, consumeToken, getWaitTime, sleep } from '@power-seo/core';
+import {
+  createTokenBucket,
+  consumeToken,
+  getWaitTime,
+  sleep,
+  fetchJsonWithRetry,
+} from '@power-seo/core';
 
 const DEFAULT_RATE_LIMIT = 600;
 const DEFAULT_MAX_RETRIES = 3;
@@ -55,54 +61,24 @@ export function createHttpClient(config: HttpClientConfig): HttpClient {
     }
     consumeToken(bucket);
 
-    let lastError: Error | null = null;
-
-    for (let attempt = 0; attempt <= maxRetries; attempt++) {
-      const controller = new globalThis.AbortController();
-      const timeout = globalThis.setTimeout(() => controller.abort(), timeoutMs);
-
-      try {
-        const response = await globalThis.fetch(url, {
-          ...init,
-          signal: controller.signal,
-        });
-
-        globalThis.clearTimeout(timeout);
-
-        if (response.ok) {
-          return (await response.json()) as T;
+    return fetchJsonWithRetry<T, IntegrationApiError>({
+      maxRetries,
+      doFetch: async () => {
+        const controller = new globalThis.AbortController();
+        const timeout = globalThis.setTimeout(() => controller.abort(), timeoutMs);
+        try {
+          return await globalThis.fetch(url, {
+            ...init,
+            signal: controller.signal,
+          });
+        } finally {
+          globalThis.clearTimeout(timeout);
         }
-
-        const text = await response.text();
-        const error = new IntegrationApiError(
-          `${provider} API error: ${response.status} ${text}`,
-          response.status,
-          provider,
-        );
-
-        if (!error.retryable || attempt === maxRetries) {
-          throw error;
-        }
-
-        lastError = error;
-        const backoff = Math.min(1000 * Math.pow(2, attempt), 30_000);
-        await sleep(backoff);
-      } catch (err) {
-        globalThis.clearTimeout(timeout);
-        if (err instanceof IntegrationApiError) {
-          if (!err.retryable || attempt === maxRetries) {
-            throw err;
-          }
-          lastError = err;
-          const backoff = Math.min(1000 * Math.pow(2, attempt), 30_000);
-          await sleep(backoff);
-        } else {
-          throw err;
-        }
-      }
-    }
-
-    throw lastError ?? new IntegrationApiError('Request failed', 500, provider);
+      },
+      buildError: (status, snippet) =>
+        new IntegrationApiError(`${provider} API error: ${status} ${snippet}`, status, provider),
+      fallbackError: () => new IntegrationApiError('Request failed', 500, provider),
+    });
   }
 
   return {

@@ -2,7 +2,8 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
+import { TEMPORAL_EXPERIENCE_PATTERNS } from './shared-patterns.js';
 
 // First-person experience markers (subset for quick pillar scan)
 const EXPERIENCE_MARKERS: RegExp[] = [
@@ -27,17 +28,8 @@ const EXPERIENCE_MARKERS: RegExp[] = [
   /\breal.world\b/gi,
 ];
 
-// Temporal experience patterns (stronger signal)
-const TEMPORAL_EXPERIENCE: RegExp[] = [
-  /\bafter\s+\d+\s+(months?|years?|weeks?|days?)\s+of\s+using\b/gi,
-  /\bover\s+the\s+past\s+\d+\s+(months?|years?|weeks?)\b/gi,
-  /\bfor\s+the\s+last\s+\d+\s+(months?|years?|weeks?)\b/gi,
-  /\bi['']ve\s+been\s+using\b/gi,
-  /\bi['']ve\s+spent\b/gi,
-  /\bi['']ve\s+worked\s+with\b/gi,
-  /\bfor\s+over\s+\d+\s+years?\b/gi,
-  /\bsince\s+\d{4}\b/gi,
-];
+// Temporal experience patterns (stronger signal) — shared with eeat-experience-depth
+const TEMPORAL_EXPERIENCE: RegExp[] = TEMPORAL_EXPERIENCE_PATTERNS;
 
 interface PillarAssessment {
   name: string;
@@ -49,23 +41,15 @@ interface PillarAssessment {
 function assessExperience(plainText: string, wordCount: number): PillarAssessment {
   let score = 0;
 
-  // Check first-person experience markers
-  let markerCount = 0;
-  for (const pattern of EXPERIENCE_MARKERS) {
-    const matches = plainText.match(pattern);
-    if (matches) markerCount += matches.length;
-  }
+  // Check first-person experience markers (overlapping hits count once)
+  const markerCount = countDistinctMatches(plainText, EXPERIENCE_MARKERS);
 
   const density = wordCount > 0 ? (markerCount / wordCount) * 500 : 0;
   if (density >= 2) score += 2;
   else if (density >= 1) score += 1;
 
-  // Check temporal experience patterns (stronger signal)
-  let temporalCount = 0;
-  for (const pattern of TEMPORAL_EXPERIENCE) {
-    const matches = plainText.match(pattern);
-    if (matches) temporalCount += matches.length;
-  }
+  // Check temporal experience patterns (stronger signal, overlaps count once)
+  const temporalCount = countDistinctMatches(plainText, TEMPORAL_EXPERIENCE);
 
   if (temporalCount >= 2) score += 1;
 
@@ -194,10 +178,8 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
   const trust = assessTrustWorthiness(input);
 
   const pillars = [experience, expertise, authority, trust];
-  const strongCount = pillars.filter(p => p.strong).length;
-  const pillarSummary = pillars
-    .map(p => `${p.name} ${p.score}/${p.maxScore}`)
-    .join(', ');
+  const strongCount = pillars.filter((p) => p.strong).length;
+  const pillarSummary = pillars.map((p) => `${p.name} ${p.score}/${p.maxScore}`).join(', ');
 
   if (strongCount >= 3) {
     return {
@@ -205,24 +187,24 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
       title: 'E-E-A-T overall score',
       description: `Strong E-E-A-T profile with ${strongCount}/4 pillars solid. ${pillarSummary}. Content demonstrates real experience, author expertise, authoritative backing, and trustworthiness.`,
       status: 'good',
-      score: 5,
+      score: 8,
       maxScore: 8,
     };
   }
 
   if (strongCount >= 2) {
-    const weakPillars = pillars.filter(p => !p.strong).map(p => p.name);
+    const weakPillars = pillars.filter((p) => !p.strong).map((p) => p.name);
     return {
       id: 'eeat-overall-score',
       title: 'E-E-A-T overall score',
       description: `Moderate E-E-A-T profile with ${strongCount}/4 pillars solid. ${pillarSummary}. Strengthen ${weakPillars.join(' and ')} to improve overall quality signals.`,
       status: 'ok',
-      score: 3,
+      score: 5,
       maxScore: 8,
     };
   }
 
-  const weakPillars = pillars.filter(p => !p.strong).map(p => p.name);
+  const weakPillars = pillars.filter((p) => !p.strong).map((p) => p.name);
   return {
     id: 'eeat-overall-score',
     title: 'E-E-A-T overall score',

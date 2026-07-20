@@ -2,20 +2,10 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml } from '@power-seo/core';
+import { stripHtml, splitSentences } from '@power-seo/core';
 
 const MAX_RECOMMENDED_SENTENCE_LENGTH = 20;
 const LONG_SENTENCE_THRESHOLD = 0.25; // 25% of sentences being long is problematic
-
-/**
- * Split text into sentences using common sentence-ending punctuation.
- */
-function splitSentences(text: string): string[] {
-  return text
-    .split(/[.!?]+/)
-    .map((s) => s.trim())
-    .filter((s) => s.length > 0 && s.split(/\s+/).length >= 3); // At least 3 words to count as a sentence
-}
 
 function countWords(text: string): number {
   return text.split(/\s+/).filter((w) => w.length > 0).length;

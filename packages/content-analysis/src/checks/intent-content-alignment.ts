@@ -10,36 +10,93 @@ import { detectIntent } from './intent-utils.js';
 // ---------------------------------------------------------------------------
 
 const INFORMATIONAL_SIGNALS: readonly string[] = [
-  'how to', 'what is', 'guide', 'learn', 'understand', 'explained',
-  'definition', 'steps', 'tutorial', 'tips', 'example', 'for example',
-  'such as', 'in this article', "we'll cover", "you'll learn",
-  "let's explore", 'introduction',
+  'how to',
+  'what is',
+  'guide',
+  'learn',
+  'understand',
+  'explained',
+  'definition',
+  'steps',
+  'tutorial',
+  'tips',
+  'example',
+  'for example',
+  'such as',
+  'in this article',
+  "we'll cover",
+  "you'll learn",
+  "let's explore",
+  'introduction',
 ] as const;
 
 const TRANSACTIONAL_SIGNALS: readonly string[] = [
-  'buy', 'purchase', 'order', 'add to cart', 'shop', 'deal', 'discount',
-  'price', 'pricing', '$', 'free shipping', 'checkout', 'subscribe',
-  'sign up', 'get started', 'try free', 'limited time', 'in stock',
+  'buy',
+  'purchase',
+  'order',
+  'add to cart',
+  'shop',
+  'deal',
+  'discount',
+  'price',
+  'pricing',
+  '$',
+  'free shipping',
+  'checkout',
+  'subscribe',
+  'sign up',
+  'get started',
+  'try free',
+  'limited time',
+  'in stock',
   'available now',
 ] as const;
 
 const COMMERCIAL_SIGNALS: readonly string[] = [
-  'best', 'top', 'review', 'compared', 'comparison', 'vs', 'versus',
-  'pros and cons', 'advantages', 'disadvantages', 'rating', 'rated',
-  'recommend', 'our pick', "editor's choice", 'winner', 'runner-up',
+  'best',
+  'top',
+  'review',
+  'compared',
+  'comparison',
+  'vs',
+  'versus',
+  'pros and cons',
+  'advantages',
+  'disadvantages',
+  'rating',
+  'rated',
+  'recommend',
+  'our pick',
+  "editor's choice",
+  'winner',
+  'runner-up',
   'alternative',
 ] as const;
 
 const NAVIGATIONAL_SIGNALS: readonly string[] = [
-  'official', 'login', 'sign in', 'dashboard', 'my account', 'support',
-  'contact us', 'help center', 'visit', 'go to', 'homepage',
+  'official',
+  'login',
+  'sign in',
+  'dashboard',
+  'my account',
+  'support',
+  'contact us',
+  'help center',
+  'visit',
+  'go to',
+  'homepage',
 ] as const;
 
 // ---------------------------------------------------------------------------
 // Signal list lookup
 // ---------------------------------------------------------------------------
 
-type IntentCategory = 'informational' | 'navigational' | 'transactional' | 'commercial-investigation' | 'unknown';
+type IntentCategory =
+  | 'informational'
+  | 'navigational'
+  | 'transactional'
+  | 'commercial-investigation'
+  | 'unknown';
 
 function getSignalsForIntent(intent: IntentCategory): readonly string[] {
   switch (intent) {
@@ -94,7 +151,13 @@ interface SectionResult {
 function analyzeBySection(words: string[], signals: readonly string[]): SectionResult {
   const totalWords = words.length;
   if (totalWords === 0) {
-    return { introSignals: 0, bodySignals: 0, conclusionSignals: 0, totalSignals: 0, sectionsWithSignals: 0 };
+    return {
+      introSignals: 0,
+      bodySignals: 0,
+      conclusionSignals: 0,
+      totalSignals: 0,
+      sectionsWithSignals: 0,
+    };
   }
 
   // Split into 3 sections: first 20%, middle 50%, last 30%
@@ -142,7 +205,8 @@ export function checkIntentContentAlignment(input: ContentAnalysisInput): Analys
   const words = getWords(plainText);
   const result = analyzeBySection(words, signals);
 
-  const intentLabel = detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
+  const intentLabel =
+    detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
 
   // good (5): 5+ signals spread across sections (2+ sections)
   if (result.totalSignals >= 5 && result.sectionsWithSignals >= 2) {
@@ -151,7 +215,7 @@ export function checkIntentContentAlignment(input: ContentAnalysisInput): Analys
       title: 'Content-intent alignment',
       description: `Content aligns well with ${intentLabel} intent. Found ${result.totalSignals} intent signals spread across ${result.sectionsWithSignals} section${result.sectionsWithSignals === 1 ? '' : 's'} (intro: ${result.introSignals}, body: ${result.bodySignals}, conclusion: ${result.conclusionSignals}).`,
       status: 'good',
-      score: 5,
+      score: 10,
       maxScore: 10,
     };
   }
@@ -168,7 +232,7 @@ export function checkIntentContentAlignment(input: ContentAnalysisInput): Analys
       title: 'Content-intent alignment',
       description: `Partial ${intentLabel} intent alignment. Found ${result.totalSignals} intent signal${result.totalSignals === 1 ? '' : 's'} in ${result.sectionsWithSignals} section${result.sectionsWithSignals === 1 ? '' : 's'}. ${detail}.`,
       status: 'ok',
-      score: 3,
+      score: 6,
       maxScore: 10,
     };
   }

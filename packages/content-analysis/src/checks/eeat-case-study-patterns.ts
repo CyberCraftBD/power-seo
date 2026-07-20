@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
 
 // Case study structural elements
 const PROBLEM_PATTERNS: RegExp[] = [
@@ -21,7 +21,7 @@ const APPROACH_PATTERNS: RegExp[] = [
   /\bi\s+(decided\s+to|chose\s+to|opted\s+for|implemented|designed|developed|built|created)\b/gi,
   /\bthe\s+implementation\s+(involved|included|required)\b/gi,
   /\b(step\s+\d+|phase\s+\d+|stage\s+\d+)\b/gi,
-  /\bhere['']?s?\s+(how|what)\s+we\s+(did|implemented|built|solved)\b/gi,
+  /\bhere['’]?s?\s+(how|what)\s+we\s+(did|implemented|built|solved)\b/gi,
   /\bthe\s+process\b/gi,
   /\bour\s+workflow\b/gi,
   /\btechnical\s+(approach|solution|implementation)\b/gi,
@@ -44,7 +44,7 @@ const LESSONS_PATTERNS: RegExp[] = [
   /\bif\s+I\s+(had\s+to|could|were\s+to)\s+do\s+it\s+again\b/gi,
   /\bin\s+hindsight\b/gi,
   /\blooking\s+back\b/gi,
-  /\bwhat\s+(worked|didn['']t\s+work|surprised\s+us)\b/gi,
+  /\bwhat\s+(worked|didn['’]t\s+work|surprised\s+us)\b/gi,
   /\bthe\s+biggest\s+(lesson|takeaway|surprise|challenge)\b/gi,
   /\bnext\s+time\b/gi,
   /\bwould\s+recommend\b/gi,
@@ -61,7 +61,7 @@ const REAL_EXAMPLE_PATTERNS: RegExp[] = [
   /\bin\s+one\s+(case|instance|project|scenario)\b/gi,
   /\ba\s+(client|customer|company|user|team)\s+(of\s+ours|we\s+worked\s+with)\b/gi,
   /\bspecifically\b/gi,
-  /\bhere['']?s?\s+a\s+(concrete|specific|real)\s+example\b/gi,
+  /\bhere['’]?s?\s+a\s+(concrete|specific|real)\s+example\b/gi,
   /\btake\s+(the\s+case|for\s+example)\b/gi,
 ];
 
@@ -106,24 +106,24 @@ export function checkCaseStudyPatterns(input: ContentAnalysisInput): AnalysisRes
   for (let i = 0; i < patternGroups.length; i++) {
     const group = patternGroups[i]!;
     const element = elements[i]!;
-    for (const pattern of group) {
-      const matches = plainText.match(pattern);
-      if (matches) {
-        element.count += matches.length;
-        element.found = true;
-      }
-    }
+
+    // Merge overlapping spans across all patterns in the group so a
+    // sentence hit by several patterns counts once.
+    const count = countDistinctMatches(plainText, group);
+
+    element.count = count;
+    element.found = count > 0;
   }
 
-  const foundElements = elements.filter(e => e.found);
-  const missingElements = elements.filter(e => !e.found);
+  const foundElements = elements.filter((e) => e.found);
+  const missingElements = elements.filter((e) => !e.found);
   const totalMarkers = elements.reduce((sum, e) => sum + e.count, 0);
 
   if (foundElements.length >= 4 && totalMarkers >= 8) {
     return {
       id: 'eeat-case-study-patterns',
       title: 'Case studies & examples',
-      description: `Excellent case study structure with ${foundElements.length}/5 elements: ${foundElements.map(e => e.name).join(', ')}. Content demonstrates real-world application and experience.`,
+      description: `Excellent case study structure with ${foundElements.length}/5 elements: ${foundElements.map((e) => e.name).join(', ')}. Content demonstrates real-world application and experience.`,
       status: 'good',
       score: 5,
       maxScore: 5,
@@ -134,7 +134,10 @@ export function checkCaseStudyPatterns(input: ContentAnalysisInput): AnalysisRes
     return {
       id: 'eeat-case-study-patterns',
       title: 'Case studies & examples',
-      description: `Partial case study elements found (${foundElements.map(e => e.name).join(', ')}). Add ${missingElements.slice(0, 2).map(e => e.name).join(' and ')} to complete the narrative.`,
+      description: `Partial case study elements found (${foundElements.map((e) => e.name).join(', ')}). Add ${missingElements
+        .slice(0, 2)
+        .map((e) => e.name)
+        .join(' and ')} to complete the narrative.`,
       status: 'ok',
       score: 3,
       maxScore: 5,
@@ -144,7 +147,8 @@ export function checkCaseStudyPatterns(input: ContentAnalysisInput): AnalysisRes
   return {
     id: 'eeat-case-study-patterns',
     title: 'Case studies & examples',
-    description: 'No case study or real-world example patterns detected. Structure content with: problem statement → approach/solution → measurable results → lessons learned. Use named examples and specific scenarios.',
+    description:
+      'No case study or real-world example patterns detected. Structure content with: problem statement → approach/solution → measurable results → lessons learned. Use named examples and specific scenarios.',
     status: 'poor',
     score: 0,
     maxScore: 5,

@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords, countSyllables } from '@power-seo/core';
+import { stripHtml, getWords, countSyllables, countDistinctMatches } from '@power-seo/core';
 
 // Patterns that indicate technical terms are being explained (good for expertise)
 const EXPLANATION_PATTERNS: RegExp[] = [
@@ -85,12 +85,8 @@ export function checkTechnicalVocabulary(input: ContentAnalysisInput): AnalysisR
   }
   const complexRatio = complexWordCount / wordCount;
 
-  // Count explanation patterns
-  let explanationCount = 0;
-  for (const pattern of EXPLANATION_PATTERNS) {
-    const matches = plainText.match(pattern);
-    if (matches) explanationCount += matches.length;
-  }
+  // Count explanation patterns (overlapping hits count once)
+  const explanationCount = countDistinctMatches(plainText, EXPLANATION_PATTERNS);
 
   // Count unnecessarily complex synonyms
   let unnecessaryComplexCount = 0;
@@ -144,7 +140,8 @@ export function checkTechnicalVocabulary(input: ContentAnalysisInput): AnalysisR
 
   const suggestions: string[] = [];
   if (technicalTermCount < 3) suggestions.push('add more domain-specific terminology');
-  if (explanationCount < 2) suggestions.push('explain technical concepts with "which means", "in other words"');
+  if (explanationCount < 2)
+    suggestions.push('explain technical concepts with "which means", "in other words"');
   if (unnecessaryComplexCount > 2) suggestions.push(`simplify: ${unnecessaryExamples.join(', ')}`);
 
   return {

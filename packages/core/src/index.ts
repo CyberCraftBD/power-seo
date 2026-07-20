@@ -92,6 +92,7 @@ export {
   extractTagContents,
   getWords,
   getSentences,
+  splitSentences,
   getParagraphs,
   countSyllables,
   countTotalSyllables,
@@ -120,5 +121,25 @@ export {
 } from './meta-builder.js';
 
 // Rate Limiting
-export { createTokenBucket, consumeToken, getWaitTime, sleep } from './rate-limit.js';
+export {
+  createTokenBucket,
+  consumeToken,
+  getWaitTime,
+  sleep,
+  calculateBackoff,
+  sanitizeErrorSnippet,
+} from './rate-limit.js';
 export type { TokenBucket } from './rate-limit.js';
+
+// HTTP Retry
+export { fetchJsonWithRetry } from './http-retry.js';
+export type { RetryableError, FetchJsonRetryOptions } from './http-retry.js';
+
+// XML Utilities
+export { escapeXml } from './xml-utils.js';
+
+// JSON-LD serialization
+export { serializeJsonLd } from './json-ld.js';
+
+// Pattern Utilities
+export { countDistinctMatches } from './pattern-utils.js';

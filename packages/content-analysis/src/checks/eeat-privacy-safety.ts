@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml } from '@power-seo/core';
+import { stripHtml, countDistinctMatches } from '@power-seo/core';
 
 // Privacy/safety mentions in content
 const PRIVACY_PATTERNS: RegExp[] = [
@@ -59,16 +59,14 @@ export function checkPrivacySafety(input: ContentAnalysisInput): AnalysisResult 
     gaps.push('no privacy policy URL');
   }
 
-  // Check for privacy/safety mentions in content
-  let privacyMentionCount = 0;
-  for (const pattern of PRIVACY_PATTERNS) {
-    const matches = plainText.match(pattern);
-    if (matches) privacyMentionCount += matches.length;
-  }
+  // Check for privacy/safety mentions in content (overlapping hits count once)
+  const privacyMentionCount = countDistinctMatches(plainText, PRIVACY_PATTERNS);
 
   if (privacyMentionCount > 0) {
     score += 1;
-    signals.push(`${privacyMentionCount} privacy/security reference${privacyMentionCount > 1 ? 's' : ''} in content`);
+    signals.push(
+      `${privacyMentionCount} privacy/security reference${privacyMentionCount > 1 ? 's' : ''} in content`,
+    );
   }
 
   // Check for privacy-related links in HTML
@@ -80,11 +78,8 @@ export function checkPrivacySafety(input: ContentAnalysisInput): AnalysisResult 
     /href\s*=\s*["'][^"']*legal[^"']*["']/gi,
   ];
 
-  let privacyLinks = 0;
-  for (const pattern of privacyLinkPatterns) {
-    const matches = content.match(pattern);
-    if (matches) privacyLinks += matches.length;
-  }
+  // A single href can match several patterns — count each link once
+  const privacyLinks = countDistinctMatches(content, privacyLinkPatterns);
 
   if (privacyLinks > 0) {
     score += 1;

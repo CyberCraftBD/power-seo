@@ -63,6 +63,40 @@ describe('buildMetaTags', () => {
     });
     expect(tags).toContainEqual({ name: 'author', content: 'John Doe' });
   });
+
+  it('should derive og/twitter title, description, and url from top-level fields', () => {
+    const tags = buildMetaTags({
+      title: 'Page Title',
+      description: 'Page description',
+      canonical: 'https://example.com/page',
+      openGraph: { images: [{ url: 'https://example.com/og.png' }] },
+      twitter: { cardType: 'summary_large_image' },
+    });
+    expect(tags).toContainEqual({ property: 'og:title', content: 'Page Title' });
+    expect(tags).toContainEqual({ property: 'og:description', content: 'Page description' });
+    expect(tags).toContainEqual({ property: 'og:url', content: 'https://example.com/page' });
+    expect(tags).toContainEqual({ name: 'twitter:title', content: 'Page Title' });
+    expect(tags).toContainEqual({ name: 'twitter:description', content: 'Page description' });
+  });
+
+  it('should prefer explicit og/twitter fields over top-level fallbacks', () => {
+    const tags = buildMetaTags({
+      title: 'Page Title',
+      description: 'Page description',
+      canonical: 'https://example.com/page',
+      openGraph: {
+        title: 'OG Title',
+        description: 'OG description',
+        url: 'https://example.com/og',
+      },
+      twitter: { title: 'TW Title', description: 'TW description' },
+    });
+    expect(tags).toContainEqual({ property: 'og:title', content: 'OG Title' });
+    expect(tags).toContainEqual({ property: 'og:description', content: 'OG description' });
+    expect(tags).toContainEqual({ property: 'og:url', content: 'https://example.com/og' });
+    expect(tags).toContainEqual({ name: 'twitter:title', content: 'TW Title' });
+    expect(tags).toContainEqual({ name: 'twitter:description', content: 'TW description' });
+  });
 });
 
 describe('buildLinkTags', () => {

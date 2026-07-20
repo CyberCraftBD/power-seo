@@ -1,10 +1,10 @@
 // @power-seo/audit — Content Rules
 
-
 import { analyzeContent } from '@power-seo/content-analysis';
 import { analyzeReadability } from '@power-seo/readability';
 import type { PageAuditInput, AuditRule, AuditSeverity } from '../types.js';
 import type { AnalysisStatus } from '@power-seo/core';
+import { KEYWORD_DENSITY } from '@power-seo/core';
 
 function statusToSeverity(status: AnalysisStatus): AuditSeverity {
   switch (status) {
@@ -58,12 +58,12 @@ export function runContentRules(input: PageAuditInput): AuditRule[] {
         category: 'content',
         title: 'Keyphrase density',
         description:
-          kd >= 0.5 && kd <= 3.0
-            ? `Keyphrase density is ${kd.toFixed(2)}% — within the recommended 0.5–3.0% range.`
-            : kd > 3.0
-              ? `Keyphrase density is ${kd.toFixed(2)}% — above 3.0%. Reduce keyphrase repetition to avoid over-optimisation.`
-              : `Keyphrase density is ${kd.toFixed(2)}% — below the recommended 0.5%. Use the focus keyphrase more naturally in the content.`,
-        severity: kd >= 0.5 && kd <= 3.0 ? 'pass' : 'warning',
+          kd >= KEYWORD_DENSITY.MIN && kd <= KEYWORD_DENSITY.MAX
+            ? `Keyphrase density is ${kd.toFixed(2)}% — within the recommended ${KEYWORD_DENSITY.MIN}–${KEYWORD_DENSITY.MAX}% range.`
+            : kd > KEYWORD_DENSITY.MAX
+              ? `Keyphrase density is ${kd.toFixed(2)}% — above ${KEYWORD_DENSITY.MAX}%. Reduce keyphrase repetition to avoid over-optimisation.`
+              : `Keyphrase density is ${kd.toFixed(2)}% — below the recommended ${KEYWORD_DENSITY.MIN}%. Use the focus keyphrase more naturally in the content.`,
+        severity: kd >= KEYWORD_DENSITY.MIN && kd <= KEYWORD_DENSITY.MAX ? 'pass' : 'warning',
       });
     }
 

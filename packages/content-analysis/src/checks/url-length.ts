@@ -2,6 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
+import { MAX_URL_LENGTH } from '@power-seo/core';
 
 export function checkUrlLength(input: ContentAnalysisInput): AnalysisResult {
   const url = input.canonicalUrl || input.slug;
@@ -19,7 +20,7 @@ export function checkUrlLength(input: ContentAnalysisInput): AnalysisResult {
 
   const length = url.trim().length;
 
-  if (length <= 75) {
+  if (length <= MAX_URL_LENGTH) {
     return {
       id: 'url-length',
       title: 'URL length',
@@ -34,7 +35,7 @@ export function checkUrlLength(input: ContentAnalysisInput): AnalysisResult {
     return {
       id: 'url-length',
       title: 'URL length',
-      description: `URL is ${length} characters. Consider keeping it under 75 characters.`,
+      description: `URL is ${length} characters. Consider keeping it under ${MAX_URL_LENGTH} characters.`,
       status: 'ok',
       score: 3,
       maxScore: 5,
@@ -44,7 +45,7 @@ export function checkUrlLength(input: ContentAnalysisInput): AnalysisResult {
   return {
     id: 'url-length',
     title: 'URL length',
-    description: `URL is too long (${length} characters). Keep URLs under 75 characters for better SEO.`,
+    description: `URL is too long (${length} characters). Keep URLs under ${MAX_URL_LENGTH} characters for better SEO.`,
     status: 'poor',
     score: 1,
     maxScore: 5,

@@ -5,43 +5,55 @@ import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 
 // YMYL categories that require strong topical authority
 const YMYL_CATEGORIES = [
-  'health', 'medical', 'medicine', 'healthcare',
-  'finance', 'financial', 'investing', 'banking', 'insurance', 'tax',
-  'legal', 'law',
-  'safety', 'emergency',
-  'news', 'politics', 'government',
+  'health',
+  'medical',
+  'medicine',
+  'healthcare',
+  'finance',
+  'financial',
+  'investing',
+  'banking',
+  'insurance',
+  'tax',
+  'legal',
+  'law',
+  'safety',
+  'emergency',
+  'news',
+  'politics',
+  'government',
 ];
 
 // Map credential keywords to relevant categories
 const CREDENTIAL_RELEVANCE: Record<string, string[]> = {
-  'md': ['health', 'medical', 'medicine', 'healthcare'],
-  'doctor': ['health', 'medical', 'medicine', 'healthcare'],
-  'physician': ['health', 'medical', 'medicine', 'healthcare'],
-  'nurse': ['health', 'medical', 'medicine', 'healthcare'],
-  'pharmacist': ['health', 'medical', 'medicine', 'healthcare'],
-  'rn': ['health', 'medical', 'medicine', 'healthcare'],
-  'dentist': ['health', 'medical', 'medicine', 'healthcare'],
-  'therapist': ['health', 'medical', 'medicine', 'healthcare'],
-  'psychologist': ['health', 'medical', 'medicine', 'healthcare'],
-  'nutritionist': ['health', 'medical', 'medicine', 'healthcare'],
-  'dietitian': ['health', 'medical', 'medicine', 'healthcare'],
-  'cpa': ['finance', 'financial', 'tax', 'accounting'],
-  'cfp': ['finance', 'financial', 'investing'],
-  'cfa': ['finance', 'financial', 'investing'],
-  'accountant': ['finance', 'financial', 'tax', 'accounting'],
+  md: ['health', 'medical', 'medicine', 'healthcare'],
+  doctor: ['health', 'medical', 'medicine', 'healthcare'],
+  physician: ['health', 'medical', 'medicine', 'healthcare'],
+  nurse: ['health', 'medical', 'medicine', 'healthcare'],
+  pharmacist: ['health', 'medical', 'medicine', 'healthcare'],
+  rn: ['health', 'medical', 'medicine', 'healthcare'],
+  dentist: ['health', 'medical', 'medicine', 'healthcare'],
+  therapist: ['health', 'medical', 'medicine', 'healthcare'],
+  psychologist: ['health', 'medical', 'medicine', 'healthcare'],
+  nutritionist: ['health', 'medical', 'medicine', 'healthcare'],
+  dietitian: ['health', 'medical', 'medicine', 'healthcare'],
+  cpa: ['finance', 'financial', 'tax', 'accounting'],
+  cfp: ['finance', 'financial', 'investing'],
+  cfa: ['finance', 'financial', 'investing'],
+  accountant: ['finance', 'financial', 'tax', 'accounting'],
   'financial advisor': ['finance', 'financial', 'investing'],
-  'attorney': ['legal', 'law'],
-  'lawyer': ['legal', 'law'],
-  'jd': ['legal', 'law'],
-  'paralegal': ['legal', 'law'],
-  'engineer': ['technology', 'engineering', 'construction'],
-  'developer': ['technology', 'software', 'programming'],
-  'architect': ['technology', 'construction', 'design'],
-  'professor': ['education', 'academic', 'research'],
-  'phd': ['academic', 'research'],
-  'researcher': ['academic', 'research', 'science'],
-  'scientist': ['science', 'research'],
-  'certified': ['professional'],
+  attorney: ['legal', 'law'],
+  lawyer: ['legal', 'law'],
+  jd: ['legal', 'law'],
+  paralegal: ['legal', 'law'],
+  engineer: ['technology', 'engineering', 'construction'],
+  developer: ['technology', 'software', 'programming'],
+  architect: ['technology', 'construction', 'design'],
+  professor: ['education', 'academic', 'research'],
+  phd: ['academic', 'research'],
+  researcher: ['academic', 'research', 'science'],
+  scientist: ['science', 'research'],
+  certified: ['professional'],
 };
 
 export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResult {
@@ -51,7 +63,8 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
     return {
       id: 'eeat-topical-authority',
       title: 'Topical authority',
-      description: 'Set both author information and content category to assess topical authority alignment. This check verifies the author has relevant expertise for the content topic.',
+      description:
+        'Set both author information and content category to assess topical authority alignment. This check verifies the author has relevant expertise for the content topic.',
       status: 'na',
       score: 0,
       maxScore: 8,
@@ -59,7 +72,7 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
   }
 
   const category = contentCategory.toLowerCase();
-  const isYMYL = YMYL_CATEGORIES.some(c => category.includes(c));
+  const isYMYL = YMYL_CATEGORIES.some((c) => category.includes(c));
 
   let authorityScore = 0;
   const authoritySignals: string[] = [];
@@ -67,15 +80,17 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
 
   // Check if knowsAbout includes the content category
   if (author.knowsAbout && author.knowsAbout.length > 0) {
-    const topicMatch = author.knowsAbout.some(topic =>
-      topic.toLowerCase().includes(category) || category.includes(topic.toLowerCase())
+    const topicMatch = author.knowsAbout.some(
+      (topic) => topic.toLowerCase().includes(category) || category.includes(topic.toLowerCase()),
     );
     if (topicMatch) {
       authorityScore += 3;
       authoritySignals.push('author knowsAbout aligns with content topic');
     } else {
       authorityScore += 1;
-      gaps.push(`author knowsAbout (${author.knowsAbout.join(', ')}) doesn't match content category "${contentCategory}"`);
+      gaps.push(
+        `author knowsAbout (${author.knowsAbout.join(', ')}) doesn't match content category "${contentCategory}"`,
+      );
     }
   } else {
     gaps.push('no knowsAbout topics defined');
@@ -83,10 +98,10 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
 
   // Check if credentials are relevant to the content category
   if (author.credentials && author.credentials.length > 0) {
-    const relevantCreds = author.credentials.filter(cred => {
+    const relevantCreds = author.credentials.filter((cred) => {
       const credLower = cred.name.toLowerCase();
       for (const [keyword, categories] of Object.entries(CREDENTIAL_RELEVANCE)) {
-        if (credLower.includes(keyword) && categories.some(c => category.includes(c))) {
+        if (credLower.includes(keyword) && categories.some((c) => category.includes(c))) {
           return true;
         }
       }
@@ -95,7 +110,7 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
 
     if (relevantCreds.length > 0) {
       authorityScore += 3;
-      authoritySignals.push(`relevant credentials: ${relevantCreds.map(c => c.name).join(', ')}`);
+      authoritySignals.push(`relevant credentials: ${relevantCreds.map((c) => c.name).join(', ')}`);
     } else {
       authorityScore += 1;
       gaps.push('credentials not directly related to content topic');
@@ -111,8 +126,9 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
   // Check job title relevance
   if (author.jobTitle) {
     const titleLower = author.jobTitle.toLowerCase();
-    const titleRelevant = Object.entries(CREDENTIAL_RELEVANCE).some(([keyword, categories]) =>
-      titleLower.includes(keyword) && categories.some(c => category.includes(c))
+    const titleRelevant = Object.entries(CREDENTIAL_RELEVANCE).some(
+      ([keyword, categories]) =>
+        titleLower.includes(keyword) && categories.some((c) => category.includes(c)),
     );
     if (titleRelevant) {
       authorityScore += 2;
@@ -137,7 +153,7 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
       title: 'Topical authority',
       description: `Strong topical authority: ${authoritySignals.join('; ')}.${ymylNote}`,
       status: 'good',
-      score: 5,
+      score: 8,
       maxScore: 8,
     };
   }
@@ -148,7 +164,7 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
       title: 'Topical authority',
       description: `Moderate topical authority (${authoritySignals.join('; ')}). Gaps: ${gaps.join('; ')}.${ymylNote}`,
       status: 'ok',
-      score: 3,
+      score: 5,
       maxScore: 8,
     };
   }
@@ -158,7 +174,7 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
     title: 'Topical authority',
     description: `Weak topical authority for "${contentCategory}" content. ${gaps.join('; ')}. Ensure the author has demonstrable expertise in this topic area.${ymylNote}`,
     status: 'poor',
-    score: 1,
+    score: 2,
     maxScore: 8,
   };
 }

@@ -1,6 +1,7 @@
 // @power-seo/schema — JSON-LD Builder Functions
 // ----------------------------------------------------------------------------
 
+import { serializeJsonLd } from '@power-seo/core';
 import type {
   WithContext,
   ArticleSchema,
@@ -218,8 +219,5 @@ export function toJsonLdString(
   schema: WithContext<SchemaObject> | SchemaGraph,
   pretty = false,
 ): string {
-  return JSON.stringify(schema, null, pretty ? 2 : undefined)
-    .replace(/</g, '\\u003c')
-    .replace(/>/g, '\\u003e')
-    .replace(/&/g, '\\u0026');
+  return serializeJsonLd(schema, pretty);
 }

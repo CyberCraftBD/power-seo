@@ -11,7 +11,10 @@ import { stripHtml, getWords } from '@power-seo/core';
  * selection rate vs content with <5 entities per 1,000 words.
  * Target: 15–25 named entities per 1,000 words.
  */
-function estimateEntityDensity(plain: string, wordCount: number): {
+function estimateEntityDensity(
+  plain: string,
+  wordCount: number,
+): {
   entityCount: number;
   entitiesPerThousand: number;
 } {
@@ -24,19 +27,61 @@ function estimateEntityDensity(plain: string, wordCount: number): {
   const singlePropers = plain.match(/(?:^|\s)([A-Z][a-z]{2,})\b/g);
   // Filter out common sentence-starting words
   const commonSentenceStarters = new Set([
-    'The', 'This', 'That', 'These', 'Those', 'It', 'He', 'She', 'They', 'We',
-    'In', 'On', 'At', 'By', 'For', 'With', 'And', 'But', 'Or', 'If', 'As',
-    'An', 'A', 'Is', 'Are', 'Was', 'Were', 'Have', 'Has', 'Had', 'Will',
-    'When', 'Where', 'What', 'How', 'Why', 'Who', 'Which',
+    'The',
+    'This',
+    'That',
+    'These',
+    'Those',
+    'It',
+    'He',
+    'She',
+    'They',
+    'We',
+    'In',
+    'On',
+    'At',
+    'By',
+    'For',
+    'With',
+    'And',
+    'But',
+    'Or',
+    'If',
+    'As',
+    'An',
+    'A',
+    'Is',
+    'Are',
+    'Was',
+    'Were',
+    'Have',
+    'Has',
+    'Had',
+    'Will',
+    'When',
+    'Where',
+    'What',
+    'How',
+    'Why',
+    'Who',
+    'Which',
   ]);
   const filteredSingles = (singlePropers ?? []).filter((w) => {
     const word = w.trim();
     return !commonSentenceStarters.has(word);
   });
-  const singleCount = Math.min(filteredSingles.length, titleCount * 2); // cap to avoid false positives
+  // Cap single proper nouns to avoid false positives, but never below half of
+  // them — otherwise content whose entities are all single tokens (e.g. "React",
+  // "Python", "Docker") with no multi-word Title Case phrase would score zero.
+  const singleCount = Math.min(
+    filteredSingles.length,
+    Math.max(titleCount * 2, Math.ceil(filteredSingles.length / 2)),
+  );
 
   // 3. Technology / product names with mixed case or dots: JavaScript, Next.js, ChatGPT
-  const techNames = plain.match(/\b(?:[A-Z][a-zA-Z]*[A-Z][a-zA-Z]*|[A-Za-z]+\.[a-z]{2,4}(?:\s|$))\b/g);
+  const techNames = plain.match(
+    /\b(?:[A-Z][a-zA-Z]*[A-Z][a-zA-Z]*|[A-Za-z]+\.[a-z]{2,4}(?:\s|$))\b/g,
+  );
   const techCount = techNames?.length ?? 0;
 
   // 4. Version numbers used as entity signals: v1.0, 2024, GPT-4
@@ -44,7 +89,11 @@ function estimateEntityDensity(plain: string, wordCount: number): {
   const versionCount = versionNumbers?.length ?? 0;
 
   // Sum with weighting to avoid over-counting
-  const rawCount = titleCount + Math.floor(singleCount * 0.3) + Math.floor(techCount * 0.5) + Math.floor(versionCount * 0.5);
+  const rawCount =
+    titleCount +
+    Math.floor(singleCount * 0.3) +
+    Math.floor(techCount * 0.5) +
+    Math.floor(versionCount * 0.5);
   const entityCount = Math.max(rawCount, 0);
   const entitiesPerThousand = wordCount > 0 ? (entityCount / wordCount) * 1000 : 0;
 

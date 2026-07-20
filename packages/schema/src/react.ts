@@ -21,6 +21,7 @@ import type {
   ServiceSchema,
   BrandSchema,
   SchemaGraph,
+  SchemaObject,
   WithContext,
   JsonLdBase,
 } from './types.js';
@@ -46,6 +47,7 @@ import {
   review,
   service,
   brand,
+  toJsonLdString,
 } from './builders.js';
 
 // --- Generic JsonLd Component ---
@@ -68,7 +70,9 @@ export function JsonLd<T extends JsonLdBase>({ schema, dataTestId }: JsonLdProps
   return createElement('script', {
     type: 'application/ld+json',
     dangerouslySetInnerHTML: {
-      __html: JSON.stringify(schema),
+      // Escape <, >, & so a schema string value like "</script>" cannot
+      // terminate the script tag (XSS). See toJsonLdString / serializeJsonLd.
+      __html: toJsonLdString(schema as WithContext<SchemaObject> | SchemaGraph),
     },
     'data-testid': dataTestId,
   });

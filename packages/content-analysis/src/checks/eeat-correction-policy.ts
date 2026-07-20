@@ -2,14 +2,14 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml } from '@power-seo/core';
+import { stripHtml, countDistinctMatches } from '@power-seo/core';
 
 // Update/correction indicators in content
 const UPDATE_PATTERNS: RegExp[] = [
-  /\b(?:last\s+)?updated?\s*(?:on|:)\s*(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[\-\/]\d{2}[\-\/]\d{2})/gi,
-  /\b(?:originally\s+)?published\s*(?:on|:)\s*(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[\-\/]\d{2}[\-\/]\d{2})/gi,
-  /\beditor['']?s?\s+note\b/gi,
-  /\bupdate\s*(?:\d{4}[\-\/]\d{2}|\w+\s+\d{4})\s*:/gi,
+  /\b(?:last\s+)?updated?\s*(?:on|:)\s*(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[-/]\d{2}[-/]\d{2})/gi,
+  /\b(?:originally\s+)?published\s*(?:on|:)\s*(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[-/]\d{2}[-/]\d{2})/gi,
+  /\beditor['’]?s?\s+note\b/gi,
+  /\bupdate\s*(?:\d{4}[-/]\d{2}|\w+\s+\d{4})\s*:/gi,
   /\bcorrection\s*:/gi,
   /\berrata\b/gi,
   /\b\[updated?\]/gi,
@@ -33,9 +33,10 @@ export function checkCorrectionPolicy(input: ContentAnalysisInput): AnalysisResu
   // Check for publish and modified dates from input
   if (input.publishDate) {
     score += 1;
-    const pubDate = input.publishDate instanceof Date
-      ? input.publishDate.toISOString().split('T')[0]
-      : String(input.publishDate);
+    const pubDate =
+      input.publishDate instanceof Date
+        ? input.publishDate.toISOString().split('T')[0]
+        : String(input.publishDate);
     signals.push(`publish date: ${pubDate}`);
   } else {
     gaps.push('no publish date provided');
@@ -43,9 +44,10 @@ export function checkCorrectionPolicy(input: ContentAnalysisInput): AnalysisResu
 
   if (input.modifiedDate) {
     score += 2;
-    const modDate = input.modifiedDate instanceof Date
-      ? input.modifiedDate.toISOString().split('T')[0]
-      : String(input.modifiedDate);
+    const modDate =
+      input.modifiedDate instanceof Date
+        ? input.modifiedDate.toISOString().split('T')[0]
+        : String(input.modifiedDate);
     signals.push(`last modified: ${modDate}`);
 
     // Check if modified date is after publish date
@@ -67,15 +69,14 @@ export function checkCorrectionPolicy(input: ContentAnalysisInput): AnalysisResu
   }
 
   // Check for update/correction patterns in content
-  let updatePatternCount = 0;
-  for (const pattern of UPDATE_PATTERNS) {
-    const matches = plainText.match(pattern);
-    if (matches) updatePatternCount += matches.length;
-  }
+  // (overlapping hits across patterns count once)
+  const updatePatternCount = countDistinctMatches(plainText, UPDATE_PATTERNS);
 
   if (updatePatternCount > 0) {
     score += Math.min(2, updatePatternCount);
-    signals.push(`${updatePatternCount} update/correction indicator${updatePatternCount > 1 ? 's' : ''} in content`);
+    signals.push(
+      `${updatePatternCount} update/correction indicator${updatePatternCount > 1 ? 's' : ''} in content`,
+    );
   } else {
     gaps.push('no update notices or correction markers in content');
   }
@@ -121,7 +122,8 @@ export function checkCorrectionPolicy(input: ContentAnalysisInput): AnalysisResu
   return {
     id: 'eeat-correction-policy',
     title: 'Correction & update policy',
-    description: 'No correction/update policy signals found. Add: publish date, last updated date, "[Updated March 2026]" notices, editor\'s notes for corrections, and link to editorial/correction policy.',
+    description:
+      'No correction/update policy signals found. Add: publish date, last updated date, "[Updated March 2026]" notices, editor\'s notes for corrections, and link to editorial/correction policy.',
     status: 'poor',
     score: 0,
     maxScore: 5,

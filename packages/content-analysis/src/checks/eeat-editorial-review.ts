@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml } from '@power-seo/core';
+import { stripHtml, countDistinctMatches } from '@power-seo/core';
 
 // Editorial review patterns in content text
 const EDITORIAL_PATTERNS: RegExp[] = [
@@ -19,7 +19,7 @@ const EDITORIAL_PATTERNS: RegExp[] = [
   /\beditorial\s+(?:team|board|review|oversight|standards?|guidelines?|policy|process)\b/gi,
   /\bcontent\s+review\s+(?:process|policy|team)\b/gi,
   /\bquality\s+(?:assurance|review|control)\b/gi,
-  /\blast\s+(?:reviewed|updated|verified|checked)\s+(?:on\s+)?(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[\-\/]\d{2}[\-\/]\d{2})\b/gi,
+  /\blast\s+(?:reviewed|updated|verified|checked)\s+(?:on\s+)?(?:\w+\s+\d{1,2},?\s+\d{4}|\d{4}[-/]\d{2}[-/]\d{2})\b/gi,
   /\breview\s+date\b/gi,
 ];
 
@@ -50,13 +50,8 @@ export function checkEditorialReview(input: ContentAnalysisInput): AnalysisResul
   }
 
   // Check for editorial patterns in content
-  let patternMatches = 0;
-  for (const pattern of EDITORIAL_PATTERNS) {
-    const matches = plainText.match(pattern);
-    if (matches) {
-      patternMatches += matches.length;
-    }
-  }
+  // (overlapping hits across patterns count once)
+  let patternMatches = countDistinctMatches(plainText, EDITORIAL_PATTERNS);
 
   // Also check HTML for review metadata
   const reviewMetaPatterns = [
@@ -65,14 +60,13 @@ export function checkEditorialReview(input: ContentAnalysisInput): AnalysisResul
     /itemtype\s*=\s*["'][^"']*ClaimReview/gi,
   ];
 
-  for (const pattern of reviewMetaPatterns) {
-    const matches = (content || '').match(pattern);
-    if (matches) patternMatches += matches.length;
-  }
+  patternMatches += countDistinctMatches(content || '', reviewMetaPatterns);
 
   if (patternMatches > 0) {
     score += Math.min(3, patternMatches);
-    signals.push(`${patternMatches} editorial indicator${patternMatches > 1 ? 's' : ''} in content`);
+    signals.push(
+      `${patternMatches} editorial indicator${patternMatches > 1 ? 's' : ''} in content`,
+    );
   }
 
   if (score >= 4) {
@@ -87,8 +81,10 @@ export function checkEditorialReview(input: ContentAnalysisInput): AnalysisResul
   }
 
   if (score >= 2) {
-    if (!editorialReviewer) gaps.push('add structured editorialReviewer data (name, credentials, URL)');
-    if (patternMatches === 0) gaps.push('add "Reviewed by" or "Fact-checked by" disclosure in content');
+    if (!editorialReviewer)
+      gaps.push('add structured editorialReviewer data (name, credentials, URL)');
+    if (patternMatches === 0)
+      gaps.push('add "Reviewed by" or "Fact-checked by" disclosure in content');
     return {
       id: 'eeat-editorial-review',
       title: 'Editorial review',
@@ -102,7 +98,8 @@ export function checkEditorialReview(input: ContentAnalysisInput): AnalysisResul
   return {
     id: 'eeat-editorial-review',
     title: 'Editorial review',
-    description: 'No editorial review indicators found. Add: reviewer name & credentials (editorialReviewer), "Reviewed by [Name]" in content, review date, and editorial policy link. This is critical for YMYL topics.',
+    description:
+      'No editorial review indicators found. Add: reviewer name & credentials (editorialReviewer), "Reviewed by [Name]" in content, review date, and editorial policy link. This is critical for YMYL topics.',
     status: 'poor',
     score: 0,
     maxScore: 5,

@@ -2,14 +2,12 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
+import { getWords } from '@power-seo/core';
 
 export function checkTextPresence(input: ContentAnalysisInput): AnalysisResult {
   const { content } = input;
 
-  // Strip HTML tags and count words
-  const textOnly = content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-  const words = textOnly.length > 0 ? textOnly.split(/\s+/) : [];
-  const wordCount = words.length;
+  const wordCount = getWords(content).length;
 
   if (wordCount === 0) {
     return {

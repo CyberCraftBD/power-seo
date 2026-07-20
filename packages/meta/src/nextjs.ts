@@ -1,6 +1,5 @@
 // @power-seo/meta — Next.js App Router Metadata
 
-
 import type { SEOConfig } from '@power-seo/core';
 import { resolveTitle, buildRobotsContent } from '@power-seo/core';
 import type { NextMetadata, NextOGImage } from './types.js';
@@ -38,7 +37,11 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     if (r?.unavailableAfter !== undefined) metadata.robots.unavailableAfter = r.unavailableAfter;
 
     // Handle advanced robots directives (maxSnippet, maxImagePreview, maxVideoPreview) via buildRobotsContent
-    if (r?.maxSnippet !== undefined || r?.maxImagePreview !== undefined || r?.maxVideoPreview !== undefined) {
+    if (
+      r?.maxSnippet !== undefined ||
+      r?.maxImagePreview !== undefined ||
+      r?.maxVideoPreview !== undefined
+    ) {
       const robotsContent = buildRobotsContent({
         index,
         follow,
@@ -61,9 +64,12 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     const og = config.openGraph;
     metadata.openGraph = {};
     if (og.type) metadata.openGraph.type = og.type;
-    if (og.title) metadata.openGraph.title = og.title;
-    if (og.description) metadata.openGraph.description = og.description;
-    if (og.url) metadata.openGraph.url = og.url;
+    const ogTitle = og.title ?? config.title;
+    const ogDescription = og.description ?? config.description;
+    const ogUrl = og.url ?? config.canonical;
+    if (ogTitle) metadata.openGraph.title = ogTitle;
+    if (ogDescription) metadata.openGraph.description = ogDescription;
+    if (ogUrl) metadata.openGraph.url = ogUrl;
     if (og.siteName) metadata.openGraph.siteName = og.siteName;
     if (og.locale) metadata.openGraph.locale = og.locale;
     if (og.images && og.images.length > 0) {
@@ -79,8 +85,10 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     }
     if (og.article) {
       metadata.openGraph.article = {};
-      if (og.article.publishedTime) metadata.openGraph.article.publishedTime = og.article.publishedTime;
-      if (og.article.modifiedTime) metadata.openGraph.article.modifiedTime = og.article.modifiedTime;
+      if (og.article.publishedTime)
+        metadata.openGraph.article.publishedTime = og.article.publishedTime;
+      if (og.article.modifiedTime)
+        metadata.openGraph.article.modifiedTime = og.article.modifiedTime;
       if (og.article.authors) metadata.openGraph.article.authors = og.article.authors;
       if (og.article.section) metadata.openGraph.article.section = og.article.section;
       if (og.article.tags) metadata.openGraph.article.tags = og.article.tags;
@@ -94,8 +102,10 @@ export function createMetadata(config: SEOConfig): NextMetadata {
     if (tw.cardType) metadata.twitter.card = tw.cardType;
     if (tw.site) metadata.twitter.site = tw.site;
     if (tw.creator) metadata.twitter.creator = tw.creator;
-    if (tw.title) metadata.twitter.title = tw.title;
-    if (tw.description) metadata.twitter.description = tw.description;
+    const twTitle = tw.title ?? config.title;
+    const twDescription = tw.description ?? config.description;
+    if (twTitle) metadata.twitter.title = twTitle;
+    if (twDescription) metadata.twitter.description = twDescription;
     if (tw.image) metadata.twitter.images = [tw.image];
   }
 
@@ -113,7 +123,7 @@ export function createMetadata(config: SEOConfig): NextMetadata {
 
   // Additional meta tags
   if (config.additionalMetaTags && config.additionalMetaTags.length > 0) {
-    metadata.other = {};
+    if (!metadata.other) metadata.other = {};
     for (const tag of config.additionalMetaTags) {
       const key = tag.name ?? tag.property ?? tag.httpEquiv;
       if (key) metadata.other[key] = tag.content;

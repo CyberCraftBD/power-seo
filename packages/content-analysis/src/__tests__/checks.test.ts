@@ -11,6 +11,7 @@ import { checkSentenceLength } from '../checks/sentence-length.js';
 import { checkSubheadingDistribution } from '../checks/subheading-distribution.js';
 import { checkTransitionWords } from '../checks/transition-words.js';
 import { checkCanonicalUrl } from '../checks/canonical-url.js';
+import { checkMediaCount } from '../checks/media-count.js';
 import type { ContentAnalysisInput } from '@power-seo/core';
 
 function makeInput(overrides: Partial<ContentAnalysisInput> = {}): ContentAnalysisInput {
@@ -196,9 +197,7 @@ describe('checkHeadings', () => {
   });
 
   it('returns ok when title + content H1 creates duplicate H1s', () => {
-    const results = checkHeadings(
-      makeInput({ title: 'My Title', content: '<h1>Another H1</h1>' }),
-    );
+    const results = checkHeadings(makeInput({ title: 'My Title', content: '<h1>Another H1</h1>' }));
     const structure = results.find((r) => r.id === 'heading-structure');
     expect(structure!.status).toBe('ok');
   });
@@ -549,5 +548,69 @@ describe('checkTransitionWords', () => {
       'Snow is cold. Fire is hot.';
     const result = checkTransitionWords(makeInput({ content: `<p>${content}</p>` }));
     expect(result.status).toBe('poor');
+  });
+});
+
+// ============================================================================
+// Media count checks
+// ============================================================================
+
+describe('checkMediaCount', () => {
+  const threeImages = [
+    { src: '/a.jpg', alt: 'A' },
+    { src: '/b.jpg', alt: 'B' },
+    { src: '/c.jpg', alt: 'C' },
+  ];
+  const contentWithThreeImgs =
+    '<p>Some content.</p><img src="/a.jpg" alt="A"><img src="/b.jpg" alt="B"><img src="/c.jpg" alt="C">';
+
+  it('does not double-count images passed in both the images array and content HTML', () => {
+    const result = checkMediaCount(
+      makeInput({ content: contentWithThreeImgs, images: threeImages }),
+    );
+    expect(result.description).toContain('3 images');
+    expect(result.description).not.toContain('6 images');
+  });
+
+  it('counts images from the images array when content has no img tags', () => {
+    const result = checkMediaCount(
+      makeInput({ content: '<p>Some content without embedded images.</p>', images: threeImages }),
+    );
+    expect(result.description).toContain('3 images');
+  });
+
+  it('counts images from content img tags when no images array is provided', () => {
+    const result = checkMediaCount(makeInput({ content: contentWithThreeImgs }));
+    expect(result.description).toContain('3 images');
+  });
+
+  it('counts a YouTube iframe embed exactly once', () => {
+    const result = checkMediaCount(
+      makeInput({
+        content: '<p>Watch this.</p><iframe src="https://www.youtube.com/embed/abc123"></iframe>',
+      }),
+    );
+    expect(result.description).toContain('1 video');
+    expect(result.description).not.toContain('2 videos');
+  });
+
+  it('does not count raw video URLs in text as embeds', () => {
+    const result = checkMediaCount(
+      makeInput({
+        content: '<p>See https://www.youtube.com/watch?v=abc123 and https://vimeo.com/12345</p>',
+      }),
+    );
+    expect(result.status).toBe('poor');
+    expect(result.description).toContain('No images or videos found');
+  });
+
+  it('counts video tags and provider iframes together', () => {
+    const result = checkMediaCount(
+      makeInput({
+        content:
+          '<video src="/clip.mp4"></video><iframe src="https://player.vimeo.com/video/1?h=x&title=vimeo.com"></iframe>',
+      }),
+    );
+    expect(result.description).toContain('2 videos');
   });
 });

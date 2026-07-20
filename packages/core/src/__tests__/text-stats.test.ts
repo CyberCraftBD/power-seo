@@ -70,6 +70,12 @@ describe('countSyllables', () => {
     expect(countSyllables('a')).toBeGreaterThanOrEqual(1);
     expect(countSyllables('I')).toBeGreaterThanOrEqual(1);
   });
+
+  it('should count words with es/ed suffixes via vowel groups', () => {
+    expect(countSyllables('tested')).toBe(2);
+    expect(countSyllables('wishes')).toBe(2);
+    expect(countSyllables('played')).toBe(1);
+  });
 });
 
 describe('getTextStatistics', () => {

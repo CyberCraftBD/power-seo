@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
 
 const RESEARCH_PATTERNS: RegExp[] = [
   // Original research language
@@ -67,13 +67,13 @@ export function checkOriginalResearch(input: ContentAnalysisInput): AnalysisResu
     };
   }
 
-  let totalMatches = 0;
+  // Overlapping hits across patterns count once
+  let totalMatches = countDistinctMatches(plainText, RESEARCH_PATTERNS);
   const matchedTypes: Set<string> = new Set();
 
   for (const pattern of RESEARCH_PATTERNS) {
     const matches = plainText.match(pattern);
     if (matches) {
-      totalMatches += matches.length;
       if (pattern.source.includes('methodology') || pattern.source.includes('sample')) {
         matchedTypes.add('methodology');
       } else if (pattern.source.includes('survey') || pattern.source.includes('experiment')) {
@@ -99,7 +99,8 @@ export function checkOriginalResearch(input: ContentAnalysisInput): AnalysisResu
   }
 
   // Check for inline statistics (e.g., "increased by 47%", "3.5x faster")
-  const statsPattern = /\b\d+(\.\d+)?\s*(%|x\s+faster|x\s+more|x\s+better|x\s+higher|x\s+lower|times\s+more|percent)\b/gi;
+  const statsPattern =
+    /\b\d+(\.\d+)?\s*(%|x\s+faster|x\s+more|x\s+better|x\s+higher|x\s+lower|times\s+more|percent)\b/gi;
   const statsMatches = plainText.match(statsPattern);
   if (statsMatches) {
     totalMatches += statsMatches.length;
@@ -135,7 +136,8 @@ export function checkOriginalResearch(input: ContentAnalysisInput): AnalysisResu
   return {
     id: 'eeat-original-research',
     title: 'Original research',
-    description: 'No original research signals detected. Add original data, surveys, experiments, methodology descriptions, or data visualizations to demonstrate expertise and first-hand research.',
+    description:
+      'No original research signals detected. Add original data, surveys, experiments, methodology descriptions, or data visualizations to demonstrate expertise and first-hand research.',
     status: 'poor',
     score: 0,
     maxScore: 5,

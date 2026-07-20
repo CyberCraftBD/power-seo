@@ -40,3 +40,32 @@ export function sleep(ms: number): Promise<void> {
     globalThis.setTimeout(resolve, ms);
   });
 }
+
+/**
+ * Exponential backoff delay for a retry attempt: base * 2^attempt, capped.
+ *
+ * @example
+ * ```ts
+ * calculateBackoff(0); // => 1000
+ * calculateBackoff(3); // => 8000
+ * calculateBackoff(9); // => 30000 (capped)
+ * ```
+ */
+export function calculateBackoff(attempt: number, baseMs = 1000, maxMs = 30_000): number {
+  return Math.min(baseMs * Math.pow(2, attempt), maxMs);
+}
+
+/**
+ * Bound and redact an upstream HTTP response body before putting it in an
+ * error message, so tokens or internal details never land in logs verbatim.
+ */
+export function sanitizeErrorSnippet(body: string, maxLength = 200): string {
+  const redacted = body
+    .replace(/Bearer\s+[A-Za-z0-9._~+/=-]+/gi, 'Bearer [REDACTED]')
+    .replace(
+      /"(access_token|refresh_token|id_token|token|authorization|api[_-]?key|client_secret)"\s*:\s*"[^"]*"/gi,
+      '"$1":"[REDACTED]"',
+    );
+  const collapsed = redacted.replace(/\s+/g, ' ').trim();
+  return collapsed.length > maxLength ? `${collapsed.slice(0, maxLength)}…` : collapsed;
+}

@@ -2,19 +2,10 @@
 // ----------------------------------------------------------------------------
 
 import type { SitemapConfig } from '@power-seo/core';
+import { escapeXml } from '@power-seo/core';
 import type { SitemapIndexConfig, SitemapIndexEntry } from './types.js';
 import { MAX_URLS_PER_SITEMAP } from './types.js';
 import { generateSitemap } from './generator.js';
-
-/** Escape special XML characters. */
-function escapeXml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
 
 /**
  * Generate a sitemap index XML string.

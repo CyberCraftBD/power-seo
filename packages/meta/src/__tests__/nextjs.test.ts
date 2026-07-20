@@ -155,4 +155,68 @@ describe('createMetadata', () => {
     const result = createMetadata(config);
     expect(result.title).toBe('Default Title');
   });
+
+  it('should preserve advanced robots directives in other when additionalMetaTags is used', () => {
+    const config: SEOConfig = {
+      title: 'X',
+      robots: { index: true, follow: true, maxImagePreview: 'large', maxSnippet: -1 },
+      additionalMetaTags: [{ name: 'author', content: 'Jane' }],
+    };
+    const result = createMetadata(config);
+    expect(result.other?.['author']).toBe('Jane');
+    expect(result.other?.['robots']).toContain('max-image-preview:large');
+    expect(result.other?.['robots']).toContain('max-snippet:-1');
+  });
+
+  it('should derive og title/description/url from top-level fields', () => {
+    const config: SEOConfig = {
+      title: 'Page Title',
+      description: 'Page description',
+      canonical: 'https://example.com/page',
+      openGraph: { images: [{ url: 'https://example.com/og.png' }] },
+    };
+    const result = createMetadata(config);
+    expect(result.openGraph?.title).toBe('Page Title');
+    expect(result.openGraph?.description).toBe('Page description');
+    expect(result.openGraph?.url).toBe('https://example.com/page');
+  });
+
+  it('should prefer explicit og fields over top-level fallbacks', () => {
+    const config: SEOConfig = {
+      title: 'Page Title',
+      description: 'Page description',
+      canonical: 'https://example.com/page',
+      openGraph: {
+        title: 'OG Title',
+        description: 'OG description',
+        url: 'https://example.com/og',
+      },
+    };
+    const result = createMetadata(config);
+    expect(result.openGraph?.title).toBe('OG Title');
+    expect(result.openGraph?.description).toBe('OG description');
+    expect(result.openGraph?.url).toBe('https://example.com/og');
+  });
+
+  it('should derive twitter title/description from top-level fields', () => {
+    const config: SEOConfig = {
+      title: 'Page Title',
+      description: 'Page description',
+      twitter: { cardType: 'summary_large_image', image: 'https://example.com/tw.png' },
+    };
+    const result = createMetadata(config);
+    expect(result.twitter?.title).toBe('Page Title');
+    expect(result.twitter?.description).toBe('Page description');
+  });
+
+  it('should prefer explicit twitter fields over top-level fallbacks', () => {
+    const config: SEOConfig = {
+      title: 'Page Title',
+      description: 'Page description',
+      twitter: { title: 'TW Title', description: 'TW description' },
+    };
+    const result = createMetadata(config);
+    expect(result.twitter?.title).toBe('TW Title');
+    expect(result.twitter?.description).toBe('TW description');
+  });
 });

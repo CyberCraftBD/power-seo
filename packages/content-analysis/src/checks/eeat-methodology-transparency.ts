@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
 
 const METHODOLOGY_PATTERNS: RegExp[] = [
   // Testing methodology
@@ -36,9 +36,9 @@ const METHODOLOGY_PATTERNS: RegExp[] = [
   /\bscope\s+of\s+(this|our|the)\b/gi,
   /\blimitations?\s+(of\s+this|include|to\s+note|to\s+consider)\b/gi,
   /\bdisclaimer\b/gi,
-  /\bit['']?s?\s+(important|worth)\s+(to\s+)?not(e|ing)\s+that\b/gi,
+  /\bit['’]?s?\s+(important|worth)\s+(to\s+)?not(e|ing)\s+that\b/gi,
   /\bwe\s+did\s+not\s+(test|evaluate|include|consider)\b/gi,
-  /\bthis\s+(review|analysis|study)\s+(does\s+not|doesn['']t)\s+(cover|include)\b/gi,
+  /\bthis\s+(review|analysis|study)\s+(does\s+not|doesn['’]t)\s+(cover|include)\b/gi,
   /\bout\s+of\s+scope\b/gi,
 
   // Assumptions
@@ -75,21 +75,26 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
     };
   }
 
-  let totalMatches = 0;
+  // Overlapping hits across patterns count once
+  const totalMatches = countDistinctMatches(plainText, METHODOLOGY_PATTERNS);
   const categories: Set<string> = new Set();
 
   for (const pattern of METHODOLOGY_PATTERNS) {
     const matches = plainText.match(pattern);
     if (matches) {
-      totalMatches += matches.length;
       const src = pattern.source.toLowerCase();
       if (src.includes('test')) categories.add('testing process');
-      else if (src.includes('evaluat') || src.includes('criteria') || src.includes('scor')) categories.add('evaluation criteria');
-      else if (src.includes('sample') || src.includes('data') || src.includes('control')) categories.add('research process');
-      else if (src.includes('scope') || src.includes('limitation') || src.includes('disclaimer')) categories.add('scope & limitations');
+      else if (src.includes('evaluat') || src.includes('criteria') || src.includes('scor'))
+        categories.add('evaluation criteria');
+      else if (src.includes('sample') || src.includes('data') || src.includes('control'))
+        categories.add('research process');
+      else if (src.includes('scope') || src.includes('limitation') || src.includes('disclaimer'))
+        categories.add('scope & limitations');
       else if (src.includes('assum')) categories.add('assumptions');
-      else if (src.includes('replic') || src.includes('reproduc') || src.includes('repeat')) categories.add('reproducibility');
-      else if (src.includes('tool') || src.includes('software') || src.includes('environment')) categories.add('tools & environment');
+      else if (src.includes('replic') || src.includes('reproduc') || src.includes('repeat'))
+        categories.add('reproducibility');
+      else if (src.includes('tool') || src.includes('software') || src.includes('environment'))
+        categories.add('tools & environment');
     }
   }
 
@@ -108,7 +113,8 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
 
   if (totalMatches >= 2 && categoryList.length >= 1) {
     const missing: string[] = [];
-    if (!categories.has('testing process') && !categories.has('evaluation criteria')) missing.push('evaluation criteria');
+    if (!categories.has('testing process') && !categories.has('evaluation criteria'))
+      missing.push('evaluation criteria');
     if (!categories.has('scope & limitations')) missing.push('scope & limitations');
     if (!categories.has('tools & environment')) missing.push('tools used');
     return {
@@ -124,7 +130,8 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
   return {
     id: 'eeat-methodology-transparency',
     title: 'Methodology transparency',
-    description: 'No methodology transparency detected. Add: how you tested/evaluated, tools used, evaluation criteria, scope & limitations, and assumptions. Transparent processes are a strong expertise signal.',
+    description:
+      'No methodology transparency detected. Add: how you tested/evaluated, tools used, evaluation criteria, scope & limitations, and assumptions. Transparent processes are a strong expertise signal.',
     status: 'poor',
     score: 0,
     maxScore: 5,

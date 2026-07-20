@@ -121,6 +121,12 @@ import { checkAeoStructuredDataHints } from './checks/aeo-structured-data-hints.
 import { checkAeoCitationReadiness } from './checks/aeo-citation-readiness.js';
 import { checkAeoEntityCoverage } from './checks/aeo-entity-coverage.js';
 
+/** Options for {@link analyzeContent}. Extends {@link AnalysisConfig} for backward compatibility. */
+export interface AnalyzeOptions extends AnalysisConfig {
+  /** Reference date for freshness calculations — inject a fixed date in tests. */
+  now?: Date;
+}
+
 /**
  * Run all SEO content analysis checks and return aggregated results.
  *
@@ -137,9 +143,9 @@ import { checkAeoEntityCoverage } from './checks/aeo-entity-coverage.js';
  */
 export function analyzeContent(
   input: ContentAnalysisInput,
-  config?: AnalysisConfig,
+  options?: AnalyzeOptions,
 ): ContentAnalysisOutput {
-  const disabled = new Set<CheckId>(config?.disabledChecks ?? []);
+  const disabled = new Set<CheckId>(options?.disabledChecks ?? []);
 
   const allResults: AnalysisResult[] = [];
 
@@ -208,7 +214,7 @@ export function analyzeContent(
   const wordComplexityResult = checkWordComplexity(input);
   const inclusiveLanguageResult = checkInclusiveLanguage(input);
   const competingLinksResult = checkCompetingLinks(input);
-  const contentFreshnessResult = checkContentFreshness(input);
+  const contentFreshnessResult = checkContentFreshness(input, options?.now ?? new Date());
   const keyphraseMarkupResult = checkKeyphraseMarkup(input);
   const headlineAnalyzerResult = checkHeadlineAnalyzer(input);
   const inboundInternalLinksResult = checkInboundInternalLinks(input);

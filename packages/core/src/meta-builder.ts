@@ -35,14 +35,27 @@ export function buildMetaTags(config: SEOConfig): MetaTag[] {
     }
   }
 
-  // Open Graph
+  // Open Graph — title/description/url fall back to top-level fields
   if (config.openGraph) {
-    tags.push(...buildOpenGraphTags(config.openGraph));
+    tags.push(
+      ...buildOpenGraphTags({
+        ...config.openGraph,
+        title: config.openGraph.title ?? config.title,
+        description: config.openGraph.description ?? config.description,
+        url: config.openGraph.url ?? config.canonical,
+      }),
+    );
   }
 
-  // Twitter Card
+  // Twitter Card — title/description fall back to top-level fields
   if (config.twitter) {
-    tags.push(...buildTwitterTags(config.twitter));
+    tags.push(
+      ...buildTwitterTags({
+        ...config.twitter,
+        title: config.twitter.title ?? config.title,
+        description: config.twitter.description ?? config.description,
+      }),
+    );
   }
 
   // Additional meta tags

@@ -16,10 +16,7 @@ interface SignalResult {
   present: boolean;
 }
 
-function checkInformationalSignals(
-  plainText: string,
-  contentLower: string,
-): SignalResult[] {
+function checkInformationalSignals(plainText: string, contentLower: string): SignalResult[] {
   const textLower = plainText.toLowerCase();
   const words = getWords(plainText);
   const wordCount = words.length;
@@ -40,7 +37,9 @@ function checkInformationalSignals(
     },
     {
       name: 'Summary/takeaway',
-      present: /\b(?:in summary|key takeaway|conclusion|to summarize|bottom line)\b/i.test(plainText),
+      present: /\b(?:in summary|key takeaway|conclusion|to summarize|bottom line)\b/i.test(
+        plainText,
+      ),
     },
     {
       name: 'Depth (800+ words)',
@@ -57,10 +56,7 @@ function checkInformationalSignals(
   ];
 }
 
-function checkTransactionalSignals(
-  plainText: string,
-  _contentLower: string,
-): SignalResult[] {
+function checkTransactionalSignals(plainText: string, _contentLower: string): SignalResult[] {
   const textLower = plainText.toLowerCase();
 
   return [
@@ -91,10 +87,7 @@ function checkTransactionalSignals(
   ];
 }
 
-function checkCommercialSignals(
-  plainText: string,
-  contentLower: string,
-): SignalResult[] {
+function checkCommercialSignals(plainText: string, contentLower: string): SignalResult[] {
   const textLower = plainText.toLowerCase();
 
   // Check for multiple product/service mentions (simple heuristic: 2+ capitalized
@@ -109,16 +102,21 @@ function checkCommercialSignals(
     },
     {
       name: 'Comparison',
-      present: /\b(?:vs|versus|compared|comparison)\b/i.test(textLower)
-        || contentLower.includes('<table'),
+      present:
+        /\b(?:vs|versus|compared|comparison)\b/i.test(textLower) || contentLower.includes('<table'),
     },
     {
       name: 'Verdict',
-      present: /\b(?:recommendation|winner|our pick|best overall|top pick|verdict)\b/i.test(textLower),
+      present: /\b(?:recommendation|winner|our pick|best overall|top pick|verdict)\b/i.test(
+        textLower,
+      ),
     },
     {
       name: 'Criteria',
-      present: /\b(?:criteria|factors?|what to look for|how to choose|we evaluated|we tested)\b/i.test(textLower),
+      present:
+        /\b(?:criteria|factors?|what to look for|how to choose|we evaluated|we tested)\b/i.test(
+          textLower,
+        ),
     },
     {
       name: 'Pricing comparison',
@@ -126,15 +124,14 @@ function checkCommercialSignals(
     },
     {
       name: 'Pros/cons',
-      present: /\b(?:pros|cons|advantages?|disadvantages?|strengths?|weaknesses?)\b/i.test(textLower),
+      present: /\b(?:pros|cons|advantages?|disadvantages?|strengths?|weaknesses?)\b/i.test(
+        textLower,
+      ),
     },
   ];
 }
 
-function checkNavigationalSignals(
-  plainText: string,
-  contentLower: string,
-): SignalResult[] {
+function checkNavigationalSignals(plainText: string, contentLower: string): SignalResult[] {
   const textLower = plainText.toLowerCase();
   const words = getWords(plainText);
   const wordCount = words.length;
@@ -174,9 +171,7 @@ function checkNavigationalSignals(
 // Check
 // ---------------------------------------------------------------------------
 
-export function checkIntentSatisfactionScore(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentSatisfactionScore(input: ContentAnalysisInput): AnalysisResult {
   const id = 'intent-satisfaction-score';
   const title = 'Search satisfaction score';
 
@@ -193,9 +188,7 @@ export function checkIntentSatisfactionScore(
 
   const detected = detectIntent(input.focusKeyphrase);
   const intentLabel =
-    detected.primary === 'commercial-investigation'
-      ? 'commercial'
-      : detected.primary;
+    detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
 
   const plainText = stripHtml(input.content);
   const contentLower = input.content.toLowerCase();
@@ -235,7 +228,7 @@ export function checkIntentSatisfactionScore(
         `Present: ${presentList}.` +
         (missingSignals.length > 0 ? ` Consider adding: ${missingList}.` : ''),
       status: 'good',
-      score: 5,
+      score: 10,
       maxScore: 10,
     };
   }
@@ -249,7 +242,7 @@ export function checkIntentSatisfactionScore(
         `Acceptable search satisfaction for ${intentLabel} intent (${presentCount}/6 signals). ` +
         `Present: ${presentList}. Missing: ${missingList}.`,
       status: 'ok',
-      score: 3,
+      score: 6,
       maxScore: 10,
     };
   }
@@ -264,7 +257,7 @@ export function checkIntentSatisfactionScore(
         `Present: ${presentList}. Missing: ${missingList}. ` +
         `Content may not fully resolve the searcher's query.`,
       status: 'poor',
-      score: 1,
+      score: 2,
       maxScore: 10,
     };
   }

@@ -3,7 +3,13 @@
 
 import type { RedirectRule } from '@power-seo/core';
 import type { RedirectMatch, RedirectEngine, RedirectEngineConfig } from './types.js';
-import { matchExact, matchGlob, matchRegex, substituteParams } from './matcher.js';
+import {
+  matchExact,
+  matchGlob,
+  matchRegex,
+  substituteParams,
+  isDestinationSafe,
+} from './matcher.js';
 
 const MAX_CHAIN_HOPS = 10;
 
@@ -26,7 +32,7 @@ export function createRedirectEngine(
       // Regex match
       if (rule.isRegex) {
         const result = matchRegex(url, rule.source, rule.destination, config);
-        if (result.matched) {
+        if (result.matched && isDestinationSafe(rule.destination, result.destination, config)) {
           return {
             rule,
             resolvedDestination: result.destination,
@@ -40,17 +46,23 @@ export function createRedirectEngine(
       if (rule.source.includes('*') || rule.source.includes(':')) {
         const result = matchGlob(url, rule.source, config);
         if (result.matched) {
-          return {
-            rule,
-            resolvedDestination: substituteParams(rule.destination, result.params),
-            statusCode: rule.statusCode,
-          };
+          const destination = substituteParams(rule.destination, result.params);
+          if (isDestinationSafe(rule.destination, destination, config)) {
+            return {
+              rule,
+              resolvedDestination: destination,
+              statusCode: rule.statusCode,
+            };
+          }
         }
         continue;
       }
 
       // Exact match
-      if (matchExact(url, rule.source, config)) {
+      if (
+        matchExact(url, rule.source, config) &&
+        isDestinationSafe(rule.destination, rule.destination, config)
+      ) {
         return {
           rule,
           resolvedDestination: rule.destination,

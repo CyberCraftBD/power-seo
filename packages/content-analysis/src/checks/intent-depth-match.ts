@@ -34,24 +34,28 @@ const DEPTH_RANGES: Record<string, DepthRange> = {
  * - 500-999 = ok
  * - 1000+ = good
  */
-function evaluateInformational(wordCount: number): { status: 'good' | 'ok' | 'poor'; score: number; note: string } {
+function evaluateInformational(wordCount: number): {
+  status: 'good' | 'ok' | 'poor';
+  score: number;
+  note: string;
+} {
   if (wordCount < 500) {
     return {
       status: 'poor',
-      score: 1,
+      score: 2,
       note: `${wordCount} words is well under the ideal range. Informational content needs depth — expand to at least 1,000 words.`,
     };
   }
   if (wordCount < 1000) {
     return {
       status: 'ok',
-      score: 3,
+      score: 5,
       note: `${wordCount} words is slightly below the ideal range. Consider expanding to 1,000+ words for comprehensive coverage.`,
     };
   }
   return {
     status: 'good',
-    score: 5,
+    score: 8,
     note: `${wordCount} words is within the ideal range for informational content. Good depth for thorough topic coverage.`,
   };
 }
@@ -63,40 +67,44 @@ function evaluateInformational(wordCount: number): { status: 'good' | 'ok' | 'po
  * - 300-1500 = good
  * - > 2000 = ok (over-length for transactional)
  */
-function evaluateTransactional(wordCount: number): { status: 'good' | 'ok' | 'poor'; score: number; note: string } {
+function evaluateTransactional(wordCount: number): {
+  status: 'good' | 'ok' | 'poor';
+  score: number;
+  note: string;
+} {
   if (wordCount < 200) {
     return {
       status: 'poor',
-      score: 1,
+      score: 2,
       note: `${wordCount} words is too short for transactional content. Add product details, benefits, and trust signals.`,
     };
   }
   if (wordCount < 300) {
     return {
       status: 'ok',
-      score: 3,
+      score: 5,
       note: `${wordCount} words is slightly under the ideal range. Consider adding more product details to reach 300+ words.`,
     };
   }
   if (wordCount <= 1500) {
     return {
       status: 'good',
-      score: 5,
+      score: 8,
       note: `${wordCount} words is within the ideal range for transactional content. Concise enough for action-oriented users.`,
     };
   }
   if (wordCount > 2000) {
     return {
       status: 'ok',
-      score: 3,
+      score: 5,
       note: `${wordCount} words may be over-length for transactional content. Buyers want quick decisions — consider trimming to under 1,500 words.`,
     };
   }
-  // 1501-2000: borderline, still acceptable
+  // 1501-2000: above the ideal 300–1,500 range — acceptable but not ideal
   return {
-    status: 'good',
+    status: 'ok',
     score: 5,
-    note: `${wordCount} words is near the upper end of the ideal range for transactional content.`,
+    note: `${wordCount} words is above the ideal range for transactional content. Consider trimming toward 1,500 words for action-oriented buyers.`,
   };
 }
 
@@ -106,24 +114,28 @@ function evaluateTransactional(wordCount: number): { status: 'good' | 'ok' | 'po
  * - 800-1499 = ok
  * - 1500+ = good
  */
-function evaluateCommercial(wordCount: number): { status: 'good' | 'ok' | 'poor'; score: number; note: string } {
+function evaluateCommercial(wordCount: number): {
+  status: 'good' | 'ok' | 'poor';
+  score: number;
+  note: string;
+} {
   if (wordCount < 800) {
     return {
       status: 'poor',
-      score: 1,
+      score: 2,
       note: `${wordCount} words is well under the ideal range. Comparison and review content needs depth — expand to 1,500+ words.`,
     };
   }
   if (wordCount < 1500) {
     return {
       status: 'ok',
-      score: 3,
+      score: 5,
       note: `${wordCount} words is slightly below the ideal range. Add more detail to comparisons and evaluations to reach 1,500+ words.`,
     };
   }
   return {
     status: 'good',
-    score: 5,
+    score: 8,
     note: `${wordCount} words is within the ideal range for commercial investigation content. Provides thorough comparison depth.`,
   };
 }
@@ -136,39 +148,43 @@ function evaluateCommercial(wordCount: number): { status: 'good' | 'ok' | 'poor'
  * - 50-99 = ok (slightly short)
  * - 801-1000 = ok (slightly long)
  */
-function evaluateNavigational(wordCount: number): { status: 'good' | 'ok' | 'poor'; score: number; note: string } {
+function evaluateNavigational(wordCount: number): {
+  status: 'good' | 'ok' | 'poor';
+  score: number;
+  note: string;
+} {
   if (wordCount < 50) {
     return {
       status: 'poor',
-      score: 1,
+      score: 2,
       note: `${wordCount} words is too short. Add at least basic navigation cues and directions.`,
     };
   }
   if (wordCount < 100) {
     return {
       status: 'ok',
-      score: 3,
+      score: 5,
       note: `${wordCount} words is slightly under the ideal range. Consider adding brief context to help users navigate.`,
     };
   }
   if (wordCount <= 800) {
     return {
       status: 'good',
-      score: 5,
+      score: 8,
       note: `${wordCount} words is within the ideal range for navigational content. Concise and focused on directing users.`,
     };
   }
   if (wordCount > 1000) {
     return {
       status: 'ok',
-      score: 3,
+      score: 5,
       note: `${wordCount} words is too verbose for navigational content. Users want to get somewhere quickly — consider trimming to under 800 words.`,
     };
   }
   // 801-1000: borderline
   return {
     status: 'ok',
-    score: 3,
+    score: 5,
     note: `${wordCount} words is slightly over the ideal range. Navigational pages should be concise.`,
   };
 }
@@ -183,17 +199,14 @@ function evaluateNavigational(wordCount: number): { status: 'good' | 'ok' | 'poo
  * - Commercial: 1,500–5,000 words
  * - Navigational: 100–800 words
  */
-export function checkIntentDepthMatch(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentDepthMatch(input: ContentAnalysisInput): AnalysisResult {
   const { focusKeyphrase, content } = input;
 
   if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
     return {
       id: 'intent-depth-match',
       title: 'Content depth-intent match',
-      description:
-        'No focus keyphrase set. Set one to analyze content depth relative to intent.',
+      description: 'No focus keyphrase set. Set one to analyze content depth relative to intent.',
       status: 'na',
       score: 0,
       maxScore: 8,
@@ -236,7 +249,7 @@ export function checkIntentDepthMatch(
     default:
       evaluation = {
         status: 'ok',
-        score: 3,
+        score: 5,
         note: `${wordCount} words. Unable to determine ideal range for this intent type.`,
       };
   }
@@ -244,8 +257,7 @@ export function checkIntentDepthMatch(
   return {
     id: 'intent-depth-match',
     title: 'Content depth-intent match',
-    description:
-      `${evaluation.note} Expected range for ${intentKey} intent: ${range.label} words.`,
+    description: `${evaluation.note} Expected range for ${intentKey} intent: ${range.label} words.`,
     status: evaluation.status,
     score: evaluation.score,
     maxScore: 8,

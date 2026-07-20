@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
 
 // Vague filler phrases that indicate low specificity
 const VAGUE_PHRASES: RegExp[] = [
@@ -13,7 +13,7 @@ const VAGUE_PHRASES: RegExp[] = [
   /\ba\s+lot\s+of\s+(people|users|companies)\b/gi,
   /\bmany\s+(people|users|experts)\s+(say|think|believe|agree)\b/gi,
   /\beveryone\s+(knows|agrees|says)\b/gi,
-  /\bit['']?s?\s+well.known\s+that\b/gi,
+  /\bit['’]?s?\s+well.known\s+that\b/gi,
   /\bobviously\b/gi,
   /\bclearly\b/gi,
   /\bbasically\b/gi,
@@ -68,22 +68,17 @@ export function checkSpecificityDepth(input: ContentAnalysisInput): AnalysisResu
     };
   }
 
-  let vagueCount = 0;
-  for (const pattern of VAGUE_PHRASES) {
-    const matches = plainText.match(pattern);
-    if (matches) vagueCount += matches.length;
-  }
-
-  let specificCount = 0;
-  for (const pattern of SPECIFIC_PATTERNS) {
-    const matches = (input.content || '').match(pattern);
-    if (matches) specificCount += matches.length;
-  }
+  // Overlapping hits across patterns count once
+  const vagueCount = countDistinctMatches(plainText, VAGUE_PHRASES);
+  const specificCount = countDistinctMatches(input.content || '', SPECIFIC_PATTERNS);
 
   const specificDensity = (specificCount / wordCount) * 500;
-  const specificityRatio = specificCount > 0 && vagueCount > 0
-    ? specificCount / (specificCount + vagueCount)
-    : specificCount > 0 ? 1 : 0;
+  const specificityRatio =
+    specificCount > 0 && vagueCount > 0
+      ? specificCount / (specificCount + vagueCount)
+      : specificCount > 0
+        ? 1
+        : 0;
 
   if (specificDensity >= 5 && specificityRatio >= 0.7) {
     return {

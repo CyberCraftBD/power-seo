@@ -43,7 +43,7 @@ export function checkIntentKeywordClassification(input: ContentAnalysisInput): A
       title: 'Keyword intent classification',
       description: `Clear ${result.primary} intent detected (${pct}% confidence). ${explanation}`,
       status: 'good',
-      score: 5,
+      score: 10,
       maxScore: 10,
     };
   }
@@ -56,7 +56,7 @@ export function checkIntentKeywordClassification(input: ContentAnalysisInput): A
         `Likely ${result.primary} intent, but confidence is moderate (${pct}%). ${explanation}` +
         ' Consider adding clearer intent modifiers to strengthen the signal.',
       status: 'ok',
-      score: 3,
+      score: 6,
       maxScore: 10,
     };
   }
@@ -68,7 +68,7 @@ export function checkIntentKeywordClassification(input: ContentAnalysisInput): A
       `Weak intent signal (${pct}% confidence for ${result.primary}). ${explanation}` +
       ' Add modifier words like "how to", "best", "buy", or "review" to clarify intent.',
     status: 'poor',
-    score: 1,
+    score: 2,
     maxScore: 10,
   };
 }
