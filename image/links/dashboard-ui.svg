@@ -1,65 +1,108 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <!-- Dashboard panel -->
-  <rect x="20" y="20" width="860" height="460" rx="10" fill="#161b22"/>
-  <rect x="20" y="20" width="860" height="48" rx="10" fill="#1e2430"/>
-  <rect x="20" y="56" width="860" height="12" fill="#1e2430"/>
-  <text x="50" y="51" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" font-weight="600">Internal Link Analysis</text>
-  <rect x="720" y="30" width="140" height="28" rx="4" fill="#f59e0b"/>
-  <text x="790" y="49" font-family="'Segoe UI', sans-serif" font-size="12" fill="white" text-anchor="middle">Run Analysis</text>
-  <!-- KPI cards -->
-  <rect x="36" y="88" width="240" height="74" rx="8" fill="#0d1117"/>
-  <text x="56" y="114" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Orphan Pages</text>
-  <text x="56" y="144" font-family="'Segoe UI', sans-serif" font-size="28" fill="#ef4444" font-weight="700">23</text>
-  <text x="118" y="144" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444"> pages with 0 inbound</text>
-  <rect x="292" y="88" width="240" height="74" rx="8" fill="#0d1117"/>
-  <text x="312" y="114" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Top Page Equity</text>
-  <text x="312" y="144" font-family="'Segoe UI', sans-serif" font-size="28" fill="#f59e0b" font-weight="700">84</text>
-  <text x="345" y="144" font-family="'Segoe UI', sans-serif" font-size="13" fill="#f59e0b"> / 100 score</text>
-  <rect x="548" y="88" width="316" height="74" rx="8" fill="#0d1117"/>
-  <text x="568" y="114" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Link Opportunities</text>
-  <text x="568" y="144" font-family="'Segoe UI', sans-serif" font-size="28" fill="#22c55e" font-weight="700">47</text>
-  <text x="609" y="144" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e"> suggestions available</text>
-  <!-- Table section -->
-  <text x="36" y="192" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" font-weight="600">Page Equity Scores</text>
-  <!-- Table header -->
-  <rect x="36" y="202" width="490" height="28" fill="#1e2430"/>
-  <text x="50" y="220" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Page URL</text>
-  <text x="300" y="220" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Inbound Links</text>
-  <text x="430" y="220" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Equity Score</text>
-  <!-- Table rows -->
-  <rect x="36" y="230" width="490" height="34" fill="#0f1621"/>
-  <text x="50" y="251" font-family="'Courier New', monospace" font-size="12" fill="#38bdf8">/blog/ts-seo-guide</text>
-  <text x="315" y="251" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">14</text>
-  <rect x="430" y="235" width="84" height="18" rx="2" fill="#f59e0b" opacity="0.2"/>
-  <text x="472" y="248" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b" text-anchor="middle">84/100</text>
-  <rect x="36" y="264" width="490" height="34" fill="#161b22"/>
-  <text x="50" y="285" font-family="'Courier New', monospace" font-size="12" fill="#38bdf8">/docs/getting-started</text>
-  <text x="315" y="285" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">9</text>
-  <rect x="430" y="270" width="84" height="18" rx="2" fill="#22c55e" opacity="0.2"/>
-  <text x="472" y="283" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">72/100</text>
-  <rect x="36" y="298" width="490" height="34" fill="#0f1621"/>
-  <text x="50" y="319" font-family="'Courier New', monospace" font-size="12" fill="#38bdf8">/about</text>
-  <text x="315" y="319" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">7</text>
-  <rect x="430" y="304" width="84" height="18" rx="2" fill="#22c55e" opacity="0.2"/>
-  <text x="472" y="317" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">65/100</text>
-  <rect x="36" y="332" width="490" height="34" fill="#161b22"/>
-  <text x="50" y="353" font-family="'Courier New', monospace" font-size="12" fill="#fca5a5">/old-post-archived</text>
-  <text x="315" y="353" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">0</text>
-  <rect x="430" y="338" width="84" height="18" rx="2" fill="#ef4444" opacity="0.2"/>
-  <text x="472" y="351" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">0/100 ⚠</text>
-  <!-- Link opportunities -->
-  <text x="560" y="192" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" font-weight="600">Top Link Opportunities</text>
-  <rect x="548" y="202" width="316" height="78" rx="6" fill="#0d1117"/>
-  <text x="564" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">/blog/ts-seo-guide → /schema</text>
-  <text x="564" y="240" font-family="'Segoe UI', sans-serif" font-size="11" fill="#e2e8f0">"Learn about schema types" — natural anchor</text>
-  <rect x="726" y="254" width="100" height="22" rx="4" fill="#f59e0b"/>
-  <text x="776" y="269" font-family="'Segoe UI', sans-serif" font-size="11" fill="white" text-anchor="middle">Suggest Link</text>
-  <rect x="548" y="286" width="316" height="78" rx="6" fill="#0d1117"/>
-  <text x="564" y="306" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">/docs/getting-started → /old-post-archived</text>
-  <text x="564" y="324" font-family="'Segoe UI', sans-serif" font-size="11" fill="#e2e8f0">Link to resolve orphan — equity gain +12pts</text>
-  <rect x="726" y="338" width="100" height="22" rx="4" fill="#f59e0b"/>
-  <text x="776" y="353" font-family="'Segoe UI', sans-serif" font-size="11" fill="white" text-anchor="middle">Suggest Link</text>
-  <!-- Caption -->
-  <text x="450" y="456" font-family="'Segoe UI', sans-serif" font-size="13" fill="#f59e0b" text-anchor="middle">@power-seo/links — analyzeSite() · calculatePageRank() · findOrphanPages() · suggestLinks()</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Internal links dashboard built with @power-seo/links showing orphan pages, link equity scores and link suggestions for a site of 128 pages</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <text x="20" y="34" class="font-mono" font-size="13" font-weight="700" fill="#0f172a">power-seo</text>
+  <text x="20" y="76" class="font-ui" font-size="13" fill="#64748b">Overview</text>
+  <text x="20" y="110" class="font-ui" font-size="13" fill="#64748b">Content</text>
+  <rect x="10" y="126" width="160" height="30" rx="6" fill="#dbeafe"/>
+  <text x="20" y="146" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Internal Links</text>
+  <text x="20" y="182" class="font-ui" font-size="13" fill="#64748b">Sitemap</text>
+  <text x="20" y="216" class="font-ui" font-size="13" fill="#64748b">Audit</text>
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Internal Links</text>
+  <rect x="762" y="11" width="118" height="30" rx="6" fill="#2563eb"/>
+  <text x="821" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Rebuild Graph</text>
+  <!-- stat cards -->
+  <rect x="204" y="72" width="216" height="76" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="220" y="96" class="font-ui" font-size="12" fill="#64748b">totalPages</text>
+  <text x="220" y="130" class="font-ui" font-size="24" font-weight="700" fill="#0f172a">128</text>
+  <rect x="432" y="72" width="216" height="76" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="448" y="96" class="font-ui" font-size="12" fill="#64748b">totalLinks</text>
+  <text x="448" y="130" class="font-ui" font-size="24" font-weight="700" fill="#0f172a">947</text>
+  <rect x="660" y="72" width="220" height="76" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="676" y="96" class="font-ui" font-size="12" fill="#64748b">Orphan pages</text>
+  <text x="676" y="130" class="font-ui" font-size="24" font-weight="700" fill="#ef4444">4</text>
+  <rect x="808" y="86" width="58" height="20" rx="10" fill="#fee2e2"/>
+  <text x="837" y="100" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">Fix</text>
+  <!-- equity table card -->
+  <rect x="204" y="164" width="420" height="316" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="220" y="192" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Link Equity — analyzeLinkEquity()</text>
+  <rect x="204" y="206" width="420" height="28" fill="#f8fafc"/>
+  <text x="220" y="225" class="font-ui" font-size="12" font-weight="600" fill="#64748b">URL</text>
+  <text x="470" y="225" class="font-ui" font-size="12" font-weight="600" fill="#64748b">SCORE</text>
+  <text x="560" y="225" class="font-ui" font-size="12" font-weight="600" fill="#64748b">INBOUND</text>
+  <g class="font-mono" font-size="12" fill="#0f172a">
+    <text x="220" y="258">/</text>
+    <text x="220" y="298">/blog</text>
+    <text x="220" y="338">/pricing</text>
+    <text x="220" y="378">/guide/react-seo</text>
+    <text x="220" y="418">/guide/meta-tags</text>
+    <text x="220" y="458">/blog/post-42</text>
+  </g>
+  <g class="font-mono" font-size="12" fill="#0f172a">
+    <text x="470" y="258">1.000</text>
+    <text x="470" y="298">0.734</text>
+    <text x="470" y="338">0.512</text>
+    <text x="470" y="378">0.288</text>
+    <text x="470" y="418">0.204</text>
+    <text x="470" y="458">0.061</text>
+  </g>
+  <g class="font-ui" font-size="12" fill="#64748b">
+    <text x="580" y="258">86</text>
+    <text x="580" y="298">61</text>
+    <text x="580" y="338">44</text>
+    <text x="580" y="378">19</text>
+    <text x="580" y="418">14</text>
+    <text x="580" y="458">3</text>
+  </g>
+  <g fill="#e2e8f0">
+    <rect x="220" y="266" width="384" height="6" rx="3"/>
+    <rect x="220" y="306" width="384" height="6" rx="3"/>
+    <rect x="220" y="346" width="384" height="6" rx="3"/>
+    <rect x="220" y="386" width="384" height="6" rx="3"/>
+    <rect x="220" y="426" width="384" height="6" rx="3"/>
+    <rect x="220" y="466" width="384" height="6" rx="3"/>
+  </g>
+  <g fill="#2563eb">
+    <rect x="220" y="266" width="384" height="6" rx="3"/>
+    <rect x="220" y="306" width="282" height="6" rx="3"/>
+    <rect x="220" y="346" width="197" height="6" rx="3"/>
+    <rect x="220" y="386" width="111" height="6" rx="3"/>
+    <rect x="220" y="426" width="78" height="6" rx="3"/>
+    <rect x="220" y="466" width="23" height="6" rx="3"/>
+  </g>
+  <!-- suggestions card -->
+  <rect x="640" y="164" width="240" height="316" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="656" y="192" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">suggestLinks()</text>
+  <text x="656" y="212" class="font-ui" font-size="11" fill="#94a3b8">minRelevance: 0.1</text>
+  <line x1="640" y1="224" x2="880" y2="224" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="11" fill="#0f172a">
+    <text x="656" y="248">/guide/react-seo →</text>
+    <text x="656" y="264">/guide/meta-tags</text>
+    <text x="656" y="316">/blog/post-42 →</text>
+    <text x="656" y="332">/pricing</text>
+    <text x="656" y="384">/guide/meta-tags →</text>
+    <text x="656" y="400">/guide/react-seo</text>
+  </g>
+  <g class="font-ui" font-size="11" fill="#64748b">
+    <text x="656" y="284">anchor: "meta tags"</text>
+    <text x="656" y="352">anchor: "pricing plans"</text>
+    <text x="656" y="420">anchor: "react seo"</text>
+  </g>
+  <rect x="800" y="234" width="66" height="18" rx="9" fill="#dcfce7"/>
+  <text x="833" y="247" class="font-ui" font-size="10" font-weight="600" fill="#16a34a" text-anchor="middle">0.42</text>
+  <rect x="800" y="302" width="66" height="18" rx="9" fill="#dcfce7"/>
+  <text x="833" y="315" class="font-ui" font-size="10" font-weight="600" fill="#16a34a" text-anchor="middle">0.31</text>
+  <rect x="800" y="370" width="66" height="18" rx="9" fill="#fef3c7"/>
+  <text x="833" y="383" class="font-ui" font-size="10" font-weight="600" fill="#b45309" text-anchor="middle">0.18</text>
+  <text x="656" y="460" class="font-ui" font-size="11" fill="#94a3b8">3 of 20 suggestions shown</text>
 </svg>

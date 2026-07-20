@@ -1,41 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#f59e0b"/>
-      <stop offset="100%" style="stop-color:#fcd34d"/>
-    </linearGradient>
-    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#fcd34d;stop-opacity:0.2"/>
-    </linearGradient>
-  </defs>
-  <rect width="1280" height="280" fill="url(#bg)" rx="12"/>
-  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-    <line x1="0" y1="56" x2="1280" y2="56"/>
-    <line x1="0" y1="112" x2="1280" y2="112"/>
-    <line x1="0" y1="168" x2="1280" y2="168"/>
-    <line x1="0" y1="224" x2="1280" y2="224"/>
-    <line x1="256" y1="0" x2="256" y2="280"/>
-    <line x1="512" y1="0" x2="512" y2="280"/>
-    <line x1="768" y1="0" x2="768" y2="280"/>
-    <line x1="1024" y1="0" x2="1024" y2="280"/>
+  <title>Banner for the @power-seo/links package showing internal link graph analysis with orphan detection and link equity scoring</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="1280" height="280" fill="#f8fafc"/>
+  <!-- left: branding -->
+  <text x="72" y="104" class="font-mono" font-size="34" font-weight="700" fill="#0f172a">@power-seo/<tspan fill="#2563eb">links</tspan></text>
+  <text x="72" y="142" class="font-ui" font-size="16" fill="#64748b">Directed link graph, orphan page detection, keyword-overlap suggestions</text>
+  <text x="72" y="166" class="font-ui" font-size="16" fill="#64748b">and PageRank-style link equity scoring — zero dependencies.</text>
+  <!-- feature pills -->
+  <rect x="72" y="192" width="132" height="26" rx="13" fill="#dbeafe"/>
+  <text x="138" y="209" class="font-mono" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">buildLinkGraph()</text>
+  <rect x="214" y="192" width="144" height="26" rx="13" fill="#dcfce7"/>
+  <text x="286" y="209" class="font-mono" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">findOrphanPages()</text>
+  <rect x="368" y="192" width="122" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="429" y="209" class="font-mono" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">suggestLinks()</text>
+  <rect x="500" y="192" width="156" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="578" y="209" class="font-mono" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">analyzeLinkEquity()</text>
+  <!-- right: link graph vignette card -->
+  <rect x="770" y="34" width="440" height="212" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="794" y="64" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Link Graph</text>
+  <rect x="1116" y="48" width="72" height="20" rx="10" fill="#dbeafe"/>
+  <text x="1152" y="62" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">6 pages</text>
+  <!-- edges -->
+  <g stroke="#94a3b8" stroke-width="1.5">
+    <line x1="866" y1="140" x2="964" y2="102"/>
+    <line x1="866" y1="140" x2="964" y2="178"/>
+    <line x1="964" y1="102" x2="1062" y2="102"/>
+    <line x1="964" y1="178" x2="1062" y2="178"/>
+    <line x1="964" y1="102" x2="964" y2="178"/>
   </g>
-  <circle cx="1180" cy="60" r="90" fill="#f59e0b" fill-opacity="0.06"/>
-  <circle cx="1220" cy="30" r="50" fill="#fcd34d" fill-opacity="0.06"/>
-  <circle cx="80" cy="230" r="70" fill="#f59e0b" fill-opacity="0.05"/>
-  <rect x="80" y="96" width="6" height="88" rx="3" fill="url(#accent)"/>
-  <text x="108" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="68" font-weight="800" letter-spacing="-2" fill="url(#accent)">@power-seo/links</text>
-  <text x="110" y="195" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="0.5">Find orphans. Score equity. Suggest links.</text>
-  <rect x="110" y="220" width="90" height="28" rx="14" fill="url(#pill)" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="155" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fcd34d" text-anchor="middle">PageRank</text>
-  <rect x="210" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="279" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fcd34d" text-anchor="middle">Orphan detection</text>
-  <rect x="358" y="220" width="100" height="28" rx="14" fill="url(#pill)" stroke="#fcd34d" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="408" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fde68a" text-anchor="middle">Link equity</text>
-  <rect x="468" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#fcd34d" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="537" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fde68a" text-anchor="middle">TypeScript-first</text>
+  <!-- nodes -->
+  <circle cx="866" cy="140" r="18" fill="#2563eb"/>
+  <text x="866" y="145" class="font-ui" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">/</text>
+  <circle cx="964" cy="102" r="14" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="964" cy="178" r="14" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="1062" cy="102" r="12" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="1062" cy="178" r="12" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <!-- orphan node (no inbound edges) -->
+  <circle cx="1148" cy="140" r="14" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="1148" y="144" class="font-ui" font-size="10" font-weight="700" fill="#b91c1c" text-anchor="middle">0</text>
+  <text x="1148" y="172" class="font-ui" font-size="10" fill="#b91c1c" text-anchor="middle">orphan</text>
+  <!-- labels -->
+  <text x="866" y="174" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">home</text>
+  <text x="964" y="88" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">/blog</text>
+  <text x="964" y="210" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">/about</text>
+  <text x="794" y="230" class="font-mono" font-size="11" fill="#94a3b8">inboundCount: 0 → returned by findOrphanPages()</text>
 </svg>

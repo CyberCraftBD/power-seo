@@ -1,33 +1,64 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="38" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Google Crawl Coverage — Before vs After Sitemap Optimization</text>
-  <!-- Grid -->
-  <line x1="100" y1="70" x2="100" y2="370" stroke="#1e2430" stroke-width="1"/>
-  <line x1="100" y1="370" x2="820" y2="370" stroke="#1e2430" stroke-width="1"/>
-  <line x1="100" y1="300" x2="820" y2="300" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="100" y1="220" x2="820" y2="220" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="100" y1="140" x2="820" y2="140" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <!-- Y labels -->
-  <text x="90" y="374" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0%</text>
-  <text x="90" y="304" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">25%</text>
-  <text x="90" y="224" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">50%</text>
-  <text x="90" y="144" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">75%</text>
-  <text x="90" y="80" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">100%</text>
-  <!-- X labels -->
-  <text x="260" y="392" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Pages Indexed</text>
-  <!-- Before bar -->
-  <rect x="160" y="231" width="200" height="139" fill="#374151"/>
-  <text x="260" y="222" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="700">45%</text>
-  <text x="260" y="420" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Before</text>
-  <!-- After bar -->
-  <rect x="480" y="80" width="200" height="290" fill="#10b981" opacity="0.85"/>
-  <text x="580" y="72" font-family="'Segoe UI', sans-serif" font-size="20" fill="#10b981" text-anchor="middle" font-weight="700">96%</text>
-  <text x="580" y="420" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">After @power-seo/sitemap</text>
-  <!-- +51% arrow -->
-  <line x1="360" y1="230" x2="480" y2="125" stroke="#10b981" stroke-width="2" stroke-dasharray="6,4"/>
-  <text x="420" y="165" font-family="'Segoe UI', sans-serif" font-size="20" fill="#10b981" text-anchor="middle" font-weight="700">+51%</text>
-  <!-- ROI Badge -->
-  <rect x="130" y="440" width="640" height="48" rx="8" fill="#064e3b"/>
-  <text x="450" y="460" font-family="'Segoe UI', sans-serif" font-size="13" fill="#34d399" text-anchor="middle" font-weight="700">+51% crawl coverage improvement</text>
-  <text x="450" y="478" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6ee7b7" text-anchor="middle">More pages discovered by Google → more ranking opportunities → more organic traffic</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Workflow comparison showing manual hand-built sitemap maintenance versus the automated pipeline provided by the power-seo sitemap package</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <text x="30" y="44" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">Sitemap workflow — before and after</text>
+  <text x="30" y="68" class="font-ui" font-size="13" fill="#64748b">Hand-built XML strings versus a typed, validated pipeline</text>
+
+  <!-- before panel -->
+  <rect x="30" y="92" width="392" height="360" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="52" y="112" width="128" height="24" rx="12" fill="#fee2e2"/>
+  <text x="116" y="128" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">Manual process</text>
+
+  <g class="font-ui" font-size="13">
+    <text x="80" y="172" fill="#0f172a">Hand-concatenate XML strings</text>
+    <text x="80" y="216" fill="#0f172a">Look up namespace URIs each time</text>
+    <text x="80" y="260" fill="#0f172a">Single file breaks past 50,000 URLs</text>
+    <text x="80" y="304" fill="#0f172a">Escape &amp;, &lt;, &gt; in every loc by hand</text>
+    <text x="80" y="348" fill="#0f172a">Bad URLs reach Google silently</text>
+    <text x="80" y="392" fill="#0f172a">Memory spikes on large catalogs</text>
+  </g>
+  <g stroke="#ef4444" stroke-width="2" stroke-linecap="round">
+    <path d="M56 162l10 10M66 162l-10 10"/>
+    <path d="M56 206l10 10M66 206l-10 10"/>
+    <path d="M56 250l10 10M66 250l-10 10"/>
+    <path d="M56 294l10 10M66 294l-10 10"/>
+    <path d="M56 338l10 10M66 338l-10 10"/>
+    <path d="M56 382l10 10M66 382l-10 10"/>
+  </g>
+
+  <!-- arrow -->
+  <circle cx="450" cy="272" r="24" fill="#dbeafe"/>
+  <path d="M440 272h18m-6-7l7 7-7 7" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- after panel -->
+  <rect x="478" y="92" width="392" height="360" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="500" y="112" width="186" height="24" rx="12" fill="#dcfce7"/>
+  <text x="593" y="128" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">With @power-seo/sitemap</text>
+
+  <g class="font-ui" font-size="13">
+    <text x="528" y="172" fill="#0f172a"><tspan class="font-mono" fill="#2563eb">generateSitemap()</tspan> — valid &lt;urlset&gt;</text>
+    <text x="528" y="216" fill="#0f172a">Namespaces declared automatically</text>
+    <text x="528" y="260" fill="#0f172a"><tspan class="font-mono" fill="#2563eb">splitSitemap()</tspan> auto-splits + index</text>
+    <text x="528" y="304" fill="#0f172a">XML entities escaped for you</text>
+    <text x="528" y="348" fill="#0f172a"><tspan class="font-mono" fill="#2563eb">validateSitemapUrl()</tspan> flags errors</text>
+    <text x="528" y="392" fill="#0f172a"><tspan class="font-mono" fill="#2563eb">streamSitemap()</tspan> — constant memory</text>
+  </g>
+  <g stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M504 167l4 5 8-10"/>
+    <path d="M504 211l4 5 8-10"/>
+    <path d="M504 255l4 5 8-10"/>
+    <path d="M504 299l4 5 8-10"/>
+    <path d="M504 343l4 5 8-10"/>
+    <path d="M504 387l4 5 8-10"/>
+  </g>
+
+  <text x="52" y="430" class="font-ui" font-size="12" fill="#94a3b8">Every release risks malformed XML</text>
+  <text x="500" y="430" class="font-ui" font-size="12" fill="#94a3b8">One typed config, standards-compliant output</text>
+
+  <text x="30" y="484" class="font-ui" font-size="11" fill="#94a3b8">Qualitative workflow comparison — capabilities as implemented in the package API.</text>
 </svg>

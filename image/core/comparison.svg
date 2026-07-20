@@ -1,147 +1,76 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0d1117"/>
-      <stop offset="100%" stop-color="#111827"/>
-    </linearGradient>
-    <linearGradient id="leftHeader" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#4f46e5"/>
-      <stop offset="100%" stop-color="#6366f1"/>
-    </linearGradient>
-  </defs>
+  <title>Feature comparison matrix of @power-seo/core versus next-seo and hand-rolled utilities across validation, analysis and builder capabilities</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="32" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">How @power-seo/core compares</text>
+  <text x="32" y="66" class="font-ui" font-size="13" fill="#64748b">Capabilities included out of the box</text>
 
-  <!-- Background -->
-  <rect width="900" height="500" fill="url(#bg)"/>
+  <!-- table card -->
+  <rect x="32" y="84" width="836" height="388" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <!-- header row -->
+  <rect x="33" y="85" width="834" height="40" rx="7" fill="#f8fafc"/>
+  <line x1="32" y1="125" x2="868" y2="125" stroke="#e2e8f0"/>
+  <text x="52" y="110" class="font-ui" font-size="12" font-weight="600" fill="#64748b">FEATURE</text>
+  <text x="520" y="110" class="font-mono" font-size="12" font-weight="600" fill="#1d4ed8" text-anchor="middle">@power-seo/core</text>
+  <text x="672" y="110" class="font-mono" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">next-seo</text>
+  <text x="800" y="110" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Hand-rolled</text>
+  <!-- column highlight -->
+  <rect x="444" y="125" width="152" height="346" fill="#dbeafe" opacity="0.25"/>
 
-  <!-- Grid -->
-  <g stroke="#1a1f2e" stroke-width="1" opacity="0.5">
-    <line x1="0" y1="50" x2="900" y2="50"/>
-    <line x1="0" y1="100" x2="900" y2="100"/>
-    <line x1="0" y1="150" x2="900" y2="150"/>
-    <line x1="0" y1="200" x2="900" y2="200"/>
-    <line x1="0" y1="250" x2="900" y2="250"/>
-    <line x1="0" y1="300" x2="900" y2="300"/>
-    <line x1="0" y1="350" x2="900" y2="350"/>
-    <line x1="0" y1="400" x2="900" y2="400"/>
-    <line x1="0" y1="450" x2="900" y2="450"/>
-  </g>
+  <!-- rows -->
+  <text x="52" y="150" class="font-ui" font-size="13" fill="#0f172a">Pixel-accurate title validation (580px SERP limit)</text>
+  <text x="520" y="150" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="150" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="800" y="150" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="32" y1="163" x2="868" y2="163" stroke="#e2e8f0"/>
 
-  <!-- Caption at top -->
-  <text x="450" y="42" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#f0f6fc" text-anchor="middle">Stop duplicating. Start sharing.</text>
+  <text x="52" y="188" class="font-ui" font-size="13" fill="#0f172a">Meta / Open Graph / Twitter tag builders</text>
+  <text x="520" y="188" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="188" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="800" y="188" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="32" y1="201" x2="868" y2="201" stroke="#e2e8f0"/>
 
-  <!-- Vertical divider -->
-  <line x1="450" y1="60" x2="450" y2="440" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
+  <text x="52" y="226" class="font-ui" font-size="13" fill="#0f172a">Keyword density analysis (0.5–2.5% range)</text>
+  <text x="520" y="226" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="226" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="800" y="226" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="32" y1="239" x2="868" y2="239" stroke="#e2e8f0"/>
 
-  <!-- ===== LEFT COLUMN: @power-seo/core ===== -->
+  <text x="52" y="264" class="font-ui" font-size="13" fill="#0f172a">Text statistics — words, sentences, syllables</text>
+  <text x="520" y="264" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="264" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="800" y="264" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="32" y1="277" x2="868" y2="277" stroke="#e2e8f0"/>
 
-  <!-- Left header -->
-  <rect x="50" y="64" width="375" height="52" rx="8" fill="url(#leftHeader)"/>
-  <text x="237" y="85" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">@power-seo/core</text>
-  <text x="237" y="104" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#c7d2fe" text-anchor="middle">Shared foundation · Install once · Use everywhere</text>
+  <text x="52" y="302" class="font-ui" font-size="13" fill="#0f172a">URL canonicalization &amp; tracking-param stripping</text>
+  <text x="520" y="302" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="302" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="800" y="302" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="32" y1="315" x2="868" y2="315" stroke="#e2e8f0"/>
 
-  <!-- Left rows -->
-  <!-- Row 1 -->
-  <rect x="50" y="130" width="375" height="56" rx="0" fill="#161b22"/>
-  <rect x="50" y="130" width="375" height="1" fill="#1e2430"/>
-  <!-- Checkmark -->
-  <circle cx="82" cy="158" r="12" fill="#6366f1" opacity="0.2"/>
-  <circle cx="82" cy="158" r="12" fill="none" stroke="#6366f1" stroke-width="1.5"/>
-  <path d="M75,158 L80,164 L90,151" stroke="#6366f1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="106" y="154" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">1 npm install</text>
-  <text x="106" y="172" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b">One package, zero configuration required</text>
+  <text x="52" y="340" class="font-ui" font-size="13" fill="#0f172a">Typed robots directive builder (incl. AI crawlers)</text>
+  <text x="520" y="340" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="340" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="800" y="340" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="32" y1="353" x2="868" y2="353" stroke="#e2e8f0"/>
 
-  <!-- Row 2 -->
-  <rect x="50" y="186" width="375" height="56" rx="0" fill="#0d1117"/>
-  <rect x="50" y="186" width="375" height="1" fill="#1e2430"/>
-  <circle cx="82" cy="214" r="12" fill="#6366f1" opacity="0.2"/>
-  <circle cx="82" cy="214" r="12" fill="none" stroke="#6366f1" stroke-width="1.5"/>
-  <path d="M75,214 L80,220 L90,207" stroke="#6366f1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="106" y="210" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">Fully typed — 17 shared types</text>
-  <text x="106" y="228" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b">IntelliSense, autocomplete, strict mode</text>
+  <text x="52" y="378" class="font-ui" font-size="13" fill="#0f172a">Title template engine with site-wide defaults</text>
+  <text x="520" y="378" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="378" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="800" y="378" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="32" y1="391" x2="868" y2="391" stroke="#e2e8f0"/>
 
-  <!-- Row 3 -->
-  <rect x="50" y="242" width="375" height="56" rx="0" fill="#161b22"/>
-  <rect x="50" y="242" width="375" height="1" fill="#1e2430"/>
-  <circle cx="82" cy="270" r="12" fill="#6366f1" opacity="0.2"/>
-  <circle cx="82" cy="270" r="12" fill="none" stroke="#6366f1" stroke-width="1.5"/>
-  <path d="M75,270 L80,276 L90,263" stroke="#6366f1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="106" y="266" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">Shared across all 17 packages</text>
-  <text x="106" y="284" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b">Consistent behavior, one source of truth</text>
+  <text x="52" y="416" class="font-ui" font-size="13" fill="#0f172a">Token-bucket rate limiter &amp; HTTP retry</text>
+  <text x="520" y="416" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="416" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="800" y="416" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="32" y1="429" x2="868" y2="429" stroke="#e2e8f0"/>
 
-  <!-- Row 4 -->
-  <rect x="50" y="298" width="375" height="56" rx="0" fill="#0d1117"/>
-  <rect x="50" y="298" width="375" height="1" fill="#1e2430"/>
-  <circle cx="82" cy="326" r="12" fill="#6366f1" opacity="0.2"/>
-  <circle cx="82" cy="326" r="12" fill="none" stroke="#6366f1" stroke-width="1.5"/>
-  <path d="M75,326 L80,332 L90,319" stroke="#6366f1" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="106" y="322" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">0 lines of utility code to write</text>
-  <text x="106" y="340" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b">Focus on product, not infrastructure</text>
-
-  <!-- Left border accent -->
-  <rect x="50" y="130" width="4" height="224" fill="#6366f1"/>
-
-  <!-- Bottom border left -->
-  <rect x="50" y="354" width="375" height="1" fill="#1e2430"/>
-
-  <!-- ===== RIGHT COLUMN: Custom utilities ===== -->
-
-  <!-- Right header -->
-  <rect x="475" y="64" width="375" height="52" rx="8" fill="#1e2430" stroke="#374151" stroke-width="1.5"/>
-  <text x="662" y="85" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" font-weight="700" fill="#9ca3af" text-anchor="middle">Custom utilities</text>
-  <text x="662" y="104" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Rolled per-project · No shared standard</text>
-
-  <!-- Right rows -->
-  <!-- Row 1 -->
-  <rect x="475" y="130" width="375" height="56" rx="0" fill="#161b22"/>
-  <rect x="475" y="130" width="375" height="1" fill="#1e2430"/>
-  <!-- X mark -->
-  <circle cx="507" cy="158" r="12" fill="#7f1d1d" opacity="0.3"/>
-  <circle cx="507" cy="158" r="12" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-  <path d="M501,152 L513,164 M513,152 L501,164" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
-  <text x="531" y="154" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#9ca3af">200+ lines per project</text>
-  <text x="531" y="172" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#4b5563">Repeated effort across every codebase</text>
-
-  <!-- Row 2 -->
-  <rect x="475" y="186" width="375" height="56" rx="0" fill="#0d1117"/>
-  <rect x="475" y="186" width="375" height="1" fill="#1e2430"/>
-  <circle cx="507" cy="214" r="12" fill="#7f1d1d" opacity="0.3"/>
-  <circle cx="507" cy="214" r="12" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-  <path d="M501,208 L513,220 M513,208 L501,220" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
-  <text x="531" y="210" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#9ca3af">Untyped or partially typed</text>
-  <text x="531" y="228" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#4b5563">Runtime errors, no editor support</text>
-
-  <!-- Row 3 -->
-  <rect x="475" y="242" width="375" height="56" rx="0" fill="#161b22"/>
-  <rect x="475" y="242" width="375" height="1" fill="#1e2430"/>
-  <circle cx="507" cy="270" r="12" fill="#7f1d1d" opacity="0.3"/>
-  <circle cx="507" cy="270" r="12" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-  <path d="M501,264 L513,276 M513,264 L501,276" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
-  <text x="531" y="266" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#9ca3af">Duplicated, diverges over time</text>
-  <text x="531" y="284" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#4b5563">Inconsistent behavior between projects</text>
-
-  <!-- Row 4 -->
-  <rect x="475" y="298" width="375" height="56" rx="0" fill="#0d1117"/>
-  <rect x="475" y="298" width="375" height="1" fill="#1e2430"/>
-  <circle cx="507" cy="326" r="12" fill="#7f1d1d" opacity="0.3"/>
-  <circle cx="507" cy="326" r="12" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-  <path d="M501,320 L513,332 M513,320 L501,332" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
-  <text x="531" y="322" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#9ca3af">Breaks when requirements change</text>
-  <text x="531" y="340" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#4b5563">Risky updates with no test coverage</text>
-
-  <!-- Bottom border right -->
-  <rect x="475" y="354" width="375" height="1" fill="#1e2430"/>
-
-  <!-- Summary stats row -->
-  <rect x="50" y="368" width="375" height="52" rx="0" fill="#1a1030"/>
-  <rect x="50" y="368" width="4" height="52" fill="#6366f1"/>
-  <text x="237" y="390" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#818cf8" text-anchor="middle">Total dev cost: ~30 min setup</text>
-  <text x="237" y="408" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#6366f1" text-anchor="middle">Maintained · Versioned · Open source</text>
-
-  <rect x="475" y="368" width="375" height="52" rx="0" fill="#1c1010"/>
-  <text x="662" y="390" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#6b7280" text-anchor="middle">Total dev cost: 8–20h per project</text>
-  <text x="662" y="408" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#4b5563" text-anchor="middle">No tests · Grows stale · Blocks shipping</text>
-
-  <!-- Bottom caption -->
-  <text x="450" y="462" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569" text-anchor="middle">@power-seo/core · npm install @power-seo/core · github.com/CyberCraftBD/power-seo</text>
-
+  <text x="52" y="454" class="font-ui" font-size="13" fill="#0f172a">Framework-agnostic, zero runtime dependencies</text>
+  <text x="520" y="454" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="672" y="454" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="800" y="454" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
 </svg>

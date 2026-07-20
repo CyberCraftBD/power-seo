@@ -1,112 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
-  <defs>
-    <style>
-      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-      .mono { font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace; }
-    </style>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Table of @power-seo/content-analysis check IDs with the real thresholds each one scores against, such as keyphrase density 0.5 to 2.5 percent and meta description 120 to 160 characters</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
 
-  <!-- Background -->
-  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="42" class="font-ui" font-size="18" font-weight="700" fill="#0f172a" text-anchor="middle">Deterministic checks with published thresholds</text>
+  <text x="450" y="66" class="font-ui" font-size="13" fill="#64748b" text-anchor="middle">Every result is scored against real constants from @power-seo/core &#8212; no black box</text>
 
-  <!-- Title -->
-  <text x="450" y="40" text-anchor="middle" fill="#e6edf3" font-size="17" font-weight="700">Keyphrase Density — Exact vs. Approximate Calculation</text>
-  <text x="450" y="62" text-anchor="middle" fill="#8b949e" font-size="13">analyzeContent() uses full floating-point precision, never rounds prematurely</text>
+  <!-- table card -->
+  <rect x="40" y="88" width="820" height="322" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <path d="M41,124 v-28 a7,7 0 0 1 7,-7 h804 a7,7 0 0 1 7,7 v28 z" fill="#f8fafc"/>
+  <line x1="41" y1="124" x2="859" y2="124" stroke="#e2e8f0"/>
+  <g class="font-ui" font-size="11" font-weight="600" fill="#64748b">
+    <text x="64" y="110">CHECK ID</text>
+    <text x="350" y="110">THRESHOLD</text>
+    <text x="640" y="110">SCORING</text>
+  </g>
 
-  <!-- ── LEFT PANEL: Correct calculation ── -->
-  <rect x="30" y="82" width="402" height="340" rx="8" fill="#161b22" stroke="#eab308" stroke-width="1.5"/>
+  <!-- rows h=46, first baseline 152 -->
+  <g class="font-mono" font-size="12" fill="#2563eb">
+    <text x="64" y="152">keyphrase-density</text>
+    <text x="64" y="198">meta-description-presence</text>
+    <text x="64" y="244">word-count</text>
+    <text x="64" y="290">image-alt</text>
+    <text x="64" y="336">internal-links</text>
+    <text x="64" y="382">heading-structure</text>
+  </g>
+  <g class="font-ui" font-size="12" fill="#0f172a">
+    <text x="350" y="152">0.5% &#8211; 2.5% (KEYWORD_DENSITY)</text>
+    <text x="350" y="198">120&#8211;160 characters</text>
+    <text x="350" y="244">&#8805; 300 words &#183; 1,000+ ideal</text>
+    <text x="350" y="290">alt text on every image</text>
+    <text x="350" y="336">at least one internal link</text>
+    <text x="350" y="382">single H1, ordered subheadings</text>
+  </g>
+  <g class="font-ui" font-size="12" fill="#64748b">
+    <text x="640" y="152">good in range, poor outside</text>
+    <text x="640" y="198">good valid, ok too short / long</text>
+    <text x="640" y="244">poor under 300 words</text>
+    <text x="640" y="290">poor if any alt is missing</text>
+    <text x="640" y="336">good when present</text>
+    <text x="640" y="382">good when hierarchy intact</text>
+  </g>
+  <g stroke="#e2e8f0">
+    <line x1="41" y1="168" x2="859" y2="168"/>
+    <line x1="41" y1="214" x2="859" y2="214"/>
+    <line x1="41" y1="260" x2="859" y2="260"/>
+    <line x1="41" y1="306" x2="859" y2="306"/>
+    <line x1="41" y1="352" x2="859" y2="352"/>
+  </g>
 
-  <!-- Left panel header -->
-  <rect x="30" y="82" width="402" height="38" rx="8" fill="#1a1508"/>
-  <rect x="30" y="104" width="402" height="16" fill="#1a1508"/>
-  <rect x="30" y="82" width="3" height="38" fill="#eab308"/>
-  <text x="50" y="106" fill="#eab308" font-size="13" font-weight="700" class="mono">analyzeContent() — exact calculation</text>
+  <!-- status legend -->
+  <g class="font-ui" font-size="12">
+    <rect x="140" y="436" width="52" height="22" rx="11" fill="#dcfce7"/>
+    <text x="166" y="451" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">good</text>
+    <text x="202" y="451" fill="#64748b">check fully passes</text>
 
-  <!-- Step-by-step calculation -->
-  <text x="50" y="143" fill="#8b949e" font-size="12" class="mono">// Input values</text>
-  <text x="50" y="163" fill="#e6edf3" font-size="13" class="mono">Keyphrase occurrences: </text>
-  <text x="248" y="163" fill="#79c0ff" font-size="13" class="mono" font-weight="700">9</text>
+    <rect x="356" y="436" width="40" height="22" rx="11" fill="#fef3c7"/>
+    <text x="376" y="451" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">ok</text>
+    <text x="406" y="451" fill="#64748b">partially passes</text>
 
-  <text x="50" y="183" fill="#e6edf3" font-size="13" class="mono">Total word count:      </text>
-  <text x="248" y="183" fill="#79c0ff" font-size="13" class="mono" font-weight="700">500</text>
-
-  <!-- Divider line in code block -->
-  <line x1="50" y1="196" x2="410" y2="196" stroke="#2d2200" stroke-width="1" stroke-dasharray="4 3"/>
-
-  <text x="50" y="217" fill="#8b949e" font-size="12" class="mono">// Exact formula</text>
-  <text x="50" y="237" fill="#e6edf3" font-size="13" class="mono">Density = </text>
-  <text x="120" y="237" fill="#ffa657" font-size="13" class="mono">9</text>
-  <text x="131" y="237" fill="#e6edf3" font-size="13" class="mono"> / </text>
-  <text x="153" y="237" fill="#ffa657" font-size="13" class="mono">500</text>
-  <text x="183" y="237" fill="#e6edf3" font-size="13" class="mono"> × </text>
-  <text x="203" y="237" fill="#ffa657" font-size="13" class="mono">100</text>
-
-  <!-- equals sign row -->
-  <text x="50" y="261" fill="#e6edf3" font-size="13" class="mono">         = </text>
-  <text x="130" y="261" fill="#4ade80" font-size="15" class="mono" font-weight="700">1.8000%</text>
-
-  <!-- Precision indicator -->
-  <rect x="50" y="276" width="360" height="28" rx="4" fill="#0f1c0f"/>
-  <text x="60" y="294" fill="#4ade80" font-size="12" class="mono">// No rounding applied — full float64 precision</text>
-
-  <!-- Divider -->
-  <line x1="50" y1="318" x2="410" y2="318" stroke="#30363d" stroke-width="1"/>
-
-  <!-- Result badge -->
-  <rect x="50" y="330" width="360" height="54" rx="6" fill="#14290f" stroke="#22c55e" stroke-width="1"/>
-  <!-- green checkmark circle -->
-  <circle cx="74" cy="357" r="12" fill="#22c55e"/>
-  <text x="74" y="362" text-anchor="middle" fill="#0d1117" font-size="14" font-weight="900">✓</text>
-  <text x="95" y="350" fill="#4ade80" font-size="13" font-weight="700">1.8% — Within target range (1–3%)</text>
-  <text x="95" y="368" fill="#86efac" font-size="12">Status: good · Score contribution: +12pts</text>
-
-  <!-- ── RIGHT PANEL: Rounding error ── -->
-  <rect x="468" y="82" width="402" height="340" rx="8" fill="#161b22" stroke="#ef4444" stroke-width="1.5"/>
-
-  <!-- Right panel header -->
-  <rect x="468" y="82" width="402" height="38" rx="8" fill="#2d0808"/>
-  <rect x="468" y="104" width="402" height="16" fill="#2d0808"/>
-  <rect x="468" y="82" width="3" height="38" fill="#ef4444"/>
-  <text x="488" y="106" fill="#ef4444" font-size="13" font-weight="700" class="mono">Common rounding error</text>
-
-  <!-- Rounding code -->
-  <text x="488" y="143" fill="#8b949e" font-size="12" class="mono">// Naive approach</text>
-  <text x="488" y="167" fill="#e6edf3" font-size="13" class="mono">Math.</text>
-  <text x="523" y="167" fill="#ffa657" font-size="13" class="mono">round</text>
-  <text x="563" y="167" fill="#e6edf3" font-size="13" class="mono">(</text>
-  <text x="571" y="167" fill="#79c0ff" font-size="13" class="mono">9</text>
-  <text x="581" y="167" fill="#e6edf3" font-size="13" class="mono">/</text>
-  <text x="590" y="167" fill="#79c0ff" font-size="13" class="mono">500</text>
-  <text x="620" y="167" fill="#e6edf3" font-size="13" class="mono"> * </text>
-  <text x="643" y="167" fill="#79c0ff" font-size="13" class="mono">100</text>
-  <text x="683" y="167" fill="#e6edf3" font-size="13" class="mono">)</text>
-
-  <!-- Arrow showing result -->
-  <line x1="488" y1="178" x2="488" y2="198" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 2"/>
-  <polygon points="483,198 493,198 488,206" fill="#ef4444"/>
-
-  <text x="488" y="228" fill="#e6edf3" font-size="13" class="mono">= Math.round(</text>
-  <text x="609" y="228" fill="#ffa657" font-size="13" class="mono">1.8</text>
-  <text x="633" y="228" fill="#e6edf3" font-size="13" class="mono">)</text>
-
-  <line x1="488" y1="238" x2="488" y2="258" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 2"/>
-  <polygon points="483,258 493,258 488,266" fill="#ef4444"/>
-
-  <text x="488" y="286" fill="#ff7b72" font-size="18" class="mono" font-weight="700">= 2%</text>
-  <text x="488" y="304" fill="#8b949e" font-size="12" class="mono">// Rounds 1.8% UP to 2%</text>
-
-  <!-- Divider -->
-  <line x1="488" y1="318" x2="848" y2="318" stroke="#30363d" stroke-width="1"/>
-
-  <!-- Error result badge -->
-  <rect x="488" y="330" width="360" height="54" rx="6" fill="#2d0808" stroke="#ef4444" stroke-width="1"/>
-  <!-- red X circle -->
-  <circle cx="512" cy="357" r="12" fill="#ef4444"/>
-  <text x="512" y="362" text-anchor="middle" fill="#fff" font-size="14" font-weight="900">✗</text>
-  <text x="533" y="350" fill="#f87171" font-size="13" font-weight="700">Rounded incorrectly</text>
-  <text x="533" y="368" fill="#fca5a5" font-size="12">False warning: "density too high" triggers at 1.8%</text>
-
-  <!-- Caption -->
-  <text x="450" y="450" text-anchor="middle" fill="#ffffff" font-size="15">Exact density. No rounding surprises.</text>
-  <text x="450" y="472" text-anchor="middle" fill="#8b949e" font-size="12">analyzeContent() preserves floating-point precision throughout all calculations.</text>
+    <rect x="546" y="436" width="52" height="22" rx="11" fill="#fee2e2"/>
+    <text x="572" y="451" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">poor</text>
+    <text x="608" y="451" fill="#64748b">check fails</text>
+  </g>
 </svg>

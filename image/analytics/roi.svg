@@ -1,113 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
-  <defs>
-    <style>
-      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-    </style>
-    <linearGradient id="roiGradient" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.30"/>
-      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.03"/>
-    </linearGradient>
-    <clipPath id="roiClip">
-      <rect x="80" y="80" width="740" height="310"/>
-    </clipPath>
-  </defs>
+  <title>Workflow comparison: manual SEO reporting with spreadsheets versus one automated buildDashboardData call from @power-seo/analytics</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
 
-  <!-- Background -->
-  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">SEO reporting, before and after</text>
 
-  <!-- Main panel -->
-  <rect x="20" y="20" width="860" height="460" rx="12" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <!-- BEFORE panel -->
+  <rect x="48" y="76" width="386" height="388" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="68" y="94" width="122" height="24" rx="12" fill="#fee2e2"/>
+  <text x="129" y="110" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">Manual process</text>
 
-  <!-- Title -->
-  <text x="440" y="58" fill="#ffffff" font-size="18" font-weight="700" text-anchor="middle">Quarterly Organic Revenue — Before vs After Data-Driven SEO</text>
+  <text x="98" y="152" class="font-ui" font-size="13" fill="#0f172a">Export GSC pages and queries to CSV</text>
+  <circle cx="80" cy="148" r="4" fill="#ef4444"/>
+  <text x="98" y="188" class="font-ui" font-size="13" fill="#0f172a">Run audits in a separate tool</text>
+  <circle cx="80" cy="184" r="4" fill="#ef4444"/>
+  <text x="98" y="224" class="font-ui" font-size="13" fill="#0f172a">VLOOKUP URLs across spreadsheets</text>
+  <circle cx="80" cy="220" r="4" fill="#ef4444"/>
+  <text x="98" y="260" class="font-ui" font-size="13" fill="#0f172a">Mismatched URLs (slashes, protocols)</text>
+  <circle cx="80" cy="256" r="4" fill="#ef4444"/>
+  <text x="98" y="296" class="font-ui" font-size="13" fill="#0f172a">Eyeball charts for trends and spikes</text>
+  <circle cx="80" cy="292" r="4" fill="#ef4444"/>
+  <text x="98" y="332" class="font-ui" font-size="13" fill="#0f172a">Rebuild the report every month</text>
+  <circle cx="80" cy="328" r="4" fill="#ef4444"/>
 
-  <!-- Chart area background -->
-  <rect x="80" y="78" width="740" height="310" rx="6" fill="#0f1923"/>
+  <rect x="68" y="360" width="346" height="82" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="88" y="388" class="font-ui" font-size="12" font-weight="600" fill="#64748b">Result</text>
+  <text x="88" y="410" class="font-ui" font-size="12" fill="#64748b">Fragile spreadsheets, no correlation between</text>
+  <text x="88" y="428" class="font-ui" font-size="12" fill="#64748b">audit scores and traffic, findings go stale.</text>
 
-  <!-- Background grid lines -->
-  <line x1="80" y1="100" x2="820" y2="100" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="135" x2="820" y2="135" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="170" x2="820" y2="170" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="205" x2="820" y2="205" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="240" x2="820" y2="240" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="275" x2="820" y2="275" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="310" x2="820" y2="310" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="345" x2="820" y2="345" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="380" x2="820" y2="380" stroke="#1e2430" stroke-width="1"/>
+  <!-- AFTER panel -->
+  <rect x="466" y="76" width="386" height="388" rx="8" fill="#ffffff" stroke="#2563eb"/>
+  <rect x="486" y="94" width="204" height="24" rx="12" fill="#dbeafe"/>
+  <text x="588" y="110" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">With @power-seo/analytics</text>
 
-  <!-- Y-axis labels: $0K to $70K, step $10K -->
-  <!-- Chart height: y=80 to y=388, range: 70K, px per K: 308/70 = 4.4 -->
-  <!-- $70K → y=80, $60K → y=124, $50K → y=168, $40K → y=212, $30K → y=256, $20K → y=300, $10K → y=344, $0K → y=388 -->
-  <text x="70" y="84" fill="#8b949e" font-size="10" text-anchor="end">$70K</text>
-  <text x="70" y="128" fill="#8b949e" font-size="10" text-anchor="end">$60K</text>
-  <text x="70" y="172" fill="#8b949e" font-size="10" text-anchor="end">$50K</text>
-  <text x="70" y="216" fill="#8b949e" font-size="10" text-anchor="end">$40K</text>
-  <text x="70" y="260" fill="#8b949e" font-size="10" text-anchor="end">$30K</text>
-  <text x="70" y="304" fill="#8b949e" font-size="10" text-anchor="end">$20K</text>
-  <text x="70" y="348" fill="#8b949e" font-size="10" text-anchor="end">$10K</text>
-  <text x="70" y="392" fill="#8b949e" font-size="10" text-anchor="end">$0K</text>
+  <rect x="486" y="134" width="346" height="112" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="504" y="162" class="font-mono" font-size="12" fill="#0f172a">const dashboard = <tspan fill="#2563eb">buildDashboardData</tspan>({</text>
+  <text x="504" y="184" class="font-mono" font-size="12" fill="#0f172a">  gscPages, gscQueries,</text>
+  <text x="504" y="206" class="font-mono" font-size="12" fill="#0f172a">  auditResults, auditHistory,</text>
+  <text x="504" y="228" class="font-mono" font-size="12" fill="#0f172a">});</text>
 
-  <!-- Axis line -->
-  <line x1="80" y1="78" x2="80" y2="390" stroke="#30363d" stroke-width="1"/>
-  <line x1="80" y1="390" x2="820" y2="390" stroke="#30363d" stroke-width="1"/>
+  <text x="516" y="280" class="font-ui" font-size="13" fill="#0f172a">URLs merged automatically by normalization</text>
+  <path d="M496 276 L500 280 L508 271" stroke="#16a34a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="516" y="312" class="font-ui" font-size="13" fill="#0f172a">Pearson correlation of score vs clicks</text>
+  <path d="M496 308 L500 312 L508 303" stroke="#16a34a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="516" y="344" class="font-ui" font-size="13" fill="#0f172a">Trends, anomalies, and ranking buckets built in</text>
+  <path d="M496 340 L500 344 L508 335" stroke="#16a34a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="516" y="376" class="font-ui" font-size="13" fill="#0f172a">One typed DashboardData object for any chart lib</text>
+  <path d="M496 372 L500 376 L508 367" stroke="#16a34a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- X-axis quarter positions: Q1=200, Q2=400, Q3=600, Q4=800 -->
-  <!-- Data points:
-    Q1 = $48K → y = 388 - (48/70)*308 = 388 - 211.2 = 176.8 ≈ 177
-    Q2 = $51K → y = 388 - (51/70)*308 = 388 - 224.5 = 163.5 ≈ 164
-    Q3 = $57K → y = 388 - (57/70)*308 = 388 - 250.9 = 137.1 ≈ 137
-    Q4 = $63K → y = 388 - (63/70)*308 = 388 - 277.2 = 110.8 ≈ 111
-  -->
-
-  <!-- Shaded area under line -->
-  <polygon
-    points="200,177 400,164 600,137 800,111 800,390 200,390"
-    fill="url(#roiGradient)"
-    clip-path="url(#roiClip)"
-  />
-
-  <!-- Green line -->
-  <polyline
-    points="200,177 400,164 600,137 800,111"
-    fill="none"
-    stroke="#22c55e"
-    stroke-width="3"
-    stroke-linejoin="round"
-    stroke-linecap="round"
-    clip-path="url(#roiClip)"
-  />
-
-  <!-- Data point circles -->
-  <circle cx="200" cy="177" r="6" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-  <circle cx="400" cy="164" r="6" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-  <circle cx="600" cy="137" r="6" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-  <circle cx="800" cy="111" r="6" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-
-  <!-- Data labels above points -->
-  <text x="200" y="165" fill="#22c55e" font-size="12" font-weight="700" text-anchor="middle">$48K</text>
-  <text x="400" y="152" fill="#22c55e" font-size="12" font-weight="700" text-anchor="middle">$51K</text>
-  <text x="600" y="125" fill="#22c55e" font-size="12" font-weight="700" text-anchor="middle">$57K</text>
-  <text x="800" y="99" fill="#22c55e" font-size="12" font-weight="700" text-anchor="middle">$63K</text>
-
-  <!-- X-axis labels -->
-  <text x="200" y="408" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">Q1</text>
-  <text x="400" y="408" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">Q2</text>
-  <text x="600" y="408" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">Q3</text>
-  <text x="800" y="408" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">Q4</text>
-
-  <!-- Vertical dashed line at Q2 start (~between Q1 and Q2) -->
-  <line x1="300" y1="82" x2="300" y2="390" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="6,4"/>
-  <!-- Label for vertical line -->
-  <rect x="284" y="84" width="132" height="20" rx="3" fill="#1a2332"/>
-  <text x="350" y="98" fill="#ffffff" font-size="10" font-weight="500" text-anchor="middle">Analytics integrated</text>
-  <!-- Small arrow pointing down to line -->
-  <polygon points="300,106 296,100 304,100" fill="#8b949e"/>
-
-  <!-- Green callout badge (top right) -->
-  <rect x="590" y="84" width="222" height="44" rx="8" fill="#22c55e"/>
-  <text x="701" y="102" fill="#000000" font-size="12" font-weight="700" text-anchor="middle">+31% organic revenue</text>
-  <text x="701" y="120" fill="#000000" font-size="11" font-weight="600" text-anchor="middle">quarter-over-quarter</text>
-
-  <!-- Caption -->
-  <text x="450" y="454" fill="#8b949e" font-size="14" text-anchor="middle">Data-driven SEO compounds. Guesswork doesn't.</text>
+  <rect x="486" y="396" width="346" height="46" rx="8" fill="#dcfce7"/>
+  <text x="659" y="416" class="font-ui" font-size="12" font-weight="600" fill="#16a34a" text-anchor="middle">Repeatable, automated reporting pipeline —</text>
+  <text x="659" y="433" class="font-ui" font-size="12" font-weight="600" fill="#16a34a" text-anchor="middle">re-run any time, zero runtime dependencies</text>
 </svg>

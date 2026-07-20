@@ -1,66 +1,101 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Keyword Research Dashboard — Powered by Any Provider</text>
-  <!-- Main dashboard -->
-  <rect x="20" y="54" width="860" height="390" rx="8" fill="#161b22"/>
-  <!-- Top bar -->
-  <rect x="20" y="54" width="860" height="40" rx="8" fill="#031a1a"/>
-  <text x="120" y="79" font-family="'Segoe UI', sans-serif" font-size="13" fill="#14b8a6" font-weight="700">SEO Research</text>
-  <!-- Provider selector -->
-  <rect x="600" y="62" width="130" height="24" rx="4" fill="#0d1117"/>
-  <text x="665" y="78" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6" text-anchor="middle">Provider: Ahrefs ▾</text>
-  <!-- Search bar -->
-  <rect x="36" y="106" width="600" height="36" rx="4" fill="#0d1117" stroke="#14b8a6" stroke-width="1"/>
-  <text x="52" y="129" font-family="'Segoe UI', sans-serif" font-size="14" fill="#e2e8f0">typescript seo library</text>
-  <rect x="648" y="106" width="100" height="36" rx="4" fill="#14b8a6"/>
-  <text x="698" y="129" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">Search</text>
-  <!-- KPI cards -->
-  <rect x="36" y="158" width="180" height="56" rx="6" fill="#0d1117"/>
-  <text x="126" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Search Volume</text>
-  <text x="126" y="204" font-family="'Segoe UI', sans-serif" font-size="22" fill="#14b8a6" text-anchor="middle" font-weight="700">2,400/mo</text>
-  <rect x="228" y="158" width="180" height="56" rx="6" fill="#0d1117"/>
-  <text x="318" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Difficulty</text>
-  <text x="318" y="204" font-family="'Segoe UI', sans-serif" font-size="22" fill="#22c55e" text-anchor="middle" font-weight="700">32 / 100</text>
-  <rect x="420" y="158" width="180" height="56" rx="6" fill="#0d1117"/>
-  <text x="510" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">CPC</text>
-  <text x="510" y="204" font-family="'Segoe UI', sans-serif" font-size="22" fill="#f59e0b" text-anchor="middle" font-weight="700">$3.40</text>
-  <rect x="612" y="158" width="180" height="56" rx="6" fill="#0d1117"/>
-  <text x="702" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Trend</text>
-  <text x="702" y="204" font-family="'Segoe UI', sans-serif" font-size="22" fill="#22c55e" text-anchor="middle" font-weight="700">↑ +28%</text>
-  <!-- Related keywords table -->
-  <rect x="36" y="228" width="756" height="28" rx="4" fill="#1e2430"/>
-  <text x="52" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Keyword</text>
-  <text x="380" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Volume</text>
-  <text x="460" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Difficulty</text>
-  <text x="560" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">CPC</text>
-  <text x="640" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Trend</text>
-  <!-- Rows -->
-  <text x="52" y="272" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">typescript seo library</text>
-  <text x="380" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">2,400</text>
-  <text x="460" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">32</text>
-  <text x="560" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$3.40</text>
-  <text x="640" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">↑ 28%</text>
-  <text x="52" y="294" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">next.js seo package</text>
-  <text x="380" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">1,900</text>
-  <text x="460" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">28</text>
-  <text x="560" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$2.80</text>
-  <text x="640" y="294" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">↑ 19%</text>
-  <text x="52" y="316" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">react seo meta tags</text>
-  <text x="380" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">1,600</text>
-  <text x="460" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fbbc04">45</text>
-  <text x="560" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$2.20</text>
-  <text x="640" y="316" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">→ 0%</text>
-  <text x="52" y="338" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">schema markup generator</text>
-  <text x="380" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">1,300</text>
-  <text x="460" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">24</text>
-  <text x="560" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$4.10</text>
-  <text x="640" y="338" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">↑ 12%</text>
-  <text x="52" y="360" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">seo audit typescript</text>
-  <text x="380" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#14b8a6">880</text>
-  <text x="460" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">19</text>
-  <text x="560" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f59e0b">$5.50</text>
-  <text x="640" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">↑ 41%</text>
-  <!-- Caption -->
-  <text x="450" y="466" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Build keyword research tools with any provider — same UI, different data source.</text>
-  <text x="450" y="490" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">@power-seo/integrations — KeywordResult · volume · difficulty · cpc · trend · typed generics</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>SEO research dashboard built with @power-seo/integrations showing Semrush organic keywords and keyword difficulty for example.com</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <rect x="16" y="18" width="20" height="20" rx="5" fill="#2563eb"/>
+  <text x="44" y="33" class="font-ui" font-size="13" font-weight="700" fill="#0f172a">SEO Research</text>
+  <rect x="12" y="62" width="156" height="30" rx="6" fill="#dbeafe"/>
+  <text x="24" y="82" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Keyword Research</text>
+  <text x="24" y="120" class="font-ui" font-size="13" fill="#64748b">Domain Overview</text>
+  <text x="24" y="154" class="font-ui" font-size="13" fill="#64748b">Backlinks</text>
+  <text x="24" y="188" class="font-ui" font-size="13" fill="#64748b">Referring Domains</text>
+  <text x="24" y="222" class="font-ui" font-size="13" fill="#64748b">Related Keywords</text>
+  <text x="24" y="472" class="font-mono" font-size="10.5" fill="#94a3b8">@power-seo/integrations</text>
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Keyword Research</text>
+  <rect x="404" y="11" width="270" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="420" y="30" class="font-ui" font-size="13" fill="#64748b">example.com · database: us</text>
+  <rect x="776" y="11" width="100" height="30" rx="6" fill="#2563eb"/>
+  <text x="826" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Fetch Data</text>
+  <!-- stat cards -->
+  <rect x="204" y="72" width="212" height="86" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="222" y="98" class="font-ui" font-size="12" fill="#64748b">Organic traffic</text>
+  <text x="222" y="130" class="font-ui" font-size="22" font-weight="700" fill="#0f172a">12,400</text>
+  <text x="222" y="148" class="font-mono" font-size="10.5" fill="#94a3b8">getDomainOverview()</text>
+  <rect x="432" y="72" width="212" height="86" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="450" y="98" class="font-ui" font-size="12" fill="#64748b">Organic keywords</text>
+  <text x="450" y="130" class="font-ui" font-size="22" font-weight="700" fill="#0f172a">834</text>
+  <text x="450" y="148" class="font-mono" font-size="10.5" fill="#94a3b8">total · hasMore: false</text>
+  <rect x="660" y="72" width="216" height="86" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="678" y="98" class="font-ui" font-size="12" fill="#64748b">Authority Score</text>
+  <text x="678" y="130" class="font-ui" font-size="22" font-weight="700" fill="#16a34a">54</text>
+  <rect x="748" y="114" width="110" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="748" y="114" width="59" height="8" rx="4" fill="#16a34a"/>
+  <text x="678" y="148" class="font-mono" font-size="10.5" fill="#94a3b8">authorityScore</text>
+  <!-- keyword table -->
+  <rect x="204" y="178" width="672" height="298" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="222" y="206" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Organic keywords · getOrganicKeywords('example.com', { limit: 100 })</text>
+  <rect x="204" y="220" width="672" height="32" fill="#f8fafc"/>
+  <line x1="204" y1="220" x2="876" y2="220" stroke="#e2e8f0"/>
+  <line x1="204" y1="252" x2="876" y2="252" stroke="#e2e8f0"/>
+  <g class="font-ui" font-size="11.5" font-weight="600" fill="#64748b">
+    <text x="222" y="241">KEYWORD</text>
+    <text x="470" y="241" text-anchor="middle">POSITION</text>
+    <text x="570" y="241" text-anchor="middle">VOLUME</text>
+    <text x="660" y="241" text-anchor="middle">CPC</text>
+    <text x="750" y="241" text-anchor="middle">KD</text>
+    <text x="838" y="241" text-anchor="middle">TRAFFIC</text>
+  </g>
+  <g class="font-ui" font-size="13" fill="#0f172a">
+    <text x="222" y="278">react seo</text>
+    <text x="470" y="278" text-anchor="middle">3</text>
+    <text x="570" y="278" text-anchor="middle">5,400</text>
+    <text x="660" y="278" text-anchor="middle">$2.10</text>
+    <text x="838" y="278" text-anchor="middle">1,240</text>
+    <text x="222" y="316">next js sitemap</text>
+    <text x="470" y="316" text-anchor="middle">5</text>
+    <text x="570" y="316" text-anchor="middle">2,900</text>
+    <text x="660" y="316" text-anchor="middle">$1.45</text>
+    <text x="838" y="316" text-anchor="middle">610</text>
+    <text x="222" y="354">json-ld schema generator</text>
+    <text x="470" y="354" text-anchor="middle">8</text>
+    <text x="570" y="354" text-anchor="middle">1,600</text>
+    <text x="660" y="354" text-anchor="middle">$0.95</text>
+    <text x="838" y="354" text-anchor="middle">280</text>
+    <text x="222" y="392">seo audit tool</text>
+    <text x="470" y="392" text-anchor="middle">12</text>
+    <text x="570" y="392" text-anchor="middle">8,100</text>
+    <text x="660" y="392" text-anchor="middle">$3.60</text>
+    <text x="838" y="392" text-anchor="middle">190</text>
+    <text x="222" y="430">meta description checker</text>
+    <text x="470" y="430" text-anchor="middle">14</text>
+    <text x="570" y="430" text-anchor="middle">1,900</text>
+    <text x="660" y="430" text-anchor="middle">$1.20</text>
+    <text x="838" y="430" text-anchor="middle">85</text>
+  </g>
+  <!-- KD badges -->
+  <rect x="732" y="264" width="36" height="20" rx="10" fill="#fee2e2"/>
+  <text x="750" y="278" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">72</text>
+  <rect x="732" y="302" width="36" height="20" rx="10" fill="#fef3c7"/>
+  <text x="750" y="316" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">48</text>
+  <rect x="732" y="340" width="36" height="20" rx="10" fill="#dcfce7"/>
+  <text x="750" y="354" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">31</text>
+  <rect x="732" y="378" width="36" height="20" rx="10" fill="#fef3c7"/>
+  <text x="750" y="392" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">55</text>
+  <rect x="732" y="416" width="36" height="20" rx="10" fill="#dcfce7"/>
+  <text x="750" y="430" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">26</text>
+  <line x1="204" y1="290" x2="876" y2="290" stroke="#e2e8f0"/>
+  <line x1="204" y1="328" x2="876" y2="328" stroke="#e2e8f0"/>
+  <line x1="204" y1="366" x2="876" y2="366" stroke="#e2e8f0"/>
+  <line x1="204" y1="404" x2="876" y2="404" stroke="#e2e8f0"/>
+  <line x1="204" y1="442" x2="876" y2="442" stroke="#e2e8f0"/>
+  <text x="222" y="464" class="font-mono" font-size="10.5" fill="#94a3b8">PaginatedResponse — data[100] · offset 0 · page via offset</text>
 </svg>

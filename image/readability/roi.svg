@@ -1,58 +1,52 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Readable Content Earns More Organic Traffic</text>
-  <!-- Chart -->
-  <rect x="60" y="56" width="780" height="290" rx="8" fill="#161b22"/>
-  <!-- Grid -->
-  <line x1="110" y1="80" x2="820" y2="80" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="115" x2="820" y2="115" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="150" x2="820" y2="150" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="185" x2="820" y2="185" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="220" x2="820" y2="220" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="255" x2="820" y2="255" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="290" x2="820" y2="290" stroke="#1e2430" stroke-width="1"/>
-  <!-- Y axis -->
-  <text x="105" y="84" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">40k</text>
-  <text x="105" y="119" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">32k</text>
-  <text x="105" y="154" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">24k</text>
-  <text x="105" y="189" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">16k</text>
-  <text x="105" y="224" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">8k</text>
-  <text x="105" y="259" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">4k</text>
-  <text x="105" y="294" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">0</text>
-  <!-- X labels -->
-  <text x="165" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Jan</text>
-  <text x="275" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Feb</text>
-  <text x="385" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Mar</text>
-  <text x="495" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Apr</text>
-  <text x="605" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">May</text>
-  <text x="715" y="312" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Jun</text>
-  <!-- Readable content line (purple, high) -->
-  <polyline points="165,260 275,240 385,210 495,175 605,130 715,90" stroke="#8b5cf6" stroke-width="3" fill="none" stroke-linejoin="round"/>
-  <circle cx="715" cy="90" r="5" fill="#8b5cf6"/>
-  <rect x="650" y="74" width="150" height="18" rx="4" fill="#1a0d2e"/>
-  <text x="725" y="87" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b5cf6" text-anchor="middle">Readable: 38.4k visits</text>
-  <!-- Difficult content line (red, low) -->
-  <polyline points="165,280 275,275 385,268 495,262 605,258 715,255" stroke="#ef4444" stroke-width="2" fill="none" stroke-dasharray="6,3" stroke-linejoin="round"/>
-  <circle cx="715" cy="255" r="5" fill="#ef4444"/>
-  <rect x="640" y="240" width="160" height="18" rx="4" fill="#1a0505"/>
-  <text x="720" y="253" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444" text-anchor="middle">Difficult: 4.8k visits</text>
-  <!-- Readability optimization marker -->
-  <line x1="385" y1="70" x2="385" y2="300" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <rect x="390" y="78" width="130" height="18" rx="4" fill="#1a0d2e"/>
-  <text x="455" y="91" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b5cf6" text-anchor="middle">Readability audit</text>
-  <!-- Legend -->
-  <line x1="130" y1="100" x2="160" y2="100" stroke="#8b5cf6" stroke-width="3"/>
-  <text x="170" y="104" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8b5cf6">Optimized content (FK score 65+)</text>
-  <line x1="130" y1="124" x2="160" y2="124" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="170" y="128" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">Difficult content (FK score below 50)</text>
-  <!-- KPI cards -->
-  <rect x="80" y="370" width="200" height="68" rx="8" fill="#161b22"/>
-  <text x="180" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Traffic increase</text>
-  <text x="180" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#8b5cf6" text-anchor="middle" font-weight="700">+700%</text>
-  <rect x="350" y="370" width="200" height="68" rx="8" fill="#161b22"/>
-  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Avg time on page</text>
-  <text x="450" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#8b5cf6" text-anchor="middle" font-weight="700">+2.4 min</text>
-  <rect x="620" y="370" width="200" height="68" rx="8" fill="#1a0d2e"/>
-  <text x="720" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Bounce rate drop</text>
-  <text x="720" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#8b5cf6" text-anchor="middle" font-weight="700">-28%</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Workflow comparison of manual readability review versus an automated pipeline using analyzeReadability in a CI content quality gate</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="40" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Manual Review vs Automated Readability Gate</text>
+  <!-- left panel: manual -->
+  <rect x="40" y="70" width="395" height="392" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="60" y="90" width="128" height="24" rx="12" fill="#fee2e2"/>
+  <text x="124" y="106" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">Manual process</text>
+  <text x="60" y="146" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Reviewing readability by hand</text>
+  <circle cx="70" cy="182" r="5" fill="#ef4444"/>
+  <text x="86" y="186" class="font-ui" font-size="13" fill="#64748b">Paste content into a web readability tool</text>
+  <circle cx="70" cy="218" r="5" fill="#ef4444"/>
+  <text x="86" y="222" class="font-ui" font-size="13" fill="#64748b">Strip HTML tags before every check</text>
+  <circle cx="70" cy="254" r="5" fill="#ef4444"/>
+  <text x="86" y="258" class="font-ui" font-size="13" fill="#64748b">Interpret raw scores against thresholds</text>
+  <circle cx="70" cy="290" r="5" fill="#ef4444"/>
+  <text x="86" y="294" class="font-ui" font-size="13" fill="#64748b">Repeat for every draft and revision</text>
+  <circle cx="70" cy="326" r="5" fill="#ef4444"/>
+  <text x="86" y="330" class="font-ui" font-size="13" fill="#64748b">No check at publish time — complex</text>
+  <text x="86" y="348" class="font-ui" font-size="13" fill="#64748b">content ships unnoticed</text>
+  <rect x="60" y="380" width="355" height="1" fill="#e2e8f0"/>
+  <text x="60" y="410" class="font-ui" font-size="12" fill="#94a3b8">One page at a time, per editor, per revision.</text>
+  <text x="60" y="430" class="font-ui" font-size="12" fill="#94a3b8">Results are not typed, stored, or enforced.</text>
+  <!-- arrow -->
+  <path d="M 442 266 L 458 266 M 452 259 L 460 266 L 452 273" stroke="#2563eb" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- right panel: automated -->
+  <rect x="465" y="70" width="395" height="392" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="485" y="90" width="204" height="24" rx="12" fill="#dcfce7"/>
+  <text x="587" y="106" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">With @power-seo/readability</text>
+  <text x="485" y="146" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">One function call in the pipeline</text>
+  <!-- workflow steps -->
+  <rect x="485" y="164" width="355" height="36" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="501" y="187" class="font-mono" font-size="12"><tspan fill="#2563eb">analyzeReadability</tspan><tspan fill="#0f172a">({ content })</tspan></text>
+  <path d="M 662 200 L 662 212" stroke="#94a3b8" stroke-width="1.5"/>
+  <rect x="485" y="214" width="355" height="36" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="501" y="237" class="font-ui" font-size="12" fill="#0f172a">HTML stripped, five formulas scored</text>
+  <path d="M 662 250 L 662 262" stroke="#94a3b8" stroke-width="1.5"/>
+  <rect x="485" y="264" width="355" height="36" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="501" y="287" class="font-mono" font-size="12"><tspan fill="#0f172a">results[] </tspan><tspan fill="#94a3b8">+ recommendations[]</tspan></text>
+  <path d="M 662 300 L 662 312" stroke="#94a3b8" stroke-width="1.5"/>
+  <rect x="485" y="314" width="355" height="36" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="501" y="337" class="font-ui" font-size="12" fill="#0f172a">CI gate blocks publish when status is <tspan class="font-mono" fill="#b91c1c">'poor'</tspan></text>
+  <rect x="485" y="380" width="355" height="1" fill="#e2e8f0"/>
+  <circle cx="495" cy="406" r="5" fill="#16a34a"/>
+  <text x="510" y="410" class="font-ui" font-size="12" fill="#64748b">Every page scored automatically at build time</text>
+  <circle cx="495" cy="434" r="5" fill="#16a34a"/>
+  <text x="510" y="438" class="font-ui" font-size="12" fill="#64748b">Typed scores + actionable recommendations</text>
 </svg>

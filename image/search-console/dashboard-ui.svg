@@ -1,76 +1,102 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Full GSC Dashboard Built With One Package</text>
-  <!-- Main dashboard frame -->
-  <rect x="20" y="54" width="860" height="390" rx="8" fill="#161b22"/>
-  <!-- Sidebar -->
-  <rect x="20" y="54" width="160" height="390" rx="8" fill="#0d1117"/>
-  <text x="100" y="86" font-family="'Segoe UI', sans-serif" font-size="13" fill="#4285f4" text-anchor="middle" font-weight="700">GSC Dashboard</text>
-  <rect x="30" y="96" width="140" height="28" rx="4" fill="#0a1628"/>
-  <text x="40" y="114" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4285f4">▶ Performance</text>
-  <text x="40" y="142" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">  URL Inspection</text>
-  <text x="40" y="166" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">  Sitemaps</text>
-  <text x="40" y="190" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">  Core Web Vitals</text>
-  <text x="40" y="214" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">  Manual Actions</text>
-  <!-- KPI row -->
-  <rect x="192" y="66" width="152" height="60" rx="6" fill="#0d1117"/>
-  <text x="268" y="86" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4" text-anchor="middle">Total Clicks</text>
-  <text x="268" y="112" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">24,721</text>
-  <rect x="356" y="66" width="152" height="60" rx="6" fill="#0d1117"/>
-  <text x="432" y="86" font-family="'Segoe UI', sans-serif" font-size="11" fill="#34a853" text-anchor="middle">Impressions</text>
-  <text x="432" y="112" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">413K</text>
-  <rect x="520" y="66" width="152" height="60" rx="6" fill="#0d1117"/>
-  <text x="596" y="86" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbc04" text-anchor="middle">Avg CTR</text>
-  <text x="596" y="112" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">5.98%</text>
-  <rect x="684" y="66" width="152" height="60" rx="6" fill="#0d1117"/>
-  <text x="760" y="86" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ea4335" text-anchor="middle">Avg Position</text>
-  <text x="760" y="112" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">4.3</text>
-  <!-- Clicks chart -->
-  <rect x="192" y="138" width="470" height="140" rx="4" fill="#0d1117"/>
-  <text x="210" y="158" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Clicks over time</text>
-  <polyline points="210,250 260,235 310,220 360,200 410,185 460,168 510,172 560,155 610,148 660,140" stroke="#4285f4" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-  <text x="660" y="136" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4285f4">↑ +31%</text>
-  <!-- Top queries table -->
-  <rect x="192" y="288" width="470" height="140" rx="4" fill="#0d1117"/>
-  <rect x="192" y="288" width="470" height="26" rx="4" fill="#1e2430"/>
-  <text x="210" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Query</text>
-  <text x="440" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Clicks</text>
-  <text x="510" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Impr</text>
-  <text x="580" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">CTR</text>
-  <text x="630" y="305" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Pos</text>
-  <text x="210" y="328" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">typescript seo library</text>
-  <text x="440" y="328" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4">847</text>
-  <text x="510" y="328" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">12.4K</text>
-  <text x="580" y="328" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.8%</text>
-  <text x="630" y="328" font-family="'Segoe UI', sans-serif" font-size="11" fill="#34a853">3.2</text>
-  <text x="210" y="348" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">next.js seo package</text>
-  <text x="440" y="348" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4">612</text>
-  <text x="510" y="348" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">8.9K</text>
-  <text x="580" y="348" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.9%</text>
-  <text x="630" y="348" font-family="'Segoe UI', sans-serif" font-size="11" fill="#34a853">4.1</text>
-  <text x="210" y="368" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">react seo meta tags</text>
-  <text x="440" y="368" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4">388</text>
-  <text x="510" y="368" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.2K</text>
-  <text x="580" y="368" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.3%</text>
-  <text x="630" y="368" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbc04">5.7</text>
-  <text x="210" y="388" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">schema markup generator</text>
-  <text x="440" y="388" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4285f4">294</text>
-  <text x="510" y="388" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">4.8K</text>
-  <text x="580" y="388" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">6.1%</text>
-  <text x="630" y="388" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbc04">6.2</text>
-  <!-- Right: Sitemaps panel -->
-  <rect x="674" y="138" width="196" height="290" rx="4" fill="#0d1117"/>
-  <text x="772" y="160" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Sitemaps</text>
-  <rect x="686" y="170" width="172" height="34" rx="4" fill="#161b22"/>
-  <text x="700" y="188" font-family="'Courier New', monospace" font-size="10" fill="#22c55e">/sitemap.xml</text>
-  <text x="700" y="202" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280">1,247 pages · OK</text>
-  <rect x="686" y="212" width="172" height="34" rx="4" fill="#161b22"/>
-  <text x="700" y="230" font-family="'Courier New', monospace" font-size="10" fill="#22c55e">/image-sitemap.xml</text>
-  <text x="700" y="244" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280">4,892 images · OK</text>
-  <rect x="686" y="254" width="172" height="34" rx="4" fill="#161b22"/>
-  <text x="700" y="272" font-family="'Courier New', monospace" font-size="10" fill="#fbbc04">/news-sitemap.xml</text>
-  <text x="700" y="286" font-family="'Segoe UI', sans-serif" font-size="10" fill="#fbbc04">3 errors · check</text>
-  <!-- Caption -->
-  <text x="450" y="466" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Build full GSC integrations — queries, sitemaps, indexing — all typed.</text>
-  <text x="450" y="490" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">@power-seo/search-console — SearchAnalyticsRow · SitemapResult · IndexingStatus · auto-paginate</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>SEO dashboard mockup built with @power-seo/search-console showing search analytics rows, clicks, impressions, CTR, and average position from the Google Search Console API</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <rect x="16" y="16" width="24" height="24" rx="6" fill="#2563eb"/>
+  <path d="M23 27 a4.5 4.5 0 1 1 6.4 4.1 M31 34 l4 4" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="48" y="33" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">GSC Console</text>
+
+  <rect x="12" y="64" width="156" height="30" rx="6" fill="#dbeafe"/>
+  <text x="24" y="84" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Search Analytics</text>
+  <text x="24" y="122" class="font-ui" font-size="13" fill="#64748b">URL Inspection</text>
+  <text x="24" y="158" class="font-ui" font-size="13" fill="#64748b">Sitemaps</text>
+  <text x="24" y="194" class="font-ui" font-size="13" fill="#64748b">Properties</text>
+  <text x="24" y="230" class="font-ui" font-size="13" fill="#64748b">Settings</text>
+
+  <rect x="12" y="440" width="156" height="44" rx="6" fill="#f1f5f9"/>
+  <text x="24" y="458" class="font-ui" font-size="10" font-weight="600" fill="#94a3b8">PROPERTY</text>
+  <text x="24" y="474" class="font-mono" font-size="11" fill="#0f172a">sc-domain:example.com</text>
+
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Search Analytics</text>
+  <rect x="586" y="11" width="172" height="30" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="600" y="30" class="font-ui" font-size="12" fill="#64748b">2026-01-01 → 2026-01-31</text>
+  <rect x="770" y="11" width="106" height="30" rx="6" fill="#2563eb"/>
+  <text x="823" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Fetch all rows</text>
+
+  <!-- metric cards -->
+  <rect x="204" y="72" width="212" height="84" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="220" y="96" class="font-ui" font-size="12" fill="#64748b">Total clicks</text>
+  <text x="220" y="128" class="font-ui" font-size="24" font-weight="700" fill="#0f172a">24,318</text>
+  <rect x="424" y="72" width="212" height="84" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="440" y="96" class="font-ui" font-size="12" fill="#64748b">Total impressions</text>
+  <text x="440" y="128" class="font-ui" font-size="24" font-weight="700" fill="#0f172a">612,940</text>
+  <rect x="644" y="72" width="232" height="84" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="660" y="96" class="font-ui" font-size="12" fill="#64748b">Avg. position</text>
+  <text x="660" y="128" class="font-ui" font-size="24" font-weight="700" fill="#0f172a">7.9</text>
+  <rect x="792" y="86" width="70" height="20" rx="10" fill="#dcfce7"/>
+  <text x="827" y="100" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">CTR 4.0%</text>
+
+  <!-- table card -->
+  <rect x="204" y="172" width="672" height="304" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="220" y="198" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Top queries</text>
+  <text x="220" y="216" class="font-mono" font-size="11" fill="#94a3b8">querySearchAnalyticsAll(client, { dimensions: ['query', 'page'] })</text>
+  <rect x="760" y="184" width="102" height="22" rx="11" fill="#dbeafe"/>
+  <text x="811" y="199" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">68,540 rows</text>
+
+  <rect x="204" y="228" width="672" height="28" fill="#f8fafc"/>
+  <text x="220" y="247" class="font-ui" font-size="11" font-weight="600" fill="#64748b">QUERY</text>
+  <text x="500" y="247" class="font-ui" font-size="11" font-weight="600" fill="#64748b">PAGE</text>
+  <text x="702" y="247" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">CLICKS</text>
+  <text x="770" y="247" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">CTR</text>
+  <text x="856" y="247" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="end">POSITION</text>
+  <line x1="204" y1="256" x2="876" y2="256" stroke="#e2e8f0"/>
+
+  <g class="font-ui" font-size="13" fill="#0f172a">
+    <text x="220" y="281">nextjs seo checklist</text>
+    <text x="500" y="281" fill="#64748b" font-size="12">/blog/nextjs-seo</text>
+    <text x="702" y="281" text-anchor="end">1,284</text>
+    <text x="770" y="281" text-anchor="end">6.1%</text>
+    <text x="856" y="281" text-anchor="end" fill="#16a34a">3.2</text>
+
+    <text x="220" y="318">react meta tags</text>
+    <text x="500" y="318" fill="#64748b" font-size="12">/guides/meta-tags</text>
+    <text x="702" y="318" text-anchor="end">946</text>
+    <text x="770" y="318" text-anchor="end">4.8%</text>
+    <text x="856" y="318" text-anchor="end" fill="#16a34a">4.7</text>
+
+    <text x="220" y="355">json-ld generator</text>
+    <text x="500" y="355" fill="#64748b" font-size="12">/tools/schema</text>
+    <text x="702" y="355" text-anchor="end">713</text>
+    <text x="770" y="355" text-anchor="end">3.9%</text>
+    <text x="856" y="355" text-anchor="end" fill="#f59e0b">8.4</text>
+
+    <text x="220" y="392">xml sitemap best practices</text>
+    <text x="500" y="392" fill="#64748b" font-size="12">/blog/sitemaps</text>
+    <text x="702" y="392" text-anchor="end">522</text>
+    <text x="770" y="392" text-anchor="end">2.7%</text>
+    <text x="856" y="392" text-anchor="end" fill="#f59e0b">11.6</text>
+
+    <text x="220" y="429">core web vitals guide</text>
+    <text x="500" y="429" fill="#64748b" font-size="12">/blog/cwv</text>
+    <text x="702" y="429" text-anchor="end">417</text>
+    <text x="770" y="429" text-anchor="end">2.1%</text>
+    <text x="856" y="429" text-anchor="end" fill="#f59e0b">14.3</text>
+  </g>
+  <g stroke="#e2e8f0">
+    <line x1="204" y1="293" x2="876" y2="293"/>
+    <line x1="204" y1="330" x2="876" y2="330"/>
+    <line x1="204" y1="367" x2="876" y2="367"/>
+    <line x1="204" y1="404" x2="876" y2="404"/>
+  </g>
+  <text x="220" y="460" class="font-ui" font-size="11" fill="#94a3b8">searchType: web · dataState: all · auto-paginated past the 25,000-row limit</text>
 </svg>

@@ -1,41 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#3b82f6"/>
-      <stop offset="100%" style="stop-color:#93c5fd"/>
-    </linearGradient>
-    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#93c5fd;stop-opacity:0.2"/>
-    </linearGradient>
-  </defs>
-  <rect width="1280" height="280" fill="url(#bg)" rx="12"/>
-  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-    <line x1="0" y1="56" x2="1280" y2="56"/>
-    <line x1="0" y1="112" x2="1280" y2="112"/>
-    <line x1="0" y1="168" x2="1280" y2="168"/>
-    <line x1="0" y1="224" x2="1280" y2="224"/>
-    <line x1="256" y1="0" x2="256" y2="280"/>
-    <line x1="512" y1="0" x2="512" y2="280"/>
-    <line x1="768" y1="0" x2="768" y2="280"/>
-    <line x1="1024" y1="0" x2="1024" y2="280"/>
-  </g>
-  <circle cx="1180" cy="60" r="90" fill="#3b82f6" fill-opacity="0.06"/>
-  <circle cx="1220" cy="30" r="50" fill="#93c5fd" fill-opacity="0.06"/>
-  <circle cx="80" cy="230" r="70" fill="#3b82f6" fill-opacity="0.05"/>
-  <rect x="80" y="96" width="6" height="88" rx="3" fill="url(#accent)"/>
-  <text x="108" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="url(#accent)">@power-seo/images</text>
-  <text x="110" y="195" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="0.5">Audit every image. Fix what search engines see.</text>
-  <rect x="110" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#3b82f6" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="179" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#93c5fd" text-anchor="middle">Alt · Lazy · Format</text>
-  <rect x="258" y="220" width="96" height="28" rx="14" fill="url(#pill)" stroke="#3b82f6" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="306" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#93c5fd" text-anchor="middle">0-100 score</text>
-  <rect x="364" y="220" width="100" height="28" rx="14" fill="url(#pill)" stroke="#93c5fd" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="414" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#bfdbfe" text-anchor="middle">CWV-ready</text>
-  <rect x="474" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#93c5fd" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="543" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#bfdbfe" text-anchor="middle">TypeScript-first</text>
+  <title>power-seo images package banner: image SEO audits for alt text, lazy loading, modern formats and image sitemaps</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="1280" height="280" fill="#f8fafc"/>
+
+  <!-- brand pill -->
+  <rect x="72" y="52" width="112" height="24" rx="12" fill="#dbeafe"/>
+  <text x="128" y="68" class="font-ui" font-size="12" font-weight="600" fill="#1d4ed8" text-anchor="middle">@power-seo</text>
+
+  <!-- title + value prop -->
+  <text x="72" y="122" class="font-ui" font-size="34" font-weight="700" fill="#0f172a">@power-seo/images</text>
+  <text x="72" y="152" class="font-ui" font-size="15" fill="#64748b">Image SEO audits — alt text quality, lazy-loading, WebP/AVIF format checks, image sitemaps.</text>
+
+  <!-- function pills -->
+  <rect x="72" y="180" width="136" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="140" y="198" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">analyzeAltText()</text>
+  <rect x="216" y="180" width="150" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="291" y="198" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">auditLazyLoading()</text>
+  <rect x="374" y="180" width="172" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="460" y="198" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">analyzeImageFormats()</text>
+  <rect x="554" y="180" width="180" height="28" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="644" y="198" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">generateImageSitemap()</text>
+
+  <!-- right vignette: audited image card -->
+  <rect x="880" y="36" width="330" height="208" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="900" y="56" width="96" height="72" rx="6" fill="#dbeafe"/>
+  <path d="M908 118 l24 -26 l16 16 l14 -14 l26 24 z" fill="#2563eb" opacity="0.55"/>
+  <circle cx="924" cy="74" r="7" fill="#2563eb" opacity="0.55"/>
+  <text x="1012" y="70" class="font-mono" font-size="12" fill="#0f172a">hero.webp</text>
+  <text x="1012" y="90" class="font-ui" font-size="11" fill="#64748b">alt="Trail runner at sunrise"</text>
+  <rect x="1012" y="102" width="52" height="20" rx="10" fill="#dcfce7"/>
+  <text x="1038" y="116" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">pass</text>
+
+  <line x1="900" y1="144" x2="1190" y2="144" stroke="#e2e8f0"/>
+  <circle cx="910" cy="164" r="6" fill="#dcfce7"/>
+  <path d="M907 164 l2.2 2.4 l4 -4.6" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="924" y="168" class="font-ui" font-size="12" fill="#0f172a">Good alt text — descriptive, under 125 characters</text>
+  <circle cx="910" cy="190" r="6" fill="#dcfce7"/>
+  <path d="M907 190 l2.2 2.4 l4 -4.6" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="924" y="194" class="font-ui" font-size="12" fill="#0f172a">Modern format: webp</text>
+  <circle cx="910" cy="216" r="6" fill="#dcfce7"/>
+  <path d="M907 216 l2.2 2.4 l4 -4.6" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="924" y="220" class="font-ui" font-size="12" fill="#0f172a">loading="lazy" only below the fold</text>
 </svg>

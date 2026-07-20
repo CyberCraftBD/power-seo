@@ -1,132 +1,84 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      .font-ui { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
-    </style>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Feature comparison matrix of @power-seo/audit versus Screaming Frog, Lighthouse and next-seo across programmatic API, scoring, aggregation and CI support</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
 
-  <!-- Background -->
-  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="40" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">How @power-seo/audit compares</text>
 
-  <!-- Table container -->
-  <rect x="30" y="30" width="840" height="430" rx="10" fill="#161b22"/>
+  <!-- table card -->
+  <rect x="40" y="64" width="820" height="404" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
 
-  <!-- ===================== Column Headers ===================== -->
-  <!-- Col widths: 220 | 155 | 155 | 155 | 155  (starts at x=30) -->
-  <!-- Feature col: x=30 w=220 -->
-  <!-- @power-seo: x=250 w=155 -->
-  <!-- Screaming Frog: x=405 w=155 -->
-  <!-- Sitebulb: x=560 w=155 -->
-  <!-- Ahrefs: x=715 w=155 -->
+  <!-- header row -->
+  <rect x="41" y="65" width="818" height="40" rx="7" fill="#f8fafc"/>
+  <text x="64" y="90" class="font-ui" font-size="12" font-weight="600" fill="#64748b">FEATURE</text>
+  <text x="435" y="90" class="font-ui" font-size="12" font-weight="700" fill="#2563eb" text-anchor="middle">@power-seo/audit</text>
+  <text x="586" y="90" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Screaming Frog</text>
+  <text x="706" y="90" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Lighthouse</text>
+  <text x="806" y="90" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">next-seo</text>
 
-  <!-- @power-seo/audit header — red accent -->
-  <rect x="250" y="30" width="155" height="58" rx="0" fill="#ef4444"/>
-  <rect x="250" y="75" width="155" height="13" fill="#ef4444"/>
-  <text x="327" y="57" class="font-ui" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">@power-seo</text>
-  <text x="327" y="73" class="font-ui" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">/audit</text>
+  <!-- highlight column -->
+  <rect x="365" y="105" width="140" height="362" fill="#dbeafe" opacity="0.35"/>
 
-  <!-- Screaming Frog header -->
-  <rect x="405" y="30" width="155" height="58" rx="0" fill="#1f2937"/>
-  <rect x="405" y="75" width="155" height="13" fill="#1f2937"/>
-  <text x="482" y="57" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Screaming</text>
-  <text x="482" y="73" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Frog</text>
+  <!-- row separators -->
+  <line x1="41" y1="150" x2="859" y2="150" stroke="#e2e8f0"/>
+  <line x1="41" y1="195" x2="859" y2="195" stroke="#e2e8f0"/>
+  <line x1="41" y1="240" x2="859" y2="240" stroke="#e2e8f0"/>
+  <line x1="41" y1="285" x2="859" y2="285" stroke="#e2e8f0"/>
+  <line x1="41" y1="330" x2="859" y2="330" stroke="#e2e8f0"/>
+  <line x1="41" y1="375" x2="859" y2="375" stroke="#e2e8f0"/>
+  <line x1="41" y1="420" x2="859" y2="420" stroke="#e2e8f0"/>
 
-  <!-- Sitebulb header -->
-  <rect x="560" y="30" width="155" height="58" rx="0" fill="#1f2937"/>
-  <rect x="560" y="75" width="155" height="13" fill="#1f2937"/>
-  <text x="637" y="65" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Sitebulb</text>
+  <!-- rows: feature | ps ✓ | sf | lh | ns -->
+  <text x="64" y="133" class="font-ui" font-size="13" fill="#0f172a">Programmatic API</text>
+  <text x="435" y="134" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="586" y="133" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="706" y="133" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">Partial</text>
+  <text x="806" y="133" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
 
-  <!-- Ahrefs header -->
-  <rect x="715" y="30" width="155" height="58" rx="0" fill="#1f2937"/>
-  <rect x="715" y="75" width="155" height="13" fill="#1f2937"/>
-  <text x="792" y="57" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Ahrefs</text>
-  <text x="792" y="73" class="font-ui" font-size="11" fill="#9ca3af" text-anchor="middle">Audit</text>
+  <text x="64" y="178" class="font-ui" font-size="13" fill="#0f172a">4 rule categories</text>
+  <text x="435" y="179" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="586" y="178" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">Partial</text>
+  <text x="706" y="178" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">Partial</text>
+  <text x="806" y="178" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
 
-  <!-- Header bottom line -->
-  <line x1="30" y1="88" x2="870" y2="88" stroke="#374151" stroke-width="1.5"/>
+  <text x="64" y="223" class="font-ui" font-size="13" fill="#0f172a">0–100 scored output</text>
+  <text x="435" y="224" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="586" y="223" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="706" y="224" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="806" y="223" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
 
-  <!-- Vertical column separators -->
-  <line x1="250" y1="30" x2="250" y2="460" stroke="#374151" stroke-width="1" opacity="0.6"/>
-  <line x1="405" y1="30" x2="405" y2="460" stroke="#374151" stroke-width="1" opacity="0.6"/>
-  <line x1="560" y1="30" x2="560" y2="460" stroke="#374151" stroke-width="1" opacity="0.6"/>
-  <line x1="715" y1="30" x2="715" y2="460" stroke="#374151" stroke-width="1" opacity="0.6"/>
+  <text x="64" y="268" class="font-ui" font-size="13" fill="#0f172a">Site-wide aggregation</text>
+  <text x="435" y="269" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="586" y="269" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="706" y="268" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="806" y="268" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
 
-  <!-- ===================== Rows ===================== -->
-  <!-- Row height = 42px, starting at y=88 -->
+  <text x="64" y="313" class="font-ui" font-size="13" fill="#0f172a">CI/CD integration</text>
+  <text x="435" y="314" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="586" y="313" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="706" y="313" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">Partial</text>
+  <text x="806" y="313" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
 
-  <!-- Helper macro: rows at y = 88 + (n*42), text baseline at y+27 -->
+  <text x="64" y="358" class="font-ui" font-size="13" fill="#0f172a">Zero network calls</text>
+  <text x="435" y="359" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="586" y="358" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="706" y="358" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">Partial</text>
+  <text x="806" y="359" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
 
-  <!-- Row 1: TypeScript API -->
-  <rect x="30" y="88" width="840" height="42" fill="#0d1117" opacity="0.25"/>
-  <text x="50" y="115" class="font-ui" font-size="13" fill="#e5e7eb">TypeScript API</text>
-  <text x="327" y="115" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
-  <text x="482" y="115" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="637" y="115" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="792" y="115" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <line x1="30" y1="130" x2="870" y2="130" stroke="#374151" stroke-width="1" opacity="0.3"/>
+  <text x="64" y="403" class="font-ui" font-size="13" fill="#0f172a">TypeScript-first</text>
+  <text x="435" y="404" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="586" y="403" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="706" y="403" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="806" y="403" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">Partial</text>
 
-  <!-- Row 2: Free / open source -->
-  <text x="50" y="157" class="font-ui" font-size="13" fill="#e5e7eb">Free / open source</text>
-  <text x="327" y="157" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
-  <text x="482" y="157" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="637" y="157" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="792" y="157" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <line x1="30" y1="172" x2="870" y2="172" stroke="#374151" stroke-width="1" opacity="0.3"/>
+  <text x="64" y="448" class="font-ui" font-size="13" fill="#0f172a">Tree-shakeable</text>
+  <text x="435" y="449" class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="586" y="448" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="706" y="448" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="806" y="448" class="font-ui" font-size="13" fill="#94a3b8" text-anchor="middle">—</text>
 
-  <!-- Row 3: Programmatic access -->
-  <rect x="30" y="172" width="840" height="42" fill="#0d1117" opacity="0.25"/>
-  <text x="50" y="199" class="font-ui" font-size="13" fill="#e5e7eb">Programmatic access</text>
-  <text x="327" y="199" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
-  <text x="482" y="199" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="637" y="199" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="792" y="199" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <line x1="30" y1="214" x2="870" y2="214" stroke="#374151" stroke-width="1" opacity="0.3"/>
-
-  <!-- Row 4: Custom rules -->
-  <text x="50" y="241" class="font-ui" font-size="13" fill="#e5e7eb">Custom rules</text>
-  <text x="327" y="241" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
-  <text x="482" y="241" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="637" y="241" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="792" y="241" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <line x1="30" y1="256" x2="870" y2="256" stroke="#374151" stroke-width="1" opacity="0.3"/>
-
-  <!-- Row 5: CI/CD integration -->
-  <rect x="30" y="256" width="840" height="42" fill="#0d1117" opacity="0.25"/>
-  <text x="50" y="283" class="font-ui" font-size="13" fill="#e5e7eb">CI/CD integration</text>
-  <text x="327" y="283" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
-  <text x="482" y="283" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="637" y="283" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="792" y="283" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <line x1="30" y1="298" x2="870" y2="298" stroke="#374151" stroke-width="1" opacity="0.3"/>
-
-  <!-- Row 6: No desktop app needed -->
-  <text x="50" y="325" class="font-ui" font-size="13" fill="#e5e7eb">No desktop app needed</text>
-  <text x="327" y="325" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
-  <text x="482" y="325" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="637" y="325" class="font-ui" font-size="18" fill="#22c55e" text-anchor="middle">✓</text>
-  <text x="792" y="325" class="font-ui" font-size="18" fill="#22c55e" text-anchor="middle">✓</text>
-  <line x1="30" y1="340" x2="870" y2="340" stroke="#374151" stroke-width="1" opacity="0.3"/>
-
-  <!-- Row 7: No subscription -->
-  <rect x="30" y="340" width="840" height="42" fill="#0d1117" opacity="0.25"/>
-  <text x="50" y="367" class="font-ui" font-size="13" fill="#e5e7eb">No subscription</text>
-  <text x="327" y="367" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
-  <text x="482" y="367" class="font-ui" font-size="14" fill="#f59e0b" text-anchor="middle">~ paid</text>
-  <text x="637" y="367" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="792" y="367" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <line x1="30" y1="382" x2="870" y2="382" stroke="#374151" stroke-width="1" opacity="0.3"/>
-
-  <!-- Row 8: Embeddable in your app -->
-  <text x="50" y="409" class="font-ui" font-size="13" fill="#e5e7eb">Embeddable in your app</text>
-  <text x="327" y="409" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle">✓</text>
-  <text x="482" y="409" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="637" y="409" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-  <text x="792" y="409" class="font-ui" font-size="18" fill="#ef4444" text-anchor="middle" opacity="0.5">✗</text>
-
-  <!-- @power-seo column highlight overlay -->
-  <rect x="250" y="88" width="155" height="372" fill="#ef4444" opacity="0.04"/>
-
-  <!-- Caption -->
-  <text x="450" y="478" class="font-ui" font-size="15" fill="#ffffff" text-anchor="middle" letter-spacing="0.3">The only audit engine that lives in your codebase.</text>
+  <text x="450" y="490" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">Feature availability based on public documentation of each tool</text>
 </svg>

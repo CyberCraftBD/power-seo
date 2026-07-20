@@ -1,104 +1,70 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>How mergeGscWithAudit joins Google Search Console page data with audit results by normalized URL to produce PageInsight objects and a Pearson correlation</title>
   <defs>
     <style>
-      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-      .mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
+      .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
     </style>
-    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L7 4 L0 8 Z" fill="#2563eb"/>
     </marker>
   </defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
 
-  <!-- Background -->
-  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Two data sources, one insight</text>
+  <text x="450" y="66" class="font-ui" font-size="13" fill="#64748b" text-anchor="middle">mergeGscWithAudit(gscPages, auditResults) joins both dimensions by normalized URL</text>
 
-  <!-- ===== INPUT BOX 1 (top-left, green border) ===== -->
-  <rect x="40" y="60" width="310" height="155" rx="10" fill="#161b22" stroke="#22c55e" stroke-width="1.5"/>
-  <!-- Header badge -->
-  <rect x="56" y="76" width="180" height="20" rx="4" fill="#0d2818"/>
-  <text x="146" y="90" fill="#22c55e" font-size="11" font-weight="600" text-anchor="middle">@power-seo/audit result</text>
-  <!-- URL -->
-  <text x="56" y="118" fill="#ffffff" font-size="13" font-family="'JetBrains Mono','Fira Code',monospace">/blog/seo-guide</text>
-  <!-- Divider -->
-  <line x1="56" y1="126" x2="334" y2="126" stroke="#21262d" stroke-width="1"/>
-  <!-- Label -->
-  <text x="56" y="148" fill="#8b949e" font-size="11">Audit Score</text>
-  <!-- Score value -->
-  <text x="56" y="186" fill="#f59e0b" font-size="38" font-weight="700">40/100</text>
-  <!-- Status -->
-  <rect x="56" y="196" width="80" height="16" rx="3" fill="#7c2d12"/>
-  <text x="96" y="208" fill="#fca5a5" font-size="10" font-weight="600" text-anchor="middle">Needs Work</text>
+  <!-- GSC card -->
+  <rect x="48" y="100" width="272" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="68" y="128" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Google Search Console</text>
+  <rect x="244" y="112" width="58" height="20" rx="10" fill="#dbeafe"/>
+  <text x="273" y="126" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">GSC</text>
+  <text x="68" y="156" class="font-mono" font-size="12" fill="#0f172a">GscPageData[]</text>
+  <text x="68" y="180" class="font-mono" font-size="11" fill="#64748b">/blog/react-seo</text>
+  <text x="302" y="180" class="font-mono" font-size="11" fill="#64748b" text-anchor="end">1,240 clicks</text>
+  <text x="68" y="202" class="font-mono" font-size="11" fill="#64748b">ctr: 0.067</text>
+  <text x="302" y="202" class="font-mono" font-size="11" fill="#64748b" text-anchor="end">pos 4.2</text>
+  <text x="68" y="224" class="font-mono" font-size="11" fill="#64748b">impressions: 18,500</text>
 
-  <!-- ===== INPUT BOX 2 (bottom-left, blue border) ===== -->
-  <rect x="40" y="280" width="310" height="155" rx="10" fill="#161b22" stroke="#3b82f6" stroke-width="1.5"/>
-  <!-- Header badge -->
-  <rect x="56" y="296" width="210" height="20" rx="4" fill="#0c1a3d"/>
-  <text x="161" y="310" fill="#60a5fa" font-size="11" font-weight="600" text-anchor="middle">@power-seo/search-console</text>
-  <!-- URL -->
-  <text x="56" y="338" fill="#ffffff" font-size="13" font-family="'JetBrains Mono','Fira Code',monospace">/blog/seo-guide</text>
-  <!-- Divider -->
-  <line x1="56" y1="346" x2="334" y2="346" stroke="#21262d" stroke-width="1"/>
-  <!-- Clicks -->
-  <text x="56" y="368" fill="#8b949e" font-size="11">Monthly Clicks</text>
-  <text x="56" y="400" fill="#22c55e" font-size="28" font-weight="700">1,847</text>
-  <!-- Additional info -->
-  <text x="56" y="424" fill="#22c55e" font-size="13" font-weight="600">8% of site traffic</text>
+  <!-- audit card -->
+  <rect x="48" y="278" width="272" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="68" y="306" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">@power-seo/audit</text>
+  <rect x="244" y="290" width="58" height="20" rx="10" fill="#dcfce7"/>
+  <text x="273" y="304" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Audit</text>
+  <text x="68" y="334" class="font-mono" font-size="12" fill="#0f172a">auditResults[]</text>
+  <text x="68" y="358" class="font-mono" font-size="11" fill="#64748b">/blog/react-seo</text>
+  <text x="302" y="358" class="font-mono" font-size="11" fill="#16a34a" text-anchor="end">score: 88</text>
+  <text x="68" y="380" class="font-mono" font-size="11" fill="#64748b">seo: 91 · performance: 88</text>
+  <text x="68" y="402" class="font-mono" font-size="11" fill="#64748b">recommendations: []</text>
 
-  <!-- ===== ARROW ===== -->
-  <!-- Arrow shaft -->
-  <line x1="370" y1="250" x2="500" y2="250" stroke="#22c55e" stroke-width="4" marker-end="url(#arrowGreen)"/>
-  <!-- Merge label above arrow -->
-  <rect x="384" y="226" width="102" height="20" rx="4" fill="#0d2818"/>
-  <text x="435" y="240" fill="#22c55e" font-size="11" font-weight="600" text-anchor="middle">mergeAnalytics()</text>
-  <!-- Top input connector -->
-  <line x1="350" y1="137" x2="370" y2="137" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
-  <line x1="370" y1="137" x2="370" y2="250" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,3"/>
-  <!-- Bottom input connector -->
-  <line x1="350" y1="357" x2="370" y2="357" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,3"/>
-  <line x1="370" y1="357" x2="370" y2="250" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,3"/>
+  <!-- merge node -->
+  <line x1="320" y1="175" x2="392" y2="248" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="320" y1="353" x2="392" y2="280" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="396" y="238" width="196" height="52" rx="8" fill="#2563eb"/>
+  <text x="494" y="260" class="font-mono" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">mergeGscWithAudit()</text>
+  <text x="494" y="278" class="font-ui" font-size="11" fill="#dbeafe" text-anchor="middle">normalized URL matching</text>
+  <line x1="592" y1="264" x2="640" y2="264" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
 
-  <!-- ===== INSIGHT BOX (right) ===== -->
-  <rect x="510" y="80" width="350" height="310" rx="12" fill="#161b22" stroke="#22c55e" stroke-width="2.5"/>
-  <!-- Inner glow effect -->
-  <rect x="514" y="84" width="342" height="302" rx="10" fill="none" stroke="#22c55e" stroke-width="0.5" stroke-opacity="0.3"/>
+  <!-- result card -->
+  <rect x="644" y="132" width="216" height="264" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="664" y="160" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">PageInsight[]</text>
+  <line x1="664" y1="174" x2="840" y2="174" stroke="#e2e8f0"/>
+  <text x="664" y="198" class="font-mono" font-size="11" fill="#64748b">url:</text>
+  <text x="840" y="198" class="font-mono" font-size="11" fill="#0f172a" text-anchor="end">/blog/react-seo</text>
+  <text x="664" y="220" class="font-mono" font-size="11" fill="#64748b">clicks:</text>
+  <text x="840" y="220" class="font-mono" font-size="11" fill="#0f172a" text-anchor="end">1,240</text>
+  <text x="664" y="242" class="font-mono" font-size="11" fill="#64748b">position:</text>
+  <text x="840" y="242" class="font-mono" font-size="11" fill="#0f172a" text-anchor="end">4.2</text>
+  <text x="664" y="264" class="font-mono" font-size="11" fill="#64748b">auditScore:</text>
+  <text x="840" y="264" class="font-mono" font-size="11" font-weight="600" fill="#16a34a" text-anchor="end">88</text>
+  <text x="664" y="286" class="font-mono" font-size="11" fill="#64748b">opportunities:</text>
+  <text x="840" y="286" class="font-mono" font-size="11" fill="#0f172a" text-anchor="end">[...]</text>
+  <line x1="664" y1="302" x2="840" y2="302" stroke="#e2e8f0"/>
+  <text x="664" y="326" class="font-ui" font-size="12" font-weight="600" fill="#0f172a">correlateScoreAndTraffic</text>
+  <rect x="664" y="340" width="120" height="24" rx="12" fill="#dcfce7"/>
+  <text x="724" y="356" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Pearson r = 0.741</text>
+  <text x="664" y="384" class="font-ui" font-size="11" fill="#64748b">+ topOpportunities: high</text>
+  <text x="664" y="399" class="font-ui" font-size="11" fill="#64748b">traffic, low audit score</text>
 
-  <!-- Header -->
-  <rect x="528" y="96" width="180" height="24" rx="5" fill="#0d2818"/>
-  <text x="618" y="113" fill="#22c55e" font-size="13" font-weight="700" text-anchor="middle">mergeAnalytics() insight</text>
-
-  <!-- Divider -->
-  <line x1="528" y1="128" x2="842" y2="128" stroke="#22c55e" stroke-width="0.5" stroke-opacity="0.4"/>
-
-  <!-- Insight text -->
-  <text x="528" y="162" fill="#ffffff" font-size="16" font-weight="700">Fix /blog/seo-guide</text>
-  <text x="528" y="186" fill="#ffffff" font-size="16" font-weight="700">(score: 40) and recover</text>
-  <text x="528" y="210" fill="#22c55e" font-size="22" font-weight="700">~1,200 more clicks</text>
-  <text x="528" y="240" fill="#ffffff" font-size="16" font-weight="700">per month.</text>
-
-  <!-- Divider -->
-  <line x1="528" y1="258" x2="842" y2="258" stroke="#21262d" stroke-width="1"/>
-
-  <!-- Stats row -->
-  <text x="528" y="282" fill="#8b949e" font-size="11">Current audit score</text>
-  <text x="528" y="300" fill="#f59e0b" font-size="18" font-weight="700">40/100</text>
-
-  <text x="686" y="282" fill="#8b949e" font-size="11">Recoverable traffic</text>
-  <text x="686" y="300" fill="#22c55e" font-size="18" font-weight="700">+1,200 clicks/mo</text>
-
-  <!-- Divider -->
-  <line x1="528" y1="314" x2="842" y2="314" stroke="#21262d" stroke-width="1"/>
-
-  <!-- Priority badge -->
-  <rect x="528" y="326" width="120" height="24" rx="4" fill="#22c55e"/>
-  <text x="588" y="342" fill="#000000" font-size="12" font-weight="700" text-anchor="middle">HIGH PRIORITY</text>
-
-  <text x="660" y="342" fill="#8b949e" font-size="11">ROI rank: #1</text>
-
-  <!-- Caption -->
-  <text x="450" y="462" fill="#ffffff" font-size="15" text-anchor="middle">The insight you couldn't see with either tool alone.</text>
-
-  <!-- Decorative dots top-right corner -->
-  <circle cx="840" cy="100" r="3" fill="#22c55e" fill-opacity="0.4"/>
-  <circle cx="852" cy="100" r="3" fill="#22c55e" fill-opacity="0.4"/>
-  <circle cx="864" cy="100" r="3" fill="#22c55e" fill-opacity="0.4"/>
+  <text x="450" y="472" class="font-ui" font-size="12" fill="#94a3b8" text-anchor="middle">Trailing slashes, protocol differences, and query strings are normalized so GSC and audit URLs match.</text>
 </svg>

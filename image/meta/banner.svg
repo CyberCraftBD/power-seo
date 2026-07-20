@@ -1,41 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#7c3aed"/>
-      <stop offset="100%" style="stop-color:#a78bfa"/>
-    </linearGradient>
-    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:0.2"/>
-    </linearGradient>
-  </defs>
-  <rect width="1280" height="280" fill="url(#bg)" rx="12"/>
-  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-    <line x1="0" y1="56" x2="1280" y2="56"/>
-    <line x1="0" y1="112" x2="1280" y2="112"/>
-    <line x1="0" y1="168" x2="1280" y2="168"/>
-    <line x1="0" y1="224" x2="1280" y2="224"/>
-    <line x1="256" y1="0" x2="256" y2="280"/>
-    <line x1="512" y1="0" x2="512" y2="280"/>
-    <line x1="768" y1="0" x2="768" y2="280"/>
-    <line x1="1024" y1="0" x2="1024" y2="280"/>
-  </g>
-  <circle cx="1180" cy="60" r="90" fill="#7c3aed" fill-opacity="0.06"/>
-  <circle cx="1220" cy="30" r="50" fill="#a78bfa" fill-opacity="0.06"/>
-  <circle cx="80" cy="230" r="70" fill="#7c3aed" fill-opacity="0.05"/>
-  <rect x="80" y="96" width="6" height="88" rx="3" fill="url(#accent)"/>
-  <text x="108" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="68" font-weight="800" letter-spacing="-2" fill="url(#accent)">@power-seo/meta</text>
-  <text x="110" y="195" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="0.5">One config, any SSR framework.</text>
-  <rect x="110" y="220" width="82" height="28" rx="14" fill="url(#pill)" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="151" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#a78bfa" text-anchor="middle">Next.js</text>
-  <rect x="202" y="220" width="72" height="28" rx="14" fill="url(#pill)" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="238" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#a78bfa" text-anchor="middle">Remix</text>
-  <rect x="284" y="220" width="80" height="28" rx="14" fill="url(#pill)" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="324" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#c4b5fd" text-anchor="middle">Express</text>
-  <rect x="374" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="443" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#c4b5fd" text-anchor="middle">TypeScript-first</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="280" viewBox="0 0 1280 280">
+  <title>@power-seo/meta banner: one SeoConfig generates native meta output for Next.js App Router, Remix v2, and generic SSR frameworks</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="1280" height="280" fill="#f8fafc"/>
+  <!-- logo mark -->
+  <rect x="64" y="64" width="56" height="56" rx="12" fill="#2563eb"/>
+  <text x="92" y="100" class="font-mono" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">&lt;/&gt;</text>
+  <!-- name + tagline -->
+  <text x="140" y="94" class="font-ui" font-size="30" font-weight="700" fill="#0f172a">@power-seo/meta</text>
+  <text x="140" y="124" class="font-ui" font-size="15" fill="#64748b">One SeoConfig &#8594; native meta output for Next.js, Remix v2, and any SSR framework</text>
+  <!-- badges -->
+  <rect x="140" y="150" width="176" height="26" rx="13" fill="#dcfce7"/>
+  <text x="228" y="167" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Zero runtime dependencies</text>
+  <rect x="328" y="150" width="130" height="26" rx="13" fill="#dbeafe"/>
+  <text x="393" y="167" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">Edge runtime safe</text>
+  <rect x="470" y="150" width="118" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="529" y="167" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">TypeScript-first</text>
+  <!-- vignette: config card -->
+  <rect x="770" y="50" width="200" height="180" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="786" y="76" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">SeoConfig</text>
+  <text x="786" y="100" class="font-mono" font-size="11" fill="#0f172a">title: <tspan fill="#16a34a">'Pricing'</tspan></text>
+  <text x="786" y="120" class="font-mono" font-size="11" fill="#0f172a">description: <tspan fill="#94a3b8">&#8230;</tspan></text>
+  <text x="786" y="140" class="font-mono" font-size="11" fill="#0f172a">canonical: <tspan fill="#94a3b8">&#8230;</tspan></text>
+  <text x="786" y="160" class="font-mono" font-size="11" fill="#0f172a">robots: <tspan fill="#7c3aed">{&#8230;}</tspan></text>
+  <text x="786" y="180" class="font-mono" font-size="11" fill="#0f172a">openGraph: <tspan fill="#7c3aed">{&#8230;}</tspan></text>
+  <text x="786" y="200" class="font-mono" font-size="11" fill="#0f172a">twitter: <tspan fill="#7c3aed">{&#8230;}</tspan></text>
+  <!-- connectors -->
+  <path d="M 970 140 H 995 V 74 H 1012" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <path d="M 970 140 H 1012" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <path d="M 970 140 H 995 V 206 H 1012" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <path d="M 1012 68 L 1020 74 L 1012 80 Z" fill="#2563eb"/>
+  <path d="M 1012 134 L 1020 140 L 1012 146 Z" fill="#2563eb"/>
+  <path d="M 1012 200 L 1020 206 L 1012 212 Z" fill="#2563eb"/>
+  <!-- output pills -->
+  <rect x="1024" y="50" width="192" height="48" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="1040" y="70" class="font-ui" font-size="12" font-weight="600" fill="#0f172a">Next.js Metadata</text>
+  <text x="1040" y="88" class="font-mono" font-size="10" fill="#2563eb">createMetadata()</text>
+  <rect x="1024" y="116" width="192" height="48" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="1040" y="136" class="font-ui" font-size="12" font-weight="600" fill="#0f172a">Remix MetaDescriptor[]</text>
+  <text x="1040" y="154" class="font-mono" font-size="10" fill="#2563eb">createMetaDescriptors()</text>
+  <rect x="1024" y="182" width="192" height="48" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="1040" y="202" class="font-ui" font-size="12" font-weight="600" fill="#0f172a">SSR head-tag HTML</text>
+  <text x="1040" y="220" class="font-mono" font-size="10" fill="#2563eb">createHeadTags()</text>
 </svg>

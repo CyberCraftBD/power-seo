@@ -1,8 +1,8 @@
 # @power-seo/integrations
 
-![integrations banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/banner.svg)
+![Semrush and Ahrefs API integration banner for the @power-seo/integrations TypeScript package](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/banner.svg)
 
-Query keyword data, domain overviews, backlinks, and keyword difficulty from Semrush and Ahrefs APIs with a shared HTTP client that handles rate limiting and pagination automatically.
+Typed Semrush and Ahrefs API clients for keyword research, domain overviews, backlinks, and keyword difficulty — built on a shared rate-limited HTTP client with automatic retry.
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/integrations)](https://www.npmjs.com/package/@power-seo/integrations)
@@ -11,65 +11,62 @@ Query keyword data, domain overviews, backlinks, and keyword difficulty from Sem
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/integrations)
 
-`@power-seo/integrations` wraps the Semrush and Ahrefs REST APIs with a consistent TypeScript interface. Both clients are built on a shared `createHttpClient()` base that enforces configurable rate limits (requests per window), handles pagination automatically, and normalizes errors into `IntegrationApiError` with status codes and messages. Import only the client you need — tree-shaking ensures unused API code never ends up in your bundle.
+`@power-seo/integrations` is a TypeScript client library for the Semrush and Ahrefs SEO data APIs, aimed at developers building keyword research pipelines, backlink monitors, and SEO reporting tools in Node.js. Both clients share one HTTP layer — `createHttpClient()` — that enforces a token-bucket rate limit, retries retryable failures with exponential backoff, and normalizes every non-2xx response into a single `IntegrationApiError` with `status`, `provider`, and `retryable` fields. Every request parameter and response field is fully typed, so keyword volume, CPC, Domain Rating, and backlink data arrive as structured objects instead of hand-parsed payloads.
 
-> **Zero runtime dependencies beyond `fetch`** — runs in Node.js 18+, Deno, Bun, and modern edge runtimes.
->
-> ⚠️ **Network Access** — This package makes HTTPS requests to Semrush and Ahrefs APIs. Network access is functionally required and intentional. All requests use your API credentials and are sent only to the configured service endpoints.
+![Unified TypeScript interface over Semrush and Ahrefs SEO data APIs](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/header.svg)
+
+> **Network access note** — this package's documented purpose is calling external APIs. HTTPS requests go exclusively to the endpoints you configure (`api.semrush.com`, `api.ahrefs.com`, or your own `baseUrl`), authenticated with your credentials. Nothing else is contacted.
 
 ---
 
 ## Why @power-seo/integrations?
 
-| | Without | With |
-|---|---|---|
-| Semrush API | ❌ Write raw HTTP client | ✅ Typed client with auto-pagination |
-| Ahrefs API | ❌ Manual SDK setup | ✅ Typed client with rate limiting |
-| Rate limiting | ❌ Manual throttle | ✅ Built-in configurable window rate limiter |
-| Pagination | ❌ Manual offset tracking | ✅ Automatic — receive a flat result array |
-| Error handling | ❌ Raw HTTP errors | ✅ `IntegrationApiError` with `status`, `provider`, `retryable` |
-| TypeScript types | ❌ `any` everywhere | ✅ Full type coverage for all endpoints |
-| Bundle size | ❌ Full SDK in bundle | ✅ Tree-shakeable — import only what you use |
+|                  | Without                                       | With                                                          |
+| ---------------- | --------------------------------------------- | ------------------------------------------------------------- |
+| Semrush API      | ❌ Hand-write requests, parse column codes    | ✅ Typed client — `Or`/`Nq`/`Kd` mapped to named fields       |
+| Ahrefs API       | ❌ Manual bearer auth and query building      | ✅ Typed client with token auth handled for you               |
+| Rate limiting    | ❌ Manual throttle or 429 storms              | ✅ Built-in token bucket (default 600 requests/minute)        |
+| Retry logic      | ❌ Ad-hoc try/catch loops                     | ✅ Exponential backoff on 429/5xx, up to 3 retries by default |
+| Pagination       | ❌ Untyped offset bookkeeping                 | ✅ `PaginatedResponse<T>` with `offset`, `limit`, `hasMore`   |
+| Error handling   | ❌ Raw HTTP errors, secrets leaking into logs | ✅ `IntegrationApiError` with sanitized, token-redacted body  |
+| TypeScript types | ❌ `any` everywhere                           | ✅ Full type coverage for every endpoint and response         |
+| Bundle size      | ❌ Full vendor SDK in your bundle             | ✅ Tree-shakeable — import only the client you use            |
 
-![Integrations Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/comparison.svg)
-
-
-<p align="left">
-  <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
-    <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
-  </a>
-</p>
+![Workflow comparison showing manual Semrush and Ahrefs API integration steps versus the automated workflow with @power-seo/integrations](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/roi.svg)
 
 ---
 
 ## Features
 
-- **Semrush API client** — domain overview (traffic, organic/paid keywords, backlinks), keyword data (volume, CPC, competition), backlink profile, keyword difficulty, and related keyword suggestions
-- **Ahrefs API client** — site overview (Domain Rating, organic traffic), organic keywords with positions, backlink data with anchor text, keyword difficulty, and referring domain list
-- **Shared HTTP client** — `createHttpClient()` provides configurable rate limiting (max requests per time window), automatic retry on 429, and JSON response parsing
-- **Auto-pagination** — both clients handle multi-page results automatically; callers receive a flat array without manual offset tracking
-- **Full TypeScript types** — every request parameter and response field is typed; no `any` in your code
-- **Consistent error handling** — `IntegrationApiError` with `status`, `provider`, `message`, and `retryable` flag from both APIs
-- **Tree-shakeable** — `createSemrushClient` and `createAhrefsClient` are separate exports; import only what you use
+- **Semrush API client** — domain overview (organic/paid traffic, keywords, backlinks, Authority Score), organic keywords with positions, backlink profile, keyword difficulty, and related keyword suggestions
+- **Ahrefs API client** — site overview (Domain Rating, URL Rating, traffic value), organic keywords, backlinks with anchor text, keyword difficulty, and referring domains
+- **Shared HTTP client** — `createHttpClient()` works against any JSON REST API with query-param or bearer auth, a configurable per-minute rate limit, request timeout, and retry
+- **Token-bucket rate limiting** — requests wait for a token instead of failing; the limit is configurable per client via `rateLimitPerMinute`
+- **Retry with exponential backoff** — 429 and 5xx responses are retried up to `maxRetries` times with delays of 1s, 2s, 4s… capped at 30s
+- **Typed pagination** — list endpoints return `PaginatedResponse<T>` with `data`, `total`, `offset`, `limit`, and `hasMore` for clean cursor loops
+- **Sanitized errors** — response bodies embedded in error messages are truncated and have bearer tokens and API keys redacted before they can reach your logs
+- **Tree-shakeable, dual ESM + CJS** — `createSemrushClient`, `createAhrefsClient`, and `createHttpClient` are independent named exports
 
-![SEO Research UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/seo-research-ui.svg)
+![SEO research dashboard powered by typed Semrush and Ahrefs keyword and backlink data](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/seo-research-ui.svg)
 
 ---
 
 ## Comparison
 
-| Feature | @power-seo/integrations | semrush-sdk | ahrefs-client | Custom fetch |
-| --- | :---: | :---: | :---: | :---: |
-| Semrush API client | ✅ | ✅ | ❌ | Manual |
-| Ahrefs API client | ✅ | ❌ | Partial | Manual |
-| Rate limiting | ✅ | Partial | ❌ | Manual |
-| Auto-pagination | ✅ | ❌ | ❌ | Manual |
-| Shared HTTP client | ✅ | ❌ | ❌ | — |
-| Consistent error handling | ✅ | Partial | ❌ | Manual |
-| TypeScript-first | ✅ | ❌ | ❌ | — |
-| Tree-shakeable | ✅ | ❌ | ❌ | — |
+| Feature                          | @power-seo/integrations  | Hand-rolled `fetch` wrapper | Calling vendor endpoints directly |
+| -------------------------------- | :----------------------: | :-------------------------: | :-------------------------------: |
+| Typed Semrush responses          |            ✅            |           Manual            |         ❌ (column codes)         |
+| Typed Ahrefs responses           |            ✅            |           Manual            |           ❌ (raw JSON)           |
+| Rate limiting                    |     ✅ token bucket      |           Manual            |                ❌                 |
+| Retry with backoff               |     ✅ 429/5xx aware     |           Manual            |                ❌                 |
+| Consistent errors across vendors | ✅ `IntegrationApiError` |           Manual            |                ❌                 |
+| Secret redaction in errors       |            ✅            |           Rarely            |                ❌                 |
+| One HTTP layer for both APIs     |            ✅            |             ❌              |                ❌                 |
+| Tree-shakeable TypeScript        |            ✅            |              —              |                 —                 |
 
-![Rate Limit Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/rate-limit-accuracy.svg)
+![Feature comparison matrix of @power-seo/integrations against semrush-sdk, ahrefs-client, and a custom fetch implementation](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/comparison.svg)
+
+![Token-bucket rate limiter keeping request throughput under the configured per-minute API limit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/rate-limit-accuracy.svg)
 
 ---
 
@@ -87,244 +84,276 @@ yarn add @power-seo/integrations
 pnpm add @power-seo/integrations
 ```
 
----
-
-## Quick Start
-
-```ts
-import { createSemrushClient, createAhrefsClient } from '@power-seo/integrations';
-
-// Semrush
-const semrush = createSemrushClient({ apiKey: process.env.SEMRUSH_API_KEY! });
-const overview = await semrush.getDomainOverview({ domain: 'example.com' });
-console.log(overview.organicTraffic); // 12_400
-console.log(overview.organicKeywords); // 834
-
-// Ahrefs
-const ahrefs = createAhrefsClient({ apiKey: process.env.AHREFS_API_KEY! });
-const site = await ahrefs.getSiteOverview({ target: 'example.com' });
-console.log(site.domainRating); // 47
-console.log(site.organicTraffic); // 9_800
-```
-
-![Unification Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/unification-benefit.svg)
+Requires Node.js 18+ (native `fetch`). Also runs in Deno, Bun, and edge runtimes that provide `fetch`, `URL`, and `AbortController`.
 
 ---
 
 ## Usage
 
-### Semrush Client
+### How do I query Semrush domain and keyword data in TypeScript?
+
+Create a client with `createSemrushClient(apiKey, config?)` — the first argument is your Semrush API key as a plain string (sent as the `key` query parameter), and the optional second argument tunes `rateLimitPerMinute`, `maxRetries`, and `timeoutMs`. The client exposes five typed methods covering domain overview, organic keywords, backlinks, keyword difficulty, and related keywords. Regional database defaults to `'us'` and list endpoints default to 100 rows per page.
 
 ```ts
 import { createSemrushClient } from '@power-seo/integrations';
-import type { SemrushDomainOverview, SemrushKeywordData } from '@power-seo/integrations';
+import type { SemrushDomainOverview } from '@power-seo/integrations';
 
-const semrush = createSemrushClient(
-  process.env.SEMRUSH_API_KEY!,
-  { rateLimitPerMinute: 10, maxRetries: 3 }, // optional
-);
+const semrush = createSemrushClient(process.env.SEMRUSH_API_KEY!, {
+  rateLimitPerMinute: 60, // optional — default 600
+});
 
-// Domain overview — traffic, keywords, backlinks
+// Domain overview — traffic, keywords, backlinks, Authority Score
 const overview: SemrushDomainOverview = await semrush.getDomainOverview('example.com', 'us');
-// { domain, organicTraffic, paidTraffic, organicKeywords, paidKeywords, backlinks, authorityScore }
+// { domain, organicKeywords, organicTraffic, organicCost, paidKeywords,
+//   paidTraffic, paidCost, backlinks, authorityScore }
 
-// Organic keywords
+// Organic keywords (paginated)
 const keywords = await semrush.getOrganicKeywords('example.com', { limit: 100, offset: 0 });
 // { data: SemrushKeywordData[], total, offset, limit, hasMore }
 
-// Backlinks
+// Backlinks (paginated)
 const backlinks = await semrush.getBacklinks('example.com', { limit: 100, offset: 0 });
-// { data: SemrushBacklinkData[], total, offset, limit, hasMore }
 
-// Keyword difficulty
-const difficulty = await semrush.getKeywordDifficulty(['react seo'], 'us');
+// Keyword difficulty for a batch of keywords
+const difficulty = await semrush.getKeywordDifficulty(['react seo', 'next.js seo'], 'us');
 // [{ keyword, difficulty, searchVolume, cpc, competition, results }]
 
-// Related keywords
+// Related keyword suggestions
 const related = await semrush.getRelatedKeywords('react seo', 'us');
 // [{ keyword, searchVolume, cpc, competition, results, relatedTo }]
 ```
 
-### Ahrefs Client
+### How do I pull Ahrefs backlinks and Domain Rating?
+
+Create a client with `createAhrefsClient(apiToken, config?)` — the first argument is your Ahrefs API token as a plain string, sent as an `Authorization: Bearer` header to `api.ahrefs.com/v3`. The client covers site overview, organic keywords, backlinks, keyword difficulty, and referring domains. List endpoints accept `{ limit, offset }` and default to 100 rows per page.
 
 ```ts
 import { createAhrefsClient } from '@power-seo/integrations';
-import type { AhrefsSiteOverview, AhrefsOrganicKeyword } from '@power-seo/integrations';
+import type { AhrefsSiteOverview } from '@power-seo/integrations';
 
-const ahrefs = createAhrefsClient(
-  process.env.AHREFS_API_TOKEN!,
-  { rateLimitPerMinute: 5, maxRetries: 3 }, // optional
-);
+const ahrefs = createAhrefsClient(process.env.AHREFS_API_TOKEN!);
 
-// Site overview — DR, organic traffic, backlinks
-const overview: AhrefsSiteOverview = await ahrefs.getSiteOverview('example.com');
-// { domain, domainRating, urlRating, organicTraffic, organicKeywords, backlinks, referringDomains, trafficValue }
+// Site overview — DR, UR, traffic, traffic value
+const site: AhrefsSiteOverview = await ahrefs.getSiteOverview('example.com');
+// { domain, domainRating, urlRating, backlinks, referringDomains,
+//   organicKeywords, organicTraffic, trafficValue }
 
-// Organic keywords with positions
+// Organic keywords with positions (paginated)
 const keywords = await ahrefs.getOrganicKeywords('example.com', { limit: 200, offset: 0 });
-// { data: AhrefsOrganicKeyword[], total, offset, limit, hasMore }
 
-// Backlinks with anchor text
-const backlinks = await ahrefs.getBacklinks('example.com', { limit: 100, offset: 0 });
-// { data: AhrefsBacklink[], total, offset, limit, hasMore }
+// Backlinks with anchor text and dofollow status (paginated)
+const backlinks = await ahrefs.getBacklinks('example.com', { limit: 100 });
+// data[i]: { sourceUrl, targetUrl, anchorText, domainRating, urlRating,
+//            isDoFollow, firstSeen, lastSeen }
 
-// Keyword difficulty
+// Keyword difficulty for a batch of keywords
 const kd = await ahrefs.getKeywordDifficulty(['react seo']);
 // [{ keyword, difficulty, searchVolume, cpc, clicks, globalVolume }]
 
-// Referring domains
-const domains = await ahrefs.getReferringDomains('example.com', { limit: 50, offset: 0 });
-// { data: AhrefsReferringDomain[], total, offset, limit, hasMore }
+// Referring domains (paginated)
+const domains = await ahrefs.getReferringDomains('example.com', { limit: 50 });
 ```
 
-### Shared HTTP Client
+### How do I paginate through all results?
 
-Use the underlying HTTP client directly to call any REST API with rate limiting and pagination:
+Every list endpoint returns a `PaginatedResponse<T>` carrying the page you asked for plus the cursor state: `data` (the rows), `total` (as reported by the API), and `offset`, `limit`, `hasMore`. `hasMore` is `true` while a page comes back full, so a simple loop that advances `offset` by `limit` walks the entire result set.
+
+```ts
+import type { SemrushKeywordData } from '@power-seo/integrations';
+
+const all: SemrushKeywordData[] = [];
+let offset = 0;
+let hasMore = true;
+
+while (hasMore) {
+  const page = await semrush.getOrganicKeywords('example.com', { limit: 100, offset });
+  all.push(...page.data);
+  offset += page.limit;
+  hasMore = page.hasMore;
+}
+```
+
+### How do I call another REST API with the shared rate-limited client?
+
+`createHttpClient(config)` is exported directly, so the same rate limiting, timeout, retry, and error normalization work against any JSON REST API. Pass a `baseUrl`, an `auth` strategy (`bearer` header or `query` parameter), and optional limits. `get()` appends query params; `post()` JSON-encodes the body. Both return the parsed JSON typed as your generic parameter.
 
 ```ts
 import { createHttpClient } from '@power-seo/integrations';
 
 const http = createHttpClient({
   baseUrl: 'https://api.example.com',
-  auth: { type: 'bearer', token },
-  rateLimitPerMinute: 60, // max requests per minute
-  maxRetries: 3,
-  timeoutMs: 30_000,
+  auth: { type: 'bearer', token: process.env.API_TOKEN! },
+  rateLimitPerMinute: 60, // default 600
+  maxRetries: 3, // default 3
+  timeoutMs: 30_000, // default 30_000
 });
 
-const data = await http.get<MyResponseType>('/endpoint', { query: 'param' });
+const result = await http.get<{ items: string[] }>('/endpoint', { q: 'seo' });
+const created = await http.post<{ id: string }>('/endpoint', { name: 'report' });
 ```
 
-### Error Handling
+### How do I handle API errors and retries?
 
-Both clients throw `IntegrationApiError` for non-2xx responses:
+Every non-2xx response becomes an `IntegrationApiError` with `status` (HTTP status code), `provider` (`'semrush'`, `'ahrefs'`, or `'unknown'`), and `retryable` (`true` for 429 and 5xx). Retryable errors are retried automatically with exponential backoff (1s, 2s, 4s… capped at 30s) up to `maxRetries` times before being thrown; non-retryable errors (4xx other than 429) throw immediately. Error messages embed a sanitized response snippet — bearer tokens and API keys are redacted and the snippet is truncated to 200 characters.
 
 ```ts
 import { createSemrushClient, IntegrationApiError } from '@power-seo/integrations';
 
-const semrush = createSemrushClient({ apiKey: 'your-key' });
+const semrush = createSemrushClient(process.env.SEMRUSH_API_KEY!);
 
 try {
   const data = await semrush.getDomainOverview('example.com');
 } catch (err) {
   if (err instanceof IntegrationApiError) {
-    console.error(`API error ${err.status}: ${err.message}`);
-    console.error('Provider:', err.provider);
-    console.error('Retryable:', err.retryable);
+    console.error(`${err.provider} API error ${err.status}: ${err.message}`);
+    console.error('Retryable:', err.retryable); // true for 429 / 5xx
   } else {
-    throw err;
+    throw err; // network failure or abort — propagated without retry
   }
 }
 ```
+
+![One shared HTTP client unifying auth, rate limiting, retry, and errors for both SEO API vendors](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/integrations/unification-benefit.svg)
 
 ---
 
 ## API Reference
 
-### Semrush
+### `createSemrushClient(apiKey, config?)`
 
 ```ts
-function createSemrushClient(apiKey: string, config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>): SemrushClient;
+function createSemrushClient(
+  apiKey: string,
+  config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>,
+): SemrushClient;
 ```
 
-#### `SemrushClient` methods
+Targets `https://api.semrush.com` with query-parameter auth (`key`).
 
-| Method                 | Parameters                          | Returns                                    | Description                          |
-| ---------------------- | ----------------------------------- | ------------------------------------------ | ------------------------------------ |
-| `getDomainOverview`    | `(domain, database?)`               | `SemrushDomainOverview`                    | Traffic, keywords, backlinks summary |
-| `getOrganicKeywords`   | `(domain, options?)`                | `PaginatedResponse<SemrushKeywordData>`    | Keywords with rankings               |
-| `getBacklinks`         | `(domain, options?)`                | `PaginatedResponse<SemrushBacklinkData>`   | Backlinks with source/target URLs    |
-| `getKeywordDifficulty` | `(keywords[], database?)`           | `SemrushKeywordDifficulty[]`               | KD scores with volume/CPC            |
-| `getRelatedKeywords`   | `(keyword, database?)`              | `SemrushRelatedKeyword[]`                  | Related keyword suggestions          |
+| Method                 | Parameters                | Returns                                           | Notes                             |
+| ---------------------- | ------------------------- | ------------------------------------------------- | --------------------------------- |
+| `getDomainOverview`    | `(domain, database?)`     | `Promise<SemrushDomainOverview>`                  | `database` defaults to `'us'`     |
+| `getOrganicKeywords`   | `(domain, options?)`      | `Promise<PaginatedResponse<SemrushKeywordData>>`  | `limit` defaults to 100           |
+| `getBacklinks`         | `(domain, options?)`      | `Promise<PaginatedResponse<SemrushBacklinkData>>` | Root-domain backlink profile      |
+| `getKeywordDifficulty` | `(keywords[], database?)` | `Promise<SemrushKeywordDifficulty[]>`             | Batch lookup, one row per keyword |
+| `getRelatedKeywords`   | `(keyword, database?)`    | `Promise<SemrushRelatedKeyword[]>`                | Related keyword suggestions       |
 
-### Ahrefs
+### `createAhrefsClient(apiToken, config?)`
 
 ```ts
-function createAhrefsClient(apiToken: string, config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>): AhrefsClient;
+function createAhrefsClient(
+  apiToken: string,
+  config?: Partial<Omit<HttpClientConfig, 'baseUrl' | 'auth'>>,
+): AhrefsClient;
 ```
 
-#### `AhrefsClient` methods
+Targets `https://api.ahrefs.com/v3` with `Authorization: Bearer` auth.
 
-| Method                 | Parameters                  | Returns                                    | Description                     |
-| ---------------------- | --------------------------- | ------------------------------------------ | ------------------------------- |
-| `getSiteOverview`      | `(domain)`                  | `AhrefsSiteOverview`                       | DR, organic traffic, backlinks  |
-| `getOrganicKeywords`   | `(domain, options?)`        | `PaginatedResponse<AhrefsOrganicKeyword>`  | Ranking keywords with positions |
-| `getBacklinks`         | `(domain, options?)`        | `PaginatedResponse<AhrefsBacklink>`        | Backlinks with anchor text      |
-| `getKeywordDifficulty` | `(keywords[])`              | `AhrefsKeywordDifficulty[]`                | KD scores with volume/CPC       |
-| `getReferringDomains`  | `(domain, options?)`        | `PaginatedResponse<AhrefsReferringDomain>` | Referring domains by DR         |
+| Method                 | Parameters           | Returns                                             | Notes                          |
+| ---------------------- | -------------------- | --------------------------------------------------- | ------------------------------ |
+| `getSiteOverview`      | `(domain)`           | `Promise<AhrefsSiteOverview>`                       | DR, UR, traffic, traffic value |
+| `getOrganicKeywords`   | `(domain, options?)` | `Promise<PaginatedResponse<AhrefsOrganicKeyword>>`  | `limit` defaults to 100        |
+| `getBacklinks`         | `(domain, options?)` | `Promise<PaginatedResponse<AhrefsBacklink>>`        | Anchor text + dofollow status  |
+| `getKeywordDifficulty` | `(keywords[])`       | `Promise<AhrefsKeywordDifficulty[]>`                | Batch lookup                   |
+| `getReferringDomains`  | `(domain, options?)` | `Promise<PaginatedResponse<AhrefsReferringDomain>>` | Referring domains with DR      |
 
-### Shared
+### `createHttpClient(config)`
 
 ```ts
 function createHttpClient(config: HttpClientConfig): HttpClient;
 ```
 
+`HttpClient` has two methods: `get<T>(path, params?)` and `post<T>(path, body?)`.
+
 #### `HttpClientConfig`
 
-| Prop                 | Type               | Default | Description                              |
-| -------------------- | ------------------ | ------- | ---------------------------------------- |
-| `baseUrl`            | `string`           | —       | Base URL for all requests                |
-| `auth`               | `AuthStrategy`     | —       | Authentication: bearer token or query    |
-| `rateLimitPerMinute` | `number`           | —       | Optional: max requests per minute        |
-| `maxRetries`         | `number`           | —       | Optional: retry failed requests (default: 3) |
-| `timeoutMs`          | `number`           | —       | Optional: request timeout in milliseconds |
+| Prop                 | Type           | Default  | Description                                        |
+| -------------------- | -------------- | -------- | -------------------------------------------------- |
+| `baseUrl`            | `string`       | required | Base URL prepended to every request path           |
+| `auth`               | `AuthStrategy` | required | `bearer` header or `query` parameter credential    |
+| `rateLimitPerMinute` | `number`       | `600`    | Token-bucket capacity; requests wait for a token   |
+| `maxRetries`         | `number`       | `3`      | Retries after the first attempt (429/5xx only)     |
+| `timeoutMs`          | `number`       | `30000`  | Per-request timeout enforced via `AbortController` |
 
-**AuthStrategy** is one of:
-- `{ type: 'bearer', token: string }` — Authorization header
-- `{ type: 'query', paramName: string, value: string }` — Query parameter auth
+`AuthStrategy` is one of:
 
-### Types
+- `{ type: 'bearer', token: string }` — sent as an `Authorization: Bearer` header
+- `{ type: 'query', paramName: string, value: string }` — appended as a query parameter
+
+### `IntegrationApiError`
+
+| Property    | Type      | Description                                        |
+| ----------- | --------- | -------------------------------------------------- |
+| `message`   | `string`  | Provider, status, and a sanitized response snippet |
+| `status`    | `number`  | HTTP status code of the failed response            |
+| `provider`  | `string`  | `'semrush'`, `'ahrefs'`, or `'unknown'`            |
+| `retryable` | `boolean` | `true` when `status === 429` or `status >= 500`    |
+
+---
+
+## Types
+
+All exported types, importable with `import type`:
 
 ```ts
 import type {
+  // HTTP layer
+  AuthStrategy,
   HttpClientConfig,
   HttpClient,
   PaginatedResponse,
-  SemrushConfig,
+  // Semrush
+  SemrushClient,
+  SemrushPaginationOptions, // { limit?, offset?, database? }
   SemrushDomainOverview,
   SemrushKeywordData,
   SemrushBacklinkData,
+  SemrushKeywordDifficulty,
   SemrushRelatedKeyword,
-  SemrushClient,
-  AhrefsConfig,
+  // Ahrefs
+  AhrefsClient,
+  AhrefsPaginationOptions, // { limit?, offset? }
   AhrefsSiteOverview,
   AhrefsOrganicKeyword,
   AhrefsBacklink,
+  AhrefsKeywordDifficulty,
   AhrefsReferringDomain,
-  AhrefsClient,
 } from '@power-seo/integrations';
 ```
+
+`PaginatedResponse<T>` is `{ data: T[]; total: number; offset: number; limit: number; hasMore: boolean }`. The `IntegrationApiError` class is a value export: `import { IntegrationApiError } from '@power-seo/integrations'`.
 
 ---
 
 ## Use Cases
 
-- **Keyword research pipelines** — pull volume and difficulty from Semrush to prioritize content creation
-- **Backlink monitoring** — automate periodic Ahrefs backlink snapshots for link building tracking
-- **Competitor analysis** — use domain overview data to compare your metrics against competitors
-- **Content brief generation** — combine keyword difficulty and volume to prioritize blog topics
-- **SEO reporting dashboards** — pull live Semrush/Ahrefs data into internal analytics tools built with `@power-seo/analytics`
+- **Keyword research pipelines** — pull volume, CPC, and difficulty from Semrush or Ahrefs to prioritize content topics programmatically
+- **Backlink monitoring** — schedule periodic backlink and referring-domain snapshots for link-building tracking
+- **Competitor analysis** — compare domain overview metrics (traffic, keywords, Authority Score, Domain Rating) across competitor domains
+- **Content brief generation** — feed related-keyword and difficulty data into briefs alongside [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) scoring
+- **SEO reporting dashboards** — combine live vendor data with Search Console trends from [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) and [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)
+- **Any rate-limited REST integration** — reuse `createHttpClient()` for internal or third-party JSON APIs that need throttling and retry
 
 ---
 
 ## Architecture Overview
 
-- **Pure TypeScript** — no compiled binary, no native modules
-- **Minimal runtime dependencies** — only native `fetch` (available in Node 18+, Deno, Bun, and all Edge runtimes)
-- **Framework-agnostic** — works in Next.js API routes, Remix loaders, Express, Cloudflare Workers
-- **SSR compatible** — safe for server-side use; no browser-specific APIs
-- **Edge runtime safe** — uses only `fetch`; runs in Cloudflare Workers, Vercel Edge, Deno
-- **Tree-shakeable** — `createSemrushClient` and `createAhrefsClient` are separate named exports
-- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+- **Pure TypeScript** — no native modules, no compiled binaries
+- **Runtime dependency: `@power-seo/core` only** — the token bucket (`createTokenBucket`), backoff (`calculateBackoff`), and retry loop (`fetchJsonWithRetry`) come from the core package; nothing third-party
+- **Native `fetch` transport** — works in Node.js 18+, Deno, Bun, Cloudflare Workers, and Vercel Edge; timeouts use `AbortController`
+- **Thin vendor adapters** — each client maps raw vendor responses (Semrush column codes like `Or`, `Nq`, `Kd`; Ahrefs snake_case fields) to stable camelCase types; the HTTP concerns live in one place
+- **Secret-safe errors** — response snippets in error messages pass through redaction that strips bearer tokens and API-key-shaped JSON fields before truncating to 200 characters
+- **Tree-shakeable, dual ESM + CJS** — `sideEffects: false`, separate named exports, built with tsup
 
 ---
 
 ## Supply Chain Security
 
+- Published to npm with **provenance attestation** — every release is built and signed by the verified `github.com/CyberCraftBD/power-seo` GitHub Actions workflow, so you can trace each tarball back to its exact source commit
+- **Zero third-party runtime dependencies** — packages depend only on other `@power-seo` packages, nothing else gets pulled in
+- **Network access only when you call it** — HTTP requests go exclusively to the APIs you configure (Google Search Console / Semrush / Ahrefs); no telemetry, no phoning home
 - No install scripts (`postinstall`, `preinstall`)
-- No runtime network access beyond explicit API calls you initiate
 - No `eval` or dynamic code execution
-- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
 - Safe for SSR, Edge, and server environments
 
 ---
@@ -333,25 +362,31 @@ import type {
 
 All 17 packages are independently installable — use only what you need.
 
-| Package                                                                                    | Install                             | Description                                                             |
-| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                                        |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------------- |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic prompt templates and response parsers for AI-assisted SEO             |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge Search Console data with audit results — trends and ranking insights         |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | SEO site health auditing with meta, content, structure, and performance rules      |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content analysis engine with scoring, checks, and React components |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic SEO analysis engines, types, validators, and utilities          |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO analysis — alt text quality, lazy loading, formats, image sitemaps       |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with a shared rate-limited HTTP client              |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Internal link graph analysis — orphan detection, suggestions, equity scoring       |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta tag helpers for Next.js App Router, Remix v2, and generic SSR             |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter Card preview generators with React components        |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta tags, Open Graph, Twitter Card, breadcrumbs            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI               |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect rule engine with Next.js, Remix, and Express adapters                     |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 schema.org builders plus React components   |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API client — OAuth2, service accounts, rate limiting, retry  |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, and validation with image, video, news support  |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | Analytics script builders with consent management and React components             |
+
+---
+
+## Keywords
+
+semrush api, ahrefs api, seo api client, keyword research api, backlink api, domain overview, keyword difficulty, keyword volume, rate limiting, token bucket, api pagination, typescript seo, seo data fetching, third-party seo integrations, referring domains, organic keywords, api retry backoff, seo reporting
 
 ---
 

@@ -1,53 +1,79 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Live Readability Scoring in Your CMS</text>
-  <!-- Main editor panel -->
-  <rect x="20" y="54" width="560" height="380" rx="8" fill="#161b22"/>
-  <rect x="20" y="54" width="560" height="40" rx="8" fill="#1a0d2e"/>
-  <rect x="20" y="82" width="560" height="12" fill="#1a0d2e"/>
-  <circle cx="40" cy="74" r="6" fill="#ff5f56"/>
-  <circle cx="60" cy="74" r="6" fill="#ffbd2e"/>
-  <circle cx="80" cy="74" r="6" fill="#27c93f"/>
-  <text x="110" y="79" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Content Editor</text>
-  <!-- Toolbar -->
-  <rect x="36" y="106" width="528" height="28" rx="4" fill="#0d1117"/>
-  <text x="52" y="124" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">B  I  U  |  H1  H2  H3  |  List  Link</text>
-  <!-- Content area -->
-  <rect x="36" y="142" width="528" height="180" rx="4" fill="#0d1117"/>
-  <text x="52" y="164" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">Utilizing a multifaceted algorithmic approach to</text>
-  <text x="52" y="182" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">facilitate the comprehension of complex subject matter</text>
-  <!-- Underline on hard words -->
-  <line x1="52" y1="184" x2="160" y2="184" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <line x1="52" y1="202" x2="184" y2="202" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="52" y="200" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">requires a multidimensional perspectival framework.</text>
-  <text x="52" y="220" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280">└ 3 complex words flagged</text>
-  <!-- Sentence length warning -->
-  <rect x="36" y="336" width="528" height="30" rx="4" fill="#2d1a00"/>
-  <text x="52" y="356" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316">⚠ Sentence length: 34 words — recommended max is 20</text>
-  <!-- Word count -->
-  <text x="36" y="408" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Words: 412 · Sentences: 28 · Complex words: 31 (7.5%)</text>
-  <!-- Right Score Panel -->
-  <rect x="596" y="54" width="284" height="380" rx="8" fill="#161b22"/>
-  <rect x="596" y="54" width="284" height="40" rx="8" fill="#1a0d2e"/>
-  <text x="738" y="79" font-family="'Segoe UI', sans-serif" font-size="13" fill="#8b5cf6" text-anchor="middle">Readability Score</text>
-  <!-- Score circle -->
-  <circle cx="738" cy="178" r="60" fill="none" stroke="#1e2430" stroke-width="12"/>
-  <circle cx="738" cy="178" r="60" fill="none" stroke="#f97316" stroke-width="12" stroke-dasharray="271" stroke-dashoffset="90" transform="rotate(-90 738 178)"/>
-  <text x="738" y="174" font-family="'Segoe UI', sans-serif" font-size="28" fill="white" text-anchor="middle" font-weight="700">42</text>
-  <text x="738" y="196" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Difficult</text>
-  <!-- Grade level -->
-  <rect x="612" y="262" width="252" height="44" rx="6" fill="#1a0d2e"/>
-  <text x="738" y="281" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Grade Level</text>
-  <text x="738" y="300" font-family="'Segoe UI', sans-serif" font-size="16" fill="#8b5cf6" text-anchor="middle" font-weight="700">College level (14th)</text>
-  <!-- Suggestions -->
-  <text x="612" y="330" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Suggestions</text>
-  <rect x="612" y="338" width="252" height="20" rx="4" fill="#1f1005"/>
-  <text x="620" y="352" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbf24">• Shorten sentences to under 20 words</text>
-  <rect x="612" y="362" width="252" height="20" rx="4" fill="#1f1005"/>
-  <text x="620" y="376" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbf24">• Replace complex words with simpler ones</text>
-  <rect x="612" y="386" width="252" height="20" rx="4" fill="#1f1005"/>
-  <text x="620" y="400" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fbbf24">• Target score: 60+ for general audience</text>
-  <!-- Caption -->
-  <text x="450" y="470" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Real-time readability feedback as you write. No guessing.</text>
-  <text x="450" y="492" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">@power-seo/readability — live score · grade level · sentence length warnings · complex word detection</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>CMS content editor mockup with a live readability sidebar panel powered by analyzeReadability showing an overall score of 64 and six check results</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <text x="20" y="34" class="font-ui" font-size="14" font-weight="700" fill="#0f172a">Grow CMS</text>
+  <text x="20" y="76" class="font-ui" font-size="13" fill="#64748b">Dashboard</text>
+  <text x="20" y="108" class="font-ui" font-size="13" fill="#64748b">Posts</text>
+  <rect x="10" y="124" width="160" height="30" rx="6" fill="#dbeafe"/>
+  <text x="20" y="144" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Readability</text>
+  <text x="20" y="184" class="font-ui" font-size="13" fill="#64748b">SEO Analysis</text>
+  <text x="20" y="216" class="font-ui" font-size="13" fill="#64748b">Media</text>
+  <text x="20" y="248" class="font-ui" font-size="13" fill="#64748b">Settings</text>
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Edit Post</text>
+  <rect x="792" y="11" width="84" height="30" rx="6" fill="#2563eb"/>
+  <text x="834" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Publish</text>
+  <rect x="700" y="11" width="80" height="30" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="740" y="30" class="font-ui" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">Save draft</text>
+  <!-- editor card -->
+  <rect x="204" y="72" width="404" height="404" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="224" y="104" class="font-ui" font-size="16" font-weight="700" fill="#0f172a">React SEO Best Practices</text>
+  <rect x="224" y="120" width="364" height="1" fill="#e2e8f0"/>
+  <rect x="224" y="140" width="356" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="158" width="340" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="176" width="352" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="194" width="220" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="224" width="348" height="8" rx="4" fill="#fee2e2"/>
+  <rect x="224" y="242" width="330" height="8" rx="4" fill="#fee2e2"/>
+  <text x="224" y="272" class="font-ui" font-size="11" fill="#b91c1c">Sentence longer than 20 words — consider splitting</text>
+  <rect x="224" y="292" width="356" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="310" width="344" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="328" width="180" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="358" width="352" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="376" width="332" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="224" y="394" width="300" height="8" rx="4" fill="#e2e8f0"/>
+  <text x="224" y="452" class="font-mono" font-size="11" fill="#94a3b8">1,240 words · 68 sentences · 9 paragraphs</text>
+  <!-- readability panel -->
+  <rect x="628" y="72" width="248" height="404" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="648" y="100" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Readability</text>
+  <!-- ring -->
+  <circle cx="682" cy="152" r="30" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+  <path d="M 682 122 A 30 30 0 1 1 658 167" fill="none" stroke="#16a34a" stroke-width="8" stroke-linecap="round"/>
+  <text x="682" y="159" class="font-ui" font-size="18" font-weight="700" fill="#0f172a" text-anchor="middle">64</text>
+  <text x="726" y="146" class="font-ui" font-size="12" font-weight="600" fill="#0f172a">result.score</text>
+  <text x="726" y="164" class="font-ui" font-size="11" fill="#64748b">Flesch Ease 64.2</text>
+  <text x="726" y="180" class="font-ui" font-size="11" fill="#64748b">FK Grade 8.3</text>
+  <line x1="648" y1="202" x2="856" y2="202" stroke="#e2e8f0"/>
+  <!-- checks -->
+  <circle cx="656" cy="226" r="5" fill="#16a34a"/>
+  <text x="670" y="230" class="font-ui" font-size="12" fill="#0f172a">Flesch Reading Ease</text>
+  <text x="856" y="230" class="font-mono" font-size="11" fill="#64748b" text-anchor="end">64.2</text>
+  <circle cx="656" cy="256" r="5" fill="#f59e0b"/>
+  <text x="670" y="260" class="font-ui" font-size="12" fill="#0f172a">Sentence length</text>
+  <text x="856" y="260" class="font-mono" font-size="11" fill="#64748b" text-anchor="end">28%</text>
+  <circle cx="656" cy="286" r="5" fill="#16a34a"/>
+  <text x="670" y="290" class="font-ui" font-size="12" fill="#0f172a">Passive voice</text>
+  <text x="856" y="290" class="font-mono" font-size="11" fill="#64748b" text-anchor="end">8%</text>
+  <circle cx="656" cy="316" r="5" fill="#16a34a"/>
+  <text x="670" y="320" class="font-ui" font-size="12" fill="#0f172a">Transition words</text>
+  <text x="856" y="320" class="font-mono" font-size="11" fill="#64748b" text-anchor="end">34%</text>
+  <circle cx="656" cy="346" r="5" fill="#16a34a"/>
+  <text x="670" y="350" class="font-ui" font-size="12" fill="#0f172a">Paragraph length</text>
+  <text x="856" y="350" class="font-mono" font-size="11" fill="#64748b" text-anchor="end">0 long</text>
+  <circle cx="656" cy="376" r="5" fill="#16a34a"/>
+  <text x="670" y="380" class="font-ui" font-size="12" fill="#0f172a">Consecutive sentences</text>
+  <text x="856" y="380" class="font-mono" font-size="11" fill="#64748b" text-anchor="end">0 groups</text>
+  <line x1="648" y1="398" x2="856" y2="398" stroke="#e2e8f0"/>
+  <text x="648" y="422" class="font-ui" font-size="11" font-weight="600" fill="#64748b">RECOMMENDATION</text>
+  <text x="648" y="440" class="font-ui" font-size="11" fill="#64748b">28% of your sentences are long. Try to</text>
+  <text x="648" y="456" class="font-ui" font-size="11" fill="#64748b">keep most sentences under 20 words.</text>
 </svg>

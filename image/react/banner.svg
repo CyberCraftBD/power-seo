@@ -1,41 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#61dafb"/>
-      <stop offset="100%" style="stop-color:#a5f3fc"/>
-    </linearGradient>
-    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#61dafb;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#a5f3fc;stop-opacity:0.2"/>
-    </linearGradient>
-  </defs>
-  <rect width="1280" height="280" fill="url(#bg)" rx="12"/>
-  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-    <line x1="0" y1="56" x2="1280" y2="56"/>
-    <line x1="0" y1="112" x2="1280" y2="112"/>
-    <line x1="0" y1="168" x2="1280" y2="168"/>
-    <line x1="0" y1="224" x2="1280" y2="224"/>
-    <line x1="256" y1="0" x2="256" y2="280"/>
-    <line x1="512" y1="0" x2="512" y2="280"/>
-    <line x1="768" y1="0" x2="768" y2="280"/>
-    <line x1="1024" y1="0" x2="1024" y2="280"/>
-  </g>
-  <circle cx="1180" cy="60" r="90" fill="#61dafb" fill-opacity="0.06"/>
-  <circle cx="1220" cy="30" r="50" fill="#a5f3fc" fill-opacity="0.06"/>
-  <circle cx="80" cy="230" r="70" fill="#61dafb" fill-opacity="0.05"/>
-  <rect x="80" y="96" width="6" height="88" rx="3" fill="url(#accent)"/>
-  <text x="108" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="68" font-weight="800" letter-spacing="-2" fill="url(#accent)">@power-seo/react</text>
-  <text x="110" y="195" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="0.5">All your SEO tags. One component.</text>
-  <rect x="110" y="220" width="112" height="28" rx="14" fill="url(#pill)" stroke="#61dafb" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="166" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#a5f3fc" text-anchor="middle">React 18 + 19</text>
-  <rect x="232" y="220" width="94" height="28" rx="14" fill="url(#pill)" stroke="#61dafb" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="279" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#a5f3fc" text-anchor="middle">SSR-ready</text>
-  <rect x="336" y="220" width="90" height="28" rx="14" fill="url(#pill)" stroke="#a5f3fc" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="381" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#cffafe" text-anchor="middle">ESM + CJS</text>
-  <rect x="436" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#a5f3fc" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="505" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#cffafe" text-anchor="middle">TypeScript-first</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="280" viewBox="0 0 1280 280">
+  <title>power-seo react banner showing declarative SEO components that render title, Open Graph, canonical and robots tags into the document head</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="1280" height="280" fill="#f8fafc"/>
+
+  <!-- logo mark -->
+  <rect x="56" y="52" width="44" height="44" rx="10" fill="#2563eb"/>
+  <text x="78" y="81" class="font-mono" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">&lt;/&gt;</text>
+
+  <!-- name + tagline -->
+  <text x="114" y="74" class="font-ui" font-size="28" font-weight="700" fill="#0f172a">@power-seo/react</text>
+  <rect x="380" y="56" width="96" height="22" rx="11" fill="#dbeafe"/>
+  <text x="428" y="71" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">React 18 / 19</text>
+  <text x="56" y="126" class="font-ui" font-size="15" fill="#64748b">Declarative SEO components — title templates, Open Graph, Twitter Cards,</text>
+  <text x="56" y="148" class="font-ui" font-size="15" fill="#64748b">canonical, robots, hreflang and breadcrumbs with JSON-LD.</text>
+
+  <!-- component pills -->
+  <rect x="56" y="176" width="52" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="82" y="192" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">SEO</text>
+  <rect x="116" y="176" width="92" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="162" y="192" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">DefaultSEO</text>
+  <rect x="216" y="176" width="86" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="259" y="192" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">OpenGraph</text>
+  <rect x="310" y="176" width="98" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="359" y="192" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">TwitterCard</text>
+  <rect x="416" y="176" width="84" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="458" y="192" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">Canonical</text>
+  <rect x="56" y="208" width="66" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="89" y="224" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">Robots</text>
+  <rect x="130" y="208" width="76" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="168" y="224" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">Hreflang</text>
+  <rect x="214" y="208" width="92" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="260" y="224" class="font-mono" font-size="11" fill="#2563eb" text-anchor="middle">Breadcrumb</text>
+  <rect x="314" y="208" width="176" height="24" rx="12" fill="#dcfce7"/>
+  <text x="402" y="224" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Zero third-party dependencies</text>
+
+  <!-- code card -->
+  <rect x="620" y="40" width="300" height="200" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="640" y="66" class="font-ui" font-size="12" font-weight="600" fill="#64748b">BlogPage.tsx</text>
+  <line x1="620" y1="78" x2="920" y2="78" stroke="#e2e8f0"/>
+  <text x="640" y="102" class="font-mono" font-size="12" fill="#0f172a">&lt;<tspan fill="#2563eb">SEO</tspan></text>
+  <text x="656" y="122" class="font-mono" font-size="12" fill="#0f172a"><tspan fill="#7c3aed">title</tspan>=<tspan fill="#16a34a">"React SEO Guide"</tspan></text>
+  <text x="656" y="142" class="font-mono" font-size="12" fill="#0f172a"><tspan fill="#7c3aed">canonical</tspan>=<tspan fill="#16a34a">"https://acme.dev/blog/seo"</tspan></text>
+  <text x="656" y="162" class="font-mono" font-size="12" fill="#0f172a"><tspan fill="#7c3aed">openGraph</tspan>={{ <tspan fill="#7c3aed">type</tspan>: <tspan fill="#16a34a">'article'</tspan> }}</text>
+  <text x="640" y="182" class="font-mono" font-size="12" fill="#0f172a">/&gt;</text>
+  <text x="640" y="216" class="font-mono" font-size="11" fill="#94a3b8">// merges DefaultSEO context</text>
+
+  <!-- arrow -->
+  <line x1="932" y1="140" x2="972" y2="140" stroke="#2563eb" stroke-width="2"/>
+  <path d="M 972 140 l -8 -5 v 10 z" fill="#2563eb"/>
+
+  <!-- head output card -->
+  <rect x="984" y="40" width="252" height="200" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="1004" y="66" class="font-ui" font-size="12" font-weight="600" fill="#64748b">Document &lt;head&gt;</text>
+  <rect x="1164" y="50" width="52" height="20" rx="10" fill="#dcfce7"/>
+  <text x="1190" y="64" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Live</text>
+  <line x1="984" y1="78" x2="1236" y2="78" stroke="#e2e8f0"/>
+  <text x="1004" y="102" class="font-mono" font-size="11" fill="#0f172a">&lt;title&gt;React SEO Guide&lt;/title&gt;</text>
+  <text x="1004" y="124" class="font-mono" font-size="11" fill="#0f172a">&lt;link rel="canonical"</text>
+  <text x="1016" y="140" class="font-mono" font-size="11" fill="#64748b">href="https://acme.dev/..."&gt;</text>
+  <text x="1004" y="162" class="font-mono" font-size="11" fill="#0f172a">&lt;meta property="og:type"</text>
+  <text x="1016" y="178" class="font-mono" font-size="11" fill="#64748b">content="article"&gt;</text>
+  <text x="1004" y="200" class="font-mono" font-size="11" fill="#0f172a">&lt;meta name="twitter:card" ...&gt;</text>
+  <text x="1004" y="222" class="font-mono" font-size="11" fill="#94a3b8">hoisted natively in React 19</text>
 </svg>

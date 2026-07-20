@@ -1,58 +1,72 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Correct 301s Recover Lost Link Equity</text>
-  <!-- Chart -->
-  <rect x="60" y="56" width="780" height="290" rx="8" fill="#161b22"/>
-  <!-- Grid -->
-  <line x1="110" y1="76" x2="820" y2="76" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="116" x2="820" y2="116" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="156" x2="820" y2="156" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="196" x2="820" y2="196" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="236" x2="820" y2="236" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="276" x2="820" y2="276" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="316" x2="820" y2="316" stroke="#1e2430" stroke-width="1"/>
-  <!-- Y labels -->
-  <text x="105" y="80" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">100%</text>
-  <text x="105" y="120" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">80%</text>
-  <text x="105" y="160" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">60%</text>
-  <text x="105" y="200" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">40%</text>
-  <text x="105" y="240" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">20%</text>
-  <text x="105" y="280" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">5%</text>
-  <text x="105" y="320" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="end">0%</text>
-  <!-- X labels (weeks) -->
-  <text x="165" y="334" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Week 1</text>
-  <text x="275" y="334" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Week 2</text>
-  <text x="385" y="334" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Week 3</text>
-  <text x="495" y="334" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Week 4</text>
-  <text x="605" y="334" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Week 6</text>
-  <text x="715" y="334" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">Week 8</text>
-  <!-- Deploy marker -->
-  <line x1="385" y1="66" x2="385" y2="326" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <rect x="390" y="70" width="120" height="18" rx="4" fill="#1f1005"/>
-  <text x="450" y="83" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f97316" text-anchor="middle">301s deployed</text>
-  <!-- Correct 301 (orange, recovering) -->
-  <polyline points="165,310 275,305 385,295 495,230 605,150 715,88" stroke="#f97316" stroke-width="3" fill="none" stroke-linejoin="round"/>
-  <circle cx="715" cy="88" r="5" fill="#f97316"/>
-  <rect x="650" y="72" width="150" height="18" rx="4" fill="#1f1005"/>
-  <text x="725" y="85" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f97316" text-anchor="middle">Correct 301s: 94% equity</text>
-  <!-- Broken redirects (gray, flat) -->
-  <polyline points="165,310 275,312 385,314 495,312 605,310 715,309" stroke="#6b7280" stroke-width="2" fill="none" stroke-dasharray="6,3" stroke-linejoin="round"/>
-  <circle cx="715" cy="309" r="5" fill="#6b7280"/>
-  <rect x="630" y="298" width="170" height="18" rx="4" fill="#0d1117"/>
-  <text x="715" y="311" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Broken/missing: ~2% equity</text>
-  <!-- Legend -->
-  <line x1="130" y1="96" x2="160" y2="96" stroke="#f97316" stroke-width="3"/>
-  <text x="170" y="100" font-family="'Segoe UI', sans-serif" font-size="11" fill="#f97316">Correct 301 redirect (link equity preserved)</text>
-  <line x1="130" y1="118" x2="160" y2="118" stroke="#6b7280" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="170" y="122" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Broken/missing redirect (equity lost)</text>
-  <!-- KPI cards -->
-  <rect x="80" y="370" width="210" height="68" rx="8" fill="#161b22"/>
-  <text x="185" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Link equity recovered</text>
-  <text x="185" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#f97316" text-anchor="middle" font-weight="700">94%</text>
-  <rect x="345" y="370" width="210" height="68" rx="8" fill="#161b22"/>
-  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Recovery timeline</text>
-  <text x="450" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#f97316" text-anchor="middle" font-weight="700">6–8 weeks</text>
-  <rect x="610" y="370" width="210" height="68" rx="8" fill="#1f1005"/>
-  <text x="715" y="396" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Ranking improvement</text>
-  <text x="715" y="424" font-family="'Segoe UI', sans-serif" font-size="24" fill="#f97316" text-anchor="middle" font-weight="700">+23%</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Workflow comparison: manually duplicated redirect configs versus one typed rule file with compile-time checks and unit-testable matching in @power-seo/redirects</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Redirect Workflow, Before and After</text>
+  <text x="450" y="66" class="font-ui" font-size="13" fill="#64748b" text-anchor="middle">Broken 301s lose link equity during migrations &#8212; catch them before deploy</text>
+
+  <!-- BEFORE panel -->
+  <rect x="40" y="90" width="395" height="380" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="64" y="122" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Manual process</text>
+  <rect x="330" y="104" width="86" height="24" rx="12" fill="#fee2e2"/>
+  <text x="373" y="120" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">error-prone</text>
+  <line x1="40" y1="138" x2="435" y2="138" stroke="#e2e8f0"/>
+
+  <text x="88" y="168" class="font-ui" font-size="13" fill="#0f172a">Rules duplicated per platform</text>
+  <text x="88" y="188" class="font-mono" font-size="11" fill="#94a3b8">next.config.js &#183; vercel.json &#183; nginx.conf</text>
+  <text x="64" y="168" class="font-ui" font-size="13" font-weight="700" fill="#ef4444">&#10007;</text>
+
+  <text x="88" y="224" class="font-ui" font-size="13" fill="#0f172a">Status code typos ship to production</text>
+  <text x="88" y="244" class="font-mono" font-size="11" fill="#94a3b8">"statusCode": 310  // caught at runtime</text>
+  <text x="64" y="224" class="font-ui" font-size="13" font-weight="700" fill="#ef4444">&#10007;</text>
+
+  <text x="88" y="280" class="font-ui" font-size="13" fill="#0f172a">Deploy to verify each redirect</text>
+  <text x="88" y="300" class="font-ui" font-size="11" fill="#94a3b8">edit config &#8594; deploy &#8594; click &#8594; repeat</text>
+  <text x="64" y="280" class="font-ui" font-size="13" font-weight="700" fill="#ef4444">&#10007;</text>
+
+  <text x="88" y="336" class="font-ui" font-size="13" fill="#0f172a">Configs drift apart over time</text>
+  <text x="88" y="356" class="font-ui" font-size="11" fill="#94a3b8">a rule fixed in one file, forgotten in another</text>
+  <text x="64" y="336" class="font-ui" font-size="13" font-weight="700" fill="#ef4444">&#10007;</text>
+
+  <text x="88" y="392" class="font-ui" font-size="13" fill="#0f172a">Redirect loops found in production</text>
+  <text x="88" y="412" class="font-mono" font-size="11" fill="#94a3b8">ERR_TOO_MANY_REDIRECTS</text>
+  <text x="64" y="392" class="font-ui" font-size="13" font-weight="700" fill="#ef4444">&#10007;</text>
+
+  <!-- arrow between panels -->
+  <circle cx="450" cy="280" r="22" fill="#dbeafe"/>
+  <path d="M 441 280 L 459 280 M 452 273 L 459 280 L 452 287" stroke="#1d4ed8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- AFTER panel -->
+  <rect x="465" y="90" width="395" height="380" rx="8" fill="#ffffff" stroke="#2563eb"/>
+  <text x="489" y="122" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">With @power-seo/redirects</text>
+  <rect x="775" y="104" width="66" height="24" rx="12" fill="#dcfce7"/>
+  <text x="808" y="120" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">typed</text>
+  <line x1="465" y1="138" x2="860" y2="138" stroke="#e2e8f0"/>
+
+  <text x="513" y="168" class="font-ui" font-size="13" fill="#0f172a">One RedirectRule[] source of truth</text>
+  <text x="513" y="188" class="font-mono" font-size="11" fill="#94a3b8">redirects.config.ts &#8594; every framework</text>
+  <text x="489" y="168" class="font-ui" font-size="13" font-weight="700" fill="#16a34a">&#10003;</text>
+
+  <text x="513" y="224" class="font-ui" font-size="13" fill="#0f172a">RedirectStatusCode checked at compile time</text>
+  <text x="513" y="244" class="font-mono" font-size="11" fill="#94a3b8">statusCode: 301 | 302 &#8212; typos never build</text>
+  <text x="489" y="224" class="font-ui" font-size="13" font-weight="700" fill="#16a34a">&#10003;</text>
+
+  <text x="513" y="280" class="font-ui" font-size="13" fill="#0f172a">engine.match() in unit tests</text>
+  <text x="513" y="300" class="font-ui" font-size="11" fill="#94a3b8">synchronous, zero-cost &#8212; no deploy needed</text>
+  <text x="489" y="280" class="font-ui" font-size="13" font-weight="700" fill="#16a34a">&#10003;</text>
+
+  <text x="513" y="336" class="font-ui" font-size="13" fill="#0f172a">Adapters generate each target</text>
+  <text x="513" y="356" class="font-mono" font-size="11" fill="#94a3b8">toNextRedirects &#183; Remix loader &#183; Express</text>
+  <text x="489" y="336" class="font-ui" font-size="13" font-weight="700" fill="#16a34a">&#10003;</text>
+
+  <text x="513" y="392" class="font-ui" font-size="13" fill="#0f172a">Chains resolved, loops throw early</text>
+  <text x="513" y="412" class="font-mono" font-size="11" fill="#94a3b8">A &#8594; B &#8594; C resolves to C; A &#8594; A throws</text>
+  <text x="489" y="392" class="font-ui" font-size="13" font-weight="700" fill="#16a34a">&#10003;</text>
+
+  <rect x="489" y="430" width="347" height="26" rx="13" fill="#dbeafe"/>
+  <text x="662" y="447" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">Correct 301s preserve link equity through every migration</text>
 </svg>

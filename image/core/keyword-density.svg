@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Keyword density analysis interface showing calculateKeywordDensity results and keyphrase placement from analyzeKeyphraseOccurrences</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <!-- top bar -->
+  <rect width="900" height="52" fill="#ffffff"/>
+  <line x1="0" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="24" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Keyword Density</text>
+  <rect x="792" y="11" width="84" height="30" rx="6" fill="#2563eb"/>
+  <text x="834" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Analyze</text>
+
+  <!-- keyphrase input -->
+  <rect x="24" y="70" width="420" height="34" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="38" y="92" class="font-ui" font-size="13" fill="#64748b">Focus keyphrase:  technical seo</text>
+
+  <!-- density card -->
+  <rect x="24" y="120" width="420" height="200" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="44" y="148" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">calculateKeywordDensity()</text>
+  <rect x="356" y="132" width="68" height="22" rx="11" fill="#dcfce7"/>
+  <text x="390" y="147" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">optimal</text>
+  <!-- score ring -->
+  <circle cx="110" cy="228" r="46" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+  <path d="M110 182 a46 46 0 1 1 -39.8 69" fill="none" stroke="#16a34a" stroke-width="8" stroke-linecap="round"/>
+  <text x="110" y="234" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">1.5%</text>
+  <text x="110" y="252" class="font-ui" font-size="10" fill="#94a3b8" text-anchor="middle">density</text>
+  <text x="188" y="204" class="font-mono" font-size="12" fill="#0f172a">keyword: 'technical seo'</text>
+  <text x="188" y="228" class="font-mono" font-size="12" fill="#0f172a">count: 14</text>
+  <text x="188" y="252" class="font-mono" font-size="12" fill="#0f172a">totalWords: 1842</text>
+  <text x="188" y="276" class="font-ui" font-size="11" fill="#16a34a">Inside KEYWORD_DENSITY 0.5–2.5%</text>
+  <!-- range bar -->
+  <rect x="44" y="292" width="380" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="292" width="304" height="8" rx="4" fill="#dcfce7"/>
+  <rect x="266" y="288" width="4" height="16" rx="2" fill="#16a34a"/>
+
+  <!-- occurrences card -->
+  <rect x="468" y="70" width="408" height="250" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="488" y="98" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">analyzeKeyphraseOccurrences()</text>
+  <rect x="469" y="110" width="406" height="28" fill="#f8fafc"/>
+  <text x="488" y="129" class="font-ui" font-size="12" font-weight="600" fill="#64748b">PLACEMENT</text>
+  <text x="800" y="129" class="font-ui" font-size="12" font-weight="600" fill="#64748b">FOUND</text>
+  <line x1="468" y1="138" x2="876" y2="138" stroke="#e2e8f0"/>
+  <text x="488" y="160" class="font-mono" font-size="12" fill="#0f172a">inTitle</text>
+  <text x="812" y="160" class="font-ui" font-size="13" font-weight="700" fill="#16a34a">✓</text>
+  <line x1="468" y1="170" x2="876" y2="170" stroke="#e2e8f0"/>
+  <text x="488" y="192" class="font-mono" font-size="12" fill="#0f172a">inMetaDescription</text>
+  <text x="812" y="192" class="font-ui" font-size="13" font-weight="700" fill="#16a34a">✓</text>
+  <line x1="468" y1="202" x2="876" y2="202" stroke="#e2e8f0"/>
+  <text x="488" y="224" class="font-mono" font-size="12" fill="#0f172a">inH1 · inFirstParagraph · inSlug</text>
+  <text x="812" y="224" class="font-ui" font-size="13" font-weight="700" fill="#16a34a">✓</text>
+  <line x1="468" y1="234" x2="876" y2="234" stroke="#e2e8f0"/>
+  <text x="488" y="256" class="font-mono" font-size="12" fill="#0f172a">inHeadings</text>
+  <text x="805" y="256" class="font-mono" font-size="12" fill="#0f172a">3</text>
+  <line x1="468" y1="266" x2="876" y2="266" stroke="#e2e8f0"/>
+  <text x="488" y="288" class="font-mono" font-size="12" fill="#0f172a">inContent</text>
+  <text x="800" y="288" class="font-mono" font-size="12" fill="#0f172a">14</text>
+  <line x1="468" y1="298" x2="876" y2="298" stroke="#e2e8f0"/>
+  <text x="488" y="314" class="font-mono" font-size="12" fill="#0f172a">inAltText</text>
+  <text x="805" y="314" class="font-mono" font-size="12" fill="#0f172a">2</text>
+
+  <!-- code card -->
+  <rect x="24" y="336" width="852" height="140" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="44" y="364" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Usage</text>
+  <rect x="44" y="376" width="812" height="84" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="60" y="400" class="font-mono" font-size="12"><tspan fill="#7c3aed">import</tspan><tspan fill="#0f172a"> { calculateKeywordDensity } </tspan><tspan fill="#7c3aed">from</tspan><tspan fill="#16a34a"> '@power-seo/core'</tspan><tspan fill="#0f172a">;</tspan></text>
+  <text x="60" y="424" class="font-mono" font-size="12"><tspan fill="#7c3aed">const</tspan><tspan fill="#0f172a"> result = </tspan><tspan fill="#2563eb">calculateKeywordDensity</tspan><tspan fill="#0f172a">(</tspan><tspan fill="#16a34a">'technical seo'</tspan><tspan fill="#0f172a">, content);</tspan></text>
+  <text x="60" y="448" class="font-mono" font-size="12" fill="#94a3b8">// { keyword, count: 14, density: 1.5, totalWords: 1842 }</text>
+</svg>

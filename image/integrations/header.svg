@@ -1,104 +1,60 @@
-<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="1200" height="630" fill="#0d1117"/>
-  <!-- Left code panel -->
-  <rect x="40" y="60" width="520" height="490" rx="8" fill="#161b22"/>
-  <rect x="40" y="60" width="520" height="32" rx="8" fill="#031a1a"/>
-  <rect x="40" y="80" width="520" height="12" fill="#031a1a"/>
-  <circle cx="62" cy="76" r="6" fill="#ff5f56"/>
-  <circle cx="82" cy="76" r="6" fill="#ffbd2e"/>
-  <circle cx="102" cy="76" r="6" fill="#27c93f"/>
-  <text x="130" y="81" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">research.ts</text>
-  <!-- Code lines -->
-  <text x="60" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">import</text>
-  <text x="108" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#123; </text>
-  <text x="128" y="120" font-family="'Courier New', monospace" font-size="13" fill="#14b8a6">SeoResearchClient</text>
-  <text x="310" y="120" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> &#125; </text>
-  <text x="342" y="120" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">from</text>
-  <text x="374" y="120" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'@power-seo/integrations'</text>
-  <text x="60" y="158" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">const</text>
-  <text x="98" y="158" font-family="'Courier New', monospace" font-size="13" fill="#14b8a6"> client</text>
-  <text x="152" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> = new </text>
-  <text x="200" y="158" font-family="'Courier New', monospace" font-size="13" fill="#14b8a6">SeoResearchClient</text>
-  <text x="370" y="158" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(&#123;</text>
-  <text x="76" y="184" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  ahrefs</text>
-  <text x="136" y="184" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: &#123; </text>
-  <text x="160" y="184" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">apiKey</text>
-  <text x="216" y="184" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: env.AHREFS_KEY &#125;</text>
-  <text x="76" y="208" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  semrush</text>
-  <text x="148" y="208" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: &#123; </text>
-  <text x="172" y="208" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">apiKey</text>
-  <text x="228" y="208" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: env.SEMRUSH_KEY &#125;</text>
-  <text x="60" y="232" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">&#125;)</text>
-  <!-- Research call -->
-  <text x="60" y="270" font-family="'Courier New', monospace" font-size="13" fill="#8b949e">const</text>
-  <text x="98" y="270" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc"> kws</text>
-  <text x="130" y="270" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> = await </text>
-  <text x="196" y="270" font-family="'Courier New', monospace" font-size="13" fill="#14b8a6">client</text>
-  <text x="240" y="270" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">.</text>
-  <text x="246" y="270" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">getKeywords</text>
-  <text x="350" y="270" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">(&#123;</text>
-  <text x="76" y="296" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  query</text>
-  <text x="128" y="296" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
-  <text x="140" y="296" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'typescript seo'</text>
-  <text x="76" y="320" font-family="'Courier New', monospace" font-size="13" fill="#a5b4fc">  provider</text>
-  <text x="160" y="320" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">: </text>
-  <text x="172" y="320" font-family="'Courier New', monospace" font-size="13" fill="#7ee787">'ahrefs'</text>
-  <text x="60" y="344" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0">&#125;)</text>
-  <!-- Result preview -->
-  <rect x="60" y="368" width="462" height="140" rx="6" fill="#0d1117"/>
-  <text x="78" y="390" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// kws[0] →</text>
-  <text x="78" y="412" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#123;</text>
-  <text x="94" y="432" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  keyword</text>
-  <text x="170" y="432" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="182" y="432" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'typescript seo library'</text>
-  <text x="94" y="452" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  volume</text>
-  <text x="166" y="452" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="178" y="452" font-family="'Courier New', monospace" font-size="12" fill="#14b8a6">2400</text>
-  <text x="94" y="472" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  difficulty</text>
-  <text x="190" y="472" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="202" y="472" font-family="'Courier New', monospace" font-size="12" fill="#14b8a6">32</text>
-  <text x="78" y="492" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#125;</text>
-  <!-- Vertical divider -->
-  <line x1="600" y1="40" x2="600" y2="590" stroke="#14b8a6" stroke-width="1.5" opacity="0.4"/>
-  <!-- Right: Integrations hub visualization -->
-  <rect x="630" y="60" width="530" height="490" rx="8" fill="#161b22"/>
-  <text x="895" y="98" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">SEO Research Hub</text>
-  <!-- Center node -->
-  <circle cx="895" cy="260" r="50" fill="#031a1a" stroke="#14b8a6" stroke-width="2"/>
-  <text x="895" y="255" font-family="'Segoe UI', sans-serif" font-size="11" fill="#14b8a6" text-anchor="middle">@power-seo</text>
-  <text x="895" y="272" font-family="'Segoe UI', sans-serif" font-size="11" fill="#14b8a6" text-anchor="middle">/integrations</text>
-  <!-- Provider nodes -->
-  <!-- Ahrefs -->
-  <line x1="848" y1="222" x2="790" y2="168" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
-  <rect x="720" y="138" width="90" height="32" rx="6" fill="#1e2430"/>
-  <text x="765" y="158" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Ahrefs</text>
-  <!-- Semrush -->
-  <line x1="895" y1="210" x2="895" y2="150" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
-  <rect x="850" y="118" width="90" height="32" rx="6" fill="#1e2430"/>
-  <text x="895" y="138" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Semrush</text>
-  <!-- Moz -->
-  <line x1="942" y1="222" x2="1000" y2="168" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
-  <rect x="990" y="138" width="90" height="32" rx="6" fill="#1e2430"/>
-  <text x="1035" y="158" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Moz</text>
-  <!-- Majestic -->
-  <line x1="942" y1="298" x2="1000" y2="348" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
-  <rect x="990" y="340" width="90" height="32" rx="6" fill="#1e2430"/>
-  <text x="1035" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Majestic</text>
-  <!-- DataForSEO -->
-  <line x1="895" y1="310" x2="895" y2="370" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
-  <rect x="850" y="368" width="90" height="32" rx="6" fill="#1e2430"/>
-  <text x="895" y="388" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">DataForSEO</text>
-  <!-- ScreamingFrog -->
-  <line x1="848" y1="298" x2="790" y2="348" stroke="#14b8a6" stroke-width="1.5" opacity="0.6"/>
-  <rect x="720" y="340" width="90" height="32" rx="6" fill="#1e2430"/>
-  <text x="765" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Bright Data</text>
-  <!-- Unified output shape note -->
-  <rect x="648" y="428" width="480" height="80" rx="8" fill="#031a1a"/>
-  <text x="888" y="452" font-family="'Segoe UI', sans-serif" font-size="13" fill="#14b8a6" text-anchor="middle" font-weight="600">Unified response shape across all providers</text>
-  <text x="888" y="474" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">KeywordResult · BacklinkResult · RankResult — switch provider in 1 line</text>
-  <text x="888" y="494" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Rate-limit aware · auto-retry · TypeScript generics</text>
-  <!-- Tagline -->
-  <text x="600" y="562" font-family="'Segoe UI', sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">Six SEO data providers. One typed API.</text>
-  <text x="600" y="592" font-family="'Segoe UI', sans-serif" font-size="15" fill="#6b7280" text-anchor="middle">@power-seo/integrations — Ahrefs · Semrush · Moz · Majestic · DataForSEO · Bright Data</text>
-  <text x="80" y="46" font-family="'Segoe UI', sans-serif" font-size="14" fill="#14b8a6">@power-seo/integrations</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <title>Hero graphic for @power-seo/integrations showing the Semrush and Ahrefs client APIs unified behind one shared TypeScript HTTP client</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <!-- headline -->
+  <rect x="80" y="70" width="48" height="48" rx="12" fill="#2563eb"/>
+  <path d="M94 103 L104 85 L110 96 L118 80" stroke="#ffffff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="146" y="102" class="font-ui" font-size="34" font-weight="700" fill="#0f172a">@power-seo/integrations</text>
+  <text x="80" y="158" class="font-ui" font-size="17" fill="#64748b">One typed interface for Semrush and Ahrefs — domain overviews, keywords, backlinks,</text>
+  <text x="80" y="182" class="font-ui" font-size="17" fill="#64748b">and keyword difficulty with automatic rate limiting and typed paginated responses.</text>
+  <!-- left: code card -->
+  <rect x="80" y="222" width="540" height="340" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="80" y="222" width="540" height="40" rx="8" fill="#f8fafc"/>
+  <line x1="80" y1="262" x2="620" y2="262" stroke="#e2e8f0"/>
+  <text x="102" y="247" class="font-mono" font-size="12" fill="#64748b">keyword-research.ts</text>
+  <text x="102" y="292" class="font-mono" font-size="13"><tspan fill="#7c3aed">import</tspan><tspan fill="#0f172a"> { </tspan><tspan fill="#2563eb">createSemrushClient</tspan><tspan fill="#0f172a">, </tspan><tspan fill="#2563eb">createAhrefsClient</tspan><tspan fill="#0f172a"> }</tspan></text>
+  <text x="122" y="312" class="font-mono" font-size="13"><tspan fill="#7c3aed">from</tspan> <tspan fill="#16a34a">'@power-seo/integrations'</tspan><tspan fill="#0f172a">;</tspan></text>
+  <text x="102" y="344" class="font-mono" font-size="13"><tspan fill="#7c3aed">const</tspan><tspan fill="#0f172a"> semrush = </tspan><tspan fill="#2563eb">createSemrushClient</tspan><tspan fill="#0f172a">(apiKey);</tspan></text>
+  <text x="102" y="364" class="font-mono" font-size="13"><tspan fill="#7c3aed">const</tspan><tspan fill="#0f172a"> ahrefs = </tspan><tspan fill="#2563eb">createAhrefsClient</tspan><tspan fill="#0f172a">(apiToken);</tspan></text>
+  <text x="102" y="396" class="font-mono" font-size="13" fill="#94a3b8">// typed PaginatedResponse — page via offset</text>
+  <text x="102" y="416" class="font-mono" font-size="13"><tspan fill="#7c3aed">const</tspan><tspan fill="#0f172a"> keywords = </tspan><tspan fill="#7c3aed">await</tspan><tspan fill="#0f172a"> semrush.</tspan><tspan fill="#2563eb">getOrganicKeywords</tspan><tspan fill="#0f172a">(</tspan></text>
+  <text x="122" y="436" class="font-mono" font-size="13"><tspan fill="#16a34a">'example.com'</tspan><tspan fill="#0f172a">, { limit: </tspan><tspan fill="#16a34a">100</tspan><tspan fill="#0f172a"> });</tspan></text>
+  <text x="102" y="468" class="font-mono" font-size="13"><tspan fill="#7c3aed">const</tspan><tspan fill="#0f172a"> site = </tspan><tspan fill="#7c3aed">await</tspan><tspan fill="#0f172a"> ahrefs.</tspan><tspan fill="#2563eb">getSiteOverview</tspan><tspan fill="#0f172a">(</tspan><tspan fill="#16a34a">'example.com'</tspan><tspan fill="#0f172a">);</tspan></text>
+  <text x="102" y="500" class="font-mono" font-size="13" fill="#0f172a">console.log(site.domainRating);  <tspan fill="#94a3b8">// 47</tspan></text>
+  <text x="102" y="520" class="font-mono" font-size="13" fill="#0f172a">console.log(site.organicTraffic); <tspan fill="#94a3b8">// 9_800</tspan></text>
+  <!-- right: result cards -->
+  <rect x="660" y="222" width="460" height="156" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="684" y="252" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Semrush · getDomainOverview()</text>
+  <rect x="964" y="236" width="132" height="22" rx="11" fill="#dbeafe"/>
+  <text x="1030" y="251" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">SemrushDomainOverview</text>
+  <text x="684" y="286" class="font-ui" font-size="12" fill="#64748b">Organic traffic</text>
+  <text x="684" y="310" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">12,400</text>
+  <text x="844" y="286" class="font-ui" font-size="12" fill="#64748b">Organic keywords</text>
+  <text x="844" y="310" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">834</text>
+  <text x="1004" y="286" class="font-ui" font-size="12" fill="#64748b">Authority Score</text>
+  <text x="1004" y="310" class="font-ui" font-size="20" font-weight="700" fill="#16a34a">54</text>
+  <rect x="684" y="330" width="412" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="684" y="330" width="222" height="8" rx="4" fill="#2563eb"/>
+  <text x="684" y="360" class="font-ui" font-size="11" fill="#94a3b8">Backlinks 21,506 · Paid keywords 12</text>
+  <rect x="660" y="406" width="460" height="156" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="684" y="436" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Ahrefs · getSiteOverview()</text>
+  <rect x="984" y="420" width="112" height="22" rx="11" fill="#dbeafe"/>
+  <text x="1040" y="435" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">AhrefsSiteOverview</text>
+  <text x="684" y="470" class="font-ui" font-size="12" fill="#64748b">Domain Rating</text>
+  <text x="684" y="494" class="font-ui" font-size="20" font-weight="700" fill="#16a34a">47</text>
+  <text x="844" y="470" class="font-ui" font-size="12" fill="#64748b">Organic traffic</text>
+  <text x="844" y="494" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">9,800</text>
+  <text x="1004" y="470" class="font-ui" font-size="12" fill="#64748b">Referring domains</text>
+  <text x="1004" y="494" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">1,208</text>
+  <rect x="684" y="514" width="412" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="684" y="514" width="194" height="8" rx="4" fill="#16a34a"/>
+  <text x="684" y="544" class="font-ui" font-size="11" fill="#94a3b8">Backlinks 18,340 · Traffic value $4,120</text>
+  <!-- footer strip -->
+  <text x="80" y="602" class="font-mono" font-size="13" fill="#64748b">npm install @power-seo/integrations</text>
+  <rect x="980" y="584" width="140" height="26" rx="13" fill="#dcfce7"/>
+  <text x="1050" y="601" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Node 18+ · Deno · Bun</text>
 </svg>

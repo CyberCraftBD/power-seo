@@ -1,8 +1,6 @@
 # @power-seo/preview
 
-![preview banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/banner.svg)
-
-Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeScript — compute exactly how a page appears in Google search results and social shares without a headless browser or canvas.
+![SERP, Open Graph, and Twitter Card preview generator banner for the power-seo toolkit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/banner.svg)
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/preview)](https://www.npmjs.com/package/@power-seo/preview)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/preview)](https://www.npmjs.com/package/@power-seo/preview)
@@ -11,73 +9,69 @@ Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeS
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/preview)
 
-`@power-seo/preview` delivers pixel-width-aware SERP snippet generation, Open Graph image validation, and Twitter/X Card preview data — comparable to what Yoast SEO, Semrush, and Moz Pro show in their browser-based UIs, but as a standalone TypeScript library that runs anywhere. Provide a title, meta description, URL, and optional OG image — get back structured preview data with truncation flags, breadcrumb paths, and image validation results. Run it server-side in a CMS pipeline, client-side in a React editor, or inside a CI content gate. All four generators are fully tree-shakeable.
+Pixel-accurate SERP, Open Graph, and Twitter/X Card preview generators for TypeScript — compute exactly how a page appears in Google results and social shares, no headless browser or canvas required.
 
-> **Zero runtime dependencies** — only `@power-seo/core` as a peer.
+`@power-seo/preview` is a framework-agnostic TypeScript library that turns a title, meta description, URL, and optional social image into structured preview data: pixel-truncated SERP snippets, Google-style breadcrumb URLs, and Open Graph / Twitter Card image validation. It is built for CMS authors, SEO pipelines, and CI content gates that need to know how a page will render in search and social feeds before it ships. Provide plain inputs, get back plain data objects — run it in a Next.js Server Component, a Remix loader, an Edge function, or a React editor sidebar.
+
+![Preview generator overview: Google SERP snippet, Facebook Open Graph card, and Twitter/X Card from one input](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/header.svg)
+
+> Zero third-party runtime dependencies — only `@power-seo/core`, and React as an optional peer for the `/react` components.
 
 ---
 
 ## Why @power-seo/preview?
 
-| | Without | With |
-|---|---|---|
-| SERP title truncation | ❌ Guesswork (character count) | ✅ Pixel-accurate truncation at 580px |
-| SERP description truncation | ❌ Unchecked | ✅ Pixel-accurate truncation at 920px |
-| OG image validation | ❌ Silent drop by Facebook/LinkedIn | ✅ Dimension check with pass/fail message |
-| Twitter/X Card preview | ❌ Manual spec lookup | ✅ `summary` + `summary_large_image` with image validation |
-| breadcrumb path | ❌ Unknown | ✅ Google-style `example.com › blog › post` format |
-| React preview components | ❌ Build from scratch | ✅ Drop-in `SerpPreview`, `OgPreview`, `TwitterPreview`, `PreviewPanel` |
-| Framework support | ❌ Browser tools only | ✅ Next.js, Remix, Node.js, Edge, any JS environment |
+Character counting lies about search results. Google truncates titles and descriptions by rendered **pixel width**, so a 60-character title of narrow letters fits while a 55-character title of wide letters gets cut. This package uses per-character width tables to compute truncation the way Google actually does it, then validates your Open Graph and Twitter images against each platform's real dimension rules — all as pure computation with no browser in the loop.
 
-![SERP Preview Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/comparison.svg)
+|                        | Without                                  | With `@power-seo/preview`                                            |
+| ---------------------- | ---------------------------------------- | -------------------------------------------------------------------- |
+| SERP title truncation  | Guesswork from character count           | Pixel-accurate truncation at 580px                                   |
+| Description truncation | Unchecked, silently cut in results       | Pixel-accurate truncation at 920px                                   |
+| OG image validation    | Silent drop or crop by Facebook/LinkedIn | Dimension check with pass/fail and a recommended-size message        |
+| Twitter/X Card preview | Manual spec lookup per card type         | `summary` + `summary_large_image` with image validation              |
+| Breadcrumb URL         | Unknown until you publish                | Google-style `example.com › blog › post`                             |
+| React preview UI       | Build the cards from scratch             | Drop-in `SerpPreview`, `OgPreview`, `TwitterPreview`, `PreviewPanel` |
+| Runtime                | Browser-only SEO tools                   | Next.js, Remix, Node.js, Edge — any JS environment                   |
 
-
-<p align="left">
-  <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
-    <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
-  </a>
-</p>
+![Workflow comparison showing manual snippet checking after publishing versus instant automated preview validation with power-seo preview before publishing](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/roi.svg)
 
 ---
 
 ## Features
 
-- **Pixel-accurate SERP truncation** — `generateSerpPreview()` truncates title at 580px, description at 920px using character-width lookup tables
-- **Site title composition** — optional `siteTitle` field appended as `"title - siteTitle"` before truncation, matching Google's display format
-- **Google breadcrumb URL** — formats `https://example.com/blog/my-post` as `example.com › blog › my-post`
-- **Open Graph image validation** — `generateOgPreview()` validates image dimensions against the recommended 1200×630 minimum and reports pass/fail with a message
-- **Twitter/X Card support** — `generateTwitterPreview()` handles `summary` and `summary_large_image` card types with per-type image dimension requirements
-- **Low-level truncation primitive** — `truncateAtPixelWidth()` truncates any string at any pixel budget, usable independently of the preview generators
-- **Structured typed output** — returns plain data objects ready for any UI renderer; no HTML, no DOM required
+- **Pixel-accurate SERP truncation** — `generateSerpPreview()` truncates the title at 580px and the description at 920px using character-width lookup tables, not character counts
+- **Site title composition** — an optional `siteTitle` is appended as `"title - siteTitle"` before truncation, matching Google's display format
+- **Google breadcrumb URL** — formats `https://example.com/blog/my-post` as `example.com › blog › my-post`, stripping `www.` and query strings
+- **Open Graph image validation** — `generateOgPreview()` flags images below the 200×200 minimum as invalid and warns when they deviate from the recommended 1200×630
+- **Twitter/X Card support** — `generateTwitterPreview()` validates images against per-card-type minimums (`summary` 144×144, `summary_large_image` 800×418) and extracts the `@handle` domain
+- **Low-level truncation primitive** — `truncateAtPixelWidth(text, maxPixels)` truncates any string at any pixel budget, independent of the generators
+- **Structured typed output** — returns plain data objects ready for any renderer; no HTML, no DOM required
 - **React UI components** — pre-built `SerpPreview`, `OgPreview`, `TwitterPreview`, and `PreviewPanel` from the `/react` subpath
-- **Framework-agnostic** — works in Next.js, Remix, Gatsby, Vite, vanilla Node.js, Edge
-- **Full TypeScript support** — complete type definitions for all inputs, outputs, and validation results
 - **Tree-shakeable** — import only the generators you use; `"sideEffects": false`
-- **Zero runtime dependencies** — pure computation, no canvas, no browser, no external libraries
+- **Zero third-party runtime dependencies** — pure computation, no canvas, no browser
 
-![Preview UI Components](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/preview-ui.svg)
+![Preview UI components: Google, Facebook, and Twitter/X card mockups rendered from React](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/preview-ui.svg)
 
 ---
 
 ## Comparison
 
-| Feature | @power-seo/preview | Yoast SEO | next-seo | react-helmet | seo-analyzer |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Pixel-accurate SERP truncation | ✅ | ✅ (browser only) | ❌ | ❌ | ❌ |
-| SERP description truncation | ✅ | ✅ (browser only) | ❌ | ❌ | ❌ |
-| Google breadcrumb URL format | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Open Graph image validation | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Twitter/X Card preview generation | ✅ | ❌ | ❌ | ❌ | ❌ |
-| React preview components | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Works outside WordPress | ✅ | ❌ | ✅ | ✅ | ✅ |
-| Edge runtime safe | ✅ | ❌ | ✅ | ✅ | ❌ |
-| Structured data output (not HTML) | ✅ | ❌ | ❌ | ❌ | ❌ |
-| TypeScript-first | ✅ | ❌ | Partial | ❌ | ❌ |
-| Tree-shakeable | ✅ | ❌ | Partial | ❌ | ❌ |
-| CI / Node.js usage | ✅ | ❌ | ❌ | ❌ | ✅ |
-| Zero runtime dependencies | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Feature                           | @power-seo/preview |     Yoast SEO     | next-seo | react-helmet | seo-analyzer |
+| --------------------------------- | :----------------: | :---------------: | :------: | :----------: | :----------: |
+| Pixel-accurate SERP truncation    |         ✅         | ✅ (browser only) |    ❌    |      ❌      |      ❌      |
+| Description pixel truncation      |         ✅         | ✅ (browser only) |    ❌    |      ❌      |      ❌      |
+| Google breadcrumb URL format      |         ✅         |        ✅         |    ❌    |      ❌      |      ❌      |
+| Open Graph image validation       |         ✅         |        ❌         |    ❌    |      ❌      |      ❌      |
+| Twitter/X Card preview            |         ✅         |        ❌         |    ❌    |      ❌      |      ❌      |
+| React preview components          |         ✅         |        ✅         |    ❌    |      ❌      |      ❌      |
+| Works outside WordPress           |         ✅         |        ❌         |    ✅    |      ✅      |      ✅      |
+| Edge runtime safe                 |         ✅         |        ❌         |    ✅    |      ✅      |      ❌      |
+| Structured data output (not HTML) |         ✅         |        ❌         |    ❌    |      ❌      |      ❌      |
+| Tree-shakeable                    |         ✅         |        ❌         | Partial  |      ❌      |      ❌      |
 
-![Pixel Truncation Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/truncation-accuracy.svg)
+![Feature comparison matrix of @power-seo/preview versus Yoast SEO, next-seo, and react-helmet across SERP truncation, Open Graph validation, and Twitter Card preview](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/comparison.svg)
+
+![Pixel-width truncation matches Google SERP rendering more closely than character counting](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/truncation-accuracy.svg)
 
 ---
 
@@ -95,65 +89,36 @@ yarn add @power-seo/preview
 pnpm add @power-seo/preview
 ```
 
----
-
-## Quick Start
-
-```ts
-import { generateSerpPreview, generateOgPreview } from '@power-seo/preview';
-
-const serp = generateSerpPreview({
-  title: 'How to Add SEO to React Apps',
-  description: 'Learn how to add meta tags, Open Graph, and JSON-LD to any React application.',
-  url: 'https://example.com/blog/react-seo',
-  siteTitle: 'My Blog',  // optional — appended as "title - siteTitle"
-});
-
-console.log(serp.title);            // 'How to Add SEO to React Apps - My Blog' (truncated at 580px if too long)
-console.log(serp.displayUrl);       // 'example.com › blog › react-seo'
-console.log(serp.titleTruncated);   // false
-
-const og = generateOgPreview({
-  title: 'React SEO Guide',
-  description: 'Complete SEO for React',
-  url: 'https://example.com/blog/react-seo',
-  image: { url: 'https://example.com/og.jpg', width: 1200, height: 630 },
-});
-
-console.log(og.image?.valid);    // true
-console.log(og.image?.message);  // undefined (dimensions are correct)
-```
-
-![CMS Preview Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/cms-benefit.svg)
+React is an optional peer dependency (`^18 || ^19`) and only needed if you import from `@power-seo/preview/react`.
 
 ---
 
 ## Usage
 
-### Generating a Google SERP Preview
+### How do I generate a Google SERP preview?
 
-`generateSerpPreview()` computes the display title, breadcrumb URL, and description that Google would show, with pixel-accurate truncation flags.
+Call `generateSerpPreview(input)` with a `title`, `description`, and `url`. It returns the display title (with pixel truncation applied at 580px), a breadcrumb `displayUrl`, the description truncated at 920px, boolean truncation flags, and full `ValidationResult` objects from `@power-seo/core`. Pass an optional `siteTitle` to append `"title - siteTitle"` before truncation, exactly as Google composes branded titles.
 
 ```ts
 import { generateSerpPreview } from '@power-seo/preview';
 
 const serp = generateSerpPreview({
-  title: 'Next.js SEO Best Practices',
-  description: 'Learn how to optimize your Next.js app for search engines with meta tags and structured data.',
-  url: 'https://example.com/nextjs-seo',
-  siteTitle: 'Dev Blog',  // optional
+  title: 'How to Add SEO to React Apps',
+  description: 'Learn how to add meta tags, Open Graph, and JSON-LD to any React application.',
+  url: 'https://example.com/blog/react-seo',
+  siteTitle: 'My Blog', // optional — appended as "title - siteTitle"
 });
 
-// serp.title            → 'Next.js SEO Best Practices - Dev Blog' (possibly truncated)
-// serp.displayUrl       → 'example.com › nextjs-seo'
-// serp.description      → display description (possibly truncated at 920px)
-// serp.titleTruncated   → true | false
-// serp.titleValidation  → ValidationResult from @power-seo/core
+serp.title; // 'How to Add SEO to React Apps - My Blog' (truncated at 580px if too long)
+serp.displayUrl; // 'example.com › blog › react-seo'
+serp.description; // display description (truncated at 920px if too long)
+serp.titleTruncated; // false
+serp.titleValidation; // { valid, severity, message, charCount?, pixelWidth? }
 ```
 
-### Generating an Open Graph Preview
+### How do I validate an Open Graph image?
 
-`generateOgPreview()` validates image dimensions and returns a structured card data object for Facebook, LinkedIn, and other OG-compatible platforms.
+`generateOgPreview(input)` returns a structured card object for Facebook, LinkedIn, and other OG platforms. When you pass an `image` with `width` and `height`, it validates the dimensions: images smaller than 200×200 are marked `valid: false`, and images that pass the minimum but differ from the recommended 1200×630 stay `valid: true` with an advisory `message`. An exact 1200×630 image returns `valid: true` with no message.
 
 ```ts
 import { generateOgPreview } from '@power-seo/preview';
@@ -163,16 +128,27 @@ const og = generateOgPreview({
   description: 'Complete guide to adding SEO in React apps.',
   url: 'https://example.com/react-seo',
   siteName: 'Dev Blog',
+  image: { url: 'https://example.com/og.jpg', width: 1200, height: 630 },
+});
+
+og.image?.valid; // true
+og.image?.message; // undefined (exact recommended size)
+
+// A smaller-but-valid image gets an advisory message:
+const small = generateOgPreview({
+  title: 'React SEO Guide',
+  description: 'Complete guide.',
+  url: 'https://example.com/react-seo',
   image: { url: 'https://example.com/og.jpg', width: 800, height: 400 },
 });
 
-// og.image?.valid    → false (too small)
-// og.image?.message  → 'Image is 800x400px. Minimum size is 200x200px.'
+small.image?.valid; // true (above the 200x200 minimum)
+small.image?.message; // 'Image is 800x400px. Recommended size is 1200x630px.'
 ```
 
-### Generating a Twitter/X Card Preview
+### How do I generate a Twitter/X Card preview?
 
-`generateTwitterPreview()` handles both `summary` and `summary_large_image` card types, each with different image dimension requirements.
+`generateTwitterPreview(input)` handles both `summary` and `summary_large_image` card types, each with its own minimum image size. `summary` requires 144×144, `summary_large_image` requires 800×418; images below the minimum are flagged `valid: false`. The `site` handle (`'@myblog'`) is stripped of its leading `@` and returned as `domain`.
 
 ```ts
 import { generateTwitterPreview } from '@power-seo/preview';
@@ -181,37 +157,38 @@ const twitter = generateTwitterPreview({
   cardType: 'summary_large_image',
   title: 'React SEO Guide',
   description: 'Everything you need to add SEO to any React application.',
-  url: 'https://example.com/react-seo',
-  site: '@myblog',
   image: { url: 'https://example.com/twitter.jpg', width: 1200, height: 628 },
+  site: '@myblog',
 });
 
-// twitter.cardType  → 'summary_large_image'
-// twitter.domain    → 'myblog'
-// twitter.image?.valid → true
+twitter.cardType; // 'summary_large_image'
+twitter.domain; // 'myblog'
+twitter.image?.valid; // true (1200x628 exceeds the 800x418 minimum)
 ```
 
-### Using the Low-Level Truncation Primitive
+### How do I truncate a string at an exact pixel width?
 
-`truncateAtPixelWidth()` is a standalone utility — use it to truncate any string at any pixel budget, independent of the SERP generator.
+`truncateAtPixelWidth(text, maxPixels)` is the standalone primitive the SERP generator builds on. It walks the string using Google's per-character width table (falling back to a `6.67px` default for unlisted characters), appends `...` when it overflows, and reports whether truncation happened. Use it for CTAs, ad copy, or any width-constrained UI label.
 
 ```ts
 import { truncateAtPixelWidth } from '@power-seo/preview';
 
-const result = truncateAtPixelWidth('Buy Premium Running Shoes Online — Free Shipping Worldwide', 580);
+const result = truncateAtPixelWidth(
+  'Buy Premium Running Shoes Online — Free Shipping Worldwide',
+  580,
+);
 
-// result.text      → 'Buy Premium Running Shoes Online — Free Shippi...'
-// result.truncated → true
+result.text; // 'Buy Premium Running Shoes Online — Free Shippi...'
+result.truncated; // true
 ```
 
-### React Components
+### How do I render live preview cards in React?
 
-Import from the `/react` entry point for pre-built preview UI components:
+Import from the `/react` subpath. `PreviewPanel` renders a tabbed Google / Facebook / Twitter-X container in one component; `SerpPreview`, `OgPreview`, and `TwitterPreview` render each card individually. All are client-safe and recompute with `useMemo` as props change — ideal for a CMS editor sidebar.
 
 ```tsx
 import { SerpPreview, OgPreview, TwitterPreview, PreviewPanel } from '@power-seo/preview/react';
 
-// All-in-one tabbed panel (Google / Facebook / Twitter)
 function EditorSidebar() {
   return (
     <PreviewPanel
@@ -227,7 +204,6 @@ function EditorSidebar() {
   );
 }
 
-// Or use individual components
 function SerpCard() {
   return (
     <SerpPreview
@@ -240,9 +216,9 @@ function SerpCard() {
 }
 ```
 
-### Inside a CI Content Quality Gate
+### How do I fail a CI build on a truncated title or bad OG image?
 
-Block deploys when SERP titles or OG images fail validation:
+Run the generators in a Node.js script and exit non-zero when a title truncates or an OG image is invalid. Because the package has no network access and no browser dependency, it runs in a bare CI runner in milliseconds.
 
 ```ts
 import { generateSerpPreview, generateOgPreview } from '@power-seo/preview';
@@ -251,7 +227,7 @@ const serp = generateSerpPreview({ title, description, url, siteTitle });
 const og = generateOgPreview({ title, description, url, image });
 
 if (serp.titleTruncated) {
-  console.error('SERP title exceeds 580px — will be cut off in Google results');
+  console.error('SERP title exceeds 580px — it will be cut off in Google results');
   process.exit(1);
 }
 
@@ -261,249 +237,174 @@ if (og.image && !og.image.valid) {
 }
 ```
 
+![CMS live-preview benefit: authors see the SERP and social cards before they publish](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/preview/cms-benefit.svg)
+
 ---
 
 ## API Reference
 
-### Entry Points
+### Entry points
 
-| Import | Description |
-| --- | --- |
-| `@power-seo/preview` | Core preview generators and truncation utility |
-| `@power-seo/preview/react` | React components for preview UI |
+| Import                     | Description                                     |
+| -------------------------- | ----------------------------------------------- |
+| `@power-seo/preview`       | Preview generators and the truncation primitive |
+| `@power-seo/preview/react` | React components for preview UI                 |
 
-### `generateSerpPreview()`
+### `generateSerpPreview(input)`
 
 ```ts
 function generateSerpPreview(input: SerpPreviewInput): SerpPreviewData;
 ```
 
-#### `SerpPreviewInput`
+**`SerpPreviewInput`**
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | Page title |
-| `description` | `string` | ✅ | Meta description |
-| `url` | `string` | ✅ | Canonical page URL |
-| `siteTitle` | `string` | — | Site name — appended as `"title - siteTitle"` before truncation |
+| Prop          | Type     | Required | Description                                                    |
+| ------------- | -------- | :------: | -------------------------------------------------------------- |
+| `title`       | `string` |    ✅    | Page title                                                     |
+| `description` | `string` |    ✅    | Meta description                                               |
+| `url`         | `string` |    ✅    | Canonical page URL                                             |
+| `siteTitle`   | `string` |    —     | Site name, appended as `"title - siteTitle"` before truncation |
 
-#### `SerpPreviewData`
+**`SerpPreviewData`**
 
-| Output Field | Type | Description |
-| --- | --- | --- |
-| `title` | `string` | Display title (truncated at 580px if needed) |
-| `displayUrl` | `string` | Breadcrumb path (e.g. `example.com › blog › post`) |
-| `description` | `string` | Display description (truncated at 920px if needed) |
-| `titleTruncated` | `boolean` | Whether title was truncated |
-| `descriptionTruncated` | `boolean` | Whether description was truncated |
-| `titleValidation` | `ValidationResult` | Title length/pixel validation result |
-| `descriptionValidation` | `ValidationResult` | Description length/pixel validation result |
+| Field                   | Type               | Description                                                |
+| ----------------------- | ------------------ | ---------------------------------------------------------- |
+| `title`                 | `string`           | Display title, truncated at 580px if needed                |
+| `displayUrl`            | `string`           | Breadcrumb path, e.g. `example.com › blog › post`          |
+| `description`           | `string`           | Display description, truncated at 920px if needed          |
+| `titleTruncated`        | `boolean`          | Whether the title was truncated                            |
+| `descriptionTruncated`  | `boolean`          | Whether the description was truncated                      |
+| `titleValidation`       | `ValidationResult` | Title length/pixel validation from `@power-seo/core`       |
+| `descriptionValidation` | `ValidationResult` | Description length/pixel validation from `@power-seo/core` |
 
----
-
-### `generateOgPreview()`
+### `generateOgPreview(input)`
 
 ```ts
 function generateOgPreview(input: OgPreviewInput): OgPreviewData;
 ```
 
-#### `OgPreviewInput`
+**`OgPreviewInput`**
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | OG title |
-| `description` | `string` | ✅ | OG description |
-| `url` | `string` | ✅ | Canonical URL |
-| `image` | `{ url: string; width?: number; height?: number }` | — | OG image (recommended 1200×630) |
-| `siteName` | `string` | — | Site name displayed on the card |
+| Prop          | Type                                               | Required | Description                     |
+| ------------- | -------------------------------------------------- | :------: | ------------------------------- |
+| `title`       | `string`                                           |    ✅    | OG title                        |
+| `description` | `string`                                           |    ✅    | OG description                  |
+| `url`         | `string`                                           |    ✅    | Canonical URL                   |
+| `image`       | `{ url: string; width?: number; height?: number }` |    —     | OG image (recommended 1200×630) |
+| `siteName`    | `string`                                           |    —     | Site name displayed on the card |
 
-#### `OgPreviewData`
+**`OgPreviewData`** returns `{ title, description, url, siteName?, image? }`, where `image` is an `OgImageValidation`.
 
-| Output Field | Type | Description |
-| --- | --- | --- |
-| `title` | `string` | OG title |
-| `description` | `string` | OG description |
-| `url` | `string` | Canonical URL |
-| `siteName` | `string \| undefined` | Site name |
-| `image` | `OgImageValidation \| undefined` | Image with validation result (see below) |
+**`OgImageValidation`**
 
-#### `OgImageValidation`
+| Field     | Type      | Description                                                   |
+| --------- | --------- | ------------------------------------------------------------- |
+| `url`     | `string`  | Image URL                                                     |
+| `width`   | `number?` | Image width in pixels                                         |
+| `height`  | `number?` | Image height in pixels                                        |
+| `valid`   | `boolean` | `false` below the 200×200 minimum; otherwise `true`           |
+| `message` | `string?` | Advisory when the image differs from the recommended 1200×630 |
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `url` | `string` | Image URL |
-| `width` | `number \| undefined` | Image width in pixels |
-| `height` | `number \| undefined` | Image height in pixels |
-| `valid` | `boolean` | Whether the image meets OG dimension requirements |
-| `message` | `string \| undefined` | Human-readable validation message when dimensions deviate |
-
----
-
-### `generateTwitterPreview()`
+### `generateTwitterPreview(input)`
 
 ```ts
 function generateTwitterPreview(input: TwitterPreviewInput): TwitterPreviewData;
 ```
 
-#### `TwitterPreviewInput`
+**`TwitterPreviewInput`**
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `cardType` | `'summary' \| 'summary_large_image'` | ✅ | Twitter Card type |
-| `title` | `string` | ✅ | Card title |
-| `description` | `string` | ✅ | Card description |
-| `image` | `{ url: string; width?: number; height?: number }` | — | Card image |
-| `site` | `string` | — | Twitter @username of the site (e.g. `'@myblog'`) |
+| Prop          | Type                                               | Required | Description                            |
+| ------------- | -------------------------------------------------- | :------: | -------------------------------------- |
+| `cardType`    | `TwitterCardType`                                  |    ✅    | `'summary'` or `'summary_large_image'` |
+| `title`       | `string`                                           |    ✅    | Card title                             |
+| `description` | `string`                                           |    ✅    | Card description                       |
+| `image`       | `{ url: string; width?: number; height?: number }` |    —     | Card image                             |
+| `site`        | `string`                                           |    —     | Twitter/X `@handle` of the site        |
 
-#### `TwitterPreviewData`
+**`TwitterPreviewData`** returns `{ cardType, title, description, image?, domain? }`, where `image` is a `TwitterImageValidation` and `domain` is the `site` handle without its leading `@`.
 
-| Output Field | Type | Description |
-| --- | --- | --- |
-| `cardType` | `TwitterCardType` | The card type (`'summary'` or `'summary_large_image'`) |
-| `title` | `string` | Card title |
-| `description` | `string` | Card description |
-| `image` | `TwitterImageValidation \| undefined` | Image with validation result |
-| `domain` | `string \| undefined` | Extracted domain from `site` handle |
+**`TwitterImageValidation`**
 
-#### `TwitterImageValidation`
+| Field     | Type      | Description                                                       |
+| --------- | --------- | ----------------------------------------------------------------- |
+| `url`     | `string`  | Image URL                                                         |
+| `width`   | `number?` | Image width in pixels                                             |
+| `height`  | `number?` | Image height in pixels                                            |
+| `valid`   | `boolean` | `false` below the card minimum (`summary` 144×144, large 800×418) |
+| `message` | `string?` | Advisory when the image is below the recommended minimum          |
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `url` | `string` | Image URL |
-| `width` | `number \| undefined` | Image width in pixels |
-| `height` | `number \| undefined` | Image height in pixels |
-| `valid` | `boolean` | Whether the image meets Twitter Card dimension requirements |
-| `message` | `string \| undefined` | Human-readable validation message when dimensions deviate from recommended sizes |
-
----
-
-### `truncateAtPixelWidth()`
+### `truncateAtPixelWidth(text, maxPixels)`
 
 ```ts
 function truncateAtPixelWidth(text: string, maxPixels: number): TruncateResult;
 ```
 
-#### `TruncateResult`
+Returns `{ text: string; truncated: boolean }`. Appends `...` (accounting for the ellipsis pixel cost) when the input exceeds `maxPixels`.
 
-| Output Field | Type | Description |
-| --- | --- | --- |
-| `text` | `string` | Resulting (possibly truncated) string |
-| `truncated` | `boolean` | Whether truncation occurred |
+### React components
 
----
+Import from `@power-seo/preview/react`.
 
-### React Components
-
-Import all components from `@power-seo/preview/react`.
-
-```ts
-import { SerpPreview, OgPreview, TwitterPreview, PreviewPanel } from '@power-seo/preview/react';
-```
-
-#### `SerpPreview`
-
-Renders a Google-style SERP result card.
-
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | Page title |
-| `description` | `string` | ✅ | Meta description |
-| `url` | `string` | ✅ | Canonical URL |
-| `siteTitle` | `string` | — | Site name — appended to title as `"title - siteTitle"` |
-
-#### `OgPreview`
-
-Renders a Facebook/Open Graph card mockup.
-
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | OG title |
-| `description` | `string` | ✅ | OG description |
-| `url` | `string` | ✅ | Canonical URL |
-| `image` | `{ url: string; width?: number; height?: number }` | — | OG image |
-| `siteName` | `string` | — | Site name shown above the title |
-
-#### `TwitterPreview`
-
-Renders a Twitter/X card mockup for `summary` or `summary_large_image` card types.
-
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `cardType` | `TwitterCardType` | ✅ | `'summary'` or `'summary_large_image'` |
-| `title` | `string` | ✅ | Card title |
-| `description` | `string` | ✅ | Card description |
-| `image` | `{ url: string; width?: number; height?: number }` | — | Card image |
-| `site` | `string` | — | Twitter @username of the site |
-
-#### `PreviewPanel`
-
-Tabbed container with Google, Facebook, and Twitter/X preview cards in a single component.
-
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | ✅ | Page title |
-| `description` | `string` | ✅ | Meta description |
-| `url` | `string` | ✅ | Canonical URL |
-| `image` | `{ url: string; width?: number; height?: number }` | — | Shared image for OG and Twitter cards |
-| `siteName` | `string` | — | OG site name |
-| `siteTitle` | `string` | — | SERP site name (appended to title) |
-| `twitterSite` | `string` | — | Twitter @username |
-| `twitterCardType` | `TwitterCardType` | — | Twitter Card type (default: `'summary_large_image'`) |
+| Component        | Props                                                                                                                                    |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `SerpPreview`    | `title`, `description`, `url`, `siteTitle?`                                                                                              |
+| `OgPreview`      | `title`, `description`, `url`, `image?`, `siteName?`                                                                                     |
+| `TwitterPreview` | `cardType`, `title`, `description`, `image?`, `site?`                                                                                    |
+| `PreviewPanel`   | `title`, `description`, `url`, `image?`, `siteName?`, `siteTitle?`, `twitterSite?`, `twitterCardType?` (default `'summary_large_image'`) |
 
 ---
 
-### Types
+## Types
 
-| Type | Description |
-| --- | --- |
-| `SerpPreviewInput` | Input shape for `generateSerpPreview()` |
-| `SerpPreviewData` | Output shape from `generateSerpPreview()` |
-| `OgPreviewInput` | Input shape for `generateOgPreview()` |
-| `OgPreviewData` | Output shape from `generateOgPreview()` |
-| `OgImageValidation` | Image validation result on `OgPreviewData.image` |
-| `TwitterPreviewInput` | Input shape for `generateTwitterPreview()` |
-| `TwitterPreviewData` | Output shape from `generateTwitterPreview()` |
-| `TwitterImageValidation` | Image validation result on `TwitterPreviewData.image` |
-| `TruncateResult` | Output shape from `truncateAtPixelWidth()` |
-| `TwitterCardType` | `'summary' \| 'summary_large_image'` (from `@power-seo/core`) |
-| `ValidationResult` | Title/description validation result (from `@power-seo/core`) |
+| Type                     | Description                                                                        |
+| ------------------------ | ---------------------------------------------------------------------------------- |
+| `SerpPreviewInput`       | Input shape for `generateSerpPreview()`                                            |
+| `SerpPreviewData`        | Output shape from `generateSerpPreview()`                                          |
+| `OgPreviewInput`         | Input shape for `generateOgPreview()`                                              |
+| `OgPreviewData`          | Output shape from `generateOgPreview()`                                            |
+| `OgImageValidation`      | Image validation result on `OgPreviewData.image`                                   |
+| `TwitterPreviewInput`    | Input shape for `generateTwitterPreview()`                                         |
+| `TwitterPreviewData`     | Output shape from `generateTwitterPreview()`                                       |
+| `TwitterImageValidation` | Image validation result on `TwitterPreviewData.image`                              |
+| `TruncateResult`         | Output shape from `truncateAtPixelWidth()`                                         |
+| `TwitterCardType`        | `'summary' \| 'summary_large_image' \| 'app' \| 'player'` (from `@power-seo/core`) |
+| `ValidationResult`       | Title/description validation result (from `@power-seo/core`)                       |
 
 ---
 
 ## Use Cases
 
-- **CMS live preview panels** — show authors how their title and description appear in Google before publishing
+- **CMS live preview panels** — show authors the Google and social cards before publishing
 - **SEO auditing pipelines** — detect truncated titles and invalid OG images at build time
-- **Programmatic SEO sites** — validate auto-generated titles for thousands of pages at once
-- **Social media schedulers** — validate OG image dimensions before queuing posts
-- **SaaS marketing dashboards** — show SERP and social card previews for every page
-- **Blog platforms** — live preview as editors type the meta description
-- **eCommerce product pages** — ensure product image dimensions meet OG card requirements
-- **Landing page builders** — embed SERP and social card previews in the editor UI
-- **CI content quality gates** — fail builds when SERP titles are truncated or OG images are too small
+- **Programmatic SEO sites** — validate auto-generated titles across thousands of pages at once
+- **Social media schedulers** — check OG and Twitter image dimensions before queuing posts
+- **SaaS marketing dashboards** — render SERP and social previews for every page in a project
+- **Blog platforms** — live-preview the meta description as editors type
+- **eCommerce product pages** — ensure product images meet OG and Twitter card requirements
+- **CI content quality gates** — fail builds when titles truncate or images are too small
 
 ---
 
 ## Architecture Overview
 
-- **Pure TypeScript** — no compiled binary, no native modules
-- **Zero runtime dependencies** — only `@power-seo/core` as a peer dependency
-- **Character-width lookup** — pixel truncation uses per-character width tables matching Google's SERP font metrics, not character counts
-- **Framework-agnostic** — works in any JavaScript environment
-- **SSR compatible** — safe to run in Next.js Server Components, Remix loaders, or Express handlers
-- **Edge runtime safe** — no Node.js-specific APIs; no `fs`, no `canvas`; runs in Cloudflare Workers, Vercel Edge, Deno
-- **Tree-shakeable** — `"sideEffects": false` with named exports per generator function
-- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
-- **React optional** — React is a peer dependency; the `/react` subpath is only included when React is present
+- **Pure TypeScript** — no compiled binary, no native modules, no canvas
+- **Character-width pixel model** — truncation uses per-character width tables (with a `6.67px` default) matching Google's SERP font metrics, not character counts
+- **Structured output** — generators return plain data objects, so any renderer or serializer can consume them
+- **SSR compatible** — safe in Next.js Server Components, Remix loaders, and Express handlers
+- **Edge runtime safe** — no `fs`, no `canvas`, no Node-specific APIs; runs on Cloudflare Workers, Vercel Edge, and Deno
+- **Tree-shakeable** — `"sideEffects": false` with a named export per generator
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()`
+- **React optional** — React is an optional peer dependency; the `/react` subpath is only pulled in when you import it
 
 ---
 
 ## Supply Chain Security
 
+- Published to npm with **provenance attestation** — every release is built and signed by the verified `github.com/CyberCraftBD/power-seo` GitHub Actions workflow, so you can trace each tarball back to its exact source commit
+- **Zero third-party runtime dependencies** — packages depend only on other `@power-seo` packages, nothing else gets pulled in
+- **No network access at runtime** — pure computation on the inputs you pass; nothing is fetched, phoned home, or telemetered
 - No install scripts (`postinstall`, `preinstall`)
-- No runtime network access
 - No `eval` or dynamic code execution
-- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
 - Safe for SSR, Edge, and server environments
 
 ---
@@ -512,25 +413,31 @@ Tabbed container with Google, Facebook, and Twitter/X preview cards in a single 
 
 All 17 packages are independently installable — use only what you need.
 
-| Package | Install | Description |
-| --- | --- | --- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 22 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                                        |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------------- |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic prompt templates and response parsers for AI-assisted SEO             |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge Search Console data with audit results — trends and ranking insights         |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | SEO site health auditing with meta, content, structure, and performance rules      |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content analysis engine with scoring, checks, and React components |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic SEO analysis engines, types, validators, and utilities          |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO analysis — alt text quality, lazy loading, formats, image sitemaps       |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with a shared rate-limited HTTP client              |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Internal link graph analysis — orphan detection, suggestions, equity scoring       |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta tag helpers for Next.js App Router, Remix v2, and generic SSR             |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter Card preview generators with React components        |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta tags, Open Graph, Twitter Card, breadcrumbs            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI               |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect rule engine with Next.js, Remix, and Express adapters                     |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 schema.org builders plus React components   |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API client — OAuth2, service accounts, rate limiting, retry  |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, and validation with image, video, news support  |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | Analytics script builders with consent management and React components             |
+
+---
+
+## Keywords
+
+seo, serp preview, serp snippet, pixel truncation, title truncation, meta description truncation, open graph preview, og image validation, twitter card, x card, social preview, meta preview, seo tooling, nextjs seo, react seo, cms preview, edge runtime, typescript
 
 ---
 

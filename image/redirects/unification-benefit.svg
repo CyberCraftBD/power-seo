@@ -1,52 +1,65 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">One Rule Set. Three Middleware Targets.</text>
-  <!-- Left: scattered approach -->
-  <rect x="30" y="58" width="380" height="300" rx="8" fill="#161b22"/>
-  <rect x="30" y="58" width="380" height="34" rx="8" fill="#1a0505"/>
-  <text x="220" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Before — Scattered configs</text>
-  <!-- Express redirects.js -->
-  <rect x="48" y="110" width="344" height="34" rx="4" fill="#0d1117"/>
-  <text x="64" y="131" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">// express-redirects.js — 47 lines</text>
-  <rect x="48" y="152" width="344" height="34" rx="4" fill="#0d1117"/>
-  <text x="64" y="173" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">// next.config.js redirects — 89 lines</text>
-  <rect x="48" y="194" width="344" height="34" rx="4" fill="#0d1117"/>
-  <text x="64" y="215" font-family="'Courier New', monospace" font-size="12" fill="#6b7280">// nginx.conf location blocks — 120 lines</text>
-  <!-- Pain points -->
-  <text x="48" y="260" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ Same rules in 3 different formats</text>
-  <text x="48" y="280" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ Update one, forget the others</text>
-  <text x="48" y="300" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ No loop detection across configs</text>
-  <text x="48" y="320" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ Conflicts cause 500 errors</text>
-  <!-- Arrow -->
-  <text x="450" y="218" font-family="'Segoe UI', sans-serif" font-size="36" fill="#f97316" text-anchor="middle" font-weight="700">→</text>
-  <!-- Right: unified approach -->
-  <rect x="490" y="58" width="380" height="300" rx="8" fill="#161b22"/>
-  <rect x="490" y="58" width="380" height="34" rx="8" fill="#1f1005"/>
-  <text x="680" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#f97316" text-anchor="middle">After — @power-seo/redirects</text>
-  <!-- Single rule file -->
-  <rect x="508" y="100" width="344" height="110" rx="4" fill="#0d1117"/>
-  <text x="524" y="122" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// rules.ts — defined once</text>
-  <text x="524" y="144" font-family="'Courier New', monospace" font-size="12" fill="#f97316">engine</text>
-  <text x="580" y="144" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">.</text>
-  <text x="586" y="144" font-family="'Courier New', monospace" font-size="12" fill="#8b5cf6">addRule</text>
-  <text x="640" y="144" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">(&#123; from, to, status &#125;)</text>
-  <!-- Arrow lines from single source to 3 targets -->
-  <line x1="680" y1="220" x2="540" y2="260" stroke="#f97316" stroke-width="2" opacity="0.7"/>
-  <line x1="680" y1="220" x2="680" y2="260" stroke="#f97316" stroke-width="2" opacity="0.7"/>
-  <line x1="680" y1="220" x2="820" y2="260" stroke="#f97316" stroke-width="2" opacity="0.7"/>
-  <circle cx="680" cy="220" r="8" fill="#f97316"/>
-  <!-- Target badges -->
-  <rect x="508" y="262" width="80" height="28" rx="6" fill="#f97316" opacity="0.2"/>
-  <text x="548" y="280" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Express</text>
-  <rect x="640" y="262" width="80" height="28" rx="6" fill="#f97316" opacity="0.2"/>
-  <text x="680" y="280" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Next.js</text>
-  <rect x="772" y="262" width="80" height="28" rx="6" fill="#f97316" opacity="0.2"/>
-  <text x="812" y="280" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">Fastify</text>
-  <!-- Benefits -->
-  <text x="508" y="320" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Define once, deploy everywhere</text>
-  <text x="508" y="340" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Automatic loop detection</text>
-  <text x="508" y="360" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ TypeScript typed rules</text>
-  <!-- Caption -->
-  <text x="450" y="410" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Write redirect rules once. Run them anywhere.</text>
-  <text x="450" y="434" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/redirects — Express · Next.js · Fastify · pattern matching · loop detection</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>One shared RedirectRule array feeding the Next.js, Remix, and Express adapters of @power-seo/redirects from a single typed config file</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">One Rule Set. Three Frameworks.</text>
+  <text x="450" y="66" class="font-ui" font-size="13" fill="#64748b" text-anchor="middle">Tree-shakeable adapters &#8212; import only the framework you target</text>
+
+  <!-- source card -->
+  <rect x="48" y="150" width="310" height="220" rx="8" fill="#ffffff" stroke="#2563eb"/>
+  <rect x="49" y="151" width="308" height="40" rx="8" fill="#f8fafc"/>
+  <line x1="48" y1="191" x2="358" y2="191" stroke="#e2e8f0"/>
+  <text x="70" y="176" class="font-mono" font-size="13" font-weight="600" fill="#0f172a">redirects.config.ts</text>
+  <rect x="256" y="161" width="88" height="21" rx="10" fill="#dbeafe"/>
+  <text x="300" y="176" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">RedirectRule[]</text>
+
+  <text x="70" y="220" class="font-mono" font-size="12"><tspan fill="#7c3aed">export const</tspan><tspan fill="#0f172a"> rules = [</tspan></text>
+  <text x="84" y="244" class="font-mono" font-size="12"><tspan fill="#0f172a">{ source: </tspan><tspan fill="#16a34a">'/old-about'</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="98" y="266" class="font-mono" font-size="12"><tspan fill="#0f172a">destination: </tspan><tspan fill="#16a34a">'/about'</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="98" y="288" class="font-mono" font-size="12"><tspan fill="#0f172a">statusCode: </tspan><tspan fill="#2563eb">301</tspan><tspan fill="#0f172a"> },</tspan></text>
+  <text x="84" y="312" class="font-mono" font-size="12"><tspan fill="#0f172a">{ source: </tspan><tspan fill="#16a34a">'/blog/:slug'</tspan><tspan fill="#0f172a">, &#8230; },</tspan></text>
+  <text x="70" y="336" class="font-mono" font-size="12" fill="#0f172a">];</text>
+  <text x="70" y="358" class="font-mono" font-size="11" fill="#94a3b8">// one file &#8212; imported everywhere</text>
+
+  <!-- connectors -->
+  <path d="M 358 260 C 420 260 420 130 480 130" stroke="#2563eb" stroke-width="1.6" fill="none"/>
+  <path d="M 473 124 L 480 130 L 473 136" stroke="#2563eb" stroke-width="1.6" fill="none"/>
+  <path d="M 358 260 L 480 260" stroke="#2563eb" stroke-width="1.6" fill="none"/>
+  <path d="M 473 254 L 480 260 L 473 266" stroke="#2563eb" stroke-width="1.6" fill="none"/>
+  <path d="M 358 260 C 420 260 420 390 480 390" stroke="#2563eb" stroke-width="1.6" fill="none"/>
+  <path d="M 473 384 L 480 390 L 473 396" stroke="#2563eb" stroke-width="1.6" fill="none"/>
+
+  <!-- Next.js card -->
+  <rect x="490" y="86" width="362" height="104" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="512" y="116" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Next.js</text>
+  <rect x="746" y="99" width="88" height="22" rx="11" fill="#dcfce7"/>
+  <text x="790" y="114" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">next.config.js</text>
+  <rect x="512" y="130" width="318" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="524" y="150" class="font-mono" font-size="12"><tspan fill="#2563eb">toNextRedirects</tspan><tspan fill="#0f172a">(rules)</tspan></text>
+  <text x="512" y="180" class="font-ui" font-size="11" fill="#94a3b8">statusCode: 301 maps to permanent: true automatically</text>
+
+  <!-- Remix card -->
+  <rect x="490" y="212" width="362" height="104" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="512" y="242" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Remix</text>
+  <rect x="762" y="225" width="72" height="22" rx="11" fill="#dcfce7"/>
+  <text x="798" y="240" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">loader</text>
+  <rect x="512" y="256" width="318" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="524" y="276" class="font-mono" font-size="12"><tspan fill="#2563eb">createRemixRedirectHandler</tspan><tspan fill="#0f172a">(rules)</tspan></text>
+  <text x="512" y="306" class="font-ui" font-size="11" fill="#94a3b8">Returns a Remix-compatible loader function</text>
+
+  <!-- Express card -->
+  <rect x="490" y="338" width="362" height="104" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="512" y="368" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Express</text>
+  <rect x="742" y="351" width="92" height="22" rx="11" fill="#dcfce7"/>
+  <text x="788" y="366" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">middleware</text>
+  <rect x="512" y="382" width="318" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="524" y="402" class="font-mono" font-size="12"><tspan fill="#2563eb">createExpressRedirectMiddleware</tspan><tspan fill="#0f172a">(rules)</tspan></text>
+  <text x="512" y="432" class="font-ui" font-size="11" fill="#94a3b8">Returns an Express RequestHandler for app.use()</text>
+
+  <!-- footer note -->
+  <text x="48" y="452" class="font-ui" font-size="12" fill="#64748b">Fix a rule once in redirects.config.ts &#8212; every framework picks it up on the next build. No config drift.</text>
 </svg>

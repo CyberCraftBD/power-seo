@@ -1,57 +1,87 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Build your schema editor with @power-seo/schema</text>
-  <!-- CMS Panel -->
-  <rect x="30" y="54" width="540" height="400" rx="8" fill="#161b22"/>
-  <rect x="30" y="54" width="540" height="40" rx="8" fill="#1e2430"/>
-  <rect x="30" y="82" width="540" height="12" fill="#1e2430"/>
-  <text x="300" y="80" font-family="'Segoe UI', sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle">Schema Editor</text>
-  <!-- Schema type dropdown -->
-  <text x="50" y="122" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Schema Type</text>
-  <rect x="50" y="130" width="480" height="36" rx="6" fill="#0d1117" stroke="#0ea5e9" stroke-width="1.5"/>
-  <text x="66" y="153" font-family="'Segoe UI', sans-serif" font-size="14" fill="#0ea5e9">Article</text>
-  <text x="510" y="153" font-family="'Segoe UI', sans-serif" font-size="14" fill="#6b7280">▾</text>
-  <!-- Form fields -->
-  <text x="50" y="188" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Headline *</text>
-  <rect x="50" y="196" width="480" height="34" rx="4" fill="#0d1117" stroke="#374151" stroke-width="1"/>
-  <text x="62" y="218" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">Understanding TypeScript SEO</text>
-  <text x="50" y="248" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Author Name *</text>
-  <rect x="50" y="256" width="480" height="34" rx="4" fill="#0d1117" stroke="#374151" stroke-width="1"/>
-  <text x="62" y="278" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">Jane Doe</text>
-  <text x="50" y="308" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Date Published *</text>
-  <rect x="50" y="316" width="480" height="34" rx="4" fill="#0d1117" stroke="#374151" stroke-width="1"/>
-  <text x="62" y="338" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">2025-01-15</text>
-  <text x="50" y="368" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">URL *</text>
-  <rect x="50" y="376" width="480" height="34" rx="4" fill="#0d1117" stroke="#374151" stroke-width="1"/>
-  <text x="62" y="398" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0">https://example.com/understanding-ts-seo</text>
-  <!-- Validation check -->
-  <rect x="50" y="420" width="480" height="26" rx="4" fill="#166534" opacity="0.5"/>
-  <text x="60" y="437" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ All required fields present — schema valid</text>
-  <!-- Preview Panel -->
-  <rect x="590" y="54" width="280" height="400" rx="8" fill="#1e2430"/>
-  <text x="730" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#0ea5e9" text-anchor="middle" font-weight="600">Google Preview</text>
-  <!-- Mock Google result -->
-  <rect x="608" y="98" width="244" height="180" rx="4" fill="#ffffff"/>
-  <rect x="614" y="104" width="50" height="20" rx="10" fill="#e8f0fe"/>
-  <text x="639" y="118" font-family="'Segoe UI', sans-serif" font-size="10" fill="#1a73e8" text-anchor="middle">Article</text>
-  <text x="614" y="144" font-family="'Segoe UI', sans-serif" font-size="11" fill="#3c4043">example.com › blog</text>
-  <text x="614" y="163" font-family="'Segoe UI', sans-serif" font-size="13" fill="#1a0dab" font-weight="400">Understanding TypeScript SEO</text>
-  <text x="614" y="182" font-family="'Segoe UI', sans-serif" font-size="11" fill="#3c4043">Comprehensive guide to TypeScript</text>
-  <text x="614" y="196" font-family="'Segoe UI', sans-serif" font-size="11" fill="#3c4043">SEO patterns and best practices.</text>
-  <text x="614" y="216" font-family="'Segoe UI', sans-serif" font-size="11" fill="#70757a">Jane Doe · Jan 15, 2025</text>
-  <!-- JSON-LD output -->
-  <rect x="608" y="298" width="244" height="140" rx="4" fill="#0d1117"/>
-  <text x="620" y="316" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">&#123;</text>
-  <text x="628" y="330" font-family="'Courier New', monospace" font-size="9" fill="#0ea5e9">"@type"</text>
-  <text x="668" y="330" font-family="'Courier New', monospace" font-size="9" fill="#e2e8f0">: "Article",</text>
-  <text x="628" y="344" font-family="'Courier New', monospace" font-size="9" fill="#0ea5e9">"headline"</text>
-  <text x="672" y="344" font-family="'Courier New', monospace" font-size="9" fill="#e2e8f0">: "...",</text>
-  <text x="628" y="358" font-family="'Courier New', monospace" font-size="9" fill="#0ea5e9">"author"</text>
-  <text x="664" y="358" font-family="'Courier New', monospace" font-size="9" fill="#e2e8f0">: &#123;...&#125;,</text>
-  <text x="628" y="372" font-family="'Courier New', monospace" font-size="9" fill="#0ea5e9">"datePublished"</text>
-  <text x="714" y="372" font-family="'Courier New', monospace" font-size="9" fill="#e2e8f0">: "..."</text>
-  <text x="620" y="386" font-family="'Courier New', monospace" font-size="9" fill="#8b949e">&#125;</text>
-  <text x="730" y="422" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">injected as &lt;script type="application/ld+json"&gt;</text>
-  <!-- Caption -->
-  <text x="450" y="490" font-family="'Segoe UI', sans-serif" font-size="13" fill="#0ea5e9" text-anchor="middle">@power-seo/schema — 23 schema types · React components · validateSchema()</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>App mockup of a schema editor built with @power-seo/schema React components rendering an ArticleJsonLd script tag</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <rect x="16" y="18" width="24" height="24" rx="6" fill="#2563eb"/>
+  <text x="28" y="35" class="font-mono" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">{}</text>
+  <text x="48" y="35" class="font-ui" font-size="13" font-weight="700" fill="#0f172a">power-seo</text>
+  <rect x="12" y="64" width="156" height="30" rx="6" fill="#dbeafe"/>
+  <text x="24" y="84" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Structured Data</text>
+  <text x="24" y="122" class="font-ui" font-size="13" fill="#64748b">Meta Tags</text>
+  <text x="24" y="156" class="font-ui" font-size="13" fill="#64748b">Sitemap</text>
+  <text x="24" y="190" class="font-ui" font-size="13" fill="#64748b">Content Analysis</text>
+  <text x="24" y="224" class="font-ui" font-size="13" fill="#64748b">Audit</text>
+
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Article schema — /blog/my-blog-post</text>
+  <rect x="768" y="11" width="112" height="30" rx="6" fill="#2563eb"/>
+  <text x="824" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Validate schema</text>
+
+  <!-- left card: component code -->
+  <rect x="204" y="72" width="332" height="404" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="222" y="100" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">React component</text>
+  <rect x="452" y="84" width="68" height="20" rx="10" fill="#dbeafe"/>
+  <text x="486" y="98" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">page.tsx</text>
+  <line x1="204" y1="112" x2="536" y2="112" stroke="#e2e8f0"/>
+
+  <text x="222" y="140" class="font-mono" font-size="12"><tspan fill="#7c3aed">import</tspan><tspan fill="#0f172a"> { ArticleJsonLd }</tspan></text>
+  <text x="234" y="160" class="font-mono" font-size="12"><tspan fill="#7c3aed">from</tspan><tspan fill="#16a34a"> '@power-seo/schema/react'</tspan><tspan fill="#0f172a">;</tspan></text>
+  <text x="222" y="192" class="font-mono" font-size="12"><tspan fill="#0f172a">&lt;</tspan><tspan fill="#2563eb">ArticleJsonLd</tspan></text>
+  <text x="238" y="214" class="font-mono" font-size="12"><tspan fill="#7c3aed">headline</tspan><tspan fill="#0f172a">=</tspan><tspan fill="#16a34a">"My Blog Post"</tspan></text>
+  <text x="238" y="236" class="font-mono" font-size="12"><tspan fill="#7c3aed">datePublished</tspan><tspan fill="#0f172a">=</tspan><tspan fill="#16a34a">"2026-01-15"</tspan></text>
+  <text x="238" y="258" class="font-mono" font-size="12"><tspan fill="#7c3aed">author</tspan><tspan fill="#0f172a">={{ name: </tspan><tspan fill="#16a34a">'Jane Doe'</tspan><tspan fill="#0f172a"> }}</tspan></text>
+  <text x="238" y="280" class="font-mono" font-size="12"><tspan fill="#7c3aed">image</tspan><tspan fill="#0f172a">={{ url: </tspan><tspan fill="#16a34a">'…/cover.jpg'</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="254" y="302" class="font-mono" font-size="12"><tspan fill="#0f172a">width: </tspan><tspan fill="#0891b2">1200</tspan><tspan fill="#0f172a">, height: </tspan><tspan fill="#0891b2">630</tspan><tspan fill="#0f172a"> }}</tspan></text>
+  <text x="222" y="324" class="font-mono" font-size="12" fill="#0f172a">/&gt;</text>
+
+  <line x1="222" y1="344" x2="518" y2="344" stroke="#e2e8f0"/>
+  <text x="222" y="370" class="font-ui" font-size="12" font-weight="600" fill="#64748b">22 COMPONENTS AVAILABLE</text>
+  <rect x="222" y="382" width="92" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="268" y="397" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">ProductJsonLd</text>
+  <rect x="322" y="382" width="76" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="360" y="397" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">FAQJsonLd</text>
+  <rect x="406" y="382" width="112" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="462" y="397" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">BreadcrumbJsonLd</text>
+  <rect x="222" y="412" width="98" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="271" y="427" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">RecipeJsonLd</text>
+  <rect x="328" y="412" width="88" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="372" y="427" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">EventJsonLd</text>
+  <rect x="424" y="412" width="60" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="454" y="427" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">+ 16</text>
+
+  <!-- right card: rendered output -->
+  <rect x="552" y="72" width="328" height="300" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="570" y="100" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Rendered output</text>
+  <rect x="792" y="84" width="72" height="20" rx="10" fill="#dcfce7"/>
+  <text x="828" y="98" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">In &lt;head&gt;</text>
+  <line x1="552" y1="112" x2="880" y2="112" stroke="#e2e8f0"/>
+
+  <rect x="568" y="126" width="296" height="228" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="582" y="150" class="font-mono" font-size="11"><tspan fill="#0f172a">&lt;</tspan><tspan fill="#2563eb">script</tspan><tspan fill="#7c3aed"> type</tspan><tspan fill="#0f172a">=</tspan><tspan fill="#16a34a">"application/ld+json"</tspan><tspan fill="#0f172a">&gt;</tspan></text>
+  <text x="582" y="172" class="font-mono" font-size="11" fill="#0f172a">{</text>
+  <text x="596" y="192" class="font-mono" font-size="11"><tspan fill="#2563eb">"@context"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"https://schema.org"</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="596" y="212" class="font-mono" font-size="11"><tspan fill="#2563eb">"@type"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"Article"</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="596" y="232" class="font-mono" font-size="11"><tspan fill="#2563eb">"headline"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"My Blog Post"</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="596" y="252" class="font-mono" font-size="11"><tspan fill="#2563eb">"datePublished"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"2026-01-15"</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="596" y="272" class="font-mono" font-size="11"><tspan fill="#2563eb">"author"</tspan><tspan fill="#0f172a">: { </tspan><tspan fill="#2563eb">"@type"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"Person"</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="640" y="292" class="font-mono" font-size="11"><tspan fill="#2563eb">"name"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"Jane Doe"</tspan><tspan fill="#0f172a"> }</tspan></text>
+  <text x="582" y="312" class="font-mono" font-size="11" fill="#0f172a">}</text>
+  <text x="582" y="334" class="font-mono" font-size="11"><tspan fill="#0f172a">&lt;/</tspan><tspan fill="#2563eb">script</tspan><tspan fill="#0f172a">&gt;</tspan></text>
+
+  <!-- validation strip -->
+  <rect x="552" y="388" width="328" height="88" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="570" y="414" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">validateSchema()</text>
+  <rect x="782" y="399" width="82" height="20" rx="10" fill="#dcfce7"/>
+  <text x="823" y="413" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">valid: true</text>
+  <text x="570" y="440" class="font-ui" font-size="12" fill="#64748b">Required: headline, author, datePublished ✓</text>
+  <text x="570" y="460" class="font-ui" font-size="12" fill="#64748b">Recommended: image, dateModified ✓</text>
 </svg>

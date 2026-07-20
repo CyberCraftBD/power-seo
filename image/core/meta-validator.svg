@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Meta validator interface showing pixel-accurate title and meta description validation against Google SERP limits using validateTitle and validateMetaDescription</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <!-- top bar -->
+  <rect width="900" height="52" fill="#ffffff"/>
+  <line x1="0" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="24" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Meta Validator</text>
+  <rect x="788" y="11" width="88" height="30" rx="6" fill="#2563eb"/>
+  <text x="832" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Validate</text>
+
+  <!-- title card -->
+  <rect x="24" y="72" width="852" height="196" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="44" y="100" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Page title</text>
+  <rect x="792" y="84" width="64" height="22" rx="11" fill="#dcfce7"/>
+  <text x="824" y="99" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">valid</text>
+  <rect x="44" y="112" width="812" height="36" rx="6" fill="#f1f5f9"/>
+  <text x="58" y="135" class="font-ui" font-size="13" fill="#0f172a">Server-Side Rendering Explained: A Practical Guide for React</text>
+  <!-- pixel gauge -->
+  <text x="44" y="176" class="font-ui" font-size="11" fill="#94a3b8">Pixel width — calculatePixelWidth() with Google SERP font metrics</text>
+  <rect x="44" y="186" width="812" height="10" rx="5" fill="#e2e8f0"/>
+  <rect x="44" y="186" width="716" height="10" rx="5" fill="#2563eb"/>
+  <rect x="852" y="180" width="3" height="22" rx="1.5" fill="#ef4444"/>
+  <text x="44" y="222" class="font-mono" font-size="12" fill="#0f172a">pixelWidth: 511.4 <tspan fill="#94a3b8">/ TITLE_MAX_PIXELS 580</tspan></text>
+  <text x="44" y="248" class="font-mono" font-size="12" fill="#0f172a">charCount: 60 <tspan fill="#94a3b8">(TITLE_MIN_LENGTH 50 – TITLE_MAX_LENGTH 60)</tspan>   severity: <tspan fill="#16a34a">'info'</tspan></text>
+
+  <!-- description card -->
+  <rect x="24" y="288" width="852" height="192" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="44" y="316" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Meta description</text>
+  <rect x="784" y="300" width="72" height="22" rx="11" fill="#fef3c7"/>
+  <text x="820" y="315" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">warning</text>
+  <rect x="44" y="328" width="812" height="52" rx="6" fill="#f1f5f9"/>
+  <text x="58" y="350" class="font-ui" font-size="13" fill="#0f172a">Learn how server-side rendering works in React, when to use it,</text>
+  <text x="58" y="370" class="font-ui" font-size="13" fill="#0f172a">and how it affects crawling and indexing.</text>
+  <text x="44" y="406" class="font-ui" font-size="11" fill="#94a3b8">Character count — META_DESCRIPTION_MIN_LENGTH 120 · MAX_LENGTH 160 · MAX_PIXELS 920</text>
+  <rect x="44" y="416" width="812" height="10" rx="5" fill="#e2e8f0"/>
+  <rect x="44" y="416" width="528" height="10" rx="5" fill="#f59e0b"/>
+  <rect x="650" y="410" width="3" height="22" rx="1.5" fill="#94a3b8"/>
+  <text x="44" y="452" class="font-mono" font-size="12" fill="#0f172a">charCount: 104   severity: <tspan fill="#b45309">'warning'</tspan> <tspan fill="#94a3b8">— under 120 chars, add more detail</tspan></text>
+  <text x="44" y="472" class="font-mono" font-size="11" fill="#94a3b8">validateMetaDescription(description)  →  ValidationResult</text>
+</svg>

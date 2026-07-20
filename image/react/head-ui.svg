@@ -1,114 +1,109 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Every tag traced back to its prop.</text>
-  <!-- Left: JSX component -->
-  <rect x="30" y="56" width="380" height="320" rx="8" fill="#161b22"/>
-  <rect x="30" y="56" width="380" height="34" rx="8" fill="#0c2444"/>
-  <rect x="30" y="78" width="380" height="12" fill="#0c2444"/>
-  <circle cx="52" cy="74" r="6" fill="#ff5f56"/>
-  <circle cx="72" cy="74" r="6" fill="#ffbd2e"/>
-  <circle cx="92" cy="74" r="6" fill="#27c93f"/>
-  <text x="120" y="79" font-family="'Segoe UI', sans-serif" font-size="12" fill="#61dafb">SEO Component</text>
-  <!-- Code -->
-  <text x="48" y="116" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&lt;</text>
-  <text x="58" y="116" font-family="'Courier New', monospace" font-size="12" fill="#61dafb">SEO</text>
-  <!-- Props with color labels -->
-  <text x="48" y="140" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  title</text>
-  <rect x="116" y="130" width="2" height="16" fill="#61dafb"/>
-  <rect x="240" y="130" width="130" height="16" rx="3" fill="#0c2444"/>
-  <text x="268" y="141" font-family="'Segoe UI', sans-serif" font-size="9" fill="#61dafb">→ &lt;title&gt;</text>
-  <text x="48" y="164" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  description</text>
-  <rect x="200" y="154" width="2" height="16" fill="#7c3aed"/>
-  <rect x="240" y="154" width="130" height="16" rx="3" fill="#1a0a2e"/>
-  <text x="262" y="165" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a78bfa">→ meta[description]</text>
-  <text x="48" y="188" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  canonical</text>
-  <rect x="184" y="178" width="2" height="16" fill="#10b981"/>
-  <rect x="240" y="178" width="130" height="16" rx="3" fill="#042614"/>
-  <text x="264" y="189" font-family="'Segoe UI', sans-serif" font-size="9" fill="#34d399">→ link[canonical]</text>
-  <text x="48" y="212" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  og</text>
-  <rect x="86" y="202" width="2" height="16" fill="#f59e0b"/>
-  <rect x="240" y="202" width="130" height="16" rx="3" fill="#2d1a00"/>
-  <text x="256" y="213" font-family="'Segoe UI', sans-serif" font-size="9" fill="#fbbf24">→ meta[og:*] (6 tags)</text>
-  <text x="48" y="236" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  twitter</text>
-  <rect x="140" y="226" width="2" height="16" fill="#0ea5e9"/>
-  <rect x="240" y="226" width="130" height="16" rx="3" fill="#041626"/>
-  <text x="255" y="237" font-family="'Segoe UI', sans-serif" font-size="9" fill="#38bdf8">→ meta[twitter:*] (4 tags)</text>
-  <text x="48" y="260" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  schema</text>
-  <rect x="152" y="250" width="2" height="16" fill="#ec4899"/>
-  <rect x="240" y="250" width="130" height="16" rx="3" fill="#1f0d1a"/>
-  <text x="257" y="261" font-family="'Segoe UI', sans-serif" font-size="9" fill="#f472b6">→ script[ld+json]</text>
-  <text x="48" y="284" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">/&gt;</text>
-  <!-- Right: DevTools panel -->
-  <rect x="430" y="56" width="440" height="320" rx="8" fill="#1e1e1e"/>
-  <rect x="430" y="56" width="440" height="28" rx="8" fill="#252526"/>
-  <rect x="430" y="72" width="440" height="12" fill="#252526"/>
-  <text x="450" y="72" font-family="'Segoe UI', sans-serif" font-size="11" fill="#9cdcfe">Elements</text>
-  <text x="510" y="72" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Console  Network  Sources</text>
-  <!-- head tag -->
-  <text x="448" y="104" font-family="'Courier New', monospace" font-size="11" fill="#808080">▼ &lt;</text>
-  <text x="472" y="104" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">head</text>
-  <text x="506" y="104" font-family="'Courier New', monospace" font-size="11" fill="#808080">&gt;</text>
-  <!-- title -->
-  <text x="464" y="124" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
-  <text x="480" y="124" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">title</text>
-  <text x="512" y="124" font-family="'Courier New', monospace" font-size="11" fill="#808080">&gt;</text>
-  <text x="520" y="124" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">My Page</text>
-  <text x="570" y="124" font-family="'Courier New', monospace" font-size="11" fill="#808080">&lt;/title&gt;</text>
-  <rect x="630" y="114" width="80" height="14" rx="3" fill="#0c2444"/>
-  <text x="670" y="125" font-family="'Segoe UI', sans-serif" font-size="9" fill="#61dafb" text-anchor="middle">title prop</text>
-  <!-- meta description -->
-  <text x="464" y="144" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
-  <text x="480" y="144" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">meta</text>
-  <text x="510" y="144" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> name</text>
-  <text x="538" y="144" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
-  <text x="545" y="144" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"description"</text>
-  <rect x="625" y="134" width="100" height="14" rx="3" fill="#1a0a2e"/>
-  <text x="675" y="145" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a78bfa" text-anchor="middle">description prop</text>
-  <!-- canonical -->
-  <text x="464" y="164" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
-  <text x="480" y="164" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">link</text>
-  <text x="506" y="164" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> rel</text>
-  <text x="524" y="164" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
-  <text x="531" y="164" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"canonical"</text>
-  <rect x="625" y="154" width="90" height="14" rx="3" fill="#042614"/>
-  <text x="670" y="165" font-family="'Segoe UI', sans-serif" font-size="9" fill="#34d399" text-anchor="middle">canonical prop</text>
-  <!-- og:title -->
-  <text x="464" y="184" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
-  <text x="480" y="184" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">meta</text>
-  <text x="510" y="184" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> property</text>
-  <text x="557" y="184" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
-  <text x="564" y="184" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"og:title"</text>
-  <rect x="625" y="174" width="80" height="14" rx="3" fill="#2d1a00"/>
-  <text x="665" y="185" font-family="'Segoe UI', sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle">og.title</text>
-  <!-- og:image -->
-  <text x="464" y="204" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
-  <text x="480" y="204" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">meta</text>
-  <text x="510" y="204" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> property</text>
-  <text x="557" y="204" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
-  <text x="564" y="204" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"og:image"</text>
-  <rect x="625" y="194" width="80" height="14" rx="3" fill="#2d1a00"/>
-  <text x="665" y="205" font-family="'Segoe UI', sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle">og.image</text>
-  <!-- twitter:card -->
-  <text x="464" y="224" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
-  <text x="480" y="224" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">meta</text>
-  <text x="510" y="224" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> name</text>
-  <text x="538" y="224" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
-  <text x="545" y="224" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"twitter:card"</text>
-  <rect x="625" y="214" width="90" height="14" rx="3" fill="#041626"/>
-  <text x="670" y="225" font-family="'Segoe UI', sans-serif" font-size="9" fill="#38bdf8" text-anchor="middle">twitter.card</text>
-  <!-- ld+json -->
-  <text x="464" y="244" font-family="'Courier New', monospace" font-size="11" fill="#808080">  &lt;</text>
-  <text x="480" y="244" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">script</text>
-  <text x="516" y="244" font-family="'Courier New', monospace" font-size="11" fill="#9cdcfe"> type</text>
-  <text x="540" y="244" font-family="'Courier New', monospace" font-size="11" fill="#808080">=</text>
-  <text x="547" y="244" font-family="'Courier New', monospace" font-size="11" fill="#ce9178">"application/ld+json"</text>
-  <rect x="630" y="234" width="76" height="14" rx="3" fill="#1f0d1a"/>
-  <text x="668" y="245" font-family="'Segoe UI', sans-serif" font-size="9" fill="#f472b6" text-anchor="middle">schema prop</text>
-  <!-- /head -->
-  <text x="448" y="268" font-family="'Courier New', monospace" font-size="11" fill="#808080">&lt;/</text>
-  <text x="464" y="268" font-family="'Courier New', monospace" font-size="11" fill="#4ec9b0">head</text>
-  <text x="498" y="268" font-family="'Courier New', monospace" font-size="11" fill="#808080">&gt;</text>
-  <!-- Caption -->
-  <text x="450" y="420" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Every generated tag traces back to its source prop.</text>
-  <text x="450" y="444" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/react — title · description · canonical · og · twitter · schema</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>App mockup of a head tag inspector showing the SEO component props on the left and each rendered meta and link tag with its source prop on the right</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <rect x="16" y="16" width="24" height="24" rx="6" fill="#2563eb"/>
+  <text x="28" y="33" class="font-mono" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">&lt;/&gt;</text>
+  <text x="48" y="33" class="font-ui" font-size="13" font-weight="700" fill="#0f172a">power-seo</text>
+  <text x="16" y="72" class="font-ui" font-size="13" fill="#64748b">Overview</text>
+  <rect x="8" y="86" width="164" height="30" rx="6" fill="#dbeafe"/>
+  <text x="16" y="106" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Head Tags</text>
+  <text x="16" y="140" class="font-ui" font-size="13" fill="#64748b">Open Graph</text>
+  <text x="16" y="170" class="font-ui" font-size="13" fill="#64748b">Twitter Card</text>
+  <text x="16" y="200" class="font-ui" font-size="13" fill="#64748b">Hreflang</text>
+  <text x="16" y="230" class="font-ui" font-size="13" fill="#64748b">Breadcrumbs</text>
+
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Head Tag Inspector</text>
+  <rect x="756" y="11" width="120" height="30" rx="6" fill="#2563eb"/>
+  <text x="816" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Inspect &lt;head&gt;</text>
+
+  <!-- left card: component props -->
+  <rect x="204" y="72" width="308" height="404" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="222" y="100" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">&lt;SEO&gt; props</text>
+  <rect x="428" y="84" width="66" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="461" y="99" class="font-mono" font-size="11" fill="#64748b" text-anchor="middle">page.tsx</text>
+  <line x1="204" y1="112" x2="512" y2="112" stroke="#e2e8f0"/>
+
+  <text x="222" y="140" class="font-ui" font-size="11" font-weight="600" fill="#64748b">TITLE</text>
+  <rect x="222" y="150" width="272" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="232" y="169" class="font-ui" font-size="13" fill="#0f172a">Summer Collection 2026</text>
+
+  <text x="222" y="204" class="font-ui" font-size="11" font-weight="600" fill="#64748b">TITLE TEMPLATE (DefaultSEO)</text>
+  <rect x="222" y="214" width="272" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="232" y="233" class="font-mono" font-size="12" fill="#64748b">%s | Northwind Store</text>
+
+  <text x="222" y="268" class="font-ui" font-size="11" font-weight="600" fill="#64748b">DESCRIPTION</text>
+  <rect x="222" y="278" width="272" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="232" y="297" class="font-ui" font-size="12" fill="#64748b">New arrivals for the 2026 season.</text>
+
+  <text x="222" y="332" class="font-ui" font-size="11" font-weight="600" fill="#64748b">CANONICAL</text>
+  <rect x="222" y="342" width="272" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="232" y="361" class="font-mono" font-size="11" fill="#64748b">https://northwind.shop/summer</text>
+
+  <text x="222" y="396" class="font-ui" font-size="11" font-weight="600" fill="#64748b">ROBOTS</text>
+  <rect x="222" y="406" width="106" height="26" rx="13" fill="#dcfce7"/>
+  <text x="275" y="423" class="font-mono" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">index, follow</text>
+  <rect x="336" y="406" width="130" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="401" y="423" class="font-mono" font-size="11" fill="#64748b" text-anchor="middle">max-snippet: 160</text>
+  <text x="222" y="460" class="font-mono" font-size="11" fill="#94a3b8">// merged via useDefaultSEO()</text>
+
+  <!-- right card: rendered tags table -->
+  <rect x="532" y="72" width="344" height="404" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="550" y="100" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Rendered in &lt;head&gt;</text>
+  <rect x="784" y="84" width="74" height="22" rx="11" fill="#dcfce7"/>
+  <text x="821" y="99" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">7 tags</text>
+  <line x1="532" y1="112" x2="876" y2="112" stroke="#e2e8f0"/>
+
+  <circle cx="556" cy="136" r="7" fill="#dcfce7"/>
+  <path d="M 552.5 136 l 2.5 2.5 l 4.5 -5" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="572" y="133" class="font-mono" font-size="11" fill="#0f172a">&lt;title&gt;Summer Collection 2026 |</text>
+  <text x="572" y="147" class="font-mono" font-size="11" fill="#0f172a">Northwind Store&lt;/title&gt;</text>
+  <line x1="550" y1="160" x2="858" y2="160" stroke="#e2e8f0"/>
+
+  <circle cx="556" cy="184" r="7" fill="#dcfce7"/>
+  <path d="M 552.5 184 l 2.5 2.5 l 4.5 -5" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="572" y="181" class="font-mono" font-size="11" fill="#0f172a">&lt;meta name="description"</text>
+  <text x="572" y="195" class="font-mono" font-size="11" fill="#64748b">content="New arrivals for..."&gt;</text>
+  <line x1="550" y1="208" x2="858" y2="208" stroke="#e2e8f0"/>
+
+  <circle cx="556" cy="232" r="7" fill="#dcfce7"/>
+  <path d="M 552.5 232 l 2.5 2.5 l 4.5 -5" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="572" y="229" class="font-mono" font-size="11" fill="#0f172a">&lt;link rel="canonical"</text>
+  <text x="572" y="243" class="font-mono" font-size="11" fill="#64748b">href="https://northwind.shop/summer"&gt;</text>
+  <line x1="550" y1="256" x2="858" y2="256" stroke="#e2e8f0"/>
+
+  <circle cx="556" cy="280" r="7" fill="#dcfce7"/>
+  <path d="M 552.5 280 l 2.5 2.5 l 4.5 -5" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="572" y="277" class="font-mono" font-size="11" fill="#0f172a">&lt;meta name="robots" content=</text>
+  <text x="572" y="291" class="font-mono" font-size="11" fill="#64748b">"index, follow, max-snippet:160"&gt;</text>
+  <line x1="550" y1="304" x2="858" y2="304" stroke="#e2e8f0"/>
+
+  <circle cx="556" cy="328" r="7" fill="#dcfce7"/>
+  <path d="M 552.5 328 l 2.5 2.5 l 4.5 -5" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="572" y="325" class="font-mono" font-size="11" fill="#0f172a">&lt;meta property="og:title"</text>
+  <text x="572" y="339" class="font-mono" font-size="11" fill="#64748b">content="Summer Collection 2026"&gt;</text>
+  <line x1="550" y1="352" x2="858" y2="352" stroke="#e2e8f0"/>
+
+  <circle cx="556" cy="376" r="7" fill="#dcfce7"/>
+  <path d="M 552.5 376 l 2.5 2.5 l 4.5 -5" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="572" y="373" class="font-mono" font-size="11" fill="#0f172a">&lt;meta property="og:image"</text>
+  <text x="572" y="387" class="font-mono" font-size="11" fill="#64748b">content=".../summer-og.jpg"&gt;</text>
+  <line x1="550" y1="400" x2="858" y2="400" stroke="#e2e8f0"/>
+
+  <circle cx="556" cy="424" r="7" fill="#dcfce7"/>
+  <path d="M 552.5 424 l 2.5 2.5 l 4.5 -5" stroke="#16a34a" stroke-width="1.6" fill="none"/>
+  <text x="572" y="421" class="font-mono" font-size="11" fill="#0f172a">&lt;meta name="twitter:card"</text>
+  <text x="572" y="435" class="font-mono" font-size="11" fill="#64748b">content="summary_large_image"&gt;</text>
+
+  <text x="550" y="464" class="font-ui" font-size="11" fill="#94a3b8">Built by buildMetaTags() and buildLinkTags() from @power-seo/core</text>
 </svg>

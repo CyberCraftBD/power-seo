@@ -1,104 +1,76 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
-  <defs>
-    <style>
-      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
-      .font-ui { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    </style>
-    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#a855f7"/>
-    </marker>
-  </defs>
-
-  <!-- Background -->
-  <rect width="900" height="500" fill="#0d1117"/>
-
-  <!-- Background grid -->
-  <defs>
-    <pattern id="grid3" width="30" height="30" patternUnits="userSpaceOnUse">
-      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#161b22" stroke-width="0.8"/>
-    </pattern>
-  </defs>
-  <rect width="900" height="500" fill="url(#grid3)"/>
-
-  <!-- Title -->
-  <text x="450" y="36" class="font-ui" font-size="15" font-weight="600" fill="#6b7280" text-anchor="middle">parseLLMResponse() — Robust Format Handling</text>
-
-  <!-- === LEFT PANELS === -->
-
-  <!-- Panel 1: Markdown format -->
-  <rect x="30" y="60" width="270" height="110" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-  <!-- Panel header -->
-  <rect x="30" y="60" width="270" height="32" rx="8" fill="#21262d"/>
-  <rect x="30" y="80" width="270" height="12" fill="#21262d"/>
-  <circle cx="50" cy="76" r="4" fill="#4b5563"/>
-  <text x="64" y="80" class="font-ui" font-size="11" font-weight="600" fill="#9ca3af">Markdown format</text>
-  <text x="44" y="108" class="font-mono" font-size="10" fill="#e2e8f0">**Option 1:** Discover the</text>
-  <text x="44" y="124" class="font-mono" font-size="10" fill="#e2e8f0">best TypeScript SEO lib...</text>
-  <text x="44" y="140" class="font-mono" font-size="10" fill="#6b7280">**Option 2:** Build SEO-ready</text>
-  <text x="44" y="156" class="font-mono" font-size="10" fill="#6b7280">apps with zero config...</text>
-
-  <!-- Panel 2: Numbered list -->
-  <rect x="30" y="195" width="270" height="110" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-  <rect x="30" y="195" width="270" height="32" rx="8" fill="#21262d"/>
-  <rect x="30" y="215" width="270" height="12" fill="#21262d"/>
-  <circle cx="50" cy="211" r="4" fill="#4b5563"/>
-  <text x="64" y="215" class="font-ui" font-size="11" font-weight="600" fill="#9ca3af">Numbered list</text>
-  <text x="44" y="243" class="font-mono" font-size="10" fill="#e2e8f0">1. Discover the best TypeScript</text>
-  <text x="44" y="259" class="font-mono" font-size="10" fill="#e2e8f0">   SEO library for Next.js</text>
-  <text x="44" y="275" class="font-mono" font-size="10" fill="#6b7280">2. Build SEO-ready apps</text>
-  <text x="44" y="291" class="font-mono" font-size="10" fill="#6b7280">   with zero configuration</text>
-
-  <!-- Panel 3: Raw JSON -->
-  <rect x="30" y="330" width="270" height="120" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-  <rect x="30" y="330" width="270" height="32" rx="8" fill="#21262d"/>
-  <rect x="30" y="350" width="270" height="12" fill="#21262d"/>
-  <circle cx="50" cy="346" r="4" fill="#4b5563"/>
-  <text x="64" y="350" class="font-ui" font-size="11" font-weight="600" fill="#9ca3af">Raw JSON</text>
-  <text x="44" y="378" class="font-mono" font-size="10" fill="#e2e8f0">{"descriptions": [</text>
-  <text x="44" y="394" class="font-mono" font-size="10" fill="#86efac">  "Discover the best</text>
-  <text x="44" y="410" class="font-mono" font-size="10" fill="#86efac">   TypeScript SEO..."</text>
-  <text x="44" y="426" class="font-mono" font-size="10" fill="#e2e8f0">]}</text>
-
-  <!-- === ARROWS === -->
-  <!-- Arrow from Panel 1 to output -->
-  <line x1="300" y1="115" x2="510" y2="190" stroke="#a855f7" stroke-width="1.8" marker-end="url(#arr)" opacity="0.9"/>
-
-  <!-- Arrow from Panel 2 to output -->
-  <line x1="300" y1="250" x2="510" y2="255" stroke="#a855f7" stroke-width="1.8" marker-end="url(#arr)" opacity="0.9"/>
-
-  <!-- Arrow from Panel 3 to output -->
-  <line x1="300" y1="385" x2="510" y2="315" stroke="#a855f7" stroke-width="1.8" marker-end="url(#arr)" opacity="0.9"/>
-
-  <!-- Function label in center -->
-  <rect x="340" y="226" width="148" height="28" rx="14" fill="#1a0a2e" stroke="#a855f7" stroke-width="1"/>
-  <text x="414" y="244" class="font-mono" font-size="11" font-weight="700" fill="#a855f7" text-anchor="middle">parseLLMResponse()</text>
-
-  <!-- === RIGHT PANEL: Output === -->
-  <rect x="530" y="100" width="340" height="260" rx="8" fill="#0f1a0f" stroke="#a855f7" stroke-width="2"/>
-  <!-- Output header -->
-  <rect x="530" y="100" width="340" height="40" rx="8" fill="#1a1025"/>
-  <rect x="530" y="128" width="340" height="12" fill="#1a1025"/>
-  <text x="700" y="126" class="font-mono" font-size="13" font-weight="700" fill="#a855f7" text-anchor="middle">MetaDescriptionResult[]</text>
-  <line x1="530" y1="140" x2="870" y2="140" stroke="#a855f7" stroke-width="0.5" opacity="0.4"/>
-
-  <!-- Output object code -->
-  <text x="550" y="166" class="font-mono" font-size="12" fill="#9ca3af">// Parsed output</text>
-  <text x="550" y="188" class="font-mono" font-size="12" fill="#e2e8f0">{</text>
-  <text x="566" y="208" class="font-mono" font-size="12" fill="#93c5fd">  text:</text>
-  <text x="624" y="208" class="font-mono" font-size="11" fill="#86efac">"Discover the best</text>
-  <text x="624" y="222" class="font-mono" font-size="11" fill="#86efac">   TypeScript..."</text>
-  <text x="566" y="242" class="font-mono" font-size="12" fill="#93c5fd">  charCount:</text>
-  <text x="668" y="242" class="font-mono" font-size="12" fill="#fbbf24">142</text>
-  <text x="566" y="262" class="font-mono" font-size="12" fill="#93c5fd">  keyphrasePresent:</text>
-  <text x="766" y="262" class="font-mono" font-size="12" fill="#22d3ee">true</text>
-  <text x="566" y="282" class="font-mono" font-size="12" fill="#93c5fd">  confidence:</text>
-  <text x="680" y="282" class="font-mono" font-size="12" fill="#fbbf24">0.94</text>
-  <text x="550" y="302" class="font-mono" font-size="12" fill="#e2e8f0">}</text>
-
-  <!-- Checkmark icon -->
-  <circle cx="848" cy="232" r="16" fill="#166534"/>
-  <text x="848" y="238" class="font-ui" font-size="16" fill="#22c55e" text-anchor="middle">✓</text>
-
-  <!-- Caption -->
-  <text x="450" y="462" class="font-ui" font-size="14" fill="#ffffff" text-anchor="middle">parseLLMResponse() handles any format. Always typed.</text>
+  <title>Illustration of power-seo ai parsers handling messy LLM output variations like markdown code fences and quoted strings, returning validated typed data</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="32" y="44" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">Robust structured-output parsing</text>
+  <text x="32" y="68" class="font-ui" font-size="13" fill="#64748b">Parsers accept the raw text LLMs actually return — fenced, quoted, or clean — and validate every field</text>
+  <!-- left: messy inputs -->
+  <text x="32" y="106" class="font-ui" font-size="12" font-weight="600" fill="#64748b">RAW LLM RESPONSES</text>
+  <!-- input 1: fenced -->
+  <rect x="32" y="118" width="330" height="104" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="11.5">
+    <text x="48" y="140" fill="#94a3b8">```json</text>
+    <text x="48" y="160" fill="#0f172a">[{ <tspan fill="#2563eb">"type"</tspan>: <tspan fill="#16a34a">"heading"</tspan>,</text>
+    <text x="48" y="180" fill="#0f172a">   <tspan fill="#2563eb">"priority"</tspan>: 5, ... }]</text>
+    <text x="48" y="200" fill="#94a3b8">```</text>
+  </g>
+  <rect x="252" y="126" width="102" height="20" rx="10" fill="#fef3c7"/>
+  <text x="303" y="140" class="font-ui" font-size="10.5" font-weight="600" fill="#b45309" text-anchor="middle">markdown fence</text>
+  <!-- input 2: quoted -->
+  <rect x="32" y="234" width="330" height="86" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="11.5">
+    <text x="48" y="258" fill="#0f172a">"Ship faster with typed SEO</text>
+    <text x="48" y="278" fill="#0f172a"> prompts. Try @power-seo/ai."</text>
+  </g>
+  <rect x="238" y="242" width="116" height="20" rx="10" fill="#fef3c7"/>
+  <text x="296" y="256" class="font-ui" font-size="10.5" font-weight="600" fill="#b45309" text-anchor="middle">surrounding quotes</text>
+  <!-- input 3: malformed -->
+  <rect x="32" y="332" width="330" height="86" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="11.5">
+    <text x="48" y="356" fill="#0f172a">Sure! Here are the results:</text>
+    <text x="48" y="376" fill="#0f172a">[{ "feature": "how-to", ...</text>
+  </g>
+  <rect x="262" y="340" width="92" height="20" rx="10" fill="#fee2e2"/>
+  <text x="308" y="354" class="font-ui" font-size="10.5" font-weight="600" fill="#b91c1c" text-anchor="middle">invalid JSON</text>
+  <!-- center: parser -->
+  <line x1="366" y1="268" x2="396" y2="268" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M396 268 l-7 -4 v8 z" fill="#94a3b8"/>
+  <rect x="400" y="180" width="180" height="176" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="490" y="210" class="font-ui" font-size="13" font-weight="600" fill="#0f172a" text-anchor="middle">Parsers</text>
+  <g class="font-mono" font-size="10.5" fill="#2563eb" text-anchor="middle">
+    <text x="490" y="236">parseMetaDescription</text>
+    <text x="490" y="252">Response()</text>
+    <text x="490" y="276">parseContentSuggestions</text>
+    <text x="490" y="292">Response()</text>
+    <text x="490" y="316">parseSerpPrediction</text>
+    <text x="490" y="332">Response()</text>
+  </g>
+  <line x1="584" y1="268" x2="614" y2="268" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M614 268 l-7 -4 v8 z" fill="#94a3b8"/>
+  <!-- right: validated output -->
+  <text x="618" y="106" class="font-ui" font-size="12" font-weight="600" fill="#64748b">VALIDATED OUTPUT</text>
+  <rect x="618" y="118" width="250" height="238" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <g class="font-ui" font-size="12" fill="#0f172a">
+    <text x="634" y="146"><tspan fill="#16a34a" font-weight="700">&#10003;</tspan>  Strips ``` code fences</text>
+    <text x="634" y="174"><tspan fill="#16a34a" font-weight="700">&#10003;</tspan>  Strips surrounding quotes</text>
+    <text x="634" y="202"><tspan fill="#16a34a" font-weight="700">&#10003;</tspan>  Type-checks every field</text>
+    <text x="634" y="230"><tspan fill="#16a34a" font-weight="700">&#10003;</tspan>  Filters malformed items</text>
+    <text x="634" y="258"><tspan fill="#16a34a" font-weight="700">&#10003;</tspan>  Validates length + pixelWidth</text>
+    <text x="634" y="286"><tspan fill="#16a34a" font-weight="700">&#10003;</tspan>  Never throws — returns []</text>
+    <text x="653" y="304" fill="#64748b" font-size="11.5">on unparseable responses</text>
+  </g>
+  <rect x="634" y="318" width="118" height="24" rx="12" fill="#dcfce7"/>
+  <text x="693" y="334" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Safe by default</text>
+  <!-- bottom: result sample -->
+  <rect x="400" y="386" width="468" height="88" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="11.5">
+    <text x="416" y="410" fill="#94a3b8">// MetaDescriptionResult</text>
+    <text x="416" y="430" fill="#0f172a">{ description, charCount: <tspan fill="#2563eb">152</tspan>, pixelWidth: <tspan fill="#2563eb">918</tspan>,</text>
+    <text x="416" y="450" fill="#0f172a">  isValid: <tspan fill="#16a34a">true</tspan>, validationMessage: <tspan fill="#7c3aed">undefined</tspan> }</text>
+  </g>
+  <text x="32" y="452" class="font-ui" font-size="12" fill="#64748b">Every parser is unit-tested against</text>
+  <text x="32" y="470" class="font-ui" font-size="12" fill="#64748b">common LLM output variations.</text>
 </svg>

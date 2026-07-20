@@ -1,41 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#ef4444"/>
-      <stop offset="100%" style="stop-color:#fca5a5"/>
-    </linearGradient>
-    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#fca5a5;stop-opacity:0.2"/>
-    </linearGradient>
-  </defs>
-  <rect width="1280" height="280" fill="url(#bg)" rx="12"/>
-  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-    <line x1="0" y1="56" x2="1280" y2="56"/>
-    <line x1="0" y1="112" x2="1280" y2="112"/>
-    <line x1="0" y1="168" x2="1280" y2="168"/>
-    <line x1="0" y1="224" x2="1280" y2="224"/>
-    <line x1="256" y1="0" x2="256" y2="280"/>
-    <line x1="512" y1="0" x2="512" y2="280"/>
-    <line x1="768" y1="0" x2="768" y2="280"/>
-    <line x1="1024" y1="0" x2="1024" y2="280"/>
-  </g>
-  <circle cx="1180" cy="60" r="90" fill="#ef4444" fill-opacity="0.06"/>
-  <circle cx="1220" cy="30" r="50" fill="#fca5a5" fill-opacity="0.06"/>
-  <circle cx="80" cy="230" r="70" fill="#ef4444" fill-opacity="0.05"/>
-  <rect x="80" y="96" width="6" height="88" rx="3" fill="url(#accent)"/>
-  <text x="108" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="68" font-weight="800" letter-spacing="-2" fill="url(#accent)">@power-seo/audit</text>
-  <text x="110" y="195" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="0.5">Complete SEO health check. 0-100 score.</text>
-  <rect x="110" y="220" width="96" height="28" rx="14" fill="url(#pill)" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="158" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fca5a5" text-anchor="middle">0-100 score</text>
-  <rect x="216" y="220" width="106" height="28" rx="14" fill="url(#pill)" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="269" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fca5a5" text-anchor="middle">Custom rules</text>
-  <rect x="332" y="220" width="100" height="28" rx="14" fill="url(#pill)" stroke="#fca5a5" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="382" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fecaca" text-anchor="middle">CI/CD-ready</text>
-  <rect x="442" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#fca5a5" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="511" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fecaca" text-anchor="middle">TypeScript-first</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="280" viewBox="0 0 1280 280">
+  <title>@power-seo/audit banner — SEO audit engine producing a 0 to 100 score across meta, content, structure and performance rule categories</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="1280" height="280" fill="#f8fafc"/>
+
+  <!-- left: branding -->
+  <rect x="70" y="52" width="220" height="26" rx="13" fill="#dbeafe"/>
+  <text x="180" y="69" class="font-mono" font-size="12" font-weight="600" fill="#1d4ed8" text-anchor="middle">npm i @power-seo/audit</text>
+
+  <text x="70" y="126" class="font-ui" font-size="34" font-weight="700" fill="#0f172a">@power-seo/audit</text>
+  <text x="70" y="158" class="font-ui" font-size="15" fill="#64748b">Scored SEO audits for every page — one call to auditPage() returns a 0–100 report</text>
+  <text x="70" y="180" class="font-ui" font-size="15" fill="#64748b">with per-rule severity: error, warning, info, pass. Zero runtime dependencies.</text>
+
+  <!-- category weight pills -->
+  <rect x="70" y="204" width="96" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="118" y="220" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">meta · 30%</text>
+  <rect x="174" y="204" width="110" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="229" y="220" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">content · 30%</text>
+  <rect x="292" y="204" width="118" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="351" y="220" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">structure · 25%</text>
+  <rect x="418" y="204" width="138" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="487" y="220" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">performance · 15%</text>
+
+  <!-- right: report vignette card -->
+  <rect x="864" y="30" width="346" height="220" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="888" y="60" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Audit Report</text>
+  <rect x="1136" y="44" width="54" height="20" rx="10" fill="#dcfce7"/>
+  <text x="1163" y="58" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Good</text>
+
+  <!-- score ring: 84/100 -->
+  <circle cx="940" cy="150" r="34" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+  <circle cx="940" cy="150" r="34" fill="none" stroke="#16a34a" stroke-width="8"
+          stroke-dasharray="179.4 213.6" stroke-linecap="round" transform="rotate(-90 940 150)"/>
+  <text x="940" y="157" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">84</text>
+  <text x="940" y="212" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">overall score</text>
+
+  <!-- category bars -->
+  <text x="1004" y="102" class="font-ui" font-size="11" fill="#64748b">Meta</text>
+  <text x="1190" y="102" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="end">90</text>
+  <rect x="1004" y="108" width="186" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="1004" y="108" width="167" height="8" rx="4" fill="#2563eb"/>
+
+  <text x="1004" y="136" class="font-ui" font-size="11" fill="#64748b">Content</text>
+  <text x="1190" y="136" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="end">82</text>
+  <rect x="1004" y="142" width="186" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="1004" y="142" width="153" height="8" rx="4" fill="#16a34a"/>
+
+  <text x="1004" y="170" class="font-ui" font-size="11" fill="#64748b">Structure</text>
+  <text x="1190" y="170" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="end">78</text>
+  <rect x="1004" y="176" width="186" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="1004" y="176" width="145" height="8" rx="4" fill="#f59e0b"/>
+
+  <text x="1004" y="204" class="font-ui" font-size="11" fill="#64748b">Performance</text>
+  <text x="1190" y="204" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="end">86</text>
+  <rect x="1004" y="210" width="186" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="1004" y="210" width="160" height="8" rx="4" fill="#2563eb"/>
 </svg>

@@ -1,113 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500">
-  <defs>
-    <style>
-      text { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-    </style>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Workflow comparison: manual content review by hand versus automated per-check scoring with analyzeContent from @power-seo/content-analysis</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
 
-  <!-- Background -->
-  <rect width="900" height="500" fill="#0d1117"/>
+  <text x="450" y="44" class="font-ui" font-size="18" font-weight="700" fill="#0f172a" text-anchor="middle">Content review workflow &#8212; before and after</text>
 
-  <!-- Title -->
-  <text x="450" y="34" text-anchor="middle" fill="#e6edf3" font-size="17" font-weight="700">Avg Organic Traffic — Content With vs Without Analysis Scoring</text>
-  <text x="450" y="53" text-anchor="middle" fill="#8b949e" font-size="12">Monthly sessions per content type · illustrative benchmark data</text>
+  <!-- left panel: manual -->
+  <rect x="48" y="80" width="370" height="368" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="72" y="116" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Manual review</text>
+  <rect x="322" y="100" width="72" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="358" y="115" class="font-ui" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">by hand</text>
+  <line x1="48" y1="134" x2="418" y2="134" stroke="#e2e8f0"/>
 
-  <!-- Chart area background -->
-  <!-- Chart area: x=70, y=66, width=760, height=300, bottom=366 -->
-  <rect x="70" y="66" width="760" height="300" rx="4" fill="#1e2430"/>
+  <g class="font-ui" font-size="13" fill="#0f172a">
+    <text x="72" y="170" fill="#ef4444" font-weight="700">&#10007;</text>
+    <text x="96" y="170">Eye-check every title and meta tag</text>
+    <text x="72" y="218" fill="#ef4444" font-weight="700">&#10007;</text>
+    <text x="96" y="218">Grep the copy for keyword usage</text>
+    <text x="72" y="266" fill="#ef4444" font-weight="700">&#10007;</text>
+    <text x="96" y="266">Count words and headings by hand</text>
+    <text x="72" y="314" fill="#ef4444" font-weight="700">&#10007;</text>
+    <text x="96" y="314">Missed H1 and image alt issues</text>
+    <text x="72" y="362" fill="#ef4444" font-weight="700">&#10007;</text>
+    <text x="96" y="362">SEO score is guesswork</text>
+    <text x="72" y="410" fill="#ef4444" font-weight="700">&#10007;</text>
+    <text x="96" y="410">Feedback arrives after publishing</text>
+  </g>
 
-  <!-- Horizontal grid lines (y=66 top, y=366 bottom, range=300) -->
-  <!-- 3000 max → 300px → 1session = 0.1px -->
-  <line x1="70" y1="366" x2="830" y2="366" stroke="#374151" stroke-width="1"/>
-  <line x1="70" y1="306" x2="830" y2="306" stroke="#2d3748" stroke-width="0.5" stroke-dasharray="4 3"/>
-  <line x1="70" y1="246" x2="830" y2="246" stroke="#2d3748" stroke-width="0.5" stroke-dasharray="4 3"/>
-  <line x1="70" y1="186" x2="830" y2="186" stroke="#2d3748" stroke-width="0.5" stroke-dasharray="4 3"/>
-  <line x1="70" y1="126" x2="830" y2="126" stroke="#2d3748" stroke-width="0.5" stroke-dasharray="4 3"/>
-  <line x1="70" y1="66"  x2="830" y2="66"  stroke="#2d3748" stroke-width="0.5" stroke-dasharray="4 3"/>
+  <!-- arrow -->
+  <line x1="426" y1="264" x2="466" y2="264" stroke="#2563eb" stroke-width="2"/>
+  <polygon points="466,258 478,264 466,270" fill="#2563eb"/>
 
-  <!-- Y-axis labels -->
-  <text x="62" y="370" text-anchor="end" fill="#8b949e" font-size="11">0</text>
-  <text x="62" y="310" text-anchor="end" fill="#8b949e" font-size="11">600</text>
-  <text x="62" y="250" text-anchor="end" fill="#8b949e" font-size="11">1,200</text>
-  <text x="62" y="190" text-anchor="end" fill="#8b949e" font-size="11">1,800</text>
-  <text x="62" y="130" text-anchor="end" fill="#8b949e" font-size="11">2,400</text>
-  <text x="62" y="70"  text-anchor="end" fill="#8b949e" font-size="11">3,000</text>
+  <!-- right panel: automated -->
+  <rect x="486" y="80" width="370" height="368" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="486" y="80" width="370" height="4" rx="2" fill="#2563eb"/>
+  <text x="510" y="116" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">With @power-seo/content-analysis</text>
+  <rect x="756" y="100" width="76" height="22" rx="11" fill="#dbeafe"/>
+  <text x="794" y="115" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">automated</text>
+  <line x1="486" y1="134" x2="856" y2="134" stroke="#e2e8f0"/>
 
-  <!-- Y-axis label rotated -->
-  <text x="14" y="218" text-anchor="middle" fill="#6b7280" font-size="11" transform="rotate(-90 14 218)">Monthly Sessions</text>
+  <g class="font-ui" font-size="13" fill="#0f172a">
+    <text x="510" y="170" fill="#16a34a" font-weight="700">&#10003;</text>
+    <text x="534" y="170"><tspan class="font-mono" font-size="12">analyzeContent()</tspan> runs every check</text>
+    <text x="510" y="218" fill="#16a34a" font-weight="700">&#10003;</text>
+    <text x="534" y="218">Per-check good / ok / poor feedback</text>
+    <text x="510" y="266" fill="#16a34a" font-weight="700">&#10003;</text>
+    <text x="534" y="266">Density scored against 0.5&#8211;2.5%</text>
+    <text x="510" y="314" fill="#16a34a" font-weight="700">&#10003;</text>
+    <text x="534" y="314">Meta length validated at 120&#8211;160 chars</text>
+    <text x="510" y="362" fill="#16a34a" font-weight="700">&#10003;</text>
+    <text x="534" y="362">Aggregate score with max-score breakdown</text>
+    <text x="510" y="410" fill="#16a34a" font-weight="700">&#10003;</text>
+    <text x="534" y="410">Same engine in the editor and in CI</text>
+  </g>
 
-  <!--
-    Scale: 3000 sessions → 300px, bottom y=366
-    height = sessions * 300/3000 = sessions * 0.1
-    bar top y = 366 - height
-
-    Blog Posts:     without=1200 h=120 y=246   with=1728 h=172.8 y=193.2
-    Product Guides: without=890  h=89  y=277   with=1282 h=128.2 y=237.8
-    Landing Pages:  without=2100 h=210 y=156   with=3024 h=302.4 y=63.6 (cap at 66)
-    FAQ Pages:      without=650  h=65  y=301   with=936  h=93.6  y=272.4
-    Tutorials:      without=980  h=98  y=268   with=1411 h=141.1 y=224.9
-
-    Group centers (5 groups over width 760, start x=70):
-    spacing = 760/5 = 152 each
-    centers: 70+76=146, 298, 450, 602, 754
-    bar width=26, gap between pair=6
-    left bar: center-16 to center-4  (width 26, from center-19 to center+7... let's do: left starts at center-29, right at center+3)
-    pair width = 26+6+26 = 58, so left bar: center-29, right bar: center+3
-  -->
-
-  <!-- ── Blog Posts · center=146 ── -->
-  <!-- Without: x=117 y=246 w=26 h=120 -->
-  <rect x="117" y="246" width="26" height="120" rx="2" fill="#4b5563"/>
-  <!-- With: x=149 y=193 w=26 h=173 -->
-  <rect x="149" y="193" width="26" height="173" rx="2" fill="#eab308"/>
-  <!-- Labels -->
-  <text x="130" y="241" text-anchor="middle" fill="#9ca3af" font-size="10">1,200</text>
-  <text x="162" y="188" text-anchor="middle" fill="#eab308" font-size="10" font-weight="600">1,728</text>
-
-  <!-- ── Product Guides · center=298 ── -->
-  <rect x="269" y="277" width="26" height="89" rx="2" fill="#4b5563"/>
-  <rect x="301" y="238" width="26" height="128" rx="2" fill="#eab308"/>
-  <text x="282" y="272" text-anchor="middle" fill="#9ca3af" font-size="10">890</text>
-  <text x="314" y="233" text-anchor="middle" fill="#eab308" font-size="10" font-weight="600">1,282</text>
-
-  <!-- ── Landing Pages · center=450 ── -->
-  <rect x="421" y="156" width="26" height="210" rx="2" fill="#4b5563"/>
-  <!-- With 3024: h=302.4, cap visually at 300, y=66 -->
-  <rect x="453" y="66" width="26" height="300" rx="2" fill="#eab308"/>
-  <text x="434" y="151" text-anchor="middle" fill="#9ca3af" font-size="10">2,100</text>
-  <text x="466" y="61" text-anchor="middle" fill="#eab308" font-size="10" font-weight="600">3,024</text>
-
-  <!-- ── FAQ Pages · center=602 ── -->
-  <rect x="573" y="301" width="26" height="65" rx="2" fill="#4b5563"/>
-  <rect x="605" y="272" width="26" height="94" rx="2" fill="#eab308"/>
-  <text x="586" y="296" text-anchor="middle" fill="#9ca3af" font-size="10">650</text>
-  <text x="618" y="267" text-anchor="middle" fill="#eab308" font-size="10" font-weight="600">936</text>
-
-  <!-- ── Tutorials · center=754 ── -->
-  <rect x="725" y="268" width="26" height="98" rx="2" fill="#4b5563"/>
-  <rect x="757" y="225" width="26" height="141" rx="2" fill="#eab308"/>
-  <text x="738" y="263" text-anchor="middle" fill="#9ca3af" font-size="10">980</text>
-  <text x="770" y="220" text-anchor="middle" fill="#eab308" font-size="10" font-weight="600">1,411</text>
-
-  <!-- X-axis category labels -->
-  <text x="146" y="386" text-anchor="middle" fill="#c9d1d9" font-size="12">Blog Posts</text>
-  <text x="298" y="386" text-anchor="middle" fill="#c9d1d9" font-size="12">Product Guides</text>
-  <text x="450" y="386" text-anchor="middle" fill="#c9d1d9" font-size="12">Landing Pages</text>
-  <text x="602" y="386" text-anchor="middle" fill="#c9d1d9" font-size="12">FAQ Pages</text>
-  <text x="754" y="386" text-anchor="middle" fill="#c9d1d9" font-size="12">Tutorials</text>
-
-  <!-- ── Green callout badge (top right of chart area) ── -->
-  <rect x="560" y="75" width="260" height="36" rx="18" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="690" y="97" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">+44% avg organic traffic</text>
-
-  <!-- ── Legend row ── -->
-  <rect x="250" y="415" width="14" height="14" rx="2" fill="#4b5563"/>
-  <text x="270" y="426" fill="#9ca3af" font-size="12">Without content analysis</text>
-
-  <rect x="470" y="415" width="14" height="14" rx="2" fill="#eab308"/>
-  <text x="490" y="426" fill="#c9d1d9" font-size="12">With content analysis</text>
-
-  <!-- Caption -->
-  <text x="450" y="462" text-anchor="middle" fill="#8b949e" font-size="12">Consistent content scoring improves search visibility across all content types.</text>
-  <text x="450" y="483" text-anchor="middle" fill="#6e7681" font-size="11">@power-seo/content-analysis · analyzeContent()</text>
+  <text x="450" y="482" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">Qualitative workflow illustration &#8212; results depend on your content and configuration</text>
 </svg>

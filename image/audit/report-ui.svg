@@ -1,139 +1,104 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      .font-ui { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; }
-    </style>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>SEO audit report dashboard built with @power-seo/audit showing an overall score of 84 with category breakdowns and severity-graded rule results</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
 
-  <!-- Background -->
-  <rect width="900" height="500" fill="#0d1117"/>
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <text x="24" y="34" class="font-ui" font-size="14" font-weight="700" fill="#0f172a">power-seo</text>
+  <text x="24" y="82" class="font-ui" font-size="13" fill="#64748b">Dashboard</text>
+  <rect x="12" y="98" width="156" height="30" rx="6" fill="#dbeafe"/>
+  <text x="24" y="118" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Audit</text>
+  <text x="24" y="154" class="font-ui" font-size="13" fill="#64748b">Content</text>
+  <text x="24" y="190" class="font-ui" font-size="13" fill="#64748b">Sitemap</text>
+  <text x="24" y="226" class="font-ui" font-size="13" fill="#64748b">Links</text>
+  <text x="24" y="262" class="font-ui" font-size="13" fill="#64748b">Redirects</text>
 
-  <!-- Header bar -->
-  <rect x="0" y="0" width="900" height="52" fill="#161b22"/>
-  <text x="450" y="33" class="font-ui" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.3">Site Audit Report</text>
-  <!-- Red underline accent -->
-  <line x1="310" y1="46" x2="590" y2="46" stroke="#ef4444" stroke-width="2"/>
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Page Audit</text>
+  <rect x="320" y="12" width="330" height="28" rx="6" fill="#f1f5f9"/>
+  <text x="334" y="30" class="font-ui" font-size="12" fill="#64748b">https://example.com/blog/react-seo-guide</text>
+  <rect x="776" y="11" width="100" height="30" rx="6" fill="#2563eb"/>
+  <text x="826" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Run Audit</text>
 
-  <!-- ===================== LEFT: Pages Table ===================== -->
-  <rect x="20" y="62" width="400" height="420" rx="8" fill="#161b22"/>
+  <!-- score card -->
+  <rect x="204" y="72" width="200" height="176" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="224" y="100" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Overall Score</text>
+  <circle cx="304" cy="164" r="40" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+  <circle cx="304" cy="164" r="40" fill="none" stroke="#16a34a" stroke-width="8"
+          stroke-dasharray="211.1 251.3" stroke-linecap="round" transform="rotate(-90 304 164)"/>
+  <text x="304" y="171" class="font-ui" font-size="22" font-weight="700" fill="#0f172a" text-anchor="middle">84</text>
+  <text x="304" y="234" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">auditPage(input).score</text>
 
-  <!-- Table header -->
-  <rect x="20" y="62" width="400" height="34" rx="8" fill="#1f2937"/>
-  <rect x="20" y="78" width="400" height="18" fill="#1f2937"/>
-  <text x="38" y="84" class="font-ui" font-size="12" fill="#9ca3af" font-weight="600">Page URL</text>
-  <text x="260" y="84" class="font-ui" font-size="12" fill="#9ca3af" font-weight="600">Score</text>
-  <text x="342" y="84" class="font-ui" font-size="12" fill="#9ca3af" font-weight="600">Issues</text>
+  <!-- category card -->
+  <rect x="420" y="72" width="456" height="176" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="440" y="100" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Categories</text>
 
-  <!-- Column separator lines -->
-  <line x1="248" y1="62" x2="248" y2="482" stroke="#374151" stroke-width="1" opacity="0.5"/>
-  <line x1="330" y1="62" x2="330" y2="482" stroke="#374151" stroke-width="1" opacity="0.5"/>
+  <text x="440" y="126" class="font-ui" font-size="12" fill="#64748b">meta</text>
+  <text x="852" y="126" class="font-ui" font-size="12" font-weight="600" fill="#0f172a" text-anchor="end">90 · 9 passed · 1 warning</text>
+  <rect x="440" y="132" width="416" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="440" y="132" width="374" height="8" rx="4" fill="#2563eb"/>
 
-  <!-- Row 1: /blog/post-1 | 92 green | 0 -->
-  <rect x="20" y="96" width="400" height="58" fill="#0d1117" opacity="0.3"/>
-  <text x="38" y="122" class="font-mono" font-size="12" fill="#93c5fd">/blog/post-1</text>
-  <text x="38" y="140" class="font-ui" font-size="10" fill="#4b5563">Technical blog article</text>
-  <!-- Green badge -->
-  <rect x="254" y="110" width="64" height="22" rx="11" fill="#16a34a" opacity="0.25"/>
-  <rect x="254" y="110" width="64" height="22" rx="11" fill="none" stroke="#22c55e" stroke-width="1"/>
-  <text x="286" y="125" class="font-mono" font-size="12" fill="#22c55e" text-anchor="middle">92/100</text>
-  <text x="362" y="125" class="font-mono" font-size="12" fill="#6b7280" text-anchor="middle">0</text>
-  <line x1="20" y1="154" x2="420" y2="154" stroke="#374151" stroke-width="1" opacity="0.4"/>
+  <text x="440" y="158" class="font-ui" font-size="12" fill="#64748b">content</text>
+  <text x="852" y="158" class="font-ui" font-size="12" font-weight="600" fill="#0f172a" text-anchor="end">82 · 2 passed · 1 warning</text>
+  <rect x="440" y="164" width="416" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="440" y="164" width="341" height="8" rx="4" fill="#16a34a"/>
 
-  <!-- Row 2: /products/shoes | 71 amber | 2 -->
-  <text x="38" y="178" class="font-mono" font-size="12" fill="#93c5fd">/products/shoes</text>
-  <text x="38" y="196" class="font-ui" font-size="10" fill="#4b5563">Product listing page</text>
-  <!-- Amber badge -->
-  <rect x="254" y="166" width="64" height="22" rx="11" fill="#92400e" opacity="0.25"/>
-  <rect x="254" y="166" width="64" height="22" rx="11" fill="none" stroke="#f59e0b" stroke-width="1"/>
-  <text x="286" y="181" class="font-mono" font-size="12" fill="#f59e0b" text-anchor="middle">71/100</text>
-  <text x="362" y="181" class="font-mono" font-size="12" fill="#f59e0b" text-anchor="middle">2</text>
-  <line x1="20" y1="210" x2="420" y2="210" stroke="#374151" stroke-width="1" opacity="0.4"/>
+  <text x="440" y="190" class="font-ui" font-size="12" fill="#64748b">structure</text>
+  <text x="852" y="190" class="font-ui" font-size="12" font-weight="600" fill="#0f172a" text-anchor="end">78 · 4 passed · 1 error</text>
+  <rect x="440" y="196" width="416" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="440" y="196" width="324" height="8" rx="4" fill="#f59e0b"/>
 
-  <!-- Row 3: /about | 85 green | 0 -->
-  <rect x="20" y="210" width="400" height="58" fill="#0d1117" opacity="0.3"/>
-  <text x="38" y="234" class="font-mono" font-size="12" fill="#93c5fd">/about</text>
-  <text x="38" y="252" class="font-ui" font-size="10" fill="#4b5563">Company about page</text>
-  <!-- Green badge -->
-  <rect x="254" y="222" width="64" height="22" rx="11" fill="#16a34a" opacity="0.25"/>
-  <rect x="254" y="222" width="64" height="22" rx="11" fill="none" stroke="#22c55e" stroke-width="1"/>
-  <text x="286" y="237" class="font-mono" font-size="12" fill="#22c55e" text-anchor="middle">85/100</text>
-  <text x="362" y="237" class="font-mono" font-size="12" fill="#6b7280" text-anchor="middle">0</text>
-  <line x1="20" y1="268" x2="420" y2="268" stroke="#374151" stroke-width="1" opacity="0.4"/>
+  <text x="440" y="222" class="font-ui" font-size="12" fill="#64748b">performance</text>
+  <text x="852" y="222" class="font-ui" font-size="12" font-weight="600" fill="#0f172a" text-anchor="end">86 · 4 passed · 1 warning</text>
+  <rect x="440" y="228" width="416" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="440" y="228" width="358" height="8" rx="4" fill="#2563eb"/>
 
-  <!-- Row 4: /blog/old-post | 41 red | 5 (SELECTED) -->
-  <rect x="20" y="268" width="400" height="58" rx="0" fill="#ef444410"/>
-  <rect x="20" y="268" width="3" height="58" fill="#ef4444"/>
-  <text x="38" y="292" class="font-mono" font-size="12" fill="#93c5fd">/blog/old-post</text>
-  <text x="38" y="310" class="font-ui" font-size="10" fill="#4b5563">Legacy blog post (2019)</text>
-  <!-- Red badge -->
-  <rect x="254" y="280" width="64" height="22" rx="11" fill="#7f1d1d" opacity="0.5"/>
-  <rect x="254" y="280" width="64" height="22" rx="11" fill="none" stroke="#ef4444" stroke-width="1"/>
-  <text x="286" y="295" class="font-mono" font-size="12" fill="#ef4444" text-anchor="middle">41/100</text>
-  <text x="362" y="295" class="font-mono" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="700">5</text>
-  <line x1="20" y1="326" x2="420" y2="326" stroke="#374151" stroke-width="1" opacity="0.4"/>
+  <!-- rules table -->
+  <rect x="204" y="268" width="672" height="208" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="205" y="269" width="670" height="34" rx="7" fill="#f8fafc"/>
+  <text x="224" y="291" class="font-ui" font-size="12" font-weight="600" fill="#64748b">RULE ID</text>
+  <text x="472" y="291" class="font-ui" font-size="12" font-weight="600" fill="#64748b">CATEGORY</text>
+  <text x="586" y="291" class="font-ui" font-size="12" font-weight="600" fill="#64748b">SEVERITY</text>
+  <text x="690" y="291" class="font-ui" font-size="12" font-weight="600" fill="#64748b">FINDING</text>
 
-  <!-- Row 5: /contact | 68 amber | 1 -->
-  <rect x="20" y="326" width="400" height="58" fill="#0d1117" opacity="0.3"/>
-  <text x="38" y="350" class="font-mono" font-size="12" fill="#93c5fd">/contact</text>
-  <text x="38" y="368" class="font-ui" font-size="10" fill="#4b5563">Contact form page</text>
-  <!-- Amber badge -->
-  <rect x="254" y="338" width="64" height="22" rx="11" fill="#92400e" opacity="0.25"/>
-  <rect x="254" y="338" width="64" height="22" rx="11" fill="none" stroke="#f59e0b" stroke-width="1"/>
-  <text x="286" y="353" class="font-mono" font-size="12" fill="#f59e0b" text-anchor="middle">68/100</text>
-  <text x="362" y="353" class="font-mono" font-size="12" fill="#f59e0b" text-anchor="middle">1</text>
+  <line x1="205" y1="337" x2="875" y2="337" stroke="#e2e8f0"/>
+  <text x="224" y="324" class="font-mono" font-size="12" fill="#0f172a">meta-description-length</text>
+  <text x="472" y="324" class="font-ui" font-size="12" fill="#64748b">meta</text>
+  <rect x="580" y="309" width="64" height="20" rx="10" fill="#fef3c7"/>
+  <text x="612" y="323" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">warning</text>
+  <text x="690" y="324" class="font-ui" font-size="12" fill="#64748b">Too short (under 120 chars)</text>
 
-  <!-- ===================== RIGHT: Drill-down ===================== -->
-  <rect x="436" y="62" width="444" height="420" rx="8" fill="#161b22"/>
+  <line x1="205" y1="372" x2="875" y2="372" stroke="#e2e8f0"/>
+  <text x="224" y="359" class="font-mono" font-size="12" fill="#0f172a">structure-heading-h1</text>
+  <text x="472" y="359" class="font-ui" font-size="12" fill="#64748b">structure</text>
+  <rect x="580" y="344" width="64" height="20" rx="10" fill="#fee2e2"/>
+  <text x="612" y="358" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">error</text>
+  <text x="690" y="359" class="font-ui" font-size="12" fill="#64748b">Page has no H1 heading</text>
 
-  <!-- Page path -->
-  <text x="456" y="88" class="font-mono" font-size="13" fill="#9ca3af">/blog/old-post</text>
-  <!-- Score -->
-  <text x="856" y="92" class="font-ui" font-size="26" font-weight="700" fill="#ef4444" text-anchor="end">41</text>
-  <text x="856" y="110" class="font-ui" font-size="13" fill="#6b7280" text-anchor="end">/100</text>
+  <line x1="205" y1="407" x2="875" y2="407" stroke="#e2e8f0"/>
+  <text x="224" y="394" class="font-mono" font-size="12" fill="#0f172a">content-keyphrase-density</text>
+  <text x="472" y="394" class="font-ui" font-size="12" fill="#64748b">content</text>
+  <rect x="580" y="379" width="64" height="20" rx="10" fill="#fef3c7"/>
+  <text x="612" y="393" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">warning</text>
+  <text x="690" y="394" class="font-ui" font-size="12" fill="#64748b">Keyphrase density above range</text>
 
-  <!-- Score bar -->
-  <rect x="456" y="118" width="404" height="6" rx="3" fill="#374151"/>
-  <rect x="456" y="118" width="166" height="6" rx="3" fill="#ef4444"/>
+  <line x1="205" y1="442" x2="875" y2="442" stroke="#e2e8f0"/>
+  <text x="224" y="429" class="font-mono" font-size="12" fill="#0f172a">meta-robots-noindex</text>
+  <text x="472" y="429" class="font-ui" font-size="12" fill="#64748b">meta</text>
+  <rect x="580" y="414" width="64" height="20" rx="10" fill="#dbeafe"/>
+  <text x="612" y="428" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">info</text>
+  <text x="690" y="429" class="font-ui" font-size="12" fill="#64748b">noindex directive present</text>
 
-  <line x1="456" y1="134" x2="860" y2="134" stroke="#374151" stroke-width="1" opacity="0.5"/>
-
-  <!-- Failed checks label -->
-  <text x="456" y="154" class="font-ui" font-size="12" fill="#6b7280" letter-spacing="1" font-weight="600">FAILED CHECKS</text>
-
-  <!-- Check 1: Title too long -->
-  <text x="456" y="180" class="font-ui" font-size="13" fill="#ef4444">✗</text>
-  <text x="476" y="180" class="font-ui" font-size="13" fill="#f9fafb" font-weight="500">Title too long (87 chars)</text>
-  <text x="476" y="196" class="font-ui" font-size="11" fill="#6b7280">Shorten to under 60 characters to avoid truncation in SERPs</text>
-
-  <!-- Check 2: Missing meta description -->
-  <text x="456" y="220" class="font-ui" font-size="13" fill="#ef4444">✗</text>
-  <text x="476" y="220" class="font-ui" font-size="13" fill="#f9fafb" font-weight="500">Missing meta description</text>
-  <text x="476" y="236" class="font-ui" font-size="11" fill="#6b7280">Add a 120–158 char description to improve click-through rate</text>
-
-  <!-- Check 3: No H1 tag -->
-  <text x="456" y="260" class="font-ui" font-size="13" fill="#ef4444">✗</text>
-  <text x="476" y="260" class="font-ui" font-size="13" fill="#f9fafb" font-weight="500">No H1 tag found</text>
-  <text x="476" y="276" class="font-ui" font-size="11" fill="#6b7280">Add exactly one H1 tag containing your focus keyphrase</text>
-
-  <!-- Check 4: Images missing alt text -->
-  <text x="456" y="300" class="font-ui" font-size="13" fill="#ef4444">✗</text>
-  <text x="476" y="300" class="font-ui" font-size="13" fill="#f9fafb" font-weight="500">Images missing alt text (4 images)</text>
-  <text x="476" y="316" class="font-ui" font-size="11" fill="#6b7280">Add descriptive alt attributes to all images for accessibility</text>
-
-  <!-- Check 5: No canonical tag -->
-  <text x="456" y="340" class="font-ui" font-size="13" fill="#ef4444">✗</text>
-  <text x="476" y="340" class="font-ui" font-size="13" fill="#f9fafb" font-weight="500">No canonical tag</text>
-  <text x="476" y="356" class="font-ui" font-size="11" fill="#6b7280">Add a canonical URL to prevent duplicate content penalties</text>
-
-  <!-- Horizontal dividers between checks -->
-  <line x1="456" y1="205" x2="854" y2="205" stroke="#374151" stroke-width="1" opacity="0.3"/>
-  <line x1="456" y1="245" x2="854" y2="245" stroke="#374151" stroke-width="1" opacity="0.3"/>
-  <line x1="456" y1="285" x2="854" y2="285" stroke="#374151" stroke-width="1" opacity="0.3"/>
-  <line x1="456" y1="325" x2="854" y2="325" stroke="#374151" stroke-width="1" opacity="0.3"/>
-
-  <!-- Recommendation count badge -->
-  <rect x="700" y="368" width="140" height="32" rx="6" fill="#ef444420"/>
-  <rect x="700" y="368" width="140" height="32" rx="6" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
-  <text x="770" y="389" class="font-ui" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="600">5 issues to fix</text>
+  <text x="224" y="464" class="font-mono" font-size="12" fill="#0f172a">meta-canonical</text>
+  <text x="472" y="464" class="font-ui" font-size="12" fill="#64748b">meta</text>
+  <rect x="580" y="449" width="64" height="20" rx="10" fill="#dcfce7"/>
+  <text x="612" y="463" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">pass</text>
+  <text x="690" y="464" class="font-ui" font-size="12" fill="#64748b">Canonical URL is set</text>
 </svg>

@@ -1,75 +1,72 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <!-- Divider -->
-  <line x1="450" y1="20" x2="450" y2="460" stroke="#f59e0b" stroke-width="2"/>
-  <!-- Before label -->
-  <text x="225" y="42" font-family="'Segoe UI', sans-serif" font-size="18" fill="#ef4444" text-anchor="middle" font-weight="700">Before</text>
-  <!-- After label -->
-  <text x="675" y="42" font-family="'Segoe UI', sans-serif" font-size="18" fill="#22c55e" text-anchor="middle" font-weight="700">After</text>
-  <!-- Before: scattered red orphan nodes -->
-  <!-- Main cluster (small) -->
-  <circle cx="225" cy="160" r="18" fill="#1e2430" stroke="#4b5563" stroke-width="1.5"/>
-  <text x="225" y="164" font-family="'Courier New', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">Home</text>
-  <circle cx="165" cy="220" r="14" fill="#1e2430" stroke="#4b5563" stroke-width="1"/>
-  <text x="165" y="224" font-family="'Courier New', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">Blog</text>
-  <circle cx="285" cy="220" r="14" fill="#1e2430" stroke="#4b5563" stroke-width="1"/>
-  <text x="285" y="224" font-family="'Courier New', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">Docs</text>
-  <line x1="225" y1="160" x2="165" y2="220" stroke="#4b5563" stroke-width="1"/>
-  <line x1="225" y1="160" x2="285" y2="220" stroke="#4b5563" stroke-width="1"/>
-  <!-- Orphan nodes -->
-  <circle cx="70" cy="130" r="14" fill="#1e2430" stroke="#ef4444" stroke-width="2"/>
-  <text x="70" y="134" font-family="'Courier New', monospace" font-size="7" fill="#fca5a5" text-anchor="middle">/orphan</text>
-  <circle cx="370" cy="110" r="14" fill="#1e2430" stroke="#ef4444" stroke-width="2"/>
-  <text x="370" y="114" font-family="'Courier New', monospace" font-size="7" fill="#fca5a5" text-anchor="middle">/orphan</text>
-  <circle cx="60" cy="300" r="14" fill="#1e2430" stroke="#ef4444" stroke-width="2"/>
-  <text x="60" y="304" font-family="'Courier New', monospace" font-size="7" fill="#fca5a5" text-anchor="middle">/orphan</text>
-  <circle cx="390" cy="320" r="14" fill="#1e2430" stroke="#ef4444" stroke-width="2"/>
-  <text x="390" y="324" font-family="'Courier New', monospace" font-size="7" fill="#fca5a5" text-anchor="middle">/orphan</text>
-  <circle cx="130" cy="380" r="14" fill="#1e2430" stroke="#ef4444" stroke-width="2"/>
-  <text x="130" y="384" font-family="'Courier New', monospace" font-size="7" fill="#fca5a5" text-anchor="middle">/orphan</text>
-  <circle cx="320" cy="400" r="14" fill="#1e2430" stroke="#ef4444" stroke-width="2"/>
-  <text x="320" y="404" font-family="'Courier New', monospace" font-size="7" fill="#fca5a5" text-anchor="middle">/orphan</text>
-  <circle cx="200" cy="340" r="14" fill="#1e2430" stroke="#ef4444" stroke-width="2"/>
-  <text x="200" y="344" font-family="'Courier New', monospace" font-size="7" fill="#fca5a5" text-anchor="middle">/orphan</text>
-  <!-- Before label -->
-  <rect x="60" y="78" width="330" height="28" rx="4" fill="#7f1d1d" opacity="0.7"/>
-  <text x="225" y="97" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">23 orphan pages — no inbound links</text>
-  <!-- After: connected with amber lines -->
-  <!-- Main cluster (larger) -->
-  <circle cx="675" cy="160" r="18" fill="#1e2430" stroke="#f59e0b" stroke-width="2"/>
-  <text x="675" y="164" font-family="'Courier New', monospace" font-size="8" fill="#e2e8f0" text-anchor="middle">Home</text>
-  <circle cx="615" cy="230" r="14" fill="#1e2430" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="615" y="234" font-family="'Courier New', monospace" font-size="8" fill="#e2e8f0" text-anchor="middle">Blog</text>
-  <circle cx="735" cy="230" r="14" fill="#1e2430" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="735" y="234" font-family="'Courier New', monospace" font-size="8" fill="#e2e8f0" text-anchor="middle">Docs</text>
-  <!-- Previously orphan nodes, now connected (green-filled) -->
-  <circle cx="520" cy="120" r="14" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
-  <text x="520" y="124" font-family="'Courier New', monospace" font-size="7" fill="#86efac" text-anchor="middle">/linked</text>
-  <circle cx="830" cy="100" r="14" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
-  <text x="830" y="104" font-family="'Courier New', monospace" font-size="7" fill="#86efac" text-anchor="middle">/linked</text>
-  <circle cx="510" cy="310" r="14" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
-  <text x="510" y="314" font-family="'Courier New', monospace" font-size="7" fill="#86efac" text-anchor="middle">/linked</text>
-  <circle cx="840" cy="330" r="14" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
-  <text x="840" y="334" font-family="'Courier New', monospace" font-size="7" fill="#86efac" text-anchor="middle">/linked</text>
-  <circle cx="580" cy="390" r="14" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
-  <text x="580" y="394" font-family="'Courier New', monospace" font-size="7" fill="#86efac" text-anchor="middle">/linked</text>
-  <circle cx="770" cy="400" r="14" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
-  <text x="770" y="404" font-family="'Courier New', monospace" font-size="7" fill="#86efac" text-anchor="middle">/linked</text>
-  <circle cx="650" cy="360" r="14" fill="#14532d" stroke="#22c55e" stroke-width="2"/>
-  <text x="650" y="364" font-family="'Courier New', monospace" font-size="7" fill="#86efac" text-anchor="middle">/linked</text>
-  <!-- Amber connecting links -->
-  <line x1="675" y1="160" x2="520" y2="120" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"/>
-  <line x1="675" y1="160" x2="830" y2="100" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"/>
-  <line x1="615" y1="230" x2="510" y2="310" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"/>
-  <line x1="735" y1="230" x2="840" y2="330" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"/>
-  <line x1="615" y1="230" x2="580" y2="390" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"/>
-  <line x1="735" y1="230" x2="770" y2="400" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"/>
-  <line x1="675" y1="160" x2="650" y2="360" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"/>
-  <line x1="675" y1="160" x2="615" y2="230" stroke="#f59e0b" stroke-width="2"/>
-  <line x1="675" y1="160" x2="735" y2="230" stroke="#f59e0b" stroke-width="2"/>
-  <!-- After label -->
-  <rect x="510" y="78" width="330" height="28" rx="4" fill="#14532d" opacity="0.7"/>
-  <text x="675" y="97" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">23 pages linked — equity flowing</text>
-  <!-- Caption -->
-  <text x="450" y="476" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Orphan pages recovered. Equity redistributed.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Orphan page detection with findOrphanPages — pages with zero inbound links are invisible to crawlers until surfaced and linked</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Orphan Page Detection — findOrphanPages()</text>
+  <!-- left card: the graph with orphans -->
+  <rect x="40" y="68" width="400" height="402" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="64" y="98" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">The problem</text>
+  <text x="64" y="120" class="font-ui" font-size="12" fill="#64748b">Pages with inboundCount: 0 can't be reached by</text>
+  <text x="64" y="138" class="font-ui" font-size="12" fill="#64748b">crawlers following links from the homepage.</text>
+  <!-- linked cluster -->
+  <g stroke="#94a3b8" stroke-width="1.5">
+    <line x1="150" y1="230" x2="250" y2="190"/>
+    <line x1="150" y1="230" x2="250" y2="270"/>
+    <line x1="250" y1="190" x2="350" y2="190"/>
+    <line x1="250" y1="270" x2="350" y2="270"/>
+    <line x1="250" y1="190" x2="250" y2="270"/>
+  </g>
+  <circle cx="150" cy="230" r="22" fill="#2563eb"/>
+  <text x="150" y="235" class="font-ui" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">/</text>
+  <circle cx="250" cy="190" r="16" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="250" cy="270" r="16" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="350" cy="190" r="13" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="350" cy="270" r="13" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="150" y="268" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">home</text>
+  <text x="250" y="164" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">/blog</text>
+  <!-- orphan zone -->
+  <rect x="64" y="316" width="352" height="132" rx="8" fill="#fee2e2" opacity="0.5"/>
+  <text x="80" y="342" class="font-ui" font-size="12" font-weight="600" fill="#b91c1c">Unreachable — no inbound links</text>
+  <circle cx="130" cy="392" r="15" fill="#ffffff" stroke="#ef4444" stroke-width="2"/>
+  <text x="130" y="426" class="font-mono" font-size="10" fill="#b91c1c" text-anchor="middle">/old-landing</text>
+  <circle cx="250" cy="392" r="15" fill="#ffffff" stroke="#ef4444" stroke-width="2"/>
+  <text x="250" y="426" class="font-mono" font-size="10" fill="#b91c1c" text-anchor="middle">/promo-2024</text>
+  <circle cx="366" cy="392" r="15" fill="#ffffff" stroke="#ef4444" stroke-width="2"/>
+  <text x="366" y="426" class="font-mono" font-size="10" fill="#b91c1c" text-anchor="middle">/guide/draft</text>
+  <!-- right card: detection output -->
+  <rect x="464" y="68" width="396" height="402" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="488" y="98" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">The one-call fix</text>
+  <rect x="488" y="112" width="348" height="118" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="12">
+    <text x="504" y="138" fill="#7c3aed">const<tspan fill="#0f172a"> graph = </tspan><tspan fill="#2563eb">buildLinkGraph</tspan><tspan fill="#0f172a">(pages);</tspan></text>
+    <text x="504" y="160" fill="#7c3aed">const<tspan fill="#0f172a"> orphans = </tspan><tspan fill="#2563eb">findOrphanPages</tspan><tspan fill="#0f172a">(</tspan></text>
+    <text x="504" y="182" fill="#0f172a">  graph,</text>
+    <text x="504" y="204" fill="#0f172a">  [<tspan fill="#16a34a">'https://example.com/'</tspan>] <tspan fill="#94a3b8">// entryPoints</tspan></text>
+    <text x="504" y="222" fill="#0f172a">);</text>
+  </g>
+  <!-- result table -->
+  <text x="488" y="262" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">OrphanPage[] result</text>
+  <rect x="488" y="274" width="348" height="26" fill="#f8fafc"/>
+  <text x="500" y="292" class="font-ui" font-size="11" font-weight="600" fill="#64748b">URL</text>
+  <text x="730" y="292" class="font-ui" font-size="11" font-weight="600" fill="#64748b">outboundCount</text>
+  <line x1="488" y1="300" x2="836" y2="300" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="12" fill="#0f172a">
+    <text x="500" y="322">/guide/draft</text>
+    <text x="500" y="352">/promo-2024</text>
+    <text x="500" y="382">/old-landing</text>
+  </g>
+  <g class="font-mono" font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="776" y="322">6</text>
+    <text x="776" y="352">2</text>
+    <text x="776" y="382">0</text>
+  </g>
+  <line x1="488" y1="332" x2="836" y2="332" stroke="#e2e8f0"/>
+  <line x1="488" y1="362" x2="836" y2="362" stroke="#e2e8f0"/>
+  <line x1="488" y1="392" x2="836" y2="392" stroke="#e2e8f0"/>
+  <rect x="488" y="412" width="348" height="42" rx="8" fill="#dcfce7"/>
+  <text x="504" y="430" class="font-ui" font-size="11" font-weight="600" fill="#16a34a">Sorted by outboundCount desc — pages that link out</text>
+  <text x="504" y="446" class="font-ui" font-size="11" font-weight="600" fill="#16a34a">but receive nothing are the highest priority to fix.</text>
 </svg>

@@ -1,38 +1,52 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="38" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Stream 100k URLs. Never spike memory.</text>
-  <!-- Grid -->
-  <line x1="80" y1="60" x2="80" y2="360" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="360" x2="820" y2="360" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="280" x2="820" y2="280" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="80" y1="200" x2="820" y2="200" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="80" y1="120" x2="820" y2="120" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <!-- Y labels -->
-  <text x="70" y="364" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0 MB</text>
-  <text x="70" y="284" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">200 MB</text>
-  <text x="70" y="204" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">400 MB</text>
-  <text x="70" y="124" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">600 MB</text>
-  <text x="70" y="80" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">800 MB</text>
-  <!-- X labels -->
-  <text x="170" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">0</text>
-  <text x="320" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">25k</text>
-  <text x="470" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">50k</text>
-  <text x="620" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">75k</text>
-  <text x="770" y="380" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">100k URLs</text>
-  <!-- Without streaming line (steep red rise) -->
-  <polyline points="170,348 320,270 470,185 620,105 720,70" stroke="#ef4444" stroke-width="3" fill="none"/>
-  <polygon points="170,348 320,270 470,185 620,105 720,70 820,360 170,360" fill="#ef4444" opacity="0.08"/>
-  <!-- OOM risk label -->
-  <text x="740" y="75" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" font-weight="700">OOM Risk!</text>
-  <rect x="700" y="56" width="90" height="22" rx="4" fill="#7f1d1d" opacity="0.8"/>
-  <text x="745" y="71" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">~750 MB</text>
-  <!-- With streaming line (flat emerald) -->
-  <polyline points="170,350 320,349 470,348 620,348 770,347" stroke="#10b981" stroke-width="3" fill="none"/>
-  <!-- Flat label -->
-  <text x="640" y="340" font-family="'Segoe UI', sans-serif" font-size="12" fill="#10b981">~45 MB flat</text>
-  <!-- Legend -->
-  <line x1="100" y1="424" x2="140" y2="424" stroke="#ef4444" stroke-width="3"/>
-  <text x="148" y="429" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">Without streaming — memory spikes with every URL buffered</text>
-  <line x1="100" y1="448" x2="140" y2="448" stroke="#10b981" stroke-width="3"/>
-  <text x="148" y="453" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8">With @power-seo/sitemap — flat memory profile, production safe</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Chart illustration showing memory growth when building one large sitemap string versus flat constant memory when streaming chunks with streamSitemap</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <text x="30" y="44" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">Streaming generation — constant memory</text>
+  <text x="30" y="68" class="font-ui" font-size="13" fill="#64748b">streamSitemap() is a synchronous generator that yields one &lt;url&gt; chunk at a time</text>
+
+  <!-- left chart: string concat -->
+  <rect x="30" y="92" width="410" height="250" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="52" y="122" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Building one big XML string</text>
+  <rect x="330" y="106" width="90" height="20" rx="10" fill="#fee2e2"/>
+  <text x="375" y="120" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">grows</text>
+  <!-- gridlines -->
+  <line x1="70" y1="160" x2="410" y2="160" stroke="#e2e8f0"/>
+  <line x1="70" y1="200" x2="410" y2="200" stroke="#e2e8f0"/>
+  <line x1="70" y1="240" x2="410" y2="240" stroke="#e2e8f0"/>
+  <line x1="70" y1="280" x2="410" y2="280" stroke="#e2e8f0"/>
+  <!-- rising memory curve -->
+  <path d="M70 280 C 160 276, 240 250, 300 210 S 390 150, 410 142 L410 280 Z" fill="#ef4444" opacity="0.12"/>
+  <path d="M70 280 C 160 276, 240 250, 300 210 S 390 150, 410 142" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+  <text x="60" y="164" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="end">high</text>
+  <text x="60" y="284" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="end">low</text>
+  <text x="70" y="322" class="font-ui" font-size="11" fill="#94a3b8">Memory grows with every URL appended</text>
+
+  <!-- right chart: streaming -->
+  <rect x="460" y="92" width="410" height="250" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="482" y="122" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">streamSitemap()</text>
+  <rect x="762" y="106" width="88" height="20" rx="10" fill="#dcfce7"/>
+  <text x="806" y="120" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">constant</text>
+  <line x1="500" y1="160" x2="840" y2="160" stroke="#e2e8f0"/>
+  <line x1="500" y1="200" x2="840" y2="200" stroke="#e2e8f0"/>
+  <line x1="500" y1="240" x2="840" y2="240" stroke="#e2e8f0"/>
+  <line x1="500" y1="280" x2="840" y2="280" stroke="#e2e8f0"/>
+  <!-- flat memory line -->
+  <path d="M500 280 L500 262 L840 262 L840 280 Z" fill="#16a34a" opacity="0.12"/>
+  <path d="M500 262 L840 262" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="490" y="164" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="end">high</text>
+  <text x="490" y="284" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="end">low</text>
+  <text x="500" y="322" class="font-ui" font-size="11" fill="#94a3b8">One chunk in memory at a time, any catalog size</text>
+
+  <!-- code card -->
+  <rect x="30" y="362" width="840" height="106" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="52" y="392" class="font-mono" font-size="13"><tspan fill="#7c3aed">const</tspan><tspan fill="#0f172a"> stream = </tspan><tspan fill="#2563eb">streamSitemap</tspan><tspan fill="#0f172a">(</tspan><tspan fill="#16a34a">'https://example.com'</tspan><tspan fill="#0f172a">, urls);</tspan></text>
+  <text x="52" y="418" class="font-mono" font-size="13"><tspan fill="#7c3aed">for</tspan><tspan fill="#0f172a"> (</tspan><tspan fill="#7c3aed">const</tspan><tspan fill="#0f172a"> chunk </tspan><tspan fill="#7c3aed">of</tspan><tspan fill="#0f172a"> stream) response.</tspan><tspan fill="#2563eb">write</tspan><tspan fill="#0f172a">(chunk);</tspan></text>
+  <text x="52" y="444" class="font-mono" font-size="13"><tspan fill="#0f172a">response.</tspan><tspan fill="#2563eb">end</tspan><tspan fill="#0f172a">();</tspan><tspan fill="#94a3b8">  // works in Express, Fastify, and edge runtimes</tspan></text>
+
+  <text x="30" y="490" class="font-ui" font-size="11" fill="#94a3b8">Qualitative illustration — no benchmark figures. Chunks are plain XML strings, one per URL.</text>
 </svg>

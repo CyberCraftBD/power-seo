@@ -1,95 +1,84 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0d1117"/>
-      <stop offset="100%" stop-color="#111827"/>
-    </linearGradient>
-    <linearGradient id="coreBar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#818cf8"/>
-    </linearGradient>
-  </defs>
+  <title>Architecture diagram showing @power-seo/core as the shared foundation layer consumed by the react, schema, sitemap, audit, content-analysis and meta packages</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="32" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">Architecture — the shared foundation</text>
+  <text x="32" y="66" class="font-ui" font-size="13" fill="#64748b">Every @power-seo package builds on the same core types and utilities</text>
 
-  <!-- Background -->
-  <rect width="900" height="500" fill="url(#bg)"/>
+  <!-- top layer: consumer packages -->
+  <text x="32" y="102" class="font-ui" font-size="12" font-weight="600" fill="#94a3b8">CONSUMER PACKAGES</text>
+  <rect x="32" y="114" width="130" height="44" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="97" y="140" class="font-mono" font-size="11" fill="#0f172a" text-anchor="middle">@power-seo/react</text>
+  <rect x="174" y="114" width="130" height="44" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="239" y="140" class="font-mono" font-size="11" fill="#0f172a" text-anchor="middle">…/schema</text>
+  <rect x="316" y="114" width="130" height="44" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="381" y="140" class="font-mono" font-size="11" fill="#0f172a" text-anchor="middle">…/sitemap</text>
+  <rect x="458" y="114" width="130" height="44" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="523" y="140" class="font-mono" font-size="11" fill="#0f172a" text-anchor="middle">…/audit</text>
+  <rect x="600" y="114" width="140" height="44" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="670" y="140" class="font-mono" font-size="11" fill="#0f172a" text-anchor="middle">…/content-analysis</text>
+  <rect x="752" y="114" width="116" height="44" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="810" y="134" class="font-mono" font-size="11" fill="#0f172a" text-anchor="middle">…/meta</text>
+  <text x="810" y="150" class="font-ui" font-size="10" fill="#94a3b8" text-anchor="middle">+ 11 more</text>
 
-  <!-- Grid lines -->
-  <g stroke="#1a1f2e" stroke-width="1">
-    <line x1="0" y1="50" x2="900" y2="50"/>
-    <line x1="0" y1="100" x2="900" y2="100"/>
-    <line x1="0" y1="150" x2="900" y2="150"/>
-    <line x1="0" y1="200" x2="900" y2="200"/>
-    <line x1="0" y1="250" x2="900" y2="250"/>
-    <line x1="0" y1="300" x2="900" y2="300"/>
-    <line x1="0" y1="350" x2="900" y2="350"/>
-    <line x1="0" y1="400" x2="900" y2="400"/>
-    <line x1="0" y1="450" x2="900" y2="450"/>
-    <line x1="100" y1="0" x2="100" y2="500"/>
-    <line x1="200" y1="0" x2="200" y2="500"/>
-    <line x1="300" y1="0" x2="300" y2="500"/>
-    <line x1="400" y1="0" x2="400" y2="500"/>
-    <line x1="500" y1="0" x2="500" y2="500"/>
-    <line x1="600" y1="0" x2="600" y2="500"/>
-    <line x1="700" y1="0" x2="700" y2="500"/>
-    <line x1="800" y1="0" x2="800" y2="500"/>
-  </g>
+  <!-- arrows -->
+  <line x1="97" y1="158" x2="230" y2="208" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="239" y1="158" x2="330" y2="208" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="381" y1="158" x2="420" y2="208" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="523" y1="158" x2="500" y2="208" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="670" y1="158" x2="590" y2="208" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="810" y1="158" x2="680" y2="208" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="450" y="192" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">import from</text>
 
-  <!-- Title -->
-  <text x="450" y="52" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600" fill="#f0f6fc" text-anchor="middle">Install core once. Power every package.</text>
+  <!-- core layer -->
+  <rect x="120" y="208" width="660" height="196" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="140" y="224" width="150" height="26" rx="13" fill="#dbeafe"/>
+  <text x="215" y="242" class="font-mono" font-size="12" font-weight="600" fill="#1d4ed8" text-anchor="middle">@power-seo/core</text>
+  <rect x="640" y="224" width="122" height="26" rx="13" fill="#dcfce7"/>
+  <text x="701" y="242" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">0 dependencies</text>
 
-  <!-- Layer bars — top packages, progressively narrowing -->
+  <!-- module boxes inside core -->
+  <rect x="140" y="264" width="148" height="56" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="214" y="288" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Shared Types</text>
+  <text x="214" y="306" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">SEOConfig, SitemapURL…</text>
+  <rect x="300" y="264" width="148" height="56" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="374" y="288" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Constants</text>
+  <text x="374" y="306" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">TITLE_MAX_PIXELS=580</text>
+  <rect x="460" y="264" width="148" height="56" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="534" y="288" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Meta Validators</text>
+  <text x="534" y="306" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">validateTitle()</text>
+  <rect x="620" y="264" width="142" height="56" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="691" y="288" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Meta Builders</text>
+  <text x="691" y="306" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">buildMetaTags()</text>
 
-  <!-- Row 1: meta -->
-  <rect x="200" y="75" width="500" height="38" rx="4" fill="#1e2430"/>
-  <rect x="200" y="75" width="4" height="38" rx="2" fill="#6366f1"/>
-  <text x="224" y="99" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#e2e8f0">meta</text>
-  <text x="500" y="99" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">SSR metadata · Next.js App Router · Remix</text>
+  <rect x="140" y="332" width="148" height="56" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="214" y="356" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Text Statistics</text>
+  <text x="214" y="374" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">getTextStatistics()</text>
+  <rect x="300" y="332" width="148" height="56" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="374" y="356" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Keyword Density</text>
+  <text x="374" y="374" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">calculateKeywordDensity()</text>
+  <rect x="460" y="332" width="148" height="56" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="534" y="356" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">URL Utilities</text>
+  <text x="534" y="374" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">resolveCanonical()</text>
+  <rect x="620" y="332" width="142" height="56" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="691" y="356" class="font-ui" font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">Rate Limiting</text>
+  <text x="691" y="374" class="font-mono" font-size="10" fill="#64748b" text-anchor="middle">createTokenBucket()</text>
 
-  <!-- Row 2: schema -->
-  <rect x="175" y="122" width="550" height="38" rx="4" fill="#1e2430"/>
-  <rect x="175" y="122" width="4" height="38" rx="2" fill="#6366f1"/>
-  <text x="199" y="146" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#e2e8f0">schema</text>
-  <text x="450" y="146" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">JSON-LD builders · Structured data · React components</text>
-
-  <!-- Row 3: sitemap -->
-  <rect x="150" y="169" width="600" height="38" rx="4" fill="#1e2430"/>
-  <rect x="150" y="169" width="4" height="38" rx="2" fill="#6366f1"/>
-  <text x="174" y="193" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#e2e8f0">sitemap</text>
-  <text x="450" y="193" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">XML sitemap generation · Streaming · Next.js adapter</text>
-
-  <!-- Row 4: links -->
-  <rect x="125" y="216" width="650" height="38" rx="4" fill="#1e2430"/>
-  <rect x="125" y="216" width="4" height="38" rx="2" fill="#6366f1"/>
-  <text x="149" y="240" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#e2e8f0">links</text>
-  <text x="450" y="240" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Link graph analysis · Internal · External · Orphaned pages</text>
-
-  <!-- Row 5: preview -->
-  <rect x="100" y="263" width="700" height="38" rx="4" fill="#1e2430"/>
-  <rect x="100" y="263" width="4" height="38" rx="2" fill="#6366f1"/>
-  <text x="124" y="287" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#e2e8f0">preview</text>
-  <text x="450" y="287" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">SERP preview · OG/Twitter cards · Pixel-accurate truncation</text>
-
-  <!-- Row 6: audit -->
-  <rect x="75" y="310" width="750" height="38" rx="4" fill="#1e2430"/>
-  <rect x="75" y="310" width="4" height="38" rx="2" fill="#6366f1"/>
-  <text x="99" y="334" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#e2e8f0">audit · react · content-analysis · analytics</text>
-  <text x="450" y="334" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle"></text>
-
-  <!-- Connector lines from bars down to core -->
-  <g stroke="#6366f1" stroke-width="1" stroke-dasharray="4,3" opacity="0.4">
-    <line x1="300" y1="348" x2="200" y2="372"/>
-    <line x1="450" y1="348" x2="450" y2="372"/>
-    <line x1="600" y1="348" x2="700" y2="372"/>
-  </g>
-
-  <!-- Core bar — widest, solid indigo -->
-  <rect x="50" y="372" width="800" height="52" rx="6" fill="url(#coreBar)"/>
-  <!-- Core bar inner glow -->
-  <rect x="50" y="372" width="800" height="52" rx="6" fill="none" stroke="#818cf8" stroke-width="1.5" opacity="0.5"/>
-  <text x="450" y="404" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">@power-seo/core — shared types · utils · constants · validators</text>
-
-  <!-- Version badge -->
-  <rect x="700" y="440" width="160" height="28" rx="14" fill="#1e2430" stroke="#374151" stroke-width="1"/>
-  <text x="780" y="458" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">0 peer dependencies</text>
-
+  <!-- runtime layer -->
+  <text x="120" y="436" class="font-ui" font-size="12" font-weight="600" fill="#94a3b8">RUNS IN</text>
+  <rect x="120" y="446" width="88" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="164" y="463" class="font-ui" font-size="11" fill="#64748b" text-anchor="middle">Next.js</text>
+  <rect x="216" y="446" width="80" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="256" y="463" class="font-ui" font-size="11" fill="#64748b" text-anchor="middle">Remix</text>
+  <rect x="304" y="446" width="70" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="339" y="463" class="font-ui" font-size="11" fill="#64748b" text-anchor="middle">Vite</text>
+  <rect x="382" y="446" width="88" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="426" y="463" class="font-ui" font-size="11" fill="#64748b" text-anchor="middle">Node.js</text>
+  <rect x="478" y="446" width="150" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="553" y="463" class="font-ui" font-size="11" fill="#64748b" text-anchor="middle">Cloudflare Workers</text>
+  <rect x="636" y="446" width="110" height="26" rx="13" fill="#f1f5f9"/>
+  <text x="691" y="463" class="font-ui" font-size="11" fill="#64748b" text-anchor="middle">Vercel Edge</text>
 </svg>

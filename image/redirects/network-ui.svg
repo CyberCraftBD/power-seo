@@ -1,56 +1,90 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Redirect Chain Visualization — Catch Loops Before They Go Live</text>
-  <!-- Left panel: chain warning -->
-  <rect x="30" y="58" width="390" height="300" rx="8" fill="#161b22"/>
-  <rect x="30" y="58" width="390" height="34" rx="8" fill="#1a0505"/>
-  <text x="225" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">⚠ Redirect chain detected (3 hops)</text>
-  <!-- Chain A→B→C -->
-  <rect x="60" y="116" width="120" height="36" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
-  <text x="120" y="139" font-family="'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle">/page-v1</text>
-  <line x1="180" y1="134" x2="220" y2="134" stroke="#f97316" stroke-width="2" marker-end="url(#a1)"/>
-  <rect x="220" y="116" width="120" height="36" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
-  <text x="280" y="139" font-family="'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle">/page-v2</text>
-  <line x1="280" y1="152" x2="280" y2="174" stroke="#f97316" stroke-width="2"/>
-  <rect x="220" y="174" width="120" height="36" rx="6" fill="#1f1005" stroke="#f97316" stroke-width="1.5"/>
-  <text x="280" y="197" font-family="'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle">/page-v3</text>
-  <line x1="220" y1="192" x2="180" y2="192" stroke="#f97316" stroke-width="2"/>
-  <rect x="60" y="174" width="120" height="36" rx="6" fill="#0d2444" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="120" y="197" font-family="'Courier New', monospace" font-size="12" fill="#22c55e" text-anchor="middle">/page-final</text>
-  <!-- hop count -->
-  <text x="225" y="240" font-family="'Segoe UI', sans-serif" font-size="12" fill="#f97316" text-anchor="middle">3 hops — Google stops at 5</text>
-  <!-- Engine warning output -->
-  <rect x="48" y="258" width="352" height="72" rx="4" fill="#0d1117"/>
-  <text x="64" y="278" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">engine.validate() →</text>
-  <text x="64" y="298" font-family="'Courier New', monospace" font-size="11" fill="#f97316">  warnings: [</text>
-  <text x="64" y="316" font-family="'Courier New', monospace" font-size="11" fill="#fbbf24">    'Chain: /v1→/v2→/v3→/final (3 hops)'</text>
-  <!-- Right panel: resolved direct -->
-  <rect x="470" y="58" width="400" height="300" rx="8" fill="#161b22"/>
-  <rect x="470" y="58" width="400" height="34" rx="8" fill="#0d1f0d"/>
-  <text x="670" y="80" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e" text-anchor="middle">✓ Chain resolved — direct redirect</text>
-  <!-- Direct A→Final -->
-  <rect x="500" y="116" width="130" height="36" rx="6" fill="#0d2444" stroke="#f97316" stroke-width="1.5"/>
-  <text x="565" y="139" font-family="'Courier New', monospace" font-size="12" fill="#f97316" text-anchor="middle">/page-v1</text>
-  <line x1="630" y1="134" x2="700" y2="134" stroke="#22c55e" stroke-width="3"/>
-  <!-- Arrow head -->
-  <polygon points="700,128 712,134 700,140" fill="#22c55e"/>
-  <rect x="712" y="116" width="130" height="36" rx="6" fill="#0d2444" stroke="#22c55e" stroke-width="1.5"/>
-  <text x="777" y="139" font-family="'Courier New', monospace" font-size="12" fill="#22c55e" text-anchor="middle">/page-final</text>
-  <!-- 1 hop badge -->
-  <rect x="620" y="166" width="100" height="24" rx="12" fill="#14532d"/>
-  <text x="670" y="182" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">1 hop — optimal</text>
-  <!-- Engine resolve output -->
-  <rect x="488" y="220" width="364" height="114" rx="4" fill="#0d1117"/>
-  <text x="504" y="240" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">engine.resolveChain('/page-v1') →</text>
-  <text x="504" y="260" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&#123;</text>
-  <text x="520" y="280" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc">  destination</text>
-  <text x="634" y="280" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">: </text>
-  <text x="646" y="280" font-family="'Courier New', monospace" font-size="11" fill="#7ee787">'/page-final'</text>
-  <text x="520" y="300" font-family="'Courier New', monospace" font-size="11" fill="#a5b4fc">  hops</text>
-  <text x="572" y="300" font-family="'Courier New', monospace" font-size="11" fill="#e2e8f0">: </text>
-  <text x="584" y="300" font-family="'Courier New', monospace" font-size="11" fill="#22c55e">1</text>
-  <text x="504" y="320" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&#125;</text>
-  <!-- Caption -->
-  <text x="450" y="400" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Detect chains, loops, and conflicts before deployment.</text>
-  <text x="450" y="424" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/redirects — validate() · resolveChain() · loop detection · max-hop warnings</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Redirect engine dashboard mockup showing a typed rule table and automatic chain resolution with loop detection in @power-seo/redirects</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <text x="20" y="34" class="font-ui" font-size="14" font-weight="700" fill="#0f172a">power-seo</text>
+  <rect x="12" y="56" width="156" height="32" rx="6" fill="#dbeafe"/>
+  <text x="24" y="77" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Redirect Rules</text>
+  <text x="24" y="117" class="font-ui" font-size="13" fill="#64748b">Test URL</text>
+  <text x="24" y="153" class="font-ui" font-size="13" fill="#64748b">Chain Resolution</text>
+  <text x="24" y="189" class="font-ui" font-size="13" fill="#64748b">Adapters</text>
+  <text x="24" y="225" class="font-ui" font-size="13" fill="#64748b">Settings</text>
+
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Redirect Engine</text>
+  <rect x="784" y="11" width="92" height="30" rx="6" fill="#2563eb"/>
+  <text x="830" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">addRule()</text>
+
+  <!-- rules table card -->
+  <rect x="204" y="72" width="672" height="212" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="205" y="73" width="670" height="36" rx="8" fill="#f8fafc"/>
+  <line x1="204" y1="109" x2="876" y2="109" stroke="#e2e8f0"/>
+  <text x="224" y="96" class="font-ui" font-size="12" font-weight="600" fill="#64748b">SOURCE</text>
+  <text x="470" y="96" class="font-ui" font-size="12" font-weight="600" fill="#64748b">DESTINATION</text>
+  <text x="726" y="96" class="font-ui" font-size="12" font-weight="600" fill="#64748b">TYPE</text>
+  <text x="806" y="96" class="font-ui" font-size="12" font-weight="600" fill="#64748b">STATUS</text>
+
+  <text x="224" y="136" class="font-mono" font-size="13" fill="#0f172a">/old-about</text>
+  <text x="470" y="136" class="font-mono" font-size="13" fill="#0f172a">/about</text>
+  <text x="726" y="136" class="font-ui" font-size="12" fill="#64748b">exact</text>
+  <rect x="806" y="121" width="42" height="21" rx="10" fill="#dbeafe"/>
+  <text x="827" y="136" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">301</text>
+  <line x1="204" y1="151" x2="876" y2="151" stroke="#e2e8f0"/>
+
+  <text x="224" y="178" class="font-mono" font-size="13" fill="#0f172a">/blog/<tspan fill="#7c3aed">:slug</tspan></text>
+  <text x="470" y="178" class="font-mono" font-size="13" fill="#0f172a">/articles/<tspan fill="#7c3aed">:slug</tspan></text>
+  <text x="726" y="178" class="font-ui" font-size="12" fill="#64748b">glob</text>
+  <rect x="806" y="163" width="42" height="21" rx="10" fill="#dbeafe"/>
+  <text x="827" y="178" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">301</text>
+  <line x1="204" y1="193" x2="876" y2="193" stroke="#e2e8f0"/>
+
+  <text x="224" y="220" class="font-mono" font-size="13" fill="#0f172a">/docs/<tspan fill="#7c3aed">*</tspan></text>
+  <text x="470" y="220" class="font-mono" font-size="13" fill="#0f172a">/documentation/<tspan fill="#7c3aed">*</tspan></text>
+  <text x="726" y="220" class="font-ui" font-size="12" fill="#64748b">glob</text>
+  <rect x="806" y="205" width="42" height="21" rx="10" fill="#fef3c7"/>
+  <text x="827" y="220" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">302</text>
+  <line x1="204" y1="235" x2="876" y2="235" stroke="#e2e8f0"/>
+
+  <text x="224" y="262" class="font-mono" font-size="13" fill="#0f172a">/old/(.*)</text>
+  <text x="470" y="262" class="font-mono" font-size="13" fill="#0f172a">/new/<tspan fill="#7c3aed">$1</tspan></text>
+  <text x="726" y="262" class="font-ui" font-size="12" fill="#64748b">regex</text>
+  <rect x="806" y="247" width="42" height="21" rx="10" fill="#dbeafe"/>
+  <text x="827" y="262" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">301</text>
+
+  <!-- chain resolution card -->
+  <rect x="204" y="304" width="410" height="172" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="224" y="332" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Chain Resolution</text>
+  <rect x="500" y="317" width="98" height="22" rx="11" fill="#dcfce7"/>
+  <text x="549" y="332" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">auto-resolved</text>
+  <text x="224" y="356" class="font-ui" font-size="11" fill="#94a3b8">engine.match() returns the final hop, not the first</text>
+
+  <rect x="224" y="372" width="96" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="272" y="392" class="font-mono" font-size="12" fill="#0f172a" text-anchor="middle">/a</text>
+  <path d="M 326 387 L 352 387 M 346 381 L 352 387 L 346 393" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <rect x="358" y="372" width="96" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="406" y="392" class="font-mono" font-size="12" fill="#0f172a" text-anchor="middle">/b</text>
+  <path d="M 460 387 L 486 387 M 480 381 L 486 387 L 480 393" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <rect x="492" y="372" width="96" height="30" rx="6" fill="#dbeafe"/>
+  <text x="540" y="392" class="font-mono" font-size="12" font-weight="600" fill="#1d4ed8" text-anchor="middle">/c &#10003;</text>
+
+  <text x="224" y="434" class="font-mono" font-size="11" fill="#64748b">MAX_CHAIN_HOPS = 10</text>
+  <text x="224" y="456" class="font-ui" font-size="11" fill="#64748b">Redirect loops (A &#8594; B &#8594; A) throw before deploy</text>
+
+  <!-- loop guard card -->
+  <rect x="634" y="304" width="242" height="172" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="654" y="332" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Loop Detection</text>
+  <rect x="654" y="348" width="202" height="58" rx="6" fill="#fee2e2"/>
+  <text x="666" y="372" class="font-mono" font-size="11" font-weight="600" fill="#b91c1c">Error: redirect loop</text>
+  <text x="666" y="390" class="font-mono" font-size="11" fill="#b91c1c">/pricing &#8594; /plans &#8594; /pricing</text>
+  <text x="654" y="434" class="font-ui" font-size="11" fill="#64748b">Caught synchronously in unit</text>
+  <text x="654" y="450" class="font-ui" font-size="11" fill="#64748b">tests &#8212; no deploy required</text>
 </svg>

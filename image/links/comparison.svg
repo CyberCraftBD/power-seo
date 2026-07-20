@@ -1,57 +1,86 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="42" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Internal Link Analysis — Tool Comparison</text>
-  <!-- Headers -->
-  <rect x="30" y="58" width="220" height="38" rx="6" fill="#f59e0b"/>
-  <text x="140" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">@power-seo/links</text>
-  <rect x="265" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
-  <text x="355" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Screaming Frog</text>
-  <rect x="460" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
-  <text x="550" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Semrush</text>
-  <rect x="655" y="58" width="215" height="38" rx="6" fill="#1e2430"/>
-  <text x="762" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Ahrefs</text>
-  <!-- Rows -->
-  <rect x="0" y="108" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="132" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">TypeScript API</text>
-  <text x="140" y="132" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="355" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="146" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="170" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Free / open source</text>
-  <text x="140" y="170" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="355" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="184" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="208" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">PageRank algorithm</text>
-  <text x="140" y="208" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="355" y="208" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="550" y="208" font-size="16" fill="#94a3b8" text-anchor="middle">similar</text>
-  <text x="762" y="208" font-size="16" fill="#94a3b8" text-anchor="middle">similar</text>
-  <rect x="0" y="222" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="246" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Orphan detection</text>
-  <text x="140" y="246" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="355" y="246" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="550" y="246" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="762" y="246" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <rect x="0" y="260" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="284" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Embed in your app</text>
-  <text x="140" y="284" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="355" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="298" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="322" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">No subscription required</text>
-  <text x="140" y="322" font-size="18" fill="#f59e0b" text-anchor="middle">✓</text>
-  <text x="355" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <!-- Dividers -->
-  <line x1="250" y1="58" x2="250" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="445" y1="58" x2="445" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="640" y1="58" x2="640" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="870" y1="58" x2="870" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <text x="450" y="386" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">The only internal link library that lives in your codebase.</text>
-  <text x="450" y="410" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">TypeScript API · Free · PageRank · Orphan detection · No subscription</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Feature comparison matrix of @power-seo/links versus Screaming Frog, Ahrefs and custom scripts for internal link analysis</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="44" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Internal Link Analysis — Tool Comparison</text>
+  <!-- table card -->
+  <rect x="40" y="70" width="820" height="400" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <!-- header row -->
+  <rect x="40" y="70" width="820" height="44" rx="8" fill="#f8fafc"/>
+  <line x1="40" y1="114" x2="860" y2="114" stroke="#e2e8f0"/>
+  <text x="64" y="98" class="font-ui" font-size="12" font-weight="600" fill="#64748b">FEATURE</text>
+  <text x="440" y="98" class="font-mono" font-size="12" font-weight="700" fill="#2563eb" text-anchor="middle">@power-seo/links</text>
+  <text x="595" y="98" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Screaming Frog</text>
+  <text x="710" y="98" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Ahrefs</text>
+  <text x="805" y="98" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Custom scripts</text>
+  <!-- highlight column -->
+  <rect x="360" y="114" width="160" height="356" fill="#dbeafe" opacity="0.35"/>
+  <!-- row separators -->
+  <g stroke="#e2e8f0">
+    <line x1="40" y1="158" x2="860" y2="158"/>
+    <line x1="40" y1="202" x2="860" y2="202"/>
+    <line x1="40" y1="246" x2="860" y2="246"/>
+    <line x1="40" y1="290" x2="860" y2="290"/>
+    <line x1="40" y1="334" x2="860" y2="334"/>
+    <line x1="40" y1="378" x2="860" y2="378"/>
+    <line x1="40" y1="422" x2="860" y2="422"/>
+  </g>
+  <!-- feature labels -->
+  <g class="font-ui" font-size="13" fill="#0f172a">
+    <text x="64" y="141">Programmatic link graph</text>
+    <text x="64" y="185">Orphan page detection</text>
+    <text x="64" y="229">Keyword-based suggestions</text>
+    <text x="64" y="273">PageRank-style equity</text>
+    <text x="64" y="317">Audit integration</text>
+    <text x="64" y="361">Zero dependencies</text>
+    <text x="64" y="405">TypeScript-first</text>
+    <text x="64" y="449">Tree-shakeable</text>
+  </g>
+  <!-- power-seo/links column: all checks -->
+  <g class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">
+    <text x="440" y="142">✓</text>
+    <text x="440" y="186">✓</text>
+    <text x="440" y="230">✓</text>
+    <text x="440" y="274">✓</text>
+    <text x="440" y="318">✓</text>
+    <text x="440" y="362">✓</text>
+    <text x="440" y="406">✓</text>
+    <text x="440" y="450">✓</text>
+  </g>
+  <!-- Screaming Frog -->
+  <g class="font-ui" font-size="15" text-anchor="middle">
+    <text x="595" y="142" fill="#94a3b8">—</text>
+    <text x="595" y="186" fill="#16a34a" font-weight="700">✓</text>
+    <text x="595" y="230" fill="#94a3b8">—</text>
+    <text x="595" y="274" fill="#94a3b8">—</text>
+    <text x="595" y="318" fill="#94a3b8">—</text>
+    <text x="595" y="362" fill="#94a3b8">—</text>
+    <text x="595" y="406" fill="#94a3b8">—</text>
+    <text x="595" y="450" fill="#94a3b8">—</text>
+  </g>
+  <!-- Ahrefs -->
+  <g class="font-ui" font-size="15" text-anchor="middle">
+    <text x="710" y="142" fill="#94a3b8">—</text>
+    <text x="710" y="186" fill="#16a34a" font-weight="700">✓</text>
+    <text x="710" y="230" fill="#94a3b8">—</text>
+    <text x="710" y="274" fill="#16a34a" font-weight="700">✓</text>
+    <text x="710" y="318" fill="#94a3b8">—</text>
+    <text x="710" y="362" fill="#94a3b8">—</text>
+    <text x="710" y="406" fill="#94a3b8">—</text>
+    <text x="710" y="450" fill="#94a3b8">—</text>
+  </g>
+  <!-- Custom scripts -->
+  <g class="font-ui" font-size="12" fill="#b45309" text-anchor="middle">
+    <text x="805" y="141">Manual</text>
+    <text x="805" y="185">Manual</text>
+    <text x="805" y="229">Manual</text>
+    <text x="805" y="273">Manual</text>
+    <text x="805" y="317" fill="#94a3b8" font-size="15">—</text>
+    <text x="805" y="361" fill="#94a3b8" font-size="15">—</text>
+    <text x="805" y="405" fill="#94a3b8" font-size="15">—</text>
+    <text x="805" y="449" fill="#94a3b8" font-size="15">—</text>
+  </g>
 </svg>

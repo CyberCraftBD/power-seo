@@ -1,61 +1,71 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Consent Mode v2 — No Analytics Before Opt-In</text>
-  <!-- Left: Without consent management -->
-  <rect x="30" y="56" width="390" height="280" rx="8" fill="#161b22"/>
-  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1a0505"/>
-  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Without consent management</text>
-  <!-- Fires immediately -->
-  <text x="48" y="120" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// Fires even without user consent!</text>
-  <text x="48" y="144" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">gtag('event', 'page_view')  // ⚠ GDPR risk</text>
-  <text x="48" y="168" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">fbq('track', 'PageView')    // ⚠ GDPR risk</text>
-  <text x="48" y="192" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">_paq.push(['trackPageView']) // ⚠ GDPR risk</text>
-  <!-- Risk box -->
-  <rect x="48" y="214" width="352" height="62" rx="6" fill="#1a0505"/>
-  <text x="224" y="234" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="700">GDPR Violations</text>
-  <text x="224" y="254" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">Up to €20M or 4% global revenue</text>
-  <text x="224" y="272" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">CCPA fines: $7,500 per intentional violation</text>
-  <!-- Arrow -->
-  <text x="450" y="210" font-family="'Segoe UI', sans-serif" font-size="36" fill="#06b6d4" text-anchor="middle" font-weight="700">→</text>
-  <!-- Right: With consent management -->
-  <rect x="480" y="56" width="390" height="280" rx="8" fill="#161b22"/>
-  <rect x="480" y="56" width="390" height="34" rx="8" fill="#031a1a"/>
-  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#06b6d4" text-anchor="middle">With @power-seo/tracking</text>
-  <!-- Consent-gated -->
-  <text x="498" y="120" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// Safe — default denied</text>
-  <text x="498" y="144" font-family="'Courier New', monospace" font-size="12" fill="#06b6d4">const tracker = createTracker(&#123;</text>
-  <text x="514" y="164" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  consent</text>
-  <text x="578" y="164" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123; </text>
-  <text x="514" y="184" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    defaultState</text>
-  <text x="634" y="184" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="646" y="184" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'denied'</text>
-  <text x="498" y="204" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">&#125;)</text>
-  <!-- Safe badge -->
-  <rect x="498" y="226" width="352" height="62" rx="6" fill="#031a1a"/>
-  <text x="674" y="246" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle" font-weight="700">GDPR · CCPA · ePrivacy Compliant ✓</text>
-  <text x="674" y="266" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">No data collected before opt-in</text>
-  <text x="674" y="284" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Consent mode v2 — GA4 modelling preserved</text>
-  <!-- Bottom flow diagram -->
-  <rect x="30" y="356" width="840" height="100" rx="8" fill="#161b22"/>
-  <text x="450" y="380" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">Consent state machine</text>
-  <!-- States -->
-  <rect x="60" y="392" width="110" height="28" rx="6" fill="#1a0505"/>
-  <text x="115" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">denied (default)</text>
-  <line x1="170" y1="406" x2="260" y2="406" stroke="#06b6d4" stroke-width="2"/>
-  <polygon points="260,400 272,406 260,412" fill="#06b6d4"/>
-  <text x="215" y="398" font-family="'Segoe UI', sans-serif" font-size="10" fill="#06b6d4" text-anchor="middle">grantConsent()</text>
-  <rect x="272" y="392" width="110" height="28" rx="6" fill="#031a1a"/>
-  <text x="327" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#06b6d4" text-anchor="middle">granted</text>
-  <line x1="382" y1="406" x2="470" y2="406" stroke="#06b6d4" stroke-width="2"/>
-  <polygon points="470,400 482,406 470,412" fill="#06b6d4"/>
-  <text x="426" y="398" font-family="'Segoe UI', sans-serif" font-size="10" fill="#06b6d4" text-anchor="middle">analytics fire</text>
-  <rect x="482" y="392" width="140" height="28" rx="6" fill="#042614"/>
-  <text x="552" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">All providers active ✓</text>
-  <line x1="622" y1="406" x2="710" y2="406" stroke="#6b7280" stroke-width="2"/>
-  <polygon points="710,400 722,406 710,412" fill="#6b7280"/>
-  <text x="666" y="398" font-family="'Segoe UI', sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">revokeConsent()</text>
-  <rect x="722" y="392" width="110" height="28" rx="6" fill="#1a0505"/>
-  <text x="777" y="410" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">denied again</text>
-  <!-- Caption -->
-  <text x="450" y="472" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Compliant by default. Opt-in to activate. Revocable at any time.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>GDPR opt-in by default: createConsentManager starts with only necessary consent granted, exposes grant, revoke and onChange, and reactively updates AnalyticsScript rendering</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="40" class="font-ui" font-size="18" font-weight="700" fill="#0f172a" text-anchor="middle">GDPR Opt-In by Default — createConsentManager()</text>
+
+  <!-- card 1: default state -->
+  <rect x="40" y="66" width="260" height="300" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="60" y="94" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Default ConsentState</text>
+  <line x1="40" y1="108" x2="300" y2="108" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="13" fill="#0f172a">
+    <text x="60" y="140">necessary</text>
+    <text x="60" y="180">analytics</text>
+    <text x="60" y="220">marketing</text>
+    <text x="60" y="260">preferences</text>
+  </g>
+  <g class="font-mono" font-size="13" text-anchor="end">
+    <text x="280" y="140" fill="#16a34a">true</text>
+    <text x="280" y="180" fill="#b91c1c">false</text>
+    <text x="280" y="220" fill="#b91c1c">false</text>
+    <text x="280" y="260" fill="#b91c1c">false</text>
+  </g>
+  <rect x="60" y="284" width="220" height="60" rx="6" fill="#fef3c7"/>
+  <text x="72" y="308" class="font-ui" font-size="11" font-weight="600" fill="#b45309">necessary is always true —</text>
+  <text x="72" y="324" class="font-ui" font-size="11" fill="#b45309">revoke('necessary') is a no-op,</text>
+  <text x="72" y="338" class="font-ui" font-size="11" fill="#b45309">initial overrides are ignored.</text>
+
+  <!-- card 2: API -->
+  <rect x="320" y="66" width="260" height="300" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="340" y="94" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">ConsentManager API</text>
+  <line x1="320" y1="108" x2="580" y2="108" stroke="#e2e8f0"/>
+  <g class="font-mono" font-size="12.5" fill="#0f172a">
+    <text x="340" y="138"><tspan fill="#2563eb">getState</tspan>()</text>
+    <text x="340" y="170"><tspan fill="#2563eb">grant</tspan>(<tspan fill="#16a34a">'analytics'</tspan>)</text>
+    <text x="340" y="202"><tspan fill="#2563eb">revoke</tspan>(<tspan fill="#16a34a">'marketing'</tspan>)</text>
+    <text x="340" y="234"><tspan fill="#2563eb">grantAll</tspan>() / <tspan fill="#2563eb">revokeAll</tspan>()</text>
+    <text x="340" y="266"><tspan fill="#2563eb">isGranted</tspan>(<tspan fill="#16a34a">'analytics'</tspan>)</text>
+    <text x="340" y="298"><tspan fill="#2563eb">onChange</tspan>(callback)</text>
+  </g>
+  <text x="340" y="330" class="font-ui" font-size="11" fill="#94a3b8">onChange returns an unsubscribe fn</text>
+
+  <!-- card 3: reactive flow -->
+  <rect x="600" y="66" width="260" height="300" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="620" y="94" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Reactive loading</text>
+  <line x1="600" y1="108" x2="860" y2="108" stroke="#e2e8f0"/>
+
+  <rect x="620" y="124" width="220" height="40" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="730" y="149" class="font-mono" font-size="12" fill="#0f172a" text-anchor="middle">grant('analytics')</text>
+  <line x1="730" y1="164" x2="730" y2="182" stroke="#2563eb" stroke-width="2"/>
+  <path d="M724 182 L730 192 L736 182 Z" fill="#2563eb"/>
+
+  <rect x="620" y="194" width="220" height="40" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="730" y="219" class="font-mono" font-size="12" fill="#0f172a" text-anchor="middle">onChange(state) fires</text>
+  <line x1="730" y1="234" x2="730" y2="252" stroke="#2563eb" stroke-width="2"/>
+  <path d="M724 252 L730 262 L736 252 Z" fill="#2563eb"/>
+
+  <rect x="620" y="264" width="220" height="40" rx="6" fill="#dbeafe"/>
+  <text x="730" y="289" class="font-mono" font-size="12" fill="#1d4ed8" text-anchor="middle">&lt;AnalyticsScript&gt; renders</text>
+
+  <rect x="620" y="318" width="150" height="22" rx="11" fill="#dcfce7"/>
+  <text x="695" y="333" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">consented scripts only</text>
+
+  <!-- bottom strip -->
+  <rect x="40" y="388" width="820" height="76" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="64" y="416" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Why it matters</text>
+  <text x="64" y="440" class="font-ui" font-size="13" fill="#64748b">Analytics, marketing and preferences categories start revoked, so no tracking script can load before the user</text>
+  <text x="64" y="456" class="font-ui" font-size="13" fill="#64748b">opts in — GDPR-compliant behaviour without writing custom consent state for every project.</text>
 </svg>

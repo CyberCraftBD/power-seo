@@ -1,70 +1,95 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="42" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Analytics Library Comparison</text>
-  <!-- Headers -->
-  <rect x="30" y="58" width="196" height="38" rx="6" fill="#06b6d4" opacity="0.9"/>
-  <text x="128" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">@power-seo/tracking</text>
-  <rect x="238" y="58" width="148" height="38" rx="6" fill="#1e2430"/>
-  <text x="312" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">react-ga4</text>
-  <rect x="398" y="58" width="148" height="38" rx="6" fill="#1e2430"/>
-  <text x="472" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">@analytics/google</text>
-  <rect x="558" y="58" width="148" height="38" rx="6" fill="#1e2430"/>
-  <text x="632" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">cookie-consent</text>
-  <rect x="718" y="58" width="152" height="38" rx="6" fill="#1e2430"/>
-  <text x="794" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Manual gtag.js</text>
-  <!-- Dividers -->
-  <line x1="226" y1="58" x2="226" y2="360" stroke="#1e2430" stroke-width="1"/>
-  <line x1="386" y1="58" x2="386" y2="360" stroke="#1e2430" stroke-width="1"/>
-  <line x1="546" y1="58" x2="546" y2="360" stroke="#1e2430" stroke-width="1"/>
-  <line x1="706" y1="58" x2="706" y2="360" stroke="#1e2430" stroke-width="1"/>
-  <!-- Row 1 -->
-  <rect x="0" y="108" width="900" height="36" fill="#0f1621"/>
-  <text x="870" y="131" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Consent mode v2</text>
-  <text x="128" y="131" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="312" y="131" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="472" y="131" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
-  <text x="632" y="131" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="794" y="131" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <!-- Row 2 -->
-  <rect x="0" y="144" width="900" height="36" fill="#161b22"/>
-  <text x="870" y="167" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Multi-provider (GA4+GTM+Plausible)</text>
-  <text x="128" y="167" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="312" y="167" font-size="16" fill="#94a3b8" text-anchor="middle">GA4 only</text>
-  <text x="472" y="167" font-size="16" fill="#94a3b8" text-anchor="middle">plugins</text>
-  <text x="632" y="167" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="794" y="167" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <!-- Row 3 -->
-  <rect x="0" y="180" width="900" height="36" fill="#0f1621"/>
-  <text x="870" y="203" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Pre-consent event queue</text>
-  <text x="128" y="203" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="312" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="472" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="632" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="794" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <!-- Row 4 -->
-  <rect x="0" y="216" width="900" height="36" fill="#161b22"/>
-  <text x="870" y="239" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">TypeScript typed events</text>
-  <text x="128" y="239" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="312" y="239" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
-  <text x="472" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="632" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="794" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <!-- Row 5 -->
-  <rect x="0" y="252" width="900" height="36" fill="#0f1621"/>
-  <text x="870" y="275" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">SSR / Next.js compatible</text>
-  <text x="128" y="275" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="312" y="275" font-size="16" fill="#94a3b8" text-anchor="middle">CSR only</text>
-  <text x="472" y="275" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="632" y="275" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
-  <text x="794" y="275" font-size="16" fill="#94a3b8" text-anchor="middle">manual</text>
-  <!-- Row 6 -->
-  <rect x="0" y="288" width="900" height="36" fill="#161b22"/>
-  <text x="870" y="311" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">GDPR default-denied</text>
-  <text x="128" y="311" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="312" y="311" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="472" y="311" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="632" y="311" font-size="18" fill="#06b6d4" text-anchor="middle">✓</text>
-  <text x="794" y="311" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">The only analytics library with consent queue + multi-provider + TypeScript.</text>
-  <text x="450" y="420" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Consent v2 · GA4 · GTM · Plausible · Fathom · pre-consent queue · typed events · SSR</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Feature comparison matrix: @power-seo/tracking versus @next/third-parties, Partytown and Cookiebot across script builders, consent management, API clients and TypeScript support</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="44" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Analytics Tooling Comparison</text>
+
+  <!-- table card -->
+  <rect x="40" y="68" width="820" height="384" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <!-- power-seo column highlight -->
+  <rect x="360" y="68" width="128" height="384" fill="#dbeafe" opacity="0.35"/>
+
+  <!-- header row -->
+  <rect x="40" y="68" width="820" height="44" rx="8" fill="#f8fafc"/>
+  <rect x="40" y="100" width="820" height="12" fill="#f8fafc"/>
+  <line x1="40" y1="112" x2="860" y2="112" stroke="#e2e8f0"/>
+  <g class="font-ui" font-size="12" font-weight="600" fill="#64748b">
+    <text x="60" y="95">FEATURE</text>
+    <text x="424" y="88" text-anchor="middle" fill="#1d4ed8">@power-seo/</text>
+    <text x="424" y="102" text-anchor="middle" fill="#1d4ed8">tracking</text>
+    <text x="551" y="88" text-anchor="middle">@next/</text>
+    <text x="551" y="102" text-anchor="middle">third-parties</text>
+    <text x="675" y="95" text-anchor="middle">Partytown</text>
+    <text x="795" y="95" text-anchor="middle">Cookiebot</text>
+  </g>
+
+  <!-- row separators -->
+  <g stroke="#e2e8f0">
+    <line x1="40" y1="160" x2="860" y2="160"/>
+    <line x1="40" y1="208" x2="860" y2="208"/>
+    <line x1="40" y1="256" x2="860" y2="256"/>
+    <line x1="40" y1="304" x2="860" y2="304"/>
+    <line x1="40" y1="352" x2="860" y2="352"/>
+    <line x1="40" y1="400" x2="860" y2="400"/>
+  </g>
+
+  <!-- feature labels -->
+  <g class="font-ui" font-size="13" fill="#0f172a">
+    <text x="60" y="141">Typed script builders</text>
+    <text x="60" y="189">Consent-aware shouldLoad()</text>
+    <text x="60" y="237">Built-in consent manager</text>
+    <text x="60" y="285">Analytics API clients (5 providers)</text>
+    <text x="60" y="333">Zero runtime dependencies</text>
+    <text x="60" y="381">TypeScript-first config types</text>
+    <text x="60" y="429">React components</text>
+  </g>
+
+  <!-- @power-seo/tracking column -->
+  <g class="font-ui" font-size="15" font-weight="700" fill="#16a34a" text-anchor="middle">
+    <text x="424" y="142">✓</text>
+    <text x="424" y="190">✓</text>
+    <text x="424" y="238">✓</text>
+    <text x="424" y="286">✓</text>
+    <text x="424" y="334">✓</text>
+    <text x="424" y="382">✓</text>
+    <text x="424" y="430">✓</text>
+  </g>
+
+  <!-- @next/third-parties column -->
+  <g class="font-ui" font-size="15" text-anchor="middle">
+    <text x="551" y="142" fill="#94a3b8">—</text>
+    <text x="551" y="190" fill="#94a3b8">—</text>
+    <text x="551" y="238" fill="#94a3b8">—</text>
+    <text x="551" y="286" fill="#94a3b8">—</text>
+    <text x="551" y="334" fill="#16a34a" font-weight="700">✓</text>
+    <text x="551" y="382" fill="#94a3b8">—</text>
+    <text x="551" y="428" fill="#b45309" font-size="11" font-weight="600">partial</text>
+  </g>
+
+  <!-- Partytown column -->
+  <g class="font-ui" font-size="15" text-anchor="middle">
+    <text x="675" y="142" fill="#94a3b8">—</text>
+    <text x="675" y="190" fill="#94a3b8">—</text>
+    <text x="675" y="238" fill="#94a3b8">—</text>
+    <text x="675" y="286" fill="#94a3b8">—</text>
+    <text x="675" y="334" fill="#16a34a" font-weight="700">✓</text>
+    <text x="675" y="382" fill="#94a3b8">—</text>
+    <text x="675" y="430" fill="#94a3b8">—</text>
+  </g>
+
+  <!-- Cookiebot column -->
+  <g class="font-ui" font-size="15" text-anchor="middle">
+    <text x="795" y="142" fill="#94a3b8">—</text>
+    <text x="795" y="190" fill="#16a34a" font-weight="700">✓</text>
+    <text x="795" y="236" fill="#16a34a" font-weight="700">✓<tspan font-size="10" font-weight="600" fill="#b45309" dx="4" dy="-1">paid</tspan></text>
+    <text x="795" y="286" fill="#94a3b8">—</text>
+    <text x="795" y="334" fill="#94a3b8">—</text>
+    <text x="795" y="382" fill="#94a3b8">—</text>
+    <text x="795" y="430" fill="#16a34a" font-weight="700">✓</text>
+  </g>
+
+  <text x="450" y="478" class="font-ui" font-size="12" fill="#94a3b8" text-anchor="middle">Feature availability as documented in the @power-seo/tracking README comparison table.</text>
 </svg>

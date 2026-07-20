@@ -1,54 +1,83 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">validateSchema() — Catch Errors Before Google Does</text>
-  <!-- Left panel -->
-  <rect x="30" y="58" width="400" height="290" rx="8" fill="#161b22"/>
-  <rect x="30" y="58" width="400" height="32" rx="8" fill="#1e2430"/>
-  <rect x="30" y="78" width="400" height="12" fill="#1e2430"/>
-  <text x="230" y="79" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">validateSchema(articleData)</text>
-  <!-- Valid fields -->
-  <text x="46" y="120" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="64" y="120" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">headline: </text>
-  <text x="148" y="120" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'Article Title'</text>
-  <text x="46" y="146" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="64" y="146" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">url: </text>
-  <text x="100" y="146" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'https://example.com/a'</text>
-  <text x="46" y="172" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="64" y="172" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">datePublished: </text>
-  <text x="190" y="172" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'2025-01-15'</text>
-  <!-- Invalid fields -->
-  <text x="46" y="198" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">✗</text>
-  <text x="64" y="198" font-family="'Courier New', monospace" font-size="12" fill="#fca5a5">author: </text>
-  <text x="122" y="198" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">undefined</text>
-  <text x="210" y="198" font-family="'Courier New', monospace" font-size="12" fill="#ef4444"> ← required</text>
-  <text x="46" y="224" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">✗</text>
-  <text x="64" y="224" font-family="'Courier New', monospace" font-size="12" fill="#fca5a5">@type: </text>
-  <text x="118" y="224" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">missing</text>
-  <text x="185" y="224" font-family="'Courier New', monospace" font-size="12" fill="#ef4444"> ← required</text>
-  <!-- Valid count -->
-  <text x="46" y="270" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e">3 fields valid</text>
-  <text x="46" y="292" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444">2 required fields missing</text>
-  <!-- Right panel -->
-  <rect x="470" y="58" width="400" height="290" rx="8" fill="#161b22"/>
-  <rect x="470" y="58" width="400" height="32" rx="8" fill="#1e2430"/>
-  <rect x="470" y="78" width="400" height="12" fill="#1e2430"/>
-  <text x="670" y="79" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Build output</text>
-  <!-- Error box -->
-  <rect x="486" y="100" width="368" height="120" rx="6" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
-  <text x="670" y="124" font-family="'Segoe UI', sans-serif" font-size="14" fill="#fca5a5" text-anchor="middle" font-weight="700">SchemaValidationError</text>
-  <text x="670" y="148" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">2 required fields missing in ArticleSchema.</text>
-  <text x="670" y="168" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">Missing: author, @type</text>
-  <text x="670" y="190" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle">Build will warn in production.</text>
-  <!-- Result object -->
-  <text x="486" y="250" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#123;</text>
-  <text x="500" y="270" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  valid</text>
-  <text x="545" y="270" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="555" y="270" font-family="'Courier New', monospace" font-size="12" fill="#79c0ff">false</text>
-  <text x="500" y="292" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  issues</text>
-  <text x="551" y="292" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: [ ... 2 issues ]</text>
-  <text x="486" y="312" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&#125;</text>
-  <!-- Caption -->
-  <text x="450" y="388" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Catch schema errors before Google does.</text>
-  <text x="450" y="412" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">validateSchema() returns { valid, issues } with per-field error messages — all typed</text>
-  <text x="450" y="438" font-family="'Segoe UI', sans-serif" font-size="13" fill="#0ea5e9" text-anchor="middle">@power-seo/schema</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>validateSchema() catching a missing required author field and recommended image field on an Article schema before deploy</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">validateSchema() — catch issues before Google does</text>
+  <text x="450" y="66" class="font-ui" font-size="13" fill="#64748b" text-anchor="middle">Checks required and recommended fields against Google Rich Results requirements</text>
+
+  <!-- left: input schema -->
+  <rect x="40" y="92" width="400" height="380" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="58" y="120" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Input schema</text>
+  <rect x="352" y="104" width="70" height="20" rx="10" fill="#dbeafe"/>
+  <text x="387" y="118" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">Article</text>
+  <line x1="40" y1="132" x2="440" y2="132" stroke="#e2e8f0"/>
+
+  <rect x="58" y="148" width="364" height="200" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="74" y="174" class="font-mono" font-size="12" fill="#0f172a">{</text>
+  <text x="90" y="196" class="font-mono" font-size="12"><tspan fill="#2563eb">"@type"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"Article"</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="90" y="218" class="font-mono" font-size="12"><tspan fill="#2563eb">"headline"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"My Blog Post"</tspan><tspan fill="#0f172a">,</tspan></text>
+  <text x="90" y="240" class="font-mono" font-size="12"><tspan fill="#2563eb">"datePublished"</tspan><tspan fill="#0f172a">: </tspan><tspan fill="#16a34a">"2026-01-15"</tspan></text>
+  <text x="90" y="266" class="font-mono" font-size="12" fill="#94a3b8">// author missing  ← required</text>
+  <text x="90" y="288" class="font-mono" font-size="12" fill="#94a3b8">// image missing   ← recommended</text>
+  <text x="74" y="312" class="font-mono" font-size="12" fill="#0f172a">}</text>
+
+  <text x="58" y="384" class="font-ui" font-size="12" font-weight="600" fill="#64748b">VALIDATORS COVER 10+ TYPES</text>
+  <rect x="58" y="398" width="60" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="88" y="413" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">Article</text>
+  <rect x="126" y="398" width="64" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="158" y="413" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">Product</text>
+  <rect x="198" y="398" width="66" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="231" y="413" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">FAQPage</text>
+  <rect x="272" y="398" width="56" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="300" y="413" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">Event</text>
+  <rect x="336" y="398" width="60" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="366" y="413" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">Recipe</text>
+  <rect x="58" y="428" width="80" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="98" y="443" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">JobPosting</text>
+  <rect x="146" y="428" width="94" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="193" y="443" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">LocalBusiness</text>
+  <rect x="248" y="428" width="86" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="291" y="443" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">VideoObject</text>
+  <rect x="342" y="428" width="54" height="22" rx="11" fill="#f1f5f9"/>
+  <text x="369" y="443" class="font-ui" font-size="10" fill="#64748b" text-anchor="middle">+ more</text>
+
+  <!-- arrow -->
+  <line x1="446" y1="282" x2="472" y2="282" stroke="#94a3b8" stroke-width="2"/>
+  <path d="M476 282 l-8 -5 v10 z" fill="#94a3b8"/>
+
+  <!-- right: result -->
+  <rect x="482" y="92" width="378" height="380" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="500" y="120" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">SchemaValidationResult</text>
+  <rect x="758" y="104" width="84" height="20" rx="10" fill="#fee2e2"/>
+  <text x="800" y="118" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">valid: false</text>
+  <line x1="482" y1="132" x2="860" y2="132" stroke="#e2e8f0"/>
+
+  <!-- issue 1: error -->
+  <rect x="500" y="150" width="342" height="88" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="500" y="150" width="4" height="88" rx="2" fill="#ef4444"/>
+  <rect x="518" y="164" width="52" height="20" rx="10" fill="#fee2e2"/>
+  <text x="544" y="178" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">error</text>
+  <text x="580" y="179" class="font-mono" font-size="12" fill="#0f172a">field: "author"</text>
+  <text x="518" y="206" class="font-ui" font-size="13" fill="#64748b">Required field "author" is missing.</text>
+  <text x="518" y="226" class="font-ui" font-size="12" fill="#94a3b8">Blocks Article rich result eligibility</text>
+
+  <!-- issue 2: warning -->
+  <rect x="500" y="254" width="342" height="88" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="500" y="254" width="4" height="88" rx="2" fill="#f59e0b"/>
+  <rect x="518" y="268" width="64" height="20" rx="10" fill="#fef3c7"/>
+  <text x="550" y="282" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">warning</text>
+  <text x="592" y="283" class="font-mono" font-size="12" fill="#0f172a">field: "image"</text>
+  <text x="518" y="310" class="font-ui" font-size="13" fill="#64748b">Recommended field "image" is missing.</text>
+  <text x="518" y="330" class="font-ui" font-size="12" fill="#94a3b8">Improves rich result appearance</text>
+
+  <!-- extra check note -->
+  <rect x="500" y="358" width="342" height="60" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="518" y="382" class="font-ui" font-size="12" font-weight="600" fill="#0f172a">Also checked</text>
+  <text x="518" y="402" class="font-ui" font-size="12" fill="#64748b">Headline under 110 characters for Google Rich Results ✓</text>
+
+  <text x="500" y="448" class="font-mono" font-size="12"><tspan fill="#94a3b8">// never throws — returns { valid, issues }</tspan></text>
 </svg>

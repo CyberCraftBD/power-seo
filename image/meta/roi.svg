@@ -1,41 +1,50 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <!-- Grid lines -->
-  <line x1="80" y1="60" x2="80" y2="380" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="380" x2="820" y2="380" stroke="#1e2430" stroke-width="1"/>
-  <line x1="80" y1="300" x2="820" y2="300" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="80" y1="220" x2="820" y2="220" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="80" y1="140" x2="820" y2="140" stroke="#1e2430" stroke-width="1" stroke-dasharray="4,4"/>
-  <!-- Y axis labels -->
-  <text x="70" y="384" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0%</text>
-  <text x="70" y="304" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">2%</text>
-  <text x="70" y="224" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">4%</text>
-  <text x="70" y="144" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">6%</text>
-  <!-- X axis labels -->
-  <text x="200" y="400" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Month 1</text>
-  <text x="450" y="400" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Month 2</text>
-  <text x="700" y="400" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Month 3</text>
-  <!-- Before line (flat red dashed) -->
-  <polyline points="200,310 450,308 700,307" stroke="#ef4444" stroke-width="2" fill="none" stroke-dasharray="6,4"/>
-  <!-- After line (rising violet solid) -->
-  <polyline points="200,310 450,265 700,215" stroke="#7c3aed" stroke-width="3" fill="none"/>
-  <!-- Data points -->
-  <circle cx="200" cy="310" r="5" fill="#7c3aed"/>
-  <circle cx="450" cy="265" r="5" fill="#7c3aed"/>
-  <circle cx="700" cy="215" r="5" fill="#7c3aed"/>
-  <!-- Shaded area under violet line -->
-  <polygon points="200,310 450,265 700,215 700,308 450,308 200,310" fill="#7c3aed" opacity="0.1"/>
-  <!-- Legend -->
-  <line x1="100" y1="440" x2="140" y2="440" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"/>
-  <text x="148" y="445" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Before proper OG tags</text>
-  <line x1="320" y1="440" x2="360" y2="440" stroke="#7c3aed" stroke-width="3"/>
-  <circle cx="340" cy="440" r="4" fill="#7c3aed"/>
-  <text x="368" y="445" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">After @power-seo/meta</text>
-  <!-- Title -->
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Social Sharing CTR — Before vs After Proper OG Tags</text>
-  <!-- ROI Badge -->
-  <rect x="620" y="155" width="240" height="50" rx="8" fill="#16a34a" opacity="0.9"/>
-  <text x="740" y="176" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">+34% CTR from</text>
-  <text x="740" y="195" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">social sharing</text>
-  <text x="450" y="480" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Proper OG tags dramatically improve how your links appear on social platforms</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Workflow comparison: maintaining hand-written meta boilerplate for each framework versus generating all meta output from one SeoConfig with @power-seo/meta</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Manual meta boilerplate vs one shared config</text>
+  <!-- before panel -->
+  <rect x="30" y="72" width="410" height="398" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="50" y="90" width="118" height="24" rx="12" fill="#fee2e2"/>
+  <text x="109" y="106" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">Manual process</text>
+  <text x="50" y="140" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">One implementation per framework</text>
+  <rect x="50" y="156" width="370" height="42" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="66" y="182" class="font-mono" font-size="11" fill="#64748b">app/layout.tsx &#8212; hand-written Metadata object</text>
+  <rect x="50" y="208" width="370" height="42" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="66" y="234" class="font-mono" font-size="11" fill="#64748b">routes/_index.tsx &#8212; hand-written meta() array</text>
+  <rect x="50" y="260" width="370" height="42" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="66" y="286" class="font-mono" font-size="11" fill="#64748b">server.ts &#8212; string-concatenated &lt;meta&gt; tags</text>
+  <text x="58" y="336" class="font-ui" font-size="14" font-weight="700" fill="#ef4444">&#10005;</text>
+  <text x="80" y="336" class="font-ui" font-size="13" fill="#64748b">Three copies to keep in sync</text>
+  <text x="58" y="366" class="font-ui" font-size="14" font-weight="700" fill="#ef4444">&#10005;</text>
+  <text x="80" y="366" class="font-ui" font-size="13" fill="#64748b">max-snippet / max-image-preview mapped by hand</text>
+  <text x="58" y="396" class="font-ui" font-size="14" font-weight="700" fill="#ef4444">&#10005;</text>
+  <text x="80" y="396" class="font-ui" font-size="13" fill="#64748b">Property-name typos ship silently</text>
+  <text x="58" y="426" class="font-ui" font-size="14" font-weight="700" fill="#ef4444">&#10005;</text>
+  <text x="80" y="426" class="font-ui" font-size="13" fill="#64748b">Canonical and hreflang easy to forget</text>
+  <!-- arrow between panels -->
+  <line x1="446" y1="270" x2="452" y2="270" stroke="#2563eb" stroke-width="2"/>
+  <path d="M 448 262 L 458 270 L 448 278 Z" fill="#2563eb"/>
+  <!-- after panel -->
+  <rect x="460" y="72" width="410" height="398" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="480" y="90" width="170" height="24" rx="12" fill="#dcfce7"/>
+  <text x="565" y="106" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">With @power-seo/meta</text>
+  <text x="480" y="140" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">One SeoConfig, three native outputs</text>
+  <rect x="480" y="156" width="370" height="42" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="496" y="182" class="font-mono" font-size="11" fill="#0f172a"><tspan fill="#2563eb">createMetadata</tspan>(config) &#8594; Metadata</text>
+  <rect x="480" y="208" width="370" height="42" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="496" y="234" class="font-mono" font-size="11" fill="#0f172a"><tspan fill="#2563eb">createMetaDescriptors</tspan>(config) &#8594; MetaDescriptor[]</text>
+  <rect x="480" y="260" width="370" height="42" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="496" y="286" class="font-mono" font-size="11" fill="#0f172a"><tspan fill="#2563eb">createHeadTags</tspan>(config) &#8594; string</text>
+  <text x="488" y="336" class="font-ui" font-size="14" font-weight="700" fill="#16a34a">&#10003;</text>
+  <text x="510" y="336" class="font-ui" font-size="13" fill="#64748b">Single source of truth for every page</text>
+  <text x="488" y="366" class="font-ui" font-size="14" font-weight="700" fill="#16a34a">&#10003;</text>
+  <text x="510" y="366" class="font-ui" font-size="13" fill="#64748b">Robots directives translated automatically</text>
+  <text x="488" y="396" class="font-ui" font-size="14" font-weight="700" fill="#16a34a">&#10003;</text>
+  <text x="510" y="396" class="font-ui" font-size="13" fill="#64748b">Typed returns — mistakes caught at compile time</text>
+  <text x="488" y="426" class="font-ui" font-size="14" font-weight="700" fill="#16a34a">&#10003;</text>
+  <text x="510" y="426" class="font-ui" font-size="13" fill="#64748b">canonical + languageAlternates always emitted</text>
 </svg>

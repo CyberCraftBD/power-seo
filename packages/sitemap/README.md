@@ -1,8 +1,8 @@
 # @power-seo/sitemap
 
-![sitemap banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/banner.svg)
+![XML sitemap generator for TypeScript producing spec-compliant urlset and sitemapindex XML with image, video, and news extensions](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/banner.svg)
 
-XML sitemap generation for TypeScript — streaming output, automatic index splitting, image/video/news extensions, and URL validation — works in Next.js, Remix, Express, and edge runtimes with zero runtime dependencies.
+Generate spec-compliant XML sitemaps in TypeScript — streaming output, automatic index splitting, image/video/news extensions, and URL validation for Next.js, Remix, Express, and edge runtimes.
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/sitemap)](https://www.npmjs.com/package/@power-seo/sitemap)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/sitemap)](https://www.npmjs.com/package/@power-seo/sitemap)
@@ -11,77 +11,72 @@ XML sitemap generation for TypeScript — streaming output, automatic index spli
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/sitemap)
 
-`@power-seo/sitemap` produces standards-compliant `<urlset>` and `<sitemapindex>` XML from typed URL arrays. Provide a hostname and URL list — get back a valid XML string ready to serve as `Content-Type: application/xml`. For large catalogs, stream chunks with constant memory usage or auto-split at the 50,000-URL spec limit with a generated index file. All six functions are independently importable and tree-shakeable.
+`@power-seo/sitemap` is a zero-dependency XML sitemap generator for TypeScript. It turns typed `SitemapURL[]` arrays into standards-compliant `<urlset>` and `<sitemapindex>` documents — for developers who need Google-ready sitemaps in a Next.js route, a Remix loader, or a build script without pulling in a heavy XML library. Pass a hostname and a URL list, get back a valid XML string ready to serve as `application/xml`.
 
-> **Zero runtime dependencies** — only `@power-seo/core` as a peer.
+![Sitemap generation pipeline turning typed URL arrays into spec-compliant XML with image, video, and news extensions](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/header.svg)
 
 ---
 
 ## Why @power-seo/sitemap?
 
-| | Without | With |
-|---|---|---|
-| Spec compliance | ❌ Hand-built XML, wrong namespaces | ✅ Correct `<urlset>` + namespace declarations |
-| Large sites | ❌ Single file breaks at 50,000 URLs | ✅ Auto-split + sitemap index generation |
-| Memory usage | ❌ String concat spikes on large catalogs | ✅ Synchronous generator yields chunks |
-| Image indexing | ❌ Product images undiscoverable | ✅ `<image:image>` extension per URL |
-| Video SEO | ❌ No structured video metadata | ✅ `<video:video>` extension with title, duration |
-| News sitemaps | ❌ Missing publication + date tags | ✅ `<news:news>` extension for Google News |
-| Hostname handling | ❌ Hardcode absolute URLs everywhere | ✅ Pass `hostname` once; use relative `loc` paths |
-| Validation | ❌ Silent bad data reaches Google | ✅ `validateSitemapUrl()` returns errors + warnings |
+Hand-built sitemap XML breaks in quiet ways: wrong namespace declarations, files that exceed the 50,000-URL spec limit, priority values out of range, and relative paths Google can't resolve. This package encodes the sitemap protocol so those mistakes never reach the crawler — every function is independently importable and tree-shakeable, and the whole package ships with zero third-party runtime dependencies.
 
-![Sitemap Generator Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/comparison.svg)
+|                   | Without                                | With                                             |
+| ----------------- | -------------------------------------- | ------------------------------------------------ |
+| Spec compliance   | Hand-built XML, wrong namespaces       | Correct `<urlset>` + namespace declarations      |
+| Large sites       | Single file breaks past 50,000 URLs    | Auto-split + sitemap index generation            |
+| Memory usage      | String concat spikes on large catalogs | Synchronous generator yields chunks              |
+| Image indexing    | Product images undiscoverable          | `<image:image>` extension per URL                |
+| Video SEO         | No structured video metadata           | `<video:video>` extension with title, duration   |
+| News sitemaps     | Missing publication + date tags        | `<news:news>` extension for Google News          |
+| Hostname handling | Hardcode absolute URLs everywhere      | Pass `hostname` once; use relative `loc` paths   |
+| Validation        | Silent bad data reaches Google         | `validateSitemapUrl()` returns errors + warnings |
 
-
-<p align="left">
-  <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
-    <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
-  </a>
-</p>
+![Workflow comparison showing manual hand-built sitemap maintenance versus the automated pipeline provided by the power-seo sitemap package](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/roi.svg)
 
 ---
 
 ## Features
 
-- **Full sitemap spec support** — `<loc>`, `<lastmod>`, `<changefreq>`, `<priority>`, all optional elements
-- **Hostname + relative paths** — pass `hostname` in config; `loc` can be a relative path like `/about`
-- **Image sitemap extension** — `<image:image>` tags with `loc`, `caption`, `title`, `geoLocation`, `license`
-- **Video sitemap extension** — `<video:video>` tags with title, description, thumbnail, duration, rating
-- **News sitemap extension** — `<news:news>` tags with publication name, language, date
-- **Streaming generation** — `streamSitemap()` is a synchronous generator yielding XML string chunks; no memory spike on large lists
-- **Automatic index splitting** — `splitSitemap()` chunks at `MAX_URLS_PER_SITEMAP` (50,000) and returns both sitemaps and the index XML
-- **Sitemap index generation** — `generateSitemapIndex()` creates a `<sitemapindex>` pointing to child sitemaps
-- **Smart namespace detection** — `generateSitemap()` only declares XML namespaces for extensions (image, video, news) that are actually used
-- **URL validation** — `validateSitemapUrl()` returns `{ valid, errors, warnings }` without throwing
-- **Next.js App Router adapter** — `toNextSitemap()` converts `SitemapURL[]` to the `MetadataRoute.Sitemap[]` format for `app/sitemap.ts`
+- **Full sitemap spec support** — emits `<loc>`, `<lastmod>`, `<changefreq>`, and `<priority>` (priority is only written when set, and formatted to one decimal via `toFixed(1)`)
+- **Hostname + relative paths** — pass `hostname` once; a relative `loc` like `/about` is normalized against it, while an absolute `loc` (starting with `http`) is used as-is
+- **Image sitemap extension** — `<image:image>` tags with `loc`, `caption`, `geoLocation`, `title`, and `license`
+- **Video sitemap extension** — `<video:video>` tags with `thumbnailLoc`, `title`, `description`, plus optional `contentLoc`, `playerLoc`, `duration`, `rating`, and more
+- **News sitemap extension** — `<news:news>` tags with publication name, language, publication date, and title for Google News
+- **Streaming generation** — `streamSitemap()` is a synchronous generator that yields XML chunks one `<url>` at a time; no full-document buffer in memory
+- **Automatic index splitting** — `splitSitemap()` chunks at `MAX_URLS_PER_SITEMAP` (50,000) and returns every split sitemap plus the index XML
+- **Manual sitemap index** — `generateSitemapIndex()` builds a `<sitemapindex>` pointing to child sitemaps you maintain separately
+- **Smart namespace detection** — `generateSitemap()` declares the image/video/news namespaces only when those extensions are actually used
+- **URL validation** — `validateSitemapUrl()` returns `{ valid, errors, warnings }` and never throws
+- **Next.js App Router adapter** — `toNextSitemap()` converts `SitemapURL[]` into the `MetadataRoute.Sitemap` shape for `app/sitemap.ts`
 - **Constants exported** — `MAX_URLS_PER_SITEMAP` (50,000) and `MAX_SITEMAP_SIZE_BYTES` (52,428,800)
 - **Framework-agnostic** — works in Next.js API routes, Remix loaders, Express, Fastify, and edge runtimes
-- **Full TypeScript support** — typed `SitemapURL`, `SitemapImage`, `SitemapVideo`, `SitemapNews`, `SitemapConfig`
-- **Zero runtime dependencies** — pure TypeScript, no external XML libraries
-- **Tree-shakeable** — import only the functions you use
+- **Zero runtime dependencies** — pure TypeScript; only `@power-seo/core` in the tree, no external XML libraries
 
-![Google Search Console Sitemap UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/gsc-ui.svg)
+![Google Search Console interface showing a submitted sitemap with indexed URL counts and discovery status](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/gsc-ui.svg)
 
 ---
 
 ## Comparison
 
-| Feature                        | @power-seo/sitemap | next-sitemap | sitemap (npm) | xmlbuilder2 |
-| ------------------------------ | :----------------: | :----------: | :-----------: | :---------: |
-| Image sitemap extension        | ✅                 | ✅           | ✅            | ❌          |
-| Video sitemap extension        | ✅                 | ❌           | ✅            | ❌          |
-| News sitemap extension         | ✅                 | ❌           | ✅            | ❌          |
-| Streaming generation           | ✅                 | ❌           | ❌            | ❌          |
-| Auto index splitting           | ✅                 | ✅           | ❌            | ❌          |
-| URL validation                 | ✅                 | ❌           | ❌            | ❌          |
-| Hostname + relative loc paths  | ✅                 | ❌           | ❌            | ❌          |
-| Zero runtime dependencies      | ✅                 | ❌           | ❌            | ❌          |
-| Edge runtime compatible        | ✅                 | ❌           | ❌            | ❌          |
-| TypeScript-first               | ✅                 | Partial      | ❌            | ❌          |
-| Tree-shakeable                 | ✅                 | ❌           | ❌            | ❌          |
-| Next.js `app/sitemap.ts` adapter | ✅               | ✅           | ❌            | ❌          |
+![Feature comparison matrix of @power-seo/sitemap versus next-sitemap, the sitemap npm package, and xmlbuilder2 across extensions, streaming, index splitting, and validation](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/comparison.svg)
 
-![Sitemap Extensions Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/extensions-accuracy.svg)
+| Feature                          | @power-seo/sitemap | next-sitemap | sitemap (npm) | xmlbuilder2 |
+| -------------------------------- | :----------------: | :----------: | :-----------: | :---------: |
+| Image sitemap extension          |         ✅         |      ✅      |      ✅       |     ❌      |
+| Video sitemap extension          |         ✅         |      ❌      |      ✅       |     ❌      |
+| News sitemap extension           |         ✅         |      ❌      |      ✅       |     ❌      |
+| Streaming generation             |         ✅         |      ❌      |      ✅       |     ❌      |
+| Auto index splitting             |         ✅         |      ✅      |      ❌       |     ❌      |
+| URL validation                   |         ✅         |      ❌      |      ❌       |     ❌      |
+| Hostname + relative loc paths    |         ✅         |      ❌      |      ❌       |     ❌      |
+| Zero runtime dependencies        |         ✅         |      ❌      |      ❌       |     ❌      |
+| Edge runtime compatible          |         ✅         |      ❌      |      ❌       |     ❌      |
+| TypeScript-first                 |         ✅         |   Partial    |      ❌       |     ❌      |
+| Tree-shakeable                   |         ✅         |      ❌      |      ❌       |     ❌      |
+| Next.js `app/sitemap.ts` adapter |         ✅         |      ✅      |      ❌       |     ❌      |
+
+![Accuracy of image, video, and news sitemap extension XML output compared across sitemap generation libraries](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/extensions-accuracy.svg)
 
 ---
 
@@ -101,37 +96,11 @@ pnpm add @power-seo/sitemap
 
 ---
 
-## Quick Start
-
-```ts
-import { generateSitemap } from '@power-seo/sitemap';
-
-const xml = generateSitemap({
-  hostname: 'https://example.com',
-  urls: [
-    { loc: '/', lastmod: '2026-01-01', changefreq: 'daily', priority: 1.0 },
-    { loc: '/about', changefreq: 'monthly', priority: 0.8 },
-    { loc: '/blog/post-1', lastmod: '2026-01-15', priority: 0.6 },
-  ],
-});
-
-// Returns valid XML string:
-// <?xml version="1.0" encoding="UTF-8"?>
-// <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-//   <url><loc>https://example.com/</loc>...
-```
-
-`hostname` is required — it is prepended to any `loc` value that is a relative path. Absolute `loc` values (starting with `http`) are used as-is.
-
-![Sitemap Streaming Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/streaming-benefit.svg)
-
----
-
 ## Usage
 
-### Generating a Sitemap
+### How do I generate an XML sitemap?
 
-`generateSitemap()` accepts a `SitemapConfig` with `hostname` and `urls` and returns a complete XML string.
+Call `generateSitemap(config)` with a `hostname` and an array of `urls`. It returns a complete, spec-compliant XML string — including the `<?xml?>` declaration and the `<urlset>` namespace. The `hostname` is prepended to any relative `loc`, so you can keep your route data as paths like `/about`. Serve the result with `Content-Type: application/xml`.
 
 ```ts
 import { generateSitemap } from '@power-seo/sitemap';
@@ -145,45 +114,52 @@ const xml = generateSitemap({
   ],
 });
 
-// Serve as application/xml
+// <?xml version="1.0" encoding="UTF-8"?>
+// <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+//   <url><loc>https://example.com/</loc>...
+
 res.setHeader('Content-Type', 'application/xml');
 res.send(xml);
 ```
 
-### Streaming a Large Sitemap
+An absolute `loc` (starting with `http`) is emitted unchanged; a relative `loc` is normalized against `hostname`. When `priority` is omitted, no `<priority>` tag is written for that URL.
 
-`streamSitemap()` is a synchronous generator. It yields XML string chunks one `<url>` at a time — keeping memory usage constant regardless of catalog size.
+### How do I stream a very large sitemap?
+
+Use `streamSitemap(hostname, urls)`. It is a synchronous generator (`function*`) that yields the XML declaration and opening tags first, then one chunk per `<url>` block, then the closing tag — so you never hold the full document in memory. Pass any `Iterable<SitemapURL>`: an array, a generator, or a database cursor.
 
 ```ts
 import { streamSitemap } from '@power-seo/sitemap';
 
 const urls = fetchAllProductUrls(); // Iterable<SitemapURL>
 
-const stream = streamSitemap('https://example.com', urls);
-for (const chunk of stream) {
+for (const chunk of streamSitemap('https://example.com', urls)) {
   response.write(chunk);
 }
 response.end();
 ```
 
-### Splitting Large Sitemaps with an Index
+Note: `streamSitemap()` always declares the image, video, and news namespaces on the opening `<urlset>` tag, whereas `generateSitemap()` only declares the ones it detects.
 
-`splitSitemap()` chunks a config at the 50,000-URL spec limit and returns all individual sitemap XML strings plus a sitemap index XML string that references them.
+### How do I split a site with more than 50,000 URLs?
+
+Call `splitSitemap(config, pattern?)`. It chunks `urls` at `MAX_URLS_PER_SITEMAP` (50,000, or your `maxUrlsPerSitemap` override) and returns `{ index, sitemaps }` — the sitemap index XML plus one entry per split file, each with its `filename` and `xml`. The `pattern` controls filenames using `{index}` as the placeholder.
 
 ```ts
 import { splitSitemap } from '@power-seo/sitemap';
+import fs from 'node:fs';
 
 const { index, sitemaps } = splitSitemap({
   hostname: 'https://example.com',
   urls: largeUrlArray, // more than 50,000 entries
 });
 
-// Write each sitemap file
+// Write each split sitemap (default filenames: /sitemap-0.xml, /sitemap-1.xml, ...)
 for (const { filename, xml } of sitemaps) {
   fs.writeFileSync(`./public${filename}`, xml);
 }
 
-// Write the index (default filenames: /sitemap-0.xml, /sitemap-1.xml, ...)
+// Write the index that references them
 fs.writeFileSync('./public/sitemap.xml', index);
 ```
 
@@ -196,9 +172,9 @@ const { index, sitemaps } = splitSitemap(
 );
 ```
 
-### Generating a Sitemap Index Manually
+### How do I build a sitemap index manually?
 
-Use `generateSitemapIndex()` when you maintain separate sitemaps per section or locale and want to combine them under a single index file.
+When you maintain separate sitemaps per section or locale, use `generateSitemapIndex(config)` to combine them under one index file. Pass a `sitemaps` array of `{ loc, lastmod? }` entries — `loc` should be the absolute URL of each child sitemap.
 
 ```ts
 import { generateSitemapIndex } from '@power-seo/sitemap';
@@ -212,9 +188,9 @@ const indexXml = generateSitemapIndex({
 });
 ```
 
-### Image Sitemaps
+### How do I add images to a sitemap?
 
-Add `images` to any `SitemapURL` entry to emit `<image:image>` extension tags:
+Attach an `images` array to any `SitemapURL`. Each entry emits an `<image:image>` block, and `generateSitemap()` automatically adds the image namespace to `<urlset>` when at least one URL has images. Google indexes up to 1,000 images per page; `validateSitemapUrl()` warns above that.
 
 ```ts
 import { generateSitemap } from '@power-seo/sitemap';
@@ -241,45 +217,40 @@ const xml = generateSitemap({
 });
 ```
 
-### Validating URL Entries
+### How do I validate URL entries before serving?
 
-`validateSitemapUrl()` checks a `SitemapURL` against the sitemap spec and returns structured errors and warnings — useful in CI or before serving.
+`validateSitemapUrl(url)` checks a single `SitemapURL` against the sitemap protocol and returns `{ valid, errors, warnings }` without throwing. Note that `loc` **must be an absolute URL** to pass validation, so validate the same absolute URLs you plan to submit. Out-of-range `priority`, invalid `changefreq`, and malformed `lastmod` become errors; long URLs (over 75 characters) become warnings.
 
 ```ts
 import { validateSitemapUrl } from '@power-seo/sitemap';
 
 const result = validateSitemapUrl({
-  loc: '/about',
+  loc: 'https://example.com/about',
   priority: 1.5, // out of range
   changefreq: 'daily',
 });
 
-// result.valid   → false
-// result.errors  → ['priority must be between 0.0 and 1.0']
+// result.valid    → false
+// result.errors   → ['"priority" value 1.5 is out of range. Must be between 0.0 and 1.0.']
 // result.warnings → []
 ```
 
-### Next.js App Router — `app/sitemap.ts` Convention
+### How do I generate a sitemap in Next.js App Router?
 
-Next.js App Router has a built-in `app/sitemap.ts` file convention that returns an array of URL objects (not XML). Use `toNextSitemap()` to convert `SitemapURL[]` to the required format:
+Next.js App Router has a built-in `app/sitemap.ts` convention that returns an array of URL objects — not XML. Use `toNextSitemap()` to convert `SitemapURL[]` into that shape. It filters out entries that fail `validateSitemapUrl()` (so use absolute `loc` values) and maps `changefreq` to Next's `changeFrequency` key.
 
 ```ts
 // app/sitemap.ts
 import { toNextSitemap } from '@power-seo/sitemap';
+import type { MetadataRoute } from 'next';
 
-export default async function sitemap() {
-  const urls = await fetchUrlsFromCms();
-
-  return toNextSitemap(urls);
-  // Returns NextSitemapEntry[] — Next.js renders the XML automatically
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const urls = await fetchUrlsFromCms(); // SitemapURL[] with absolute loc values
+  return toNextSitemap(urls) as MetadataRoute.Sitemap;
 }
 ```
 
-`toNextSitemap()` filters out invalid URLs and maps `changefreq` to `changeFrequency` as required by Next.js. The `lastmod` field is passed through as-is (string or Date).
-
-### Next.js App Router — Route Handler (XML)
-
-For full control over the XML output (useful when you need image/video/news extensions), use a route handler instead:
+For full control over the XML — including image, video, or news extensions — use a route handler instead:
 
 ```ts
 // app/sitemap.xml/route.ts
@@ -288,10 +259,7 @@ import { generateSitemap } from '@power-seo/sitemap';
 export async function GET() {
   const urls = await fetchUrlsFromCms();
 
-  const xml = generateSitemap({
-    hostname: 'https://example.com',
-    urls,
-  });
+  const xml = generateSitemap({ hostname: 'https://example.com', urls });
 
   return new Response(xml, {
     headers: { 'Content-Type': 'application/xml' },
@@ -299,26 +267,26 @@ export async function GET() {
 }
 ```
 
-### Remix Resource Route
+### How do I generate a sitemap in a Remix resource route?
+
+Return the XML from a resource route loader with an `application/xml` content type.
 
 ```ts
 // app/routes/sitemap[.xml].ts
 import { generateSitemap } from '@power-seo/sitemap';
-import type { LoaderFunctionArgs } from '@remix-run/node';
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader() {
   const urls = await fetchUrlsFromDb();
 
-  const xml = generateSitemap({
-    hostname: 'https://example.com',
-    urls,
-  });
+  const xml = generateSitemap({ hostname: 'https://example.com', urls });
 
   return new Response(xml, {
     headers: { 'Content-Type': 'application/xml' },
   });
 }
 ```
+
+![Constant memory footprint of streaming sitemap generation versus buffering the full XML document for large catalogs](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/sitemap/streaming-benefit.svg)
 
 ---
 
@@ -330,12 +298,12 @@ export async function loader({ request }: LoaderFunctionArgs) {
 function generateSitemap(config: SitemapConfig): string;
 ```
 
-| Prop | Type | Required | Description |
-| --- | --- | --- | --- |
-| `hostname` | `string` | ✅ | Base URL prepended to relative `loc` paths (e.g. `'https://example.com'`) |
-| `urls` | `SitemapURL[]` | ✅ | Array of URL entries |
-| `maxUrlsPerSitemap` | `number` | — | Override the 50,000-URL chunk size (used by `splitSitemap`) |
-| `outputDir` | `string` | — | Optional output directory hint (informational; does not write files) |
+| Prop                | Type           | Required | Description                                                               |
+| ------------------- | -------------- | :------: | ------------------------------------------------------------------------- |
+| `hostname`          | `string`       |    ✅    | Base URL prepended to relative `loc` paths (e.g. `'https://example.com'`) |
+| `urls`              | `SitemapURL[]` |    ✅    | Array of URL entries                                                      |
+| `maxUrlsPerSitemap` | `number`       |    —     | Chunk size used by `splitSitemap()`; defaults to `MAX_URLS_PER_SITEMAP`   |
+| `outputDir`         | `string`       |    —     | Informational only — this package never writes files                      |
 
 ### `streamSitemap(hostname, urls)`
 
@@ -346,12 +314,12 @@ function streamSitemap(
 ): Generator<string, void, undefined>;
 ```
 
-Synchronous generator. Yields XML string chunks — one for the XML declaration and opening tag, one per `<url>` block, and one for the closing tag. Does not buffer the full XML in memory.
+Synchronous generator. Yields the XML declaration and opening `<urlset>` (with all three extension namespaces), one chunk per `<url>` block, then the closing tag. Never buffers the whole document.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| `hostname` | `string` | Base URL prepended to relative `loc` paths |
-| `urls` | `Iterable<SitemapURL>` | Any iterable of URL entries — arrays, generators, database cursors |
+| Param      | Type                   | Description                                            |
+| ---------- | ---------------------- | ------------------------------------------------------ |
+| `hostname` | `string`               | Base URL prepended to relative `loc` paths             |
+| `urls`     | `Iterable<SitemapURL>` | Any iterable — arrays, generators, or database cursors |
 
 ### `splitSitemap(config, sitemapUrlPattern?)`
 
@@ -362,19 +330,12 @@ function splitSitemap(
 ): { index: string; sitemaps: Array<{ filename: string; xml: string }> };
 ```
 
-Splits a large URL set into multiple sitemap files and returns the index XML and all sitemap XMLs. The `sitemapUrlPattern` parameter controls generated filenames using `{index}` as a placeholder.
+| Param               | Type            | Default                  | Description                                    |
+| ------------------- | --------------- | ------------------------ | ---------------------------------------------- |
+| `config`            | `SitemapConfig` | —                        | Same config as `generateSitemap()`             |
+| `sitemapUrlPattern` | `string`        | `'/sitemap-{index}.xml'` | Filename pattern; `{index}` is the chunk index |
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| `config` | `SitemapConfig` | — | Same config as `generateSitemap()` |
-| `sitemapUrlPattern` | `string` | `'/sitemap-{index}.xml'` | Filename pattern for each split sitemap |
-
-**Return value:**
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `index` | `string` | Sitemap index XML (`<sitemapindex>`) referencing all split files |
-| `sitemaps` | `Array<{ filename: string; xml: string }>` | Each split sitemap with its filename and XML string |
+Returns `{ index, sitemaps }` where `index` is the `<sitemapindex>` XML and each `sitemaps[]` item is `{ filename, xml }`.
 
 ### `generateSitemapIndex(config)`
 
@@ -382,9 +343,9 @@ Splits a large URL set into multiple sitemap files and returns the index XML and
 function generateSitemapIndex(config: SitemapIndexConfig): string;
 ```
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `sitemaps` | `SitemapIndexEntry[]` | Array of `{ loc: string; lastmod?: string }` entries |
+| Prop       | Type                  | Description                                  |
+| ---------- | --------------------- | -------------------------------------------- |
+| `sitemaps` | `SitemapIndexEntry[]` | Array of `{ loc: string; lastmod?: string }` |
 
 ### `validateSitemapUrl(url)`
 
@@ -392,94 +353,94 @@ function generateSitemapIndex(config: SitemapIndexConfig): string;
 function validateSitemapUrl(url: SitemapURL): SitemapValidationResult;
 ```
 
-Returns `{ valid: boolean; errors: string[]; warnings: string[] }`. Never throws.
+Returns `{ valid, errors, warnings }`; never throws. Enforces: `loc` required and absolute, `loc` ≤ 2048 chars (error) with a warning over 75 chars, `priority` in `0.0–1.0`, valid `changefreq`, W3C-datetime `lastmod`, per-image absolute `loc`, required video `title`/`description`/`thumbnailLoc` and a `contentLoc` or `playerLoc`, video `rating` in `0.0–5.0`, and required news `publication.name`, `publication.language`, `publicationDate`, and `title`.
 
 ### `toNextSitemap(urls)`
 
 ```ts
-import { toNextSitemap } from '@power-seo/sitemap';
-
 function toNextSitemap(urls: SitemapURL[]): NextSitemapEntry[];
 ```
 
-Converts a `SitemapURL[]` to the array format expected by Next.js App Router's `app/sitemap.ts` file convention. Invalid URLs (per `validateSitemapUrl`) are filtered out automatically. `changefreq` is mapped to `changeFrequency`.
+Converts `SitemapURL[]` to Next.js `MetadataRoute.Sitemap` shape. Entries failing `validateSitemapUrl()` are dropped, so pass absolute `loc` values. `changefreq` maps to `changeFrequency`.
 
-| Field             | Type                   | Description                              |
-| ----------------- | ---------------------- | ---------------------------------------- |
-| `url`             | `string`               | Absolute URL (`loc`)                     |
-| `lastModified`    | `Date \| string`       | From `lastmod` (passed through as-is)    |
-| `changeFrequency` | `string`               | From `changefreq`                        |
-| `priority`        | `number`               | From `priority`                          |
+| Field             | Type                       | Description                     |
+| ----------------- | -------------------------- | ------------------------------- |
+| `url`             | `string`                   | Absolute URL from `loc`         |
+| `lastModified`    | `string \| Date`           | From `lastmod` (passed through) |
+| `changeFrequency` | `SitemapURL['changefreq']` | From `changefreq`               |
+| `priority`        | `number`                   | From `priority`                 |
 
 ---
 
 ## Types
 
-| Type | Description |
-| --- | --- |
-| `SitemapConfig` | `{ hostname: string; urls: SitemapURL[]; maxUrlsPerSitemap?: number; outputDir?: string }` |
-| `SitemapURL` | Single URL entry — see field table below |
-| `SitemapImage` | `{ loc: string; caption?: string; geoLocation?: string; title?: string; license?: string }` |
-| `SitemapVideo` | Video extension entry with `thumbnailLoc`, `title`, `description`, and optional fields |
-| `SitemapNews` | `{ publication: { name: string; language: string }; publicationDate: string; title: string }` |
-| `SitemapIndexConfig` | `{ sitemaps: SitemapIndexEntry[] }` |
-| `SitemapIndexEntry` | `{ loc: string; lastmod?: string }` |
-| `SitemapValidationResult` | `{ valid: boolean; errors: string[]; warnings: string[] }` |
+| Type                      | Description                                                                                                                                                                   |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SitemapConfig`           | `{ hostname: string; urls: SitemapURL[]; maxUrlsPerSitemap?: number; outputDir?: string }`                                                                                    |
+| `SitemapURL`              | Single URL entry — see field table below                                                                                                                                      |
+| `SitemapImage`            | `{ loc: string; caption?: string; geoLocation?: string; title?: string; license?: string }`                                                                                   |
+| `SitemapVideo`            | `{ thumbnailLoc, title, description }` + optional `contentLoc`, `playerLoc`, `duration`, `rating`, `viewCount`, `publicationDate`, `expirationDate`, `familyFriendly`, `live` |
+| `SitemapNews`             | `{ publication: { name: string; language: string }; publicationDate: string; title: string }`                                                                                 |
+| `SitemapIndexConfig`      | `{ sitemaps: SitemapIndexEntry[] }`                                                                                                                                           |
+| `SitemapIndexEntry`       | `{ loc: string; lastmod?: string }`                                                                                                                                           |
+| `SitemapValidationResult` | `{ valid: boolean; errors: string[]; warnings: string[] }`                                                                                                                    |
+| `NextSitemapEntry`        | `{ url: string; lastModified?: string \| Date; changeFrequency?: ...; priority?: number }`                                                                                    |
 
 ### `SitemapURL` Fields
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `loc` | `string` | — | **Required.** URL path (e.g. `/about`) or absolute URL. Hostname is prepended to relative paths. |
-| `lastmod` | `string` | — | Last modified date — ISO 8601 or `YYYY-MM-DD` |
-| `changefreq` | `'always' \| 'hourly' \| 'daily' \| 'weekly' \| 'monthly' \| 'yearly' \| 'never'` | — | Suggested crawl frequency |
-| `priority` | `number` | (no tag emitted) | Priority 0.0–1.0. When omitted, no `<priority>` tag is written. |
-| `images` | `SitemapImage[]` | — | Image extension entries — emits `<image:image>` blocks |
-| `videos` | `SitemapVideo[]` | — | Video extension entries — emits `<video:video>` blocks |
-| `news` | `SitemapNews` | — | News extension entry — emits `<news:news>` block |
+| Prop         | Type                                                                              | Default          | Description                                                                                          |
+| ------------ | --------------------------------------------------------------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------- |
+| `loc`        | `string`                                                                          | —                | **Required.** Relative path (e.g. `/about`) or absolute URL; hostname is prepended to relative paths |
+| `lastmod`    | `string`                                                                          | —                | Last-modified date — `YYYY-MM-DD` or ISO 8601                                                        |
+| `changefreq` | `'always' \| 'hourly' \| 'daily' \| 'weekly' \| 'monthly' \| 'yearly' \| 'never'` | —                | Suggested crawl frequency                                                                            |
+| `priority`   | `number`                                                                          | (no tag emitted) | Priority `0.0–1.0`; formatted to one decimal. Omitted → no `<priority>` tag                          |
+| `images`     | `SitemapImage[]`                                                                  | —                | Emits `<image:image>` blocks                                                                         |
+| `videos`     | `SitemapVideo[]`                                                                  | —                | Emits `<video:video>` blocks                                                                         |
+| `news`       | `SitemapNews`                                                                     | —                | Emits a `<news:news>` block                                                                          |
 
 ### Constants
 
-| Constant | Value | Description |
-| --- | --- | --- |
-| `MAX_URLS_PER_SITEMAP` | `50_000` | Maximum URLs allowed per sitemap file (spec limit) |
-| `MAX_SITEMAP_SIZE_BYTES` | `52_428_800` | Maximum sitemap file size in bytes (50 MB = 50 × 1024 × 1024) |
+| Constant                 | Value        | Description                                        |
+| ------------------------ | ------------ | -------------------------------------------------- |
+| `MAX_URLS_PER_SITEMAP`   | `50_000`     | Maximum URLs allowed per sitemap file (spec limit) |
+| `MAX_SITEMAP_SIZE_BYTES` | `52_428_800` | Maximum sitemap file size in bytes (50 MB)         |
 
 ---
 
 ## Use Cases
 
-- **Next.js App Router** — generate sitemaps in `app/sitemap.xml/route.ts` at request time or build time
-- **E-commerce catalogs** — product image sitemaps with `<image:image>` for every listing; keep Google Images up to date
+- **Next.js App Router** — generate sitemaps in `app/sitemap.ts` or `app/sitemap.xml/route.ts` at build or request time
+- **E-commerce catalogs** — product image sitemaps with `<image:image>` for every listing to keep Google Images current
 - **News publishers** — `<news:news>` extension for Google News sitemap submission
-- **Multi-locale sites** — separate sitemaps per locale with a unified sitemap index
-- **Programmatic SEO** — generate sitemaps for thousands of auto-generated pages with no memory overhead
+- **Multi-locale sites** — separate sitemaps per locale unified under one `generateSitemapIndex()` file
+- **Programmatic SEO** — stream sitemaps for thousands of auto-generated pages with constant memory
 - **Large sites** — automatic splitting at 50,000 URLs per file with a generated index
 - **Video platforms** — `<video:video>` extension with title, description, and thumbnail for video SEO
-- **CI/CD pipelines** — validate URL entries with `validateSitemapUrl()` as part of pull request checks
+- **CI/CD pipelines** — validate URL entries with `validateSitemapUrl()` as a pull-request check
 
 ---
 
 ## Architecture Overview
 
 - **Pure TypeScript** — no compiled binary, no native modules
-- **Zero runtime dependencies** — only `@power-seo/core` as a peer dependency
-- **Framework-agnostic** — works in any JavaScript environment that supports ES2020+
-- **SSR compatible** — safe to run in Next.js Server Components, Remix loaders, or Express handlers
-- **Edge runtime safe** — no `fs`, no `path`, no Node.js-specific APIs; runs in Cloudflare Workers, Vercel Edge, Deno
-- **Synchronous generator streaming** — `streamSitemap()` uses `function*` — no async overhead, no backpressure complexity
-- **Smart namespace detection** — `generateSitemap()` only declares image/video/news namespaces when actually used; `streamSitemap()` always includes all namespaces for simplicity
-- **Tree-shakeable** — `"sideEffects": false` with named exports per function
-- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
+- **Zero runtime dependencies** — only `@power-seo/core` in the tree, no external XML libraries
+- **Framework-agnostic** — runs in any JavaScript environment supporting ES2020+
+- **SSR compatible** — safe in Next.js Server Components, Remix loaders, and Express handlers
+- **Edge runtime safe** — no `fs`, no `path`, no Node-specific APIs; runs on Cloudflare Workers, Vercel Edge, and Deno
+- **Synchronous generator streaming** — `streamSitemap()` uses `function*`, so no async overhead or backpressure handling
+- **Smart namespace detection** — `generateSitemap()` declares image/video/news namespaces only when used; `streamSitemap()` always declares all three
+- **Tree-shakeable** — `"sideEffects": false` with one named export per function
+- **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()`
 
 ---
 
 ## Supply Chain Security
 
+- Published to npm with **provenance attestation** — every release is built and signed by the verified `github.com/CyberCraftBD/power-seo` GitHub Actions workflow, so you can trace each tarball back to its exact source commit
+- **Zero third-party runtime dependencies** — packages depend only on other `@power-seo` packages, nothing else gets pulled in
+- **No network access at runtime** — pure computation on the inputs you pass; nothing is fetched, phoned home, or telemetered
 - No install scripts (`postinstall`, `preinstall`)
-- No runtime network access
 - No `eval` or dynamic code execution
-- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
 - Safe for SSR, Edge, and server environments
 
 ---
@@ -488,25 +449,31 @@ Converts a `SitemapURL[]` to the array format expected by Next.js App Router's `
 
 All 17 packages are independently installable — use only what you need.
 
-| Package | Install | Description |
-| --- | --- | --- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core) | `npm i @power-seo/core` | Framework-agnostic utilities, types, validators, and constants |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react) | `npm i @power-seo/react` | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta) | `npm i @power-seo/meta` | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema) | `npm i @power-seo/schema` | Type-safe JSON-LD structured data — 23 builders + 22 React components |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability) | `npm i @power-seo/readability` | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview) | `npm i @power-seo/preview` | SERP, Open Graph, and Twitter/X Card preview generators |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap) | `npm i @power-seo/sitemap` | XML sitemap generation, streaming, index splitting, and validation |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects) | `npm i @power-seo/redirects` | Redirect engine with Next.js, Remix, and Express adapters |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links) | `npm i @power-seo/links` | Link graph analysis — orphan detection, suggestions, equity scoring |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit) | `npm i @power-seo/audit` | Full SEO audit engine — meta, content, structure, performance rules |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images) | `npm i @power-seo/images` | Image SEO — alt text, lazy loading, format analysis, image sitemaps |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai) | `npm i @power-seo/ai` | LLM-agnostic AI prompt templates and parsers for SEO tasks |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics) | `npm i @power-seo/analytics` | Merge GSC + audit data, trend analysis, ranking insights, dashboard |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console) | `npm i @power-seo/search-console` | Google Search Console API — OAuth2, service account, URL inspection |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations) | `npm i @power-seo/integrations` | Semrush and Ahrefs API clients with rate limiting and pagination |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking) | `npm i @power-seo/tracking` | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                                        |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------------- |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic prompt templates and response parsers for AI-assisted SEO             |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge Search Console data with audit results — trends and ranking insights         |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | SEO site health auditing with meta, content, structure, and performance rules      |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content analysis engine with scoring, checks, and React components |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic SEO analysis engines, types, validators, and utilities          |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO analysis — alt text quality, lazy loading, formats, image sitemaps       |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with a shared rate-limited HTTP client              |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Internal link graph analysis — orphan detection, suggestions, equity scoring       |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta tag helpers for Next.js App Router, Remix v2, and generic SSR             |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter Card preview generators with React components        |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta tags, Open Graph, Twitter Card, breadcrumbs            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI               |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect rule engine with Next.js, Remix, and Express adapters                     |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 schema.org builders plus React components   |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API client — OAuth2, service accounts, rate limiting, retry  |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, and validation with image, video, news support  |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | Analytics script builders with consent management and React components             |
+
+---
+
+## Keywords
+
+xml sitemap, sitemap generator, sitemap index, nextjs sitemap, streaming sitemap, image sitemap, video sitemap, news sitemap, split sitemap, sitemap validation, edge runtime, remix, crawl budget, google sitemap, url priority, typescript, zero-dependency, seo
 
 ---
 

@@ -1,72 +1,64 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Spec-compliant or it won't generate — guaranteed.</text>
-  <!-- Left panel: valid -->
-  <rect x="30" y="60" width="400" height="300" rx="8" fill="#161b22" stroke="#10b981" stroke-width="2"/>
-  <rect x="30" y="60" width="400" height="32" rx="8" fill="#065f46"/>
-  <rect x="30" y="80" width="400" height="12" fill="#065f46"/>
-  <text x="230" y="81" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6ee7b7" text-anchor="middle">Valid image extension</text>
-  <text x="46" y="120" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&lt;</text>
-  <text x="53" y="120" font-family="'Courier New', monospace" font-size="12" fill="#10b981">url</text>
-  <text x="76" y="120" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="60" y="142" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">  &lt;</text>
-  <text x="75" y="142" font-family="'Courier New', monospace" font-size="12" fill="#10b981">loc</text>
-  <text x="99" y="142" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="108" y="142" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">https://example.com/p</text>
-  <text x="46" y="164" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">  &lt;</text>
-  <text x="61" y="164" font-family="'Courier New', monospace" font-size="12" fill="#10b981">image:image</text>
-  <text x="141" y="164" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="22" y="188" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="76" y="188" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">    &lt;</text>
-  <text x="99" y="188" font-family="'Courier New', monospace" font-size="12" fill="#10b981">image:loc</text>
-  <text x="165" y="188" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="178" y="188" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">.../img.webp</text>
-  <text x="22" y="210" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="76" y="210" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">    &lt;</text>
-  <text x="99" y="210" font-family="'Courier New', monospace" font-size="12" fill="#10b981">image:caption</text>
-  <text x="189" y="210" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="200" y="210" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">The caption</text>
-  <text x="22" y="232" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="76" y="232" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">    &lt;</text>
-  <text x="99" y="232" font-family="'Courier New', monospace" font-size="12" fill="#10b981">image:title</text>
-  <text x="173" y="232" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="184" y="232" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">Product Image</text>
-  <text x="60" y="254" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">  &lt;/</text>
-  <text x="82" y="254" font-family="'Courier New', monospace" font-size="12" fill="#10b981">image:image</text>
-  <text x="162" y="254" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="46" y="276" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&lt;/</text>
-  <text x="62" y="276" font-family="'Courier New', monospace" font-size="12" fill="#10b981">url</text>
-  <text x="85" y="276" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="46" y="308" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Spec-compliant — will generate</text>
-  <!-- Right panel: invalid -->
-  <rect x="470" y="60" width="400" height="300" rx="8" fill="#161b22" stroke="#ef4444" stroke-width="2"/>
-  <rect x="470" y="60" width="400" height="32" rx="8" fill="#7f1d1d"/>
-  <rect x="470" y="80" width="400" height="12" fill="#7f1d1d"/>
-  <text x="670" y="81" font-family="'Segoe UI', sans-serif" font-size="13" fill="#fca5a5" text-anchor="middle">Invalid field detected</text>
-  <text x="486" y="120" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&lt;</text>
-  <text x="493" y="120" font-family="'Courier New', monospace" font-size="12" fill="#10b981">image:image</text>
-  <text x="573" y="120" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="486" y="142" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">  &lt;</text>
-  <text x="509" y="142" font-family="'Courier New', monospace" font-size="12" fill="#10b981">image:loc</text>
-  <text x="575" y="142" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="586" y="142" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">.../img.jpg</text>
-  <!-- Invalid field highlighted -->
-  <rect x="486" y="155" width="368" height="22" rx="2" fill="#7f1d1d" opacity="0.5"/>
-  <text x="465" y="172" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">✗</text>
-  <text x="486" y="172" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">  &lt;</text>
-  <text x="509" y="172" font-family="'Courier New', monospace" font-size="12" fill="#fca5a5">image:invalid_field</text>
-  <text x="655" y="172" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&gt;</text>
-  <text x="665" y="172" font-family="'Courier New', monospace" font-size="12" fill="#fca5a5">data</text>
-  <!-- Red wavy underline -->
-  <path d="M509 175 Q519 180 529 175 Q539 170 549 175 Q559 180 569 175 Q579 170 589 175 Q599 180 609 175 Q619 170 629 175 Q639 180 649 175" stroke="#ef4444" stroke-width="1.5" fill="none"/>
-  <!-- Error tooltip -->
-  <rect x="486" y="195" width="368" height="60" rx="4" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
-  <text x="670" y="216" font-family="'Segoe UI', sans-serif" font-size="12" fill="#fca5a5" text-anchor="middle" font-weight="700">ImageSitemapError</text>
-  <text x="670" y="236" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">'invalid_field' is not a valid image</text>
-  <text x="670" y="252" font-family="'Segoe UI', sans-serif" font-size="11" fill="#fca5a5" text-anchor="middle">extension property. Will not generate.</text>
-  <text x="486" y="306" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">✗ Invalid field — generation blocked</text>
-  <!-- Caption -->
-  <text x="450" y="400" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Every sitemap extension field validated against the spec.</text>
-  <text x="450" y="424" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">image:image · video:video · news:news — all validated, all typed</text>
-  <text x="450" y="448" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" text-anchor="middle">@power-seo/sitemap</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Illustration of accurate sitemap extension output: image, video, and news tags with smart namespace detection that only declares namespaces actually used</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <text x="30" y="44" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">Image / Video / News extensions — spec-accurate</text>
+  <text x="30" y="68" class="font-ui" font-size="13" fill="#64748b">generateSitemap() declares an XML namespace only when that extension is actually used</text>
+
+  <!-- namespace card -->
+  <rect x="30" y="88" width="840" height="88" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="52" y="116" class="font-mono" font-size="13"><tspan fill="#2563eb">&lt;urlset</tspan><tspan fill="#0f172a"> xmlns=</tspan><tspan fill="#16a34a">"http://www.sitemaps.org/schemas/sitemap/0.9"</tspan></text>
+  <text x="106" y="140" class="font-mono" font-size="13"><tspan fill="#0f172a">xmlns:image=</tspan><tspan fill="#16a34a">"http://www.google.com/schemas/sitemap-image/1.1"</tspan><tspan fill="#2563eb">&gt;</tspan></text>
+  <text x="52" y="164" class="font-mono" font-size="12" fill="#94a3b8">// urls contain images only — video and news namespaces are omitted automatically</text>
+
+  <!-- image card -->
+  <rect x="30" y="196" width="272" height="252" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="50" y="214" width="120" height="22" rx="11" fill="#dbeafe"/>
+  <text x="110" y="229" class="font-mono" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">SitemapImage</text>
+  <g class="font-mono" font-size="11">
+    <text x="50" y="262" fill="#2563eb">&lt;image:image&gt;</text>
+    <text x="62" y="284" fill="#0f172a">&lt;image:loc&gt;</text>
+    <text x="62" y="304" fill="#16a34a">/img/product.jpg</text>
+    <text x="62" y="326" fill="#0f172a">&lt;image:caption&gt;</text>
+    <text x="62" y="348" fill="#0f172a">&lt;image:title&gt;</text>
+    <text x="62" y="370" fill="#0f172a">&lt;image:geo_location&gt;</text>
+    <text x="62" y="392" fill="#0f172a">&lt;image:license&gt;</text>
+    <text x="50" y="418" fill="#2563eb">&lt;/image:image&gt;</text>
+  </g>
+
+  <!-- video card -->
+  <rect x="314" y="196" width="272" height="252" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="334" y="214" width="120" height="22" rx="11" fill="#dcfce7"/>
+  <text x="394" y="229" class="font-mono" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">SitemapVideo</text>
+  <g class="font-mono" font-size="11">
+    <text x="334" y="262" fill="#2563eb">&lt;video:video&gt;</text>
+    <text x="346" y="284" fill="#0f172a">&lt;video:title&gt;</text>
+    <text x="346" y="306" fill="#0f172a">&lt;video:description&gt;</text>
+    <text x="346" y="328" fill="#0f172a">&lt;video:thumbnail_loc&gt;</text>
+    <text x="346" y="350" fill="#0f172a">&lt;video:duration&gt;</text>
+    <text x="346" y="372" fill="#16a34a">372</text>
+    <text x="346" y="394" fill="#0f172a">&lt;video:rating&gt;</text>
+    <text x="334" y="418" fill="#2563eb">&lt;/video:video&gt;</text>
+  </g>
+
+  <!-- news card -->
+  <rect x="598" y="196" width="272" height="252" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="618" y="214" width="112" height="22" rx="11" fill="#fef3c7"/>
+  <text x="674" y="229" class="font-mono" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">SitemapNews</text>
+  <g class="font-mono" font-size="11">
+    <text x="618" y="262" fill="#2563eb">&lt;news:news&gt;</text>
+    <text x="630" y="284" fill="#0f172a">&lt;news:publication&gt;</text>
+    <text x="642" y="306" fill="#0f172a">&lt;news:name&gt;</text>
+    <text x="642" y="328" fill="#0f172a">&lt;news:language&gt;</text>
+    <text x="642" y="350" fill="#16a34a">en</text>
+    <text x="630" y="372" fill="#0f172a">&lt;news:publication_date&gt;</text>
+    <text x="630" y="394" fill="#0f172a">&lt;news:title&gt;</text>
+    <text x="618" y="418" fill="#2563eb">&lt;/news:news&gt;</text>
+  </g>
+
+  <text x="30" y="482" class="font-ui" font-size="11" fill="#94a3b8">Typed as SitemapImage, SitemapVideo, and SitemapNews — attached per URL in the SitemapURL array.</text>
 </svg>

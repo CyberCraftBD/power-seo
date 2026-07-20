@@ -1,67 +1,82 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">One Component. All Your SEO Tags.</text>
-  <!-- BEFORE panel -->
-  <rect x="30" y="56" width="390" height="330" rx="8" fill="#161b22"/>
-  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1e2430"/>
-  <rect x="30" y="78" width="390" height="12" fill="#1e2430"/>
-  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Before — Manual Meta Tags</text>
-  <!-- 8 manual tags -->
-  <text x="48" y="116" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;title&gt;My Page&lt;/title&gt;</text>
-  <text x="48" y="136" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta name="description" content="..." /&gt;</text>
-  <text x="48" y="156" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta property="og:title" content="..." /&gt;</text>
-  <text x="48" y="176" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta property="og:description" content="..." /&gt;</text>
-  <text x="48" y="196" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta property="og:image" content="..." /&gt;</text>
-  <text x="48" y="216" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta property="og:type" content="..." /&gt;</text>
-  <text x="48" y="236" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;meta name="twitter:card" content="..." /&gt;</text>
-  <text x="48" y="256" font-family="'Courier New', monospace" font-size="11" fill="#8b949e">&lt;link rel="canonical" href="..." /&gt;</text>
-  <!-- Count badge -->
-  <rect x="48" y="275" width="160" height="28" rx="6" fill="#2d1b1b"/>
-  <text x="128" y="294" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">8 tags · spread across files</text>
-  <!-- Pain points -->
-  <text x="48" y="332" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">• Easy to miss OG tags</text>
-  <text x="48" y="350" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">• No TypeScript validation</text>
-  <text x="48" y="368" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">• Duplicated across routes</text>
-  <!-- Arrow -->
-  <text x="450" y="230" font-family="'Segoe UI', sans-serif" font-size="36" fill="#61dafb" text-anchor="middle" font-weight="700">→</text>
-  <!-- AFTER panel -->
-  <rect x="480" y="56" width="390" height="330" rx="8" fill="#161b22"/>
-  <rect x="480" y="56" width="390" height="34" rx="8" fill="#0c2444"/>
-  <rect x="480" y="78" width="390" height="12" fill="#0c2444"/>
-  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#61dafb" text-anchor="middle">After — @power-seo/react</text>
-  <!-- Single SEO component -->
-  <text x="498" y="116" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">import </text>
-  <text x="548" y="116" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">&#123; </text>
-  <text x="568" y="116" font-family="'Courier New', monospace" font-size="12" fill="#61dafb">SEO</text>
-  <text x="591" y="116" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> &#125; </text>
-  <text x="614" y="116" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">from</text>
-  <text x="648" y="116" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'@power-seo/react'</text>
-  <text x="498" y="144" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">&lt;</text>
-  <text x="508" y="144" font-family="'Courier New', monospace" font-size="12" fill="#61dafb">SEO</text>
-  <text x="498" y="164" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  title</text>
-  <text x="540" y="164" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">=</text>
-  <text x="550" y="164" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">"My Page"</text>
-  <text x="498" y="184" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  description</text>
-  <text x="594" y="184" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">=</text>
-  <text x="604" y="184" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">"..."</text>
-  <text x="498" y="204" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  canonical</text>
-  <text x="578" y="204" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">=</text>
-  <text x="588" y="204" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">"https://..."</text>
-  <text x="498" y="224" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  og</text>
-  <text x="522" y="224" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">=&#123;&#123; </text>
-  <text x="548" y="224" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">image</text>
-  <text x="590" y="224" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="602" y="224" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">"..."</text>
-  <text x="636" y="224" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> &#125;&#125;</text>
-  <text x="498" y="244" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">/&gt;</text>
-  <!-- Count badge -->
-  <rect x="498" y="265" width="160" height="28" rx="6" fill="#0c2444"/>
-  <text x="578" y="284" font-family="'Segoe UI', sans-serif" font-size="13" fill="#61dafb" text-anchor="middle">1 component · all tags</text>
-  <!-- Benefits -->
-  <text x="498" y="332" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ All OG + Twitter auto-generated</text>
-  <text x="498" y="350" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Full TypeScript intellisense</text>
-  <text x="498" y="368" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e">✓ Works in Next.js + Remix + Gatsby</text>
-  <!-- Caption -->
-  <text x="450" y="430" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Replace 8 scattered tags with a single typed component.</text>
-  <text x="450" y="454" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">@power-seo/react — SSR-compatible · OG · Twitter · Schema · TypeScript</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Grid of the eight power-seo react components showing the exact head tags each one renders, from SEO and DefaultSEO to Breadcrumb with JSON-LD</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="40" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Eight components. Every SEO head tag.</text>
+  <text x="450" y="64" class="font-ui" font-size="13" fill="#64748b" text-anchor="middle">Import only what you use — each component renders real tags straight to the DOM.</text>
+
+  <!-- row 1 -->
+  <rect x="40" y="88" width="196" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="58" y="116" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">&lt;SEO /&gt;</text>
+  <text x="58" y="140" class="font-ui" font-size="12" fill="#64748b">All-in-one: title, meta,</text>
+  <text x="58" y="156" class="font-ui" font-size="12" fill="#64748b">canonical, OG, Twitter</text>
+  <rect x="58" y="172" width="160" height="48" rx="6" fill="#f1f5f9"/>
+  <text x="66" y="190" class="font-mono" font-size="10" fill="#0f172a">&lt;title&gt;...&lt;/title&gt;</text>
+  <text x="66" y="206" class="font-mono" font-size="10" fill="#0f172a">&lt;meta name="description"&gt;</text>
+
+  <rect x="252" y="88" width="196" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="270" y="116" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">&lt;DefaultSEO&gt;</text>
+  <text x="270" y="140" class="font-ui" font-size="12" fill="#64748b">Site-wide defaults via</text>
+  <text x="270" y="156" class="font-ui" font-size="12" fill="#64748b">SEOContext at app root</text>
+  <rect x="270" y="172" width="160" height="48" rx="6" fill="#f1f5f9"/>
+  <text x="278" y="190" class="font-mono" font-size="10" fill="#0f172a">titleTemplate=</text>
+  <text x="278" y="206" class="font-mono" font-size="10" fill="#16a34a">"%s | My Site"</text>
+
+  <rect x="464" y="88" width="196" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="482" y="116" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">&lt;OpenGraph /&gt;</text>
+  <text x="482" y="140" class="font-ui" font-size="12" fill="#64748b">og:title, og:image with</text>
+  <text x="482" y="156" class="font-ui" font-size="12" fill="#64748b">width/height/alt, article:*</text>
+  <rect x="482" y="172" width="160" height="48" rx="6" fill="#f1f5f9"/>
+  <text x="490" y="190" class="font-mono" font-size="10" fill="#0f172a">&lt;meta property="og:image"</text>
+  <text x="490" y="206" class="font-mono" font-size="10" fill="#0f172a">content="...jpg"&gt;</text>
+
+  <rect x="676" y="88" width="184" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="694" y="116" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">&lt;TwitterCard /&gt;</text>
+  <text x="694" y="140" class="font-ui" font-size="12" fill="#64748b">summary, summary_large_</text>
+  <text x="694" y="156" class="font-ui" font-size="12" fill="#64748b">image, app, player</text>
+  <rect x="694" y="172" width="148" height="48" rx="6" fill="#f1f5f9"/>
+  <text x="702" y="190" class="font-mono" font-size="10" fill="#0f172a">&lt;meta name=</text>
+  <text x="702" y="206" class="font-mono" font-size="10" fill="#0f172a">"twitter:card" ...&gt;</text>
+
+  <!-- row 2 -->
+  <rect x="40" y="254" width="196" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="58" y="282" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">&lt;Canonical /&gt;</text>
+  <text x="58" y="306" class="font-ui" font-size="12" fill="#64748b">Base URL resolution and</text>
+  <text x="58" y="322" class="font-ui" font-size="12" fill="#64748b">trailing slash control</text>
+  <rect x="58" y="338" width="160" height="48" rx="6" fill="#f1f5f9"/>
+  <text x="66" y="356" class="font-mono" font-size="10" fill="#0f172a">&lt;link rel="canonical"</text>
+  <text x="66" y="372" class="font-mono" font-size="10" fill="#0f172a">href="https://..."&gt;</text>
+
+  <rect x="252" y="254" width="196" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="270" y="282" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">&lt;Robots /&gt;</text>
+  <text x="270" y="306" class="font-ui" font-size="12" fill="#64748b">All 10 directives as typed</text>
+  <text x="270" y="322" class="font-ui" font-size="12" fill="#64748b">props — no string typos</text>
+  <rect x="270" y="338" width="160" height="48" rx="6" fill="#f1f5f9"/>
+  <text x="278" y="356" class="font-mono" font-size="10" fill="#0f172a">noindex, nosnippet,</text>
+  <text x="278" y="372" class="font-mono" font-size="10" fill="#0f172a">max-image-preview ...</text>
+
+  <rect x="464" y="254" width="196" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="482" y="282" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">&lt;Hreflang /&gt;</text>
+  <text x="482" y="306" class="font-ui" font-size="12" fill="#64748b">Alternate links per locale</text>
+  <text x="482" y="322" class="font-ui" font-size="12" fill="#64748b">including x-default</text>
+  <rect x="482" y="338" width="160" height="48" rx="6" fill="#f1f5f9"/>
+  <text x="490" y="356" class="font-mono" font-size="10" fill="#0f172a">&lt;link rel="alternate"</text>
+  <text x="490" y="372" class="font-mono" font-size="10" fill="#0f172a">hreflang="de-DE" ...&gt;</text>
+
+  <rect x="676" y="254" width="184" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="694" y="282" class="font-mono" font-size="13" font-weight="600" fill="#2563eb">&lt;Breadcrumb /&gt;</text>
+  <text x="694" y="306" class="font-ui" font-size="12" fill="#64748b">Visible nav + embedded</text>
+  <text x="694" y="322" class="font-ui" font-size="12" fill="#64748b">BreadcrumbList JSON-LD</text>
+  <rect x="694" y="338" width="148" height="48" rx="6" fill="#f1f5f9"/>
+  <text x="702" y="356" class="font-mono" font-size="10" fill="#0f172a">&lt;script type=</text>
+  <text x="702" y="372" class="font-mono" font-size="10" fill="#0f172a">"application/ld+json"&gt;</text>
+
+  <!-- footer -->
+  <rect x="40" y="424" width="820" height="48" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="66" cy="448" r="8" fill="#dcfce7"/>
+  <path d="M 62 448 l 3 3 l 5 -6" stroke="#16a34a" stroke-width="1.8" fill="none"/>
+  <text x="84" y="453" class="font-ui" font-size="12" fill="#64748b">Utilities <tspan class="font-mono" fill="#2563eb">renderMetaTags()</tspan> and <tspan class="font-mono" fill="#2563eb">renderLinkTags()</tspan> convert @power-seo/core tag arrays into React elements</text>
 </svg>

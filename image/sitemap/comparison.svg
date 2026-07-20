@@ -1,57 +1,91 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="42" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">Sitemap Library Comparison</text>
-  <!-- Headers -->
-  <rect x="30" y="58" width="220" height="38" rx="6" fill="#10b981"/>
-  <text x="140" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">@power-seo/sitemap</text>
-  <rect x="265" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
-  <text x="355" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">next-sitemap</text>
-  <rect x="460" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
-  <text x="550" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">sitemap npm</text>
-  <rect x="655" y="58" width="215" height="38" rx="6" fill="#1e2430"/>
-  <text x="762" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">xmlbuilder2</text>
-  <!-- Rows -->
-  <rect x="0" y="108" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="132" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Streaming output</text>
-  <text x="140" y="132" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="355" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="146" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="170" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Sitemap index splitting</text>
-  <text x="140" y="170" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="355" y="170" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="550" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="184" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="208" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Image extension</text>
-  <text x="140" y="208" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="355" y="208" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="208" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="208" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="222" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="246" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Video / News extension</text>
-  <text x="140" y="246" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="355" y="246" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="246" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="246" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="260" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="284" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">TypeScript native</text>
-  <text x="140" y="284" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="355" y="284" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="550" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="298" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="322" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Remix / Express support</text>
-  <text x="140" y="322" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="355" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="322" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <text x="762" y="322" font-size="18" fill="#10b981" text-anchor="middle">✓</text>
-  <!-- Dividers -->
-  <line x1="250" y1="58" x2="250" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="445" y1="58" x2="445" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="640" y1="58" x2="640" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="870" y1="58" x2="870" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <text x="450" y="385" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">The only sitemap library built for production scale.</text>
-  <text x="450" y="410" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Stream 100k+ URLs • image/video/news extensions • TypeScript strict</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Feature comparison matrix of the power-seo sitemap package versus next-sitemap, the sitemap npm package, and xmlbuilder2, covering extensions, streaming, index splitting, and validation</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <text x="30" y="46" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">Sitemap library comparison</text>
+  <text x="30" y="70" class="font-ui" font-size="13" fill="#64748b">Feature support across popular XML sitemap generators</text>
+
+  <!-- table card -->
+  <rect x="30" y="90" width="840" height="374" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <!-- header row -->
+  <path d="M30 98a8 8 0 0 1 8-8h824a8 8 0 0 1 8 8v34H30z" fill="#f8fafc"/>
+  <line x1="30" y1="132" x2="870" y2="132" stroke="#e2e8f0"/>
+  <text x="50" y="116" class="font-ui" font-size="12" font-weight="600" fill="#64748b">FEATURE</text>
+  <text x="425" y="116" class="font-ui" font-size="12" font-weight="600" fill="#2563eb" text-anchor="middle">@power-seo/sitemap</text>
+  <text x="565" y="116" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">next-sitemap</text>
+  <text x="695" y="116" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">sitemap (npm)</text>
+  <text x="805" y="116" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">xmlbuilder2</text>
+
+  <!-- highlight column -->
+  <rect x="360" y="132" width="130" height="324" fill="#dbeafe" opacity="0.35"/>
+
+  <!-- row separators -->
+  <line x1="30" y1="168" x2="870" y2="168" stroke="#e2e8f0"/>
+  <line x1="30" y1="204" x2="870" y2="204" stroke="#e2e8f0"/>
+  <line x1="30" y1="240" x2="870" y2="240" stroke="#e2e8f0"/>
+  <line x1="30" y1="276" x2="870" y2="276" stroke="#e2e8f0"/>
+  <line x1="30" y1="312" x2="870" y2="312" stroke="#e2e8f0"/>
+  <line x1="30" y1="348" x2="870" y2="348" stroke="#e2e8f0"/>
+  <line x1="30" y1="384" x2="870" y2="384" stroke="#e2e8f0"/>
+  <line x1="30" y1="420" x2="870" y2="420" stroke="#e2e8f0"/>
+
+  <!-- rows: feature label + marks -->
+  <g class="font-ui" font-size="13" fill="#0f172a">
+    <text x="50" y="155">Image sitemap extension</text>
+    <text x="50" y="191">Video sitemap extension</text>
+    <text x="50" y="227">News sitemap extension</text>
+    <text x="50" y="263">Streaming generation</text>
+    <text x="50" y="299">Auto index splitting</text>
+    <text x="50" y="335">URL validation</text>
+    <text x="50" y="371">Hostname + relative loc paths</text>
+    <text x="50" y="407">Zero runtime dependencies</text>
+    <text x="50" y="443">Edge runtime compatible</text>
+  </g>
+
+  <!-- power-seo column: all check -->
+  <g class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">
+    <text x="425" y="155">✓</text><text x="425" y="191">✓</text><text x="425" y="227">✓</text>
+    <text x="425" y="263">✓</text><text x="425" y="299">✓</text><text x="425" y="335">✓</text>
+    <text x="425" y="371">✓</text><text x="425" y="407">✓</text><text x="425" y="443">✓</text>
+  </g>
+
+  <!-- next-sitemap column -->
+  <g class="font-ui" font-size="14" font-weight="700" text-anchor="middle">
+    <text x="565" y="155" fill="#16a34a">✓</text>
+    <text x="565" y="191" fill="#94a3b8">—</text>
+    <text x="565" y="227" fill="#94a3b8">—</text>
+    <text x="565" y="263" fill="#94a3b8">—</text>
+    <text x="565" y="299" fill="#16a34a">✓</text>
+    <text x="565" y="335" fill="#94a3b8">—</text>
+    <text x="565" y="371" fill="#94a3b8">—</text>
+    <text x="565" y="407" fill="#94a3b8">—</text>
+    <text x="565" y="443" fill="#94a3b8">—</text>
+  </g>
+
+  <!-- sitemap (npm) column -->
+  <g class="font-ui" font-size="14" font-weight="700" text-anchor="middle">
+    <text x="695" y="155" fill="#16a34a">✓</text>
+    <text x="695" y="191" fill="#16a34a">✓</text>
+    <text x="695" y="227" fill="#16a34a">✓</text>
+    <text x="695" y="263" fill="#94a3b8">—</text>
+    <text x="695" y="299" fill="#94a3b8">—</text>
+    <text x="695" y="335" fill="#94a3b8">—</text>
+    <text x="695" y="371" fill="#94a3b8">—</text>
+    <text x="695" y="407" fill="#94a3b8">—</text>
+    <text x="695" y="443" fill="#94a3b8">—</text>
+  </g>
+
+  <!-- xmlbuilder2 column: all dash -->
+  <g class="font-ui" font-size="14" font-weight="700" fill="#94a3b8" text-anchor="middle">
+    <text x="805" y="155">—</text><text x="805" y="191">—</text><text x="805" y="227">—</text>
+    <text x="805" y="263">—</text><text x="805" y="299">—</text><text x="805" y="335">—</text>
+    <text x="805" y="371">—</text><text x="805" y="407">—</text><text x="805" y="443">—</text>
+  </g>
+
+  <text x="30" y="486" class="font-ui" font-size="11" fill="#94a3b8">Feature support as documented in each library's README at time of writing.</text>
 </svg>

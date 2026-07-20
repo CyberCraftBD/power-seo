@@ -1,68 +1,87 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <!-- GSC Panel -->
-  <rect x="40" y="30" width="820" height="390" rx="10" fill="#161b22"/>
-  <rect x="40" y="30" width="820" height="50" rx="10" fill="#1e2430"/>
-  <rect x="40" y="68" width="820" height="12" fill="#1e2430"/>
-  <!-- Breadcrumb -->
-  <text x="60" y="56" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">Google Search Console</text>
-  <text x="200" y="56" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280"> › </text>
-  <text x="214" y="56" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280">example.com</text>
-  <text x="305" y="56" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280"> › </text>
-  <text x="320" y="56" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" font-weight="600">Sitemaps</text>
-  <!-- Section title -->
-  <text x="60" y="108" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" font-weight="600">Submitted sitemaps</text>
-  <rect x="740" y="92" width="100" height="30" rx="6" fill="#10b981"/>
-  <text x="790" y="112" font-family="'Segoe UI', sans-serif" font-size="12" fill="white" text-anchor="middle">+ Add sitemap</text>
-  <!-- Table header -->
-  <rect x="40" y="135" width="820" height="34" fill="#1a2436"/>
-  <text x="60" y="157" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" font-weight="600">Sitemap URL</text>
-  <text x="370" y="157" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" font-weight="600">Type</text>
-  <text x="470" y="157" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" font-weight="600">Submitted</text>
-  <text x="580" y="157" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" font-weight="600">Last read</text>
-  <text x="680" y="157" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" font-weight="600">Status</text>
-  <text x="780" y="157" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" font-weight="600">URLs</text>
-  <!-- Row 1 -->
-  <rect x="40" y="169" width="820" height="52" fill="#0f1621"/>
-  <text x="60" y="193" font-family="'Courier New', monospace" font-size="12" fill="#38bdf8">example.com/sitemap.xml</text>
-  <text x="60" y="210" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Primary sitemap index</text>
-  <text x="370" y="200" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Sitemap index</text>
-  <text x="470" y="200" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Feb 10, 2026</text>
-  <text x="580" y="200" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Feb 11, 2026</text>
-  <rect x="680" y="183" width="68" height="24" rx="12" fill="#14532d"/>
-  <text x="714" y="200" font-family="'Segoe UI', sans-serif" font-size="12" fill="#10b981" text-anchor="middle">Success</text>
-  <text x="780" y="200" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" font-weight="600">54,231</text>
-  <!-- Row 2 -->
-  <rect x="40" y="221" width="820" height="52" fill="#161b22"/>
-  <text x="60" y="245" font-family="'Courier New', monospace" font-size="12" fill="#38bdf8">example.com/sitemap-0.xml</text>
-  <text x="60" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Pages 1 – 25,000</text>
-  <text x="370" y="252" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Sitemap</text>
-  <text x="470" y="252" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Feb 10, 2026</text>
-  <text x="580" y="252" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Feb 11, 2026</text>
-  <rect x="680" y="235" width="68" height="24" rx="12" fill="#14532d"/>
-  <text x="714" y="252" font-family="'Segoe UI', sans-serif" font-size="12" fill="#10b981" text-anchor="middle">Success</text>
-  <text x="780" y="252" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" font-weight="600">25,000</text>
-  <!-- Row 3 -->
-  <rect x="40" y="273" width="820" height="52" fill="#0f1621"/>
-  <text x="60" y="297" font-family="'Courier New', monospace" font-size="12" fill="#38bdf8">example.com/sitemap-images.xml</text>
-  <text x="60" y="314" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">Image extension sitemap</text>
-  <text x="370" y="304" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Sitemap</text>
-  <text x="470" y="304" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Feb 10, 2026</text>
-  <text x="580" y="304" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Feb 10, 2026</text>
-  <rect x="680" y="287" width="68" height="24" rx="12" fill="#14532d"/>
-  <text x="714" y="304" font-family="'Segoe UI', sans-serif" font-size="12" fill="#10b981" text-anchor="middle">Success</text>
-  <text x="780" y="304" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" font-weight="600">12,847</text>
-  <!-- Row 4 -->
-  <rect x="40" y="325" width="820" height="52" fill="#161b22"/>
-  <text x="60" y="349" font-family="'Courier New', monospace" font-size="12" fill="#38bdf8">example.com/sitemap-news.xml</text>
-  <text x="60" y="366" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280">News extension sitemap</text>
-  <text x="370" y="356" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Sitemap</text>
-  <text x="470" y="356" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Feb 10, 2026</text>
-  <text x="580" y="356" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">Feb 10, 2026</text>
-  <rect x="680" y="339" width="68" height="24" rx="12" fill="#14532d"/>
-  <text x="714" y="356" font-family="'Segoe UI', sans-serif" font-size="12" fill="#10b981" text-anchor="middle">Success</text>
-  <text x="780" y="356" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" font-weight="600">3,461</text>
-  <!-- Caption -->
-  <text x="450" y="450" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle">What your SEO manager sees in Google Search Console</text>
-  <text x="450" y="472" font-family="'Segoe UI', sans-serif" font-size="13" fill="#10b981" text-anchor="middle">@power-seo/sitemap — generates all sitemap types, all extensions, validated output</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Search console style sitemaps dashboard showing a submitted sitemap index and three child sitemaps generated by splitSitemap, each with Success status</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+
+  <!-- sidebar -->
+  <rect width="180" height="500" fill="#ffffff"/>
+  <line x1="180" y1="0" x2="180" y2="500" stroke="#e2e8f0"/>
+  <rect x="16" y="18" width="20" height="20" rx="5" fill="#2563eb"/>
+  <text x="44" y="33" class="font-ui" font-size="13" font-weight="700" fill="#0f172a">Search Console</text>
+  <text x="20" y="76" class="font-ui" font-size="13" fill="#64748b">Overview</text>
+  <text x="20" y="108" class="font-ui" font-size="13" fill="#64748b">Performance</text>
+  <rect x="10" y="124" width="160" height="28" rx="6" fill="#dbeafe"/>
+  <text x="20" y="143" class="font-ui" font-size="13" font-weight="600" fill="#2563eb">Sitemaps</text>
+  <text x="20" y="176" class="font-ui" font-size="13" fill="#64748b">URL Inspection</text>
+  <text x="20" y="208" class="font-ui" font-size="13" fill="#64748b">Page Indexing</text>
+
+  <!-- top bar -->
+  <rect x="180" width="720" height="52" fill="#ffffff"/>
+  <line x1="180" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="204" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Sitemaps</text>
+  <rect x="756" y="11" width="120" height="30" rx="6" fill="#2563eb"/>
+  <text x="816" y="30" class="font-ui" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Submit sitemap</text>
+
+  <!-- submit field -->
+  <rect x="204" y="72" width="672" height="64" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="224" y="96" class="font-ui" font-size="12" font-weight="600" fill="#64748b">ADD A NEW SITEMAP</text>
+  <rect x="224" y="104" width="500" height="24" rx="6" fill="#f1f5f9"/>
+  <text x="236" y="120" class="font-mono" font-size="12" fill="#64748b">https://example.com/sitemap-index.xml</text>
+  <rect x="736" y="102" width="120" height="26" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="796" y="119" class="font-ui" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">Submit</text>
+
+  <!-- submitted sitemaps table -->
+  <rect x="204" y="152" width="672" height="248" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <path d="M204 160a8 8 0 0 1 8-8h656a8 8 0 0 1 8 8v28H204z" fill="#f8fafc"/>
+  <line x1="204" y1="188" x2="876" y2="188" stroke="#e2e8f0"/>
+  <text x="224" y="174" class="font-ui" font-size="12" font-weight="600" fill="#64748b">SITEMAP</text>
+  <text x="452" y="174" class="font-ui" font-size="12" font-weight="600" fill="#64748b">TYPE</text>
+  <text x="576" y="174" class="font-ui" font-size="12" font-weight="600" fill="#64748b">SUBMITTED</text>
+  <text x="686" y="174" class="font-ui" font-size="12" font-weight="600" fill="#64748b">URLS</text>
+  <text x="776" y="174" class="font-ui" font-size="12" font-weight="600" fill="#64748b">STATUS</text>
+
+  <line x1="204" y1="241" x2="876" y2="241" stroke="#e2e8f0"/>
+  <line x1="204" y1="294" x2="876" y2="294" stroke="#e2e8f0"/>
+  <line x1="204" y1="347" x2="876" y2="347" stroke="#e2e8f0"/>
+
+  <g class="font-mono" font-size="12" fill="#0f172a">
+    <text x="224" y="220">/sitemap-index.xml</text>
+    <text x="224" y="273">/sitemap-0.xml</text>
+    <text x="224" y="326">/sitemap-1.xml</text>
+    <text x="224" y="379">/sitemap-2.xml</text>
+  </g>
+  <g class="font-ui" font-size="12" fill="#64748b">
+    <text x="452" y="220">Sitemap index</text>
+    <text x="452" y="273">Sitemap</text>
+    <text x="452" y="326">Sitemap</text>
+    <text x="452" y="379">Sitemap</text>
+    <text x="576" y="220">Jul 12, 2026</text>
+    <text x="576" y="273">Jul 12, 2026</text>
+    <text x="576" y="326">Jul 12, 2026</text>
+    <text x="576" y="379">Jul 12, 2026</text>
+  </g>
+  <g class="font-ui" font-size="12" fill="#0f172a">
+    <text x="686" y="220">128,431</text>
+    <text x="686" y="273">50,000</text>
+    <text x="686" y="326">50,000</text>
+    <text x="686" y="379">28,431</text>
+  </g>
+  <g>
+    <rect x="776" y="204" width="66" height="20" rx="10" fill="#dcfce7"/>
+    <text x="809" y="218" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Success</text>
+    <rect x="776" y="257" width="66" height="20" rx="10" fill="#dcfce7"/>
+    <text x="809" y="271" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Success</text>
+    <rect x="776" y="310" width="66" height="20" rx="10" fill="#dcfce7"/>
+    <text x="809" y="324" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Success</text>
+    <rect x="776" y="363" width="66" height="20" rx="10" fill="#dcfce7"/>
+    <text x="809" y="377" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Success</text>
+  </g>
+
+  <!-- footnote -->
+  <rect x="204" y="416" width="672" height="56" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="224" y="440" class="font-ui" font-size="12" font-weight="600" fill="#0f172a">Generated by splitSitemap()</text>
+  <text x="224" y="459" class="font-ui" font-size="12" fill="#64748b">128,431 URLs chunked at MAX_URLS_PER_SITEMAP (50,000) with a sitemap index referencing each file.</text>
 </svg>

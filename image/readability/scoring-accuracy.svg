@@ -1,53 +1,64 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Improve Readability — Watch the Score Rise</text>
-  <!-- Before paragraph -->
-  <rect x="30" y="56" width="390" height="280" rx="8" fill="#161b22"/>
-  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1a0505"/>
-  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Before — Score: 34 (Very Difficult)</text>
-  <text x="48" y="120" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">The implementation of comprehensive algorithmic</text>
-  <text x="48" y="140" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">methodologies for the facilitation of enhanced</text>
-  <text x="48" y="160" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">user comprehension necessitates a multifaceted</text>
-  <text x="48" y="180" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8">perspectival examination of the subject matter.</text>
-  <!-- Metrics before -->
-  <rect x="48" y="202" width="354" height="80" rx="4" fill="#0d1117"/>
-  <text x="64" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">Flesch-Kincaid:</text>
-  <text x="200" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">34 (College grad)</text>
-  <text x="64" y="242" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">Avg sentence:</text>
-  <text x="200" y="242" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">38 words</text>
-  <text x="64" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">Complex words:</text>
-  <text x="200" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444">62% of total</text>
-  <!-- Score bar -->
-  <rect x="48" y="300" width="354" height="18" rx="9" fill="#1e2430"/>
-  <rect x="48" y="300" width="120" height="18" rx="9" fill="#ef4444"/>
-  <text x="225" y="313" font-family="'Segoe UI', sans-serif" font-size="10" fill="white" text-anchor="middle">34 / 100</text>
-  <!-- Arrow -->
-  <text x="450" y="210" font-family="'Segoe UI', sans-serif" font-size="36" fill="#8b5cf6" text-anchor="middle" font-weight="700">→</text>
-  <!-- After paragraph -->
-  <rect x="490" y="56" width="390" height="280" rx="8" fill="#161b22"/>
-  <rect x="490" y="56" width="390" height="34" rx="8" fill="#0d1f0d"/>
-  <text x="685" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e" text-anchor="middle">After — Score: 74 (Easy)</text>
-  <text x="508" y="120" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">Using a clear approach helps readers understand</text>
-  <text x="508" y="140" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">complex topics. Break long sentences into short</text>
-  <text x="508" y="160" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">ones. Use simple words. Your readers will thank</text>
-  <text x="508" y="180" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0">you — and so will Google.</text>
-  <!-- Metrics after -->
-  <rect x="508" y="202" width="354" height="80" rx="4" fill="#0d1117"/>
-  <text x="524" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Flesch-Kincaid:</text>
-  <text x="660" y="222" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">74 (7th grade)</text>
-  <text x="524" y="242" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Avg sentence:</text>
-  <text x="660" y="242" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">14 words</text>
-  <text x="524" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">Complex words:</text>
-  <text x="660" y="262" font-family="'Segoe UI', sans-serif" font-size="11" fill="#22c55e">8% of total</text>
-  <!-- Score bar after -->
-  <rect x="508" y="300" width="354" height="18" rx="9" fill="#1e2430"/>
-  <rect x="508" y="300" width="262" height="18" rx="9" fill="#22c55e"/>
-  <text x="685" y="313" font-family="'Segoe UI', sans-serif" font-size="10" fill="white" text-anchor="middle">74 / 100</text>
-  <!-- Bottom delta badge -->
-  <rect x="330" y="370" width="240" height="60" rx="8" fill="#1a0d2e"/>
-  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="14" fill="#8b5cf6" text-anchor="middle" font-weight="700">Score improved +40 points</text>
-  <text x="450" y="416" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a78bfa" text-anchor="middle">34 → 74 with 3 simple changes</text>
-  <!-- Caption -->
-  <text x="450" y="462" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="600">Shorter sentences. Simpler words. Higher rankings.</text>
-  <text x="450" y="484" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">@power-seo/readability — actionable suggestions · before/after comparison · target grade level</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Readability scoring formulas for Flesch Reading Ease, Flesch-Kincaid Grade, and Gunning Fog with the READABILITY threshold constants from power-seo core</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="40" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Industry-Standard Formulas, Exact Thresholds</text>
+  <!-- formula cards -->
+  <rect x="40" y="66" width="510" height="96" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="60" y="94" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Flesch Reading Ease</text>
+  <rect x="446" y="78" width="88" height="20" rx="10" fill="#dbeafe"/>
+  <text x="490" y="92" class="font-mono" font-size="10" font-weight="600" fill="#1d4ed8" text-anchor="middle">0–100 scale</text>
+  <rect x="60" y="106" width="470" height="36" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="76" y="129" class="font-mono" font-size="12" fill="#0f172a">206.835 − 1.015 × (words/sentences) − 84.6 × (syllables/words)</text>
+  <rect x="40" y="178" width="510" height="96" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="60" y="206" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Flesch-Kincaid Grade Level</text>
+  <rect x="446" y="190" width="88" height="20" rx="10" fill="#dbeafe"/>
+  <text x="490" y="204" class="font-mono" font-size="10" font-weight="600" fill="#1d4ed8" text-anchor="middle">US grade</text>
+  <rect x="60" y="218" width="470" height="36" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="76" y="241" class="font-mono" font-size="12" fill="#0f172a">0.39 × (words/sentences) + 11.8 × (syllables/words) − 15.59</text>
+  <rect x="40" y="290" width="510" height="96" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="60" y="318" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">Gunning Fog Index</text>
+  <rect x="446" y="302" width="88" height="20" rx="10" fill="#dbeafe"/>
+  <text x="490" y="316" class="font-mono" font-size="10" font-weight="600" fill="#1d4ed8" text-anchor="middle">US grade</text>
+  <rect x="60" y="330" width="470" height="36" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="76" y="353" class="font-mono" font-size="12" fill="#0f172a">0.4 × [(words/sentences) + 100 × (complex words/words)]</text>
+  <!-- thresholds card -->
+  <rect x="570" y="66" width="290" height="320" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="590" y="94" class="font-ui" font-size="13" font-weight="600" fill="#0f172a">READABILITY constants</text>
+  <text x="590" y="112" class="font-ui" font-size="11" fill="#94a3b8">from @power-seo/core</text>
+  <text x="590" y="146" class="font-mono" font-size="12" fill="#64748b">FLESCH_EASE_GOOD</text>
+  <text x="840" y="146" class="font-mono" font-size="12" font-weight="600" fill="#16a34a" text-anchor="end">60</text>
+  <line x1="590" y1="156" x2="840" y2="156" stroke="#e2e8f0"/>
+  <text x="590" y="180" class="font-mono" font-size="12" fill="#64748b">FLESCH_EASE_FAIR</text>
+  <text x="840" y="180" class="font-mono" font-size="12" font-weight="600" fill="#f59e0b" text-anchor="end">30</text>
+  <line x1="590" y1="190" x2="840" y2="190" stroke="#e2e8f0"/>
+  <text x="590" y="214" class="font-mono" font-size="12" fill="#64748b">MAX_SENTENCE_LENGTH</text>
+  <text x="840" y="214" class="font-mono" font-size="12" font-weight="600" fill="#0f172a" text-anchor="end">20</text>
+  <line x1="590" y1="224" x2="840" y2="224" stroke="#e2e8f0"/>
+  <text x="590" y="248" class="font-mono" font-size="12" fill="#64748b">MAX_PARAGRAPH_WORDS</text>
+  <text x="840" y="248" class="font-mono" font-size="12" font-weight="600" fill="#0f172a" text-anchor="end">150</text>
+  <line x1="590" y1="258" x2="840" y2="258" stroke="#e2e8f0"/>
+  <text x="590" y="282" class="font-mono" font-size="12" fill="#64748b">MAX_PASSIVE_VOICE_PERCENT</text>
+  <text x="840" y="282" class="font-mono" font-size="12" font-weight="600" fill="#0f172a" text-anchor="end">10</text>
+  <line x1="590" y1="292" x2="840" y2="292" stroke="#e2e8f0"/>
+  <text x="590" y="316" class="font-mono" font-size="12" fill="#64748b">MIN_TRANSITION_WORD_PERCENT</text>
+  <text x="840" y="316" class="font-mono" font-size="12" font-weight="600" fill="#0f172a" text-anchor="end">30</text>
+  <line x1="590" y1="326" x2="840" y2="326" stroke="#e2e8f0"/>
+  <text x="590" y="352" class="font-ui" font-size="11" fill="#94a3b8">Each check maps its score to a</text>
+  <text x="590" y="368" class="font-ui" font-size="11" fill="#94a3b8">good / ok / poor status with a message.</text>
+  <!-- flesch scale bar -->
+  <text x="40" y="424" class="font-ui" font-size="12" font-weight="600" fill="#0f172a">Flesch Reading Ease status bands</text>
+  <rect x="40" y="436" width="246" height="12" rx="6" fill="#ef4444" opacity="0.75"/>
+  <rect x="286" y="436" width="246" height="12" fill="#f59e0b" opacity="0.75"/>
+  <rect x="532" y="436" width="328" height="12" rx="6" fill="#16a34a" opacity="0.75"/>
+  <text x="40" y="468" class="font-ui" font-size="11" fill="#94a3b8">0</text>
+  <text x="286" y="468" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">30</text>
+  <text x="532" y="468" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">60</text>
+  <text x="860" y="468" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="end">100</text>
+  <text x="163" y="486" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">poor — very difficult</text>
+  <text x="409" y="486" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">ok — fairly difficult</text>
+  <text x="696" y="486" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">good — easy to read</text>
 </svg>

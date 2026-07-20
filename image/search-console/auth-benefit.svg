@@ -1,57 +1,61 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">OAuth2 and Service Account — Both Supported</text>
-  <!-- Left: OAuth2 flow -->
-  <rect x="30" y="56" width="390" height="300" rx="8" fill="#161b22"/>
-  <rect x="30" y="56" width="390" height="34" rx="8" fill="#0a1628"/>
-  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#4285f4" text-anchor="middle">OAuth2 — User Authorization</text>
-  <!-- OAuth code -->
-  <text x="48" y="118" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// User logs in via Google</text>
-  <text x="48" y="140" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">const</text>
-  <text x="90" y="140" font-family="'Courier New', monospace" font-size="12" fill="#4285f4"> gsc</text>
-  <text x="114" y="140" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> = new </text>
-  <text x="162" y="140" font-family="'Courier New', monospace" font-size="12" fill="#4285f4">SearchConsoleClient</text>
-  <text x="318" y="140" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">(&#123;</text>
-  <text x="64" y="162" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  auth</text>
-  <text x="98" y="162" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123;</text>
-  <text x="64" y="184" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    type</text>
-  <text x="108" y="184" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="120" y="184" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'oauth2'</text>
-  <text x="64" y="206" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    clientId</text>
-  <text x="148" y="206" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: process.env.GOOGLE_CLIENT_ID</text>
-  <text x="64" y="228" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    accessToken</text>
-  <text x="172" y="228" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: userToken</text>
-  <text x="48" y="250" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">  &#125; &#125;)</text>
-  <!-- Good for badge -->
-  <rect x="48" y="272" width="344" height="30" rx="6" fill="#0a1628"/>
-  <text x="220" y="291" font-family="'Segoe UI', sans-serif" font-size="12" fill="#4285f4" text-anchor="middle">✓ SaaS dashboards · multi-site user accounts</text>
-  <!-- Right: Service Account flow -->
-  <rect x="480" y="56" width="390" height="300" rx="8" fill="#161b22"/>
-  <rect x="480" y="56" width="390" height="34" rx="8" fill="#0a1628"/>
-  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#34a853" text-anchor="middle">Service Account — Server-to-Server</text>
-  <!-- Service account code -->
-  <text x="498" y="118" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">// CI/CD, cron jobs, data pipelines</text>
-  <text x="498" y="140" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">const</text>
-  <text x="540" y="140" font-family="'Courier New', monospace" font-size="12" fill="#4285f4"> gsc</text>
-  <text x="564" y="140" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> = new </text>
-  <text x="612" y="140" font-family="'Courier New', monospace" font-size="12" fill="#4285f4">SearchConsoleClient</text>
-  <text x="768" y="140" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">(&#123;</text>
-  <text x="514" y="162" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  auth</text>
-  <text x="548" y="162" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123;</text>
-  <text x="514" y="184" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    type</text>
-  <text x="558" y="184" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="570" y="184" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'service_account'</text>
-  <text x="514" y="206" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">    credentials</text>
-  <text x="622" y="206" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: serviceAccountJson</text>
-  <text x="498" y="228" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">  &#125; &#125;)</text>
-  <!-- Good for badge -->
-  <rect x="498" y="272" width="354" height="30" rx="6" fill="#0a1628"/>
-  <text x="675" y="291" font-family="'Segoe UI', sans-serif" font-size="12" fill="#34a853" text-anchor="middle">✓ CI/CD · automated reports · cron analytics</text>
-  <!-- Bottom: shared API surface -->
-  <rect x="30" y="378" width="840" height="76" rx="8" fill="#161b22"/>
-  <text x="450" y="404" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Same API regardless of auth method</text>
-  <text x="450" y="426" font-family="'Segoe UI', sans-serif" font-size="13" fill="#22c55e" text-anchor="middle">gsc.getSearchAnalytics()  ·  gsc.getSitemaps()  ·  gsc.submitSitemap()  ·  gsc.getIndexingStatus()</text>
-  <text x="450" y="448" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Automatic token refresh · retry on 429 · typed responses · full pagination</text>
-  <!-- Caption -->
-  <text x="450" y="480" font-family="'Segoe UI', sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="600">Switch auth method in one line. Same typed API either way.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Diagram of @power-seo/search-console authentication showing OAuth2 refresh token exchange and service account JWT flows unified by createTokenManager with automatic caching and refresh</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="40" y="44" class="font-ui" font-size="20" font-weight="700" fill="#0f172a">One token manager, two auth flows</text>
+  <text x="40" y="68" class="font-ui" font-size="13" fill="#64748b">createTokenManager() caches access tokens and refreshes them automatically before expiry</text>
+
+  <!-- OAuth2 card -->
+  <rect x="40" y="92" width="390" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="60" y="110" width="64" height="22" rx="11" fill="#dbeafe"/>
+  <text x="92" y="125" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">OAuth2</text>
+  <text x="60" y="156" class="font-mono" font-size="13" fill="#2563eb">exchangeRefreshToken({</text>
+  <text x="60" y="176" class="font-mono" font-size="12" fill="#0f172a">  clientId, clientSecret, refreshToken</text>
+  <text x="60" y="196" class="font-mono" font-size="13" fill="#2563eb">})</text>
+  <text x="60" y="224" class="font-ui" font-size="12" fill="#64748b">User-consented access for dashboards and apps</text>
+
+  <!-- Service account card -->
+  <rect x="40" y="262" width="390" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="60" y="280" width="118" height="22" rx="11" fill="#dcfce7"/>
+  <text x="119" y="295" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Service account</text>
+  <text x="60" y="326" class="font-mono" font-size="13" fill="#2563eb">getServiceAccountToken({</text>
+  <text x="60" y="346" class="font-mono" font-size="12" fill="#0f172a">  clientEmail, privateKeyId, signJwt</text>
+  <text x="60" y="366" class="font-mono" font-size="13" fill="#2563eb">})</text>
+  <text x="60" y="394" class="font-ui" font-size="12" fill="#64748b">Signed JWT assertion — no user interaction, ideal for CI/CD</text>
+
+  <!-- arrows to token manager -->
+  <path d="M430 167 h44 q16 0 16 16 v45" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <path d="M430 337 h44 q16 0 16 -16 v-45" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <path d="M490 252 l-5 -9 h10 z" fill="#94a3b8"/>
+
+  <!-- token manager card -->
+  <rect x="470" y="192" width="200" height="120" rx="8" fill="#ffffff" stroke="#2563eb"/>
+  <text x="570" y="222" class="font-mono" font-size="13" font-weight="600" fill="#2563eb" text-anchor="middle">createTokenManager()</text>
+  <line x1="486" y1="236" x2="654" y2="236" stroke="#e2e8f0"/>
+  <text x="486" y="258" class="font-mono" font-size="12" fill="#0f172a">getToken()</text>
+  <text x="486" y="278" class="font-mono" font-size="12" fill="#0f172a">invalidate()</text>
+  <text x="486" y="299" class="font-ui" font-size="11" fill="#94a3b8">refresh 60s before expiry</text>
+
+  <!-- arrow to client -->
+  <path d="M670 252 h30" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <path d="M706 252 l-9 -5 v10 z" fill="#94a3b8"/>
+
+  <!-- GSC client card -->
+  <rect x="710" y="180" width="150" height="144" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="785" y="208" class="font-mono" font-size="12" font-weight="600" fill="#0f172a" text-anchor="middle">createGSCClient</text>
+  <line x1="726" y1="220" x2="844" y2="220" stroke="#e2e8f0"/>
+  <text x="726" y="242" class="font-ui" font-size="11" fill="#64748b">querySearchAnalytics</text>
+  <text x="726" y="262" class="font-ui" font-size="11" fill="#64748b">inspectUrl</text>
+  <text x="726" y="282" class="font-ui" font-size="11" fill="#64748b">listSitemaps</text>
+  <text x="726" y="302" class="font-ui" font-size="11" fill="#64748b">submitSitemap</text>
+
+  <!-- bottom bar: what you skip -->
+  <rect x="40" y="436" width="820" height="40" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="60" y="461" class="font-ui" font-size="12" font-weight="600" fill="#16a34a">✓ No manual token refresh loops</text>
+  <text x="300" y="461" class="font-ui" font-size="12" font-weight="600" fill="#16a34a">✓ No googleapis dependency</text>
+  <text x="522" y="461" class="font-ui" font-size="12" font-weight="600" fill="#16a34a">✓ Typed GSCApiError on failure</text>
+  <text x="710" y="348" class="font-mono" font-size="11" fill="#94a3b8">scope: webmasters.readonly</text>
 </svg>

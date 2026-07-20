@@ -1,52 +1,76 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">SSR React SEO — Pages Indexed 67% Faster</text>
-  <!-- Chart area -->
-  <rect x="60" y="56" width="780" height="300" rx="8" fill="#161b22"/>
-  <!-- Y axis labels -->
-  <text x="100" y="90" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">100%</text>
-  <text x="100" y="140" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">75%</text>
-  <text x="100" y="190" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">50%</text>
-  <text x="100" y="240" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">25%</text>
-  <text x="100" y="290" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="end">0%</text>
-  <!-- Grid lines -->
-  <line x1="110" y1="85" x2="820" y2="85" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="135" x2="820" y2="135" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="185" x2="820" y2="185" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="235" x2="820" y2="235" stroke="#1e2430" stroke-width="1"/>
-  <line x1="110" y1="285" x2="820" y2="285" stroke="#1e2430" stroke-width="1"/>
-  <!-- X axis labels (days) -->
-  <text x="150" y="308" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Day 1</text>
-  <text x="270" y="308" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Day 4</text>
-  <text x="390" y="308" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Day 7</text>
-  <text x="510" y="308" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Day 10</text>
-  <text x="630" y="308" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Day 14</text>
-  <text x="750" y="308" font-family="'Segoe UI', sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Day 21</text>
-  <!-- SSR line (cyan-blue, fast rise) -->
-  <polyline points="150,285 190,260 230,225 270,195 310,165 350,135 390,110 430,92 510,88 630,86 750,85" stroke="#61dafb" stroke-width="3" fill="none" stroke-linejoin="round"/>
-  <circle cx="390" cy="110" r="5" fill="#61dafb"/>
-  <rect x="400" y="98" width="130" height="20" rx="4" fill="#0c2444"/>
-  <text x="465" y="112" font-family="'Segoe UI', sans-serif" font-size="11" fill="#61dafb" text-anchor="middle">Day 7: ~90% indexed</text>
-  <!-- CSR line (red, slow rise) -->
-  <polyline points="150,285 190,282 230,278 270,272 310,260 350,244 390,224 430,200 510,170 630,135 750,110" stroke="#ef4444" stroke-width="2" fill="none" stroke-dasharray="6,3" stroke-linejoin="round"/>
-  <circle cx="750" cy="110" r="5" fill="#ef4444"/>
-  <rect x="680" y="96" width="140" height="20" rx="4" fill="#1a0a0a"/>
-  <text x="750" y="110" font-family="'Segoe UI', sans-serif" font-size="11" fill="#ef4444" text-anchor="middle">Day 21: ~90% indexed</text>
-  <!-- Legend -->
-  <line x1="580" y1="150" x2="610" y2="150" stroke="#61dafb" stroke-width="3"/>
-  <text x="620" y="154" font-family="'Segoe UI', sans-serif" font-size="12" fill="#61dafb">SSR + @power-seo/react</text>
-  <line x1="580" y1="174" x2="610" y2="174" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="620" y="178" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444">CSR only (no SSR)</text>
-  <!-- Y axis title -->
-  <text transform="rotate(-90 30 185)" x="30" y="185" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Pages Indexed (%)</text>
-  <!-- KPI cards -->
-  <rect x="80" y="380" width="220" height="68" rx="8" fill="#161b22"/>
-  <text x="190" y="406" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Time to full indexing</text>
-  <text x="190" y="434" font-family="'Segoe UI', sans-serif" font-size="24" fill="#61dafb" text-anchor="middle" font-weight="700">7 days</text>
-  <rect x="340" y="380" width="220" height="68" rx="8" fill="#161b22"/>
-  <text x="450" y="406" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">CSR equivalent</text>
-  <text x="450" y="434" font-family="'Segoe UI', sans-serif" font-size="24" fill="#ef4444" text-anchor="middle" font-weight="700">21 days</text>
-  <rect x="600" y="380" width="220" height="68" rx="8" fill="#0c2444"/>
-  <text x="710" y="406" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Indexing speed gain</text>
-  <text x="710" y="434" font-family="'Segoe UI', sans-serif" font-size="24" fill="#61dafb" text-anchor="middle" font-weight="700">+67% faster</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Workflow comparison of manual per-page meta tag management versus declarative typed components with site-wide defaults from power-seo react</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Manual head tags vs. declarative components</text>
+
+  <!-- BEFORE panel -->
+  <rect x="40" y="70" width="395" height="400" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <rect x="60" y="88" width="140" height="24" rx="12" fill="#fee2e2"/>
+  <text x="130" y="104" class="font-ui" font-size="12" font-weight="600" fill="#b91c1c" text-anchor="middle">Manual process</text>
+  <text x="60" y="140" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Hand-written tags on every page</text>
+
+  <circle cx="72" cy="172" r="8" fill="#fee2e2"/>
+  <text x="72" y="176" class="font-ui" font-size="11" font-weight="700" fill="#ef4444" text-anchor="middle">!</text>
+  <text x="90" y="176" class="font-ui" font-size="13" fill="#64748b">Copy-paste &lt;title&gt; and meta per page</text>
+
+  <circle cx="72" cy="208" r="8" fill="#fee2e2"/>
+  <text x="72" y="212" class="font-ui" font-size="11" font-weight="700" fill="#ef4444" text-anchor="middle">!</text>
+  <text x="90" y="212" class="font-ui" font-size="13" fill="#64748b">Robots directives as raw strings — typo risk</text>
+
+  <circle cx="72" cy="244" r="8" fill="#fee2e2"/>
+  <text x="72" y="248" class="font-ui" font-size="11" font-weight="700" fill="#ef4444" text-anchor="middle">!</text>
+  <text x="90" y="248" class="font-ui" font-size="13" fill="#64748b">og:* and twitter:* tags drift out of sync</text>
+
+  <circle cx="72" cy="280" r="8" fill="#fee2e2"/>
+  <text x="72" y="284" class="font-ui" font-size="11" font-weight="700" fill="#ef4444" text-anchor="middle">!</text>
+  <text x="90" y="284" class="font-ui" font-size="13" fill="#64748b">Canonicals omitted or duplicated</text>
+
+  <circle cx="72" cy="316" r="8" fill="#fee2e2"/>
+  <text x="72" y="320" class="font-ui" font-size="11" font-weight="700" fill="#ef4444" text-anchor="middle">!</text>
+  <text x="90" y="320" class="font-ui" font-size="13" fill="#64748b">Breadcrumb JSON-LD written by hand</text>
+
+  <rect x="60" y="348" width="355" height="102" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="76" y="374" class="font-mono" font-size="12" fill="#0f172a">&lt;meta name="robots"</text>
+  <text x="92" y="394" class="font-mono" font-size="12" fill="#0f172a">content=<tspan fill="#ef4444">"noidnex, folow"</tspan> /&gt;</text>
+  <text x="76" y="420" class="font-mono" font-size="11" fill="#94a3b8">// typo ships to production unnoticed</text>
+
+  <!-- arrow -->
+  <line x1="443" y1="270" x2="465" y2="270" stroke="#2563eb" stroke-width="2"/>
+  <path d="M 465 270 l -8 -5 v 10 z" fill="#2563eb"/>
+
+  <!-- AFTER panel -->
+  <rect x="465" y="70" width="395" height="400" rx="8" fill="#ffffff" stroke="#2563eb"/>
+  <rect x="485" y="88" width="182" height="24" rx="12" fill="#dcfce7"/>
+  <text x="576" y="104" class="font-ui" font-size="12" font-weight="600" fill="#16a34a" text-anchor="middle">With @power-seo/react</text>
+  <text x="485" y="140" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Typed components, defaults once</text>
+
+  <circle cx="497" cy="172" r="8" fill="#dcfce7"/>
+  <path d="M 493 172 l 3 3 l 5 -6" stroke="#16a34a" stroke-width="1.8" fill="none"/>
+  <text x="515" y="176" class="font-ui" font-size="13" fill="#64748b">&lt;DefaultSEO&gt; sets titleTemplate site-wide</text>
+
+  <circle cx="497" cy="208" r="8" fill="#dcfce7"/>
+  <path d="M 493 208 l 3 3 l 5 -6" stroke="#16a34a" stroke-width="1.8" fill="none"/>
+  <text x="515" y="212" class="font-ui" font-size="13" fill="#64748b">&lt;Robots&gt; boolean props — no raw strings</text>
+
+  <circle cx="497" cy="244" r="8" fill="#dcfce7"/>
+  <path d="M 493 244 l 3 3 l 5 -6" stroke="#16a34a" stroke-width="1.8" fill="none"/>
+  <text x="515" y="248" class="font-ui" font-size="13" fill="#64748b">OG + Twitter typed from one config object</text>
+
+  <circle cx="497" cy="280" r="8" fill="#dcfce7"/>
+  <path d="M 493 280 l 3 3 l 5 -6" stroke="#16a34a" stroke-width="1.8" fill="none"/>
+  <text x="515" y="284" class="font-ui" font-size="13" fill="#64748b">&lt;Canonical&gt; on every page, resolved base URL</text>
+
+  <circle cx="497" cy="316" r="8" fill="#dcfce7"/>
+  <path d="M 493 316 l 3 3 l 5 -6" stroke="#16a34a" stroke-width="1.8" fill="none"/>
+  <text x="515" y="320" class="font-ui" font-size="13" fill="#64748b">&lt;Breadcrumb&gt; emits BreadcrumbList JSON-LD</text>
+
+  <rect x="485" y="348" width="355" height="102" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="501" y="374" class="font-mono" font-size="12" fill="#0f172a">&lt;<tspan fill="#2563eb">Robots</tspan> <tspan fill="#7c3aed">noindex</tspan> <tspan fill="#7c3aed">maxSnippet</tspan>={160} /&gt;</text>
+  <text x="501" y="394" class="font-mono" font-size="11" fill="#94a3b8">// invalid directives fail to compile</text>
+  <rect x="501" y="408" width="150" height="24" rx="12" fill="#dcfce7"/>
+  <text x="576" y="424" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">Type-checked at build time</text>
 </svg>

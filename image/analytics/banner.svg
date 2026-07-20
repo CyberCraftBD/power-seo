@@ -1,41 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#22c55e"/>
-      <stop offset="100%" style="stop-color:#86efac"/>
-    </linearGradient>
-    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#86efac;stop-opacity:0.2"/>
-    </linearGradient>
-  </defs>
-  <rect width="1280" height="280" fill="url(#bg)" rx="12"/>
-  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-    <line x1="0" y1="56" x2="1280" y2="56"/>
-    <line x1="0" y1="112" x2="1280" y2="112"/>
-    <line x1="0" y1="168" x2="1280" y2="168"/>
-    <line x1="0" y1="224" x2="1280" y2="224"/>
-    <line x1="256" y1="0" x2="256" y2="280"/>
-    <line x1="512" y1="0" x2="512" y2="280"/>
-    <line x1="768" y1="0" x2="768" y2="280"/>
-    <line x1="1024" y1="0" x2="1024" y2="280"/>
-  </g>
-  <circle cx="1180" cy="60" r="90" fill="#22c55e" fill-opacity="0.06"/>
-  <circle cx="1220" cy="30" r="50" fill="#86efac" fill-opacity="0.06"/>
-  <circle cx="80" cy="230" r="70" fill="#22c55e" fill-opacity="0.05"/>
-  <rect x="80" y="96" width="6" height="88" rx="3" fill="url(#accent)"/>
-  <text x="108" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="60" font-weight="800" letter-spacing="-2" fill="url(#accent)">@power-seo/analytics</text>
-  <text x="110" y="195" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="0.5">GSC data + Audit scores = actionable insights.</text>
-  <rect x="110" y="220" width="104" height="28" rx="14" fill="url(#pill)" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="162" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#86efac" text-anchor="middle">GSC + Audit</text>
-  <rect x="224" y="220" width="106" height="28" rx="14" fill="url(#pill)" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="277" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#86efac" text-anchor="middle">Auto-report</text>
-  <rect x="340" y="220" width="122" height="28" rx="14" fill="url(#pill)" stroke="#86efac" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="401" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#bbf7d0" text-anchor="middle">Trend tracking</text>
-  <rect x="472" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#86efac" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="541" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#bbf7d0" text-anchor="middle">TypeScript-first</text>
+  <title>Banner for the @power-seo/analytics npm package: merge Google Search Console data with SEO audit results, correlate score and traffic, and build dashboard-ready insights</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="1280" height="280" fill="#f8fafc"/>
+
+  <!-- left: branding -->
+  <rect x="56" y="56" width="44" height="44" rx="10" fill="#2563eb"/>
+  <path d="M66 90 L74 78 L81 84 L90 70" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="114" y="86" class="font-mono" font-size="27" font-weight="700" fill="#0f172a">@power-seo/analytics</text>
+  <text x="56" y="138" class="font-ui" font-size="16" fill="#64748b">Merge Search Console data with audit results, correlate score and traffic,</text>
+  <text x="56" y="162" class="font-ui" font-size="16" fill="#64748b">detect anomalies, and build dashboard-ready insights.</text>
+
+  <!-- feature pills -->
+  <rect x="56" y="192" width="164" height="28" rx="14" fill="#dbeafe"/>
+  <text x="138" y="210" class="font-mono" font-size="12" font-weight="600" fill="#1d4ed8" text-anchor="middle">mergeGscWithAudit</text>
+  <rect x="232" y="192" width="128" height="28" rx="14" fill="#dcfce7"/>
+  <text x="296" y="210" class="font-mono" font-size="12" font-weight="600" fill="#16a34a" text-anchor="middle">analyzeTrend</text>
+  <rect x="372" y="192" width="150" height="28" rx="14" fill="#f1f5f9"/>
+  <text x="447" y="210" class="font-mono" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">detectAnomalies</text>
+  <rect x="534" y="192" width="176" height="28" rx="14" fill="#f1f5f9"/>
+  <text x="622" y="210" class="font-mono" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">buildDashboardData</text>
+
+  <!-- right: mini dashboard card -->
+  <rect x="768" y="36" width="456" height="208" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="792" y="66" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Clicks vs Audit Score</text>
+  <rect x="1116" y="48" width="88" height="22" rx="11" fill="#dcfce7"/>
+  <text x="1160" y="63" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">r = 0.741</text>
+
+  <!-- kpis -->
+  <text x="792" y="98" class="font-ui" font-size="11" fill="#94a3b8">TOTAL CLICKS</text>
+  <text x="792" y="120" class="font-ui" font-size="19" font-weight="700" fill="#0f172a">1,675</text>
+  <text x="920" y="98" class="font-ui" font-size="11" fill="#94a3b8">AVG POSITION</text>
+  <text x="920" y="120" class="font-ui" font-size="19" font-weight="700" fill="#0f172a">10.7</text>
+  <text x="1048" y="98" class="font-ui" font-size="11" fill="#94a3b8">AVG AUDIT SCORE</text>
+  <text x="1048" y="120" class="font-ui" font-size="19" font-weight="700" fill="#16a34a">67.7</text>
+
+  <!-- mini trend chart -->
+  <line x1="792" y1="216" x2="1200" y2="216" stroke="#e2e8f0"/>
+  <line x1="792" y1="184" x2="1200" y2="184" stroke="#e2e8f0"/>
+  <line x1="792" y1="152" x2="1200" y2="152" stroke="#e2e8f0"/>
+  <path d="M792 208 L860 200 L928 204 L996 190 L1064 174 L1132 160 L1200 154 L1200 216 L792 216 Z" fill="#2563eb" opacity="0.12"/>
+  <path d="M792 208 L860 200 L928 204 L996 190 L1064 174 L1132 160 L1200 154" stroke="#2563eb" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="1200" cy="154" r="4" fill="#2563eb"/>
+  <text x="1196" y="142" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="end">improving</text>
 </svg>

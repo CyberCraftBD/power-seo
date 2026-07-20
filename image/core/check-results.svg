@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Validation results list produced by @power-seo/core validators with error, warning and info severities for title, description, URL and content checks</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <!-- top bar -->
+  <rect width="900" height="52" fill="#ffffff"/>
+  <line x1="0" y1="52" x2="900" y2="52" stroke="#e2e8f0"/>
+  <text x="24" y="32" class="font-ui" font-size="15" font-weight="600" fill="#0f172a">Check Results</text>
+  <text x="222" y="32" class="font-ui" font-size="13" fill="#64748b">/blog/technical-seo-guide</text>
+  <!-- summary pills -->
+  <rect x="618" y="14" width="76" height="24" rx="12" fill="#dcfce7"/>
+  <text x="656" y="30" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">4 passed</text>
+  <rect x="702" y="14" width="86" height="24" rx="12" fill="#fef3c7"/>
+  <text x="745" y="30" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">2 warnings</text>
+  <rect x="796" y="14" width="66" height="24" rx="12" fill="#fee2e2"/>
+  <text x="829" y="30" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">1 error</text>
+
+  <!-- results card -->
+  <rect x="24" y="72" width="852" height="404" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <!-- item 1: pass -->
+  <circle cx="52" cy="104" r="9" fill="#dcfce7"/>
+  <path d="M47.5 104 l3 3 6 -6" stroke="#16a34a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="74" y="100" class="font-mono" font-size="12" font-weight="600" fill="#0f172a">validateTitle()</text>
+  <text x="74" y="118" class="font-ui" font-size="12" fill="#64748b">Title is 54 characters (447.3px) — fits within the 580px SERP display width.</text>
+  <rect x="796" y="92" width="60" height="20" rx="10" fill="#dbeafe"/>
+  <text x="826" y="106" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">info</text>
+  <line x1="24" y1="134" x2="876" y2="134" stroke="#e2e8f0"/>
+
+  <!-- item 2: warning -->
+  <circle cx="52" cy="162" r="9" fill="#fef3c7"/>
+  <text x="52" y="167" class="font-ui" font-size="12" font-weight="700" fill="#b45309" text-anchor="middle">!</text>
+  <text x="74" y="158" class="font-mono" font-size="12" font-weight="600" fill="#0f172a">validateMetaDescription()</text>
+  <text x="74" y="176" class="font-ui" font-size="12" fill="#64748b">Description is 104 characters. Aim for 120–160 characters for a fuller SERP snippet.</text>
+  <rect x="788" y="150" width="68" height="20" rx="10" fill="#fef3c7"/>
+  <text x="822" y="164" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">warning</text>
+  <line x1="24" y1="192" x2="876" y2="192" stroke="#e2e8f0"/>
+
+  <!-- item 3: error -->
+  <circle cx="52" cy="220" r="9" fill="#fee2e2"/>
+  <path d="M48.5 216.5 l7 7 m0 -7 l-7 7" stroke="#b91c1c" stroke-width="2" stroke-linecap="round"/>
+  <text x="74" y="216" class="font-mono" font-size="12" font-weight="600" fill="#0f172a">validateTitle() <tspan font-weight="400" fill="#94a3b8">— /pricing</tspan></text>
+  <text x="74" y="234" class="font-ui" font-size="12" fill="#64748b">Title is empty. Every page must have a unique title.</text>
+  <rect x="796" y="208" width="60" height="20" rx="10" fill="#fee2e2"/>
+  <text x="826" y="222" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">error</text>
+  <line x1="24" y1="250" x2="876" y2="250" stroke="#e2e8f0"/>
+
+  <!-- item 4: pass -->
+  <circle cx="52" cy="278" r="9" fill="#dcfce7"/>
+  <path d="M47.5 278 l3 3 6 -6" stroke="#16a34a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="74" y="274" class="font-mono" font-size="12" font-weight="600" fill="#0f172a">calculateKeywordDensity()</text>
+  <text x="74" y="292" class="font-ui" font-size="12" fill="#64748b">Keyphrase density is 1.5% — inside the optimal 0.5–2.5% range.</text>
+  <rect x="796" y="266" width="60" height="20" rx="10" fill="#dcfce7"/>
+  <text x="826" y="280" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">pass</text>
+  <line x1="24" y1="308" x2="876" y2="308" stroke="#e2e8f0"/>
+
+  <!-- item 5: pass -->
+  <circle cx="52" cy="336" r="9" fill="#dcfce7"/>
+  <path d="M47.5 336 l3 3 6 -6" stroke="#16a34a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="74" y="332" class="font-mono" font-size="12" font-weight="600" fill="#0f172a">getTextStatistics()</text>
+  <text x="74" y="350" class="font-ui" font-size="12" fill="#64748b">1,842 words — above the 1,000-word recommendation for blog posts.</text>
+  <rect x="796" y="324" width="60" height="20" rx="10" fill="#dcfce7"/>
+  <text x="826" y="338" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">pass</text>
+  <line x1="24" y1="366" x2="876" y2="366" stroke="#e2e8f0"/>
+
+  <!-- item 6: warning -->
+  <circle cx="52" cy="394" r="9" fill="#fef3c7"/>
+  <text x="52" y="399" class="font-ui" font-size="12" font-weight="700" fill="#b45309" text-anchor="middle">!</text>
+  <text x="74" y="390" class="font-mono" font-size="12" font-weight="600" fill="#0f172a">normalizeUrl()</text>
+  <text x="74" y="408" class="font-ui" font-size="12" fill="#64748b">URL is 82 characters — longer than the recommended MAX_URL_LENGTH of 75.</text>
+  <rect x="788" y="382" width="68" height="20" rx="10" fill="#fef3c7"/>
+  <text x="822" y="396" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">warning</text>
+  <line x1="24" y1="424" x2="876" y2="424" stroke="#e2e8f0"/>
+
+  <!-- item 7: pass -->
+  <circle cx="52" cy="452" r="9" fill="#dcfce7"/>
+  <path d="M47.5 452 l3 3 6 -6" stroke="#16a34a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="74" y="448" class="font-mono" font-size="12" font-weight="600" fill="#0f172a">buildRobotsContent()</text>
+  <text x="74" y="466" class="font-ui" font-size="12" fill="#64748b">Robots directives valid: index, follow, max-snippet:-1, max-image-preview:large.</text>
+  <rect x="796" y="440" width="60" height="20" rx="10" fill="#dcfce7"/>
+  <text x="826" y="454" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">pass</text>
+</svg>

@@ -1,57 +1,83 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="42" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">SERP Preview Tool Comparison</text>
-  <!-- Headers -->
-  <rect x="30" y="58" width="220" height="38" rx="6" fill="#ec4899"/>
-  <text x="140" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">@power-seo/preview</text>
-  <rect x="265" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
-  <text x="355" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Yoast SEO</text>
-  <rect x="460" y="58" width="180" height="38" rx="6" fill="#1e2430"/>
-  <text x="550" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">SEOmofo</text>
-  <rect x="655" y="58" width="215" height="38" rx="6" fill="#1e2430"/>
-  <text x="762" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Mangools SERPsim</text>
-  <!-- Rows -->
-  <rect x="0" y="108" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="132" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">TypeScript API</text>
-  <text x="140" y="132" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <text x="355" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="132" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="146" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="170" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Any framework</text>
-  <text x="140" y="170" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <text x="355" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="170" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="184" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="208" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Pixel-accurate metrics</text>
-  <text x="140" y="208" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <text x="355" y="208" font-size="16" fill="#94a3b8" text-anchor="middle">approx</text>
-  <text x="550" y="208" font-size="16" fill="#94a3b8" text-anchor="middle">char count</text>
-  <text x="762" y="208" font-size="16" fill="#94a3b8" text-anchor="middle">approx</text>
-  <rect x="0" y="222" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="246" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Facebook OG preview</text>
-  <text x="140" y="246" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <text x="355" y="246" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <text x="550" y="246" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="246" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <rect x="0" y="260" width="900" height="38" fill="#0f1621"/>
-  <text x="870" y="284" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">CI pipeline integration</text>
-  <text x="140" y="284" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <text x="355" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="762" y="284" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="298" width="900" height="38" fill="#161b22"/>
-  <text x="870" y="322" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Free / open source</text>
-  <text x="140" y="322" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <text x="355" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="550" y="322" font-size="18" fill="#ec4899" text-anchor="middle">✓</text>
-  <text x="762" y="322" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <!-- Dividers -->
-  <line x1="250" y1="58" x2="250" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="445" y1="58" x2="445" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="640" y1="58" x2="640" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <line x1="870" y1="58" x2="870" y2="348" stroke="#1e2430" stroke-width="1"/>
-  <text x="450" y="386" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">Preview anywhere. Not just WordPress.</text>
-  <text x="450" y="410" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Pixel-accurate · TypeScript · Any framework · CI-ready · Free</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Feature comparison matrix of power-seo preview versus Yoast SEO, next-seo, and react-helmet covering SERP truncation, Open Graph validation, and Twitter Card preview generation</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="44" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Preview Feature Comparison</text>
+
+  <!-- table card -->
+  <rect x="40" y="68" width="820" height="392" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <!-- header row -->
+  <rect x="40" y="68" width="820" height="44" rx="8" fill="#f8fafc"/>
+  <rect x="40" y="96" width="820" height="16" fill="#f8fafc"/>
+  <text x="60" y="95" class="font-ui" font-size="12" font-weight="600" fill="#64748b">FEATURE</text>
+  <text x="460" y="95" class="font-ui" font-size="12" font-weight="700" fill="#2563eb" text-anchor="middle">@power-seo/preview</text>
+  <text x="614" y="95" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">Yoast SEO</text>
+  <text x="722" y="95" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">next-seo</text>
+  <text x="820" y="95" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">react-helmet</text>
+  <line x1="40" y1="112" x2="860" y2="112" stroke="#e2e8f0"/>
+
+  <!-- highlight column -->
+  <rect x="386" y="112" width="148" height="348" fill="#dbeafe" opacity="0.25"/>
+
+  <!-- rows -->
+  <text x="60" y="139" class="font-ui" font-size="13" fill="#0f172a">Pixel-accurate SERP title truncation (580px)</text>
+  <text x="460" y="140" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="614" y="140" class="font-ui" font-size="12" fill="#64748b" text-anchor="middle">browser only</text>
+  <text x="722" y="140" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="820" y="140" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="40" y1="155" x2="860" y2="155" stroke="#e2e8f0"/>
+
+  <text x="60" y="182" class="font-ui" font-size="13" fill="#0f172a">Description truncation (920px)</text>
+  <text x="460" y="183" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="614" y="183" class="font-ui" font-size="12" fill="#64748b" text-anchor="middle">browser only</text>
+  <text x="722" y="183" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="820" y="183" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="40" y1="198" x2="860" y2="198" stroke="#e2e8f0"/>
+
+  <text x="60" y="225" class="font-ui" font-size="13" fill="#0f172a">Google breadcrumb URL format</text>
+  <text x="460" y="226" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="614" y="226" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="722" y="226" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="820" y="226" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="40" y1="241" x2="860" y2="241" stroke="#e2e8f0"/>
+
+  <text x="60" y="268" class="font-ui" font-size="13" fill="#0f172a">Open Graph image validation</text>
+  <text x="460" y="269" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="614" y="269" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="722" y="269" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="820" y="269" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="40" y1="284" x2="860" y2="284" stroke="#e2e8f0"/>
+
+  <text x="60" y="311" class="font-ui" font-size="13" fill="#0f172a">Twitter/X Card preview generation</text>
+  <text x="460" y="312" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="614" y="312" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="722" y="312" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="820" y="312" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="40" y1="327" x2="860" y2="327" stroke="#e2e8f0"/>
+
+  <text x="60" y="354" class="font-ui" font-size="13" fill="#0f172a">Structured data output (not HTML)</text>
+  <text x="460" y="355" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="614" y="355" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="722" y="355" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="820" y="355" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <line x1="40" y1="370" x2="860" y2="370" stroke="#e2e8f0"/>
+
+  <text x="60" y="397" class="font-ui" font-size="13" fill="#0f172a">Edge runtime / CI usage</text>
+  <text x="460" y="398" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="614" y="398" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="722" y="398" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="398" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <line x1="40" y1="413" x2="860" y2="413" stroke="#e2e8f0"/>
+
+  <text x="60" y="440" class="font-ui" font-size="13" fill="#0f172a">Zero runtime dependencies</text>
+  <text x="460" y="441" class="font-ui" font-size="14" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="614" y="441" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="722" y="441" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="820" y="441" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+
+  <text x="450" y="484" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">Feature availability as documented for each library. Yoast SERP preview requires the WordPress browser UI.</text>
 </svg>

@@ -1,66 +1,88 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="42" font-family="'Segoe UI', sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="600">React SEO Component Comparison</text>
-  <!-- Headers -->
-  <rect x="30" y="58" width="188" height="38" rx="6" fill="#61dafb" opacity="0.9"/>
-  <text x="124" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#0d1117" text-anchor="middle" font-weight="700">@power-seo/react</text>
-  <rect x="233" y="58" width="145" height="38" rx="6" fill="#1e2430"/>
-  <text x="305" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">react-helmet</text>
-  <rect x="393" y="58" width="168" height="38" rx="6" fill="#1e2430"/>
-  <text x="477" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">react-helmet-async</text>
-  <rect x="576" y="58" width="140" height="38" rx="6" fill="#1e2430"/>
-  <text x="646" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">next-seo</text>
-  <rect x="731" y="58" width="139" height="38" rx="6" fill="#1e2430"/>
-  <text x="800" y="82" font-family="'Segoe UI', sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Helmet Async 2</text>
-  <!-- Rows -->
-  <rect x="0" y="108" width="900" height="36" fill="#0f1621"/>
-  <text x="870" y="131" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Maintained / active</text>
-  <text x="124" y="131" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="305" y="131" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="477" y="131" font-size="16" fill="#94a3b8" text-anchor="middle">slow</text>
-  <text x="646" y="131" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="800" y="131" font-size="16" fill="#94a3b8" text-anchor="middle">limited</text>
-  <rect x="0" y="144" width="900" height="36" fill="#161b22"/>
-  <text x="870" y="167" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">SSR compatible</text>
-  <text x="124" y="167" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="305" y="167" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="477" y="167" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="646" y="167" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="800" y="167" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <rect x="0" y="180" width="900" height="36" fill="#0f1621"/>
-  <text x="870" y="203" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">OG tag support</text>
-  <text x="124" y="203" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="305" y="203" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="477" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="646" y="203" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="800" y="203" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="216" width="900" height="36" fill="#161b22"/>
-  <text x="870" y="239" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Schema / JSON-LD</text>
-  <text x="124" y="239" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="305" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="477" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="646" y="239" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
-  <text x="800" y="239" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <rect x="0" y="252" width="900" height="36" fill="#0f1621"/>
-  <text x="870" y="275" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">Remix support</text>
-  <text x="124" y="275" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="305" y="275" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="477" y="275" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="646" y="275" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="800" y="275" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <rect x="0" y="288" width="900" height="36" fill="#161b22"/>
-  <text x="870" y="311" font-family="'Segoe UI', sans-serif" font-size="13" fill="#e2e8f0" text-anchor="end">TypeScript native</text>
-  <text x="124" y="311" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="305" y="311" font-size="18" fill="#ef4444" text-anchor="middle">✗</text>
-  <text x="477" y="311" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
-  <text x="646" y="311" font-size="18" fill="#61dafb" text-anchor="middle">✓</text>
-  <text x="800" y="311" font-size="16" fill="#94a3b8" text-anchor="middle">partial</text>
-  <!-- Dividers -->
-  <line x1="218" y1="58" x2="218" y2="336" stroke="#1e2430" stroke-width="1"/>
-  <line x1="377" y1="58" x2="377" y2="336" stroke="#1e2430" stroke-width="1"/>
-  <line x1="560" y1="58" x2="560" y2="336" stroke="#1e2430" stroke-width="1"/>
-  <line x1="715" y1="58" x2="715" y2="336" stroke="#1e2430" stroke-width="1"/>
-  <line x1="870" y1="58" x2="870" y2="336" stroke="#1e2430" stroke-width="1"/>
-  <text x="450" y="372" font-family="'Segoe UI', sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="600">The React SEO component that works everywhere.</text>
-  <text x="450" y="396" font-family="'Segoe UI', sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Active · SSR · OG + Schema + Twitter · Next.js + Remix + Gatsby · TypeScript</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Feature comparison matrix of power-seo react against next-seo, react-helmet and react-helmet-async covering robots directives, hreflang, JSON-LD breadcrumbs and React 19 support</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">React SEO Library Comparison</text>
+
+  <!-- table card -->
+  <rect x="40" y="64" width="820" height="404" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+
+  <!-- header row -->
+  <rect x="41" y="65" width="818" height="42" rx="7" fill="#f8fafc"/>
+  <line x1="40" y1="107" x2="860" y2="107" stroke="#e2e8f0"/>
+  <text x="64" y="91" class="font-ui" font-size="12" font-weight="600" fill="#64748b">FEATURE</text>
+  <rect x="330" y="74" width="146" height="24" rx="12" fill="#dbeafe"/>
+  <text x="403" y="90" class="font-ui" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle">@power-seo/react</text>
+  <text x="547" y="91" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">next-seo</text>
+  <text x="672" y="91" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">react-helmet</text>
+  <text x="792" y="91" class="font-ui" font-size="12" font-weight="600" fill="#64748b" text-anchor="middle">helmet-async</text>
+
+  <!-- highlight column -->
+  <rect x="343" y="107" width="120" height="360" fill="#dbeafe" opacity="0.25"/>
+
+  <!-- row separators -->
+  <line x1="40" y1="152" x2="860" y2="152" stroke="#e2e8f0"/>
+  <line x1="40" y1="197" x2="860" y2="197" stroke="#e2e8f0"/>
+  <line x1="40" y1="242" x2="860" y2="242" stroke="#e2e8f0"/>
+  <line x1="40" y1="287" x2="860" y2="287" stroke="#e2e8f0"/>
+  <line x1="40" y1="332" x2="860" y2="332" stroke="#e2e8f0"/>
+  <line x1="40" y1="377" x2="860" y2="377" stroke="#e2e8f0"/>
+  <line x1="40" y1="422" x2="860" y2="422" stroke="#e2e8f0"/>
+
+  <!-- row labels -->
+  <text x="64" y="134" class="font-ui" font-size="13" fill="#0f172a">Typed robots directives</text>
+  <text x="64" y="179" class="font-ui" font-size="13" fill="#0f172a">DefaultSEO context pattern</text>
+  <text x="64" y="224" class="font-ui" font-size="13" fill="#0f172a">Hreflang alternates + x-default</text>
+  <text x="64" y="269" class="font-ui" font-size="13" fill="#0f172a">Breadcrumb with JSON-LD</text>
+  <text x="64" y="314" class="font-ui" font-size="13" fill="#0f172a">No third-party runtime deps</text>
+  <text x="64" y="359" class="font-ui" font-size="13" fill="#0f172a">React 19 native head hoisting</text>
+  <text x="64" y="404" class="font-ui" font-size="13" fill="#0f172a">Tree-shakeable</text>
+  <text x="64" y="449" class="font-ui" font-size="13" fill="#0f172a">Works in Vite / Gatsby / CRA</text>
+
+  <!-- marks: col centers 403, 547, 672, 792 ; row baselines 134,179,224,269,314,359,404,449 -->
+  <!-- power-seo column: all check -->
+  <g stroke="#16a34a" stroke-width="2.2" fill="none">
+    <path d="M 396 128 l 5 5 l 9 -10"/>
+    <path d="M 396 173 l 5 5 l 9 -10"/>
+    <path d="M 396 218 l 5 5 l 9 -10"/>
+    <path d="M 396 263 l 5 5 l 9 -10"/>
+    <path d="M 396 308 l 5 5 l 9 -10"/>
+    <path d="M 396 353 l 5 5 l 9 -10"/>
+    <path d="M 396 398 l 5 5 l 9 -10"/>
+    <path d="M 396 443 l 5 5 l 9 -10"/>
+  </g>
+  <!-- next-seo -->
+  <g stroke="#16a34a" stroke-width="2.2" fill="none">
+    <path d="M 540 128 l 5 5 l 9 -10"/>
+    <path d="M 540 173 l 5 5 l 9 -10"/>
+    <path d="M 540 218 l 5 5 l 9 -10"/>
+    <path d="M 540 263 l 5 5 l 9 -10"/>
+  </g>
+  <text x="547" y="314" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="547" y="359" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="547" y="403" class="font-ui" font-size="12" fill="#b45309" text-anchor="middle">Partial</text>
+  <text x="547" y="449" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <!-- react-helmet -->
+  <text x="672" y="134" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="672" y="179" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="672" y="224" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="672" y="269" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="672" y="314" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="672" y="359" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="672" y="404" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <path d="M 665 443 l 5 5 l 9 -10" stroke="#16a34a" stroke-width="2.2" fill="none"/>
+  <!-- react-helmet-async -->
+  <text x="792" y="134" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="792" y="179" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="792" y="224" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="792" y="269" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="792" y="314" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="792" y="359" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <text x="792" y="404" class="font-ui" font-size="14" fill="#94a3b8" text-anchor="middle">—</text>
+  <path d="M 785 443 l 5 5 l 9 -10" stroke="#16a34a" stroke-width="2.2" fill="none"/>
+
+  <text x="450" y="490" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">Robots directives include max-snippet, max-image-preview, max-video-preview and unavailable_after</text>
 </svg>

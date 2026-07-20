@@ -1,8 +1,6 @@
 # @power-seo/readability
 
-![readability banner](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/banner.svg)
-
-Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Flesch-Kincaid, Gunning Fog, Coleman-Liau, and ARI in one unified API with actionable status labels.
+![Flesch-Kincaid, Gunning Fog, Coleman-Liau and ARI readability scoring for TypeScript](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/banner.svg)
 
 [![npm version](https://img.shields.io/npm/v/@power-seo/readability)](https://www.npmjs.com/package/@power-seo/readability)
 [![npm downloads](https://img.shields.io/npm/dm/@power-seo/readability)](https://www.npmjs.com/package/@power-seo/readability)
@@ -11,73 +9,72 @@ Multi-algorithm readability scoring for TypeScript — Flesch Reading Ease, Fles
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-brightgreen)](https://bundlephobia.com/package/@power-seo/readability)
 
-`@power-seo/readability` runs five industry-standard readability formulas against any text or HTML string and returns structured, typed score objects with numeric values and `'good'` / `'improvement'` / `'error'` status labels — comparable to the readability scoring panels in Yoast SEO or Hemingway App, but as a standalone TypeScript library. Run it server-side in a CMS pipeline, client-side in a React editor, or inside a CI content quality gate. All five algorithm functions are independently importable and tree-shakeable.
+Readability scoring for TypeScript — Flesch Reading Ease, Flesch-Kincaid Grade, Gunning Fog, Coleman-Liau, and ARI plus a full content-quality analysis in one zero-dependency library.
 
-> **Zero runtime dependencies** — pure TypeScript, no NLP libraries, works in any JavaScript environment.
+`@power-seo/readability` is a zero-dependency TypeScript library that scores the readability of any text or HTML string. It computes five industry-standard readability formulas and runs a combined content analysis — passive voice, long sentences, transition words, paragraph length, and repetitive sentence openings — returning typed results with `'good' | 'ok' | 'poor'` status labels and actionable recommendations. Run it server-side in a CMS pipeline, in a React editor, or inside a CI content-quality gate.
+
+![Readability scoring engine analyzing text and HTML content for SEO](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/header.svg)
 
 ---
 
 ## Why @power-seo/readability?
 
-| | Without | With |
-|---|---|---|
-| Algorithm coverage | ❌ One-off Flesch score, no other algorithms | ✅ Five algorithms in one call — Flesch, Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI |
-| Status labels | ❌ Raw numbers only — interpret thresholds manually | ✅ `'good'` / `'improvement'` / `'error'` per score with a human message |
-| HTML input | ❌ Must strip HTML before calling | ✅ HTML tags stripped automatically |
-| Composite status | ❌ No aggregate result | ✅ `overall.status` combines all five algorithms |
-| TypeScript | ❌ Untyped result objects | ✅ Full type inference for all inputs and outputs |
-| CI integration | ❌ Manual threshold checks | ✅ `overall.status === 'error'` fails builds |
-| Framework support | ❌ Browser-only or Node-only tools | ✅ Works in Next.js, Remix, Gatsby, Vite, Edge, browser |
+Most readability packages give you one raw number and leave interpretation to you. `@power-seo/readability` runs five formulas plus a structured content analysis, applies calibrated thresholds from a shared constant table, and returns per-check status labels and plain-English recommendations you can surface directly in an editor UI or fail a build on.
 
-![Readability Comparison](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/comparison.svg)
+|                      | Without                                        | With                                                                                 |
+| -------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Algorithm coverage   | ❌ One-off Flesch score, no other formulas     | ✅ Five formulas — Flesch Ease, Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI       |
+| Content analysis     | ❌ Score only, no writing feedback             | ✅ Passive voice, long sentences, transitions, paragraph length, repetitive openings |
+| Status labels        | ❌ Raw numbers — interpret thresholds manually | ✅ `'good' \| 'ok' \| 'poor'` per check with a human-readable description            |
+| Recommendations      | ❌ None                                        | ✅ `recommendations: string[]` of concrete rewrite suggestions                       |
+| HTML input           | ❌ Must strip HTML before calling              | ✅ HTML tags stripped automatically before scoring                                   |
+| CI integration       | ❌ Manual threshold checks                     | ✅ Inspect `results[].status` or the `score` to fail builds                          |
+| TypeScript           | ❌ Untyped result objects                      | ✅ Full type inference for all inputs and outputs                                    |
+| Runtime dependencies | ❌ Pulls in NLP libraries                      | ✅ Zero third-party runtime dependencies                                             |
 
-
-<p align="left">
-  <a href="https://www.buymeacoffee.com/ccbd.dev" target="_blank">
-    <img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=ccbd.dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
-  </a>
-</p>
+![Workflow comparison of manual readability review versus an automated pipeline using analyzeReadability in a CI content quality gate](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/roi.svg)
 
 ---
 
 ## Features
 
-- **Flesch Reading Ease** — 0–100 score; higher = easier; target 60–70 for most web content
-- **Flesch-Kincaid Grade Level** — maps content to US school grade levels (e.g. 8.0 = 8th grade)
-- **Gunning Fog Index** — grade-level estimate based on complex word (3+ syllable) density
-- **Coleman-Liau Index** — character-based formula; no syllable counting required
+- **Flesch Reading Ease** — 0–100 score; higher = easier; `analyzeReadability` grades ≥ 60 as `good`, ≥ 30 as `ok`, below 30 as `poor`
+- **Flesch-Kincaid Grade Level** — maps content to a US school grade level (e.g. 8.0 = 8th grade)
+- **Gunning Fog Index** — grade estimate from complex-word (3+ syllable) density, excluding common inflected forms
+- **Coleman-Liau Index** — character-based grade estimate; no syllable counting required
 - **Automated Readability Index (ARI)** — grade estimate from character and word counts
-- **Unified `analyzeReadability()` API** — run all five algorithms in a single call with composite status
-- **Text statistics** — sentence count, word count, syllable count, character count, avg sentence length
-- **Status labels** — each score maps to `'good'` / `'improvement'` / `'error'` with a human message
+- **Combined `analyzeReadability()`** — one call returns both Flesch scores plus a full content analysis with per-check results and recommendations
+- **Content-quality checks** — passive voice %, long-sentence %, long-paragraph count, transition-word %, and consecutive-sentence groups
+- **Status labels** — every check maps to `'good' | 'ok' | 'poor'` with a description string
 - **HTML stripping** — HTML tags are removed automatically before scoring; no preprocessing required
-- **Zero runtime dependencies** — pure TypeScript; no NLP libraries
-- **Tree-shakeable** — import only the algorithms you need; `"sideEffects": false`
-- **Type-safe API** — TypeScript-first with full type inference for all inputs and outputs
-- **Framework-agnostic** — works in Node.js, browser, Next.js, Remix, Gatsby, Vite, Edge
+- **Zero runtime dependencies** — depends only on `@power-seo/core`; no NLP libraries
+- **Tree-shakeable** — import only the algorithm functions you need; `"sideEffects": false`
+- **Dual ESM + CJS** — ships both formats for any bundler or `require()` usage
 
-![Readability CMS UI](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/cms-ui.svg)
+![Content management system UI displaying live readability scores as editors write](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/cms-ui.svg)
 
 ---
 
 ## Comparison
 
-| Feature | @power-seo/readability | text-readability | readability-scores | flesch |
-| --- | :---: | :---: | :---: | :---: |
-| Flesch Reading Ease | ✅ | ✅ | ✅ | ✅ |
-| Flesch-Kincaid Grade | ✅ | ✅ | ✅ | ❌ |
-| Gunning Fog Index | ✅ | ✅ | ✅ | ❌ |
-| Coleman-Liau Index | ✅ | ✅ | ✅ | ❌ |
-| Automated Readability Index | ✅ | ✅ | ✅ | ❌ |
-| Status labels (good/improvement/error) | ✅ | ❌ | ❌ | ❌ |
-| Unified multi-algorithm API | ✅ | ❌ | ❌ | ❌ |
-| Composite overall status | ✅ | ❌ | ❌ | ❌ |
-| HTML auto-stripping | ✅ | ❌ | ❌ | ❌ |
-| TypeScript-first with full types | ✅ | ❌ | ❌ | ❌ |
-| Zero runtime dependencies | ✅ | ✅ | ✅ | ✅ |
-| Tree-shakeable individual functions | ✅ | ❌ | ❌ | ✅ |
+![Feature comparison matrix of power-seo readability versus text-readability, readability-scores, and flesch libraries](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/comparison.svg)
 
-![Scoring Accuracy](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/scoring-accuracy.svg)
+| Feature                               | @power-seo/readability | text-readability | readability-scores | flesch |
+| ------------------------------------- | :--------------------: | :--------------: | :----------------: | :----: |
+| Flesch Reading Ease                   |           ✅           |        ✅        |         ✅         |   ✅   |
+| Flesch-Kincaid Grade                  |           ✅           |        ✅        |         ✅         |   ❌   |
+| Gunning Fog Index                     |           ✅           |        ✅        |         ✅         |   ❌   |
+| Coleman-Liau Index                    |           ✅           |        ✅        |         ✅         |   ❌   |
+| Automated Readability Index           |           ✅           |        ✅        |         ✅         |   ❌   |
+| Passive voice / writing analysis      |           ✅           |        ❌        |         ❌         |   ❌   |
+| Status labels (good/ok/poor)          |           ✅           |        ❌        |         ❌         |   ❌   |
+| Actionable recommendations            |           ✅           |        ❌        |         ❌         |   ❌   |
+| HTML auto-stripping                   |           ✅           |        ❌        |         ❌         |   ❌   |
+| TypeScript-first with full types      |           ✅           |        ❌        |         ❌         |   ✅   |
+| Zero third-party runtime dependencies |           ✅           |        ✅        |         ✅         |   ✅   |
+| Tree-shakeable individual functions   |           ✅           |        ❌        |         ❌         |   ✅   |
+
+![Accuracy of readability formulas benchmarked against reference implementations](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/scoring-accuracy.svg)
 
 ---
 
@@ -97,102 +94,110 @@ pnpm add @power-seo/readability
 
 ---
 
-## Quick Start
-
-```ts
-import { analyzeReadability } from '@power-seo/readability';
-
-const result = analyzeReadability({
-  text: 'Search engine optimization is the practice of improving web pages to rank higher in search results. Good content uses clear sentences and relevant keywords.',
-});
-
-console.log(result.fleschReadingEase.score);  // e.g. 58.4
-console.log(result.fleschKincaidGrade.score); // e.g. 10.2
-console.log(result.overall.status);           // 'improvement'
-console.log(result.overall.message);          // 'Content may be difficult for some readers...'
-```
-
-**Status thresholds (per score):**
-- `good` — score is within the optimal range for web content
-- `improvement` — score is outside the ideal range; consider simplifying
-- `error` — score indicates content is too complex for most web readers
-
-![Algorithms Benefit](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/algorithms-benefit.svg)
-
----
-
 ## Usage
 
-### Running All Algorithms at Once
+### How do I score content readability in one call?
 
-`analyzeReadability()` runs all five algorithms and returns a composite `overall` status:
+Call `analyzeReadability({ content })` with plain text or an HTML string. It strips HTML, computes the Flesch Reading Ease and Flesch-Kincaid Grade, and runs the full content analysis. The return is a flat `ReadabilityOutput` object: a normalized `score` (the rounded Flesch Ease), the two Flesch numbers, writing metrics, a `results` array of per-check statuses, and a `recommendations` array of rewrite suggestions.
 
 ```ts
 import { analyzeReadability } from '@power-seo/readability';
 
 const result = analyzeReadability({
-  text: '<h1>React SEO Best Practices</h1><p>Search engine optimization for React applications requires attention to meta tags, structured data, and performance metrics.</p>',
+  content:
+    '<p>Search engine optimization improves web pages so they rank higher in search results. Good content uses clear sentences and relevant keywords.</p>',
 });
 
-// result.fleschReadingEase    → AlgorithmScore
-// result.fleschKincaidGrade   → AlgorithmScore
-// result.gunningFog           → AlgorithmScore
-// result.colemanLiau          → AlgorithmScore
-// result.automatedReadability → AlgorithmScore
-// result.stats                → TextStatistics
-// result.overall              → AnalysisResult
+console.log(result.score); // 0–100 (rounded Flesch Reading Ease)
+console.log(result.fleschReadingEase); // e.g. 58.4
+console.log(result.fleschKincaidGrade); // e.g. 10.2
+console.log(result.results); // AnalysisResult[] — one entry per check
+console.log(result.recommendations); // string[] — concrete rewrite suggestions
 ```
 
-### Running Individual Algorithms
+### What checks does the content analysis run?
 
-Import individual algorithm functions for targeted scoring in performance-sensitive paths. All accept `TextStatistics` and return `AlgorithmScore`. Use `getTextStatistics` from `@power-seo/core` to compute statistics:
+`analyzeReadability` returns a `results` array with one `AnalysisResult` per check. Each has an `id`, `title`, `description`, a `status` of `'good' | 'ok' | 'poor'`, and a `score` / `maxScore` pair. Thresholds come from the shared `READABILITY` constants in `@power-seo/core`.
 
 ```ts
-import { fleschReadingEase, gunningFog } from '@power-seo/readability';
-import { getTextStatistics } from '@power-seo/core';
+const { results, passiveVoicePercentage, longSentencePercentage } = analyzeReadability({
+  content: article,
+});
 
-const stats = getTextStatistics('Your plain text here.');
-const ease = fleschReadingEase(stats);
-const fog = gunningFog(stats);
-
-console.log(ease.score);   // 0–100 (higher = easier)
-console.log(fog.score);    // grade level
-console.log(ease.status);  // 'good' | 'improvement' | 'error'
+for (const check of results) {
+  console.log(`${check.title}: ${check.status} — ${check.description}`);
+}
+// flesch-reading-ease, sentence-length, passive-voice,
+// transition-words, paragraph-length, consecutive-sentences
 ```
 
-### Inside a CI Content Quality Gate
+| Check                 | `id`                    | Threshold source (`READABILITY`)             |
+| --------------------- | ----------------------- | -------------------------------------------- |
+| Flesch Reading Ease   | `flesch-reading-ease`   | `FLESCH_EASE_GOOD` 60, `FLESCH_EASE_FAIR` 30 |
+| Sentence length       | `sentence-length`       | `MAX_SENTENCE_LENGTH` 20 words               |
+| Passive voice         | `passive-voice`         | `MAX_PASSIVE_VOICE_PERCENT` 10%              |
+| Transition words      | `transition-words`      | `MIN_TRANSITION_WORD_PERCENT` 30%            |
+| Paragraph length      | `paragraph-length`      | `MAX_PARAGRAPH_WORDS` 150 words              |
+| Consecutive sentences | `consecutive-sentences` | 3+ sentences starting with the same word     |
 
-Fail builds when content readability is too low:
+### How do I run a single readability formula?
+
+Import the individual algorithm functions for targeted scoring. Four of them — `fleschReadingEase`, `fleschKincaidGrade`, `colemanLiau`, and `automatedReadability` — take a `TextStatistics` object (compute it with `getTextStatistics` from `@power-seo/core`). `gunningFog` is the exception: it takes the raw content string directly. Every function returns a `number`.
+
+```ts
+import {
+  fleschReadingEase,
+  fleschKincaidGrade,
+  colemanLiau,
+  automatedReadability,
+  gunningFog,
+} from '@power-seo/readability';
+import { getTextStatistics } from '@power-seo/core';
+
+const content = 'Your plain text or HTML here.';
+const stats = getTextStatistics(content);
+
+const ease = fleschReadingEase(stats); // 0–100 (higher = easier)
+const fkGrade = fleschKincaidGrade(stats); // US grade level
+const cli = colemanLiau(stats); // US grade level
+const ari = automatedReadability(stats); // US grade level
+const fog = gunningFog(content); // US grade level — takes the string
+```
+
+### How do I fail a CI build on unreadable content?
+
+Run `analyzeReadability` in a content-quality gate and inspect the `results` array or the normalized `score`. Any check with `status === 'poor'` indicates content that needs a rewrite before publication.
 
 ```ts
 import { analyzeReadability } from '@power-seo/readability';
 
-const result = analyzeReadability({ text: pageContent });
+const result = analyzeReadability({ content: pageContent });
 
-if (result.overall.status === 'error') {
-  console.error('Readability check failed:', result.overall.message);
-  console.error('Flesch Reading Ease:', result.fleschReadingEase.score);
-  console.error('Gunning Fog Index:', result.gunningFog.score);
+const failing = result.results.filter((r) => r.status === 'poor');
+
+if (failing.length > 0) {
+  console.error('Readability check failed:');
+  for (const check of failing) console.error(`- ${check.title}: ${check.description}`);
+  for (const tip of result.recommendations) console.error(`  → ${tip}`);
   process.exit(1);
 }
 ```
 
-### Score Interpretation
+### Score interpretation
 
-| Flesch Reading Ease | Difficulty | Typical Audience |
-| --- | --- | --- |
-| 90–100 | Very Easy | 5th grade |
-| 70–90 | Easy | 6th grade |
-| 60–70 | Standard | 7th–8th grade — **ideal for most web content** |
-| 50–60 | Fairly Difficult | High school |
-| 30–50 | Difficult | College |
-| 0–30 | Very Difficult | Academic / professional |
+| Flesch Reading Ease | Difficulty       | Typical audience                               |
+| ------------------- | ---------------- | ---------------------------------------------- |
+| 90–100              | Very Easy        | 5th grade                                      |
+| 80–90               | Easy             | 6th grade                                      |
+| 70–80               | Fairly Easy      | 7th grade                                      |
+| 60–70               | Standard         | 8th–9th grade — **ideal for most web content** |
+| 50–60               | Fairly Difficult | 10th–12th grade                                |
+| 30–50               | Difficult        | College                                        |
+| 0–30                | Very Confusing   | Graduate / professional                        |
 
-| Grade Level Score | Status |
-| --- | --- |
-| ≤ 8 | `'good'` — accessible to general audiences |
-| 9–12 | `'improvement'` — consider simplifying |
-| > 12 | `'error'` — too complex for most web readers |
+`analyzeReadability` maps the Flesch Reading Ease to a status: `good` at ≥ 60, `ok` at ≥ 30, and `poor` below 30.
+
+![Comparison of readability formulas and the metrics each algorithm emphasizes](https://raw.githubusercontent.com/CyberCraftBD/power-seo/main/image/readability/algorithms-benefit.svg)
 
 ---
 
@@ -204,69 +209,77 @@ if (result.overall.status === 'error') {
 function analyzeReadability(input: ReadabilityInput): ReadabilityOutput;
 ```
 
+Runs both Flesch formulas and the full content analysis on `input.content` (plain text or HTML). HTML tags are stripped automatically.
+
 #### `ReadabilityInput`
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `text` | `string` | Plain text or HTML string (HTML tags stripped automatically) |
+| Prop      | Type     | Description                                          |
+| --------- | -------- | ---------------------------------------------------- |
+| `content` | `string` | Plain text or HTML string (HTML tags stripped)       |
+| `locale`  | `string` | Optional locale hint (reserved; defaults to English) |
 
 #### `ReadabilityOutput`
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `fleschReadingEase` | `AlgorithmScore` | Flesch Reading Ease result |
-| `fleschKincaidGrade` | `AlgorithmScore` | Flesch-Kincaid Grade Level result |
-| `gunningFog` | `AlgorithmScore` | Gunning Fog Index result |
-| `colemanLiau` | `AlgorithmScore` | Coleman-Liau Index result |
-| `automatedReadability` | `AlgorithmScore` | Automated Readability Index result |
-| `stats` | `TextStatistics` | Underlying text statistics |
-| `overall` | `AnalysisResult` | Composite status and message |
+| Field                       | Type               | Description                                          |
+| --------------------------- | ------------------ | ---------------------------------------------------- |
+| `score`                     | `number`           | Normalized 0–100 score (rounded Flesch Reading Ease) |
+| `fleschReadingEase`         | `number`           | Flesch Reading Ease (0–100, higher = easier)         |
+| `fleschKincaidGrade`        | `number`           | Flesch-Kincaid US grade level                        |
+| `avgSentenceLength`         | `number`           | Average words per sentence                           |
+| `avgSyllablesPerWord`       | `number`           | Average syllables per word                           |
+| `passiveVoicePercentage`    | `number`           | Percentage of sentences using passive voice          |
+| `longSentencePercentage`    | `number`           | Percentage of sentences over `MAX_SENTENCE_LENGTH`   |
+| `longParagraphCount`        | `number`           | Paragraphs exceeding `MAX_PARAGRAPH_WORDS`           |
+| `transitionWordPercentage`  | `number`           | Percentage of sentences containing transition words  |
+| `consecutiveSentenceGroups` | `number`           | Groups of 3+ sentences starting with the same word   |
+| `results`                   | `AnalysisResult[]` | One status entry per readability check               |
+| `recommendations`           | `string[]`         | Concrete rewrite suggestions                         |
 
-### Individual Algorithm Functions
+### Individual algorithm functions
 
-All accept `TextStatistics` and return `AlgorithmScore`:
+Each returns a `number`. Four accept `TextStatistics`; `gunningFog` accepts the content string.
 
 ```ts
-function fleschReadingEase(stats: TextStatistics): AlgorithmScore;
-function fleschKincaidGrade(stats: TextStatistics): AlgorithmScore;
-function gunningFog(stats: TextStatistics): AlgorithmScore;
-function colemanLiau(stats: TextStatistics): AlgorithmScore;
-function automatedReadability(stats: TextStatistics): AlgorithmScore;
+function fleschReadingEase(stats: TextStatistics): number; // 0–100
+function fleschKincaidGrade(stats: TextStatistics): number; // grade level
+function colemanLiau(stats: TextStatistics): number; // grade level
+function automatedReadability(stats: TextStatistics): number; // grade level
+function gunningFog(content: string): number; // grade level
 ```
 
-### Text Statistics
+### Computing text statistics
 
-To compute text statistics for use with individual algorithm functions, use `getTextStatistics()` from `@power-seo/core`:
+`TextStatistics` is produced by `getTextStatistics()` from `@power-seo/core` and consumed by the four stats-based algorithms. Input can be plain text or HTML.
 
 ```ts
 import { getTextStatistics } from '@power-seo/core';
 
-function getTextStatistics(text: string): TextStatistics;
+function getTextStatistics(content: string): TextStatistics;
 ```
 
-Returns raw statistics used by all algorithm functions. Input can be plain text or HTML (HTML tags are stripped automatically).
+---
 
-### Types
+## Types
 
-| Type | Description |
-| --- | --- |
-| `ReadabilityInput` | `{ text: string }` |
-| `ReadabilityOutput` | Full result with all five algorithm scores + stats + overall |
-| `TextStatistics` | `{ sentences: number; words: number; syllables: number; characters: number; avgWordsPerSentence: number }` |
-| `AlgorithmScore` | `{ score: number; status: AnalysisStatus; message: string }` |
-| `AnalysisStatus` | `'good' \| 'improvement' \| 'error'` |
-| `AnalysisResult` | `{ status: AnalysisStatus; message: string }` |
+| Type                | Shape                                                                                                                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ReadabilityInput`  | `{ content: string; locale?: string }`                                                                                                                                          |
+| `ReadabilityOutput` | Flat result with `score`, both Flesch numbers, writing metrics, `results`, and `recommendations`                                                                                |
+| `AnalysisResult`    | `{ id: string; title: string; description: string; status: AnalysisStatus; score: number; maxScore: number }`                                                                   |
+| `AnalysisStatus`    | `'good' \| 'ok' \| 'poor' \| 'na'`                                                                                                                                              |
+| `TextStatistics`    | `{ wordCount: number; sentenceCount: number; paragraphCount: number; syllableCount: number; characterCount: number; avgWordsPerSentence: number; avgSyllablesPerWord: number }` |
+| `AlgorithmScore`    | `{ name: string; score: number; grade?: string; description: string }`                                                                                                          |
 
 ---
 
 ## Use Cases
 
 - **Programmatic SEO pages** — score thousands of auto-generated pages at build time
-- **CMS editorial dashboards** — show live readability scores as editors write content
-- **SaaS marketing sites** — gate content publication behind a minimum readability threshold
-- **Blog and content pipelines** — CI check that fails when content is too complex
-- **E-commerce product descriptions** — ensure product copy is accessible to your target audience
-- **Educational platforms** — match content reading level to target student grade
+- **CMS editorial dashboards** — show live readability scores and recommendations as editors write
+- **Content publication gates** — block content that scores `poor` on readability or passive voice
+- **Blog and content pipelines** — CI check that fails when writing is too complex
+- **E-commerce product descriptions** — keep product copy accessible to your target audience
+- **Educational platforms** — match content grade level to the target student audience
 - **Next.js / Remix apps** — score content server-side per route and expose scores in admin dashboards
 
 ---
@@ -274,22 +287,23 @@ Returns raw statistics used by all algorithm functions. Input can be plain text 
 ## Architecture Overview
 
 - **Pure TypeScript** — no compiled binary, no native modules
-- **Zero runtime dependencies** — pure computation; no NLP libraries, no external tools
+- **Single runtime dependency** — `@power-seo/core` for text statistics and constants; no NLP libraries
 - **Framework-agnostic** — works in any JavaScript environment with no DOM requirement
-- **SSR compatible** — safe to run in Next.js Server Components, Remix loaders, or Express handlers
-- **Edge runtime safe** — no Node.js-specific APIs; runs in Cloudflare Workers, Vercel Edge, Deno
-- **HTML stripping** — uses a string-based tag removal loop (no regex ReDoS risk)
-- **Tree-shakeable** — `"sideEffects": false` with named exports per algorithm function
+- **SSR compatible** — safe in Next.js Server Components, Remix loaders, or Express handlers
+- **Edge runtime safe** — no Node.js-specific APIs; runs on Cloudflare Workers, Vercel Edge, Deno
+- **HTML stripping** — `stripHtml` from core uses a string-based tag-removal loop (no regex ReDoS risk)
+- **Tree-shakeable** — `"sideEffects": false` with a named export per algorithm function
 - **Dual ESM + CJS** — ships both formats via tsup for any bundler or `require()` usage
 
 ---
 
 ## Supply Chain Security
 
+- Published to npm with **provenance attestation** — every release is built and signed by the verified `github.com/CyberCraftBD/power-seo` GitHub Actions workflow, so you can trace each tarball back to its exact source commit
+- **Zero third-party runtime dependencies** — packages depend only on other `@power-seo` packages, nothing else gets pulled in
+- **No network access at runtime** — pure computation on the inputs you pass; nothing is fetched, phoned home, or telemetered
 - No install scripts (`postinstall`, `preinstall`)
-- No runtime network access
 - No `eval` or dynamic code execution
-- CI-signed builds — all releases published via verified `github.com/CyberCraftBD/power-seo` workflow
 - Safe for SSR, Edge, and server environments
 
 ---
@@ -298,25 +312,31 @@ Returns raw statistics used by all algorithm functions. Input can be plain text 
 
 All 17 packages are independently installable — use only what you need.
 
-| Package                                                                                    | Install                             | Description                                                             |
-| ------------------------------------------------------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
-| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic utilities, types, validators, and constants          |
-| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta, Open Graph, Twitter Card, breadcrumbs      |
-| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta helpers for Next.js App Router, Remix v2, and generic SSR      |
-| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 builders + 22 React components   |
-| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content scoring engine with React components            |
-| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI    |
-| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter/X Card preview generators                 |
-| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, index splitting, and validation      |
-| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect engine with Next.js, Remix, and Express adapters               |
-| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Link graph analysis — orphan detection, suggestions, equity scoring     |
-| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | Full SEO audit engine — meta, content, structure, performance rules     |
-| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO — alt text, lazy loading, format analysis, image sitemaps     |
-| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic AI prompt templates and parsers for SEO tasks              |
-| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge GSC + audit data, trend analysis, ranking insights, dashboard     |
-| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API — OAuth2, service account, URL inspection     |
-| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with rate limiting and pagination        |
-| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | GA4, Clarity, PostHog, Plausible, Fathom — scripts + consent management |
+| Package                                                                                    | Install                             | Description                                                                        |
+| ------------------------------------------------------------------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------------- |
+| [`@power-seo/ai`](https://www.npmjs.com/package/@power-seo/ai)                             | `npm i @power-seo/ai`               | LLM-agnostic prompt templates and response parsers for AI-assisted SEO             |
+| [`@power-seo/analytics`](https://www.npmjs.com/package/@power-seo/analytics)               | `npm i @power-seo/analytics`        | Merge Search Console data with audit results — trends and ranking insights         |
+| [`@power-seo/audit`](https://www.npmjs.com/package/@power-seo/audit)                       | `npm i @power-seo/audit`            | SEO site health auditing with meta, content, structure, and performance rules      |
+| [`@power-seo/content-analysis`](https://www.npmjs.com/package/@power-seo/content-analysis) | `npm i @power-seo/content-analysis` | Yoast-style SEO content analysis engine with scoring, checks, and React components |
+| [`@power-seo/core`](https://www.npmjs.com/package/@power-seo/core)                         | `npm i @power-seo/core`             | Framework-agnostic SEO analysis engines, types, validators, and utilities          |
+| [`@power-seo/images`](https://www.npmjs.com/package/@power-seo/images)                     | `npm i @power-seo/images`           | Image SEO analysis — alt text quality, lazy loading, formats, image sitemaps       |
+| [`@power-seo/integrations`](https://www.npmjs.com/package/@power-seo/integrations)         | `npm i @power-seo/integrations`     | Semrush and Ahrefs API clients with a shared rate-limited HTTP client              |
+| [`@power-seo/links`](https://www.npmjs.com/package/@power-seo/links)                       | `npm i @power-seo/links`            | Internal link graph analysis — orphan detection, suggestions, equity scoring       |
+| [`@power-seo/meta`](https://www.npmjs.com/package/@power-seo/meta)                         | `npm i @power-seo/meta`             | SSR meta tag helpers for Next.js App Router, Remix v2, and generic SSR             |
+| [`@power-seo/preview`](https://www.npmjs.com/package/@power-seo/preview)                   | `npm i @power-seo/preview`          | SERP, Open Graph, and Twitter Card preview generators with React components        |
+| [`@power-seo/react`](https://www.npmjs.com/package/@power-seo/react)                       | `npm i @power-seo/react`            | React SEO components — meta tags, Open Graph, Twitter Card, breadcrumbs            |
+| [`@power-seo/readability`](https://www.npmjs.com/package/@power-seo/readability)           | `npm i @power-seo/readability`      | Readability scoring — Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI               |
+| [`@power-seo/redirects`](https://www.npmjs.com/package/@power-seo/redirects)               | `npm i @power-seo/redirects`        | Redirect rule engine with Next.js, Remix, and Express adapters                     |
+| [`@power-seo/schema`](https://www.npmjs.com/package/@power-seo/schema)                     | `npm i @power-seo/schema`           | Type-safe JSON-LD structured data — 23 schema.org builders plus React components   |
+| [`@power-seo/search-console`](https://www.npmjs.com/package/@power-seo/search-console)     | `npm i @power-seo/search-console`   | Google Search Console API client — OAuth2, service accounts, rate limiting, retry  |
+| [`@power-seo/sitemap`](https://www.npmjs.com/package/@power-seo/sitemap)                   | `npm i @power-seo/sitemap`          | XML sitemap generation, streaming, and validation with image, video, news support  |
+| [`@power-seo/tracking`](https://www.npmjs.com/package/@power-seo/tracking)                 | `npm i @power-seo/tracking`         | Analytics script builders with consent management and React components             |
+
+---
+
+## Keywords
+
+readability, readability score, flesch-kincaid, flesch reading ease, gunning fog, coleman-liau, automated readability index, ari, reading level, text readability, content quality, readability checker, seo readability, passive voice, content scoring, typescript, zero-dependency, ci content gate, cms readability
 
 ---
 

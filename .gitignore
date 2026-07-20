@@ -35,3 +35,4 @@ coverage/
 *.log
 npm-debug.log*
 pnpm-debug.log*
+docs-ui-preview.html

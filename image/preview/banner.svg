@@ -1,41 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 280" width="1280" height="280">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a"/>
-      <stop offset="100%" style="stop-color:#1e1b4b"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#ec4899"/>
-      <stop offset="100%" style="stop-color:#f9a8d4"/>
-    </linearGradient>
-    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#f9a8d4;stop-opacity:0.2"/>
-    </linearGradient>
-  </defs>
-  <rect width="1280" height="280" fill="url(#bg)" rx="12"/>
-  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
-    <line x1="0" y1="56" x2="1280" y2="56"/>
-    <line x1="0" y1="112" x2="1280" y2="112"/>
-    <line x1="0" y1="168" x2="1280" y2="168"/>
-    <line x1="0" y1="224" x2="1280" y2="224"/>
-    <line x1="256" y1="0" x2="256" y2="280"/>
-    <line x1="512" y1="0" x2="512" y2="280"/>
-    <line x1="768" y1="0" x2="768" y2="280"/>
-    <line x1="1024" y1="0" x2="1024" y2="280"/>
-  </g>
-  <circle cx="1180" cy="60" r="90" fill="#ec4899" fill-opacity="0.06"/>
-  <circle cx="1220" cy="30" r="50" fill="#f9a8d4" fill-opacity="0.06"/>
-  <circle cx="80" cy="230" r="70" fill="#ec4899" fill-opacity="0.05"/>
-  <rect x="80" y="96" width="6" height="88" rx="3" fill="url(#accent)"/>
-  <text x="108" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="64" font-weight="800" letter-spacing="-2" fill="url(#accent)">@power-seo/preview</text>
-  <text x="110" y="195" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="400" fill="#94a3b8" letter-spacing="0.5">See exactly what users see. Before you deploy.</text>
-  <rect x="110" y="220" width="162" height="28" rx="14" fill="url(#pill)" stroke="#ec4899" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="191" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#f9a8d4" text-anchor="middle">Google · OG · Twitter</text>
-  <rect x="282" y="220" width="116" height="28" rx="14" fill="url(#pill)" stroke="#ec4899" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="340" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#f9a8d4" text-anchor="middle">Pixel-accurate</text>
-  <rect x="408" y="220" width="84" height="28" rx="14" fill="url(#pill)" stroke="#f9a8d4" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="450" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fecdd3" text-anchor="middle">CI-ready</text>
-  <rect x="502" y="220" width="138" height="28" rx="14" fill="url(#pill)" stroke="#f9a8d4" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="571" y="239" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#fecdd3" text-anchor="middle">TypeScript-first</text>
+  <title>power-seo preview banner: pixel-accurate SERP, Open Graph and Twitter Card preview generators for TypeScript with a live Google search snippet example</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="1280" height="280" fill="#f8fafc"/>
+
+  <!-- left: branding -->
+  <rect x="60" y="52" width="112" height="24" rx="12" fill="#dbeafe"/>
+  <text x="116" y="68" class="font-ui" font-size="12" font-weight="600" fill="#1d4ed8" text-anchor="middle">@power-seo</text>
+  <text x="60" y="118" class="font-ui" font-size="36" font-weight="700" fill="#0f172a">@power-seo/preview</text>
+  <text x="60" y="150" class="font-ui" font-size="15" fill="#64748b">Pixel-accurate SERP, Open Graph &amp; Twitter/X Card previews — no browser, no canvas.</text>
+
+  <!-- function pills -->
+  <rect x="60" y="176" width="180" height="30" rx="15" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="150" y="195" class="font-mono" font-size="12" fill="#2563eb" text-anchor="middle">generateSerpPreview()</text>
+  <rect x="252" y="176" width="170" height="30" rx="15" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="337" y="195" class="font-mono" font-size="12" fill="#2563eb" text-anchor="middle">generateOgPreview()</text>
+  <rect x="434" y="176" width="204" height="30" rx="15" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="536" y="195" class="font-mono" font-size="12" fill="#2563eb" text-anchor="middle">generateTwitterPreview()</text>
+  <text x="60" y="234" class="font-ui" font-size="12" fill="#94a3b8">Zero runtime dependencies · Tree-shakeable · Edge runtime safe</text>
+
+  <!-- right: SERP snippet vignette -->
+  <rect x="740" y="40" width="480" height="200" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="764" y="70" class="font-ui" font-size="12" font-weight="600" fill="#64748b">GOOGLE SERP PREVIEW</text>
+  <rect x="1116" y="54" width="84" height="22" rx="11" fill="#dcfce7"/>
+  <text x="1158" y="69" class="font-ui" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">✓ 580px</text>
+
+  <circle cx="774" cy="96" r="9" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="792" y="100" class="font-ui" font-size="12" fill="#64748b">example.com › blog › my-post</text>
+  <text x="764" y="130" class="font-ui" font-size="17" fill="#2563eb">How We Cut Page Load Time in Half with Next.js...</text>
+  <text x="764" y="154" class="font-ui" font-size="13" fill="#64748b">A practical walkthrough of the image, font, and script optimizations that</text>
+  <text x="764" y="172" class="font-ui" font-size="13" fill="#64748b">doubled our Core Web Vitals scores across every template.</text>
+
+  <line x1="764" y1="190" x2="1196" y2="190" stroke="#e2e8f0"/>
+  <text x="764" y="214" class="font-mono" font-size="11" fill="#94a3b8">titleTruncated: true</text>
+  <text x="920" y="214" class="font-mono" font-size="11" fill="#94a3b8">descriptionTruncated: false</text>
+  <text x="1150" y="214" class="font-mono" font-size="11" fill="#16a34a">valid ✓</text>
 </svg>

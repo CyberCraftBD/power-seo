@@ -1,52 +1,68 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <text x="450" y="36" font-family="'Segoe UI', sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">Rate-Limit Aware — Auto-Retry and Backoff</text>
-  <!-- Left: Without rate-limit handling -->
-  <rect x="30" y="56" width="390" height="280" rx="8" fill="#161b22"/>
-  <rect x="30" y="56" width="390" height="34" rx="8" fill="#1a0505"/>
-  <text x="225" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ef4444" text-anchor="middle">Without rate-limit handling</text>
-  <!-- Failed requests timeline -->
-  <text x="48" y="116" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">Request 1: OK (200)</text>
-  <text x="48" y="136" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">Request 2: OK (200)</text>
-  <text x="48" y="156" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">Request 3: OK (200)</text>
-  <text x="48" y="176" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">Request 4: 429 TOO MANY REQUESTS</text>
-  <text x="48" y="196" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">Request 5: 429 TOO MANY REQUESTS</text>
-  <text x="48" y="216" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">Error: API rate limit exceeded</text>
-  <text x="48" y="236" font-family="'Courier New', monospace" font-size="12" fill="#ef4444">  at AhrefsClient.request</text>
-  <!-- Error box -->
-  <rect x="48" y="258" width="354" height="42" rx="6" fill="#1a0505"/>
-  <text x="225" y="276" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">Data pipeline crashes</text>
-  <text x="225" y="292" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Manual retry required — full backfill lost</text>
-  <!-- Arrow -->
-  <text x="450" y="210" font-family="'Segoe UI', sans-serif" font-size="36" fill="#14b8a6" text-anchor="middle" font-weight="700">→</text>
-  <!-- Right: With rate-limit handling -->
-  <rect x="480" y="56" width="390" height="280" rx="8" fill="#161b22"/>
-  <rect x="480" y="56" width="390" height="34" rx="8" fill="#031a1a"/>
-  <text x="675" y="78" font-family="'Segoe UI', sans-serif" font-size="13" fill="#14b8a6" text-anchor="middle">With @power-seo/integrations</text>
-  <!-- Auto-retry timeline -->
-  <text x="498" y="116" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 1: OK (200)</text>
-  <text x="498" y="136" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 2: OK (200)</text>
-  <text x="498" y="156" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 3: OK (200)</text>
-  <text x="498" y="176" font-family="'Courier New', monospace" font-size="12" fill="#f59e0b">Request 4: 429 → wait 2s → retry</text>
-  <text x="498" y="196" font-family="'Courier New', monospace" font-size="12" fill="#f59e0b">Request 4: 429 → wait 4s → retry</text>
-  <text x="498" y="216" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 4: OK (200) ✓</text>
-  <text x="498" y="236" font-family="'Courier New', monospace" font-size="12" fill="#22c55e">Request 5: OK (200) ✓</text>
-  <!-- Success box -->
-  <rect x="498" y="258" width="354" height="42" rx="6" fill="#031a1a"/>
-  <text x="675" y="276" font-family="'Segoe UI', sans-serif" font-size="12" fill="#22c55e" text-anchor="middle">All requests completed — zero data loss</text>
-  <text x="675" y="292" font-family="'Segoe UI', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Exponential backoff: 1s → 2s → 4s → 8s</text>
-  <!-- Bottom config -->
-  <rect x="30" y="356" width="840" height="100" rx="8" fill="#161b22"/>
-  <text x="450" y="382" font-family="'Segoe UI', sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="600">Configurable retry behavior</text>
-  <text x="120" y="410" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">new SeoResearchClient(&#123;</text>
-  <text x="120" y="430" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  retry</text>
-  <text x="164" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123; </text>
-  <text x="188" y="430" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">maxRetries</text>
-  <text x="278" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="290" y="430" font-family="'Courier New', monospace" font-size="12" fill="#14b8a6">5</text>
-  <text x="306" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">, </text>
-  <text x="318" y="430" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">strategy</text>
-  <text x="390" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="402" y="430" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'exponential'</text>
-  <text x="504" y="430" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> &#125; &#125;)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Diagram of the built-in token bucket rate limiter in @power-seo/integrations spacing API requests and retrying HTTP 429 responses automatically</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="40" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Built-in rate limiting — never trip the provider's limit</text>
+  <text x="450" y="64" class="font-ui" font-size="13" fill="#64748b" text-anchor="middle">createHttpClient() uses a per-minute token bucket and retries retryable errors (429 and 5xx)</text>
+  <!-- config card -->
+  <rect x="40" y="90" width="380" height="176" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="64" y="120" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Configuration</text>
+  <rect x="64" y="134" width="332" height="112" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="82" y="158" class="font-mono" font-size="12"><tspan fill="#2563eb">createHttpClient</tspan><tspan fill="#0f172a">({</tspan></text>
+  <text x="100" y="178" class="font-mono" font-size="12" fill="#0f172a">rateLimitPerMinute: <tspan fill="#16a34a">10</tspan>,  <tspan fill="#94a3b8">// default 600</tspan></text>
+  <text x="100" y="198" class="font-mono" font-size="12" fill="#0f172a">maxRetries: <tspan fill="#16a34a">3</tspan>,</text>
+  <text x="100" y="218" class="font-mono" font-size="12" fill="#0f172a">timeoutMs: <tspan fill="#16a34a">30_000</tspan>,</text>
+  <text x="82" y="238" class="font-mono" font-size="12" fill="#0f172a">});</text>
+  <!-- retryable card -->
+  <rect x="40" y="290" width="380" height="170" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="64" y="320" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">IntegrationApiError.retryable</text>
+  <text x="64" y="346" class="font-mono" font-size="12" fill="#0f172a">retryable = status === <tspan fill="#16a34a">429</tspan> || status &gt;= <tspan fill="#16a34a">500</tspan></text>
+  <rect x="64" y="364" width="122" height="24" rx="12" fill="#fef3c7"/>
+  <text x="125" y="380" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">429 → retried</text>
+  <rect x="196" y="364" width="122" height="24" rx="12" fill="#fef3c7"/>
+  <text x="257" y="380" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">5xx → retried</text>
+  <rect x="64" y="398" width="150" height="24" rx="12" fill="#fee2e2"/>
+  <text x="139" y="414" class="font-ui" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">4xx → thrown to caller</text>
+  <text x="64" y="446" class="font-ui" font-size="12" fill="#64748b">Errors carry status, provider, and message.</text>
+  <!-- timeline card -->
+  <rect x="444" y="90" width="416" height="370" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="468" y="120" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Request timeline (rateLimitPerMinute: 10)</text>
+  <!-- axis -->
+  <line x1="468" y1="404" x2="836" y2="404" stroke="#e2e8f0"/>
+  <text x="468" y="424" class="font-ui" font-size="11" fill="#94a3b8">0s</text>
+  <text x="644" y="424" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="middle">30s</text>
+  <text x="836" y="424" class="font-ui" font-size="11" fill="#94a3b8" text-anchor="end">60s</text>
+  <!-- request bars: evenly spaced tokens -->
+  <g fill="#2563eb">
+    <rect x="468" y="360" width="18" height="44" rx="3"/>
+    <rect x="505" y="360" width="18" height="44" rx="3"/>
+    <rect x="542" y="360" width="18" height="44" rx="3"/>
+    <rect x="579" y="360" width="18" height="44" rx="3"/>
+    <rect x="616" y="360" width="18" height="44" rx="3"/>
+  </g>
+  <!-- throttled request: waits for token -->
+  <rect x="653" y="360" width="18" height="44" rx="3" fill="#f59e0b"/>
+  <g fill="#2563eb">
+    <rect x="690" y="360" width="18" height="44" rx="3"/>
+    <rect x="727" y="360" width="18" height="44" rx="3"/>
+    <rect x="764" y="360" width="18" height="44" rx="3"/>
+    <rect x="801" y="360" width="18" height="44" rx="3"/>
+  </g>
+  <!-- annotations -->
+  <rect x="468" y="150" width="112" height="24" rx="12" fill="#dbeafe"/>
+  <text x="524" y="166" class="font-ui" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">consumeToken()</text>
+  <line x1="524" y1="174" x2="514" y2="356" stroke="#94a3b8" stroke-dasharray="3 3"/>
+  <rect x="600" y="196" width="150" height="24" rx="12" fill="#fef3c7"/>
+  <text x="675" y="212" class="font-ui" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">getWaitTime() → sleep()</text>
+  <line x1="662" y1="220" x2="662" y2="356" stroke="#94a3b8" stroke-dasharray="3 3"/>
+  <!-- legend -->
+  <rect x="468" y="252" width="12" height="12" rx="3" fill="#2563eb"/>
+  <text x="488" y="262" class="font-ui" font-size="12" fill="#64748b">Sent immediately — token available</text>
+  <rect x="468" y="276" width="12" height="12" rx="3" fill="#f59e0b"/>
+  <text x="488" y="286" class="font-ui" font-size="12" fill="#64748b">Queued — waits for the next window slot</text>
+  <text x="468" y="318" class="font-ui" font-size="12" fill="#64748b">Every request passes the token bucket first, so</text>
+  <text x="468" y="336" class="font-ui" font-size="12" fill="#64748b">bursts are smoothed to your configured limit.</text>
 </svg>

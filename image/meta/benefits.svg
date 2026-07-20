@@ -1,69 +1,54 @@
-<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Inter, sans-serif">
-  <rect width="900" height="500" fill="#0d1117"/>
-  <!-- Before section -->
-  <text x="150" y="40" font-family="'Segoe UI', sans-serif" font-size="16" fill="#ef4444" text-anchor="middle" font-weight="700">Before</text>
-  <!-- Next.js panel -->
-  <rect x="20" y="55" width="240" height="100" rx="6" fill="#161b22"/>
-  <rect x="20" y="55" width="240" height="24" rx="6" fill="#1e2430"/>
-  <text x="30" y="72" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">next.js — metadata.ts</text>
-  <text x="28" y="98" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">export const metadata = &#123;</text>
-  <text x="28" y="113" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  title: 'My Page',</text>
-  <text x="28" y="128" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  description: '...',</text>
-  <text x="28" y="143" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">&#125;</text>
-  <!-- Remix panel -->
-  <rect x="20" y="170" width="240" height="100" rx="6" fill="#161b22"/>
-  <rect x="20" y="170" width="240" height="24" rx="6" fill="#1e2430"/>
-  <text x="30" y="187" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">remix — meta.ts</text>
-  <text x="28" y="213" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">export function meta() &#123;</text>
-  <text x="28" y="228" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  return [&#123; title: '...' &#125;,</text>
-  <text x="28" y="243" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  &#123; name: 'desc', ... &#125;]</text>
-  <text x="28" y="258" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">&#125;</text>
-  <!-- Express panel -->
-  <rect x="20" y="285" width="240" height="100" rx="6" fill="#161b22"/>
-  <rect x="20" y="285" width="240" height="24" rx="6" fill="#1e2430"/>
-  <text x="30" y="302" font-family="'Segoe UI', sans-serif" font-size="11" fill="#94a3b8">express — router.ts</text>
-  <text x="28" y="328" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">res.render('page', &#123;</text>
-  <text x="28" y="343" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  title: 'My Page',</text>
-  <text x="28" y="358" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">  meta: &#123; desc: '...' &#125;</text>
-  <text x="28" y="373" font-family="'Courier New', monospace" font-size="10" fill="#8b949e">&#125;)</text>
-  <!-- Arrow -->
-  <polygon points="295,230 360,200 360,260" fill="#7c3aed"/>
-  <rect x="275" y="221" width="85" height="18" fill="#7c3aed"/>
-  <!-- After section -->
-  <text x="650" y="40" font-family="'Segoe UI', sans-serif" font-size="16" fill="#22c55e" text-anchor="middle" font-weight="700">After</text>
-  <rect x="370" y="80" width="510" height="260" rx="8" fill="#161b22" stroke="#7c3aed" stroke-width="2"/>
-  <text x="385" y="108" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">const</text>
-  <text x="425" y="108" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> config</text>
-  <text x="480" y="108" font-family="'Courier New', monospace" font-size="12" fill="#8b949e">:</text>
-  <text x="490" y="108" font-family="'Courier New', monospace" font-size="12" fill="#7c3aed"> MetaConfig</text>
-  <text x="575" y="108" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> = &#123;</text>
-  <text x="400" y="130" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  title</text>
-  <text x="440" y="130" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="452" y="130" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'My Page'</text>
-  <text x="400" y="152" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  description</text>
-  <text x="500" y="152" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: </text>
-  <text x="512" y="152" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'...'</text>
-  <text x="400" y="174" font-family="'Courier New', monospace" font-size="12" fill="#a5b4fc">  og</text>
-  <text x="420" y="174" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">: &#123; image: </text>
-  <text x="502" y="174" font-family="'Courier New', monospace" font-size="12" fill="#7ee787">'/og.jpg'</text>
-  <text x="564" y="174" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0"> &#125;</text>
-  <text x="385" y="196" font-family="'Courier New', monospace" font-size="12" fill="#e2e8f0">&#125;</text>
-  <!-- Output arrows to frameworks -->
-  <line x1="625" y1="344" x2="440" y2="390" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="625" y1="344" x2="625" y2="398" stroke="#7c3aed" stroke-width="1.5"/>
-  <line x1="625" y1="344" x2="810" y2="390" stroke="#7c3aed" stroke-width="1.5"/>
-  <defs>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 Z" fill="#7c3aed"/>
-    </marker>
-  </defs>
-  <!-- Framework badges -->
-  <rect x="375" y="398" width="120" height="28" rx="4" fill="#1e2430" stroke="#7c3aed" stroke-width="1"/>
-  <text x="435" y="417" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Next.js ✓</text>
-  <rect x="568" y="398" width="120" height="28" rx="4" fill="#1e2430" stroke="#7c3aed" stroke-width="1"/>
-  <text x="628" y="417" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Remix ✓</text>
-  <rect x="760" y="398" width="120" height="28" rx="4" fill="#1e2430" stroke="#7c3aed" stroke-width="1"/>
-  <text x="820" y="417" font-family="'Segoe UI', sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Express ✓</text>
-  <!-- Caption -->
-  <text x="450" y="472" font-family="'Segoe UI', sans-serif" font-size="15" fill="white" text-anchor="middle">One MetaConfig. Three frameworks. Zero duplication.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <title>Six key benefits of @power-seo/meta: one unified SeoConfig, native Next.js Metadata, native Remix v2 output, full robots directives, zero runtime dependencies, and typed Open Graph and Twitter configuration</title>
+  <defs><style>
+    .font-ui { font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace; }
+  </style></defs>
+  <rect width="900" height="500" fill="#f8fafc"/>
+  <text x="450" y="42" class="font-ui" font-size="20" font-weight="700" fill="#0f172a" text-anchor="middle">Why @power-seo/meta</text>
+  <text x="450" y="66" class="font-ui" font-size="13" fill="#64748b" text-anchor="middle">Write your SEO config once — ship correct meta tags on every framework</text>
+  <!-- row 1 -->
+  <rect x="30" y="92" width="272" height="180" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="66" cy="128" r="16" fill="#dbeafe"/>
+  <text x="66" y="133" class="font-mono" font-size="12" font-weight="700" fill="#2563eb" text-anchor="middle">{ }</text>
+  <text x="50" y="172" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">One unified config</text>
+  <text x="50" y="196" class="font-ui" font-size="12" fill="#64748b">A single SeoConfig object drives</text>
+  <text x="50" y="214" class="font-ui" font-size="12" fill="#64748b">every framework output — no</text>
+  <text x="50" y="232" class="font-ui" font-size="12" fill="#64748b">duplicated meta boilerplate.</text>
+  <rect x="314" y="92" width="272" height="180" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="350" cy="128" r="16" fill="#dbeafe"/>
+  <text x="350" y="133" class="font-mono" font-size="12" font-weight="700" fill="#2563eb" text-anchor="middle">N</text>
+  <text x="334" y="172" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Native Next.js Metadata</text>
+  <text x="334" y="196" class="font-mono" font-size="11" fill="#2563eb">createMetadata()</text>
+  <text x="334" y="214" class="font-ui" font-size="12" fill="#64748b">returns a typed Metadata object for</text>
+  <text x="334" y="232" class="font-ui" font-size="12" fill="#64748b">generateMetadata() and metadata.</text>
+  <rect x="598" y="92" width="272" height="180" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="634" cy="128" r="16" fill="#dbeafe"/>
+  <text x="634" y="133" class="font-mono" font-size="12" font-weight="700" fill="#2563eb" text-anchor="middle">R</text>
+  <text x="618" y="172" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Native Remix v2 output</text>
+  <text x="618" y="196" class="font-mono" font-size="11" fill="#2563eb">createMetaDescriptors()</text>
+  <text x="618" y="214" class="font-ui" font-size="12" fill="#64748b">returns MetaDescriptor[] ready for</text>
+  <text x="618" y="232" class="font-ui" font-size="12" fill="#64748b">export const meta in any route.</text>
+  <!-- row 2 -->
+  <rect x="30" y="290" width="272" height="180" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="66" cy="326" r="16" fill="#fef3c7"/>
+  <text x="66" y="331" class="font-mono" font-size="11" font-weight="700" fill="#b45309" text-anchor="middle">rbt</text>
+  <text x="50" y="370" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Full robots directives</text>
+  <text x="50" y="394" class="font-ui" font-size="12" fill="#64748b">maxSnippet, maxImagePreview,</text>
+  <text x="50" y="412" class="font-ui" font-size="12" fill="#64748b">maxVideoPreview, unavailableAfter</text>
+  <text x="50" y="430" class="font-ui" font-size="12" fill="#64748b">— translated correctly per framework.</text>
+  <rect x="314" y="290" width="272" height="180" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="350" cy="326" r="16" fill="#dcfce7"/>
+  <text x="350" y="331" class="font-ui" font-size="13" font-weight="700" fill="#16a34a" text-anchor="middle">0</text>
+  <text x="334" y="370" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Zero runtime dependencies</text>
+  <text x="334" y="394" class="font-ui" font-size="12" fill="#64748b">Pure, synchronous functions with no</text>
+  <text x="334" y="412" class="font-ui" font-size="12" fill="#64748b">Node.js globals — safe in Cloudflare</text>
+  <text x="334" y="430" class="font-ui" font-size="12" fill="#64748b">Workers, Vercel Edge, and Deno.</text>
+  <rect x="598" y="290" width="272" height="180" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="634" cy="326" r="16" fill="#dbeafe"/>
+  <text x="634" y="331" class="font-mono" font-size="11" font-weight="700" fill="#2563eb" text-anchor="middle">og</text>
+  <text x="618" y="370" class="font-ui" font-size="14" font-weight="600" fill="#0f172a">Typed OG + Twitter Cards</text>
+  <text x="618" y="394" class="font-ui" font-size="12" fill="#64748b">OGImage[] with width, height, alt,</text>
+  <text x="618" y="412" class="font-ui" font-size="12" fill="#64748b">type, plus TwitterCardConfig and</text>
+  <text x="618" y="430" class="font-ui" font-size="12" fill="#64748b">hreflang via languageAlternates.</text>
 </svg>
