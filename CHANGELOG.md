@@ -10,8 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 - **`@power-seo/redirects`** — Open-redirect guard (#129). Resolved destinations are now validated before use: `javascript:`, `data:`, `vbscript:`, and `file:` schemes are always rejected; destinations that become off-origin through wildcard/param/regex substitution (`//host`, `\\host`, any `scheme:` prefix — including single-slash forms like `https:/host` that browsers normalize to absolute URLs) are rejected unless the rule's own destination template is external or `allowExternalRedirects` is enabled.
-- **`@power-seo/schema`** + **`@power-seo/react`** — JSON-LD XSS hardening (#124, #125). All JSON-LD React components and the `Breadcrumb` component now serialize through the shared escaping serializer (`<`, `>`, `&` escaped as Unicode sequences), closing `</script>`-injection vectors.
+- **`@power-seo/schema`** + **`@power-seo/react`** — JSON-LD XSS hardening (#124, #125, #136, #146). All JSON-LD React components and the `Breadcrumb` component serialize through the shared escaping serializer (`<`, `>`, `&`, plus the U+2028/U+2029 line separators) closing `</script>`-injection vectors.
 - **`@power-seo/integrations`** + **`@power-seo/search-console`** — Upstream API response bodies are sanitized (secrets redacted, truncated to 200 chars) before appearing in thrown error messages (#130).
+- **`@power-seo/tracking`** — Analytics script builders validate GA4/Clarity/PostHog IDs against strict allow-lists and reject any PostHog `host` that is not a bare http(s) origin, preventing XSS breakout from inline `dangerouslySetInnerHTML` scripts (#139).
 
 ### Fixed
 
@@ -23,6 +24,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`@power-seo/audit`** — Keyphrase density thresholds now use the shared `KEYWORD_DENSITY` constants (0.5–2.5%) instead of a hardcoded 3.0% bound (#126).
 - **`@power-seo/content-analysis`** — Overlapping regex patterns no longer inflate marker counts in E-E-A-T case-study detection; distinct match spans are merged via the new `countDistinctMatches` utility (#128).
 - **`@power-seo/core`** — Removed dead identical-branch ternary in `countSyllables` suffix handling (#132).
+- **`@power-seo/core`** — `buildMetaTags` no longer discards `noindex`/`nofollow` overrides; `resolveTitle`/`applyTitleTemplate` no longer corrupt titles containing `$`-patterns or legitimate leading/trailing separators; `stripQueryParams` keeps repeated params; `calculateKeywordDensity` matches its documented metric (#135).
+- **`@power-seo/schema`** — `clean()` now recurses into nested objects and arrays instead of stripping only top-level `undefined` (#136).
+- **`@power-seo/sitemap`** — Priorities are emitted without lossy rounding; `toNextSitemap` normalizes relative locs against an optional hostname instead of silently dropping them; `splitSitemap` index URLs are normalized to avoid double slashes (#137).
+- **`@power-seo/redirects`** — Query strings no longer break rule matching or leak into path params; `substituteParams` and `matchRegex` replace every occurrence with boundary-aware matching; `toNextRedirects` performs a real regex/wildcard → Next.js segment translation (#138).
+- **`@power-seo/images`** — `FILENAME_PATTERN` no longer flags descriptive alt text like "Photo 2 dogs playing" as a raw filename (#140).
+- **`@power-seo/readability`** — `colemanLiau` counts alphabetic letters directly instead of approximating from character count, so punctuation- and digit-heavy text no longer inflates the grade (#141).
+- **`@power-seo/links`** — `findOrphanPages` retains page titles; `buildLinkGraph` strips fragments and skips `mailto:`/`tel:` links so they no longer create phantom nodes (#142).
+- **`@power-seo/audit`** — Empty/info-only categories are excluded and category weights renormalized instead of substituting a synthetic score of 100 (#143).
+- **`@power-seo/search-console`** — `inspectUrl` targets the URL Inspection endpoint instead of the v3 root; `createTokenManager` resets its cache on a failed token fetch instead of caching the rejection forever (#144).
+- **`@power-seo/analytics`** — `analyzeQueryRankings` uses contiguous half-open buckets with an open-ended top bucket, so fractional GSC positions are no longer dropped (#145).
 
 ### Changed
 
