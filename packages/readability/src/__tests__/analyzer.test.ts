@@ -54,6 +54,39 @@ describe('analyzeReadability', () => {
     expect(result.passiveVoicePercentage).toBeGreaterThan(0);
   });
 
+  it('does not flag active sentences ending in t/en/ed words as passive (#156)', () => {
+    const result = analyzeReadability({
+      content: '<p>The door is open. There are seven cats. He was right about that.</p>',
+    });
+
+    expect(result.passiveVoicePercentage).toBe(0);
+  });
+
+  it('computes passive voice per sentence (#156)', () => {
+    const result = analyzeReadability({
+      content: '<p>This is not a problem. Is it going well? The cake was eaten.</p>',
+    });
+
+    expect(result.passiveVoicePercentage).toBeCloseTo(33.3, 1);
+  });
+
+  it('clamps passive voice percentage at 100 (#156)', () => {
+    const result = analyzeReadability({
+      content:
+        '<p>The ball was thrown and the window was broken and the game was stopped.</p>',
+    });
+
+    expect(result.passiveVoicePercentage).toBe(100);
+  });
+
+  it('detects passive voice with an intervening adverb (#156)', () => {
+    const result = analyzeReadability({
+      content: '<p>The report was quickly written by the team. It covered everything well.</p>',
+    });
+
+    expect(result.passiveVoicePercentage).toBeGreaterThan(0);
+  });
+
   it('detects transition words', () => {
     const result = analyzeReadability({
       content:
@@ -61,6 +94,43 @@ describe('analyzeReadability', () => {
     });
 
     expect(result.transitionWordPercentage).toBeGreaterThan(0);
+  });
+
+  it('does not match transition words inside other words (#163)', () => {
+    const result = analyzeReadability({
+      content:
+        '<p>He toured the distillery. She has a tribute concert. Nothing connects these.</p>',
+    });
+
+    expect(result.transitionWordPercentage).toBe(0);
+  });
+
+  it('excludes pre/code content from all statistics (#151)', () => {
+    const prose =
+      '<p>The cat sat on the mat. It was a very good day for cats. However, the dog preferred the sofa.</p>';
+    const withCode = `${prose}<pre>const povertyStricken = requireContext();</pre>`;
+
+    const plain = analyzeReadability({ content: prose });
+    const withPre = analyzeReadability({ content: withCode });
+
+    expect(withPre.fleschReadingEase).toBe(plain.fleschReadingEase);
+    expect(withPre.fleschKincaidGrade).toBe(plain.fleschKincaidGrade);
+    expect(withPre.avgSentenceLength).toBe(plain.avgSentenceLength);
+    expect(withPre.passiveVoicePercentage).toBe(plain.passiveVoicePercentage);
+    expect(withPre.transitionWordPercentage).toBe(plain.transitionWordPercentage);
+    expect(withPre.longParagraphCount).toBe(plain.longParagraphCount);
+    expect(withPre.score).toBe(plain.score);
+  });
+
+  it('excludes inline code content from statistics (#151)', () => {
+    const prose = '<p>Call the function now. It returns the data quickly.</p>';
+    const withCode =
+      '<p>Call the <code>getDataFromRemoteEndpoint()</code> function now. It returns the data quickly.</p>';
+
+    const plain = analyzeReadability({ content: prose });
+    const withInline = analyzeReadability({ content: withCode });
+
+    expect(withInline.fleschReadingEase).toBe(plain.fleschReadingEase);
   });
 
   it('detects long sentences', () => {

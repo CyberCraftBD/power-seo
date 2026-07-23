@@ -5,31 +5,57 @@ import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 import { stripHtml, getWords, extractTagContents } from '@power-seo/core';
 
 /**
+ * A heading is a question ONLY if it ends with "?" or starts with an
+ * interrogative word. Bare auxiliaries (is/are/can/does/etc.) anywhere in the
+ * heading do NOT qualify — declarative headings like "5 Tools That Will Save
+ * You Time" are not questions.
+ */
+function isQuestionHeading(headingText: string): boolean {
+  const trimmed = headingText.trim();
+  if (trimmed.length === 0) return false;
+  return trimmed.endsWith('?') || /^(?:what|how|why|when|where|who|which)\b/i.test(trimmed);
+}
+
+/**
+ * Slice the HTML section belonging to a heading: from the end of the heading
+ * up to the next heading of the same or higher level (h2 stops at the next
+ * h2; h3 stops at the next h2 or h3). The answer paragraph must never be
+ * searched across section boundaries.
+ */
+function sliceSection(html: string, headingEnd: number, level: number): string {
+  const rest = html.slice(headingEnd);
+  const nextHeadingRegex = /<h([1-6])[^>]*>/gi;
+  let next: RegExpExecArray | null;
+  while ((next = nextHeadingRegex.exec(rest)) !== null) {
+    const nextLevel = Number(next[1]);
+    if (nextLevel <= level) {
+      return rest.slice(0, next.index);
+    }
+  }
+  return rest;
+}
+
+/**
  * Count Q&A pairs: question-phrased H2/H3 headings followed by an answer paragraph (30–200 words).
  * FAQPage schema + FAQ section = 2.7–3.2× higher AI Overview citation rate (Relixir, 50-site study).
  */
 function countQaPairs(html: string): number {
-  const questionWordPattern = /\b(?:what|how|why|when|where|who|which|can|does|is|are|will|should)\b/i;
-  const headingRegex = /<h[23][^>]*>([\s\S]*?)<\/h[23]>/gi;
+  const headingRegex = /<h([23])[^>]*>([\s\S]*?)<\/h\1>/gi;
 
   let pairCount = 0;
   let match: RegExpExecArray | null;
 
   while ((match = headingRegex.exec(html)) !== null) {
-    const headingContent = match[1];
+    const headingContent = match[2];
     if (headingContent === undefined) continue;
 
-    const headingText = stripHtml(headingContent);
-    const isQuestion =
-      questionWordPattern.test(headingText) ||
-      headingText.trim().endsWith('?');
+    if (!isQuestionHeading(stripHtml(headingContent))) continue;
 
-    if (!isQuestion) continue;
-
-    // Check the immediately following content for a valid answer paragraph
-    const afterHeading = html.slice(match.index + match[0].length);
-    const nextParagraphs = extractTagContents(afterHeading, 'p');
-    const firstPara = nextParagraphs[0];
+    // Look for a valid answer paragraph only within this heading's own section.
+    // Non-<p> blocks (figure/ul/pre) are skipped when finding the first paragraph.
+    const level = Number(match[1]);
+    const section = sliceSection(html, match.index + match[0].length, level);
+    const firstPara = extractTagContents(section, 'p')[0];
 
     if (firstPara !== undefined) {
       const paraWordCount = getWords(stripHtml(firstPara)).length;

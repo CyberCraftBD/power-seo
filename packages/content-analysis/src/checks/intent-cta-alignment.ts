@@ -77,6 +77,22 @@ const CTA_CATEGORIES: CtaCategory[] = [
 ];
 
 /**
+ * Extract the visible text of clickable elements (<a> and <button>).
+ * CTA phrases are only meaningful in clickable elements — matching them against
+ * body prose flags proper nouns like "Open Graph" as navigational CTAs.
+ */
+function extractCtaText(html: string): string {
+  const texts: string[] = [];
+  const re = /<(a|button)\b[^>]*>([\s\S]{0,300}?)<\/\1>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html)) !== null) {
+    const inner = stripHtml(m[2]!).trim();
+    if (inner.length > 0) texts.push(inner);
+  }
+  return texts.join('\n').toLowerCase();
+}
+
+/**
  * Find all CTA phrases from a category that appear in the text.
  */
 function findCtaMatches(text: string, phrases: readonly string[]): string[] {
@@ -119,7 +135,7 @@ export function checkIntentCtaAlignment(
   const detected = detectIntent(focusKeyphrase.trim());
   const keyphraseIntent = detected.primary;
 
-  const plainText = stripHtml(content).toLowerCase();
+  const ctaText = extractCtaText(content);
 
   // Find CTAs per category
   const ctaResults: Array<{
@@ -129,7 +145,7 @@ export function checkIntentCtaAlignment(
   }> = [];
 
   for (const category of CTA_CATEGORIES) {
-    const matches = findCtaMatches(plainText, category.phrases);
+    const matches = findCtaMatches(ctaText, category.phrases);
     ctaResults.push({
       key: category.key,
       label: category.label,
@@ -159,7 +175,7 @@ export function checkIntentCtaAlignment(
       id: 'intent-cta-alignment',
       title: 'CTA-intent alignment',
       description:
-        `No CTA phrases found in the content. For ${intentLabel.toLowerCase()} intent, ` +
+        `No CTA phrases found in link or button text. For ${intentLabel.toLowerCase()} intent, ` +
         `consider adding relevant CTAs such as: ${alignedCategory?.matches.length === 0 ? CTA_CATEGORIES.find((c) => c.key === keyphraseIntent)?.phrases.slice(0, 3).join(', ') ?? 'appropriate calls to action' : alignedCtas.join(', ')}.`,
       status: 'ok',
       score: 3,

@@ -49,7 +49,8 @@ const RESEARCH_PATTERNS: RegExp[] = [
 
 // Detect data tables in HTML
 const DATA_TABLE_PATTERN = /<table\b[^>]*>[\s\S]*?<\/table>/gi;
-const CHART_PATTERNS = /<(canvas|svg)\b|chart|graph|data-chart/gi;
+// Word-bounded: bare "chart"/"graph" substrings matched "paragraph"/"photography".
+const CHART_PATTERNS = /<(canvas|svg)\b|\bcharts?\b|\bgraphs?\b|data-chart/gi;
 
 export function checkOriginalResearch(input: ContentAnalysisInput): AnalysisResult {
   const plainText = stripHtml(input.content || '');

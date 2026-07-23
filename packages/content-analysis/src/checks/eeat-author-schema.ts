@@ -100,19 +100,23 @@ export function checkAuthorSchema(input: ContentAnalysisInput): AnalysisResult {
   const filledFields = fields.filter((f) => f.filled).map((f) => f.name);
   const missingFields = fields.filter((f) => !f.filled).map((f) => f.name);
 
-  // Check bio quality
+  // Check bio quality (single consistent target: 30+ words)
   let bioQuality = '';
   if (author.bio) {
     const bioWords = author.bio.trim().split(/\s+/).length;
     if (bioWords < 10) bioQuality = ' (bio is too short — aim for 30+ words)';
-    else if (bioWords < 30) bioQuality = ' (consider expanding bio to 50+ words)';
+    else if (bioWords < 30) bioQuality = ' (consider expanding bio to 30+ words)';
   }
+
+  // Weight-based percentage alongside the actual field count, both computed
+  // from the same field list.
+  const completenessSummary = `${Math.round(completeness * 100)}% complete (${filledFields.length} of ${fields.length} fields)`;
 
   if (completeness >= 0.75) {
     return {
       id: 'eeat-author-schema',
       title: 'Author schema',
-      description: `Author schema is ${Math.round(completeness * 100)}% complete (${filledFields.length}/${fields.length} fields). Schema properties: ${filledFields.join(', ')}.${bioQuality}`,
+      description: `Author schema is ${completenessSummary}. Schema properties: ${filledFields.join(', ')}.${bioQuality}`,
       status: 'good',
       score: 10,
       maxScore: 10,
@@ -123,7 +127,7 @@ export function checkAuthorSchema(input: ContentAnalysisInput): AnalysisResult {
     return {
       id: 'eeat-author-schema',
       title: 'Author schema',
-      description: `Author schema is ${Math.round(completeness * 100)}% complete. Missing: ${missingFields.join(', ')}. Add these Person schema properties to strengthen expertise signals.${bioQuality}`,
+      description: `Author schema is ${completenessSummary}. Missing: ${missingFields.join(', ')}. Add these Person schema properties to strengthen expertise signals.${bioQuality}`,
       status: 'ok',
       score: 6,
       maxScore: 10,
@@ -133,7 +137,7 @@ export function checkAuthorSchema(input: ContentAnalysisInput): AnalysisResult {
   return {
     id: 'eeat-author-schema',
     title: 'Author schema',
-    description: `Author schema is only ${Math.round(completeness * 100)}% complete. Missing: ${missingFields.join(', ')}. A complete author schema (name, jobTitle, worksFor, credentials, knowsAbout, sameAs) is critical for E-E-A-T.`,
+    description: `Author schema is only ${completenessSummary}. Missing: ${missingFields.join(', ')}. A complete author schema (name, jobTitle, worksFor, credentials, knowsAbout, sameAs) is critical for E-E-A-T.`,
     status: 'poor',
     score: 2,
     maxScore: 10,

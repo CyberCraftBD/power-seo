@@ -104,10 +104,11 @@ export function checkSingleH1(input: ContentAnalysisInput): AnalysisResult {
   if (headings.length >= 2) {
     const hierarchyIssues: string[] = [];
 
-    // Check if content starts with a non-H1 heading when there are no H1s
-    if (h1s.length === 0 && headings.length > 0 && headings[0]!.level > 1) {
+    // With no H1 in the body, starting at H2 is the standard pattern (the page
+    // title serves as the H1) — only flag when the first heading is H3 or deeper.
+    if (h1s.length === 0 && headings.length > 0 && headings[0]!.level > 2) {
       hierarchyIssues.push(
-        `Content starts with an H${headings[0]!.level} instead of an H1.`
+        `Content starts with an H${headings[0]!.level}. When the page title serves as the H1, body headings should begin at H2.`
       );
     }
 

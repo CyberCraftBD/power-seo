@@ -65,14 +65,15 @@ const SOURCE_CATEGORIES: Array<{ category: string; patterns: RegExp[] }> = [
   },
 ];
 
-// Detect references/bibliography section
+// Detect references/bibliography section — .test() only, so no /g flag
+// (a stateful lastIndex would make consecutive calls nondeterministic).
 const REFERENCES_SECTION_PATTERNS: RegExp[] = [
-  /\breferences?\b/gi,
-  /\bbibliography\b/gi,
-  /\bsources?\b/gi,
-  /\bcitations?\b/gi,
-  /\bworks?\s+cited\b/gi,
-  /\bfurther\s+reading\b/gi,
+  /\breferences?\b/i,
+  /\bbibliography\b/i,
+  /\bsources?\b/i,
+  /\bcitations?\b/i,
+  /\bworks?\s+cited\b/i,
+  /\bfurther\s+reading\b/i,
 ];
 
 export function checkSourceQuality(input: ContentAnalysisInput): AnalysisResult {

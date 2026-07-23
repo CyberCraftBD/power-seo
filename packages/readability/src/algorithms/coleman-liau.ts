@@ -25,12 +25,12 @@ export function colemanLiau(stats: TextStatistics, content?: string): number {
 
   // L: average letters per 100 words.
   // Count alphabetic letters directly when the source text is available,
-  // otherwise fall back to approximating from characterCount (which includes
-  // punctuation, digits and inter-word spaces).
+  // otherwise fall back to letterDigitCount (letters+digits — unlike the old
+  // characterCount approximation it excludes punctuation and spaces, #165).
   const letterCount =
     content !== undefined
       ? (stripHtml(content).match(/[A-Za-z]/g) || []).length
-      : stats.characterCount - (stats.wordCount - 1); // subtract spaces between words
+      : stats.letterDigitCount;
   const L = (letterCount / stats.wordCount) * 100;
 
   // S: average sentences per 100 words

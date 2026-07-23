@@ -15,16 +15,18 @@ interface ParsedLink {
  */
 function extractLinks(html: string, siteUrl?: string): ParsedLink[] {
   const links: ParsedLink[] = [];
-  const linkRegex = /<a\s[^>]*href=["']([^"'#]+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  const linkRegex = /<a\s[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let match;
 
   while ((match = linkRegex.exec(html)) !== null) {
     const href = match[1]!.trim();
     const rawAnchor = match[2]!;
 
-    // Skip non-navigable links
+    // Skip non-navigable links (pure anchors, mailto, tel, javascript).
+    // URLs that merely contain a fragment are kept.
     if (
       !href ||
+      href.startsWith('#') ||
       href.startsWith('mailto:') ||
       href.startsWith('tel:') ||
       href.startsWith('javascript:')

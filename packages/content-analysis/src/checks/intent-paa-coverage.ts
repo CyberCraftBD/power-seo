@@ -8,21 +8,22 @@ import { stripHtml, extractTagContents } from '@power-seo/core';
 // Question detection
 // ---------------------------------------------------------------------------
 
-const QUESTION_STARTERS = /\b(?:what|how|why|when|where|who|can|does|do|is|are|should|will|which)\b/i;
+const QUESTION_STARTERS = /^(?:what|how|why|when|where|who|which)\b/i;
 
 /**
  * Determine whether a heading text is a question pattern.
- * Matches headings that start with or contain PAA-style question words,
- * or headings that end with a question mark.
+ * A heading is a question ONLY if it ends with a question mark or starts
+ * with a PAA-style interrogative word. Bare auxiliaries (is/are/can/does/etc.)
+ * anywhere in the heading do NOT qualify.
  */
 function isQuestionHeading(headingText: string): boolean {
   const trimmed = headingText.trim();
   if (trimmed.length === 0) return false;
 
-  // Explicit question mark
-  if (trimmed.includes('?')) return true;
+  // Explicit question mark at the end
+  if (trimmed.endsWith('?')) return true;
 
-  // Contains a question word
+  // Starts with an interrogative word
   if (QUESTION_STARTERS.test(trimmed)) return true;
 
   return false;
@@ -112,7 +113,7 @@ export function checkIntentPaaCoverage(input: ContentAnalysisInput): AnalysisRes
     return {
       id: 'intent-paa-coverage',
       title: 'People Also Ask coverage',
-      description: `Only 1 question-phrased heading found out of ${allHeadings.length} total.${exampleText} Add at least 3 more question headings starting with What, How, Why, When, Where, Who, Can, Does, Is, Are, Should, Will, or Which.`,
+      description: `Only 1 question-phrased heading found out of ${allHeadings.length} total.${exampleText} Add at least 3 more question headings starting with What, How, Why, When, Where, Who, or Which, or ending with a question mark.`,
       status: 'poor',
       score: 1,
       maxScore: 5,

@@ -141,7 +141,7 @@ function inferSubType(keyphrase: string, primary: IntentType): IntentSubType {
   if (/\b(download|install|free\s+download|get\s+free)\b/.test(lower)) {
     return 'download';
   }
-  if (/\b(near\s+me|nearby|local|in\s+\w+|city|town|neighborhood)\b/.test(lower)) {
+  if (/\b(near\s+me|nearby|local|city|town|neighborhood)\b/.test(lower)) {
     return 'local';
   }
   if (/\b(list|types|examples?|resources?|tools?|reference)\b/.test(lower)) {
@@ -158,7 +158,7 @@ function inferSubType(keyphrase: string, primary: IntentType): IntentSubType {
   return 'unknown';
 }
 
-function buildSignals(modifiers: IntentModifier[], keyphrase: string): IntentSignal[] {
+function buildSignals(modifiers: IntentModifier[]): IntentSignal[] {
   const intentScores = new Map<IntentType, { total: number; reasons: string[] }>();
 
   for (const mod of modifiers) {
@@ -171,15 +171,10 @@ function buildSignals(modifiers: IntentModifier[], keyphrase: string): IntentSig
     }
   }
 
-  // If no modifiers found, assign baseline signals for bare keywords
+  // If no modifiers found, assign a baseline signal for bare keywords.
+  // A bare keyphrase of any length defaults to informational — navigational
+  // intent must be earned by actual navigational modifiers.
   if (intentScores.size === 0) {
-    const wordCount = keyphrase.trim().split(/\s+/).length;
-    if (wordCount <= 2) {
-      intentScores.set('navigational', {
-        total: 1,
-        reasons: ['short bare keyword, possibly a brand or entity'],
-      });
-    }
     intentScores.set('informational', {
       total: 1,
       reasons: ['default: bare keyword with no clear modifiers'],
@@ -227,7 +222,7 @@ export function detectIntent(keyphrase: string): IntentResult {
   }
 
   const modifiers = findModifiers(trimmed);
-  const signals = buildSignals(modifiers, trimmed);
+  const signals = buildSignals(modifiers);
 
   const topSignal: IntentSignal | undefined = signals[0];
   const primary: IntentType = topSignal?.type ?? 'unknown';

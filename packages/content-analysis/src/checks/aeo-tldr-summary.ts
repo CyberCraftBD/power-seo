@@ -2,7 +2,31 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords, extractTagContents } from '@power-seo/core';
+import { stripHtml, getWords } from '@power-seo/core';
+
+/**
+ * Heading texts that qualify as a summary/TL;DR heading. The heading text must
+ * BE one of these (full-text match after trimming, case-insensitive) — a
+ * substring match would wrongly flag e.g. "Product Overview Dashboard".
+ */
+const SUMMARY_HEADINGS: readonly string[] = [
+  'tl;dr',
+  'tldr',
+  'key takeaways',
+  'key takeaway',
+  'summary',
+  'in brief',
+  'at a glance',
+  'quick summary',
+  'quick answer',
+  'the short version',
+  'overview',
+];
+
+function isSummaryHeading(headingText: string): boolean {
+  const normalized = headingText.trim().toLowerCase().replace(/\s+/g, ' ');
+  return SUMMARY_HEADINGS.includes(normalized);
+}
 
 /**
  * Detects a TL;DR or summary block — a structured overview that AI engines
@@ -10,13 +34,23 @@ import { stripHtml, getWords, extractTagContents } from '@power-seo/core';
  * 2.1× more AI citations (Moz AI Content Study, 2025).
  */
 function detectSummaryBlock(html: string): { found: boolean; hasBullets: boolean } {
-  const headings = extractTagContents(html, 'h2').concat(extractTagContents(html, 'h3'));
-  const tldrPattern = /\b(?:tl;?dr|summary|key\s+takeaways?|in\s+brief|quick\s+answer|the\s+short\s+version|overview)\b/i;
+  const headingRegex = /<h[23][^>]*>([\s\S]*?)<\/h[23]>/gi;
 
   let found = false;
-  for (const h of headings) {
-    if (tldrPattern.test(stripHtml(h))) {
-      found = true;
+  let hasBullets = false;
+  let match: RegExpExecArray | null;
+
+  while ((match = headingRegex.exec(html)) !== null) {
+    if (!isSummaryHeading(stripHtml(match[1] ?? ''))) continue;
+    found = true;
+
+    // A bullet list only counts if it appears between the summary heading and
+    // the next heading (any level) — not just anywhere in the document.
+    const rest = html.slice(match.index + match[0].length);
+    const nextHeading = rest.search(/<h[1-6][^>]*>/i);
+    const section = nextHeading === -1 ? rest : rest.slice(0, nextHeading);
+    if (/<ul[\s>]/i.test(section) || /<ol[\s>]/i.test(section)) {
+      hasBullets = true;
       break;
     }
   }
@@ -24,9 +58,6 @@ function detectSummaryBlock(html: string): { found: boolean; hasBullets: boolean
   // Also check for a <strong>TL;DR</strong> or bold summary inline
   const boldTldr = /<(?:strong|b)[^>]*>[^<]*(?:tl;?dr|summary|key\s+takeaway)[^<]*<\/(?:strong|b)>/i.test(html);
   if (boldTldr) found = true;
-
-  // Check if a bullet list follows a summary/tldr heading
-  const hasBullets = found && (/<ul[\s>]/.test(html) || /<ol[\s>]/.test(html));
 
   return { found, hasBullets };
 }

@@ -8,12 +8,13 @@ import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
 const EXPERT_QUOTE_PATTERNS: RegExp[] = [
   // Named expert citations
   /\baccording\s+to\s+(?:Dr\.?|Prof\.?|Professor)\s+[A-Z]/gi,
-  /\baccording\s+to\s+[A-Z][a-z]+\s+[A-Z][a-z]+/g,
+  // [Aa] so sentence-initial "According to Jane Doe" matches; NAME stays case-sensitive
+  /\b[Aa]ccording\s+to\s+[A-Z][a-z]+\s+[A-Z][a-z]+/g,
   /\b(?:Dr\.?|Prof\.?|Professor)\s+[A-Z][a-z]+\s+(says?|said|explains?|explained|notes?|noted|suggests?|argues?|stated|believes?|recommends?|observes?|points?\s+out)\b/g,
   /\b[A-Z][a-z]+\s+[A-Z][a-z]+,?\s+(?:a|an)\s+(?:professor|researcher|scientist|expert|analyst|specialist|consultant|advisor|doctor|physician|engineer|author|founder|CEO|CTO|director)\b/g,
 
   // Quote blocks
-  /\bas\s+[A-Z][a-z]+\s+(?:[A-Z][a-z]+\s+)?(?:explains?|puts?\s+it|notes?|says?|wrote|writes?|stated)\b/g,
+  /\b[Aa]s\s+[A-Z][a-z]+\s+(?:[A-Z][a-z]+\s+)?(?:explains?|puts?\s+it|notes?|says?|wrote|writes?|stated)\b/g,
   /\bin\s+the\s+words\s+of\b/gi,
   /\b[A-Z][a-z]+\s+(?:[A-Z][a-z]+\s+)?told\s+(?:us|me|the)\b/g,
 
@@ -31,10 +32,11 @@ const EXPERT_QUOTE_PATTERNS: RegExp[] = [
   /\b(?:medical|financial|legal|technical)\s+(?:expert|professional|specialist)\b/gi,
 ];
 
-// HTML quote elements
+// HTML quote elements — bounded lazy bodies so nested markup
+// (e.g. <cite><a href="...">Name</a></cite>) still matches
 const BLOCKQUOTE_PATTERN = /<blockquote\b[^>]*>[\s\S]*?<\/blockquote>/gi;
-const CITE_PATTERN = /<cite\b[^>]*>[^<]+<\/cite>/gi;
-const Q_PATTERN = /<q\b[^>]*>[^<]+<\/q>/gi;
+const CITE_PATTERN = /<cite\b[^>]*>[\s\S]{1,300}?<\/cite>/gi;
+const Q_PATTERN = /<q\b[^>]*>[\s\S]{1,300}?<\/q>/gi;
 
 export function checkExpertSourcing(input: ContentAnalysisInput): AnalysisResult {
   const content = input.content || '';
@@ -66,18 +68,19 @@ export function checkExpertSourcing(input: ContentAnalysisInput): AnalysisResult
         sourceTypes.add('interviews');
       } else if (src.includes('contribut') || src.includes('guest')) {
         sourceTypes.add('expert contributors');
-      } else if (src.includes('according') || src.includes('says') || src.includes('explains')) {
+      } else if (src.includes('ccording') || src.includes('says') || src.includes('explains')) {
         sourceTypes.add('expert citations');
-      } else if (src.includes('experts\\s+')) {
+      } else if (src.includes('experts?')) {
         sourceTypes.add('expert consensus');
       }
     }
   }
 
-  // Check HTML quote elements
+  // Check HTML quote elements (require at least one non-tag character inside)
+  const hasTextContent = (html: string): boolean => stripHtml(html).trim().length > 0;
   const blockquotes = content.match(BLOCKQUOTE_PATTERN) || [];
-  const cites = content.match(CITE_PATTERN) || [];
-  const quotes = content.match(Q_PATTERN) || [];
+  const cites = (content.match(CITE_PATTERN) || []).filter(hasTextContent);
+  const quotes = (content.match(Q_PATTERN) || []).filter(hasTextContent);
 
   if (blockquotes.length > 0) {
     expertMentions += blockquotes.length;

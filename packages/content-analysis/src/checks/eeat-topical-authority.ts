@@ -72,7 +72,10 @@ export function checkTopicalAuthority(input: ContentAnalysisInput): AnalysisResu
   }
 
   const category = contentCategory.toLowerCase();
-  const isYMYL = YMYL_CATEGORIES.some((c) => category.includes(c));
+  // Exact-token match: 'Newsletter' must not match 'news', 'syntax' must not
+  // match 'tax', 'lawn care' must not match 'law'.
+  const categoryTokens = category.split(/[^a-z]+/).filter(Boolean);
+  const isYMYL = YMYL_CATEGORIES.some((c) => categoryTokens.includes(c));
 
   let authorityScore = 0;
   const authoritySignals: string[] = [];

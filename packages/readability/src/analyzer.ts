@@ -2,26 +2,123 @@
 // ----------------------------------------------------------------------------
 
 import type { ReadabilityInput, ReadabilityOutput, AnalysisResult } from '@power-seo/core';
-import {
-  getTextStatistics,
-  getSentences,
-  getParagraphs,
-  stripHtml,
-  READABILITY,
-} from '@power-seo/core';
+import { getTextStatistics, getSentences, getParagraphs, READABILITY } from '@power-seo/core';
 import { fleschReadingEase, fleschKincaidGrade } from './algorithms/flesch-kincaid.js';
+
+// --- Code Block Removal ---
+
+/**
+ * Remove <pre> blocks and inline <code> content from HTML (issue #151):
+ * code samples are not prose and skew every readability statistic.
+ * Plain string search — no regex, no ReDoS.
+ */
+function removeTagWithContent(html: string, tag: string): string {
+  const open = `<${tag}`;
+  const close = `</${tag}>`;
+  let result = html;
+  let start = result.toLowerCase().indexOf(open);
+  while (start !== -1) {
+    const end = result.toLowerCase().indexOf(close, start);
+    if (end === -1) {
+      // Unclosed tag — remove only the opening tag itself, keep the prose.
+      const tagEnd = result.indexOf('>', start);
+      result =
+        tagEnd === -1
+          ? result.slice(0, start) + result.slice(start + open.length)
+          : result.slice(0, start) + result.slice(tagEnd + 1);
+    } else {
+      result = result.slice(0, start) + ' ' + result.slice(end + close.length);
+    }
+    start = result.toLowerCase().indexOf(open, start);
+  }
+  return result;
+}
 
 // --- Passive Voice Detection ---
 
 const PASSIVE_AUXILIARIES = ['am', 'is', 'are', 'was', 'were', 'be', 'been', 'being'];
+
+// Irregular past participles that don't end in -ed (issue #156).
+const IRREGULAR_PARTICIPLES = new Set([
+  'been',
+  'born',
+  'borne',
+  'bought',
+  'broken',
+  'brought',
+  'built',
+  'caught',
+  'chosen',
+  'done',
+  'drawn',
+  'driven',
+  'eaten',
+  'fallen',
+  'felt',
+  'found',
+  'given',
+  'gone',
+  'grown',
+  'held',
+  'hidden',
+  'kept',
+  'known',
+  'laid',
+  'led',
+  'left',
+  'lost',
+  'made',
+  'meant',
+  'met',
+  'paid',
+  'put',
+  'read',
+  'said',
+  'seen',
+  'sent',
+  'set',
+  'shown',
+  'shut',
+  'sold',
+  'spent',
+  'spoken',
+  'stolen',
+  'taken',
+  'taught',
+  'thought',
+  'thrown',
+  'told',
+  'understood',
+  'won',
+  'worn',
+  'written',
+]);
+
+// Words ending in -ed that are never passive participles.
+const PARTICIPLE_STOPWORDS = new Set(['need', 'indeed', 'hundred', 'sacred', 'naked', 'wicked']);
+
+// Auxiliary + optional adverb + candidate word. The candidate is validated by
+// isParticiple() — the old pattern `\w+(?:ed|en|t)` flagged any word ending in
+// t/en/ed, so "is not", "is it" and "was right" all counted as passive (#156).
 const PASSIVE_REGEX = new RegExp(
-  `\\b(${PASSIVE_AUXILIARIES.join('|')})\\s+\\w+(?:ed|en|t)\\b`,
+  `\\b(?:${PASSIVE_AUXILIARIES.join('|')})\\s+(?:\\w+ly\\s+)?(\\w+)\\b`,
   'gi',
 );
 
-function countPassiveVoice(text: string): number {
-  const matches = text.match(PASSIVE_REGEX);
-  return matches?.length ?? 0;
+function isParticiple(word: string): boolean {
+  const w = word.toLowerCase();
+  if (IRREGULAR_PARTICIPLES.has(w)) return true;
+  // Regular participle: minimum 3-char stem before "ed" avoids "need", "bed"…
+  return /^\w{3,}ed$/.test(w) && !PARTICIPLE_STOPWORDS.has(w);
+}
+
+function hasPassiveVoice(sentence: string): boolean {
+  PASSIVE_REGEX.lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = PASSIVE_REGEX.exec(sentence)) !== null) {
+    if (isParticiple(match[1] ?? '')) return true;
+  }
+  return false;
 }
 
 // --- Transition Word Detection ---
@@ -86,11 +183,16 @@ const TRANSITION_WORDS = [
   'yet',
 ];
 
+// Word-boundary regexes — plain substring matching flagged "distillery"
+// (still), "tribute" (but) and "yeti" (yet) as transitions (issue #163).
+const TRANSITION_REGEXES = TRANSITION_WORDS.map(
+  (tw) => new RegExp(`\\b${tw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i'),
+);
+
 function countTransitionSentences(sentences: string[]): number {
   let count = 0;
   for (const sentence of sentences) {
-    const lower = sentence.toLowerCase();
-    if (TRANSITION_WORDS.some((tw) => lower.includes(tw))) {
+    if (TRANSITION_REGEXES.some((regex) => regex.test(sentence))) {
       count++;
     }
   }
@@ -143,19 +245,22 @@ function checkConsecutiveSentences(sentences: string[]): number {
  * ```
  */
 export function analyzeReadability(input: ReadabilityInput): ReadabilityOutput {
-  const { content } = input;
+  // Code samples are not prose — exclude them from all statistics (#151).
+  const content = removeTagWithContent(removeTagWithContent(input.content, 'pre'), 'code');
   const stats = getTextStatistics(content);
-  const text = stripHtml(content);
   const sentences = getSentences(content);
   const paragraphs = getParagraphs(content);
   // Algorithm scores
   const fre = fleschReadingEase(stats);
   const fkg = fleschKincaidGrade(stats);
 
-  // Passive voice analysis
-  const passiveCount = countPassiveVoice(text);
+  // Passive voice analysis: percentage of sentences containing at least one
+  // passive construction (#156 — raw match counts could exceed 100%).
+  const passiveSentenceCount = sentences.filter((s) => hasPassiveVoice(s)).length;
   const passiveVoicePercentage =
-    sentences.length > 0 ? Math.round((passiveCount / sentences.length) * 1000) / 10 : 0;
+    sentences.length > 0
+      ? Math.min(100, Math.round((passiveSentenceCount / sentences.length) * 1000) / 10)
+      : 0;
 
   // Long sentence analysis
   const longSentences = sentences.filter((s) => {

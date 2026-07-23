@@ -123,6 +123,13 @@ function assessAuthoritativeness(input: ContentAnalysisInput): PillarAssessment 
   };
 }
 
+/** A date only earns trust credit if it is valid and not in the future. */
+function isCreditableDate(value: string | Date | undefined): boolean {
+  if (!value) return false;
+  const date = value instanceof Date ? value : new Date(value);
+  return !Number.isNaN(date.getTime()) && date.getTime() <= Date.now();
+}
+
 function assessTrustWorthiness(input: ContentAnalysisInput): PillarAssessment {
   let score = 0;
 
@@ -132,8 +139,8 @@ function assessTrustWorthiness(input: ContentAnalysisInput): PillarAssessment {
     score += 1;
   }
 
-  // Publish date signals transparency and freshness
-  if (input.publishDate) {
+  // Publish date signals transparency and freshness (future dates ignored)
+  if (isCreditableDate(input.publishDate)) {
     score += 1;
   }
 
@@ -178,29 +185,36 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
   const trust = assessTrustWorthiness(input);
 
   const pillars = [experience, expertise, authority, trust];
-  const strongCount = pillars.filter((p) => p.strong).length;
   const pillarSummary = pillars.map((p) => `${p.name} ${p.score}/${p.maxScore}`).join(', ');
 
-  if (strongCount >= 3) {
+  // Proportional scoring: every pillar point counts, so a single-marker
+  // change moves the combined score gradually instead of in 3-5 point cliffs.
+  const maxScore = 8;
+  const totalPillarPoints = pillars.reduce((sum, p) => sum + p.score, 0);
+  const maxPillarPoints = pillars.reduce((sum, p) => sum + p.maxScore, 0);
+  const ratio = maxPillarPoints > 0 ? totalPillarPoints / maxPillarPoints : 0;
+  const score = Math.round(ratio * maxScore);
+
+  if (ratio >= 0.75) {
     return {
       id: 'eeat-overall-score',
       title: 'E-E-A-T overall score',
-      description: `Strong E-E-A-T profile with ${strongCount}/4 pillars solid. ${pillarSummary}. Content demonstrates real experience, author expertise, authoritative backing, and trustworthiness.`,
+      description: `Strong E-E-A-T profile with ${totalPillarPoints}/${maxPillarPoints} pillar points. ${pillarSummary}. Content demonstrates real experience, author expertise, authoritative backing, and trustworthiness.`,
       status: 'good',
-      score: 8,
-      maxScore: 8,
+      score,
+      maxScore,
     };
   }
 
-  if (strongCount >= 2) {
+  if (ratio >= 0.4) {
     const weakPillars = pillars.filter((p) => !p.strong).map((p) => p.name);
     return {
       id: 'eeat-overall-score',
       title: 'E-E-A-T overall score',
-      description: `Moderate E-E-A-T profile with ${strongCount}/4 pillars solid. ${pillarSummary}. Strengthen ${weakPillars.join(' and ')} to improve overall quality signals.`,
+      description: `Moderate E-E-A-T profile with ${totalPillarPoints}/${maxPillarPoints} pillar points. ${pillarSummary}. Strengthen ${weakPillars.join(' and ')} to improve overall quality signals.`,
       status: 'ok',
-      score: 5,
-      maxScore: 8,
+      score,
+      maxScore,
     };
   }
 
@@ -208,9 +222,9 @@ export function checkEeatOverallScore(input: ContentAnalysisInput): AnalysisResu
   return {
     id: 'eeat-overall-score',
     title: 'E-E-A-T overall score',
-    description: `Weak E-E-A-T profile with only ${strongCount}/4 pillars solid. ${pillarSummary}. ${weakPillars.join(', ')} need improvement. Add first-person experience, author credentials, social profiles, publications, and trust signals (HTTPS, publish date, privacy policy).`,
+    description: `Weak E-E-A-T profile with only ${totalPillarPoints}/${maxPillarPoints} pillar points. ${pillarSummary}. ${weakPillars.join(', ')} need improvement. Add first-person experience, author credentials, social profiles, publications, and trust signals (HTTPS, publish date, privacy policy).`,
     status: 'poor',
-    score: 0,
-    maxScore: 8,
+    score,
+    maxScore,
   };
 }

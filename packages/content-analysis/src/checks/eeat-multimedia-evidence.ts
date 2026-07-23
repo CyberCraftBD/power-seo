@@ -4,8 +4,9 @@
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
 
-// Contextual caption patterns (figcaption, alt text with description)
-const CAPTION_PATTERNS = /<figcaption\b[^>]*>[^<]+<\/figcaption>/gi;
+// Contextual caption patterns (figcaption, alt text with description) —
+// bounded lazy body so nested markup inside <figcaption> still matches
+const CAPTION_PATTERNS = /<figcaption\b[^>]*>[\s\S]{1,300}?<\/figcaption>/gi;
 const FIGURE_PATTERN = /<figure\b/gi;
 
 // Before/after comparison patterns
@@ -99,9 +100,11 @@ export function checkMultimediaEvidence(input: ContentAnalysisInput): AnalysisRe
     }
   }
 
-  // Count figures with captions
+  // Count figures with captions (require at least one non-tag character inside)
   const figures = content.match(FIGURE_PATTERN) || [];
-  const captions = content.match(CAPTION_PATTERNS) || [];
+  const captions = (content.match(CAPTION_PATTERNS) || []).filter(
+    (c) => stripHtml(c).trim().length > 0,
+  );
   captionedImages = Math.min(figures.length, captions.length);
 
   // Count videos

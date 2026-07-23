@@ -15,14 +15,16 @@ export function checkNofollowLinks(input: ContentAnalysisInput): AnalysisResult 
     const attrs = match[1]!;
 
     // Extract href
-    const hrefMatch = attrs.match(/href=["']([^"'#]+)["']/i);
+    const hrefMatch = attrs.match(/href=["']([^"']+)["']/i);
     if (!hrefMatch) continue;
 
     const url = hrefMatch[1]!.trim();
 
-    // Skip non-http links
+    // Skip non-http links (pure anchors, mailto, tel, javascript, relative).
+    // URLs that merely contain a fragment are kept.
     if (
       !url ||
+      url.startsWith('#') ||
       url.startsWith('mailto:') ||
       url.startsWith('tel:') ||
       url.startsWith('javascript:') ||

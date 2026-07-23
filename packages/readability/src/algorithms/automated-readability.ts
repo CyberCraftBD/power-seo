@@ -13,7 +13,9 @@ import type { TextStatistics } from '@power-seo/core';
 export function automatedReadability(stats: TextStatistics): number {
   if (stats.wordCount === 0 || stats.sentenceCount === 0) return 0;
 
-  const charsPerWord = stats.characterCount / stats.wordCount;
+  // ARI is defined over letters and digits per word. characterCount includes
+  // spaces and punctuation, which inflates the grade (issue #165).
+  const charsPerWord = stats.letterDigitCount / stats.wordCount;
   const wordsPerSentence = stats.wordCount / stats.sentenceCount;
 
   const index = 4.71 * charsPerWord + 0.5 * wordsPerSentence - 21.43;

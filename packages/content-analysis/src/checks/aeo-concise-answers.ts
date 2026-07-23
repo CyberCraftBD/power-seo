@@ -5,27 +5,56 @@ import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
 import { stripHtml, getWords, extractTagContents } from '@power-seo/core';
 
 /**
+ * A heading is a question ONLY if it ends with "?" or starts with an
+ * interrogative word. Bare auxiliaries (is/are/can/does/etc.) anywhere in the
+ * heading do NOT qualify.
+ */
+function isQuestionHeading(headingText: string): boolean {
+  const trimmed = headingText.trim();
+  if (trimmed.length === 0) return false;
+  return trimmed.endsWith('?') || /^(?:what|how|why|when|where|who|which)\b/i.test(trimmed);
+}
+
+/**
+ * Slice the HTML section belonging to a heading: from the end of the heading
+ * up to the next heading of the same or higher level (h2 stops at the next
+ * h2; h3 stops at the next h2 or h3).
+ */
+function sliceSection(html: string, headingEnd: number, level: number): string {
+  const rest = html.slice(headingEnd);
+  const nextHeadingRegex = /<h([1-6])[^>]*>/gi;
+  let next: RegExpExecArray | null;
+  while ((next = nextHeadingRegex.exec(rest)) !== null) {
+    const nextLevel = Number(next[1]);
+    if (nextLevel <= level) {
+      return rest.slice(0, next.index);
+    }
+  }
+  return rest;
+}
+
+/**
  * Checks whether question-phrased headings are followed by concise 40–120 word
  * answer paragraphs. Perplexity AI study (2025): 40–60 word answer paragraphs
  * following question headings generate 220% more citations than longer answers.
  */
 function countConciseAnswers(html: string): { concise: number; total: number } {
-  const questionPattern = /\b(?:what|how|why|when|where|who|which|can|does|is|are|will|should)\b/i;
-  const headingRegex = /<h[23][^>]*>([\s\S]*?)<\/h[23]>/gi;
+  const headingRegex = /<h([23])[^>]*>([\s\S]*?)<\/h\1>/gi;
 
   let concise = 0;
   let total = 0;
   let match: RegExpExecArray | null;
 
   while ((match = headingRegex.exec(html)) !== null) {
-    const headingText = stripHtml(match[1] ?? '');
-    const isQuestion = questionPattern.test(headingText) || headingText.trim().endsWith('?');
-    if (!isQuestion) continue;
+    const headingText = stripHtml(match[2] ?? '');
+    if (!isQuestionHeading(headingText)) continue;
     total++;
 
-    const afterHeading = html.slice(match.index + match[0].length);
-    const nextParas = extractTagContents(afterHeading, 'p');
-    const firstPara = nextParas[0];
+    // Look for the answer only within this heading's own section, skipping
+    // non-<p> blocks (figure/ul/pre) when finding the first paragraph.
+    const level = Number(match[1]);
+    const section = sliceSection(html, match.index + match[0].length, level);
+    const firstPara = extractTagContents(section, 'p')[0];
 
     if (firstPara !== undefined) {
       const wordCount = getWords(stripHtml(firstPara)).length;
@@ -61,7 +90,7 @@ export function checkAeoConciseAnswers(input: ContentAnalysisInput): AnalysisRes
       id: 'aeo-concise-answers',
       title: 'Concise answer paragraphs (AEO)',
       description: 'No question-style headings (H2/H3) found. Add questions as headings and answer each with a 40–120 word paragraph. Perplexity AI study: 40–60 word answer paragraphs generate 220% more AI citations.',
-      status: 'poor',
+      status: 'na',
       score: 0,
       maxScore: 7,
     };

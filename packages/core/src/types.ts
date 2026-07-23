@@ -289,6 +289,8 @@ export interface TextStatistics {
   paragraphCount: number;
   syllableCount: number;
   characterCount: number;
+  /** Letters and digits only — excludes spaces and punctuation (used by ARI/Coleman-Liau). */
+  letterDigitCount: number;
   avgWordsPerSentence: number;
   avgSyllablesPerWord: number;
 }
