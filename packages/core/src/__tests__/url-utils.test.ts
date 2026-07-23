@@ -120,6 +120,14 @@ describe('ensureTrailingSlash', () => {
   it('should not double-add slash', () => {
     expect(ensureTrailingSlash('https://example.com/page/')).toBe('https://example.com/page/');
   });
+
+  it('should not produce a double slash for bare domains (#167)', () => {
+    expect(ensureTrailingSlash('https://example.com')).toBe('https://example.com/');
+  });
+
+  it('should add exactly one slash to a path without one (#167)', () => {
+    expect(ensureTrailingSlash('https://example.com/blog')).toBe('https://example.com/blog/');
+  });
 });
 
 describe('removeTrailingSlash', () => {

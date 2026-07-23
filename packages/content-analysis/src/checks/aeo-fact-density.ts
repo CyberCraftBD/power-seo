@@ -18,7 +18,7 @@ function countFactSignals(text: string): number {
   count += percentages?.length ?? 0;
 
   // Dollar/currency amounts: $1.2B, $42, €100, £50
-  const currencies = text.match(/[$€£¥]\s*\d+(?:[.,]\d+)?(?:\s*[BMKbmk](?:illion|illion)?)?/g);
+  const currencies = text.match(/[$€£¥]\s*\d+(?:[.,]\d+)?(?:\s*[BMKbmk](?:illion)?\b)?/g);
   count += currencies?.length ?? 0;
 
   // Year references: in 2024, since 2019, by 2026
@@ -29,8 +29,9 @@ function countFactSignals(text: string): number {
   const citedYears = text.match(/\(20\d{2}\)/g);
   count += citedYears?.length ?? 0;
 
-  // Multipliers: 3.5x, 2×, 4.8x
-  const multipliers = text.match(/\d+(?:\.\d+)?[x×]\b/g);
+  // Multipliers: 3.5x, 2×, 4.8x — note: no \b after × (a non-word char), or
+  // "2× more" would never match; require no following word char instead.
+  const multipliers = text.match(/\d+(?:\.\d+)?[x×](?!\w)/g);
   count += multipliers?.length ?? 0;
 
   // "According to" and attribution phrases

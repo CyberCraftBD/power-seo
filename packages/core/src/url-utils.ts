@@ -67,7 +67,11 @@ export function ensureTrailingSlash(url: string): string {
     // Don't add trailing slash to URLs with file extensions
     const lastSegment = parsed.pathname.split('/').pop() ?? '';
     if (lastSegment.includes('.')) return url;
-    parsed.pathname += '/';
+    // Bare-domain URLs already have a root '/' pathname — appending another
+    // slash would produce 'https://example.com//' (issue #167).
+    if (!parsed.pathname.endsWith('/')) {
+      parsed.pathname += '/';
+    }
     return parsed.toString();
   } catch {
     return url.endsWith('/') ? url : `${url}/`;

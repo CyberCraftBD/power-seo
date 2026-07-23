@@ -20,8 +20,8 @@ export function checkSecondaryKeyphrases(input: ContentAnalysisInput): AnalysisR
       title: 'Secondary keyphrases',
       description:
         'No secondary keyphrases (seed keywords) set. Add related keywords to broaden your topic coverage.',
-      status: 'ok',
-      score: 2,
+      status: 'na',
+      score: 0,
       maxScore: 5,
     });
     return results;
@@ -52,8 +52,8 @@ export function checkSecondaryKeyphrases(input: ContentAnalysisInput): AnalysisR
       title: 'Secondary keyphrases',
       description:
         'No valid secondary keyphrases provided. Add related keywords to broaden your topic coverage.',
-      status: 'ok',
-      score: 2,
+      status: 'na',
+      score: 0,
       maxScore: 5,
     });
     return results;

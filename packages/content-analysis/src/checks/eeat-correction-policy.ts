@@ -22,6 +22,14 @@ const UPDATE_PATTERNS: RegExp[] = [
   /\beditorial\s+(?:policy|standards|guidelines)\b/gi,
 ];
 
+/** Parses a date that can earn credit: valid and not in the future. */
+function toCreditableDate(value: string | Date | undefined): Date | null {
+  if (!value) return null;
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime()) || date.getTime() > Date.now()) return null;
+  return date;
+}
+
 export function checkCorrectionPolicy(input: ContentAnalysisInput): AnalysisResult {
   const content = input.content || '';
   const plainText = stripHtml(content);
@@ -30,33 +38,28 @@ export function checkCorrectionPolicy(input: ContentAnalysisInput): AnalysisResu
   const signals: string[] = [];
   const gaps: string[] = [];
 
-  // Check for publish and modified dates from input
-  if (input.publishDate) {
+  // Check for publish and modified dates from input (future dates are
+  // ignored; a modified date before the publish date is not a real update)
+  const publishDate = toCreditableDate(input.publishDate);
+  let modifiedDate = toCreditableDate(input.modifiedDate);
+  if (modifiedDate && publishDate && modifiedDate.getTime() < publishDate.getTime()) {
+    modifiedDate = null;
+  }
+
+  if (publishDate) {
     score += 1;
-    const pubDate =
-      input.publishDate instanceof Date
-        ? input.publishDate.toISOString().split('T')[0]
-        : String(input.publishDate);
-    signals.push(`publish date: ${pubDate}`);
+    signals.push(`publish date: ${publishDate.toISOString().split('T')[0]}`);
   } else {
     gaps.push('no publish date provided');
   }
 
-  if (input.modifiedDate) {
+  if (modifiedDate) {
     score += 2;
-    const modDate =
-      input.modifiedDate instanceof Date
-        ? input.modifiedDate.toISOString().split('T')[0]
-        : String(input.modifiedDate);
-    signals.push(`last modified: ${modDate}`);
+    signals.push(`last modified: ${modifiedDate.toISOString().split('T')[0]}`);
 
     // Check if modified date is after publish date
-    if (input.publishDate) {
-      const pub = new Date(input.publishDate);
-      const mod = new Date(input.modifiedDate);
-      if (mod > pub) {
-        signals.push('content has been updated since publication');
-      }
+    if (publishDate && modifiedDate.getTime() > publishDate.getTime()) {
+      signals.push('content has been updated since publication');
     }
   } else {
     gaps.push('no modified date provided');
@@ -82,11 +85,12 @@ export function checkCorrectionPolicy(input: ContentAnalysisInput): AnalysisResu
   }
 
   // Check HTML for structured date metadata
+  // .test() only, so no /g flag (a stateful lastIndex would skew results)
   const dateMetaPatterns = [
-    /datetime\s*=\s*["']\d{4}/gi,
-    /dateModified/gi,
-    /datePublished/gi,
-    /class\s*=\s*["'][^"']*(?:updated|modified|published)[\s-]?date[^"']*["']/gi,
+    /datetime\s*=\s*["']\d{4}/i,
+    /dateModified/i,
+    /datePublished/i,
+    /class\s*=\s*["'][^"']*(?:updated|modified|published)[\s-]?date[^"']*["']/i,
   ];
 
   for (const pattern of dateMetaPatterns) {

@@ -136,6 +136,94 @@ const SUB_INTENT_MAPPINGS: readonly SubIntentMapping[] = [
       },
     ],
   },
+  {
+    keyphrasePattern: /\b(?:checklist|list)\b/i,
+    label: '"checklist / list" article',
+    relatedIntents: [
+      {
+        name: '"how to" (implementation)',
+        pattern: /\b(?:how to|step.by.step|follow these|getting started)\b/i,
+      },
+      {
+        name: '"why it matters"',
+        pattern: /\b(?:why you should|why it matters|the reason|benefits of|importance of)\b/i,
+      },
+      {
+        name: 'common mistakes',
+        pattern: /\b(?:mistakes?|avoid|common errors?|pitfalls?|don't)\b/i,
+      },
+      {
+        name: 'tools/templates',
+        pattern: /\b(?:tools?|templates?|resources?|software|apps?|you'll need)\b/i,
+      },
+    ],
+  },
+  {
+    keyphrasePattern: /\btips?\b/i,
+    label: '"tips" article',
+    relatedIntents: [
+      {
+        name: '"how to" (implementation)',
+        pattern: /\b(?:how to|step.by.step|follow these|getting started)\b/i,
+      },
+      {
+        name: 'common mistakes',
+        pattern: /\b(?:mistakes?|avoid|common errors?|pitfalls?|don't)\b/i,
+      },
+      {
+        name: 'beginner guidance',
+        pattern: /\b(?:for beginners?|basics|fundamentals|start(?:ing)? out|new to)\b/i,
+      },
+      {
+        name: 'tools/resources',
+        pattern: /\b(?:tools?|resources?|software|apps?|platforms?|you'll need)\b/i,
+      },
+    ],
+  },
+  {
+    keyphrasePattern: /\bexamples?\b/i,
+    label: '"examples" article',
+    relatedIntents: [
+      {
+        name: '"what is" (definitional)',
+        pattern: /\b(?:what is|what are|definition|refers to|is a type of)\b/i,
+      },
+      {
+        name: '"how to" (implementation)',
+        pattern: /\b(?:how to|step.by.step|getting started|how to use|how to apply)\b/i,
+      },
+      {
+        name: 'templates/tools',
+        pattern: /\b(?:templates?|tools?|resources?|generators?|software)\b/i,
+      },
+      {
+        name: 'best practices',
+        pattern: /\b(?:best practices?|tips|guidelines|recommendations?|dos and don'ts)\b/i,
+      },
+    ],
+  },
+  {
+    keyphrasePattern: /\b(?:tutorial|guide)\b/i,
+    label: '"tutorial / guide" article',
+    relatedIntents: [
+      {
+        name: '"what is" (definitional)',
+        pattern: /\b(?:what is|what are|definition|refers to|is a type of)\b/i,
+      },
+      {
+        name: 'prerequisites/requirements',
+        pattern: /\b(?:prerequisites?|requirements?|before you (?:start|begin)|you'll need)\b/i,
+      },
+      {
+        name: 'common mistakes',
+        pattern: /\b(?:mistakes?|avoid|common errors?|pitfalls?|troubleshooting)\b/i,
+      },
+      {
+        name: 'next steps/advanced',
+        pattern: /\b(?:next steps?|advanced|going further|further reading|beyond the basics)\b/i,
+      },
+    ],
+  },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -171,9 +259,9 @@ export function checkIntentRelatedCoverage(
     }
   }
 
-  // If no sub-intent pattern matches, we cannot evaluate
+  // If no sub-intent pattern matches, this check does not apply — exclude it
+  // rather than penalizing an unrecognized keyphrase shape.
   if (!matchedMapping) {
-    // Fallback: use detected intent to give a generic assessment
     const detected = detectIntent(keyphrase);
     const intentLabel =
       detected.primary === 'commercial-investigation'
@@ -183,9 +271,9 @@ export function checkIntentRelatedCoverage(
       id,
       title,
       description:
-        `Could not determine a specific sub-intent pattern for this ${intentLabel} keyphrase. ` +
+        `No specific sub-intent pattern recognized for this ${intentLabel} keyphrase, so related intent coverage cannot be evaluated. ` +
         `Consider adding related topics that users commonly search for alongside "${keyphrase}".`,
-      status: 'poor',
+      status: 'na',
       score: 0,
       maxScore: 5,
     };

@@ -37,6 +37,24 @@ describe('fleschReadingEase', () => {
     expect(score).toBeGreaterThanOrEqual(0);
     expect(score).toBeLessThanOrEqual(100);
   });
+
+  // Issue #165: scores must be computed from raw words/sentences and
+  // syllables/words ratios, not the pre-rounded avg* display fields.
+  it('computes from raw ratios, not pre-rounded averages (#165)', () => {
+    const stats = {
+      wordCount: 10000,
+      sentenceCount: 500,
+      paragraphCount: 10,
+      syllableCount: 15449, // 1.5449 syllables/word — rounds to 1.54 for display
+      characterCount: 60000,
+      letterDigitCount: 48000,
+      avgWordsPerSentence: 20,
+      avgSyllablesPerWord: 1.54,
+    };
+    // Raw: 206.835 - 1.015 * 20 - 84.6 * 1.5449 = 55.837 → 55.84
+    // Pre-rounded 1.54 would give 56.25 instead.
+    expect(fleschReadingEase(stats)).toBeCloseTo(55.84, 2);
+  });
 });
 
 describe('fleschKincaidGrade', () => {
@@ -58,6 +76,22 @@ describe('fleschKincaidGrade', () => {
 
   it('returns a non-negative value', () => {
     expect(fleschKincaidGrade(simpleStats)).toBeGreaterThanOrEqual(0);
+  });
+
+  it('computes from raw ratios, not pre-rounded averages (#165)', () => {
+    const stats = {
+      wordCount: 10000,
+      sentenceCount: 500,
+      paragraphCount: 10,
+      syllableCount: 15449, // 1.5449 syllables/word — rounds to 1.54 for display
+      characterCount: 60000,
+      letterDigitCount: 48000,
+      avgWordsPerSentence: 20,
+      avgSyllablesPerWord: 1.54,
+    };
+    // Raw: 0.39 * 20 + 11.8 * 1.5449 - 15.59 = 10.43982 → 10.44
+    // Pre-rounded 1.54 would give 10.38 instead.
+    expect(fleschKincaidGrade(stats)).toBeCloseTo(10.44, 2);
   });
 });
 
@@ -124,8 +158,9 @@ describe('colemanLiau', () => {
     const content =
       'Well, yes, indeed, of course, naturally, certainly, absolutely, and, finally, done.';
     const stats = getTextStatistics(content);
-    // Many commas: the approximation over-counts letters vs. the true count.
-    expect(colemanLiau(stats, content)).toBeLessThan(colemanLiau(stats));
+    // Since #165 the fallback uses letterDigitCount, which already excludes
+    // punctuation — on digit-free text both paths now agree exactly.
+    expect(colemanLiau(stats)).toBeCloseTo(colemanLiau(stats, content), 2);
   });
 });
 
@@ -148,5 +183,21 @@ describe('automatedReadability', () => {
 
   it('returns a non-negative value', () => {
     expect(automatedReadability(simpleStats)).toBeGreaterThanOrEqual(0);
+  });
+
+  // Issue #165: ARI is defined over letters and digits per word, but the old
+  // implementation used characterCount, which includes spaces and punctuation.
+  it('uses letters+digits per word, not characterCount (#165)', () => {
+    const stats = complexStats;
+    const letters = (complexText.match(/[A-Za-z0-9]/g) ?? []).length;
+    const expected =
+      4.71 * (letters / stats.wordCount) + 0.5 * (stats.wordCount / stats.sentenceCount) - 21.43;
+    const inflated =
+      4.71 * (stats.characterCount / stats.wordCount) +
+      0.5 * (stats.wordCount / stats.sentenceCount) -
+      21.43;
+
+    expect(automatedReadability(stats)).toBeCloseTo(Math.max(0, expected), 2);
+    expect(automatedReadability(stats)).toBeLessThan(inflated);
   });
 });

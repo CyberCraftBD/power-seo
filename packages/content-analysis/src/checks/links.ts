@@ -13,12 +13,13 @@ function parseLinksFromContent(
   const internal: string[] = [];
   const external: string[] = [];
 
-  const hrefRegex = /<a\s[^>]*href=["']([^"'#]+)["'][^>]*>/gi;
+  const hrefRegex = /<a\s[^>]*href=["']([^"']+)["'][^>]*>/gi;
   let match;
   while ((match = hrefRegex.exec(html)) !== null) {
     const url = match[1]!.trim();
-    // Skip anchors, mailto, tel, javascript
-    if (!url || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('javascript:'))
+    // Skip pure anchors (href="#..."), mailto, tel, javascript. URLs that merely
+    // contain a fragment (e.g. https://example.com/study#results) are kept.
+    if (!url || url.startsWith('#') || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('javascript:'))
       continue;
 
     if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) {

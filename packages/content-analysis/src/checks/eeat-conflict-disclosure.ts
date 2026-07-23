@@ -18,19 +18,21 @@ const DISCLOSURE_PATTERNS: RegExp[] = [
   /\bfull\s+disclosure\b/gi,
   /\bmaterial\s+connection\b/gi,
   /\bFTC\s+(?:disclosure|guidelines?|compliance)\b/gi,
-  /\bad\b|\badvertisement\b|\b#ad\b|\b#sponsored\b/gi,
+  // Bare \bad\b matched "ad hoc"; \b#ad\b never matched after whitespace.
+  /\badvertisement\b|(?:^|[\s(>])#(?:ad|sponsored)\b/gi,
   /\bgifted\s+(?:product|item)\b/gi,
   /\bprovided\s+(?:for\s+review|by\s+the\s+(?:company|brand))\b/gi,
   /\bno\s+(?:financial|monetary)\s+(?:compensation|incentive)\b/gi,
   /\ball\s+opinions?\s+(?:are\s+)?(?:my|our)\s+own\b/gi,
 ];
 
-// Affiliate link patterns
+// Affiliate link patterns — .test() only, so no /g flag (a stateful
+// lastIndex would make results depend on previous calls).
 const AFFILIATE_LINK_PATTERNS: RegExp[] = [
-  /[?&](?:ref|tag|affiliate|aff|partner|tracking|utm_source|click_id|subid|hop)=/gi,
-  /(?:amzn\.to|bit\.ly|awin1\.com|shareasale|clickbank|jvzoo|commission\s*junction|impact\.com|partnerstack|referralcandy)/gi,
-  /\/ref=/gi,
-  /affiliate/gi,
+  /[?&](?:ref|tag|affiliate|aff|partner|tracking|utm_source|click_id|subid|hop)=/i,
+  /(?:amzn\.to|bit\.ly|awin1\.com|shareasale|clickbank|jvzoo|commission\s*junction|impact\.com|partnerstack|referralcandy)/i,
+  /\/ref=/i,
+  /affiliate/i,
 ];
 
 export function checkConflictDisclosure(input: ContentAnalysisInput): AnalysisResult {

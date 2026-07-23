@@ -32,7 +32,8 @@ const DEPTH_RANGES: Record<string, DepthRange> = {
  * Evaluate informational intent depth.
  * - < 500 = poor
  * - 500-999 = ok
- * - 1000+ = good
+ * - 1000-5000 = good
+ * - > 5000 = ok (above the ideal range)
  */
 function evaluateInformational(wordCount: number): {
   status: 'good' | 'ok' | 'poor';
@@ -51,6 +52,13 @@ function evaluateInformational(wordCount: number): {
       status: 'ok',
       score: 5,
       note: `${wordCount} words is slightly below the ideal range. Consider expanding to 1,000+ words for comprehensive coverage.`,
+    };
+  }
+  if (wordCount > 5000) {
+    return {
+      status: 'ok',
+      score: 5,
+      note: `${wordCount} words is above the ideal range for informational content. Consider trimming or splitting the topic into multiple focused articles.`,
     };
   }
   return {
@@ -112,7 +120,8 @@ function evaluateTransactional(wordCount: number): {
  * Evaluate commercial investigation intent depth.
  * - < 800 = poor
  * - 800-1499 = ok
- * - 1500+ = good
+ * - 1500-5000 = good
+ * - > 5000 = ok (above the ideal range)
  */
 function evaluateCommercial(wordCount: number): {
   status: 'good' | 'ok' | 'poor';
@@ -131,6 +140,13 @@ function evaluateCommercial(wordCount: number): {
       status: 'ok',
       score: 5,
       note: `${wordCount} words is slightly below the ideal range. Add more detail to comparisons and evaluations to reach 1,500+ words.`,
+    };
+  }
+  if (wordCount > 5000) {
+    return {
+      status: 'ok',
+      score: 5,
+      note: `${wordCount} words is above the ideal range for commercial investigation content. Consider trimming or splitting into separate comparison pages.`,
     };
   }
   return {

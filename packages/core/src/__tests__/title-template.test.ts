@@ -58,6 +58,11 @@ describe('applyTitleTemplate', () => {
     const result = applyTitleTemplate('%title% | %siteName%', { title: 'About' });
     expect(result).toBe('About');
   });
+
+  it('should keep leading/trailing dashes that belong to the title value (#167)', () => {
+    const result = applyTitleTemplate('%title%', { title: '-9 to 5- The Guide-' });
+    expect(result).toBe('-9 to 5- The Guide-');
+  });
 });
 
 describe('createTitleTemplate', () => {
