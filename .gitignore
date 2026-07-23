@@ -22,6 +22,10 @@ nul
 .env.local
 .env.*.local
 
+# Secrets / tokens
+temp_token.txt
+*.token
+
 # Turbo
 .turbo/
 
