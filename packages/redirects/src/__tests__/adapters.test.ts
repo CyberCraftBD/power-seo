@@ -63,7 +63,9 @@ describe('toNextRedirects', () => {
   });
 
   it('converts bare glob wildcards to Next.js catch-all segments', () => {
-    const rules: RedirectRule[] = [{ source: '/docs/*', destination: '/guides/*', statusCode: 301 }];
+    const rules: RedirectRule[] = [
+      { source: '/docs/*', destination: '/guides/*', statusCode: 301 },
+    ];
     const result = toNextRedirects(rules);
     expect(result[0]!.source).toBe('/docs/:splat*');
     expect(result[0]!.destination).toBe('/guides/:splat*');

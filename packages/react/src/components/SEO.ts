@@ -1,7 +1,6 @@
 'use client';
 // @power-seo/react — SEO Component
 
-
 import { createElement, Fragment } from 'react';
 import type { SEOConfig } from '@power-seo/core';
 import { buildMetaTags, buildLinkTags, resolveTitle } from '@power-seo/core';
@@ -23,8 +22,14 @@ export function SEO(props: SEOProps) {
       videos: props.openGraph?.videos ?? defaults?.openGraph?.videos,
     },
     twitter: { ...defaults?.twitter, ...props.twitter },
-    additionalMetaTags: [...(defaults?.additionalMetaTags ?? []), ...(props.additionalMetaTags ?? [])],
-    additionalLinkTags: [...(defaults?.additionalLinkTags ?? []), ...(props.additionalLinkTags ?? [])],
+    additionalMetaTags: [
+      ...(defaults?.additionalMetaTags ?? []),
+      ...(props.additionalMetaTags ?? []),
+    ],
+    additionalLinkTags: [
+      ...(defaults?.additionalLinkTags ?? []),
+      ...(props.additionalLinkTags ?? []),
+    ],
     languageAlternates: props.languageAlternates ?? defaults?.languageAlternates,
     titleTemplate: props.titleTemplate ?? defaults?.titleTemplate,
   };

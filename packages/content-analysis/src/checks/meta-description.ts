@@ -58,7 +58,8 @@ export function checkMetaDescription(input: ContentAnalysisInput): AnalysisResul
     results.push({
       id: 'meta-description-keyphrase',
       title: 'Keyphrase in meta description',
-      description: 'No focus keyphrase set. Set one to check keyphrase usage in the meta description.',
+      description:
+        'No focus keyphrase set. Set one to check keyphrase usage in the meta description.',
       status: 'na',
       score: 0,
       maxScore: 5,

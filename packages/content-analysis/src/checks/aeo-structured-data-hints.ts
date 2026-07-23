@@ -9,7 +9,10 @@ import { stripHtml, getWords } from '@power-seo/core';
  * how-to steps, and comparison structures. AI engines extract these 3.8× more
  * often than unstructured prose (SurferSEO AI content analysis, Q4 2025).
  */
-function detectStructuredPatterns(html: string, plain: string): {
+function detectStructuredPatterns(
+  html: string,
+  plain: string,
+): {
   hasTables: boolean;
   hasNumberedProcess: boolean;
   hasComparisonList: boolean;
@@ -27,13 +30,17 @@ function detectStructuredPatterns(html: string, plain: string): {
   const hasNumberedProcess = numberedProcessPatterns.some((p) => p.test(plain));
 
   // Comparison / feature list: "vs", "versus", "pros and cons", "advantages", "compared to"
-  const comparisonPattern = /\b(?:vs\.?|versus|pros?\s+and\s+cons?|advantages?\s+and\s+disadvantages?|compared\s+to|comparison)\b/i;
+  const comparisonPattern =
+    /\b(?:vs\.?|versus|pros?\s+and\s+cons?|advantages?\s+and\s+disadvantages?|compared\s+to|comparison)\b/i;
   const hasComparisonList = comparisonPattern.test(plain);
 
   // How-to patterns: "how to", "instructions", numbered lists in HTML
-  const hasHowTo = /\bhow\s+to\b/i.test(plain) && (/<ol[\s>]/i.test(html) || /<li[\s>]/i.test(html));
+  const hasHowTo =
+    /\bhow\s+to\b/i.test(plain) && (/<ol[\s>]/i.test(html) || /<li[\s>]/i.test(html));
 
-  const patternCount = [hasTables, hasNumberedProcess, hasComparisonList, hasHowTo].filter(Boolean).length;
+  const patternCount = [hasTables, hasNumberedProcess, hasComparisonList, hasHowTo].filter(
+    Boolean,
+  ).length;
 
   return { hasTables, hasNumberedProcess, hasComparisonList, hasHowTo, patternCount };
 }
@@ -54,7 +61,8 @@ export function checkAeoStructuredDataHints(input: ContentAnalysisInput): Analys
     };
   }
 
-  const { hasTables, hasNumberedProcess, hasComparisonList, hasHowTo, patternCount } = detectStructuredPatterns(content, plain);
+  const { hasTables, hasNumberedProcess, hasComparisonList, hasHowTo, patternCount } =
+    detectStructuredPatterns(content, plain);
 
   if (patternCount >= 2) {
     const patterns = [
@@ -62,7 +70,9 @@ export function checkAeoStructuredDataHints(input: ContentAnalysisInput): Analys
       hasNumberedProcess && 'numbered steps',
       hasComparisonList && 'comparison',
       hasHowTo && 'how-to list',
-    ].filter(Boolean).join(', ');
+    ]
+      .filter(Boolean)
+      .join(', ');
 
     return {
       id: 'aeo-structured-data-hints',
@@ -78,7 +88,8 @@ export function checkAeoStructuredDataHints(input: ContentAnalysisInput): Analys
     return {
       id: 'aeo-structured-data-hints',
       title: 'Structured content patterns (AEO)',
-      description: 'One structured pattern found. Add more: numbered step-by-step processes, comparison tables, feature lists, or how-to ordered lists. Each additional structure type increases AI engine extraction probability.',
+      description:
+        'One structured pattern found. Add more: numbered step-by-step processes, comparison tables, feature lists, or how-to ordered lists. Each additional structure type increases AI engine extraction probability.',
       status: 'ok',
       score: 4,
       maxScore: 7,
@@ -88,7 +99,8 @@ export function checkAeoStructuredDataHints(input: ContentAnalysisInput): Analys
   return {
     id: 'aeo-structured-data-hints',
     title: 'Structured content patterns (AEO)',
-    description: 'No structured content patterns detected. Add tables, numbered step-by-step processes, comparison sections ("X vs Y"), or how-to ordered lists. AI engines extract structured content 3.8× more often — and these patterns unlock Rich Results (HowTo, Table schema) in Google.',
+    description:
+      'No structured content patterns detected. Add tables, numbered step-by-step processes, comparison sections ("X vs Y"), or how-to ordered lists. AI engines extract structured content 3.8× more often — and these patterns unlock Rich Results (HowTo, Table schema) in Google.',
     status: 'poor',
     score: 0,
     maxScore: 7,

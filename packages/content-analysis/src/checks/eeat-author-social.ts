@@ -52,7 +52,8 @@ export function checkAuthorSocial(input: ContentAnalysisInput): AnalysisResult {
     return {
       id: 'eeat-author-social',
       title: 'Author social presence',
-      description: 'No author information provided. Add author social profiles to demonstrate real identity and cross-platform authority.',
+      description:
+        'No author information provided. Add author social profiles to demonstrate real identity and cross-platform authority.',
       status: 'poor',
       score: 0,
       maxScore: 5,
@@ -65,7 +66,8 @@ export function checkAuthorSocial(input: ContentAnalysisInput): AnalysisResult {
     return {
       id: 'eeat-author-social',
       title: 'Author social presence',
-      description: 'No social profiles linked. Add LinkedIn, Twitter/X, GitHub, or other professional profiles. Social presence signals that the author is a real, identifiable person (sameAs schema property).',
+      description:
+        'No social profiles linked. Add LinkedIn, Twitter/X, GitHub, or other professional profiles. Social presence signals that the author is a real, identifiable person (sameAs schema property).',
       status: 'poor',
       score: 0,
       maxScore: 5,
@@ -87,7 +89,7 @@ export function checkAuthorSocial(input: ContentAnalysisInput): AnalysisResult {
     }
   }
 
-  const hasLinkedIn = platforms.some(p => p === 'linkedin');
+  const hasLinkedIn = platforms.some((p) => p === 'linkedin');
   const hasTechnical = categories.has('technical');
   const hasPublishing = categories.has('publishing');
   const hasAcademic = categories.has('academic');
@@ -113,7 +115,8 @@ export function checkAuthorSocial(input: ContentAnalysisInput): AnalysisResult {
   if (profiles.length >= 2 || (profiles.length >= 1 && hasLinkedIn)) {
     const suggestions: string[] = [];
     if (!hasLinkedIn) suggestions.push('add LinkedIn for professional credibility');
-    if (diversityScore < 2) suggestions.push('diversify across professional, technical, and publishing platforms');
+    if (diversityScore < 2)
+      suggestions.push('diversify across professional, technical, and publishing platforms');
     if (profiles.length < 3) suggestions.push('add more profiles for stronger identity signals');
     return {
       id: 'eeat-author-social',

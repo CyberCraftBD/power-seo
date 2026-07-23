@@ -60,7 +60,7 @@ export function checkIntentModifierAnalysis(input: ContentAnalysisInput): Analys
 
   const parts: string[] = [];
   for (const [label, words] of byIntent) {
-    const quoted = words.map(w => '"' + w + '"').join(', ');
+    const quoted = words.map((w) => '"' + w + '"').join(', ');
     parts.push(quoted + ' (' + label + ')');
   }
 
@@ -71,7 +71,9 @@ export function checkIntentModifierAnalysis(input: ContentAnalysisInput): Analys
       id: 'intent-modifier-analysis',
       title: 'Intent modifier analysis',
       description:
-        modifiers.length + ' intent modifiers detected. ' + summary +
+        modifiers.length +
+        ' intent modifiers detected. ' +
+        summary +
         ' Multiple modifiers give search engines strong signals about what the user expects.',
       status: 'good',
       score: 5,
@@ -89,8 +91,10 @@ export function checkIntentModifierAnalysis(input: ContentAnalysisInput): Analys
     id: 'intent-modifier-analysis',
     title: 'Intent modifier analysis',
     description:
-      '1 intent modifier detected. ' + summary +
-      ' A single modifier signals ' + singleLabel +
+      '1 intent modifier detected. ' +
+      summary +
+      ' A single modifier signals ' +
+      singleLabel +
       ', but adding a second modifier would strengthen the intent signal and help search engines ' +
       'match your content more precisely.',
     status: 'ok',

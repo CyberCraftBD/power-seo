@@ -65,9 +65,7 @@ describe('splitSitemap', () => {
 
   it('does not produce double slashes across multiple split sitemaps (issue #137)', () => {
     const urls = Array.from({ length: 4 }, (_, i) => ({ loc: `/page-${i}` }));
-    const result = splitSitemap(
-      { hostname: 'https://example.com/', urls, maxUrlsPerSitemap: 2 },
-    );
+    const result = splitSitemap({ hostname: 'https://example.com/', urls, maxUrlsPerSitemap: 2 });
 
     expect(result.index).toContain('<loc>https://example.com/sitemap-0.xml</loc>');
     expect(result.index).toContain('<loc>https://example.com/sitemap-1.xml</loc>');

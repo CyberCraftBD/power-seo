@@ -88,7 +88,8 @@ export function checkIntentOpeningMatch(input: ContentAnalysisInput): AnalysisRe
     return {
       id: 'intent-opening-match',
       title: 'Opening paragraph intent signal',
-      description: 'No focus keyphrase set. Set one to evaluate opening paragraph intent alignment.',
+      description:
+        'No focus keyphrase set. Set one to evaluate opening paragraph intent alignment.',
       status: 'na',
       score: 0,
       maxScore: 5,
@@ -96,7 +97,8 @@ export function checkIntentOpeningMatch(input: ContentAnalysisInput): AnalysisRe
   }
 
   const detected = detectIntent(focusKeyphrase);
-  const intentLabel = detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
+  const intentLabel =
+    detected.primary === 'commercial-investigation' ? 'commercial' : detected.primary;
 
   const plainText = stripHtml(content);
   const allWords = getWords(plainText);

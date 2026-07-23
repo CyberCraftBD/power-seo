@@ -89,7 +89,8 @@ export function checkAeoConciseAnswers(input: ContentAnalysisInput): AnalysisRes
     return {
       id: 'aeo-concise-answers',
       title: 'Concise answer paragraphs (AEO)',
-      description: 'No question-style headings (H2/H3) found. Add questions as headings and answer each with a 40–120 word paragraph. Perplexity AI study: 40–60 word answer paragraphs generate 220% more AI citations.',
+      description:
+        'No question-style headings (H2/H3) found. Add questions as headings and answer each with a 40–120 word paragraph. Perplexity AI study: 40–60 word answer paragraphs generate 220% more AI citations.',
       status: 'na',
       score: 0,
       maxScore: 7,

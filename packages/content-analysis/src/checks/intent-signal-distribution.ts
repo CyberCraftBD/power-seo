@@ -68,17 +68,14 @@ function divideIntoQuartiles(words: string[], count: number): string[] {
  *
  * Returns 'na' if total word count < 200 (too short to assess distribution).
  */
-export function checkIntentSignalDistribution(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentSignalDistribution(input: ContentAnalysisInput): AnalysisResult {
   const { focusKeyphrase, content } = input;
 
   if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
     return {
       id: 'intent-signal-distribution',
       title: 'Intent signal distribution',
-      description:
-        'No focus keyphrase set. Set one to analyze intent signal distribution.',
+      description: 'No focus keyphrase set. Set one to analyze intent signal distribution.',
       status: 'na',
       score: 0,
       maxScore: 5,

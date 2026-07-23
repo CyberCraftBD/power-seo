@@ -19,7 +19,13 @@ function parseLinksFromContent(
     const url = match[1]!.trim();
     // Skip pure anchors (href="#..."), mailto, tel, javascript. URLs that merely
     // contain a fragment (e.g. https://example.com/study#results) are kept.
-    if (!url || url.startsWith('#') || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('javascript:'))
+    if (
+      !url ||
+      url.startsWith('#') ||
+      url.startsWith('mailto:') ||
+      url.startsWith('tel:') ||
+      url.startsWith('javascript:')
+    )
       continue;
 
     if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../')) {

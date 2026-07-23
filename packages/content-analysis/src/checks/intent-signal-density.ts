@@ -41,17 +41,14 @@ function countMatches(text: string, pattern: RegExp): number {
  * - poor (1): density < 2
  * - poor (0): density === 0 (no signals at all)
  */
-export function checkIntentSignalDensity(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentSignalDensity(input: ContentAnalysisInput): AnalysisResult {
   const { focusKeyphrase, content } = input;
 
   if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
     return {
       id: 'intent-signal-density',
       title: 'Intent signal density',
-      description:
-        'No focus keyphrase set. Set one to analyze intent signal density.',
+      description: 'No focus keyphrase set. Set one to analyze intent signal density.',
       status: 'na',
       score: 0,
       maxScore: 5,

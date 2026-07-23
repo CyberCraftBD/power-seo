@@ -73,6 +73,7 @@ Answer Engine Optimization (AEO) is now a first-class scoring category. With AI 
 - **`aeo-entity-coverage`** (maxScore: 9) — Estimates named entity density (proper nouns, brands, technologies, people, standards). Target: 15–25 entities per 1,000 words. Kalicube AEO study: 15+ entities/1,000 words = 4.8× higher AI engine selection rate.
 
 #### New `CheckId` Union Types
+
 - Added 8 new AEO check IDs to the `CheckId` union type in `types.ts`
 - Full TypeScript type safety and `disabledChecks` config support for all AEO checks
 
@@ -82,49 +83,49 @@ Answer Engine Optimization (AEO) is now a first-class scoring category. With AI 
 
 Weights revised based on 2026 ranking factor research: Google Content Warehouse API Leak (2024), NavBoost signals confirmed in DOJ antitrust trial, First Page Sage Q1 2025 correlation study, and Ahrefs/Portent readability research.
 
-| Category | Old Weight | New Weight | Rationale |
-|---|---|---|---|
-| E-E-A-T | 35% | 30% | Adjusted to accommodate AEO |
-| Intent | 27% | 24% | Adjusted to accommodate AEO |
-| **AEO** | **0%** | **20%** | New category — AI engine citation signals |
-| SEO Analysis | 26% | 18% | Keyword density confirmed NOT a ranking factor (Mueller) |
-| SERP/CTR | 2% | 5% | NavBoost click signals confirmed critical by DOJ trial |
-| Readability | 9% | 2% | Zero correlation with rankings (Ahrefs, Portent studies) |
-| Social | 1% | 1% | Unchanged |
+| Category     | Old Weight | New Weight | Rationale                                                |
+| ------------ | ---------- | ---------- | -------------------------------------------------------- |
+| E-E-A-T      | 35%        | 30%        | Adjusted to accommodate AEO                              |
+| Intent       | 27%        | 24%        | Adjusted to accommodate AEO                              |
+| **AEO**      | **0%**     | **20%**    | New category — AI engine citation signals                |
+| SEO Analysis | 26%        | 18%        | Keyword density confirmed NOT a ranking factor (Mueller) |
+| SERP/CTR     | 2%         | 5%         | NavBoost click signals confirmed critical by DOJ trial   |
+| Readability  | 9%         | 2%         | Zero correlation with rankings (Ahrefs, Portent studies) |
+| Social       | 1%         | 1%         | Unchanged                                                |
 
 #### maxScore Calibration — content-analysis Checks
 
 All check `maxScore` values recalibrated to reflect 2026 research-backed importance weighting. Previously all checks had `maxScore: 5`; now checks are weighted by their actual impact on search rankings:
 
-| Check | Old maxScore | New maxScore | Reason |
-|---|---|---|---|
-| `word-count` | 5 | 10 | First Page Sage: satisfying content = 23% of ranking weight |
-| `content-freshness` | 5 | 10 | First Page Sage: freshness = 6%; critical for AI grounding |
-| `media-count` | 5 | 8 | Visual content improves dwell time (NavBoost signal) |
-| `eeat-content-accuracy` | 5 | 10 | Core trust signal; YMYL pages penalised heavily for inaccuracy |
-| `eeat-source-quality` | 5 | 10 | External citations = primary E-E-A-T trust signal |
-| `eeat-author-schema` | 5 | 10 | Author markup directly consumed by Google E-E-A-T evaluators |
-| `eeat-experience-depth` | 5 | 9 | First-hand experience confirmed as ranking differentiator (HCU) |
-| `eeat-topical-authority` | 5 | 8 | Content Warehouse API: `siteFocusScore` is a core ranking signal |
-| `eeat-overall-score` | 5 | 8 | Aggregated E-E-A-T pillar summary |
-| `intent-keyword-classification` | 5 | 10 | Intent mismatch = primary cause of ranking failure |
-| `intent-content-alignment` | 5 | 10 | Google's primary satisfaction signal |
-| `intent-satisfaction-score` | 5 | 10 | NavBoost: satisfying intent → good clicks → ranking boost |
-| `intent-format-match` | 5 | 8 | Format mismatch reduces dwell time (NavBoost bad click signal) |
-| `intent-depth-match` | 5 | 8 | Thin content for intent = high bounce = NavBoost penalty |
-| `intent-snippet-readiness` | 5 | 6 | Featured snippet still present in non-AI-Overview results |
-| `keyphrase-density` | 5 | 1 | Confirmed NOT a ranking factor (John Mueller, multiple statements) |
+| Check                           | Old maxScore | New maxScore | Reason                                                             |
+| ------------------------------- | ------------ | ------------ | ------------------------------------------------------------------ |
+| `word-count`                    | 5            | 10           | First Page Sage: satisfying content = 23% of ranking weight        |
+| `content-freshness`             | 5            | 10           | First Page Sage: freshness = 6%; critical for AI grounding         |
+| `media-count`                   | 5            | 8            | Visual content improves dwell time (NavBoost signal)               |
+| `eeat-content-accuracy`         | 5            | 10           | Core trust signal; YMYL pages penalised heavily for inaccuracy     |
+| `eeat-source-quality`           | 5            | 10           | External citations = primary E-E-A-T trust signal                  |
+| `eeat-author-schema`            | 5            | 10           | Author markup directly consumed by Google E-E-A-T evaluators       |
+| `eeat-experience-depth`         | 5            | 9            | First-hand experience confirmed as ranking differentiator (HCU)    |
+| `eeat-topical-authority`        | 5            | 8            | Content Warehouse API: `siteFocusScore` is a core ranking signal   |
+| `eeat-overall-score`            | 5            | 8            | Aggregated E-E-A-T pillar summary                                  |
+| `intent-keyword-classification` | 5            | 10           | Intent mismatch = primary cause of ranking failure                 |
+| `intent-content-alignment`      | 5            | 10           | Google's primary satisfaction signal                               |
+| `intent-satisfaction-score`     | 5            | 10           | NavBoost: satisfying intent → good clicks → ranking boost          |
+| `intent-format-match`           | 5            | 8            | Format mismatch reduces dwell time (NavBoost bad click signal)     |
+| `intent-depth-match`            | 5            | 8            | Thin content for intent = high bounce = NavBoost penalty           |
+| `intent-snippet-readiness`      | 5            | 6            | Featured snippet still present in non-AI-Overview results          |
+| `keyphrase-density`             | 5            | 1            | Confirmed NOT a ranking factor (John Mueller, multiple statements) |
 
 #### maxScore Calibration — readability Checks (`@power-seo/readability`)
 
-| Check | Old maxScore | New maxScore | Reason |
-|---|---|---|---|
-| `sentence-length` | 5 | 8 | Affects scanability and dwell time |
-| `paragraph-length` | 5 | 8 | Mobile UX signal; affects bounce rate |
-| `passive-voice` | 5 | 6 | Clarity signal; affects comprehension |
-| `flesch-reading-ease` | 5 | 4 | Zero correlation with rankings (Ahrefs 2024 study, 1.9M pages) |
-| `transition-words` | 5 | 3 | Minor UX signal only |
-| `consecutive-sentences` | 5 | 3 | Minor stylistic signal only |
+| Check                   | Old maxScore | New maxScore | Reason                                                         |
+| ----------------------- | ------------ | ------------ | -------------------------------------------------------------- |
+| `sentence-length`       | 5            | 8            | Affects scanability and dwell time                             |
+| `paragraph-length`      | 5            | 8            | Mobile UX signal; affects bounce rate                          |
+| `passive-voice`         | 5            | 6            | Clarity signal; affects comprehension                          |
+| `flesch-reading-ease`   | 5            | 4            | Zero correlation with rankings (Ahrefs 2024 study, 1.9M pages) |
+| `transition-words`      | 5            | 3            | Minor UX signal only                                           |
+| `consecutive-sentences` | 5            | 3            | Minor stylistic signal only                                    |
 
 ### Fixed
 
@@ -143,6 +144,7 @@ All check `maxScore` values recalibrated to reflect 2026 research-backed importa
 Comprehensive Google E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signal detection:
 
 **Experience (5 checks)**
+
 - `eeat-experience-depth` — First-hand experience signals (personal pronouns, temporal markers, testing outcomes, process narration)
 - `eeat-original-research` — Original data, surveys, experiments, and unique findings
 - `eeat-specificity-depth` — Specific details, product versions, measurements that demonstrate hands-on knowledge
@@ -150,6 +152,7 @@ Comprehensive Google E-E-A-T (Experience, Expertise, Authoritativeness, Trustwor
 - `eeat-case-study-patterns` — Case study and real-world example patterns
 
 **Expertise (5 checks)**
+
 - `eeat-author-schema` — Author JSON-LD schema completeness (name, jobTitle, worksFor, credentials, knowsAbout, sameAs)
 - `eeat-topical-authority` — Topical focus and niche expertise signals
 - `eeat-technical-vocabulary` — Domain-specific technical terminology usage
@@ -157,6 +160,7 @@ Comprehensive Google E-E-A-T (Experience, Expertise, Authoritativeness, Trustwor
 - `eeat-methodology-transparency` — Research methods, data sources, and process transparency
 
 **Authoritativeness (5 checks)**
+
 - `eeat-author-social` — Social profile links (LinkedIn, Twitter/X, GitHub)
 - `eeat-organization` — Organization schema and brand signals
 - `eeat-published-works` — References to publications, research papers, books
@@ -164,6 +168,7 @@ Comprehensive Google E-E-A-T (Experience, Expertise, Authoritativeness, Trustwor
 - `eeat-editorial-review` — Editorial process signals (reviewed by, fact-checked, updated by)
 
 **Trustworthiness (6 checks)**
+
 - `eeat-source-quality` — External link quality and diversity (academic, government, industry)
 - `eeat-ymyl-compliance` — YMYL (Your Money or Your Life) content risk level assessment
 - `eeat-conflict-disclosure` — Conflict of interest and sponsorship disclosure
@@ -172,6 +177,7 @@ Comprehensive Google E-E-A-T (Experience, Expertise, Authoritativeness, Trustwor
 - `eeat-privacy-safety` — Privacy policy, terms, and safety signal detection
 
 **Meta Scores (2 checks)**
+
 - `eeat-overall-score` — Aggregated E-E-A-T pillar health summary
 - `eeat-ymyl-multiplier` — Score multiplier for YMYL categories (medical, legal, financial)
 
@@ -192,6 +198,7 @@ Full search intent lifecycle coverage:
 **User Journey (4)**: `intent-satisfaction-score`, `intent-funnel-position`, `intent-related-coverage`, `intent-engagement-signals`
 
 #### Extended Content Checks — 10 New Checks (`@power-seo/content-analysis`)
+
 - `competing-links` — Detects links that may redirect users away from conversion paths
 - `content-freshness` — Evaluates last-modified date and freshness signals
 - `headline-analyzer` — Power word analysis, sentiment, and title effectiveness scoring
@@ -218,6 +225,7 @@ Full search intent lifecycle coverage:
 - **Blob URL labels**: Fixed image alt-text check incorrectly flagging blob: URLs as missing alt text (#120)
 
 #### Reliability
+
 - Hardened `getWords()` utility to handle null/undefined content without throwing
 - Fixed `checkHeadings()` returning wrong H-level counts when headings contain nested inline elements
 - Corrected `keyphrase-slug` false positives when canonical URL contains query parameters
@@ -229,21 +237,25 @@ Full search intent lifecycle coverage:
 ### Fixed
 
 #### Core Functionality
+
 - **#115 @power-seo/sitemap**: Fixed XML string return incompatibility with Next.js app/sitemap.ts convention — now returns proper array structure for Next.js integration
 - **#114 @power-seo/meta**: Fixed silent dropping of advanced robots directives (maxSnippet, maxImagePreview, etc.) — now properly handles all directive types
 - **#113 @power-seo/react**: Fixed incompatibility with Next.js App Router Server Components — components now work correctly in server-side contexts
 
 #### Security & Performance
+
 - **Network Access**: Removed unnecessary network access from build/runtime context in @power-seo/integrations package
 - Fixed potential XSS vectors in schema markup handling
 - Improved input validation for URL normalization
 
 #### Minor Package Fixes
+
 - **@power-seo/core**: Enhanced URL normalization to handle edge cases with query parameters
 - **@power-seo/schema**: Fixed type inference for optional schema properties
 - **@power-seo/audit**: Corrected scoring calculation for edge cases with zero-length content
 
 #### Documentation
+
 - **@power-seo/preview**: Added TwitterImageValidation structure documentation
 - **@power-seo/sitemap**: Fixed lastmod conversion claim and clarified namespace detection scope
 - **@power-seo/redirects**: Corrected API function signatures, status codes, and config types (5 fixes)
@@ -265,6 +277,7 @@ Full search intent lifecycle coverage:
 ### Added
 
 #### Documentation
+
 - Comprehensive GitHub Wiki with 38+ pages covering all packages and use cases
 - Interactive MDX documentation files for enhanced learning experience
 - Home page with organized navigation for Quick Start, Core Concepts, and Package APIs
@@ -272,6 +285,7 @@ Full search intent lifecycle coverage:
 - Complete guide to all 17 packages with API references
 
 #### Features
+
 - Wiki-based documentation system for better discoverability
 - Enhanced package documentation with real-world examples
 - MDX files for interactive documentation in docs/ directory
@@ -280,6 +294,7 @@ Full search intent lifecycle coverage:
 ### Changed
 
 #### Documentation
+
 - Updated README.md with comprehensive documentation links
 - Restructured docs/ directory with WIKI_HOME.mdx for easy navigation
 - Improved package selection guide with visual organization
@@ -299,6 +314,7 @@ Full search intent lifecycle coverage:
 ### Added
 
 #### New Packages
+
 - **@power-seo/ai** - LLM-agnostic AI prompt templates for SEO tasks
 - **@power-seo/search-console** - Google Search Console API client
 - **@power-seo/integrations** - Semrush and Ahrefs API clients
@@ -308,6 +324,7 @@ Full search intent lifecycle coverage:
 - **@power-seo/readability** - Readability scoring algorithms
 
 #### Features
+
 - Real-time content analysis (Yoast-style scoring)
 - Pixel-accurate SERP previews
 - XML sitemap streaming for 50,000+ URLs
@@ -319,6 +336,7 @@ Full search intent lifecycle coverage:
 - Advanced filtering and monitoring
 
 #### Documentation
+
 - 11 comprehensive wiki pages (5,063 lines)
 - 20+ GitHub Discussion templates
 - Getting started guides for all frameworks
@@ -329,6 +347,7 @@ Full search intent lifecycle coverage:
 - Complete API reference
 
 #### Build & CI/CD
+
 - GitHub Actions workflows
 - Changesets-based versioning
 - ESLint and Prettier configuration
@@ -340,12 +359,14 @@ Full search intent lifecycle coverage:
 ### Changed
 
 #### API Improvements
+
 - Full TypeScript support across all packages
 - Standardized error handling
 - Better validation error messages
 - Enhanced type definitions
 
 #### Performance
+
 - Optimized bundle sizes
 - Tree-shakeable exports
 - Dual ESM + CJS output
@@ -353,6 +374,7 @@ Full search intent lifecycle coverage:
 - Improved memory usage
 
 #### Documentation
+
 - Updated package READMEs
 - Added 120+ SVG assets
 - Interactive examples
@@ -380,6 +402,7 @@ Full search intent lifecycle coverage:
 ## [1.0.1] - 2026-01-05
 
 ### Added
+
 - Multi-language support and i18n
 - Accessibility improvements
 - Advanced analytics dashboard
@@ -387,6 +410,7 @@ Full search intent lifecycle coverage:
 - Data export utilities
 
 ### Fixed
+
 - Content analysis edge cases
 - Readability accuracy
 - Schema validation
@@ -398,6 +422,7 @@ Full search intent lifecycle coverage:
 ### Added
 
 #### Core Packages (10)
+
 - @power-seo/core - Zero-dependency foundation
 - @power-seo/react - React SEO components
 - @power-seo/meta - SSR meta helpers
@@ -410,6 +435,7 @@ Full search intent lifecycle coverage:
 - @power-seo/audit - Full audit engine
 
 ### Features
+
 - Type-safe builders for all SEO tasks
 - Framework-native (Next.js 14+, Remix v2, React SPAs)
 - Comprehensive test coverage
@@ -422,11 +448,13 @@ Full search intent lifecycle coverage:
 ## [1.0.0-beta.1] - 2025-10-01
 
 ### Added
+
 - Beta release for testing
 - End-to-end test suite
 - Documentation and examples
 
 ### Fixed
+
 - Community feedback issues
 - Edge case handling
 
@@ -435,6 +463,7 @@ Full search intent lifecycle coverage:
 ## [1.0.0-alpha] - 2025-09-15
 
 ### Added
+
 - Alpha release for early testing
 - Core functionality
 - API documentation

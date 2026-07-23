@@ -13,15 +13,20 @@ interface TransactionalElement {
   present: boolean;
 }
 
-export function checkIntentTransactionalElements(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentTransactionalElements(input: ContentAnalysisInput): AnalysisResult {
   const id = 'intent-transactional-elements';
   const title = 'Transactional content elements';
 
   // No keyphrase — cannot determine intent
   if (!input.focusKeyphrase || input.focusKeyphrase.trim().length === 0) {
-    return { id, title, description: 'No focus keyphrase set.', status: 'na', score: 0, maxScore: 5 };
+    return {
+      id,
+      title,
+      description: 'No focus keyphrase set.',
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    };
   }
 
   // Only applies to transactional intent
@@ -43,34 +48,46 @@ export function checkIntentTransactionalElements(
   const elements: TransactionalElement[] = [];
 
   // 1. Price / cost mentions
-  const hasPricing = /\$\d/.test(plainText)
-    || /\b(?:price|cost|pricing)\b/i.test(plainText)
-    || /(?:USD|EUR|GBP|CAD|AUD)\s*\d/i.test(plainText)
-    || /\d+\.\d{2}\b/.test(plainText);
+  const hasPricing =
+    /\$\d/.test(plainText) ||
+    /\b(?:price|cost|pricing)\b/i.test(plainText) ||
+    /(?:USD|EUR|GBP|CAD|AUD)\s*\d/i.test(plainText) ||
+    /\d+\.\d{2}\b/.test(plainText);
   elements.push({ name: 'Price/cost mentions', present: hasPricing });
 
   // 2. Product specs
-  const hasSpecs = /\b(?:specifications|features|dimensions|weight|material|compatibility)\b/i.test(plainText);
+  const hasSpecs = /\b(?:specifications|features|dimensions|weight|material|compatibility)\b/i.test(
+    plainText,
+  );
   elements.push({ name: 'Product specifications', present: hasSpecs });
 
   // 3. Availability
-  const hasAvailability = /\b(?:in stock|available|ships|delivery|ready to ship)\b/i.test(plainText);
+  const hasAvailability = /\b(?:in stock|available|ships|delivery|ready to ship)\b/i.test(
+    plainText,
+  );
   elements.push({ name: 'Availability info', present: hasAvailability });
 
   // 4. Purchase CTAs
-  const hasCTAs = /\b(?:buy now|add to cart|order|get started|try free|start trial)\b/i.test(plainText);
+  const hasCTAs = /\b(?:buy now|add to cart|order|get started|try free|start trial)\b/i.test(
+    plainText,
+  );
   elements.push({ name: 'Purchase CTAs', present: hasCTAs });
 
   // 5. Trust signals
-  const hasTrust = /\b(?:guarantee|warranty|money-back|secure|verified|certified|free returns)\b/i.test(plainText);
+  const hasTrust =
+    /\b(?:guarantee|warranty|money-back|secure|verified|certified|free returns)\b/i.test(plainText);
   elements.push({ name: 'Trust signals', present: hasTrust });
 
   // 6. Shipping info
-  const hasShipping = /\b(?:free shipping|delivery|ships within|express|standard shipping)\b/i.test(plainText);
+  const hasShipping = /\b(?:free shipping|delivery|ships within|express|standard shipping)\b/i.test(
+    plainText,
+  );
   elements.push({ name: 'Shipping information', present: hasShipping });
 
   // 7. Payment options
-  const hasPayment = /\b(?:pay with|credit card|paypal|payment plan|installment|financing)\b/i.test(plainText);
+  const hasPayment = /\b(?:pay with|credit card|paypal|payment plan|installment|financing)\b/i.test(
+    plainText,
+  );
   elements.push({ name: 'Payment options', present: hasPayment });
 
   // 8. Reviews / ratings

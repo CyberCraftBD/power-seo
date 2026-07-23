@@ -24,8 +24,7 @@ const SUB_TYPE_FORMATS: Record<string, string> = {
     'Include address, hours, map embed, and local schema markup. Mention the specific location in title and headings.',
   reference:
     'Create a well-organized list or resource page with brief descriptions. Use anchor links for easy navigation.',
-  news:
-    'Use an inverted pyramid structure (most important info first). Include dates, sources, and NewsArticle schema.',
+  news: 'Use an inverted pyramid structure (most important info first). Include dates, sources, and NewsArticle schema.',
   unknown:
     'Sub-type could not be determined. The primary intent was detected but the specific content format needed is unclear.',
 };

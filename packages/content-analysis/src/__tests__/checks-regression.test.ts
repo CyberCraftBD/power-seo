@@ -190,8 +190,7 @@ describe('answer location within section boundaries (#155)', () => {
 describe('checkAeoTldrSummary (#163 item 6)', () => {
   it('does not treat "Product Overview" as a summary heading', () => {
     const content =
-      `<h2>Product Overview</h2><p>${words(320)}</p>` +
-      '<ul><li>Unrelated list item</li></ul>';
+      `<h2>Product Overview</h2><p>${words(320)}</p>` + '<ul><li>Unrelated list item</li></ul>';
     const result = checkAeoTldrSummary(makeInput({ content }));
     expect(result.status).toBe('poor');
   });
@@ -306,9 +305,7 @@ describe('link parsing with fragments (#161)', () => {
   });
 
   it('still skips pure anchor links', () => {
-    const results = checkLinks(
-      makeInput({ content: '<p><a href="#top">Back to top</a></p>' }),
-    );
+    const results = checkLinks(makeInput({ content: '<p><a href="#top">Back to top</a></p>' }));
     expect(results.find((r) => r.id === 'internal-links')!.status).toBe('poor');
     expect(results.find((r) => r.id === 'external-links')!.status).toBe('poor');
   });
@@ -404,8 +401,7 @@ describe('intent-cta-alignment prose false positives (#163)', () => {
     const result = checkIntentCtaAlignment(
       makeInput({
         focusKeyphrase: 'best crm software guide',
-        content:
-          '<p>Intro prose.</p><a href="/more">Learn more</a><button>Buy now</button>',
+        content: '<p>Intro prose.</p><a href="/more">Learn more</a><button>Buy now</button>',
       }),
     );
     expect(result.description).toContain('buy now');

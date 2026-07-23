@@ -111,7 +111,8 @@ export function checkAeoFaqSection(input: ContentAnalysisInput): AnalysisResult 
   return {
     id: 'aeo-faq-section',
     title: 'FAQ section (AEO)',
-    description: 'No FAQ-style Q&A structure found. Add a "Frequently Asked Questions" section with 5–8 question headings (H2/H3 ending in "?") each answered in 40–80 words. This is the single highest-impact AEO signal for citation in AI answers.',
+    description:
+      'No FAQ-style Q&A structure found. Add a "Frequently Asked Questions" section with 5–8 question headings (H2/H3 ending in "?") each answered in 40–80 words. This is the single highest-impact AEO signal for citation in AI answers.',
     status: 'poor',
     score: 0,
     maxScore: 10,

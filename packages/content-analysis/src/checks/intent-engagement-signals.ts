@@ -20,9 +20,7 @@ function checkTableOfContents(content: string): boolean {
   const contentLower = content.toLowerCase();
 
   // Check for explicit TOC text
-  const hasTocText = /\b(?:table of contents|in this article|jump to)\b/i.test(
-    contentLower,
-  );
+  const hasTocText = /\b(?:table of contents|in this article|jump to)\b/i.test(contentLower);
   if (hasTocText) return true;
 
   // Check for "contents" as a heading
@@ -127,9 +125,7 @@ function checkAnswerImmediacy(
 // Check
 // ---------------------------------------------------------------------------
 
-export function checkIntentEngagementSignals(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentEngagementSignals(input: ContentAnalysisInput): AnalysisResult {
   const id = 'intent-engagement-signals';
   const title = 'Engagement signal optimization';
 
@@ -137,8 +133,7 @@ export function checkIntentEngagementSignals(
     return {
       id,
       title,
-      description:
-        'No focus keyphrase set. Set one to evaluate engagement signals.',
+      description: 'No focus keyphrase set. Set one to evaluate engagement signals.',
       status: 'na',
       score: 0,
       maxScore: 5,
@@ -175,11 +170,7 @@ export function checkIntentEngagementSignals(
     },
     {
       name: 'Answer immediacy',
-      present: checkAnswerImmediacy(
-        input.content,
-        input.focusKeyphrase,
-        isInformational,
-      ),
+      present: checkAnswerImmediacy(input.content, input.focusKeyphrase, isInformational),
     },
   ];
 
@@ -198,9 +189,7 @@ export function checkIntentEngagementSignals(
       description:
         `Excellent engagement optimization (${presentCount}/7 signals). ` +
         `Present: ${presentList}.` +
-        (missingSignals.length > 0
-          ? ` Consider also adding: ${missingList}.`
-          : ''),
+        (missingSignals.length > 0 ? ` Consider also adding: ${missingList}.` : ''),
       status: 'good',
       score: 5,
       maxScore: 5,

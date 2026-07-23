@@ -12,15 +12,20 @@ interface CompletenessElement {
   present: boolean;
 }
 
-export function checkIntentInformationalCompleteness(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentInformationalCompleteness(input: ContentAnalysisInput): AnalysisResult {
   const id = 'intent-informational-completeness';
   const title = 'Informational content completeness';
 
   // No keyphrase — cannot determine intent
   if (!input.focusKeyphrase || input.focusKeyphrase.trim().length === 0) {
-    return { id, title, description: 'No focus keyphrase set.', status: 'na', score: 0, maxScore: 5 };
+    return {
+      id,
+      title,
+      description: 'No focus keyphrase set.',
+      status: 'na',
+      score: 0,
+      maxScore: 5,
+    };
   }
 
   // Only applies to informational intent
@@ -46,12 +51,15 @@ export function checkIntentInformationalCompleteness(
   const elements: CompletenessElement[] = [];
 
   // 1. Definitions / explanations
-  const hasDefinitions = /\b(?:is a|refers to|means|defined as|in other words|simply put)\b/i.test(plainText);
+  const hasDefinitions = /\b(?:is a|refers to|means|defined as|in other words|simply put)\b/i.test(
+    plainText,
+  );
   elements.push({ name: 'Definitions/explanations', present: hasDefinitions });
 
   // 2. Examples
-  const hasExamples = /\b(?:for example|for instance|such as|e\.g\.|consider)\b/i.test(plainText)
-    || /\blike\b/i.test(plainTextLower);
+  const hasExamples =
+    /\b(?:for example|for instance|such as|e\.g\.|consider)\b/i.test(plainText) ||
+    /\blike\b/i.test(plainTextLower);
   elements.push({ name: 'Examples', present: hasExamples });
 
   // 3. Subtopics coverage (>= 3 H2/H3 headings)
@@ -61,7 +69,10 @@ export function checkIntentInformationalCompleteness(
   elements.push({ name: 'Subtopics (3+ headings)', present: headingCount >= 3 });
 
   // 4. Actionable takeaways
-  const hasTakeaways = /\b(?:key takeaway|in summary|bottom line|action step|next step|to summarize|remember)\b/i.test(plainText);
+  const hasTakeaways =
+    /\b(?:key takeaway|in summary|bottom line|action step|next step|to summarize|remember)\b/i.test(
+      plainText,
+    );
   elements.push({ name: 'Actionable takeaways', present: hasTakeaways });
 
   // 5. Source citations (external links >= 2)

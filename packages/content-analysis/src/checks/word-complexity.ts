@@ -2,7 +2,13 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords, getSentences, countSyllables, countTotalSyllables } from '@power-seo/core';
+import {
+  stripHtml,
+  getWords,
+  getSentences,
+  countSyllables,
+  countTotalSyllables,
+} from '@power-seo/core';
 
 /**
  * Dictionary of unnecessarily complex words with simpler alternatives.
@@ -116,9 +122,7 @@ export function checkWordComplexity(input: ContentAnalysisInput): AnalysisResult
 
   // Flesch-Kincaid Grade Level
   const gradeLevel =
-    0.39 * (totalWords / totalSentences) +
-    11.8 * (totalSyllables / totalWords) -
-    15.59;
+    0.39 * (totalWords / totalSentences) + 11.8 * (totalSyllables / totalWords) - 15.59;
   const roundedGrade = Math.round(gradeLevel * 10) / 10;
 
   // Count complex words (3+ syllables)
@@ -158,7 +162,9 @@ export function checkWordComplexity(input: ContentAnalysisInput): AnalysisResult
   // Build description
   const parts: string[] = [];
   parts.push(`Flesch-Kincaid Grade Level: ${roundedGrade}.`);
-  parts.push(`${complexPercentage}% of words (${complexWords.length}/${totalWords}) have 3+ syllables.`);
+  parts.push(
+    `${complexPercentage}% of words (${complexWords.length}/${totalWords}) have 3+ syllables.`,
+  );
 
   if (top10Complex.length > 0) {
     parts.push(`Most frequent complex words: ${top10Complex.join(', ')}.`);
@@ -170,7 +176,7 @@ export function checkWordComplexity(input: ContentAnalysisInput): AnalysisResult
       .map((s) => `"${s.word}" -> "${s.suggestion}"`)
       .join(', ');
     parts.push(
-      `Consider simpler alternatives: ${suggestions}${foundSynonyms.length > 5 ? ` (+${foundSynonyms.length - 5} more)` : ''}.`
+      `Consider simpler alternatives: ${suggestions}${foundSynonyms.length > 5 ? ` (+${foundSynonyms.length - 5} more)` : ''}.`,
     );
   }
 

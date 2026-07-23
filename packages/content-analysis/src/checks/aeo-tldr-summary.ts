@@ -56,7 +56,8 @@ function detectSummaryBlock(html: string): { found: boolean; hasBullets: boolean
   }
 
   // Also check for a <strong>TL;DR</strong> or bold summary inline
-  const boldTldr = /<(?:strong|b)[^>]*>[^<]*(?:tl;?dr|summary|key\s+takeaway)[^<]*<\/(?:strong|b)>/i.test(html);
+  const boldTldr =
+    /<(?:strong|b)[^>]*>[^<]*(?:tl;?dr|summary|key\s+takeaway)[^<]*<\/(?:strong|b)>/i.test(html);
   if (boldTldr) found = true;
 
   return { found, hasBullets };
@@ -84,7 +85,8 @@ export function checkAeoTldrSummary(input: ContentAnalysisInput): AnalysisResult
     return {
       id: 'aeo-tldr-summary',
       title: 'TL;DR / summary section (AEO)',
-      description: 'TL;DR / summary section with bullet points detected. Excellent — AI engines extract structured summaries 2.1× more often than narrative-only content.',
+      description:
+        'TL;DR / summary section with bullet points detected. Excellent — AI engines extract structured summaries 2.1× more often than narrative-only content.',
       status: 'good',
       score: 7,
       maxScore: 7,
@@ -95,7 +97,8 @@ export function checkAeoTldrSummary(input: ContentAnalysisInput): AnalysisResult
     return {
       id: 'aeo-tldr-summary',
       title: 'TL;DR / summary section (AEO)',
-      description: 'Summary section detected. Add 3–5 bullet points summarising key insights — bullet lists in summaries increase AI snippet extraction rate by 40%.',
+      description:
+        'Summary section detected. Add 3–5 bullet points summarising key insights — bullet lists in summaries increase AI snippet extraction rate by 40%.',
       status: 'ok',
       score: 4,
       maxScore: 7,
@@ -105,7 +108,8 @@ export function checkAeoTldrSummary(input: ContentAnalysisInput): AnalysisResult
   return {
     id: 'aeo-tldr-summary',
     title: 'TL;DR / summary section (AEO)',
-    description: 'No TL;DR or summary section found. Add a "Key Takeaways" or "TL;DR" H2 section near the top with 3–5 bullet points covering the main answers. This pattern is cited 2.1× more by AI engines.',
+    description:
+      'No TL;DR or summary section found. Add a "Key Takeaways" or "TL;DR" H2 section near the top with 3–5 bullet points covering the main answers. This pattern is cited 2.1× more by AI engines.',
     status: 'poor',
     score: 0,
     maxScore: 7,

@@ -17,7 +17,8 @@ export function checkYmylCompliance(input: ContentAnalysisInput): AnalysisResult
     return {
       id: 'eeat-ymyl-compliance',
       title: 'YMYL compliance',
-      description: 'Content does not appear to be YMYL (Your Money or Your Life). Standard E-E-A-T requirements apply.',
+      description:
+        'Content does not appear to be YMYL (Your Money or Your Life). Standard E-E-A-T requirements apply.',
       status: 'na',
       score: 0,
       maxScore: 5,

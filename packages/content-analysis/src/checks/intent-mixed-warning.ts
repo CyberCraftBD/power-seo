@@ -66,17 +66,14 @@ function countMatches(text: string, pattern: RegExp): number {
  * - ok   (3): minor mixing (secondary signals present but < 30% of primary)
  * - poor (1): heavy mixing or dominant content intent contradicts keyphrase intent
  */
-export function checkIntentMixedWarning(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentMixedWarning(input: ContentAnalysisInput): AnalysisResult {
   const { focusKeyphrase, content } = input;
 
   if (!focusKeyphrase || focusKeyphrase.trim().length === 0) {
     return {
       id: 'intent-mixed-warning',
       title: 'Mixed intent warning',
-      description:
-        'No focus keyphrase set. Set one to check for mixed intent signals.',
+      description: 'No focus keyphrase set. Set one to check for mixed intent signals.',
       status: 'na',
       score: 0,
       maxScore: 5,
@@ -125,13 +122,10 @@ export function checkIntentMixedWarning(
   }
 
   // Identify secondary categories with signals
-  const secondaryCategories = sorted.filter(
-    (c) => c.key !== keyphraseIntent && c.count > 0,
-  );
+  const secondaryCategories = sorted.filter((c) => c.key !== keyphraseIntent && c.count > 0);
 
   // Find the keyphrase intent's signal count in content
-  const keyphraseIntentCount =
-    categoryCounts.find((c) => c.key === keyphraseIntent)?.count ?? 0;
+  const keyphraseIntentCount = categoryCounts.find((c) => c.key === keyphraseIntent)?.count ?? 0;
 
   // Check for conflicts: secondary intent signals > 30% of primary keyphrase intent signals
   const conflicting = secondaryCategories.filter((c) => {
@@ -167,9 +161,7 @@ export function checkIntentMixedWarning(
   }
 
   if (conflicting.length > 0) {
-    const conflictNames = conflicting
-      .map((c) => `${c.label} (${c.count} signals)`)
-      .join(', ');
+    const conflictNames = conflicting.map((c) => `${c.label} (${c.count} signals)`).join(', ');
 
     // Heavy mixing: any secondary > 30% but dominant still matches
     const hasHeavyMixing = conflicting.some((c) => {

@@ -135,7 +135,10 @@ describe('buildLinkGraph', () => {
 
   it('strips #fragments so links to the same page differing only by hash are one edge (issue #142)', () => {
     const pages: PageData[] = [
-      { url: 'https://example.com/a', links: ['https://example.com/b#top', 'https://example.com/b#foot'] },
+      {
+        url: 'https://example.com/a',
+        links: ['https://example.com/b#top', 'https://example.com/b#foot'],
+      },
       { url: 'https://example.com/b', links: [] },
     ];
     const graph = buildLinkGraph(pages);

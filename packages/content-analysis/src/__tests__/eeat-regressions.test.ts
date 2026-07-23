@@ -32,7 +32,8 @@ describe('stateful regex determinism (#154)', () => {
     const input: ContentAnalysisInput = {
       content:
         '<p>Choosing an investment strategy depends on your mortgage and retirement goals. ' +
-        'This is not financial advice.</p>' + neutralPadding,
+        'This is not financial advice.</p>' +
+        neutralPadding,
     };
 
     const first = checkYmylCompliance(input);
@@ -46,7 +47,8 @@ describe('stateful regex determinism (#154)', () => {
     const input: ContentAnalysisInput = {
       content:
         '<p>Choosing an investment strategy depends on your mortgage and retirement goals. ' +
-        'This is not financial advice.</p>' + neutralPadding,
+        'This is not financial advice.</p>' +
+        neutralPadding,
     };
 
     const first = checkYmylMultiplier(input);
@@ -83,7 +85,8 @@ describe('stateful regex determinism (#154)', () => {
         '<h2>Sources</h2>' +
         '<p>See <a href="https://www.census.gov/tools">census records</a>, ' +
         '<a href="https://stanford.edu/report">a university report</a>, and ' +
-        '<a href="https://example.com/background">background reading</a>.</p>' + neutralPadding,
+        '<a href="https://example.com/background">background reading</a>.</p>' +
+        neutralPadding,
     };
 
     const first = checkSourceQuality(input);
@@ -105,7 +108,8 @@ describe('YMYL detection false positives (#159)', () => {
       content:
         '<p>Our model recall improved with more training data samples. Precision and recall ' +
         'trade off against each other, and low recall is a danger of tuning thresholds ' +
-        'badly.</p>' + neutralPadding,
+        'badly.</p>' +
+        neutralPadding,
     };
 
     expect(checkYmylCompliance(input).status).toBe('na');
@@ -116,7 +120,8 @@ describe('YMYL detection false positives (#159)', () => {
     const input: ContentAnalysisInput = {
       content:
         '<p>The treatment worked well. The treatment lasted three weeks. The treatment ' +
-        'ended quietly.</p>' + neutralPadding,
+        'ended quietly.</p>' +
+        neutralPadding,
     };
 
     expect(checkYmylCompliance(input).status).toBe('na');
@@ -160,7 +165,8 @@ describe('YMYL detection false positives (#159)', () => {
     const input: ContentAnalysisInput = {
       content:
         '<p>Discuss the dosage with your care team, watch closely for side effects, and ' +
-        'confirm the diagnosis before starting treatment.</p>' + neutralPadding,
+        'confirm the diagnosis before starting treatment.</p>' +
+        neutralPadding,
     };
 
     const result = checkYmylCompliance(input);
@@ -191,7 +197,8 @@ describe('word-list false positives (#163)', () => {
       isSponsored: true,
       content:
         '<p>Quick share for the weekend: this haul includes some #ad content from the ' +
-        'outdoor shop.</p>' + neutralPadding,
+        'outdoor shop.</p>' +
+        neutralPadding,
     });
 
     expect(result.status).toBe('good');
@@ -231,7 +238,8 @@ describe('expert sourcing (#164)', () => {
     const result = checkExpertSourcing({
       content:
         '<p>According to Jane Doe, the certification process takes months to finish. ' +
-        'According to Marcus Webb, the review stage is the hardest part.</p>' + neutralPadding,
+        'According to Marcus Webb, the review stage is the hardest part.</p>' +
+        neutralPadding,
     });
 
     expect(result.status).not.toBe('poor');
@@ -266,7 +274,8 @@ describe('expert sourcing (#164)', () => {
     const result = checkExpertSourcing({
       content:
         '<p>Experts agree that steady practice beats cramming. Leading experts recommend ' +
-        'short daily sessions over marathon weekends.</p>' + neutralPadding,
+        'short daily sessions over marathon weekends.</p>' +
+        neutralPadding,
     });
 
     expect(result.status).not.toBe('poor');
@@ -278,7 +287,8 @@ describe('expert sourcing (#164)', () => {
       content:
         '<figure><img src="/dash.png" alt="Screenshot of the analytics dashboard in use" />' +
         '<figcaption><strong>Setup:</strong> the dashboard once configured</figcaption>' +
-        '</figure>' + neutralPadding,
+        '</figure>' +
+        neutralPadding,
     });
 
     // The caption is recognized, so the "wrap images in <figure> with
@@ -412,7 +422,8 @@ describe('future-date sanity (#167)', () => {
     const result = checkYmylMultiplier({
       content:
         '<p>Discuss the dosage with your care team, watch closely for side effects, and ' +
-        'confirm the diagnosis before starting treatment.</p>' + neutralPadding,
+        'confirm the diagnosis before starting treatment.</p>' +
+        neutralPadding,
       canonicalUrl: 'https://example.com/health-guide',
       publishDate: futureDate,
     });

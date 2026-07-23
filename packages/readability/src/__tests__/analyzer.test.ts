@@ -72,8 +72,7 @@ describe('analyzeReadability', () => {
 
   it('clamps passive voice percentage at 100 (#156)', () => {
     const result = analyzeReadability({
-      content:
-        '<p>The ball was thrown and the window was broken and the game was stopped.</p>',
+      content: '<p>The ball was thrown and the window was broken and the game was stopped.</p>',
     });
 
     expect(result.passiveVoicePercentage).toBe(100);

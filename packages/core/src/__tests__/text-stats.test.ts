@@ -97,9 +97,7 @@ describe('getParagraphs', () => {
   });
 
   it('should treat lists, tables and headings as separate blocks (#150)', () => {
-    const listItems = Array(200)
-      .fill('<li>word word word</li>')
-      .join('');
+    const listItems = Array(200).fill('<li>word word word</li>').join('');
     const html = `<p>A short para.</p><ul>${listItems}</ul><p>Another short para.</p>`;
     const paragraphs = getParagraphs(html);
     expect(paragraphs.length).toBe(3);

@@ -9,7 +9,10 @@ import { stripHtml, getWords, extractTagContents } from '@power-seo/core';
  * AI engines (ChatGPT, Perplexity, Google AIO) prefer definition-first openings.
  * Research: definition-first openings generate 34 daily AI citations vs <5 for narrative openings.
  */
-function findDirectAnswerOpening(html: string, keyphrase: string): {
+function findDirectAnswerOpening(
+  html: string,
+  keyphrase: string,
+): {
   hasDirectAnswer: boolean;
   hasKeyphrase: boolean;
   hasDefinitionPattern: boolean;
@@ -93,13 +96,17 @@ export function checkAeoDirectAnswer(input: ContentAnalysisInput): AnalysisResul
   }
 
   const kp = (focusKeyphrase ?? '').trim();
-  const { hasDirectAnswer, hasKeyphrase, hasDefinitionPattern } = findDirectAnswerOpening(content, kp);
+  const { hasDirectAnswer, hasKeyphrase, hasDefinitionPattern } = findDirectAnswerOpening(
+    content,
+    kp,
+  );
 
   if (hasDefinitionPattern && (hasKeyphrase || kp.length === 0)) {
     return {
       id: 'aeo-direct-answer',
       title: 'Direct answer opening (AEO)',
-      description: 'Great — the article opens with a definition-style direct answer. AI engines (ChatGPT, Perplexity, Google AI Overviews) strongly favour this pattern, generating up to 34× more AI citations.',
+      description:
+        'Great — the article opens with a definition-style direct answer. AI engines (ChatGPT, Perplexity, Google AI Overviews) strongly favour this pattern, generating up to 34× more AI citations.',
       status: 'good',
       score: 10,
       maxScore: 10,
@@ -107,9 +114,10 @@ export function checkAeoDirectAnswer(input: ContentAnalysisInput): AnalysisResul
   }
 
   if (hasDefinitionPattern || hasDirectAnswer) {
-    const kpNote = kp.length > 0 && !hasKeyphrase
-      ? ` Include the focus keyphrase "${kp}" in the opening paragraph for full AEO benefit.`
-      : '';
+    const kpNote =
+      kp.length > 0 && !hasKeyphrase
+        ? ` Include the focus keyphrase "${kp}" in the opening paragraph for full AEO benefit.`
+        : '';
     return {
       id: 'aeo-direct-answer',
       title: 'Direct answer opening (AEO)',
@@ -120,9 +128,10 @@ export function checkAeoDirectAnswer(input: ContentAnalysisInput): AnalysisResul
     };
   }
 
-  const kpNote = kp.length > 0
-    ? ` Open with a sentence like "${kp} is…" or "${kp} refers to…" to maximise AI citation probability.`
-    : ' Open with a definition-style sentence (e.g. "[Topic] is…") to maximise AI citation probability.';
+  const kpNote =
+    kp.length > 0
+      ? ` Open with a sentence like "${kp} is…" or "${kp} refers to…" to maximise AI citation probability.`
+      : ' Open with a definition-style sentence (e.g. "[Topic] is…") to maximise AI citation probability.';
 
   return {
     id: 'aeo-direct-answer',

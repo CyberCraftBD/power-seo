@@ -76,7 +76,10 @@ export const DISCLAIMER_PATTERNS: Record<string, RegExp[]> = {
  * match "law". Returns null when the label is not a YMYL category.
  */
 export function ymylCategoryKey(label: string): string | null {
-  const tokens = label.toLowerCase().split(/[^a-z]+/).filter(Boolean);
+  const tokens = label
+    .toLowerCase()
+    .split(/[^a-z]+/)
+    .filter(Boolean);
   for (const { category } of YMYL_CATEGORIES) {
     const categoryWords = category.split('/');
     if (categoryWords.some((word) => tokens.includes(word))) {

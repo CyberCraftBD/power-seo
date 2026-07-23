@@ -19,9 +19,7 @@ function extractParagraphs(html: string): string[] {
     .replace(/<\/?p[^>]*>/gi, '\n\n')
     .split(/\n{2,}/);
 
-  return blocks
-    .map((block) => stripHtml(block).trim())
-    .filter((text) => text.length > 0);
+  return blocks.map((block) => stripHtml(block).trim()).filter((text) => text.length > 0);
 }
 
 function countWords(text: string): number {
@@ -35,7 +33,8 @@ export function checkParagraphLength(input: ContentAnalysisInput): AnalysisResul
     return {
       id: 'paragraph-length',
       title: 'Paragraph length',
-      description: 'No paragraphs found. Structure your content into paragraphs for better readability.',
+      description:
+        'No paragraphs found. Structure your content into paragraphs for better readability.',
       status: 'poor',
       score: 0,
       maxScore: 5,

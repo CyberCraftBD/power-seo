@@ -55,7 +55,8 @@ export function checkIntentPaaCoverage(input: ContentAnalysisInput): AnalysisRes
     return {
       id: 'intent-paa-coverage',
       title: 'People Also Ask coverage',
-      description: 'No H2 or H3 headings found in the content. Add headings — especially question-phrased headings — to target "People Also Ask" boxes in Google.',
+      description:
+        'No H2 or H3 headings found in the content. Add headings — especially question-phrased headings — to target "People Also Ask" boxes in Google.',
       status: 'na',
       score: 0,
       maxScore: 5,

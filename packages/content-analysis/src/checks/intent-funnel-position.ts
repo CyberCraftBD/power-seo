@@ -53,10 +53,7 @@ interface ExtractedLink {
   anchorText: string;
 }
 
-function extractInternalLinks(
-  content: string,
-  siteUrl: string | undefined,
-): ExtractedLink[] {
+function extractInternalLinks(content: string, siteUrl: string | undefined): ExtractedLink[] {
   const links: ExtractedLink[] = [];
   // Match <a> tags with href and capture anchor text
   const linkRegex = /<a\s[^>]*href\s*=\s*["']([^"']*)["'][^>]*>([\s\S]*?)<\/a>/gi;
@@ -110,9 +107,7 @@ function hasNextStageLinks(
 // Check
 // ---------------------------------------------------------------------------
 
-export function checkIntentFunnelPosition(
-  input: ContentAnalysisInput,
-): AnalysisResult {
+export function checkIntentFunnelPosition(input: ContentAnalysisInput): AnalysisResult {
   const id = 'intent-funnel-position';
   const title = 'User journey funnel position';
 
@@ -160,10 +155,7 @@ export function checkIntentFunnelPosition(
     };
   }
 
-  const foundNextStageLinks = hasNextStageLinks(
-    internalLinks,
-    stage.nextStageAnchors,
-  );
+  const foundNextStageLinks = hasNextStageLinks(internalLinks, stage.nextStageAnchors);
 
   // good (5): funnel position identified AND next-stage links present
   if (foundNextStageLinks) {

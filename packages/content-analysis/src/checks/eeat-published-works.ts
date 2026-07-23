@@ -10,7 +10,8 @@ export function checkPublishedWorks(input: ContentAnalysisInput): AnalysisResult
     return {
       id: 'eeat-published-works',
       title: 'Published works & credentials',
-      description: 'No author information provided. Add publications, certifications, and awards to demonstrate authority.',
+      description:
+        'No author information provided. Add publications, certifications, and awards to demonstrate authority.',
       status: 'poor',
       score: 0,
       maxScore: 5,
@@ -23,9 +24,11 @@ export function checkPublishedWorks(input: ContentAnalysisInput): AnalysisResult
 
   // Publications
   if (author.publications && author.publications.length > 0) {
-    const withUrls = author.publications.filter(p => p.url);
+    const withUrls = author.publications.filter((p) => p.url);
     score += Math.min(3, author.publications.length);
-    signals.push(`${author.publications.length} publication${author.publications.length > 1 ? 's' : ''}${withUrls.length > 0 ? ` (${withUrls.length} with URLs)` : ''}`);
+    signals.push(
+      `${author.publications.length} publication${author.publications.length > 1 ? 's' : ''}${withUrls.length > 0 ? ` (${withUrls.length} with URLs)` : ''}`,
+    );
     if (withUrls.length < author.publications.length) {
       gaps.push('add URLs to all publications for verifiability');
     }
@@ -36,11 +39,11 @@ export function checkPublishedWorks(input: ContentAnalysisInput): AnalysisResult
   // Credentials/Certifications
   if (author.credentials && author.credentials.length > 0) {
     score += Math.min(2, author.credentials.length);
-    const credNames = author.credentials.map(c => c.name);
+    const credNames = author.credentials.map((c) => c.name);
     signals.push(`credentials: ${credNames.join(', ')}`);
 
     // Check for credential quality (has issuer and date)
-    const completeCredentials = author.credentials.filter(c => c.issuer && c.dateObtained);
+    const completeCredentials = author.credentials.filter((c) => c.issuer && c.dateObtained);
     if (completeCredentials.length < author.credentials.length) {
       gaps.push('add issuer and date to all credentials for schema completeness');
     }
@@ -51,7 +54,9 @@ export function checkPublishedWorks(input: ContentAnalysisInput): AnalysisResult
   // Awards
   if (author.awards && author.awards.length > 0) {
     score += Math.min(2, author.awards.length);
-    signals.push(`${author.awards.length} award${author.awards.length > 1 ? 's' : ''}: ${author.awards.slice(0, 3).join(', ')}`);
+    signals.push(
+      `${author.awards.length} award${author.awards.length > 1 ? 's' : ''}: ${author.awards.slice(0, 3).join(', ')}`,
+    );
   }
 
   // Years of experience

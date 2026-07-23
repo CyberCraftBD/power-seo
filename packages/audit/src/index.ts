@@ -1,6 +1,5 @@
 // @power-seo/audit — Public API
 
-
 export { auditPage } from './page-audit.js';
 export { auditSite } from './site-audit.js';
 export { runMetaRules } from './rules/meta.js';
