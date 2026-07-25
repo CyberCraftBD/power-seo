@@ -351,11 +351,11 @@ export function detectIntent(keyphrase: string): IntentResult {
   if (trimmed.length === 0) {
     return {
       primary: intentOverride ?? 'unknown',
-      confidence: intentOverride ? 100 : 0,
+      confidence: intentOverride ? 1 : 0,
       subType: 'unknown',
       modifiers: [],
       signals: intentOverride
-        ? [{ type: intentOverride, confidence: 100, reason: 'Editor-selected target intent' }]
+        ? [{ type: intentOverride, confidence: 1, reason: 'Editor-selected target intent' }]
         : [],
     };
   }
@@ -366,17 +366,23 @@ export function detectIntent(keyphrase: string): IntentResult {
   const topSignal: IntentSignal | undefined = signals[0];
   const detectedPrimary: IntentType = topSignal?.type ?? 'unknown';
   const primary: IntentType = intentOverride ?? detectedPrimary;
-  const confidence: number = intentOverride ? 100 : (topSignal?.confidence ?? 0);
+  const confidence: number = intentOverride ? 1 : (topSignal?.confidence ?? 0);
 
   const subType = inferSubType(trimmed, primary);
 
+  // With an override, the target intent replaces any same-type detected signal
+  // (confidence stays on the 0–1 scale used everywhere else) so keyphrase
+  // signals of the same type are never reported as competing with themselves.
   return {
     primary,
     confidence,
     subType,
     modifiers,
     signals: intentOverride
-      ? [{ type: intentOverride, confidence: 100, reason: 'Editor-selected target intent' }, ...signals]
+      ? [
+          { type: intentOverride, confidence: 1, reason: 'Editor-selected target intent' },
+          ...signals.filter((s) => s.type !== intentOverride),
+        ]
       : signals,
   };
 }

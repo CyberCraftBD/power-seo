@@ -45,6 +45,31 @@ describe('expectedIntent override', () => {
     });
     expect(detectIntent('buy running shoes').primary).toBe('transactional');
   });
+
+  it('override confidence stays on the 0-1 scale (no 10000% displays)', () => {
+    const out = analyzeContent({
+      title: 'PPC Advertising for Beginners',
+      content: `<p>${filler(300)}</p>`,
+      focusKeyphrase: 'PPC Advertising for Beginners',
+      expectedIntent: 'informational',
+    });
+    for (const r of out.results) {
+      expect(r.description).not.toMatch(/\d{4,}%/);
+    }
+  });
+
+  it('override matching the detected intent does not create competing same-type signals', () => {
+    const out = analyzeContent({
+      title: 'PPC Advertising for Beginners',
+      content: `<p>${filler(300)}</p>`,
+      focusKeyphrase: 'PPC Advertising for Beginners',
+      expectedIntent: 'informational',
+    });
+    const multi = out.results.find((r) => r.id === 'intent-multi-detection');
+    expect(multi).toBeDefined();
+    expect(multi!.description).not.toContain('Competing intents');
+    expect(multi!.status).toBe('good');
+  });
 });
 
 describe('diminishing returns for repeated signal phrases (#152)', () => {
