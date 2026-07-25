@@ -1,8 +1,8 @@
 # @power-seo/audit
 
-## 1.1.0
+## 1.0.18
 
-### Minor Changes
+### Patch Changes
 
 - **Editor-selected target intent (`expectedIntent`)** and **diminishing returns for repeated signal phrases** (#152).
   - `analyzeContent()` accepts a new optional `expectedIntent` input
@@ -30,6 +30,6 @@
 
 - Updated dependencies
   - @power-seo/content-analysis@1.1.0
-  - @power-seo/core@1.1.0
+  - @power-seo/core@1.0.18
   - @power-seo/readability@1.1.0
   - @power-seo/schema@1.1.0
