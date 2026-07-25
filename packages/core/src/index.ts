@@ -142,4 +142,4 @@ export { escapeXml } from './xml-utils.js';
 export { serializeJsonLd } from './json-ld.js';
 
 // Pattern Utilities
-export { countDistinctMatches } from './pattern-utils.js';
+export { countDistinctMatches, countEffectiveMatches } from './pattern-utils.js';

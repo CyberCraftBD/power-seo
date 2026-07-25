@@ -3,6 +3,7 @@
 
 import type { ContentAnalysisInput, ContentAnalysisOutput, AnalysisResult } from '@power-seo/core';
 import type { AnalysisConfig, CheckId } from './types.js';
+import { setIntentOverride } from './checks/intent-utils.js';
 import { checkTitle } from './checks/title.js';
 import { checkMetaDescription } from './checks/meta-description.js';
 import { checkKeyphraseUsage } from './checks/keyphrase-usage.js';
@@ -142,6 +143,20 @@ export interface AnalyzeOptions extends AnalysisConfig {
  * ```
  */
 export function analyzeContent(
+  input: ContentAnalysisInput,
+  options?: AnalyzeOptions,
+): ContentAnalysisOutput {
+  // Editor-selected target intent: all intent-aware checks score against it
+  // instead of auto-detection. Cleared in finally — the run is synchronous.
+  setIntentOverride(input.expectedIntent ?? null);
+  try {
+    return runAnalyzeContent(input, options);
+  } finally {
+    setIntentOverride(null);
+  }
+}
+
+function runAnalyzeContent(
   input: ContentAnalysisInput,
   options?: AnalyzeOptions,
 ): ContentAnalysisOutput {

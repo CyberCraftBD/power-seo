@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches, countEffectiveMatches } from '@power-seo/core';
 
 const METHODOLOGY_PATTERNS: RegExp[] = [
   // Testing methodology
@@ -77,6 +77,12 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
 
   // Overlapping hits across patterns count once
   const totalMatches = countDistinctMatches(plainText, METHODOLOGY_PATTERNS);
+  // Diminishing returns (#152): repeating the same trigger phrase earns
+  // log-scaled credit, so a pasted phrase list cannot buy the top tier
+  const effectiveMatches = Math.min(
+    countEffectiveMatches(plainText, METHODOLOGY_PATTERNS),
+    totalMatches,
+  );
   const categories: Set<string> = new Set();
 
   for (const pattern of METHODOLOGY_PATTERNS) {
@@ -100,7 +106,7 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
 
   const categoryList = Array.from(categories);
 
-  if (totalMatches >= 5 && categoryList.length >= 3) {
+  if (effectiveMatches >= 5 && categoryList.length >= 3) {
     return {
       id: 'eeat-methodology-transparency',
       title: 'Methodology transparency',
@@ -111,7 +117,7 @@ export function checkMethodologyTransparency(input: ContentAnalysisInput): Analy
     };
   }
 
-  if (totalMatches >= 2 && categoryList.length >= 1) {
+  if (effectiveMatches >= 2 && categoryList.length >= 1) {
     const missing: string[] = [];
     if (!categories.has('testing process') && !categories.has('evaluation criteria'))
       missing.push('evaluation criteria');

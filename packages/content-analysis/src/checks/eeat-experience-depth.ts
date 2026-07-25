@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
-import { stripHtml, getWords, countDistinctMatches } from '@power-seo/core';
+import { stripHtml, getWords, countDistinctMatches, countEffectiveMatches } from '@power-seo/core';
 import { TEMPORAL_EXPERIENCE_PATTERNS } from './shared-patterns.js';
 
 // First-person experience phrases (regex patterns)
@@ -96,6 +96,12 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
 
   // Overlapping hits across patterns count once
   const totalMatches = countDistinctMatches(plainText, EXPERIENCE_PATTERNS);
+  // Diminishing returns (#152): repeats of the same phrase earn log-scaled
+  // credit, so stuffing "I recommend" ten times cannot buy the top tier
+  const effectiveMatches = Math.min(
+    countEffectiveMatches(plainText, EXPERIENCE_PATTERNS),
+    totalMatches,
+  );
   const matchedPhrases: string[] = [];
 
   for (const pattern of EXPERIENCE_PATTERNS) {
@@ -111,14 +117,18 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
     }
   }
 
-  // Density: experience markers per 500 words
-  const density = (totalMatches / wordCount) * 500;
+  // Density: EFFECTIVE experience markers per 500 words (repetition-discounted)
+  const density = (effectiveMatches / wordCount) * 500;
+  const discountNote =
+    totalMatches > Math.ceil(effectiveMatches)
+      ? ` (${totalMatches} raw, ${effectiveMatches} after repetition discounting — varied phrasing counts more than repeats)`
+      : '';
 
   if (density >= 3) {
     return {
       id: 'eeat-experience-depth',
       title: 'Experience signals',
-      description: `Strong first-hand experience signals detected (${totalMatches} markers). Phrases like "${matchedPhrases.slice(0, 3).join('", "')}" demonstrate real experience.`,
+      description: `Strong first-hand experience signals detected (${effectiveMatches} markers${discountNote}). Phrases like "${matchedPhrases.slice(0, 3).join('", "')}" demonstrate real experience.`,
       status: 'good',
       score: 9,
       maxScore: 9,
@@ -129,7 +139,7 @@ export function checkExperienceDepth(input: ContentAnalysisInput): AnalysisResul
     return {
       id: 'eeat-experience-depth',
       title: 'Experience signals',
-      description: `Some experience signals found (${totalMatches} markers). Add more first-person experience phrases like "I tested", "in my experience", or outcome reporting to strengthen E-E-A-T.`,
+      description: `Some experience signals found (${effectiveMatches} markers${discountNote}). Add more first-person experience phrases like "I tested", "in my experience", or outcome reporting to strengthen E-E-A-T.`,
       status: 'ok',
       score: 5,
       maxScore: 9,

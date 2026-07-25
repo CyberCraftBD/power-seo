@@ -3,6 +3,8 @@
 
 export { analyzeContent } from './analyzer.js';
 export type { AnalyzeOptions } from './analyzer.js';
+export { detectIntent } from './checks/intent-utils.js';
+export type { ExpectedIntent, IntentType, IntentResult } from './checks/intent-utils.js';
 export { checkTitle } from './checks/title.js';
 export { checkMetaDescription } from './checks/meta-description.js';
 export { checkKeyphraseUsage } from './checks/keyphrase-usage.js';

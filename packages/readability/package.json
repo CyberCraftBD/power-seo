@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/readability",
-  "version": "1.0.17",
+  "version": "1.1.0",
   "description": "Readability scoring algorithms (Flesch-Kincaid, Gunning Fog, Coleman-Liau, ARI) with configurable thresholds",
   "keywords": [
     "seo",

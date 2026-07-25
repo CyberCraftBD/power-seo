@@ -217,6 +217,18 @@ export interface ContentAnalysisInput {
   metaDescription?: string;
   content: string;
   focusKeyphrase?: string;
+  /**
+   * Editor-selected target search intent. When set, all intent-aware checks
+   * score the content against this intent instead of auto-detecting it from
+   * the focus keyphrase. `'commercial'` is accepted as an alias for
+   * `'commercial-investigation'`.
+   */
+  expectedIntent?:
+    | 'informational'
+    | 'navigational'
+    | 'transactional'
+    | 'commercial'
+    | 'commercial-investigation';
   secondaryKeyphrases?: string[];
   slug?: string;
   locale?: string;

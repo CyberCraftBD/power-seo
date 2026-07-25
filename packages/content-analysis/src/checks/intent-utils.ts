@@ -308,22 +308,55 @@ function buildSignals(modifiers: IntentModifier[]): IntentSignal[] {
 // Public API
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Editor-selected intent override (analyzeContent's `expectedIntent` input)
+// ---------------------------------------------------------------------------
+
+/** Public intent values accepted from callers. `'commercial'` is an alias. */
+export type ExpectedIntent =
+  | 'informational'
+  | 'navigational'
+  | 'transactional'
+  | 'commercial'
+  | 'commercial-investigation';
+
+let intentOverride: IntentType | null = null;
+
+function normalizeExpectedIntent(intent: ExpectedIntent): IntentType {
+  return intent === 'commercial' ? 'commercial-investigation' : intent;
+}
+
+/**
+ * Set (or clear) the intent override applied by subsequent detectIntent calls.
+ * analyzeContent is synchronous, so scoping a set/clear pair around a run is
+ * safe; the analyzer clears it in a finally block.
+ */
+export function setIntentOverride(intent?: ExpectedIntent | null): void {
+  intentOverride = intent ? normalizeExpectedIntent(intent) : null;
+}
+
 /**
  * Detect the search intent of a focus keyphrase.
  *
  * Analyzes modifier words, phrase patterns, and structural cues to determine
  * the primary intent type, sub-type, confidence score, and any ambiguity.
+ *
+ * When an editor-selected intent override is active (see setIntentOverride /
+ * analyzeContent's `expectedIntent`), the override becomes the primary intent
+ * with full confidence; modifiers and signals still describe the keyphrase.
  */
 export function detectIntent(keyphrase: string): IntentResult {
   const trimmed = keyphrase.trim();
 
   if (trimmed.length === 0) {
     return {
-      primary: 'unknown',
-      confidence: 0,
+      primary: intentOverride ?? 'unknown',
+      confidence: intentOverride ? 100 : 0,
       subType: 'unknown',
       modifiers: [],
-      signals: [],
+      signals: intentOverride
+        ? [{ type: intentOverride, confidence: 100, reason: 'Editor-selected target intent' }]
+        : [],
     };
   }
 
@@ -331,8 +364,9 @@ export function detectIntent(keyphrase: string): IntentResult {
   const signals = buildSignals(modifiers);
 
   const topSignal: IntentSignal | undefined = signals[0];
-  const primary: IntentType = topSignal?.type ?? 'unknown';
-  const confidence: number = topSignal?.confidence ?? 0;
+  const detectedPrimary: IntentType = topSignal?.type ?? 'unknown';
+  const primary: IntentType = intentOverride ?? detectedPrimary;
+  const confidence: number = intentOverride ? 100 : (topSignal?.confidence ?? 0);
 
   const subType = inferSubType(trimmed, primary);
 
@@ -341,6 +375,8 @@ export function detectIntent(keyphrase: string): IntentResult {
     confidence,
     subType,
     modifiers,
-    signals,
+    signals: intentOverride
+      ? [{ type: intentOverride, confidence: 100, reason: 'Editor-selected target intent' }, ...signals]
+      : signals,
   };
 }
