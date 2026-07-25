@@ -376,7 +376,10 @@ export function detectIntent(keyphrase: string): IntentResult {
     subType,
     modifiers,
     signals: intentOverride
-      ? [{ type: intentOverride, confidence: 100, reason: 'Editor-selected target intent' }, ...signals]
+      ? [
+          { type: intentOverride, confidence: 100, reason: 'Editor-selected target intent' },
+          ...signals,
+        ]
       : signals,
   };
 }
