@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.19] - 2026-07-27
+
+### Fixed
+
+- **`@power-seo/core`** — `countKeywordOccurrences` (used by `calculateKeywordDensity` and `analyzeKeyphraseOccurrences`) still used ASCII `\b` word boundaries, so non-Latin keyphrases (e.g. Bangla) and keyphrases with non-word edges (`C++`, `C#`, `.NET`) counted as zero — producing a false "keyphrase density 0% / keyword never used" report. It now uses lookaround boundaries on letter/number classes (completing #158) (#169).
+- **`@power-seo/core`** — `analyzeKeyphraseOccurrences().density` no longer multiplies by the keyphrase word count; it now matches the documented/tested `calculateKeywordDensity` definition (occurrences ÷ total words), so the same keyphrase no longer reports two different densities (#170).
+- **`@power-seo/content-analysis`** — `keyphrase-introduction` defines the introduction as the first ~150 words of plain text instead of only the first `<p>` element, so intros not wrapped in `<p>` (e.g. a leading `<div>`) are no longer reported as missing the keyphrase (#171).
+- **`@power-seo/content-analysis`** — `subheading-distribution` no longer reports "no subheadings" when a single `<h2>` leads the content, and no longer counts a heading's own words toward the following section's length (a 298-word section under a 3-word heading was falsely flagged as exceeding 300 words) (#172).
+- **`@power-seo/content-analysis`** — `keyphrase-markup` counts nested emphasis once: a keyphrase in `<strong><em>…</em></strong>` was counted per wrapping tag, producing impossible "emphasized 2 of 1" output and false "over-emphasized / keyword stuffing" reports. A single backreferenced scan now consumes inner tags (#173).
+- **`@power-seo/content-analysis`** — `keyphrase-slug` matches each keyphrase word against whole slug tokens instead of substrings, so "seo" no longer counts as present in a slug like `season-guide` (#174).
+- **`@power-seo/content-analysis`** — `single-h1` treats the page title as an implicit H1 (like the heading-structure check), so a body that already contains its own `<h1>` plus the CMS title is correctly flagged as duplicate H1s instead of "single H1, good" (#175).
+- **`@power-seo/content-analysis`** — `detectIntent` with an editor-selected `expectedIntent` override no longer injects a confidence of `100` on the 0–1 scale or duplicates the same-type intent signal, fixing the "10000%" confidence display and the spurious "informational vs informational competing intents" warning.
+
 ## [1.0.17] - 2026-07-23
 
 ### Fixed

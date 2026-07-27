@@ -66,12 +66,21 @@ export function countKeywordOccurrences(text: string, keyword: string): number {
 
   if (!normalizedKeyword) return 0;
 
-  // Use word boundary matching for single words
   const escaped = normalizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regex = new RegExp(`\\b${escaped}\\b`, 'gi');
-  const matches = normalizedText.match(regex);
 
-  return matches?.length ?? 0;
+  // Unicode-aware boundaries. \b only recognizes [A-Za-z0-9_], so non-Latin
+  // keyphrases (e.g. Bangla) counted as zero, and keyphrases containing
+  // punctuation (e.g. "C++", ".NET") failed the trailing \b — both producing a
+  // false "keyphrase never used" / 0% density report. Lookarounds on the
+  // letter/number classes give real word boundaries for every script.
+  try {
+    const regex = new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, 'giu');
+    return normalizedText.match(regex)?.length ?? 0;
+  } catch {
+    // Runtime without lookbehind / Unicode property escapes — fall back to ASCII \b.
+    const regex = new RegExp(`\\b${escaped}\\b`, 'gi');
+    return normalizedText.match(regex)?.length ?? 0;
+  }
 }
 
 /**
@@ -128,10 +137,12 @@ export function analyzeKeyphraseOccurrences(config: {
   // Count in alt text
   const inAltText = images ? images.filter((img) => img.alt?.toLowerCase().includes(kp)).length : 0;
 
-  // Calculate density
-  const keywordWordCount = kp.split(/\s+/).length;
+  // Calculate density — occurrences / total words, matching calculateKeywordDensity
+  // (a multi-word keyphrase counts as a single occurrence). Previously this
+  // multiplied by the keyphrase word count, so the same keyphrase reported a
+  // different density here than in the keyphrase-density check.
   const density =
-    words.length > 0 ? Math.round(((inContent * keywordWordCount) / words.length) * 1000) / 10 : 0;
+    words.length > 0 ? Math.round((inContent / words.length) * 1000) / 10 : 0;
 
   return {
     inTitle,

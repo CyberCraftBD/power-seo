@@ -1,6 +1,6 @@
 {
   "name": "@power-seo/redirects",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Redirect rule engine with URL pattern matching and framework adapters (Next.js, Remix, Express)",
   "keywords": [
     "seo",

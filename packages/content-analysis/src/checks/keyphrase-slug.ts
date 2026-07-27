@@ -43,9 +43,12 @@ export function checkKeyphraseSlug(input: ContentAnalysisInput): AnalysisResult 
     };
   }
 
-  // Also check if keyphrase words appear in slug individually
+  // Also check if keyphrase words appear in slug individually (word order may
+  // differ). Match against whole slug tokens, not substrings — otherwise the
+  // word "seo" would falsely match a slug like "season-guide".
+  const slugTokens = slugLower.split(/[^a-z0-9]+/i).filter(Boolean);
   const keyphraseWords = focusKeyphrase.toLowerCase().trim().split(/\s+/);
-  const allWordsPresent = keyphraseWords.every((word) => slugLower.includes(word));
+  const allWordsPresent = keyphraseWords.every((word) => slugTokens.includes(word));
 
   if (allWordsPresent) {
     return {

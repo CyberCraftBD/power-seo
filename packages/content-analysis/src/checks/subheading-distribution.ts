@@ -9,19 +9,26 @@ const IDEAL_WORDS_BETWEEN_SUBHEADINGS = 250;
 
 /**
  * Split content into sections based on headings (H2-H6).
- * Returns word counts for text between headings.
+ * Returns the word count of the prose between headings, plus how many
+ * subheadings were found.
  */
-function getTextSectionLengths(html: string): number[] {
-  // Split on any heading tag (h2-h6)
-  const sections = html.split(/<h[2-6][^>]*>/i);
-  return sections
+function getTextSectionLengths(html: string): { sectionLengths: number[]; headingCount: number } {
+  // Count actual subheadings so a single leading <h2> is not mistaken for
+  // "no subheadings" (which happens when the split yields one non-empty section).
+  const headingCount = (html.match(/<h[2-6][^>]*>/gi) ?? []).length;
+
+  // Split on the WHOLE heading element so the heading's own words don't leak
+  // into the following section's word count (a 298-word section under a 3-word
+  // heading was previously counted as 301 → false "exceeds 300 words").
+  const sectionLengths = html
+    .split(/<h[2-6][^>]*>[\s\S]*?<\/h[2-6]>/gi)
     .map((section) => {
-      // Remove closing heading tags and other HTML
-      const cleaned = section.replace(/<\/h[2-6]>/gi, '');
-      const text = stripHtml(cleaned).trim();
+      const text = stripHtml(section).trim();
       return text.split(/\s+/).filter((w) => w.length > 0).length;
     })
     .filter((count) => count > 0);
+
+  return { sectionLengths, headingCount };
 }
 
 function countWords(text: string): number {
@@ -44,10 +51,10 @@ export function checkSubheadingDistribution(input: ContentAnalysisInput): Analys
     };
   }
 
-  const sectionLengths = getTextSectionLengths(input.content);
+  const { sectionLengths, headingCount } = getTextSectionLengths(input.content);
 
   // If there are no subheadings at all in long content
-  if (sectionLengths.length <= 1) {
+  if (headingCount === 0) {
     return {
       id: 'subheading-distribution',
       title: 'Subheading distribution',

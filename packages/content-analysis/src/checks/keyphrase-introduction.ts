@@ -2,6 +2,13 @@
 // ----------------------------------------------------------------------------
 
 import type { ContentAnalysisInput, AnalysisResult } from '@power-seo/core';
+import { stripHtml } from '@power-seo/core';
+
+// The "introduction" is the opening of the visible content. Defining it by the
+// first N words of plain text (rather than only the first <p> element) avoids a
+// false "not in the introduction" when the intro is not wrapped in <p> (e.g. a
+// leading <div>) or spans a short lead-in plus the first paragraph.
+const INTRODUCTION_WORDS = 150;
 
 export function checkKeyphraseIntroduction(input: ContentAnalysisInput): AnalysisResult {
   const { focusKeyphrase, content } = input;
@@ -17,27 +24,15 @@ export function checkKeyphraseIntroduction(input: ContentAnalysisInput): Analysi
     };
   }
 
-  // Parse first <p> tag from HTML content
-  const firstParagraphMatch = content.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
-
-  if (!firstParagraphMatch) {
-    return {
-      id: 'keyphrase-introduction',
-      title: 'Keyphrase in introduction',
-      description:
-        'The focus keyphrase does not appear in the introduction. Add it to the first paragraph for better relevance.',
-      status: 'ok',
-      score: 2,
-      maxScore: 5,
-    };
-  }
-
-  // Strip HTML tags from the first paragraph
-  const firstParagraphText = firstParagraphMatch[1]!.replace(/<[^>]*>/g, '');
   const kp = focusKeyphrase.toLowerCase().trim();
-  const paragraphLower = firstParagraphText.toLowerCase();
+  const introText = stripHtml(content)
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, INTRODUCTION_WORDS)
+    .join(' ');
 
-  if (paragraphLower.includes(kp)) {
+  if (introText.includes(kp)) {
     return {
       id: 'keyphrase-introduction',
       title: 'Keyphrase in introduction',

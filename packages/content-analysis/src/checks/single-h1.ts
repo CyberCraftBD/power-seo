@@ -58,8 +58,17 @@ function parseHeadings(html: string): HeadingInfo[] {
  * and the heading hierarchy is correct (no skipped levels).
  */
 export function checkSingleH1(input: ContentAnalysisInput): AnalysisResult {
-  const { content } = input;
+  const { content, title } = input;
   const headings = parseHeadings(content);
+
+  // Treat the page title as an implicit H1 (most CMS render the title as the
+  // page <h1>) — same as the heading-structure check. Without this, a body that
+  // already contains its own <h1> plus the CMS title produces two real H1s on
+  // the page yet was reported as "single H1, good".
+  if (title && title.trim().length > 0) {
+    headings.unshift({ level: 1, text: title.trim(), rawHtml: title.trim() });
+  }
+
   const h1s = headings.filter((h) => h.level === 1);
 
   const issues: string[] = [];

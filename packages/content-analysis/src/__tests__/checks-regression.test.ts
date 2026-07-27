@@ -13,6 +13,11 @@ import { checkSecondaryKeyphrases } from '../checks/secondary-keyphrases.js';
 import { checkLinks } from '../checks/links.js';
 import { checkNofollowLinks } from '../checks/nofollow-links.js';
 import { checkCompetingLinks } from '../checks/competing-links.js';
+import { checkSingleH1 } from '../checks/single-h1.js';
+import { checkSubheadingDistribution } from '../checks/subheading-distribution.js';
+import { checkKeyphraseMarkup } from '../checks/keyphrase-markup.js';
+import { checkKeyphraseSlug } from '../checks/keyphrase-slug.js';
+import { checkKeyphraseIntroduction } from '../checks/keyphrase-introduction.js';
 import type { ContentAnalysisInput } from '@power-seo/core';
 
 function makeInput(overrides: Partial<ContentAnalysisInput> = {}): ContentAnalysisInput {
@@ -433,5 +438,92 @@ describe('single-h1 implicit page title (#167)', () => {
     );
     expect(result.status).toBe('ok');
     expect(result.description).toContain('H3');
+  });
+
+  it('flags a body <h1> as a duplicate when the page title is also an H1', () => {
+    // title (implicit H1) + body <h1> = two H1s on the rendered page → poor.
+    const result = checkSingleH1(
+      makeInput({ title: 'My Post', content: '<h1>My Post</h1><h2>Section</h2><p>Text.</p>' }),
+    );
+    expect(result.status).toBe('poor');
+    expect(result.description).toContain('H1');
+  });
+
+  it('treats a body starting at H2 as good when a title is set', () => {
+    const result = checkSingleH1(
+      makeInput({ title: 'My Post', content: '<h2>Section</h2><p>Text.</p>' }),
+    );
+    expect(result.status).toBe('good');
+  });
+});
+
+// ============================================================================
+// Subheading distribution — a single leading <h2> is not "no subheadings",
+// and heading text must not inflate the following section's word count.
+// ============================================================================
+
+describe('subheading-distribution false reports', () => {
+  it('does not report "no subheadings" when one leading H2 is present', () => {
+    const body = Array(400).fill('word').join(' ');
+    const result = checkSubheadingDistribution(
+      makeInput({ content: `<h2>Overview</h2><p>${body}</p>` }),
+    );
+    expect(result.description).not.toContain('no subheadings');
+  });
+
+  it('does not count heading words toward the section length', () => {
+    // 298 body words under a 3-word heading must stay under the 300 limit.
+    const body = Array(298).fill('word').join(' ');
+    const result = checkSubheadingDistribution(
+      makeInput({ content: `<h2>Getting Started Now</h2><p>${body}</p>` }),
+    );
+    expect(result.description).not.toContain('exceed');
+  });
+});
+
+// ============================================================================
+// Keyphrase markup — nested emphasis must be counted once.
+// ============================================================================
+
+describe('keyphrase-markup nested emphasis', () => {
+  it('counts <strong><em>kp</em></strong> as a single emphasized instance', () => {
+    const result = checkKeyphraseMarkup(
+      makeInput({
+        focusKeyphrase: 'seo tips',
+        content: '<p>Read our <strong><em>seo tips</em></strong> and more seo tips below.</p>',
+      }),
+    );
+    // 1 of 2 occurrences emphasized — optimal, and never "over-emphasized".
+    expect(result.description).not.toContain('over-emphasized');
+    expect(result.description).toContain('1 time');
+  });
+});
+
+// ============================================================================
+// Keyphrase in URL — per-word match must be whole slug tokens, not substrings.
+// ============================================================================
+
+describe('keyphrase-slug substring false positive', () => {
+  it('does not treat "seo" as present in the slug "season-guide"', () => {
+    const result = checkKeyphraseSlug(
+      makeInput({ focusKeyphrase: 'seo guide', slug: '/blog/season-guide' }),
+    );
+    expect(result.status).not.toBe('good');
+  });
+});
+
+// ============================================================================
+// Keyphrase in introduction — detected even when the intro is not in a <p>.
+// ============================================================================
+
+describe('keyphrase-introduction outside a <p>', () => {
+  it('detects the keyphrase in a leading <div> intro', () => {
+    const result = checkKeyphraseIntroduction(
+      makeInput({
+        focusKeyphrase: 'react seo',
+        content: '<div>This guide covers react seo end to end.</div><p>More detail.</p>',
+      }),
+    );
+    expect(result.status).toBe('good');
   });
 });

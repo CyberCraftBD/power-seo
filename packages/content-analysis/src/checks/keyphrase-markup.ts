@@ -15,18 +15,21 @@ const EMPHASIS_TAGS = ['strong', 'b', 'em', 'i', 'mark'] as const;
 function extractEmphasizedTexts(html: string): string[] {
   const texts: string[] = [];
 
-  for (const tag of EMPHASIS_TAGS) {
-    const regex = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'gi');
-    let match;
-    while ((match = regex.exec(html)) !== null) {
-      const inner = match[1]!
-        .replace(/<[^>]*>/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim()
-        .toLowerCase();
-      if (inner.length > 0) {
-        texts.push(inner);
-      }
+  // One combined pass with a backreference to the opening tag. Scanning left to
+  // right, an outer emphasis element consumes its inner tags, so nested emphasis
+  // (e.g. <strong><em>seo tips</em></strong>) is counted ONCE — the previous
+  // per-tag loop counted it once per wrapping tag, inflating the emphasis count
+  // and triggering false "over-emphasized / keyword stuffing" reports.
+  const regex = new RegExp(`<(${EMPHASIS_TAGS.join('|')})[^>]*>([\\s\\S]*?)<\\/\\1>`, 'gi');
+  let match;
+  while ((match = regex.exec(html)) !== null) {
+    const inner = match[2]!
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase();
+    if (inner.length > 0) {
+      texts.push(inner);
     }
   }
 

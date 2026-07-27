@@ -23,6 +23,22 @@ describe('countKeywordOccurrences', () => {
   it('should return 0 for empty keyword', () => {
     expect(countKeywordOccurrences('some text', '')).toBe(0);
   });
+
+  it('should count non-Latin (Bangla) keyphrases', () => {
+    // \b recognizes only [A-Za-z0-9_], so Bangla keyphrases previously counted 0,
+    // yielding a false "keyphrase never used" / 0% density report.
+    expect(countKeywordOccurrences('আমাদের সেবা এবং আরও সেবা সম্পর্কে জানুন', 'সেবা')).toBe(2);
+  });
+
+  it('should count keyphrases containing punctuation like C++', () => {
+    // "C++" has no ASCII \b after the trailing '+', so it previously counted 0.
+    expect(countKeywordOccurrences('Learn C++ today. C++ is powerful.', 'C++')).toBe(2);
+  });
+
+  it('should still respect word boundaries for Latin words', () => {
+    // "reactor" must not match the keyphrase "react".
+    expect(countKeywordOccurrences('a reactor is not react', 'react')).toBe(1);
+  });
 });
 
 describe('calculateKeywordDensity', () => {
