@@ -5,8 +5,7 @@ import { analyzeContent, detectIntent } from '../index.js';
 import { countEffectiveMatches } from '@power-seo/core';
 import { checkExperienceDepth } from '../checks/eeat-experience-depth.js';
 
-const filler = (n: number) =>
-  Array.from({ length: n }, (_, i) => `word${i}`).join(' ');
+const filler = (n: number) => Array.from({ length: n }, (_, i) => `word${i}`).join(' ');
 
 describe('expectedIntent override', () => {
   it('detectIntent auto-detects when no override is active', () => {
@@ -76,12 +75,7 @@ describe('diminishing returns for repeated signal phrases (#152)', () => {
   it('repeats of one phrase earn log-scaled credit, variety earns full credit', () => {
     const stuffed = 'I tested. I tested. I tested. I tested.';
     const varied = 'I tested. I used. I tried. I noticed.';
-    const patterns = [
-      /\bi\s+tested\b/gi,
-      /\bi\s+used\b/gi,
-      /\bi\s+tried\b/gi,
-      /\bi\s+noticed\b/gi,
-    ];
+    const patterns = [/\bi\s+tested\b/gi, /\bi\s+used\b/gi, /\bi\s+tried\b/gi, /\bi\s+noticed\b/gi];
     // 4 identical repeats -> 1 + log2(4) = 3
     expect(countEffectiveMatches(stuffed, patterns)).toBeCloseTo(3, 5);
     // 4 distinct phrases -> full credit

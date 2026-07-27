@@ -141,8 +141,7 @@ export function analyzeKeyphraseOccurrences(config: {
   // (a multi-word keyphrase counts as a single occurrence). Previously this
   // multiplied by the keyphrase word count, so the same keyphrase reported a
   // different density here than in the keyphrase-density check.
-  const density =
-    words.length > 0 ? Math.round((inContent / words.length) * 1000) / 10 : 0;
+  const density = words.length > 0 ? Math.round((inContent / words.length) * 1000) / 10 : 0;
 
   return {
     inTitle,
