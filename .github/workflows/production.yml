@@ -80,6 +80,11 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN_90_DAYS }}
 
       - name: Publish all packages to npm
+        env:
+          # Generate npm provenance attestations (Sigstore) so packages show
+          # "Built and signed with provenance". Requires the id-token: write
+          # permission granted above; pnpm publish honors this env var.
+          NPM_CONFIG_PROVENANCE: true
         run: |
           for dir in packages/*/; do
             pkg="$dir/package.json"
